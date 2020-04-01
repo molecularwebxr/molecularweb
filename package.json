@@ -1,0 +1,12 @@
+{
+  "name": "molecular-mirror-app",
+  "version": "1.0.0",
+  "description": "Molecular modeling in AR",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fcor/molecular-mirror-app.git"
+  },
+  "author": "Fabio Cortés",
+  "license": "MIT",
+  "homepage": ""
+}
