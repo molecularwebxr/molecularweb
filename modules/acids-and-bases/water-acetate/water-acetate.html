@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Water & Acetate</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="../../style.css" />
+
+    <!-- rawgithack development URL -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="index.js"></script>
+    <script src="../utils/connector.js"></script>
+  </head>
+
+  <body>
+    <a-scene
+      embedded
+      arjs
+      id="scene"
+      update-stuff
+      renderer="logarithmicDepthBuffer: true;"
+    >
+      <a-marker preset="hiro">
+        <a-entity id="wat" rotation="90 0 0">
+          <a-sphere
+            id="wat1"
+            position="0 0 0"
+            color="red"
+            radius="0.8"
+          ></a-sphere>
+          <a-sphere
+            id="wat2"
+            position="0 -0.8 -0.6"
+            color="white"
+            radius="0.6"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="wat3"
+            position="0 0.8 -0.6"
+            color="white"
+            radius="0.6"
+            visible="true"
+          ></a-sphere>
+          <a-sphere
+            id="wat4"
+            position="-0.8 0 0.6"
+            color="white"
+            radius="0.6"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="wat5"
+            position="0.8 0 0.6"
+            color="white"
+            radius="0.6"
+            visible="true"
+          ></a-sphere>
+          <a-sphere
+            id="watorb2"
+            position="0 -0.5 -0.3"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="true"
+          ></a-sphere>
+          <a-sphere
+            id="watorb3"
+            position="0 0.5 -0.3"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="watorb4"
+            position="-0.5 0 0.3"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="true"
+          ></a-sphere>
+          <a-sphere
+            id="watorb5"
+            position="0.5 0 0.3"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="false"
+          ></a-sphere>
+        </a-entity>
+      </a-marker>
+
+      <a-marker preset="kanji">
+        <a-entity id="ace" rotation="0 0 0">
+          <a-sphere
+            id="ace0"
+            position="0.01 0.06 0"
+            color="grey"
+            radius="0.8"
+          ></a-sphere>
+          <a-sphere
+            id="ace1"
+            position="-1.42 -0.41 0"
+            color="grey"
+            radius="0.8"
+          ></a-sphere>
+          <a-sphere
+            id="ace2"
+            position="0.26 1.24 0"
+            color="red"
+            radius="0.8"
+          ></a-sphere>
+          <a-sphere
+            id="ace3"
+            position="1.01 -0.84 0"
+            color="red"
+            radius="0.8"
+          ></a-sphere>
+          <a-sphere
+            id="ace4"
+            position="-1.77 -0.52 -1.03"
+            color="white"
+            radius="0.6"
+          ></a-sphere>
+          <a-sphere
+            id="ace5"
+            position="-1.49 -1.37 0.51"
+            color="white"
+            radius="0.6"
+          ></a-sphere>
+          <a-sphere
+            id="ace6"
+            position="-2.04 0.32 0.52"
+            color="white"
+            radius="0.6"
+          ></a-sphere>
+          <a-sphere
+            id="ace7"
+            position="1.91 -0.49 0"
+            color="white"
+            radius="0.6"
+          ></a-sphere>
+          <a-sphere
+            id="ace8"
+            position="1.24 1.58 0.05"
+            color="white"
+            radius="0.6"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="aceorb7"
+            position="1.91 -0.49 0"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="aceorb8"
+            position="1.24 1.58 0.05"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="true"
+          ></a-sphere>
+        </a-entity>
+      </a-marker>
+
+      <!-- Connecting charged atoms -->
+      <a-entity id="bridge">
+        <a-sphere
+          id="bond1"
+          radius="0.05"
+          color="yellow"
+          connector="src: #ace8; dest: #wat5; alpha: 0.1"
+        ></a-sphere>
+        <a-sphere
+          id="bond2"
+          radius="0.05"
+          color="yellow"
+          connector="src: #ace8; dest: #wat5; alpha: 0.2"
+        ></a-sphere>
+        <a-sphere
+          id="bond3"
+          radius="0.05"
+          color="yellow"
+          connector="src: #ace8; dest: #wat5; alpha: 0.3"
+        ></a-sphere>
+        <a-sphere
+          id="bond4"
+          radius="0.05"
+          color="yellow"
+          connector="src: #ace8; dest: #wat5; alpha: 0.4"
+        ></a-sphere>
+        <a-sphere
+          id="bond5"
+          radius="0.05"
+          color="yellow"
+          connector="src: #ace8; dest: #wat5; alpha: 0.5"
+        ></a-sphere>
+        <a-sphere
+          id="bond6"
+          radius="0.05"
+          color="yellow"
+          connector="src: #ace8; dest: #wat5; alpha: 0.6"
+        ></a-sphere>
+        <a-sphere
+          id="bond7"
+          radius="0.05"
+          color="yellow"
+          connector="src: #ace8; dest: #wat5; alpha: 0.7"
+        ></a-sphere>
+        <a-sphere
+          id="bond8"
+          radius="0.05"
+          color="yellow"
+          connector="src: #ace8; dest: #wat5; alpha: 0.8"
+        ></a-sphere>
+        <a-sphere
+          id="bond9"
+          radius="0.05"
+          color="yellow"
+          connector="src: #ace8; dest: #wat5; alpha: 0.9"
+        ></a-sphere>
+      </a-entity>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
