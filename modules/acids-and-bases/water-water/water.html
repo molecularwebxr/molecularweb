@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Two water molecules</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../style.css" />
+
+    <!-- rawgithack development URL -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="index.js"></script>
+    <script src="../utils/connector.js"></script>
+  </head>
+
+  <body>
+    <a-scene
+      embedded
+      arjs
+      id="scene"
+      update-stuff
+      renderer="logarithmicDepthBuffer: true;"
+    >
+      <a-marker preset="hiro">
+        <a-entity id="wat" rotation="90 0 0">
+          <a-sphere
+            id="wat1"
+            position="0 0 0"
+            color="red"
+            radius="0.8"
+          ></a-sphere>
+          <a-sphere
+            id="wat2"
+            position="0 -0.8 -0.6"
+            color="white"
+            radius="0.6"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="wat3"
+            position="0 0.8 -0.6"
+            color="white"
+            radius="0.6"
+            visible="true"
+          ></a-sphere>
+          <a-sphere
+            id="wat4"
+            position="-0.8 0 0.6"
+            color="white"
+            radius="0.6"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="wat5"
+            position="0.8 0 0.6"
+            color="white"
+            radius="0.6"
+            visible="true"
+          ></a-sphere>
+          <a-sphere
+            id="watorb2"
+            position="0 -0.5 -0.3"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="true"
+          ></a-sphere>
+          <a-sphere
+            id="watorb3"
+            position="0 0.5 -0.3"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="watorb4"
+            position="-0.5 0 0.3"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="true"
+          ></a-sphere>
+          <a-sphere
+            id="watorb5"
+            position="0.5 0 0.3"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="false"
+          ></a-sphere>
+        </a-entity>
+      </a-marker>
+
+      <a-marker preset="kanji">
+        <a-entity id="vat" rotation="0 0 0">
+          <a-sphere
+            id="vat1"
+            position="0 0 0"
+            color="red"
+            radius="0.8"
+          ></a-sphere>
+          <a-sphere
+            id="vat2"
+            position="0 -0.8 -0.6"
+            color="white"
+            radius="0.6"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="vat3"
+            position="0 0.8 -0.6"
+            color="white"
+            radius="0.6"
+            visible="true"
+          ></a-sphere>
+          <a-sphere
+            id="vat4"
+            position="-0.8 0 0.6"
+            color="white"
+            radius="0.6"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="vat5"
+            position="0.8 0 0.6"
+            color="white"
+            radius="0.6"
+            visible="true"
+          ></a-sphere>
+          <a-sphere
+            id="vatorb2"
+            position="0 -0.5 -0.3"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="true"
+          ></a-sphere>
+          <a-sphere
+            id="vatorb3"
+            position="0 0.5 -0.3"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="vatorb4"
+            position="-0.5 0 0.3"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="true"
+          ></a-sphere>
+          <a-sphere
+            id="vatorb5"
+            position="0.5 0 0.3"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="false"
+          ></a-sphere>
+        </a-entity>
+      </a-marker>
+
+      <!-- Connecting charged atoms -->
+      <a-entity id="bridge">
+        <a-sphere
+          id="bond1"
+          radius="0.05"
+          color="yellow"
+          connector="src: #vat1; dest: #wat5; alpha: 0.1"
+        ></a-sphere>
+        <a-sphere
+          id="bond2"
+          radius="0.05"
+          color="yellow"
+          connector="src: #vat1; dest: #wat5; alpha: 0.2"
+        ></a-sphere>
+        <a-sphere
+          id="bond3"
+          radius="0.05"
+          color="yellow"
+          connector="src: #vat1; dest: #wat5; alpha: 0.3"
+        ></a-sphere>
+        <a-sphere
+          id="bond4"
+          radius="0.05"
+          color="yellow"
+          connector="src: #vat1; dest: #wat5; alpha: 0.4"
+        ></a-sphere>
+        <a-sphere
+          id="bond5"
+          radius="0.05"
+          color="yellow"
+          connector="src: #vat1; dest: #wat5; alpha: 0.5"
+        ></a-sphere>
+        <a-sphere
+          id="bond6"
+          radius="0.05"
+          color="yellow"
+          connector="src: #vat1; dest: #wat5; alpha: 0.6"
+        ></a-sphere>
+        <a-sphere
+          id="bond7"
+          radius="0.05"
+          color="yellow"
+          connector="src: #vat1; dest: #wat5; alpha: 0.7"
+        ></a-sphere>
+        <a-sphere
+          id="bond8"
+          radius="0.05"
+          color="yellow"
+          connector="src: #vat1; dest: #wat5; alpha: 0.8"
+        ></a-sphere>
+        <a-sphere
+          id="bond9"
+          radius="0.05"
+          color="yellow"
+          connector="src: #vat1; dest: #wat5; alpha: 0.9"
+        ></a-sphere>
+      </a-entity>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
