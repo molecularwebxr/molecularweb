@@ -1,0 +1,37 @@
+body {
+  margin: 0px;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none;
+  color: #38618c;
+  margin: 0.5rem 0;
+  transition: 0.2s;
+}
+
+a:hover {
+  color: #35a7ff;
+}
+
+h1 {
+  color: #ff5964;
+}
+
+.module-container {
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.module-samples {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
