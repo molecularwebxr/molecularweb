@@ -19,12 +19,13 @@
       arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
       id="scene"
       renderer="logarithmicDepthBuffer: true;"
+      update-stuff
       >
-      <a-marker type="barcode" value="0">
+      <a-marker type="barcode" value="0" id="lysA">
         <!-- This is a lysine side chain, starting from the CA atom, which is set to the origin
             All coordinates have been divided by 2,
             so any distance between two atoms must be multiplied by 2 to get the actual distance-->
-        <a-entity id="lysA" rotation="0 0 0">
+        <a-entity rotation="0 0 0">
           <a-sphere
             id="lys1A"
             position="0.000   0.000   0.000"
@@ -130,11 +131,11 @@
         </a-entity>
       </a-marker>
 
-      <a-marker type="barcode" value="1">
+      <a-marker type="barcode" value="1" id="lysB">
         <!-- This is a lysine side chain, starting from the CA atom, which is set to the origin
             All coordinates have been divided by 2,
             so any distance between two atoms must be multiplied by 2 to get the actual distance-->
-        <a-entity id="lysB" rotation="0 180 0">
+        <a-entity rotation="0 180 0">
           <a-sphere
             id="lys1B"
             position="0.000   0.000   0.000"
@@ -240,9 +241,9 @@
         </a-entity>
       </a-marker>
 
-      <a-marker type="barcode" value="2">
+      <a-marker type="barcode" id="gluA" value="2">
         <!-- This is a glutamate side chain, starting from the CA atom, which is set to the origin-->
-        <a-entity id="gluA" rotation="0 0 0">
+        <a-entity rotation="0 0 0">
           <a-sphere
             id="glu1A"
             position="0.000   0.000   0.000"
@@ -320,9 +321,9 @@
         </a-entity>
       </a-marker>
 
-      <a-marker type="barcode" value="3">
+      <a-marker type="barcode" id="gluB" value="3">
         <!-- This is a glutamate side chain, starting from the CA atom, which is set to the origin-->
-        <a-entity id="gluB" rotation="0 180 0">
+        <a-entity rotation="0 180 0">
           <a-sphere
             id="glu1B"
             position="0.000   0.000   0.000"
