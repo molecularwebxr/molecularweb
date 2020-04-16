@@ -198,39 +198,47 @@ AFRAME.registerComponent("update-stuff", {
 
       if(closestDistance < 2) {
         this.bridge.setAttribute("visible", true);
-    //     if (closestGlutamate === 0 && (this.glu_prot == 0 || this.glu_prot == 1)) {
-    //       if (Math.random() < 0.2) {
-    //         if(isClosestGlutamateVisible && !isClosestLysineVisible && this.lys_prot === 0) {
-    //           lysine[closestLysine].setAttribute('visible', true);
-    //           this.glu11.setAttribute("visible", false);
-    //           this.glu_prot = 0;
-    //           this.lys_prot = 1;
-    //         }
-    //       } else {
-    //         if(!isClosestGlutamateVisible && isClosestLysineVisible && this.lys_prot === 1) {
-    //           lysine[closestLysine].setAttribute('visible', false);
-    //           this.glu11.setAttribute("visible", true);
-    //           this.glu_prot = 1;
-    //           this.lys_prot = 0;
-    //         }
-    //       }
-    //     } else if (closestGlutamate === 1 && (this.glu_prot == 0 || this.glu_prot == 2)) {
-    //       if (Math.random() < 0.2) {
-    //         if(isClosestGlutamateVisible && !isClosestLysineVisible && this.lys_prot === 0) {
-    //           lysine[closestLysine].setAttribute('visible', true);
-    //           this.glu12.setAttribute("visible", false);
-    //           this.glu_prot = 0;
-    //           this.lys_prot = 1;
-    //         }
-    //       } else {
-    //         if(!isClosestGlutamateVisible && isClosestLysineVisible && this.lys_prot === 1) {
-    //           lysine[closestLysine].setAttribute('visible', false);
-    //           this.glu12.setAttribute("visible", true);
-    //           this.glu_prot = 2;
-    //           this.lys_prot = 0;
-    //         }
-    //       }
-    //     }
+        if (closestGlutamate === 0 && (this.glu_prot == 0 || this.glu_prot == 1)) {
+          if (Math.random() < 0.2) {
+            if(isClosestGlutamateVisible && !isClosestLysineVisible && this.lys_prot === 0) {
+              lysineA[closestLysine].setAttribute('visible', true);
+              lysineB[closestLysine].setAttribute('visible', true);
+              this.glu11A.setAttribute("visible", false);
+              this.glu11B.setAttribute("visible", false);
+              this.glu_prot = 0;
+              this.lys_prot = 1;
+            }
+          } else {
+            if(!isClosestGlutamateVisible && isClosestLysineVisible && this.lys_prot === 1) {
+              lysineA[closestLysine].setAttribute('visible', false);
+              lysineB[closestLysine].setAttribute('visible', false);
+              this.glu11A.setAttribute("visible", true);
+              this.glu11B.setAttribute("visible", true);
+              this.glu_prot = 1;
+              this.lys_prot = 0;
+            }
+          }
+        } else if (closestGlutamate === 1 && (this.glu_prot == 0 || this.glu_prot == 2)) {
+          if (Math.random() < 0.2) {
+            if(isClosestGlutamateVisible && !isClosestLysineVisible && this.lys_prot === 0) {
+              lysineA[closestLysine].setAttribute('visible', true);
+              lysineB[closestLysine].setAttribute('visible', true);
+              this.glu12A.setAttribute("visible", false);
+              this.glu12B.setAttribute("visible", false);
+              this.glu_prot = 0;
+              this.lys_prot = 1;
+            }
+          } else {
+            if(!isClosestGlutamateVisible && isClosestLysineVisible && this.lys_prot === 1) {
+              lysineA[closestLysine].setAttribute('visible', false);
+              lysineB[closestLysine].setAttribute('visible', false);
+              this.glu12A.setAttribute("visible", true);
+              this.glu12B.setAttribute("visible", true);
+              this.glu_prot = 2;
+              this.lys_prot = 0;
+            }
+          }
+        }
       } else {
         this.bridge.setAttribute("visible", false);
       }
