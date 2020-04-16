@@ -14,110 +14,116 @@
   </head>
 
   <body>
-    <a-scene embedded arjs id="scene" update-stuff renderer="logarithmicDepthBuffer: true;">
-      <a-marker preset="hiro">
+    <a-scene
+      embedded
+      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
+      id="scene"
+      renderer="logarithmicDepthBuffer: true;"
+      update-stuff
+      >
+      <a-marker type="barcode" value="0" id="lysA">
         <!-- This is a lysine side chain, starting from the CA atom, which is set to the origin
             All coordinates have been divided by 2,
             so any distance between two atoms must be multiplied by 2 to get the actual distance-->
-        <a-entity id="lys" rotation="0 0 0">
+        <a-entity rotation="0 0 0">
           <a-sphere
-            id="lys1"
+            id="lys1A"
             position="0.000   0.000   0.000"
             color="grey"
             radius="0.4"
           ></a-sphere>
           <a-sphere
-            id="lys2"
+            id="lys2A"
             position="-0.6035  -0.3175  -0.347"
             color="grey"
             radius="0.4"
           ></a-sphere>
           <a-sphere
-            id="lys3"
+            id="lys3A"
             position="-1.2480  -0.037  -0.0455"
             color="grey"
             radius="0.4"
           ></a-sphere>
           <a-sphere
-            id="lys4"
+            id="lys4A"
             position="-1.851  -0.3545  -0.3925"
             color="grey"
             radius="0.4"
           ></a-sphere>
           <a-sphere
-            id="lys5"
+            id="lys5A"
             position="-2.496  -0.0745  -0.0905"
             color="grey"
             radius="0.4"
           ></a-sphere>
           <a-sphere
-            id="lys6"
+            id="lys6A"
             position="-3.075  -0.3795  -0.4235"
             color="blue"
             radius="0.4"
           ></a-sphere>
           <a-sphere
-            id="lys7"
+            id="lys7A"
             position="-0.5875 -0.2035 -0.88"
             color="white"
             radius="0.3"
           ></a-sphere>
           <a-sphere
-            id="lys8"
+            id="lys8A"
             position="-0.5895 -0.858 -0.2765"
             color="white"
             radius="0.3"
           ></a-sphere>
           <a-sphere
-            id="lys9"
+            id="lys9A"
             position="-1.264 -0.1515 0.4875"
             color="white"
             radius="0.3"
           ></a-sphere>
           <a-sphere
-            id="lys10"
+            id="lys10A"
             position="-1.2615 0.503 -0.1155"
             color="white"
             radius="0.3"
           ></a-sphere>
           <a-sphere
-            id="lys11"
+            id="lys11A"
             position="-1.8355 -0.2405 -0.925"
             color="white"
             radius="0.3"
           ></a-sphere>
           <a-sphere
-            id="lys12"
+            id="lys12A"
             position="-1.8375 -0.895 -0.322"
             color="white"
             radius="0.3"
           ></a-sphere>
           <a-sphere
-            id="lys13"
+            id="lys13A"
             position="-2.5115 -0.1885 0.442"
             color="white"
             radius="0.3"
           ></a-sphere>
           <a-sphere
-            id="lys14"
+            id="lys14A"
             position="-2.5095 0.466 -0.161"
             color="white"
             radius="0.3"
           ></a-sphere>
           <a-sphere
-            id="lys15"
+            id="lys15A"
             position="-3.057 -0.8825 -0.3935"
             color="white"
             radius="0.3"
           ></a-sphere>
           <a-sphere
-            id="lys16"
+            id="lys16A"
             position="-2.9455  -0.524  -0.89"
             color="white"
             radius="0.3"
           ></a-sphere>
           <a-sphere
-            id="lys17"
+            id="lys17A"
             position="-3.507 -0.202 -0.233"
             color="white"
             radius="0.3"
@@ -125,78 +131,268 @@
         </a-entity>
       </a-marker>
 
-      <a-marker preset="kanji">
-        <!-- This is a glutamate side chain, starting from the CA atom, which is set to the origin-->
-        <a-entity id="glu" rotation="0 0 0">
+      <a-marker type="barcode" value="1" id="lysB">
+        <!-- This is a lysine side chain, starting from the CA atom, which is set to the origin
+            All coordinates have been divided by 2,
+            so any distance between two atoms must be multiplied by 2 to get the actual distance-->
+        <a-entity rotation="0 180 0">
           <a-sphere
-            id="glu1"
+            id="lys1B"
             position="0.000   0.000   0.000"
             color="grey"
             radius="0.4"
           ></a-sphere>
           <a-sphere
-            id="glu2"
+            id="lys2B"
+            position="-0.6035  -0.3175  -0.347"
+            color="grey"
+            radius="0.4"
+          ></a-sphere>
+          <a-sphere
+            id="lys3B"
+            position="-1.2480  -0.037  -0.0455"
+            color="grey"
+            radius="0.4"
+          ></a-sphere>
+          <a-sphere
+            id="lys4B"
+            position="-1.851  -0.3545  -0.3925"
+            color="grey"
+            radius="0.4"
+          ></a-sphere>
+          <a-sphere
+            id="lys5B"
+            position="-2.496  -0.0745  -0.0905"
+            color="grey"
+            radius="0.4"
+          ></a-sphere>
+          <a-sphere
+            id="lys6B"
+            position="-3.075  -0.3795  -0.4235"
+            color="blue"
+            radius="0.4"
+          ></a-sphere>
+          <a-sphere
+            id="lys7B"
+            position="-0.5875 -0.2035 -0.88"
+            color="white"
+            radius="0.3"
+          ></a-sphere>
+          <a-sphere
+            id="lys8B"
+            position="-0.5895 -0.858 -0.2765"
+            color="white"
+            radius="0.3"
+          ></a-sphere>
+          <a-sphere
+            id="lys9B"
+            position="-1.264 -0.1515 0.4875"
+            color="white"
+            radius="0.3"
+          ></a-sphere>
+          <a-sphere
+            id="lys10B"
+            position="-1.2615 0.503 -0.1155"
+            color="white"
+            radius="0.3"
+          ></a-sphere>
+          <a-sphere
+            id="lys11B"
+            position="-1.8355 -0.2405 -0.925"
+            color="white"
+            radius="0.3"
+          ></a-sphere>
+          <a-sphere
+            id="lys12B"
+            position="-1.8375 -0.895 -0.322"
+            color="white"
+            radius="0.3"
+          ></a-sphere>
+          <a-sphere
+            id="lys13B"
+            position="-2.5115 -0.1885 0.442"
+            color="white"
+            radius="0.3"
+          ></a-sphere>
+          <a-sphere
+            id="lys14B"
+            position="-2.5095 0.466 -0.161"
+            color="white"
+            radius="0.3"
+          ></a-sphere>
+          <a-sphere
+            id="lys15B"
+            position="-3.057 -0.8825 -0.3935"
+            color="white"
+            radius="0.3"
+          ></a-sphere>
+          <a-sphere
+            id="lys16B"
+            position="-2.9455  -0.524  -0.89"
+            color="white"
+            radius="0.3"
+          ></a-sphere>
+          <a-sphere
+            id="lys17B"
+            position="-3.507 -0.202 -0.233"
+            color="white"
+            radius="0.3"
+          ></a-sphere>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" id="gluA" value="2">
+        <!-- This is a glutamate side chain, starting from the CA atom, which is set to the origin-->
+        <a-entity rotation="0 0 0">
+          <a-sphere
+            id="glu1A"
+            position="0.000   0.000   0.000"
+            color="grey"
+            radius="0.4"
+          ></a-sphere>
+          <a-sphere
+            id="glu2A"
             position="-0.6365 -0.3515 -0.238"
             color="grey"
             radius="0.4"
           ></a-sphere>
           <a-sphere
-            id="glu3"
+            id="glu3A"
             position="-1.2485 0.0445 -0.006"
             color="grey"
             radius="0.4"
           ></a-sphere>
           <a-sphere
-            id="glu4"
+            id="glu4A"
             position="-1.8755 -0.3015 -0.2405"
             color="grey"
             radius="0.4"
           ></a-sphere>
           <a-sphere
-            id="glu5"
+            id="glu5A"
             position="-1.836 -0.8175 -0.563"
             color="red"
             radius="0.4"
           ></a-sphere>
           <a-sphere
-            id="glu6"
+            id="glu6A"
             position="-2.4215 -0.066 -0.1075"
             color="red"
             radius="0.4"
           ></a-sphere>
           <a-sphere
-            id="glu7"
+            id="glu7A"
             position="-0.635 -0.381 -0.7825"
             color="white"
             radius="0.3"
           ></a-sphere>
           <a-sphere
-            id="glu8"
+            id="glu8A"
             position="-0.6555 -0.854 -0.0285"
             color="white"
             radius="0.3"
           ></a-sphere>
           <a-sphere
-            id="glu9"
+            id="glu9A"
             position="-1.25 0.0745 0.538"
             color="white"
             radius="0.3"
           ></a-sphere>
           <a-sphere
-            id="glu10"
+            id="glu10A"
             position="-1.2295 0.5475 -0.2155"
             color="white"
             radius="0.3"
           ></a-sphere>
           <a-sphere
-            id="glu11"
+            id="glu11A"
             position="-2.8215 -0.166 -0.4075"
             color="white"
             radius="0.3"
             visible="false"
           ></a-sphere>
           <a-sphere
-            id="glu12"
+            id="glu12A"
+            position="-2.236 -0.9175 -0.863"
+            color="white"
+            radius="0.3"
+            visible="false"
+          ></a-sphere>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" id="gluB" value="3">
+        <!-- This is a glutamate side chain, starting from the CA atom, which is set to the origin-->
+        <a-entity rotation="0 180 0">
+          <a-sphere
+            id="glu1B"
+            position="0.000   0.000   0.000"
+            color="grey"
+            radius="0.4"
+          ></a-sphere>
+          <a-sphere
+            id="glu2B"
+            position="-0.6365 -0.3515 -0.238"
+            color="grey"
+            radius="0.4"
+          ></a-sphere>
+          <a-sphere
+            id="glu3B"
+            position="-1.2485 0.0445 -0.006"
+            color="grey"
+            radius="0.4"
+          ></a-sphere>
+          <a-sphere
+            id="glu4B"
+            position="-1.8755 -0.3015 -0.2405"
+            color="grey"
+            radius="0.4"
+          ></a-sphere>
+          <a-sphere
+            id="glu5B"
+            position="-1.836 -0.8175 -0.563"
+            color="red"
+            radius="0.4"
+          ></a-sphere>
+          <a-sphere
+            id="glu6B"
+            position="-2.4215 -0.066 -0.1075"
+            color="red"
+            radius="0.4"
+          ></a-sphere>
+          <a-sphere
+            id="glu7B"
+            position="-0.635 -0.381 -0.7825"
+            color="white"
+            radius="0.3"
+          ></a-sphere>
+          <a-sphere
+            id="glu8B"
+            position="-0.6555 -0.854 -0.0285"
+            color="white"
+            radius="0.3"
+          ></a-sphere>
+          <a-sphere
+            id="glu9B"
+            position="-1.25 0.0745 0.538"
+            color="white"
+            radius="0.3"
+          ></a-sphere>
+          <a-sphere
+            id="glu10B"
+            position="-1.2295 0.5475 -0.2155"
+            color="white"
+            radius="0.3"
+          ></a-sphere>
+          <a-sphere
+            id="glu11B"
+            position="-2.8215 -0.166 -0.4075"
+            color="white"
+            radius="0.3"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="glu12B"
             position="-2.236 -0.9175 -0.863"
             color="white"
             radius="0.3"
@@ -206,60 +402,60 @@
       </a-marker>
 
       <!-- Connecting charged atoms -->
-      <a-entity id="bridge">
+      <a-entity id="bridge" >
         <a-sphere
           id="bond1"
           radius="0.05"
           color="yellow"
-          connector="src: #lys17; dest: #glu5; alpha: 0.1"
+          connector="src: #lys17A; dest: #glu5B; alpha: 0.1"
         ></a-sphere>
         <a-sphere
           id="bond2"
           radius="0.05"
           color="yellow"
-          connector="src: #lys17; dest: #glu5; alpha: 0.2"
+          connector="src: #lys17A; dest: #glu5B; alpha: 0.2"
         ></a-sphere>
         <a-sphere
           id="bond3"
           radius="0.05"
           color="yellow"
-          connector="src: #lys17; dest: #glu5; alpha: 0.3"
+          connector="src: #lys17A; dest: #glu5B; alpha: 0.3"
         ></a-sphere>
         <a-sphere
           id="bond4"
           radius="0.05"
           color="yellow"
-          connector="src: #lys17; dest: #glu5; alpha: 0.4"
+          connector="src: #lys17A; dest: #glu5B; alpha: 0.4"
         ></a-sphere>
         <a-sphere
           id="bond5"
           radius="0.05"
           color="yellow"
-          connector="src: #lys17; dest: #glu5; alpha: 0.5"
+          connector="src: #lys17A; dest: #glu5B; alpha: 0.5"
         ></a-sphere>
         <a-sphere
           id="bond6"
           radius="0.05"
           color="yellow"
-          connector="src: #lys17; dest: #glu5; alpha: 0.6"
+          connector="src: #lys17A; dest: #glu5B; alpha: 0.6"
         ></a-sphere>
         <a-sphere
           id="bond7"
           radius="0.05"
           color="yellow"
-          connector="src: #lys17; dest: #glu5; alpha: 0.7"
+          connector="src: #lys17A; dest: #glu5B; alpha: 0.7"
         ></a-sphere>
         <a-sphere
           id="bond8"
           radius="0.05"
           color="yellow"
-          connector="src: #lys17; dest: #glu5; alpha: 0.8"
+          connector="src: #lys17A; dest: #glu5B; alpha: 0.8"
         ></a-sphere>
         <a-sphere
           id="bond9"
           radius="0.05"
           color="yellow"
-          connector="src: #lys17; dest: #glu5; alpha: 0.9"
+          connector="src: #lys17A; dest: #glu5B; alpha: 0.9"
         ></a-sphere>
       </a-entity>
 
