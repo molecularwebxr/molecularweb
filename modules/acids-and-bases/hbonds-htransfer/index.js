@@ -90,11 +90,8 @@ AFRAME.registerComponent("update-stuff", {
     const areEnoughMarkers = this.visibleMarkers.length === 2;
 
     if (areMarkersInvalid || !areEnoughMarkers) {
-      console.log("bye!")
       return;
     }
-
-    console.log("working!")
 
     this.el.sceneEl.object3D.updateMatrixWorld();
 
