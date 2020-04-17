@@ -191,41 +191,57 @@ AFRAME.registerComponent("update-stuff", {
           );
         });
         
-        // if (closestDistance<3 && Math.random() < 0.7) {
-        //     if(isClosestWaterVisible && !isClosestVaterVisible & this.protoWat === 3) {
-        //       // Transfers from water H3O to vater OH giving H2O and H2O
-        //       water[closestWater].setAttribute('visible', false);
-        //       vater[closestVater].setAttribute('visible', true);
-        //       waterOrbitals[closestWater].setAttribute('visible', true);
-        //       vaterOrbitals[closestVater].setAttribute('visible', false);
-        //       this.protoWat = 2;
-        //       this.protoVat = 2;
-        //     } else if(isClosestWaterVisible && !isClosestVaterVisible & this.protoWat === 2) {
-        //       // Transfers from water H2O to vater H2O giving OH and H3O
-        //       water[closestWater].setAttribute('visible', false);
-        //       vater[closestVater].setAttribute('visible', true);
-        //       waterOrbitals[closestWater].setAttribute('visible', true);
-        //       vaterOrbitals[closestVater].setAttribute('visible', false);
-        //       this.protoWat = 1;
-        //       this.protoVat = 3;
-        // 	} else if(!isClosestWaterVisible && isClosestVaterVisible & this.protoWat === 2) {
-        //       // Transfers from vater H2O to water H2O giving OH and H3O
-        //       water[closestWater].setAttribute('visible', true);
-        //       vater[closestVater].setAttribute('visible', false);
-        //       waterOrbitals[closestWater].setAttribute('visible', false);
-        //       vaterOrbitals[closestVater].setAttribute('visible', true);
-        //       this.protoWat = 3;
-        //       this.protoVat = 1;
-        // 	} else if(!isClosestWaterVisible && isClosestVaterVisible & this.protoWat === 1) {
-        //       // Transfers from vater H3O to water HO giving H2O and H2O
-        //       water[closestWater].setAttribute('visible', true);
-        //       vater[closestVater].setAttribute('visible', false);
-        //       waterOrbitals[closestWater].setAttribute('visible', false);
-        //       vaterOrbitals[closestVater].setAttribute('visible', true);
-        //       this.protoWat = 2;
-        //       this.protoVat = 2;
-        //     }
-        // }
+        if (closestDistance<3 && Math.random() < 0.7) {
+            if(isClosestWaterVisible && !isClosestVaterVisible & this.protoWat === 3) {
+              // Transfers from water H3O to vater OH giving H2O and H2O
+              waterA[closestWater].setAttribute('visible', false);
+              waterB[closestWater].setAttribute('visible', false);
+              vaterA[closestVater].setAttribute('visible', true);
+              vaterB[closestVater].setAttribute('visible', true);
+              waterOrbitalsA[closestWater].setAttribute('visible', true);
+              waterOrbitalsB[closestWater].setAttribute('visible', true);
+              vaterOrbitalsA[closestVater].setAttribute('visible', false);
+              vaterOrbitalsB[closestVater].setAttribute('visible', false);
+              this.protoWat = 2;
+              this.protoVat = 2;
+            } else if(isClosestWaterVisible && !isClosestVaterVisible & this.protoWat === 2) {
+              // Transfers from water H2O to vater H2O giving OH and H3O
+              waterA[closestWater].setAttribute('visible', false);
+              waterB[closestWater].setAttribute('visible', false);
+              vaterA[closestVater].setAttribute('visible', true);
+              vaterB[closestVater].setAttribute('visible', true);
+              waterOrbitalsA[closestWater].setAttribute('visible', true);
+              waterOrbitalsB[closestWater].setAttribute('visible', true);
+              vaterOrbitalsA[closestVater].setAttribute('visible', false);
+              vaterOrbitalsB[closestVater].setAttribute('visible', false);
+              this.protoWat = 1;
+              this.protoVat = 3;
+        	} else if(!isClosestWaterVisible && isClosestVaterVisible & this.protoWat === 2) {
+              // Transfers from vater H2O to water H2O giving OH and H3O
+              waterA[closestWater].setAttribute('visible', true);
+              waterB[closestWater].setAttribute('visible', true);
+              vaterA[closestVater].setAttribute('visible', false);
+              vaterB[closestVater].setAttribute('visible', false);
+              waterOrbitalsA[closestWater].setAttribute('visible', false);
+              waterOrbitalsB[closestWater].setAttribute('visible', false);
+              vaterOrbitalsA[closestVater].setAttribute('visible', true);
+              vaterOrbitalsB[closestVater].setAttribute('visible', true);
+              this.protoWat = 3;
+              this.protoVat = 1;
+        	} else if(!isClosestWaterVisible && isClosestVaterVisible & this.protoWat === 1) {
+              // Transfers from vater H3O to water HO giving H2O and H2O
+              waterA[closestWater].setAttribute('visible', true);
+              waterB[closestWater].setAttribute('visible', true);
+              vaterA[closestVater].setAttribute('visible', false);
+              vaterB[closestVater].setAttribute('visible', false);
+              waterOrbitalsA[closestWater].setAttribute('visible', false);
+              waterOrbitalsB[closestWater].setAttribute('visible', false);
+              vaterOrbitalsA[closestVater].setAttribute('visible', true);
+              vaterOrbitalsB[closestVater].setAttribute('visible', true);
+              this.protoWat = 2;
+              this.protoVat = 2;
+            }
+        }
       }
     } else {
       this.bridge.setAttribute("visible", false);
