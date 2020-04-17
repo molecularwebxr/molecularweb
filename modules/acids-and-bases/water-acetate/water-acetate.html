@@ -16,49 +16,48 @@
   <body>
     <a-scene
       embedded
-      arjs
+      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
       id="scene"
-      update-stuff
       renderer="logarithmicDepthBuffer: true;"
     >
-      <a-marker preset="hiro">
-        <a-entity id="wat" rotation="90 0 0">
+      <a-marker type="barcode" value="0" id="watA">
+        <a-entity rotation="00 0 0">
           <a-sphere
-            id="wat1"
+            id="wat1A"
             position="0 0 0"
             color="red"
             radius="0.8"
           ></a-sphere>
           <a-sphere
-            id="wat2"
+            id="wat2A"
             position="0 -0.8 -0.6"
             color="white"
             radius="0.6"
             visible="false"
           ></a-sphere>
           <a-sphere
-            id="wat3"
+            id="wat3A"
             position="0 0.8 -0.6"
             color="white"
             radius="0.6"
             visible="true"
           ></a-sphere>
           <a-sphere
-            id="wat4"
+            id="wat4A"
             position="-0.8 0 0.6"
             color="white"
             radius="0.6"
             visible="false"
           ></a-sphere>
           <a-sphere
-            id="wat5"
+            id="wat5A"
             position="0.8 0 0.6"
             color="white"
             radius="0.6"
             visible="true"
           ></a-sphere>
           <a-sphere
-            id="watorb2"
+            id="watorb2A"
             position="0 -0.5 -0.3"
             color="orange"
             radius="0.8"
@@ -66,7 +65,7 @@
             visible="true"
           ></a-sphere>
           <a-sphere
-            id="watorb3"
+            id="watorb3A"
             position="0 0.5 -0.3"
             color="orange"
             radius="0.8"
@@ -74,7 +73,7 @@
             visible="false"
           ></a-sphere>
           <a-sphere
-            id="watorb4"
+            id="watorb4A"
             position="-0.5 0 0.3"
             color="orange"
             radius="0.8"
@@ -82,7 +81,7 @@
             visible="true"
           ></a-sphere>
           <a-sphere
-            id="watorb5"
+            id="watorb5A"
             position="0.5 0 0.3"
             color="orange"
             radius="0.8"
@@ -92,65 +91,136 @@
         </a-entity>
       </a-marker>
 
-      <a-marker preset="kanji">
-        <a-entity id="ace" rotation="0 0 0">
+      <a-marker type="barcode" value="1" id="watB">
+        <a-entity rotation="0 180 0">
           <a-sphere
-            id="ace0"
+            id="wat1B"
+            position="0 0 0"
+            color="red"
+            radius="0.8"
+          ></a-sphere>
+          <a-sphere
+            id="wat2B"
+            position="0 -0.8 -0.6"
+            color="white"
+            radius="0.6"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="wat3B"
+            position="0 0.8 -0.6"
+            color="white"
+            radius="0.6"
+            visible="true"
+          ></a-sphere>
+          <a-sphere
+            id="wat4B"
+            position="-0.8 0 0.6"
+            color="white"
+            radius="0.6"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="wat5B"
+            position="0.8 0 0.6"
+            color="white"
+            radius="0.6"
+            visible="true"
+          ></a-sphere>
+          <a-sphere
+            id="watorb2B"
+            position="0 -0.5 -0.3"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="true"
+          ></a-sphere>
+          <a-sphere
+            id="watorb3B"
+            position="0 0.5 -0.3"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="watorb4B"
+            position="-0.5 0 0.3"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="true"
+          ></a-sphere>
+          <a-sphere
+            id="watorb5B"
+            position="0.5 0 0.3"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="false"
+          ></a-sphere>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="2" id="aceA">
+        <a-entity rotation="0 0 0">
+          <a-sphere
+            id="ace0A"
             position="0.01 0.06 0"
             color="grey"
             radius="0.8"
           ></a-sphere>
           <a-sphere
-            id="ace1"
+            id="ace1A"
             position="-1.42 -0.41 0"
             color="grey"
             radius="0.8"
           ></a-sphere>
           <a-sphere
-            id="ace2"
+            id="ace2A"
             position="0.26 1.24 0"
             color="red"
             radius="0.8"
           ></a-sphere>
           <a-sphere
-            id="ace3"
+            id="ace3A"
             position="1.01 -0.84 0"
             color="red"
             radius="0.8"
           ></a-sphere>
           <a-sphere
-            id="ace4"
+            id="ace4A"
             position="-1.77 -0.52 -1.03"
             color="white"
             radius="0.6"
           ></a-sphere>
           <a-sphere
-            id="ace5"
+            id="ace5A"
             position="-1.49 -1.37 0.51"
             color="white"
             radius="0.6"
           ></a-sphere>
           <a-sphere
-            id="ace6"
+            id="ace6A"
             position="-2.04 0.32 0.52"
             color="white"
             radius="0.6"
           ></a-sphere>
           <a-sphere
-            id="ace7"
+            id="ace7A"
             position="1.91 -0.49 0"
             color="white"
             radius="0.6"
           ></a-sphere>
           <a-sphere
-            id="ace8"
+            id="ace8A"
             position="1.24 1.58 0.05"
             color="white"
             radius="0.6"
             visible="false"
           ></a-sphere>
           <a-sphere
-            id="aceorb7"
+            id="aceorb7A"
             position="1.91 -0.49 0"
             color="orange"
             radius="0.8"
@@ -158,7 +228,83 @@
             visible="false"
           ></a-sphere>
           <a-sphere
-            id="aceorb8"
+            id="aceorb8A"
+            position="1.24 1.58 0.05"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="true"
+          ></a-sphere>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="3" id="aceB">
+        <a-entity rotation="0 180 0">
+          <a-sphere
+            id="ace0B"
+            position="0.01 0.06 0"
+            color="grey"
+            radius="0.8"
+          ></a-sphere>
+          <a-sphere
+            id="ace1B"
+            position="-1.42 -0.41 0"
+            color="grey"
+            radius="0.8"
+          ></a-sphere>
+          <a-sphere
+            id="ace2B"
+            position="0.26 1.24 0"
+            color="red"
+            radius="0.8"
+          ></a-sphere>
+          <a-sphere
+            id="ace3B"
+            position="1.01 -0.84 0"
+            color="red"
+            radius="0.8"
+          ></a-sphere>
+          <a-sphere
+            id="ace4B"
+            position="-1.77 -0.52 -1.03"
+            color="white"
+            radius="0.6"
+          ></a-sphere>
+          <a-sphere
+            id="ace5B"
+            position="-1.49 -1.37 0.51"
+            color="white"
+            radius="0.6"
+          ></a-sphere>
+          <a-sphere
+            id="ace6B"
+            position="-2.04 0.32 0.52"
+            color="white"
+            radius="0.6"
+          ></a-sphere>
+          <a-sphere
+            id="ace7B"
+            position="1.91 -0.49 0"
+            color="white"
+            radius="0.6"
+          ></a-sphere>
+          <a-sphere
+            id="ace8B"
+            position="1.24 1.58 0.05"
+            color="white"
+            radius="0.6"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="aceorb7B"
+            position="1.91 -0.49 0"
+            color="orange"
+            radius="0.8"
+            opacity="0.5"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="aceorb8B"
             position="1.24 1.58 0.05"
             color="orange"
             radius="0.8"
@@ -174,55 +320,55 @@
           id="bond1"
           radius="0.05"
           color="yellow"
-          connector="src: #ace8; dest: #wat5; alpha: 0.1"
+          connector="src: #ace8A; dest: #wat5A; alpha: 0.1"
         ></a-sphere>
         <a-sphere
           id="bond2"
           radius="0.05"
           color="yellow"
-          connector="src: #ace8; dest: #wat5; alpha: 0.2"
+          connector="src: #ace8A; dest: #wat5A; alpha: 0.2"
         ></a-sphere>
         <a-sphere
           id="bond3"
           radius="0.05"
           color="yellow"
-          connector="src: #ace8; dest: #wat5; alpha: 0.3"
+          connector="src: #ace8A; dest: #wat5A; alpha: 0.3"
         ></a-sphere>
         <a-sphere
           id="bond4"
           radius="0.05"
           color="yellow"
-          connector="src: #ace8; dest: #wat5; alpha: 0.4"
+          connector="src: #ace8A; dest: #wat5A; alpha: 0.4"
         ></a-sphere>
         <a-sphere
           id="bond5"
           radius="0.05"
           color="yellow"
-          connector="src: #ace8; dest: #wat5; alpha: 0.5"
+          connector="src: #ace8A; dest: #wat5A; alpha: 0.5"
         ></a-sphere>
         <a-sphere
           id="bond6"
           radius="0.05"
           color="yellow"
-          connector="src: #ace8; dest: #wat5; alpha: 0.6"
+          connector="src: #ace8A; dest: #wat5A; alpha: 0.6"
         ></a-sphere>
         <a-sphere
           id="bond7"
           radius="0.05"
           color="yellow"
-          connector="src: #ace8; dest: #wat5; alpha: 0.7"
+          connector="src: #ace8A; dest: #wat5A; alpha: 0.7"
         ></a-sphere>
         <a-sphere
           id="bond8"
           radius="0.05"
           color="yellow"
-          connector="src: #ace8; dest: #wat5; alpha: 0.8"
+          connector="src: #ace8A; dest: #wat5A; alpha: 0.8"
         ></a-sphere>
         <a-sphere
           id="bond9"
           radius="0.05"
           color="yellow"
-          connector="src: #ace8; dest: #wat5; alpha: 0.9"
+          connector="src: #ace8A; dest: #wat5A; alpha: 0.9"
         ></a-sphere>
       </a-entity>
 

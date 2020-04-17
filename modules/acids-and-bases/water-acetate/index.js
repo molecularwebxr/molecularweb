@@ -44,107 +44,107 @@ AFRAME.registerComponent("update-stuff", {
     }
     this.time = t;
 
-    this.el.sceneEl.object3D.updateMatrixWorld();
+    // this.el.sceneEl.object3D.updateMatrixWorld();
 
-    //  Get positions
-    this.wat2Position.setFromMatrixPosition(this.wat2.object3D.matrixWorld);
-    this.wat3Position.setFromMatrixPosition(this.wat3.object3D.matrixWorld);
-    this.wat4Position.setFromMatrixPosition(this.wat4.object3D.matrixWorld);
-    this.wat5Position.setFromMatrixPosition(this.wat5.object3D.matrixWorld);
-    this.ace7Position.setFromMatrixPosition(this.ace7.object3D.matrixWorld);
-    this.ace8Position.setFromMatrixPosition(this.ace8.object3D.matrixWorld);
+    // //  Get positions
+    // this.wat2Position.setFromMatrixPosition(this.wat2.object3D.matrixWorld);
+    // this.wat3Position.setFromMatrixPosition(this.wat3.object3D.matrixWorld);
+    // this.wat4Position.setFromMatrixPosition(this.wat4.object3D.matrixWorld);
+    // this.wat5Position.setFromMatrixPosition(this.wat5.object3D.matrixWorld);
+    // this.ace7Position.setFromMatrixPosition(this.ace7.object3D.matrixWorld);
+    // this.ace8Position.setFromMatrixPosition(this.ace8.object3D.matrixWorld);
 
-    // Storing a reference of all elements in arrays for easier handling
-    const water = [this.wat2, this.wat3, this.wat4, this.wat5];
-    const waterOrbitals = [
-      this.watorb2,
-      this.watorb3,
-      this.watorb4,
-      this.watorb5
-    ];
-    const acetate = [this.ace7, this.ace8];
-    const acetateOrbitals = [this.aceorb7, this.aceorb8];
+    // // Storing a reference of all elements in arrays for easier handling
+    // const water = [this.wat2, this.wat3, this.wat4, this.wat5];
+    // const waterOrbitals = [
+    //   this.watorb2,
+    //   this.watorb3,
+    //   this.watorb4,
+    //   this.watorb5
+    // ];
+    // const acetate = [this.ace7, this.ace8];
+    // const acetateOrbitals = [this.aceorb7, this.aceorb8];
 
-    // Storing a reference of all positions in arrays for easier handling
-    const waterPositions = [
-      this.wat2Position,
-      this.wat3Position,
-      this.wat4Position,
-      this.wat5Position
-    ];
-    const acetatePositions = [this.ace7Position, this.ace8Position];
+    // // Storing a reference of all positions in arrays for easier handling
+    // const waterPositions = [
+    //   this.wat2Position,
+    //   this.wat3Position,
+    //   this.wat4Position,
+    //   this.wat5Position
+    // ];
+    // const acetatePositions = [this.ace7Position, this.ace8Position];
 
-    let closestDistance = 10000000;
-    let closestWater;
-    let closestAcetate;
+    // let closestDistance = 10000000;
+    // let closestWater;
+    // let closestAcetate;
 
-    // Calc distances
-    waterPositions.forEach((waterItem, waterIndex) => {
-      acetatePositions.forEach((acetateItem, acetateIndex) => {
-        const distance =
-          2 *
-          Math.sqrt(
-            Math.pow(acetateItem.x - waterItem.x, 2) +
-              Math.pow(acetateItem.y - waterItem.y, 2) +
-              Math.pow(acetateItem.z - waterItem.z, 2)
-          );
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestWater = waterIndex;
-          closestAcetate = acetateIndex;
-        }
-      });
-    });
+    // // Calc distances
+    // waterPositions.forEach((waterItem, waterIndex) => {
+    //   acetatePositions.forEach((acetateItem, acetateIndex) => {
+    //     const distance =
+    //       2 *
+    //       Math.sqrt(
+    //         Math.pow(acetateItem.x - waterItem.x, 2) +
+    //           Math.pow(acetateItem.y - waterItem.y, 2) +
+    //           Math.pow(acetateItem.z - waterItem.z, 2)
+    //       );
+    //     if (distance < closestDistance) {
+    //       closestDistance = distance;
+    //       closestWater = waterIndex;
+    //       closestAcetate = acetateIndex;
+    //     }
+    //   });
+    // });
 
-    const isClosestWaterVisible = water[closestWater].getAttribute("visible");
-    const isClosestAcetateVisible = acetate[closestAcetate].getAttribute(
-      "visible"
-    );
+    // const isClosestWaterVisible = water[closestWater].getAttribute("visible");
+    // const isClosestAcetateVisible = acetate[closestAcetate].getAttribute(
+    //   "visible"
+    // );
 
-    if (closestDistance < 3.5) {
-      if (
-        (isClosestWaterVisible && !isClosestAcetateVisible) ||
-        (!isClosestWaterVisible && isClosestAcetateVisible)
-      ) {
-        // Make bridge visible and set its src/dest
-        this.bridge.setAttribute("visible", true);
-        [...this.connectors].forEach((connector, index) => {
-          connector.setAttribute(
-            "connector",
-            `src: #ace${closestAcetate + 7}; dest: #wat${closestWater +
-              2}; alpha: ` +
-              index / 10
-          );
-        });
+    // if (closestDistance < 3.5) {
+    //   if (
+    //     (isClosestWaterVisible && !isClosestAcetateVisible) ||
+    //     (!isClosestWaterVisible && isClosestAcetateVisible)
+    //   ) {
+    //     // Make bridge visible and set its src/dest
+    //     this.bridge.setAttribute("visible", true);
+    //     [...this.connectors].forEach((connector, index) => {
+    //       connector.setAttribute(
+    //         "connector",
+    //         `src: #ace${closestAcetate + 7}; dest: #wat${closestWater +
+    //           2}; alpha: ` +
+    //           index / 10
+    //       );
+    //     });
 
-        if (closestDistance < 3 && Math.random() < 0.7) {
-          if (
-            isClosestWaterVisible &&
-            !isClosestAcetateVisible & (this.protoWat === 3)
-          ) {
-            // Transfers from water to ace
-            water[closestWater].setAttribute("visible", false);
-            acetate[closestAcetate].setAttribute("visible", true);
-            waterOrbitals[closestWater].setAttribute("visible", true);
-            acetateOrbitals[closestAcetate].setAttribute("visible", false);
-            this.protoWat = 2;
-            this.protoAce = 1;
-          } else if (
-            !isClosestWaterVisible &&
-            isClosestAcetateVisible & (this.protoWat === 2)
-          ) {
-            // Transfers from ace to water
-            water[closestWater].setAttribute("visible", true);
-            acetate[closestAcetate].setAttribute("visible", false);
-            waterOrbitals[closestWater].setAttribute("visible", false);
-            acetateOrbitals[closestAcetate].setAttribute("visible", true);
-            this.protoWat = 3;
-            this.protoAce = 0;
-          }
-        }
-      }
-    } else {
-      this.bridge.setAttribute("visible", false);
-    }
+    //     if (closestDistance < 3 && Math.random() < 0.7) {
+    //       if (
+    //         isClosestWaterVisible &&
+    //         !isClosestAcetateVisible & (this.protoWat === 3)
+    //       ) {
+    //         // Transfers from water to ace
+    //         water[closestWater].setAttribute("visible", false);
+    //         acetate[closestAcetate].setAttribute("visible", true);
+    //         waterOrbitals[closestWater].setAttribute("visible", true);
+    //         acetateOrbitals[closestAcetate].setAttribute("visible", false);
+    //         this.protoWat = 2;
+    //         this.protoAce = 1;
+    //       } else if (
+    //         !isClosestWaterVisible &&
+    //         isClosestAcetateVisible & (this.protoWat === 2)
+    //       ) {
+    //         // Transfers from ace to water
+    //         water[closestWater].setAttribute("visible", true);
+    //         acetate[closestAcetate].setAttribute("visible", false);
+    //         waterOrbitals[closestWater].setAttribute("visible", false);
+    //         acetateOrbitals[closestAcetate].setAttribute("visible", true);
+    //         this.protoWat = 3;
+    //         this.protoAce = 0;
+    //       }
+    //     }
+    //   }
+    // } else {
+    //   this.bridge.setAttribute("visible", false);
+    // }
   }
 });
