@@ -88,4 +88,4 @@ lerna-debug.log*
 
 ### Firebase Patch ###
 .runtimeconfig.json
-.firebase/
+**/.firebase/*
