@@ -110,7 +110,7 @@ AFRAME.registerComponent("update-stuff", {
       return;
     }
     
-    // this.el.sceneEl.object3D.updateMatrixWorld();
+    this.el.sceneEl.object3D.updateMatrixWorld();
 
     //  Get positions
     this.wat2APosition.setFromMatrixPosition(this.wat2A.object3D.matrixWorld);
