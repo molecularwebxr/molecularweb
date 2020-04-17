@@ -192,25 +192,33 @@ AFRAME.registerComponent("update-stuff", {
           );
         });
         
-        // if (closestDistance<3 && Math.random() < 0.7) {
-        //   if(isClosestWaterVisible && !isClosestAmmoniumVisible & this.protoWat === 2) {
-        //     // Transfers from water to ammo
-        //     water[closestWater].setAttribute('visible', false);
-        //     ammonium[closestAmmonium].setAttribute('visible', true);
-        //     waterOrbitals[closestWater].setAttribute('visible', true);
-        //     ammoniumOrbitals[closestAmmonium].setAttribute('visible', false);
-        //     this.protoWat = 1;
-        //     this.protoAmo = 4;
-        //   } else if(!isClosestWaterVisible && isClosestAmmoniumVisible & this.protoWat === 1) {
-        //       // Transfers from ammo to water
-        //       water[closestWater].setAttribute('visible', true);
-        //       ammonium[closestAmmonium].setAttribute('visible', false);
-        //       waterOrbitals[closestWater].setAttribute('visible', false);
-        //       ammoniumOrbitals[closestAmmonium].setAttribute('visible', true);
-        //       this.protoWat = 2;
-        //       this.protoAmo = 3;
-        //     }
-        // }
+        if (closestDistance<3 && Math.random() < 0.7) {
+          if(isClosestWaterVisible && !isClosestAmmoniumVisible & this.protoWat === 2) {
+            // Transfers from water to ammo
+            waterA[closestWater].setAttribute('visible', false);
+            waterB[closestWater].setAttribute('visible', false);
+            ammoniumA[closestAmmonium].setAttribute('visible', true);
+            ammoniumB[closestAmmonium].setAttribute('visible', true);
+            waterOrbitalsA[closestWater].setAttribute('visible', true);
+            waterOrbitalsB[closestWater].setAttribute('visible', true);
+            ammoniumOrbitalsA[closestAmmonium].setAttribute('visible', false);
+            ammoniumOrbitalsB[closestAmmonium].setAttribute('visible', false);
+            this.protoWat = 1;
+            this.protoAmo = 4;
+          } else if(!isClosestWaterVisible && isClosestAmmoniumVisible & this.protoWat === 1) {
+              // Transfers from ammo to water
+              waterA[closestWater].setAttribute('visible', true);
+              waterB[closestWater].setAttribute('visible', true);
+              ammoniumA[closestAmmonium].setAttribute('visible', false);
+              ammoniumB[closestAmmonium].setAttribute('visible', false);
+              waterOrbitalsA[closestWater].setAttribute('visible', false);
+              waterOrbitalsB[closestWater].setAttribute('visible', false);
+              ammoniumOrbitalsA[closestAmmonium].setAttribute('visible', true);
+              ammoniumOrbitalsB[closestAmmonium].setAttribute('visible', true);
+              this.protoWat = 2;
+              this.protoAmo = 3;
+            }
+        }
       }
     } else {
       this.bridge.setAttribute("visible", false);
