@@ -3,45 +3,90 @@
 AFRAME.registerComponent("update-stuff", {
   init: function() {
     // Get elements from the scene
-    // Water     
-    this.wat2 = this.el.sceneEl.querySelector("#wat2");
-    this.wat3 = this.el.sceneEl.querySelector("#wat3");
-    this.wat4 = this.el.sceneEl.querySelector("#wat4");
-    this.wat5 = this.el.sceneEl.querySelector("#wat5");
-    this.watorb2 = this.el.sceneEl.querySelector("#watorb2");
-    this.watorb3 = this.el.sceneEl.querySelector("#watorb3");
-    this.watorb4 = this.el.sceneEl.querySelector("#watorb4");
-    this.watorb5 = this.el.sceneEl.querySelector("#watorb5");
+
+    // Water - Side A & Side B
+    this.wat2A = this.el.sceneEl.querySelector("#wat2A");
+    this.wat3A = this.el.sceneEl.querySelector("#wat3A");
+    this.wat4A = this.el.sceneEl.querySelector("#wat4A");
+    this.wat5A = this.el.sceneEl.querySelector("#wat5A");
+    this.watorb2A = this.el.sceneEl.querySelector("#watorb2A");
+    this.watorb3A = this.el.sceneEl.querySelector("#watorb3A");
+    this.watorb4A = this.el.sceneEl.querySelector("#watorb4A");
+    this.watorb5A = this.el.sceneEl.querySelector("#watorb5A");
+    this.wat2B = this.el.sceneEl.querySelector("#wat2B");
+    this.wat3B = this.el.sceneEl.querySelector("#wat3B");
+    this.wat4B = this.el.sceneEl.querySelector("#wat4B");
+    this.wat5B = this.el.sceneEl.querySelector("#wat5B");
+    this.watorb2B = this.el.sceneEl.querySelector("#watorb2B");
+    this.watorb3B = this.el.sceneEl.querySelector("#watorb3B");
+    this.watorb4B = this.el.sceneEl.querySelector("#watorb4B");
+    this.watorb5B = this.el.sceneEl.querySelector("#watorb5B");
     
-    // Ammonium
-    this.amo2 = this.el.sceneEl.querySelector("#amo2");
-    this.amo3 = this.el.sceneEl.querySelector("#amo3");
-    this.amo4 = this.el.sceneEl.querySelector("#amo4");
-    this.amo5 = this.el.sceneEl.querySelector("#amo5");
-    this.amoorb2 = this.el.sceneEl.querySelector("#amoorb2");
-    this.amoorb3 = this.el.sceneEl.querySelector("#amoorb3");
-    this.amoorb4 = this.el.sceneEl.querySelector("#amoorb4");
-    this.amoorb5 = this.el.sceneEl.querySelector("#amoorb5");
+    // Ammonium - Side A & Side B
+    this.amo2A = this.el.sceneEl.querySelector("#amo2A");
+    this.amo3A = this.el.sceneEl.querySelector("#amo3A");
+    this.amo4A = this.el.sceneEl.querySelector("#amo4A");
+    this.amo5A = this.el.sceneEl.querySelector("#amo5A");
+    this.amoorb2A = this.el.sceneEl.querySelector("#amoorb2A");
+    this.amoorb3A = this.el.sceneEl.querySelector("#amoorb3A");
+    this.amoorb4A = this.el.sceneEl.querySelector("#amoorb4A");
+    this.amoorb5A = this.el.sceneEl.querySelector("#amoorb5A");
+    this.amo2B = this.el.sceneEl.querySelector("#amo2B");
+    this.amo3B = this.el.sceneEl.querySelector("#amo3B");
+    this.amo4B = this.el.sceneEl.querySelector("#amo4B");
+    this.amo5B = this.el.sceneEl.querySelector("#amo5B");
+    this.amoorb2B = this.el.sceneEl.querySelector("#amoorb2B");
+    this.amoorb3B = this.el.sceneEl.querySelector("#amoorb3B");
+    this.amoorb4B = this.el.sceneEl.querySelector("#amoorb4B");
+    this.amoorb5B = this.el.sceneEl.querySelector("#amoorb5B");
     
     // Bridge
     this.bridge = this.el.sceneEl.querySelector("#bridge");
     this.connectors = this.bridge.querySelectorAll("*");
     
-    // Create Position vectors for further use
-    this.wat2Position = new THREE.Vector3();
-    this.wat3Position = new THREE.Vector3();
-    this.wat4Position = new THREE.Vector3();
-    this.wat5Position = new THREE.Vector3();
-    this.amo2Position = new THREE.Vector3();
-    this.amo3Position = new THREE.Vector3();
-    this.amo4Position = new THREE.Vector3();
-    this.amo5Position = new THREE.Vector3();
+    // Create Position vectors for further usage
+    this.wat2APosition = new THREE.Vector3();
+    this.wat3APosition = new THREE.Vector3();
+    this.wat4APosition = new THREE.Vector3();
+    this.wat5APosition = new THREE.Vector3();
+    this.amo2APosition = new THREE.Vector3();
+    this.amo3APosition = new THREE.Vector3();
+    this.amo4APosition = new THREE.Vector3();
+    this.amo5APosition = new THREE.Vector3();
+    this.wat2BPosition = new THREE.Vector3();
+    this.wat3BPosition = new THREE.Vector3();
+    this.wat4BPosition = new THREE.Vector3();
+    this.wat5BPosition = new THREE.Vector3();
+    this.amo2BPosition = new THREE.Vector3();
+    this.amo3BPosition = new THREE.Vector3();
+    this.amo4BPosition = new THREE.Vector3();
+    this.amo5BPosition = new THREE.Vector3();
 
     this.protoWat = 2; //agua comienza con 2 Hs unidos en su forma neutral; durante el programa puede perder 1 ganando carga negativa y pasando protowat a valer 1
     this.protoAmo = 3; //amonio comienza con 3 Hs unidos en su forma neutral; durante el programa puede ganar 1 ganando carga positiva y pasando protoamo a valer 4
-
     
     this.interval = 200 // Interval for running tick function - in ms
+
+    this.visibleMarkers = [];
+
+    this.el.sceneEl.addEventListener("markerFound", (e) => {
+      const markerFound = e.target.id;
+      onMarkerFound(markerFound);
+    });
+    this.el.sceneEl.addEventListener("markerLost", (e) => {
+      const markerLost = e.target.id;
+      onMarkerLost(markerLost);
+    });
+
+    const onMarkerFound = (markerFound) => {
+      this.visibleMarkers = this.visibleMarkers.concat(markerFound);
+    };
+
+    const onMarkerLost = (markerLost) => {
+      this.visibleMarkers = this.visibleMarkers.filter(
+        (marker) => marker !== markerLost
+      );
+    };
   },
   
   tick: function(t) {
@@ -49,29 +94,74 @@ AFRAME.registerComponent("update-stuff", {
     // Run on an interval.
     if (t - this.time < this.interval) { return; };
     this.time = t;
+
+    // Don't do anything if find wrong marker setup or if there are not enough markers
+    // e. g. 3 or more markers at the same time or both sides of a single molecule
+    const areMarkersInvalid =
+      (this.visibleMarkers.includes("watA") &&
+        this.visibleMarkers.includes("watB")) ||
+      (this.visibleMarkers.includes("amoA") &&
+        this.visibleMarkers.includes("amoB"));
     
-    this.el.sceneEl.object3D.updateMatrixWorld();
+    const areEnoughMarkers = this.visibleMarkers.length === 2;
+
+    if (areMarkersInvalid || !areEnoughMarkers) {
+      this.bridge.setAttribute("visible", false);
+      return;
+    }
+    
+    // this.el.sceneEl.object3D.updateMatrixWorld();
 
     //  Get positions
-    this.wat2Position.setFromMatrixPosition(this.wat2.object3D.matrixWorld);
-    this.wat3Position.setFromMatrixPosition(this.wat3.object3D.matrixWorld);
-    this.wat4Position.setFromMatrixPosition(this.wat4.object3D.matrixWorld);
-    this.wat5Position.setFromMatrixPosition(this.wat5.object3D.matrixWorld);
-    this.amo2Position.setFromMatrixPosition(this.amo2.object3D.matrixWorld);
-    this.amo3Position.setFromMatrixPosition(this.amo3.object3D.matrixWorld);
-    this.amo4Position.setFromMatrixPosition(this.amo4.object3D.matrixWorld);
-    this.amo5Position.setFromMatrixPosition(this.amo5.object3D.matrixWorld);
+    this.wat2APosition.setFromMatrixPosition(this.wat2A.object3D.matrixWorld);
+    this.wat3APosition.setFromMatrixPosition(this.wat3A.object3D.matrixWorld);
+    this.wat4APosition.setFromMatrixPosition(this.wat4A.object3D.matrixWorld);
+    this.wat5APosition.setFromMatrixPosition(this.wat5A.object3D.matrixWorld);
+
+    this.wat2BPosition.setFromMatrixPosition(this.wat2B.object3D.matrixWorld);
+    this.wat3BPosition.setFromMatrixPosition(this.wat3B.object3D.matrixWorld);
+    this.wat4BPosition.setFromMatrixPosition(this.wat4B.object3D.matrixWorld);
+    this.wat5BPosition.setFromMatrixPosition(this.wat5B.object3D.matrixWorld);
+
+    this.amo2APosition.setFromMatrixPosition(this.amo2A.object3D.matrixWorld);
+    this.amo3APosition.setFromMatrixPosition(this.amo3A.object3D.matrixWorld);
+    this.amo4APosition.setFromMatrixPosition(this.amo4A.object3D.matrixWorld);
+    this.amo5APosition.setFromMatrixPosition(this.amo5A.object3D.matrixWorld);
+
+    this.amo2BPosition.setFromMatrixPosition(this.amo2B.object3D.matrixWorld);
+    this.amo3BPosition.setFromMatrixPosition(this.amo3B.object3D.matrixWorld);
+    this.amo4BPosition.setFromMatrixPosition(this.amo4B.object3D.matrixWorld);
+    this.amo5BPosition.setFromMatrixPosition(this.amo5B.object3D.matrixWorld);
 
     // Storing a reference of all elements in arrays for easier handling
-    const water = [this.wat2, this.wat3, this.wat4, this.wat5];
-    const waterOrbitals = [this.watorb2, this.watorb3, this.watorb4, this.watorb5];
-    const ammonium = [this.amo2, this.amo3, this.amo4, this.amo5];
-    const ammoniumOrbitals = [this.amoorb2, this.amoorb3, this.amoorb4, this.amoorb5];
+    const waterA = [this.wat2A, this.wat3A, this.wat4A, this.wat5A];
+    const waterOrbitalsA = [this.watorb2A, this.watorb3A, this.watorb4A, this.watorb5A];
+    const waterB = [this.wat2B, this.wat3B, this.wat4B, this.wat5B];
+    const waterOrbitalsB = [this.watorb2B, this.watorb3B, this.watorb4B, this.watorb5B];
+    
+    const ammoniumA = [this.amo2A, this.amo3A, this.amo4A, this.amo5A];
+    const ammoniumOrbitalsA = [this.amoorb2A, this.amoorb3A, this.amoorb4A, this.amoorb5A];
+    const ammoniumB = [this.amo2B, this.amo3B, this.amo4B, this.amo5B];
+    const ammoniumOrbitalsB = [this.amoorb2B, this.amoorb3B, this.amoorb4B, this.amoorb5B];
     
     // Storing a reference of all positions in arrays for easier handling
-    const waterPositions = [this.wat2Position, this.wat3Position, this.wat4Position, this.wat5Position];
-    const ammoniumPositions = [this.amo2Position, this.amo3Position, this.amo4Position, this.amo5Position];
+    const waterAPositions = [this.wat2APosition, this.wat3APosition, this.wat4APosition, this.wat5APosition];
+    const waterBPositions = [this.wat2BPosition, this.wat3BPosition, this.wat4BPosition, this.wat5BPosition];
     
+    const ammoniumAPositions = [this.amo2APosition, this.amo3APosition, this.amo4APosition, this.amo5APosition];
+    const ammoniumBPositions = [this.amo2BPosition, this.amo3BPosition, this.amo4BPosition, this.amo5BPosition];
+    
+     // Which side of each molecule is visible? Select corresponding positions & elements
+     const waterSide = this.visibleMarkers.includes("watA") ? "A" : "B";
+     const ammoniumSide = this.visibleMarkers.includes("amoA") ? "A" : "B";
+ 
+     const waterPositions = waterSide === "A" ? waterAPositions : waterBPositions;
+     const ammoniumPositions = ammoniumSide === "A" ? ammoniumAPositions : ammoniumBPositions;
+ 
+     const water = waterSide === "A" ? waterA : waterB;
+     const ammonium = ammoniumSide === "A" ? ammoniumA : ammoniumB;
+ 
+
     let closestDistance = 10000000;
     let closestWater;
     let closestAmmonium;
@@ -98,25 +188,33 @@ AFRAME.registerComponent("update-stuff", {
          [...this.connectors].forEach((connector, index) => {
           connector.setAttribute(
             "connector",
-            `src: #amo${closestAmmonium + 2}; dest: #wat${closestWater + 2}; alpha: ` + index / 10,
+            `src: #amo${closestAmmonium + 2}${ammoniumSide}; dest: #wat${closestWater + 2}${waterSide}; alpha: ` + index / 10,
           );
         });
         
         if (closestDistance<3 && Math.random() < 0.7) {
           if(isClosestWaterVisible && !isClosestAmmoniumVisible & this.protoWat === 2) {
             // Transfers from water to ammo
-            water[closestWater].setAttribute('visible', false);
-            ammonium[closestAmmonium].setAttribute('visible', true);
-            waterOrbitals[closestWater].setAttribute('visible', true);
-            ammoniumOrbitals[closestAmmonium].setAttribute('visible', false);
+            waterA[closestWater].setAttribute('visible', false);
+            waterB[closestWater].setAttribute('visible', false);
+            ammoniumA[closestAmmonium].setAttribute('visible', true);
+            ammoniumB[closestAmmonium].setAttribute('visible', true);
+            waterOrbitalsA[closestWater].setAttribute('visible', true);
+            waterOrbitalsB[closestWater].setAttribute('visible', true);
+            ammoniumOrbitalsA[closestAmmonium].setAttribute('visible', false);
+            ammoniumOrbitalsB[closestAmmonium].setAttribute('visible', false);
             this.protoWat = 1;
             this.protoAmo = 4;
           } else if(!isClosestWaterVisible && isClosestAmmoniumVisible & this.protoWat === 1) {
               // Transfers from ammo to water
-              water[closestWater].setAttribute('visible', true);
-              ammonium[closestAmmonium].setAttribute('visible', false);
-              waterOrbitals[closestWater].setAttribute('visible', false);
-              ammoniumOrbitals[closestAmmonium].setAttribute('visible', true);
+              waterA[closestWater].setAttribute('visible', true);
+              waterB[closestWater].setAttribute('visible', true);
+              ammoniumA[closestAmmonium].setAttribute('visible', false);
+              ammoniumB[closestAmmonium].setAttribute('visible', false);
+              waterOrbitalsA[closestWater].setAttribute('visible', false);
+              waterOrbitalsB[closestWater].setAttribute('visible', false);
+              ammoniumOrbitalsA[closestAmmonium].setAttribute('visible', true);
+              ammoniumOrbitalsB[closestAmmonium].setAttribute('visible', true);
               this.protoWat = 2;
               this.protoAmo = 3;
             }
