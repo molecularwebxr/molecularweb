@@ -1,3 +1,11 @@
+/* Color palette */
+:root{
+  --orange: #F19953;
+  --blue: #173A7B;
+  --lightblue: #2660A4;
+  --azure: #EDF7F6;
+}
+
 body {
   margin: 0px;
   height: 100vh;
@@ -43,9 +51,21 @@ footer {
 }
 
 .menu {
-
+  width: 23rem;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .menu-link {
-  
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--blue);
+  will-change: color;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.menu-link:hover {
+  color: var(--orange);
 }
