@@ -1,22 +1,21 @@
 /* Color palette */
-:root{
-  --orange: #F19953;
-  --blue: #173A7B;
-  --lightblue: #2660A4;
-  --azure: #EDF7F6;
+:root {
+  --orange: #f19953;
+  --blue: #173a7b;
+  --lightblue: #2660a4;
+  --azure: #edf7f6;
 }
 
 body {
   margin: 0px;
   height: 100vh;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   display: flex;
   flex-direction: column;
 }
 
 header {
   width: 100%;
-  border: 1px solid red;
   box-sizing: border-box;
   justify-content: space-between;
   align-items: center;
@@ -68,4 +67,28 @@ footer {
 
 .menu-link:hover {
   color: var(--orange);
+}
+
+.home-banner {
+  background-color: var(--blue);
+  height: 25rem;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  color: var(--azure);
+  font-family: "Montserrat", sans-serif;
+}
+
+.home-banner-title {
+  margin: 1rem 0;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.home-banner-text {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: center;
+  width: 42rem;
 }
