@@ -3,6 +3,7 @@
   --orange: #f19953;
   --blue: #173a7b;
   --lightblue: #2660a4;
+  --blue2: #486497;
   --azure: #edf7f6;
 }
 
@@ -43,6 +44,11 @@ figure {
 
 .content {
   flex: 1 0 auto;
+}
+
+.container {
+  width: 80vw;
+  margin: 0 auto;
 }
 
 footer {
@@ -91,4 +97,49 @@ footer {
   font-weight: 500;
   text-align: center;
   width: 42rem;
+}
+
+.module {
+  padding: 3rem 0;
+}
+
+.module-title {
+  color: var(--blue);
+  font-family: "Montserrat";
+  font-weight: bold;
+  text-align: left;
+  font-size: 1.5rem;
+  margin: 0 0 0 1rem;
+}
+.module-header {
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.module-activities {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 2.2rem;
+  row-gap: 1.5rem;
+}
+
+.activity {
+  width: 24rem;
+}
+
+.activity-title {
+  color: var(--blue);
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.activity-description {
+  color: var(--blue2);
+  font-family: "Roboto";
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  width: 21rem;
 }
