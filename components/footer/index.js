@@ -11,6 +11,10 @@ const AppFooterContent = `
       position: relative;
     }
 
+    a {
+      text-decoration: none;
+    }
+
     .footer-top{
       display: flex;
       align-items: center;
@@ -88,15 +92,19 @@ const AppFooterContent = `
         <p class="contact-us">
           Contact us
         </p>
-        <p class="contact-name">
-          Luciano Abriata
-        </p>
+        <a href="http://labriataphd.altervista.org/" target="_blank">
+          <p class="contact-name">
+            Luciano Abriata
+          </p>
+        </a>
         <p class="contact-email">
           luciano.abriata@epfl.ch
         </p>
-        <p class="contact-name">
-          Fabio Cortés
-        </p>
+        <a href="https://www.fjcr.pro/" target="_blank">
+          <p class="contact-name">
+            Fabio Cortés
+          </p>
+        <a>
         <p class="contact-email">
           fabio.cortesrodriguez@epfl.ch
         </p>
