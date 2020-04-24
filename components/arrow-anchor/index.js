@@ -3,7 +3,7 @@ const ArrowAnchorContent = `
     a {
       cursor: pointer;
       position: absolute;
-      bottom: 0;
+      bottom: 0.5rem;
       right: 2rem;
     }
     #arrow-path {
@@ -20,7 +20,6 @@ const ArrowAnchorContent = `
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
     version="1.1"
-    id="Layer_1"
     x="0px"
     y="0px"
     viewBox="0 0 512 512"

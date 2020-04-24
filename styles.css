@@ -120,7 +120,7 @@ footer {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 2.2rem;
+  column-gap: 2.5rem;
   row-gap: 1.5rem;
 }
 
