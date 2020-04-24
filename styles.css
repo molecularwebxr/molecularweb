@@ -1,37 +1,158 @@
+/* Color palette */
+:root {
+  --orange: #f19953;
+  --blue: #173a7b;
+  --lightblue: #2660a4;
+  --blue2: #486497;
+  --azure: #edf7f6;
+}
+
 body {
   margin: 0px;
-  width: 100vw;
   height: 100vh;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   display: flex;
+  flex-direction: column;
+}
+
+header {
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  height: 5rem;
+  padding: 1rem 4rem;
 }
 
 a {
   text-decoration: none;
-  color: #38618c;
-  margin: 0.5rem 0;
-  transition: 0.2s;
 }
 
-a:hover {
-  color: #35a7ff;
+figure {
+  margin: 0;
 }
 
-h1 {
-  color: #ff5964;
-}
-
-.module-container {
-  border-radius: 0.5rem;
-  padding: 1rem;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}
-
-.module-samples {
+.row {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
   flex-direction: column;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+.container {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+.menu {
+  width: 23rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-link {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--blue);
+  will-change: color;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.menu-link:hover {
+  color: var(--orange);
+}
+
+.home-banner {
+  background-color: var(--blue);
+  height: 25rem;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  color: var(--azure);
+  font-family: "Montserrat", sans-serif;
+}
+
+.home-banner-title {
+  margin: 1rem 0;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.home-banner-text {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: center;
+  width: 42rem;
+}
+
+.module {
+  padding: 3rem 0;
+}
+
+.module-title {
+  color: var(--blue);
+  font-family: "Montserrat";
+  font-weight: bold;
+  text-align: left;
+  font-size: 1.5rem;
+  margin: 0 0 0 1rem;
+}
+.module-header {
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.module-activities {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 2.2rem;
+  row-gap: 1.5rem;
+}
+
+.activity {
+  width: 24rem;
+  height: 12rem;
+  position: relative;
+}
+
+.activity.short-text {
+  height: 8rem;
+}
+
+.activity-title {
+  color: var(--blue);
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.activity-description {
+  color: var(--blue2);
+  font-family: "Roboto";
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  width: 22rem;
+}
+
+.line{
+  border: 0; 
+  height: 0; 
+  border-top: 1px solid rgba(0, 0, 0, 0.1); 
+  border-bottom: 1px solid var(--blue);
 }

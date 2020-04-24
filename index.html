@@ -5,18 +5,320 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Components -->
+    <script src="/components/arrow-anchor/index.js"></script>
+    <script src="/components/footer/index.js"></script>
+    <script src="/components/icons/molecule/index.js"></script>
+    <script src="/components/icons/atom/index.js"></script>
+    <script src="/components/icons/tubes/index.js"></script>
+    <script src="/components/icons/dna/index.js"></script>
+    <script src="/components/icons/bacteria/index.js"></script>
   </head>
   <body>
-    <div class="module-container">
-      <h1>Hydrogen bonding, acids and bases</h1>
-      <div class="module-samples">
-        <a href="/modules/acids-and-bases/water-water/water.html">Water & Water</a>
-        <a href="/modules/acids-and-bases/water-acetate/water-acetate.html">Water & Acetate</a>
-        <a href="/modules/acids-and-bases/hbonds-htransfer/hbonds-htransfers.html">Hbonds + htransfers</a>
-        <a href="/modules/acids-and-bases/water-ammonium/water-ammonuim.html">Water & Ammonium</a>
-      </div>
+    <div class="content">
+      <header class="row">
+        <figure>
+          <molecule-icon />
+        </figure>
+        <div class="menu row">
+          <a class="menu-link">About</a>
+          <a class="menu-link">Get in touch</a>
+          <a class="menu-link">Feedback</a>
+          <a class="menu-link">Language</a>
+        </div>
+      </header>
+      <section class="home-banner column">
+        <figure>
+          <molecule-icon big no-strokes />
+        </figure>
+        <h1 class="home-banner-title">Molecular Mirror</h1>
+        <p class="home-banner-text">
+          A website for chemistry and biology education through augmented
+          reality, available out of the box in commodity devices
+        </p>
+      </section>
+      <section class="container">
+        <div class="module">
+          <div class="module-header row">
+            <figure>
+              <atom-icon />
+            </figure>
+            <h2 class="module-title">Orbitals and molecular shapes</h2>
+          </div>
+          <div class="module-activities row">
+            <div class="activity column short-text">
+              <h3 class="activity-title">Atomic orbitals and VSEPR theory</h3>
+              <p class="activity-description">
+                Visualize and compare all the most common pure and hybrid atomic
+                orbitals, and the basic VSEPR geometries.
+              </p>
+              <arrow-anchor />
+            </div>
+            <div class="activity column short-text">
+              <h3 class="activity-title">
+                Molecular orbitals
+              </h3>
+              <p class="activity-description">
+                Visualize and compare all the molecular orbitals calculated for
+                several small molecules.
+              </p>
+              <arrow-anchor />
+            </div>
+            <div class="activity column short-text">
+              <h3 class="activity-title">
+                Web remake of Martinez-Hung et al 2017
+              </h3>
+              <p class="activity-description">
+                Examples of crystalline structures and water complexes from a
+                previous work, repurposed for webAR.
+              </p>
+              <arrow-anchor />
+            </div>
+            <div class="activity column short-text">
+              <h3 class="activity-title">
+                Virtual modeling kit
+              </h3>
+              <p class="activity-description">
+                Display *any* molecule from its atomic coordinates, to explore
+                its structure and its motions in AR.
+              </p>
+              <arrow-anchor />
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr class="line container" />
+      <section class="container">
+        <div class="module">
+          <div class="module-header row">
+            <figure>
+              <tubes-icon />
+            </figure>
+            <h2 class="module-title">Hydrogen bonding, acids and bases</h2>
+          </div>
+          <div class="module-activities row">
+            <div class="activity column">
+              <h3 class="activity-title">Equilibria of water protonation</h3>
+              <p class="activity-description">
+                Explore how two water molecules establish hydrogen bonds and
+                transfer protons interconverting between hydronium cation,
+                neutral water and hydroxide anion. The equilibrium is dynamic
+                and gives rise to the water dissociation constant Kw.
+              </p>
+              <arrow-anchor
+                url="/modules/acids-and-bases/water-water/water.html"
+              />
+            </div>
+            <div class="activity column">
+              <h3 class="activity-title">
+                Equilibria of acid deprotonation in water
+              </h3>
+              <p class="activity-description">
+                Explore how an acetic acid molecule establishes hydrogen bonds
+                with a water molecule and transfers a proton becoming negatively
+                charged and forming a hydronium cation. Grey atoms are C, red
+                ones are O, white are Hs. This dynamic equilibrium gives rise to
+                the acidic constant, Ka.
+              </p>
+              <arrow-anchor
+                url="/modules/acids-and-bases/water-acetate/water-acetate.html"
+              />
+            </div>
+            <div class="activity column">
+              <h3 class="activity-title">
+                Equilibria of ammonia protonation in water
+              </h3>
+              <p class="activity-description">
+                Explore how an ammonia molecule establishes hydrogen bonds with
+                a water molecule and takes a proton becoming positively charged
+                and forming a hydroxide anion. Grey atoms are C, red ones are O,
+                white are Hs, blue is N. This dynamic equilibrium gives rise to
+                the basic constant, Kb.
+              </p>
+              <arrow-anchor
+                url="/modules/acids-and-bases/water-ammonium/water-ammonuim.html"
+              />
+            </div>
+            <div class="activity column">
+              <h3 class="activity-title">
+                Equilibria between an acid and a base
+              </h3>
+              <p class="activity-description">
+                Explore how glutamate and lysine interconvert between charged
+                and neutral species by exchanging protons. Grey atoms are C, red
+                ones are O, white are Hs, blue is N. The yellow dots show the
+                hydrogen bonds between H and O or N.
+              </p>
+              <arrow-anchor
+                url="/modules/acids-and-bases/hbonds-htransfer/hbonds-htransfers.html"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr class="line container" />
+      <section class="container">
+        <div class="module">
+          <div class="module-header row">
+            <figure>
+              <dna-icon />
+            </figure>
+            <h2 class="module-title">
+              Atomic structure of biological macromolecules
+            </h2>
+          </div>
+          <div class="module-activities row">
+            <div class="activity column short-text">
+              <h3 class="activity-title">Protein-DNA complex</h3>
+              <p class="activity-description">
+                Dock a domain of a transcription factor onto its cognate DNA;
+                check the electrostatic interactions formed.
+              </p>
+              <arrow-anchor />
+            </div>
+            <div class="activity column short-text">
+              <h3 class="activity-title">
+                Dock peptide on electron density
+              </h3>
+              <p class="activity-description">
+                Dock two portions of a peptide into the electron density map
+                determined by x-ray diffraction. This gives you a sense of how
+                experimental structures are obtained.
+              </p>
+              <arrow-anchor />
+            </div>
+            <div class="activity column short-text">
+              <h3 class="activity-title">
+                Stabilization of protein secondary structures
+              </h3>
+              <p class="activity-description">
+                Inspect the detailed atomic structure, hydrogen bonds and salt
+                bridges that stabilize protein secondary structures.
+              </p>
+              <arrow-anchor />
+            </div>
+            <div class="activity column short-text">
+              <h3 class="activity-title">
+                Example structures
+              </h3>
+              <p class="activity-description">
+                Inspect a set of pre-made views of biological macromolecules.
+              </p>
+              <arrow-anchor />
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr class="line container" />
+      <section class="container">
+        <div class="module">
+          <div class="module-header row">
+            <figure>
+              <bacteria-icon />
+            </figure>
+            <h2 class="module-title">
+              Low-resolution structures of biological assemblies
+            </h2>
+          </div>
+          <div class="module-activities row">
+            <div class="activity column short-text">
+              <h3 class="activity-title">Nuclear pore complex</h3>
+              <p class="activity-description">
+                Electron microscopy map of the human nuclear pore complex
+                obtained in situ (EMDB-3103)
+              </p>
+              <arrow-anchor />
+            </div>
+            <div class="activity column short-text">
+              <h3 class="activity-title">
+                Ribosome with mRNA and tRNAs
+              </h3>
+              <p class="activity-description">
+                Cryo-electron microscopy structure of a mammal ribosome with a
+                tRNA in the A/P position paired to a stretch of mRNA and another
+                tRNA in the P/E position (PDB 6HCJ).
+              </p>
+              <arrow-anchor />
+            </div>
+            <div class="activity column short-text">
+              <h3 class="activity-title">
+                Bacteriophage on bacterial wall
+              </h3>
+              <p class="activity-description">
+                Cryo-electron microscopy of a bacteriophage that has punched its
+                needle through the two bacterial membranes (EMD-9010).
+              </p>
+              <arrow-anchor />
+            </div>
+            <div class="activity column short-text">
+              <h3 class="activity-title">
+                SARS-Cov-2 – human ACE2 complex
+              </h3>
+              <p class="activity-description">
+                Integrative model of the SARS-Cov-2 spike protein bound to the
+                human ACE2 (PDB IDs 6VYB, 6M17 and 6M0J).
+              </p>
+              <arrow-anchor />
+            </div>
+            <div class="activity column short-text">
+              <h3 class="activity-title">
+                Bacterial pilus base
+              </h3>
+              <p class="activity-description">
+                Baseplate of a bacterial pilus solved by cryo-electron
+                microscopy including portions of the two cell membranes and
+                peptidoglycan (PDB 3JC8 + EMD-3247).
+              </p>
+              <arrow-anchor />
+            </div>
+            <div class="activity column short-text">
+              <h3 class="activity-title">
+                Nucleosome
+              </h3>
+              <p class="activity-description">
+                X-ray structure of a nucleosome including the 4 histones and 2
+                rounds of ssDNA wrapped (PDB ID 1AOI).
+              </p>
+              <arrow-anchor />
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr class="line container" />
+      <section class="container">
+        <div class="module">
+          <div class="module-header row">
+            <figure>
+              <molecule-icon />
+            </figure>
+            <h2 class="module-title">
+              Molecular modeling kit
+            </h2>
+          </div>
+          <div class="module-activities row">
+            <div class="activity column short-text">
+              <h3 class="activity-title">
+                Virtual modeling kit
+              </h3>
+              <p class="activity-description">
+                Display *any* molecule from its atomic coordinates, to explore
+                its structure and its motions in AR.
+              </p>
+              <arrow-anchor />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
+    <app-footer />
   </body>
 </html>
