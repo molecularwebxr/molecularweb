@@ -9,9 +9,10 @@ const ArrowAnchorContent = `
     #arrow-path {
       transition: 0.2s;
       will-change: fill;
+      fill: var(--orange);
     }
     a:hover #arrow-path{
-      fill: #2660A4;
+      fill: var(--blue);
     }
   </style>
   <a id="anchor">
@@ -33,7 +34,6 @@ const ArrowAnchorContent = `
         data-original="#000000"
         class="active-path"
         data-old_color="#000000"
-        fill="#F19953"
         id="arrow-path"
       />
     </svg>
