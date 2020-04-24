@@ -130,6 +130,10 @@ footer {
   position: relative;
 }
 
+.activity.short-text {
+  height: 8rem;
+}
+
 .activity-title {
   color: var(--blue);
   font-family: "Roboto";
@@ -144,4 +148,11 @@ footer {
   font-size: 1rem;
   margin: 0.5rem 0;
   width: 22rem;
+}
+
+.line{
+  border: 0; 
+  height: 0; 
+  border-top: 1px solid rgba(0, 0, 0, 0.1); 
+  border-bottom: 1px solid #173A7B;
 }
