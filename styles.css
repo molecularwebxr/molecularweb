@@ -126,6 +126,8 @@ footer {
 
 .activity {
   width: 24rem;
+  height: 12rem;
+  position: relative;
 }
 
 .activity-title {
@@ -141,5 +143,5 @@ footer {
   font-family: "Roboto";
   font-size: 1rem;
   margin: 0.5rem 0;
-  width: 21rem;
+  width: 22rem;
 }
