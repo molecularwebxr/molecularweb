@@ -80,14 +80,17 @@ footer {
   display: none;
   width: 50px;
   height: 100%;
-  /* position: absolute;
-  right: 0; */
   justify-content: center;
   align-items: center;
   flex-direction: column;
   z-index: 2;
   transition: all .5s;
   cursor: pointer;
+}
+
+.hamburger-menu.active {
+  position: fixed;
+  right: 4rem;
 }
 
 .mobile-menu {
