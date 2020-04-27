@@ -24,6 +24,7 @@
     <script src="/components/icons/bacteria/index.js"></script>
   </head>
   <body>
+    <div id="overlay" class="overlay"></div>
     <div class="content">
       <header class="row">
         <figure>
@@ -35,7 +36,18 @@
           <a class="menu-link">Feedback</a>
           <a class="menu-link">Language</a>
         </div>
+        <div id="hamburger" class="hamburger-menu">
+          <div id="bar1" class="bar"></div>
+          <div id="bar2" class="bar"></div>
+          <div id="bar3" class="bar"></div>
+        </div>
       </header>
+      <div id="mobile-menu" class="mobile-menu column">
+        <a class="mobile-menu-link">About</a>
+        <a class="mobile-menu-link">Get in touch</a>
+        <a class="mobile-menu-link">Feedback</a>
+        <a class="mobile-menu-link">Language</a>
+      </div>
       <section class="home-banner column">
         <figure>
           <molecule-icon big no-strokes />
@@ -320,5 +332,6 @@
       </section>
     </div>
     <app-footer />
+    <script src="/index.js"></script>
   </body>
 </html>
