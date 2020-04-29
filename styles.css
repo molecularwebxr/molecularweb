@@ -304,6 +304,10 @@ footer {
   row-gap: 1.5rem;
 }
 
+.module-activities.empty-grid {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
 .activity {
   /* width: 24rem; */
   height: 14rem;
@@ -379,6 +383,9 @@ footer {
   .module-activities {
     grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
     justify-content: center;
+  }
+  .module-activities.empty-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 380px));
   }
   .hamburger-menu {
     display: flex;
