@@ -294,6 +294,21 @@ footer {
 .module-header {
   align-items: center;
   margin-bottom: 1.5rem;
+  transition: margin-bottom .25s ease-in-out;
+  position: relative;
+}
+
+.triangle {
+  display: none;
+  position: absolute;
+  top: 45%;
+  right: -10px;
+  transform: translate(0,-50%);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid var(--blue);
+  transition: transform .2s ease-out;
+  transform: rotate(-90deg);
 }
 
 .module-activities {
@@ -302,10 +317,24 @@ footer {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   column-gap: 2.5rem;
   row-gap: 1.5rem;
+  overflow: hidden;
+  transition: max-height .25s ease-in-out;
 }
 
 .module-activities.empty-grid {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.module-header.expanded + .module-activities {
+  max-height: 200vh;
+}
+
+.module-header.expanded {
+  margin-bottom: 1rem;
+}
+
+.module-header.expanded .triangle{
+  transform: rotate(90deg);
 }
 
 .activity {
@@ -380,12 +409,28 @@ footer {
 }
 
 @media screen and (max-width: 800px) {
+  .module {
+    padding: 1.5rem;
+  }
   .module-activities {
     grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
     justify-content: center;
   }
+  .module-title{
+    font-size: 1.1rem;
+  }
+  .activity-description {
+    font-size: 0.8rem;
+  }
+  .module-header{
+    margin-bottom: 0;
+  }
   .module-activities.empty-grid {
     grid-template-columns: repeat(auto-fill, minmax(300px, 380px));
+  }
+  .activity-title{
+    font-size: 1rem;
+    height: auto;
   }
   .hamburger-menu {
     display: flex;
@@ -406,6 +451,21 @@ footer {
     font-size: 1rem;
     width: 75vw;
   }
+  .module-activities {
+    max-height: 0px;
+  }
+  .line {
+    border-bottom: 1px solid rgba(var(--blue), 0.6);
+  }
+  .activity {
+    height: 10rem;
+  }
+  .activity.short-text {
+    height: 8rem;
+  }
+  .triangle {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -413,15 +473,20 @@ footer {
     font-size: 2rem;
   }
   .home-banner-text {
-    font-size: 1rem;
-    width: 75vw;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .home-banner-text {
     font-size: 0.8rem;
     width: 75vw;
+  }
+  .container {
+    width: 85vw;
+  }
+  .home-banner-title {
+    font-size: 2rem;
+  }
+  .activity {
+    height: 12rem;
+  }
+  .activity.short-text {
+    height: 9rem;
   }
 }
 
@@ -429,37 +494,32 @@ footer {
   .module-activities {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
     column-gap: 2.5rem;
     row-gap: 1.5rem;
   }
-
+  .module-activities.empty-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 250px));
+  }
   .module-title {
     font-size: 1rem;
     margin: 0 0 0 1rem;
   }
 
   .activity-title {
-    font-size: 1rem;
+    font-size: 0.75rem;
   }
-
   .activity-description {
     color: var(--blue2);
     font-family: "Roboto";
-    font-size: 0.75rem;
+    font-size: 0.6rem;
     margin: 0.5rem 0;
     width: 220px;
   }
-
   .activity {
-    height: 14rem;
+    height: 10rem;
   }
-
   .activity.short-text {
-    height: 11rem;
+    height: 7rem;
   }
-
-  /* .hamburger-menu {
-    right: 11rem;
-  } */
 }
