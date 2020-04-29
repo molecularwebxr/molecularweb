@@ -295,6 +295,20 @@ footer {
   align-items: center;
   margin-bottom: 1.5rem;
   transition: margin-bottom .25s ease-in-out;
+  position: relative;
+}
+
+.triangle {
+  display: none;
+  position: absolute;
+  top: 45%;
+  right: -10px;
+  transform: translate(0,-50%);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid var(--blue);
+  transition: transform .2s ease-out;
+  transform: rotate(-90deg);
 }
 
 .module-activities {
@@ -317,6 +331,10 @@ footer {
 
 .module-header.expanded {
   margin-bottom: 1rem;
+}
+
+.module-header.expanded .triangle{
+  transform: rotate(90deg);
 }
 
 .activity {
@@ -399,7 +417,7 @@ footer {
     justify-content: center;
   }
   .module-title{
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   .activity-description {
     font-size: 0.8rem;
@@ -444,6 +462,9 @@ footer {
   }
   .activity.short-text {
     height: 8rem;
+  }
+  .triangle {
+    display: block;
   }
 }
 
