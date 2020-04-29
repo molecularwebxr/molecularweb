@@ -302,10 +302,16 @@ footer {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   column-gap: 2.5rem;
   row-gap: 1.5rem;
+  overflow: hidden;
+  transition: max-height .25s ease-in-out;
 }
 
 .module-activities.empty-grid {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.module-header.expanded + .module-activities {
+  max-height: 200vh;
 }
 
 .activity {
@@ -405,6 +411,9 @@ footer {
   .home-banner-text {
     font-size: 1rem;
     width: 75vw;
+  }
+  .module-activities {
+    max-height: 0px;
   }
 }
 
