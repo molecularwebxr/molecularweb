@@ -77,6 +77,11 @@ class MoleculeIcon extends HTMLElement {
       this.shadowRoot.querySelector("#molecule").setAttribute("width", 160);
     }
 
+    if(this.hasAttribute("medium")){
+      this.shadowRoot.querySelector("#molecule").setAttribute("height", 80);
+      this.shadowRoot.querySelector("#molecule").setAttribute("width", 80);
+    }
+
     if(this.hasAttribute("no-strokes")){
       this.shadowRoot.querySelector("#strokes").setAttribute("fill", "transparent");
     }

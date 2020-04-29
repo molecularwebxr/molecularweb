@@ -4,7 +4,7 @@
     <title>Molecular Mirror</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
@@ -24,6 +24,7 @@
     <script src="/components/icons/bacteria/index.js"></script>
   </head>
   <body>
+    <div id="overlay" class="overlay"></div>
     <div class="content">
       <header class="row">
         <figure>
@@ -35,7 +36,28 @@
           <a class="menu-link">Feedback</a>
           <a class="menu-link">Language</a>
         </div>
+        <div id="hamburger" class="hamburger-menu">
+          <div id="bar1" class="bar"></div>
+          <div id="bar2" class="bar"></div>
+          <div id="bar3" class="bar"></div>
+        </div>
       </header>
+      <div id="mobile-menu" class="mobile-menu column">
+        <div class="mobile-menu-content column">
+          <figure>
+            <molecule-icon medium no-strokes />
+          </figure>
+          <div class="mobile-menu-links column">
+            <a class="mobile-menu-link">About</a>
+            <a class="mobile-menu-link">Get in touch</a>
+            <a class="mobile-menu-link">Feedback</a>
+            <a class="mobile-menu-link">Language</a>
+          </div>
+        </div>
+        <p class="mobile-menu-footer">
+          Copyright © 2020 Laboratory for biomolecular modeling, EPFL. All rights reserved.
+        </p>
+      </div>
       <section class="home-banner column">
         <figure>
           <molecule-icon big no-strokes />
@@ -304,7 +326,7 @@
               Molecular modeling kit
             </h2>
           </div>
-          <div class="module-activities row">
+          <div class="module-activities row empty-grid">
             <div class="activity column short-text">
               <h3 class="activity-title">
                 Virtual modeling kit
@@ -319,6 +341,9 @@
         </div>
       </section>
     </div>
-    <app-footer />
+    <footer>
+      <app-footer />
+    </footer>
+    <script src="/index.js"></script>
   </body>
 </html>
