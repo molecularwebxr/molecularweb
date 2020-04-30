@@ -469,18 +469,18 @@ footer {
 }
 
 @media screen and (max-width: 600px) {
+  .home-banner {
+    height: 17rem;
+  }
   .home-banner-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
   .home-banner-text {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     width: 75vw;
   }
   .container {
     width: 85vw;
-  }
-  .home-banner-title {
-    font-size: 2rem;
   }
   .activity {
     height: 12rem;

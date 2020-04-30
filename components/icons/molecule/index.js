@@ -72,22 +72,27 @@ class MoleculeIcon extends HTMLElement {
   }
 
   connectedCallback() {
-    if(this.hasAttribute("big")){
-      this.shadowRoot.querySelector("#molecule").setAttribute("height", 160);
-      this.shadowRoot.querySelector("#molecule").setAttribute("width", 160);
+    if (this.hasAttribute("big")) {
+      if (window.innerWidth <= 600) {
+        this.shadowRoot.querySelector("#molecule").setAttribute("height", 80);
+        this.shadowRoot.querySelector("#molecule").setAttribute("width", 80);
+      } else {
+        this.shadowRoot.querySelector("#molecule").setAttribute("height", 160);
+        this.shadowRoot.querySelector("#molecule").setAttribute("width", 160);
+      }
     }
 
-    if(this.hasAttribute("medium")){
+    if (this.hasAttribute("medium")) {
       this.shadowRoot.querySelector("#molecule").setAttribute("height", 80);
       this.shadowRoot.querySelector("#molecule").setAttribute("width", 80);
     }
 
-    if(this.hasAttribute("no-strokes")){
-      this.shadowRoot.querySelector("#strokes").setAttribute("fill", "transparent");
+    if (this.hasAttribute("no-strokes")) {
+      this.shadowRoot
+        .querySelector("#strokes")
+        .setAttribute("fill", "transparent");
     }
-
   }
-
 }
 
 customElements.define("molecule-icon", MoleculeIcon);
