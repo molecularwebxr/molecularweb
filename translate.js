@@ -10,6 +10,16 @@ i18next
         loadPath: "/locales/{{lng}}/{{ns}}.json",
         crossDomain: true,
       },
+      detection: {
+        // order and from where user language should be detected
+        order: [
+          "querystring",
+          "navigator",
+        ],
+
+        // keys or params to lookup language from
+        lookupQuerystring: "lng",
+      },
     },
     function (err, t) {
       localize = locI18next.init(i18next);
