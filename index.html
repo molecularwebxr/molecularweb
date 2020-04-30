@@ -14,6 +14,10 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/2.0.22/i18next.min.js" ></script>
+    <script src="./lib/loc-i18next.min.js"></script>
+    <script src="./lib/i18nextBrowserLanguageDetector.js"></script>
+    <script src="./lib/i18nextHttpBackend.min.js"></script>
     <!-- Components -->
     <script src="/components/arrow-anchor/index.js"></script>
     <script src="/components/footer/index.js"></script>
@@ -31,10 +35,10 @@
           <molecule-icon />
         </figure>
         <div class="menu row">
-          <a class="menu-link">About</a>
-          <a class="menu-link">Get in touch</a>
-          <a class="menu-link">Feedback</a>
-          <a class="menu-link">Language</a>
+          <a class="menu-link" data-i18n="menu.about"></a>
+          <a class="menu-link" data-i18n="menu.getInTouch"></a>
+          <a class="menu-link" data-i18n="menu.feedback"></a>
+          <a class="menu-link" data-i18n="menu.language"></a>
         </div>
         <div id="hamburger" class="hamburger-menu">
           <div id="bar1" class="bar"></div>
@@ -350,5 +354,6 @@
       <app-footer />
     </footer>
     <script src="/index.js"></script>
+    <script src="/translate.js"></script>
   </body>
 </html>
