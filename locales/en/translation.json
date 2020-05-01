@@ -8,7 +8,8 @@
   "app": {
     "title": "Molecular Mirror",
     "description": "A website for chemistry and biology education through augmented reality, available out of the box in commodity devices",
-    "policy": "Copyright © 2020 Laboratory for biomolecular modeling, EPFL. All rights reserved."
+    "policy": "Copyright © 2020 Laboratory for biomolecular modeling, EPFL. All rights reserved.",
+    "contactUs": "Contact us"
   },
   "orbitals": {
     "title": "Orbitals and molecular shapes",

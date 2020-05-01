@@ -228,7 +228,7 @@ const AppFooterContent = /* html */ `
       </div>
       <div class="contact-info">
         <p class="contact-us">
-          Contact us
+          <intl-message key="app.contactUs"></intl-message>
         </p>
         <a href="http://labriataphd.altervista.org/" target="_blank">
           <p class="contact-name">
@@ -249,7 +249,7 @@ const AppFooterContent = /* html */ `
       </div>
     </div>
     <p class="privacy-policy">
-      Privacy Policy | Copyright © 2020 Laboratory for biomolecular modeling, EPFL. All rights reserved.
+    <intl-message key="app.policy"></intl-message>
     </p>
   </footer>`;
 
@@ -259,6 +259,10 @@ class AppFooter extends HTMLElement {
 
     let shadow = this.attachShadow({ mode: "open" });
     shadow.innerHTML = AppFooterContent;
+  }
+
+  connectedCallback () {
+    
   }
 }
 

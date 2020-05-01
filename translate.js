@@ -25,6 +25,7 @@ i18next
       localize = locI18next.init(i18next);
 
       localize(".content");
+      localize(".contact-us");
 
       console.log(
         `detected user language: "${
