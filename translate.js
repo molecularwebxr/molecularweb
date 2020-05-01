@@ -24,7 +24,7 @@ i18next
     function (err, t) {
       localize = locI18next.init(i18next);
 
-      localize(".menu");
+      localize(".content");
 
       console.log(
         `detected user language: "${
