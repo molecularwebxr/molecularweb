@@ -1,0 +1,101 @@
+{
+  "menu": {
+    "about": "About",
+    "getInTouch": "Get in touch",
+    "feedback": "Feedback",
+    "language": "Language"
+  },
+  "app": {
+    "title": "Molecular Mirror",
+    "description": "A website for chemistry and biology education through augmented reality, available out of the box in commodity devices",
+    "policy": "Copyright © 2020 Laboratory for biomolecular modeling, EPFL. All rights reserved.",
+    "contactUs": "Contact us"
+  },
+  "orbitals": {
+    "title": "Orbitals and molecular shapes",
+    "atomicOrbitals": {
+      "title": "Atomic orbitals and VSEPR theory",
+      "description": "Visualize and compare all the most common pure and hybrid atomic orbitals, and the basic VSEPR geometries."
+    },
+    "molecularOrbitals": {
+      "title": "Molecular orbitals",
+      "description": "Visualize and compare all the molecular orbitals calculated for several small molecules."
+    },
+    "webRemake": {
+      "title": "Web remake of Martinez-Hung et al 2017",
+      "description": "Examples of crystalline structures and water complexes from a previous work, repurposed for webAR."
+    },
+    "modelingKit": {
+      "title": "Virtual modeling kit",
+      "description": "Display *any* molecule from its atomic coordinates, to explore its structure and its motions in AR."
+    }
+  },
+  "bonds": {
+    "title": "Hydrogen bonding, acids and bases",
+    "waterProtonation": {
+      "title": "Equilibria of water protonation",
+      "description": "Explore how two water molecules establish hydrogen bonds and transfer protons interconverting between hydronium cation, neutral water and hydroxide anion. The equilibrium is dynamic and gives rise to the water dissociation constant Kw."
+    },
+    "acidDeprotonation": {
+      "title": "Equilibria of acid deprotonation in water",
+      "description": "Explore how an acetic acid molecule establishes hydrogen bonds with a water molecule and transfers a proton becoming negatively charged and forming a hydronium cation. Grey atoms are C, red ones are O, white are Hs. This dynamic equilibrium gives rise to the acidic constant, Ka."
+    },
+    "ammoniaProtonation": {
+      "title": "Equilibria of ammonia protonation in water",
+      "description": "Explore how an ammonia molecule establishes hydrogen bonds with a water molecule and takes a proton becoming positively charged and forming a hydroxide anion. Grey atoms are C, red ones are O, white are Hs, blue is N. This dynamic equilibrium gives rise to the basic constant, Kb."
+    },
+    "acidBase": {
+      "title": "Equilibria between an acid and a base",
+      "description": "Explore how glutamate and lysine interconvert between charged and neutral species by exchanging protons. Grey atoms are C, red ones are O, white are Hs, blue is N. The yellow dots show the hydrogen bonds between H and O or N."
+    }
+  },
+  "macromolecules": {
+    "title": "Atomic structure of biological macromolecules",
+    "proteinDNA": {
+      "title": "Protein-DNA complex",
+      "description": "Dock a domain of a transcription factor onto its cognate DNA; check the electrostatic interactions formed."
+    },
+    "peptide": {
+      "title": "Dock peptide on electron density",
+      "description": "Dock two portions of a peptide into the electron density map determined by x-ray diffraction. This gives you a sense of how experimental structures are obtained."
+    },
+    "protein": {
+      "title": "Stabilization of protein secondary structures",
+      "description": "Inspect the detailed atomic structure, hydrogen bonds and salt bridges that stabilize protein secondary structures."
+    },
+    "example": {
+      "title": "Example structures",
+      "description": "Inspect a set of pre-made views of biological macromolecules."
+    }
+  },
+  "biological": {
+    "title": "Low-resolution structures of biological assemblies",
+    "nuclear": {
+      "title": "Nuclear pore complex",
+      "description": "Electron microscopy map of the human nuclear pore complex obtained in situ (EMDB-3103)"
+    },
+    "ribosome": {
+      "title": "Ribosome with mRNA and tRNAs",
+      "description": "Cryo-electron microscopy structure of a mammal ribosome with a tRNA in the A/P position paired to a stretch of mRNA and another tRNA in the P/E position (PDB 6HCJ)."
+    },
+    "bacteriophage": {
+      "title": "Bacteriophage on bacterial wall",
+      "description": "Cryo-electron microscopy of a bacteriophage that has punched its needle through the two bacterial membranes (EMD-9010)."
+    },
+    "sarscov2": {
+      "title": "SARS-Cov-2 – human ACE2 complex",
+      "description": "Integrative model of the SARS-Cov-2 spike protein bound to the human ACE2 (PDB IDs 6VYB, 6M17 and 6M0J)."
+    },
+    "bacterial": {
+      "title": "Bacterial pilus base",
+      "description": "Baseplate of a bacterial pilus solved by cryo-electron microscopy including portions of the two cell membranes and peptidoglycan (PDB 3JC8 + EMD-3247)."
+    },
+    "nucleosome": {
+      "title": "Nucleosome",
+      "description": "X-ray structure of a nucleosome including the 4 histones and 2 rounds of ssDNA wrapped (PDB ID 1AOI)."
+    }
+  },
+  "modelingKit": {
+    "title": "Molecular modeling kit"
+  }
+}

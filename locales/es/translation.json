@@ -1,0 +1,13 @@
+{
+  "menu": {
+    "about": "Acerca de",
+    "getInTouch": "Contáctanos",
+    "feedback": "Encuesta",
+    "language": "Idioma"
+  },
+  "app": {
+    "title": "Molecular Mirror",
+    "policy": "Copyright © 2020 Laboratory for biomolecular modeling, EPFL. Todos los derechos reservados.",
+    "contactUs": "Contáctanos"
+  }
+}

@@ -73,8 +73,46 @@ footer {
 }
 
 .menu-link:hover,
+.language:hover .menu-link,
 .mobile-menu-link:hover {
   color: var(--orange);
+}
+
+.language {
+  position: relative;
+}
+
+.language-menu {
+  background-color: white;
+  color: var(--blue);
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  list-style-type: none;
+  padding: 0.5rem;
+  width: 6rem;
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.language-menu li {
+  margin: 0.5rem 0.2rem;
+  will-change: color;
+  transition: 0.2s;
+}
+
+.language-menu li:hover {
+  color: var(--orange);
+}
+
+.language:hover .language-menu {
+  visibility: visible;
+  cursor: pointer;
+  left: 50%;
+  top: 7px;
+  transform: translate(-45%, 0);
 }
 
 .hamburger-menu {
