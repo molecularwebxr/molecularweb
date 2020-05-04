@@ -411,7 +411,6 @@ footer {
   font-family: "Roboto";
   font-size: 1rem;
   margin: 0.5rem 0;
-  width: 22rem;
 }
 
 .line {
@@ -425,14 +424,32 @@ footer {
   .activity {
     height: 15rem;
   }
-}
-
-@media screen and (max-width: 1400px) {
   .activity-description {
     width: 100%;
   }
+}
+
+@media screen and (max-width: 1400px) {
   .activity.short-text {
     height: 11rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .activity {
+    height: 12rem;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .activity {
+    height: 13rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .activity {
+    height: 14rem;
   }
 }
 
@@ -504,10 +521,10 @@ footer {
     border-bottom: 1px solid rgba(var(--blue), 0.6);
   }
   .activity {
-    height: 10rem;
+    height: 8.75rem;
   }
   .activity.short-text {
-    height: 8rem;
+    height: 6.5rem;
   }
   .triangle {
     display: block;
@@ -529,10 +546,17 @@ footer {
     width: 85vw;
   }
   .activity {
-    height: 12rem;
+    height: 10rem;
   }
   .activity.short-text {
-    height: 9rem;
+    height: 7.5rem;
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .activity {
+    height: 11rem;
   }
 }
 
@@ -551,21 +575,25 @@ footer {
     font-size: 1rem;
     margin: 0 0 0 1rem;
   }
-
   .activity-title {
     font-size: 0.8rem;
   }
   .activity-description {
-    color: var(--blue2);
-    font-family: "Roboto";
     font-size: 0.75rem;
     margin: 0.5rem 0;
     width: 220px;
   }
-  .activity {
-    height: 10rem;
-  }
   .activity.short-text {
     height: 7rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .activity-description {
+    width: 100%;
+  }
+
+  .module {
+    padding: 1.5rem 0.5rem;
   }
 }
