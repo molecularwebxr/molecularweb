@@ -1,10 +1,13 @@
-const ArrowAnchorContent = `
+const ArrowAnchorContent = /* html */`
   <style>
     a {
       cursor: pointer;
       position: absolute;
       bottom: 0.5rem;
       right: 2rem;
+    }
+    svg {
+      transition: transform 0.2s;
     }
     #arrow-path {
       transition: 0.2s;
@@ -13,6 +16,9 @@ const ArrowAnchorContent = `
     }
     a:hover #arrow-path{
       fill: var(--blue);
+    }
+    a:hover svg {
+      transform: translateX(6px);
     }
   </style>
   <a id="anchor">

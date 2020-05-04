@@ -379,6 +379,14 @@ footer {
   /* width: 24rem; */
   height: 14rem;
   position: relative;
+  border-radius: 0.25rem;
+  border: 1px solid #D6D6D6;
+  box-shadow: 0 2px 10px 0 #E2E8EE;
+  padding: 1rem;
+}
+
+.activity:hover {
+  box-shadow: 0 2px 30px 0 #E2E8EE;
 }
 
 .activity.short-text {
