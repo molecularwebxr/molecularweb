@@ -545,12 +545,12 @@ footer {
   }
 
   .activity-title {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
   .activity-description {
     color: var(--blue2);
     font-family: "Roboto";
-    font-size: 0.6rem;
+    font-size: 0.75rem;
     margin: 0.5rem 0;
     width: 220px;
   }
