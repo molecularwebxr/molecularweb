@@ -24,12 +24,15 @@ header {
     #08152d 7.05%,
     rgba(23, 58, 123, 0) 92.39%
   );
-  justify-content: flex-start;
-  align-items: flex-start;
   padding: 1.5rem;
 }
 
-header .title {
+header .row {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.activity-title {
   font-family: "Montserrat";
   font-weight: bold;
   font-size: 2rem;
@@ -39,6 +42,37 @@ header .title {
 
 figure {
   margin: 0;
+}
+
+
+@media screen and (max-width: 768px) {
+  .activity-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .activity-title {
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .activity-title {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+  }
+  header {
+    padding: 0.5rem;
+    height: 60px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .activity-title {
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+  }
 }
 
 @media (min-width: 400px) {
