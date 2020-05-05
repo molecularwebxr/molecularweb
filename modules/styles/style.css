@@ -1,3 +1,12 @@
+/* Color palette */
+:root {
+  --orange: #f19953;
+  --blue: #173a7b;
+  --lightblue: #2660a4;
+  --blue2: #486497;
+  --azure: #edf7f6;
+}
+
 body {
   margin: 0px;
   overflow: hidden;
