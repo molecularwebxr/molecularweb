@@ -11,15 +11,20 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script src="index.js"></script>
     <script src="../utils/connector.js"></script>
+    <script src="/components/back-anchor/index.js"></script>
+    <script src="/components/icons/tubes/index.js"></script>
   </head>
 
   <body>
-    <header class="row">
-      <figure>
-        <atom-icon />
-      </figure>
-      <h1 class="title">Equilibria of water protonation</h1>
+    <header>
+      <div class="row">
+        <figure>
+          <tubes-icon />
+        </figure>
+        <h1 class="activity-title">Equilibria of water protonation</h1>
+      </div>
     </header>
+    <back-anchor />
     <a-scene
       embedded
       arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
