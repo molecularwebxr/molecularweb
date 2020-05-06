@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../../styles/style.css" />
+    <link rel="stylesheet" href="/modules/styles/style.css" />
 
-    <script src="../../../lib/aframe.min.js"></script>
+    <script src="/lib/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script src="index.js"></script>
     <script src="/components/icons/atom/index.js"></script>
@@ -23,7 +23,125 @@
         <h1 class="activity-title">Atomic orbitals and VSEPR theory</h1>
       </div>
     </header>
-    <back-anchor />
+    <back-anchor></back-anchor>
+    <div class="selection-menu row">
+      <div class="row">
+        <img src="/assets/img/0.png" alt="sample marker" width="30" />
+        <select id="select0mol" class="orbital-selector">
+          <option>== Atomic Orbitals ==</option>
+          <option>2s</option>
+          <option>2px (m=-1)</option>
+          <option>2py (m=0)</option>
+          <option>2pz (m=1)</option>
+          <option>3dz<sup>2</sup> (m=0)</option>
+          <option>3dxz (m=-1)</option>
+          <option>3dyz (m=1)</option>
+          <option>3dxy (m=-2)</option>
+          <option>3dx2-y2 (m=2)</option>
+          <option>4f (m=-3)</option>
+          <option>4f (m=3)</option>
+          <option>4f (m=-2)</option>
+          <option>4f (m=2)</option>
+          <option>4f (m=-1)</option>
+          <option>4f (m=1)</option>
+          <option>4f (m=0)</option>
+          <option>5g (m=-4)</option>
+          <option>5g (m=4)</option>
+          <option>5g (m=-3)</option>
+          <option>5g (m=3)</option>
+          <option>5g (m=-2)</option>
+          <option>5g (m=2)</option>
+          <option>5g (m=-1)</option>
+          <option>5g (m=1)</option>
+          <option>5g (m=0)</option>
+          <option>== Hybridized Orbitals ==</option>
+          <option>2sp (1)</option>
+          <option>2sp (2)</option>
+          <option>2sp2 (1)</option>
+          <option>2sp2 (2)</option>
+          <option>2sp2 (3)</option>
+          <option>2sp3 (1)</option>
+          <option>2sp3 (2)</option>
+          <option>2sp3 (3)</option>
+          <option>2sp3 (4)</option>
+          <option>3sp3d (1)</option>
+          <option>3sp3d (2)</option>
+          <option>3sp3d (3)</option>
+          <option>3sp3d (4)</option>
+          <option>3sp3d (5)</option>
+          <option>3sp3d2 (1)</option>
+          <option>3sp3d2 (2)</option>
+          <option>3sp3d2 (3)</option>
+          <option>3sp3d2 (4)</option>
+          <option>3sp3d2 (5)</option>
+          <option>3sp3d2 (6)</option>
+          <option>== Ideal TRPEV geometries ==</option>
+          <option>Linear</option>
+          <option>Trigonal planar</option>
+          <option>Tetrahedral</option>
+          <option>Trigonal bipyramidal</option>
+          <option>Octahedral</option>
+        </select>
+      </div>
+      <div class="row">
+        <img src="/assets/img/2.png" alt="sample marker" width="30" />
+        <select id="select2mol" class="orbital-selector">
+          <option>== Atomic Orbitals ==</option>
+          <option>2s</option>
+          <option>2px (m=-1)</option>
+          <option>2py (m=0)</option>
+          <option>2pz (m=1)</option>
+          <option>3dz<sup>2</sup> (m=0)</option>
+          <option>3dxz (m=-1)</option>
+          <option>3dyz (m=1)</option>
+          <option>3dxy (m=-2)</option>
+          <option>3dx2-y2 (m=2)</option>
+          <option>4f (m=-3)</option>
+          <option>4f (m=3)</option>
+          <option>4f (m=-2)</option>
+          <option>4f (m=2)</option>
+          <option>4f (m=-1)</option>
+          <option>4f (m=1)</option>
+          <option>4f (m=0)</option>
+          <option>5g (m=-4)</option>
+          <option>5g (m=4)</option>
+          <option>5g (m=-3)</option>
+          <option>5g (m=3)</option>
+          <option>5g (m=-2)</option>
+          <option>5g (m=2)</option>
+          <option>5g (m=-1)</option>
+          <option>5g (m=1)</option>
+          <option>5g (m=0)</option>
+          <option>== Hybridized Orbitals ==</option>
+          <option>2sp (1)</option>
+          <option>2sp (2)</option>
+          <option>2sp2 (1)</option>
+          <option>2sp2 (2)</option>
+          <option>2sp2 (3)</option>
+          <option>2sp3 (1)</option>
+          <option>2sp3 (2)</option>
+          <option>2sp3 (3)</option>
+          <option>2sp3 (4)</option>
+          <option>3sp3d (1)</option>
+          <option>3sp3d (2)</option>
+          <option>3sp3d (3)</option>
+          <option>3sp3d (4)</option>
+          <option>3sp3d (5)</option>
+          <option>3sp3d2 (1)</option>
+          <option>3sp3d2 (2)</option>
+          <option>3sp3d2 (3)</option>
+          <option>3sp3d2 (4)</option>
+          <option>3sp3d2 (5)</option>
+          <option>3sp3d2 (6)</option>
+          <option>== Ideal TRPEV geometries ==</option>
+          <option>Linear</option>
+          <option>Trigonal planar</option>
+          <option>Tetrahedral</option>
+          <option>Trigonal bipyramidal</option>
+          <option>Octahedral</option>
+        </select>
+      </div>
+    </div>
     <a-scene
       embedded
       arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"

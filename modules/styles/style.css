@@ -24,6 +24,7 @@ body {
 
 header {
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
@@ -53,6 +54,39 @@ figure {
   margin: 0;
 }
 
+.selection-menu {
+  position: fixed;
+  z-index: 1;
+  bottom: 0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 25.5rem;
+  height: 2.5rem;
+  background: rgba(23, 58, 123, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-sizing: border-box;
+  border-radius: 4px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+.orbital-selector {
+  width: 150px;
+  height: 28px;
+  margin-left: 0.25rem;
+  font-family: "Roboto";
+  font-size: 0.75rem;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position: top 0.1rem right 0;
+}
 
 @media screen and (max-width: 768px) {
   .activity-title {

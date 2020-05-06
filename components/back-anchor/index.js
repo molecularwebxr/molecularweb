@@ -5,6 +5,7 @@ const BackAnchorContent = /* html */`
       position: absolute;
       bottom: 0.5rem;
       left: 1.5rem;
+      z-index: 1;
     }
     svg {
       transition: transform 0.2s;
