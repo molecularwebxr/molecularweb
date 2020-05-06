@@ -9,7 +9,7 @@
 
     <script src="/lib/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <script src="index.js"></script>
+    <script src="../utils/modelOpacity.js"></script>
     <script src="/components/icons/atom/index.js"></script>
     <script src="/components/back-anchor/index.js"></script>
   </head>
@@ -27,7 +27,7 @@
     <div class="selection-menu row">
       <div class="row">
         <img src="/assets/img/0.png" alt="sample marker" width="30" />
-        <select id="select0mol" class="orbital-selector">
+        <select id="select-marker-1" class="orbital-selector">
           <optgroup label="Atomic Orbitals">
             <option>2s</option>
             <option>2px (m=-1)</option>
@@ -88,7 +88,7 @@
       </div>
       <div class="row">
         <img src="/assets/img/2.png" alt="sample marker" width="30" />
-        <select id="select2mol" class="orbital-selector">
+        <select id="select-marker-2" class="orbital-selector">
           <optgroup label="Atomic Orbitals">
             <option>2s</option>
             <option>2px (m=-1)</option>
@@ -158,245 +158,258 @@
         <!--struct assets-->
         <a-asset-item
           id="orb1"
-          src="../../../assets/3d/atomic-orbitals/OA_2S.glb"
+          src="/assets/3d/atomic-orbitals/OA_2S.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb2"
-          src="../../../assets/3d/atomic-orbitals/OA_2P_-1.glb"
+          src="/assets/3d/atomic-orbitals/OA_2P_-1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb3"
-          src="../../../assets/3d/atomic-orbitals/OA_2P_0.glb"
+          src="/assets/3d/atomic-orbitals/OA_2P_0.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb4"
-          src="../../../assets/3d/atomic-orbitals/OA_2P_1.glb"
+          src="/assets/3d/atomic-orbitals/OA_2P_1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb5"
-          src="../../../assets/3d/atomic-orbitals/OA_3D_0.glb"
+          src="/assets/3d/atomic-orbitals/OA_3D_0.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb6"
-          src="../../../assets/3d/atomic-orbitals/OA_3D_-1.glb"
+          src="/assets/3d/atomic-orbitals/OA_3D_-1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb7"
-          src="../../../assets/3d/atomic-orbitals/OA_3D_1.glb"
+          src="/assets/3d/atomic-orbitals/OA_3D_1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb8"
-          src="../../../assets/3d/atomic-orbitals/OA_3D_-2.glb"
+          src="/assets/3d/atomic-orbitals/OA_3D_-2.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb9"
-          src="../../../assets/3d/atomic-orbitals/OA_3D_2.glb"
+          src="/assets/3d/atomic-orbitals/OA_3D_2.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb10"
-          src="../../../assets/3d/atomic-orbitals/OA_4F_-3.glb"
+          src="/assets/3d/atomic-orbitals/OA_4F_-3.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb11"
-          src="../../../assets/3d/atomic-orbitals/OA_4F_3.glb"
+          src="/assets/3d/atomic-orbitals/OA_4F_3.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb12"
-          src="../../../assets/3d/atomic-orbitals/OA_4F_-2.glb"
+          src="/assets/3d/atomic-orbitals/OA_4F_-2.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb13"
-          src="../../../assets/3d/atomic-orbitals/OA_4F_2.glb"
+          src="/assets/3d/atomic-orbitals/OA_4F_2.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb14"
-          src="../../../assets/3d/atomic-orbitals/OA_4F_-1.glb"
+          src="/assets/3d/atomic-orbitals/OA_4F_-1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb15"
-          src="../../../assets/3d/atomic-orbitals/OA_4F_1.glb"
+          src="/assets/3d/atomic-orbitals/OA_4F_1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb16"
-          src="../../../assets/3d/atomic-orbitals/OA_4F_0.glb"
+          src="/assets/3d/atomic-orbitals/OA_4F_0.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb17"
-          src="../../../assets/3d/atomic-orbitals/OA_5G_-4.glb"
+          src="/assets/3d/atomic-orbitals/OA_5G_-4.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb18"
-          src="../../../assets/3d/atomic-orbitals/OA_5G_4.glb"
+          src="/assets/3d/atomic-orbitals/OA_5G_4.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb19"
-          src="../../../assets/3d/atomic-orbitals/OA_5G_-3.glb"
+          src="/assets/3d/atomic-orbitals/OA_5G_-3.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb20"
-          src="../../../assets/3d/atomic-orbitals/OA_5G_3.glb"
+          src="/assets/3d/atomic-orbitals/OA_5G_3.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb21"
-          src="../../../assets/3d/atomic-orbitals/OA_5G_-2.glb"
+          src="/assets/3d/atomic-orbitals/OA_5G_-2.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb22"
-          src="../../../assets/3d/atomic-orbitals/OA_5G_2.glb"
+          src="/assets/3d/atomic-orbitals/OA_5G_2.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb23"
-          src="../../../assets/3d/atomic-orbitals/OA_5G_-1.glb"
+          src="/assets/3d/atomic-orbitals/OA_5G_-1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb24"
-          src="../../../assets/3d/atomic-orbitals/OA_5G_1.glb"
+          src="/assets/3d/atomic-orbitals/OA_5G_1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb25"
-          src="../../../assets/3d/atomic-orbitals/OA_5G_0.glb"
+          src="/assets/3d/atomic-orbitals/OA_5G_0.glb"
         ></a-asset-item>
 
         <a-asset-item
           id="orb27"
-          src="../../../assets/3d/atomic-orbitals/HO_2sp_1.glb"
+          src="/assets/3d/atomic-orbitals/HO_2sp_1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb28"
-          src="../../../assets/3d/atomic-orbitals/HO_2sp_2.glb"
+          src="/assets/3d/atomic-orbitals/HO_2sp_2.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb29"
-          src="../../../assets/3d/atomic-orbitals/HO_2sp2_1.glb"
+          src="/assets/3d/atomic-orbitals/HO_2sp2_1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb30"
-          src="../../../assets/3d/atomic-orbitals/HO_2sp2_2.glb"
+          src="/assets/3d/atomic-orbitals/HO_2sp2_2.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb31"
-          src="../../../assets/3d/atomic-orbitals/HO_2sp2_3.glb"
+          src="/assets/3d/atomic-orbitals/HO_2sp2_3.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb32"
-          src="../../../assets/3d/atomic-orbitals/HO_2sp3_1.glb"
+          src="/assets/3d/atomic-orbitals/HO_2sp3_1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb33"
-          src="../../../assets/3d/atomic-orbitals/HO_2sp3_2.glb"
+          src="/assets/3d/atomic-orbitals/HO_2sp3_2.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb34"
-          src="../../../assets/3d/atomic-orbitals/HO_2sp3_3.glb"
+          src="/assets/3d/atomic-orbitals/HO_2sp3_3.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb35"
-          src="../../../assets/3d/atomic-orbitals/HO_2sp3_4.glb"
+          src="/assets/3d/atomic-orbitals/HO_2sp3_4.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb36"
-          src="../../../assets/3d/atomic-orbitals/HO_3sp3d_1x-1.glb"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d_1x-1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb37"
-          src="../../../assets/3d/atomic-orbitals/HO_3sp3d_2x-1.glb"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d_2x-1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb38"
-          src="../../../assets/3d/atomic-orbitals/HO_3sp3d_3x-1.glb"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d_3x-1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb39"
-          src="../../../assets/3d/atomic-orbitals/HO_3sp3d_4.glb"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d_4.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb40"
-          src="../../../assets/3d/atomic-orbitals/HO_3sp3d_5.glb"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d_5.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb41"
-          src="../../../assets/3d/atomic-orbitals/HO_3sp3d2_1x-1.glb"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d2_1x-1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb42"
-          src="../../../assets/3d/atomic-orbitals/HO_3sp3d2_2x-1.glb"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d2_2x-1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb43"
-          src="../../../assets/3d/atomic-orbitals/HO_3sp3d2_3x-1.glb"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d2_3x-1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb44"
-          src="../../../assets/3d/atomic-orbitals/HO_3sp3d2_4x-1.glb"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d2_4x-1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb45"
-          src="../../../assets/3d/atomic-orbitals/HO_3sp3d2_5x-1.glb"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d2_5x-1.glb"
         ></a-asset-item>
         <a-asset-item
           id="orb46"
-          src="../../../assets/3d/atomic-orbitals/HO_3sp3d2_6x-1.glb"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d2_6x-1.glb"
         ></a-asset-item>
 
         <a-asset-item
           id="orb48obj"
-          src="../../../assets/3d/atomic-orbitals/trpev_linear.obj"
+          src="/assets/3d/atomic-orbitals/trpev_linear.obj"
         ></a-asset-item>
         <a-asset-item
           id="orb48mtl"
-          src="../../../assets/3d/atomic-orbitals/trpev_linear.mtl"
+          src="/assets/3d/atomic-orbitals/trpev_linear.mtl"
         ></a-asset-item>
         <a-asset-item
           id="orb49obj"
-          src="../../../assets/3d/atomic-orbitals/trpev_trigplanar.obj"
+          src="/assets/3d/atomic-orbitals/trpev_trigplanar.obj"
         ></a-asset-item>
         <a-asset-item
           id="orb49mtl"
-          src="../../../assets/3d/atomic-orbitals/trpev_trigplanar.mtl"
+          src="/assets/3d/atomic-orbitals/trpev_trigplanar.mtl"
         ></a-asset-item>
         <a-asset-item
           id="orb50obj"
-          src="../../../assets/3d/atomic-orbitals/trpev_tetra.obj"
+          src="/assets/3d/atomic-orbitals/trpev_tetra.obj"
         ></a-asset-item>
         <a-asset-item
           id="orb50mtl"
-          src="../../../assets/3d/atomic-orbitals/trpev_tetra.mtl"
+          src="/assets/3d/atomic-orbitals/trpev_tetra.mtl"
         ></a-asset-item>
         <a-asset-item
           id="orb51obj"
-          src="../../../assets/3d/atomic-orbitals/trpev_trigbipyr.obj"
+          src="/assets/3d/atomic-orbitals/trpev_trigbipyr.obj"
         ></a-asset-item>
         <a-asset-item
           id="orb51mtl"
-          src="../../../assets/3d/atomic-orbitals/trpev_trigbipyr.mtl"
+          src="/assets/3d/atomic-orbitals/trpev_trigbipyr.mtl"
         ></a-asset-item>
         <a-asset-item
           id="orb52obj"
-          src="../../../assets/3d/atomic-orbitals/trpev_octa.obj"
+          src="/assets/3d/atomic-orbitals/trpev_octa.obj"
         ></a-asset-item>
         <a-asset-item
           id="orb52mtl"
-          src="../../../assets/3d/atomic-orbitals/trpev_octa.mtl"
+          src="/assets/3d/atomic-orbitals/trpev_octa.mtl"
         ></a-asset-item>
       </a-assets>
 
-      <a-marker type="barcode" value="0" id="watA">
-        <a-entity rotation="0 0 0"> </a-entity>
+      <a-marker type="barcode" value="0" id="marker-1A">
+        <a-entity rotation="0 0 0">
+          <a-sphere id="atom1A" position="0.000   0.000   0.000" color="grey" radius="0.4"></a-sphere>
+          <a-entity id="marker-1A-mol" gltf-model="#orb1" scale="0.2 0.2 0.2" rotation="45 45 0" position="0 0 0" visible=true model-opacity="0.5"></a-entity>
+        </a-entity>
       </a-marker>
 
-      <a-marker type="barcode" value="1" id="watB">
-        <a-entity rotation="0 180 0"> </a-entity>
+      <a-marker type="barcode" value="1" id="marker-1B">
+        <a-entity rotation="0 180 0">
+          <a-sphere id="atom1B" position="0.000   0.000   0.000" color="grey" radius="0.4"></a-sphere>
+          <a-entity id="marker-1B-mol" gltf-model="#orb1" scale="0.2 0.2 0.2" rotation="45 45 0" position="0 0 0" visible=true model-opacity="0.5"></a-entity>
+        </a-entity>
       </a-marker>
 
-      <a-marker type="barcode" value="2" id="vatA">
-        <a-entity id="vat" rotation="0 0 0"> </a-entity>
+      <a-marker type="barcode" value="2" id="marker-2A">
+        <a-entity rotation="0 0 0">
+          <a-sphere id="atom2A" position="0.000   0.000   0.000" color="grey" radius="0.4"></a-sphere>
+          <a-entity id="marker-2A-mol" gltf-model="#orb1" scale="0.2 0.2 0.2" rotation="45 45 0" position="0 0 0" visible=true model-opacity="0.5"></a-entity>
+        </a-entity>
       </a-marker>
 
-      <a-marker type="barcode" value="3" id="vatB">
-        <a-entity id="vat" rotation="0 180 0"> </a-entity>
+      <a-marker type="barcode" value="3" id="marker-2B">
+        <a-entity rotation="0 180 0">
+          <a-sphere id="atom2B" position="0.000   0.000   0.000" color="grey" radius="0.4"></a-sphere>
+          <a-entity id="marker-2B-mol" gltf-model="#orb1" scale="0.2 0.2 0.2" rotation="45 45 0" position="0 0 0" visible=true model-opacity="0.5"></a-entity>
+        </a-entity>
       </a-marker>
 
       <a-entity camera></a-entity>
     </a-scene>
+    <script src="index.js"></script>
   </body>
 </html>
