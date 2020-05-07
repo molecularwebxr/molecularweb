@@ -94,11 +94,63 @@ figure {
   font-size: 0.7rem;
 }
 
+
+@media screen and (max-width: 630px) {
+  .selection-menu {
+    width: 18rem;
+  }
+
+  .orbital-selector {
+    width: 90px; 
+  }
+
+}
+
+@media screen and (max-width: 450px) {
+  .selection-menu {
+    width: 15rem;
+  }
+
+  .orbital-selector {
+    width: 70px;
+    font-size: 0.6rem;
+  }
+
+  .orbital-selector optgroup{
+    font-size: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .selection-menu {
+    width: 13rem;
+  }
+
+  .orbital-selector {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .selection-menu {
+    width: 11rem;
+  }
+
+  .orbital-selector {
+    width: 45px;
+    height: 25px;
+  }
+  .marker-sample {
+    width: 25px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .activity-title {
     font-size: 1.5rem;
   }
 }
+
 
 @media screen and (max-width: 600px) {
   .activity-title {
