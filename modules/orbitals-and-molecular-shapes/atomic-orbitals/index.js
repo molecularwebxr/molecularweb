@@ -12,41 +12,37 @@ marker2Select.selectedIndex = 0;
 
 function handleSelection(e) {
   e.preventDefault();
-  console.log(marker1Select.selectedIndex);
   const markerSelected = e.target.id;
+  const index = marker1Select.selectedIndex;
+  let assetIndex;
+
+  if (index < 25) {
+    assetIndex = index + 1;
+  } else if (index < 45) {
+    assetIndex = index + 2;
+  } else {
+    assetIndex = index + 3;
+  }
+
   if (markerSelected === "select-marker-1") {
     marker1AModel.removeAttribute("gltf-model");
     marker1BModel.removeAttribute("gltf-model");
     marker1AModel.removeAttribute("obj-model");
     marker1BModel.removeAttribute("obj-model");
-    if (marker1Select.selectedIndex < 47) {
-      marker1AModel.setAttribute(
-        "gltf-model",
-        "#orb" + marker1Select.selectedIndex
-      );
+    if (index < 45) {
+      marker1AModel.setAttribute("gltf-model", "#orb" + assetIndex);
       marker1AModel.setAttribute("model-opacity", 0.5);
-      marker1BModel.setAttribute(
-        "gltf-model",
-        "#orb" + marker1Select.selectedIndex
-      );
+      marker1BModel.setAttribute("gltf-model", "#orb" + assetIndex);
       marker1BModel.setAttribute("model-opacity", 0.5);
     } else {
       marker1AModel.setAttribute(
         "obj-model",
-        "obj:#orb" +
-          marker1Select.selectedIndex +
-          "obj; mtl: #orb" +
-          marker1Select.selectedIndex +
-          "mtl"
+        "obj:#orb" + assetIndex + "obj; mtl: #orb" + assetIndex + "mtl"
       );
       marker1AModel.setAttribute("model-opacity", 1);
       marker1BModel.setAttribute(
         "obj-model",
-        "obj:#orb" +
-          marker1Select.selectedIndex +
-          "obj; mtl: #orb" +
-          marker1Select.selectedIndex +
-          "mtl"
+        "obj:#orb" + assetIndex + "obj; mtl: #orb" + assetIndex + "mtl"
       );
       marker1BModel.setAttribute("model-opacity", 1);
     }
