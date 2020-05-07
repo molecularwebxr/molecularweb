@@ -3,8 +3,8 @@ const BackAnchorContent = /* html */`
     a {
       cursor: pointer;
       position: absolute;
-      bottom: 0.5rem;
-      left: 1.5rem;
+      bottom: 5px;
+      left: 5px;
       z-index: 1;
     }
     svg {
