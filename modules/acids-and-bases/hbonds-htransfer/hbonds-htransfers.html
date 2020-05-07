@@ -4,22 +4,33 @@
     <title>Acids, bases, H-bonds, and proton transfer</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../../styles/style.css" />
 
     <script src="../../../lib/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <script src="index.js"></script>
     <script src="../utils/connector.js"></script>
+    <script src="/components/back-anchor/index.js"></script>
+    <script src="/components/icons/tubes/index.js"></script>
   </head>
 
   <body>
+    <header>
+      <div class="row">
+        <figure>
+          <tubes-icon />
+        </figure>
+        <h1 class="activity-title">Equilibria between an acid and a base</h1>
+      </div>
+    </header>
+    <back-anchor />
     <a-scene
       embedded
       arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
       id="scene"
       renderer="logarithmicDepthBuffer: true;"
       update-stuff
-      >
+    >
       <a-marker type="barcode" value="0" id="lysA">
         <!-- This is a lysine side chain, starting from the CA atom, which is set to the origin
             All coordinates have been divided by 2,
@@ -401,7 +412,7 @@
       </a-marker>
 
       <!-- Connecting charged atoms -->
-      <a-entity id="bridge" >
+      <a-entity id="bridge">
         <a-sphere
           id="bond1"
           radius="0.05"

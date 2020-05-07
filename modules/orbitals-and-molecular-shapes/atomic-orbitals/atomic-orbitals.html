@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Atomic orbitals and molecular shapes</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="/modules/styles/style.css" />
+
+    <script src="/lib/aframe.min.js"></script>
+    <script src="/lib/aframe-ar.js"></script>
+    <script src="../utils/modelOpacity.js"></script>
+    <script src="/components/icons/atom/index.js"></script>
+    <script src="/components/back-anchor/index.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="row">
+        <figure>
+          <atom-icon />
+        </figure>
+        <h1 class="activity-title">Atomic orbitals and VSEPR theory</h1>
+      </div>
+    </header>
+    <back-anchor></back-anchor>
+    <div class="selection-menu row">
+      <div class="row">
+        <img class="marker-sample" src="/assets/img/0.png" alt="sample marker" width="30" />
+        <select id="select-marker-1" class="orbital-selector">
+          <optgroup label="Atomic Orbitals">
+            <option>2s</option>
+            <option>2px (m=-1)</option>
+            <option>2py (m=0)</option>
+            <option>2pz (m=1)</option>
+            <option>3dz<sup>2</sup> (m=0)</option>
+            <option>3dxz (m=-1)</option>
+            <option>3dyz (m=1)</option>
+            <option>3dxy (m=-2)</option>
+            <option>3dx2-y2 (m=2)</option>
+            <option>4f (m=-3)</option>
+            <option>4f (m=3)</option>
+            <option>4f (m=-2)</option>
+            <option>4f (m=2)</option>
+            <option>4f (m=-1)</option>
+            <option>4f (m=1)</option>
+            <option>4f (m=0)</option>
+            <option>5g (m=-4)</option>
+            <option>5g (m=4)</option>
+            <option>5g (m=-3)</option>
+            <option>5g (m=3)</option>
+            <option>5g (m=-2)</option>
+            <option>5g (m=2)</option>
+            <option>5g (m=-1)</option>
+            <option>5g (m=1)</option>
+            <option>5g (m=0)</option>
+          </optgroup>
+          <optgroup label="Hybridized Orbitals">
+            <option>2sp (1)</option>
+            <option>2sp (2)</option>
+            <option>2sp2 (1)</option>
+            <option>2sp2 (2)</option>
+            <option>2sp2 (3)</option>
+            <option>2sp3 (1)</option>
+            <option>2sp3 (2)</option>
+            <option>2sp3 (3)</option>
+            <option>2sp3 (4)</option>
+            <option>3sp3d (1)</option>
+            <option>3sp3d (2)</option>
+            <option>3sp3d (3)</option>
+            <option>3sp3d (4)</option>
+            <option>3sp3d (5)</option>
+            <option>3sp3d2 (1)</option>
+            <option>3sp3d2 (2)</option>
+            <option>3sp3d2 (3)</option>
+            <option>3sp3d2 (4)</option>
+            <option>3sp3d2 (5)</option>
+            <option>3sp3d2 (6)</option>
+          </optgroup>
+          <optgroup label="Ideal TRPEV geometries">
+            <option>Linear</option>
+            <option>Trigonal planar</option>
+            <option>Tetrahedral</option>
+            <option>Trigonal bipyramidal</option>
+            <option>Octahedral</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="row">
+        <img class="marker-sample" src="/assets/img/2.png" alt="sample marker" width="30" />
+        <select id="select-marker-2" class="orbital-selector">
+          <optgroup label="Atomic Orbitals">
+            <option>2s</option>
+            <option>2px (m=-1)</option>
+            <option>2py (m=0)</option>
+            <option>2pz (m=1)</option>
+            <option>3dz<sup>2</sup> (m=0)</option>
+            <option>3dxz (m=-1)</option>
+            <option>3dyz (m=1)</option>
+            <option>3dxy (m=-2)</option>
+            <option>3dx2-y2 (m=2)</option>
+            <option>4f (m=-3)</option>
+            <option>4f (m=3)</option>
+            <option>4f (m=-2)</option>
+            <option>4f (m=2)</option>
+            <option>4f (m=-1)</option>
+            <option>4f (m=1)</option>
+            <option>4f (m=0)</option>
+            <option>5g (m=-4)</option>
+            <option>5g (m=4)</option>
+            <option>5g (m=-3)</option>
+            <option>5g (m=3)</option>
+            <option>5g (m=-2)</option>
+            <option>5g (m=2)</option>
+            <option>5g (m=-1)</option>
+            <option>5g (m=1)</option>
+            <option>5g (m=0)</option>
+          </optgroup>
+          <optgroup label="Hybridized Orbitals">
+            <option>2sp (1)</option>
+            <option>2sp (2)</option>
+            <option>2sp2 (1)</option>
+            <option>2sp2 (2)</option>
+            <option>2sp2 (3)</option>
+            <option>2sp3 (1)</option>
+            <option>2sp3 (2)</option>
+            <option>2sp3 (3)</option>
+            <option>2sp3 (4)</option>
+            <option>3sp3d (1)</option>
+            <option>3sp3d (2)</option>
+            <option>3sp3d (3)</option>
+            <option>3sp3d (4)</option>
+            <option>3sp3d (5)</option>
+            <option>3sp3d2 (1)</option>
+            <option>3sp3d2 (2)</option>
+            <option>3sp3d2 (3)</option>
+            <option>3sp3d2 (4)</option>
+            <option>3sp3d2 (5)</option>
+            <option>3sp3d2 (6)</option>
+          </optgroup>
+          <optgroup label="Ideal TRPEV geometries">
+            <option>Linear</option>
+            <option>Trigonal planar</option>
+            <option>Tetrahedral</option>
+            <option>Trigonal bipyramidal</option>
+            <option>Octahedral</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+    <a-scene
+      embedded
+      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
+      id="scene"
+      renderer="logarithmicDepthBuffer: true;"
+    >
+      <a-assets>
+        <!--struct assets-->
+        <a-asset-item
+          id="orb1"
+          src="/assets/3d/atomic-orbitals/OA_2S.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb2"
+          src="/assets/3d/atomic-orbitals/OA_2P_-1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb3"
+          src="/assets/3d/atomic-orbitals/OA_2P_0.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb4"
+          src="/assets/3d/atomic-orbitals/OA_2P_1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb5"
+          src="/assets/3d/atomic-orbitals/OA_3D_0.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb6"
+          src="/assets/3d/atomic-orbitals/OA_3D_-1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb7"
+          src="/assets/3d/atomic-orbitals/OA_3D_1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb8"
+          src="/assets/3d/atomic-orbitals/OA_3D_-2.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb9"
+          src="/assets/3d/atomic-orbitals/OA_3D_2.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb10"
+          src="/assets/3d/atomic-orbitals/OA_4F_-3.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb11"
+          src="/assets/3d/atomic-orbitals/OA_4F_3.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb12"
+          src="/assets/3d/atomic-orbitals/OA_4F_-2.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb13"
+          src="/assets/3d/atomic-orbitals/OA_4F_2.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb14"
+          src="/assets/3d/atomic-orbitals/OA_4F_-1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb15"
+          src="/assets/3d/atomic-orbitals/OA_4F_1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb16"
+          src="/assets/3d/atomic-orbitals/OA_4F_0.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb17"
+          src="/assets/3d/atomic-orbitals/OA_5G_-4.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb18"
+          src="/assets/3d/atomic-orbitals/OA_5G_4.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb19"
+          src="/assets/3d/atomic-orbitals/OA_5G_-3.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb20"
+          src="/assets/3d/atomic-orbitals/OA_5G_3.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb21"
+          src="/assets/3d/atomic-orbitals/OA_5G_-2.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb22"
+          src="/assets/3d/atomic-orbitals/OA_5G_2.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb23"
+          src="/assets/3d/atomic-orbitals/OA_5G_-1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb24"
+          src="/assets/3d/atomic-orbitals/OA_5G_1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb25"
+          src="/assets/3d/atomic-orbitals/OA_5G_0.glb"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="orb27"
+          src="/assets/3d/atomic-orbitals/HO_2sp_1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb28"
+          src="/assets/3d/atomic-orbitals/HO_2sp_2.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb29"
+          src="/assets/3d/atomic-orbitals/HO_2sp2_1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb30"
+          src="/assets/3d/atomic-orbitals/HO_2sp2_2.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb31"
+          src="/assets/3d/atomic-orbitals/HO_2sp2_3.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb32"
+          src="/assets/3d/atomic-orbitals/HO_2sp3_1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb33"
+          src="/assets/3d/atomic-orbitals/HO_2sp3_2.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb34"
+          src="/assets/3d/atomic-orbitals/HO_2sp3_3.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb35"
+          src="/assets/3d/atomic-orbitals/HO_2sp3_4.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb36"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d_1x-1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb37"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d_2x-1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb38"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d_3x-1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb39"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d_4.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb40"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d_5.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb41"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d2_1x-1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb42"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d2_2x-1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb43"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d2_3x-1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb44"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d2_4x-1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb45"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d2_5x-1.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb46"
+          src="/assets/3d/atomic-orbitals/HO_3sp3d2_6x-1.glb"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="orb48obj"
+          src="/assets/3d/atomic-orbitals/trpev_linear.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb48mtl"
+          src="/assets/3d/atomic-orbitals/trpev_linear.mtl"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb49obj"
+          src="/assets/3d/atomic-orbitals/trpev_trigplanar.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb49mtl"
+          src="/assets/3d/atomic-orbitals/trpev_trigplanar.mtl"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb50obj"
+          src="/assets/3d/atomic-orbitals/trpev_tetra.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb50mtl"
+          src="/assets/3d/atomic-orbitals/trpev_tetra.mtl"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb51obj"
+          src="/assets/3d/atomic-orbitals/trpev_trigbipyr.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb51mtl"
+          src="/assets/3d/atomic-orbitals/trpev_trigbipyr.mtl"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb52obj"
+          src="/assets/3d/atomic-orbitals/trpev_octa.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="orb52mtl"
+          src="/assets/3d/atomic-orbitals/trpev_octa.mtl"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-marker type="barcode" value="0" id="marker-1A">
+        <a-entity rotation="0 0 0">
+          <a-sphere id="atom1A" position="0.000   0.000   0.000" color="grey" radius="0.4"></a-sphere>
+          <a-entity id="marker-1A-mol" gltf-model="#orb1" scale="0.2 0.2 0.2" rotation="45 45 0" position="0 0 0" visible=true model-opacity="0.5"></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="1" id="marker-1B">
+        <a-entity rotation="0 180 0">
+          <a-sphere id="atom1B" position="0.000   0.000   0.000" color="grey" radius="0.4"></a-sphere>
+          <a-entity id="marker-1B-mol" gltf-model="#orb1" scale="0.2 0.2 0.2" rotation="45 45 0" position="0 0 0" visible=true model-opacity="0.5"></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="2" id="marker-2A">
+        <a-entity rotation="0 0 0">
+          <a-sphere id="atom2A" position="0.000   0.000   0.000" color="grey" radius="0.4"></a-sphere>
+          <a-entity id="marker-2A-mol" gltf-model="#orb1" scale="0.2 0.2 0.2" rotation="45 45 0" position="0 0 0" visible=true model-opacity="0.5"></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="3" id="marker-2B">
+        <a-entity rotation="0 180 0">
+          <a-sphere id="atom2B" position="0.000   0.000   0.000" color="grey" radius="0.4"></a-sphere>
+          <a-entity id="marker-2B-mol" gltf-model="#orb1" scale="0.2 0.2 0.2" rotation="45 45 0" position="0 0 0" visible=true model-opacity="0.5"></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+    <script src="index.js"></script>
+  </body>
+</html>
