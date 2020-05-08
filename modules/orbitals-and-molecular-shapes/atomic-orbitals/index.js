@@ -1,3 +1,6 @@
+const scene = document.querySelector("a-scene");
+const loader = document.querySelector("loader-component");
+
 const marker1Select = document.getElementById("select-marker-1");
 const marker2Select = document.getElementById("select-marker-2");
 const markers = [marker1Select, marker2Select];
@@ -13,6 +16,10 @@ const modelsMarker2 = [marker2AModel, marker2BModel];
 
 marker1Select.selectedIndex = 0;
 marker2Select.selectedIndex = 0;
+
+function handleSceneLoad(e) {
+  loader.setAttribute("display", "false");
+}
 
 function handleSelection(e) {
   e.preventDefault();
@@ -57,3 +64,4 @@ function handleSelection(e) {
 
 marker1Select.addEventListener("change", handleSelection);
 marker2Select.addEventListener("change", handleSelection);
+scene.addEventListener("loaded", handleSceneLoad);
