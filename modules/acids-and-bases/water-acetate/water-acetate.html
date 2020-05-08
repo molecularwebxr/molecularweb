@@ -12,6 +12,7 @@
     <script src="../utils/connector.js"></script>
     <script src="/components/back-anchor/index.js"></script>
     <script src="/components/icons/tubes/index.js"></script>
+    <script src="/components/loader/index.js"></script>
   </head>
 
   <body>
@@ -26,6 +27,7 @@
       </div>
     </header>
     <back-anchor></back-anchor>
+    <loader-component display="true"></loader-component>
     <a-scene
       embedded
       arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
@@ -387,5 +389,6 @@
 
       <a-entity camera></a-entity>
     </a-scene>
+    <script src="/modules/utils/handleLoader.js"></script>
   </body>
 </html>

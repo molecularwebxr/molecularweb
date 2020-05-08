@@ -11,6 +11,7 @@
     <script src="../utils/modelOpacity.js"></script>
     <script src="/components/icons/atom/index.js"></script>
     <script src="/components/back-anchor/index.js"></script>
+    <script src="/components/loader/index.js"></script>
   </head>
 
   <body>
@@ -23,6 +24,7 @@
       </div>
     </header>
     <back-anchor></back-anchor>
+    <loader-component display="true"></loader-component>
     <div class="selection-menu row">
       <div class="row">
         <img class="marker-sample" src="/assets/img/0.png" alt="sample marker" width="30" />
@@ -152,6 +154,7 @@
       arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
       id="scene"
       renderer="logarithmicDepthBuffer: true;"
+      loading-screen="enabled: false"
     >
       <a-assets>
         <!--struct assets-->
@@ -410,5 +413,6 @@
       <a-entity camera></a-entity>
     </a-scene>
     <script src="index.js"></script>
+    <script src="/modules/utils/handleLoader.js"></script>
   </body>
 </html>
