@@ -14,7 +14,7 @@ i18next
       },
       detection: {
         // order and from where user language should be detected
-        order: ["querystring", "navigator"],
+        order: ["localStorage", "navigator", "querystring"],
 
         // keys or params to lookup language from
         lookupQuerystring: "lng",

@@ -17,36 +17,32 @@ i18next
       },
       detection: {
         // order and from where user language should be detected
-        order: [
-          "querystring",
-          "navigator",
-        ],
+        order: ["localStorage", "navigator", "querystring"],
 
         // keys or params to lookup language from
         lookupQuerystring: "lng",
       },
     },
     function (err, t) {
-
       updateContent();
-
     }
   );
 
-  function updateContent() {
-    localize(".content");
-    localize(".contact-us");
-  }
+function updateContent() {
+  localStorage.setItem("i18nextLng", i18next.language);
+  localize(".content");
+  localize(".contact-us");
+}
 
-  function handleLanguageChange(e) {
-    const lang = e.target.id;
-    e.preventDefault();
-    i18next.changeLanguage(lang);
-  }
+function handleLanguageChange(e) {
+  const lang = e.target.id;
+  e.preventDefault();
+  i18next.changeLanguage(lang);
+}
 
-  i18next.on('languageChanged', () => {
-    updateContent();
-  });
+i18next.on("languageChanged", () => {
+  updateContent();
+});
 
-  english.addEventListener("click", handleLanguageChange);
-  spanish.addEventListener("click", handleLanguageChange);
+english.addEventListener("click", handleLanguageChange);
+spanish.addEventListener("click", handleLanguageChange);

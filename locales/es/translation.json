@@ -9,5 +9,10 @@
     "title": "Molecular Mirror",
     "policy": "Copyright © 2020 Laboratory for biomolecular modeling, EPFL. Todos los derechos reservados.",
     "contactUs": "Contáctanos"
+  },
+  "orbitals": {
+    "atomicOrbitals": {
+      "title": "Orbitales atómicos y teoría VSEPR"
+    }
   }
 }
