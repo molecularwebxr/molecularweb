@@ -6,22 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="../../styles/style.css" />
 
+    <!-- 3D Libraries -->
     <script src="/lib/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <script src="index.js"></script>
-    <script src="../utils/connector.js"></script>
+
+    <!-- Translation Libraries -->
+    <script src="/lib/i18n/i18next.min.js"></script>
+    <script src="/lib/i18n/i18next-wc.js"></script>
+    <script src="/lib/i18n/loc-i18next.min.js"></script>
+    <script src="/lib/i18n/i18nextBrowserLanguageDetector.js"></script>
+    <script src="/lib/i18n/i18nextHttpBackend.min.js"></script>
+
+    <!-- Web Components -->
     <script src="/components/back-anchor/index.js"></script>
     <script src="/components/icons/tubes/index.js"></script>
     <script src="/components/loader/index.js"></script>
+
+    <!-- Utils & A-Frame Components -->
+    <script src="index.js"></script>
+    <script src="../utils/connector.js"></script>
+    <script src="../../utils/handleTranslation.js"></script>
   </head>
 
   <body>
-    <header>
+    <header id="header">
       <div class="row">
         <figure>
           <tubes-icon></tubes-icon>
         </figure>
-        <h1 class="activity-title">Equilibria of water protonation</h1>
+        <h1
+          class="activity-title"
+          data-i18n="bonds.waterProtonation.title"
+        ></h1>
       </div>
     </header>
     <back-anchor></back-anchor>

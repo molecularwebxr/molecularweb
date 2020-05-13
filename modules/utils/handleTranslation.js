@@ -1,8 +1,5 @@
 const localize = locI18next.init(i18next);
 
-const english = document.getElementById("en");
-const spanish = document.getElementById("es");
-
 i18next
   .use(i18nextHttpBackend)
   .use(i18nextBrowserLanguageDetector)
@@ -29,20 +26,5 @@ i18next
   );
 
 function updateContent() {
-  localStorage.setItem("i18nextLng", i18next.language);
-  localize(".content");
-  localize(".contact-us");
+  localize("#header");
 }
-
-function handleLanguageChange(e) {
-  const lang = e.target.id;
-  e.preventDefault();
-  i18next.changeLanguage(lang);
-}
-
-i18next.on("languageChanged", () => {
-  updateContent();
-});
-
-english.addEventListener("click", handleLanguageChange);
-spanish.addEventListener("click", handleLanguageChange);
