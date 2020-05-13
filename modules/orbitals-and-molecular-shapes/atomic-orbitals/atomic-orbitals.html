@@ -6,28 +6,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="/modules/styles/style.css" />
 
+    <!-- 3D Libraries -->
     <script src="/lib/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <script src="../utils/modelOpacity.js"></script>
+
+    <!-- Translation Libraries -->
+    <script src="/lib/i18n/i18next.min.js"></script>
+    <script src="/lib/i18n/i18next-wc.js"></script>
+    <script src="/lib/i18n/loc-i18next.min.js"></script>
+    <script src="/lib/i18n/i18nextBrowserLanguageDetector.js"></script>
+    <script src="/lib/i18n/i18nextHttpBackend.min.js"></script>
+
+    <!-- Web Components -->
     <script src="/components/icons/atom/index.js"></script>
     <script src="/components/back-anchor/index.js"></script>
     <script src="/components/loader/index.js"></script>
+
+    <!-- Utils & A-Frame Components -->
+    <script src="../utils/modelOpacity.js"></script>
+    <script src="../../utils/handleTranslation.js"></script>
   </head>
 
   <body>
-    <header>
+    <header id="header">
       <div class="row">
         <figure>
           <atom-icon></atom-icon>
         </figure>
-        <h1 class="activity-title">Atomic orbitals and VSEPR theory</h1>
+        <h1
+          class="activity-title"
+          data-i18n="orbitals.atomicOrbitals.title"
+        ></h1>
       </div>
     </header>
     <back-anchor></back-anchor>
     <loader-component display="true"></loader-component>
     <div class="selection-menu row">
       <div class="row">
-        <img class="marker-sample" src="/assets/img/0.png" alt="sample marker" width="30" />
+        <img
+          class="marker-sample"
+          src="/assets/img/0.png"
+          alt="sample marker"
+          width="30"
+        />
         <select id="select-marker-1" class="orbital-selector">
           <optgroup label="Atomic Orbitals">
             <option>2s</option>
@@ -88,7 +109,12 @@
         </select>
       </div>
       <div class="row">
-        <img class="marker-sample" src="/assets/img/2.png" alt="sample marker" width="30" />
+        <img
+          class="marker-sample"
+          src="/assets/img/2.png"
+          alt="sample marker"
+          width="30"
+        />
         <select id="select-marker-2" class="orbital-selector">
           <optgroup label="Atomic Orbitals">
             <option>2s</option>
@@ -159,143 +185,41 @@
     >
       <a-assets>
         <!--struct assets-->
-        <a-asset-item
-          id="orb1"
-          src="./models/OA_2S.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb2"
-          src="./models/OA_2P_-1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb3"
-          src="./models/OA_2P_0.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb4"
-          src="./models/OA_2P_1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb5"
-          src="./models/OA_3D_0.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb6"
-          src="./models/OA_3D_-1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb7"
-          src="./models/OA_3D_1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb8"
-          src="./models/OA_3D_-2.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb9"
-          src="./models/OA_3D_2.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb10"
-          src="./models/OA_4F_-3.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb11"
-          src="./models/OA_4F_3.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb12"
-          src="./models/OA_4F_-2.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb13"
-          src="./models/OA_4F_2.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb14"
-          src="./models/OA_4F_-1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb15"
-          src="./models/OA_4F_1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb16"
-          src="./models/OA_4F_0.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb17"
-          src="./models/OA_5G_-4.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb18"
-          src="./models/OA_5G_4.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb19"
-          src="./models/OA_5G_-3.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb20"
-          src="./models/OA_5G_3.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb21"
-          src="./models/OA_5G_-2.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb22"
-          src="./models/OA_5G_2.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb23"
-          src="./models/OA_5G_-1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb24"
-          src="./models/OA_5G_1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb25"
-          src="./models/OA_5G_0.gltf"
-        ></a-asset-item>
+        <a-asset-item id="orb1" src="./models/OA_2S.gltf"></a-asset-item>
+        <a-asset-item id="orb2" src="./models/OA_2P_-1.gltf"></a-asset-item>
+        <a-asset-item id="orb3" src="./models/OA_2P_0.gltf"></a-asset-item>
+        <a-asset-item id="orb4" src="./models/OA_2P_1.gltf"></a-asset-item>
+        <a-asset-item id="orb5" src="./models/OA_3D_0.gltf"></a-asset-item>
+        <a-asset-item id="orb6" src="./models/OA_3D_-1.gltf"></a-asset-item>
+        <a-asset-item id="orb7" src="./models/OA_3D_1.gltf"></a-asset-item>
+        <a-asset-item id="orb8" src="./models/OA_3D_-2.gltf"></a-asset-item>
+        <a-asset-item id="orb9" src="./models/OA_3D_2.gltf"></a-asset-item>
+        <a-asset-item id="orb10" src="./models/OA_4F_-3.gltf"></a-asset-item>
+        <a-asset-item id="orb11" src="./models/OA_4F_3.gltf"></a-asset-item>
+        <a-asset-item id="orb12" src="./models/OA_4F_-2.gltf"></a-asset-item>
+        <a-asset-item id="orb13" src="./models/OA_4F_2.gltf"></a-asset-item>
+        <a-asset-item id="orb14" src="./models/OA_4F_-1.gltf"></a-asset-item>
+        <a-asset-item id="orb15" src="./models/OA_4F_1.gltf"></a-asset-item>
+        <a-asset-item id="orb16" src="./models/OA_4F_0.gltf"></a-asset-item>
+        <a-asset-item id="orb17" src="./models/OA_5G_-4.gltf"></a-asset-item>
+        <a-asset-item id="orb18" src="./models/OA_5G_4.gltf"></a-asset-item>
+        <a-asset-item id="orb19" src="./models/OA_5G_-3.gltf"></a-asset-item>
+        <a-asset-item id="orb20" src="./models/OA_5G_3.gltf"></a-asset-item>
+        <a-asset-item id="orb21" src="./models/OA_5G_-2.gltf"></a-asset-item>
+        <a-asset-item id="orb22" src="./models/OA_5G_2.gltf"></a-asset-item>
+        <a-asset-item id="orb23" src="./models/OA_5G_-1.gltf"></a-asset-item>
+        <a-asset-item id="orb24" src="./models/OA_5G_1.gltf"></a-asset-item>
+        <a-asset-item id="orb25" src="./models/OA_5G_0.gltf"></a-asset-item>
 
-        <a-asset-item
-          id="orb27"
-          src="./models/HO_2sp_1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb28"
-          src="./models/HO_2sp_2.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb29"
-          src="./models/HO_2sp2_1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb30"
-          src="./models/HO_2sp2_2.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb31"
-          src="./models/HO_2sp2_3.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb32"
-          src="./models/HO_2sp3_1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb33"
-          src="./models/HO_2sp3_2.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb34"
-          src="./models/HO_2sp3_3.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb35"
-          src="./models/HO_2sp3_4.gltf"
-        ></a-asset-item>
+        <a-asset-item id="orb27" src="./models/HO_2sp_1.gltf"></a-asset-item>
+        <a-asset-item id="orb28" src="./models/HO_2sp_2.gltf"></a-asset-item>
+        <a-asset-item id="orb29" src="./models/HO_2sp2_1.gltf"></a-asset-item>
+        <a-asset-item id="orb30" src="./models/HO_2sp2_2.gltf"></a-asset-item>
+        <a-asset-item id="orb31" src="./models/HO_2sp2_3.gltf"></a-asset-item>
+        <a-asset-item id="orb32" src="./models/HO_2sp3_1.gltf"></a-asset-item>
+        <a-asset-item id="orb33" src="./models/HO_2sp3_2.gltf"></a-asset-item>
+        <a-asset-item id="orb34" src="./models/HO_2sp3_3.gltf"></a-asset-item>
+        <a-asset-item id="orb35" src="./models/HO_2sp3_4.gltf"></a-asset-item>
         <a-asset-item
           id="orb36"
           src="./models/HO_3sp3d_1x-1.gltf"
@@ -308,14 +232,8 @@
           id="orb38"
           src="./models/HO_3sp3d_3x-1.gltf"
         ></a-asset-item>
-        <a-asset-item
-          id="orb39"
-          src="./models/HO_3sp3d_4.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb40"
-          src="./models/HO_3sp3d_5.gltf"
-        ></a-asset-item>
+        <a-asset-item id="orb39" src="./models/HO_3sp3d_4.gltf"></a-asset-item>
+        <a-asset-item id="orb40" src="./models/HO_3sp3d_5.gltf"></a-asset-item>
         <a-asset-item
           id="orb41"
           src="./models/HO_3sp3d2_1x-1.gltf"
@@ -385,29 +303,81 @@
 
       <a-marker type="barcode" value="0" id="marker-1A">
         <a-entity rotation="0 0 0">
-          <a-sphere id="atom1A" position="0.000   0.000   0.000" color="grey" radius="0.4"></a-sphere>
-          <a-entity id="marker-1A-mol" gltf-model="#orb1" scale="0.2 0.2 0.2" rotation="45 45 0" position="0 0 0" visible=true model-opacity="0.5"></a-entity>
+          <a-sphere
+            id="atom1A"
+            position="0.000   0.000   0.000"
+            color="grey"
+            radius="0.4"
+          ></a-sphere>
+          <a-entity
+            id="marker-1A-mol"
+            gltf-model="#orb1"
+            scale="0.2 0.2 0.2"
+            rotation="45 45 0"
+            position="0 0 0"
+            visible="true"
+            model-opacity="0.5"
+          ></a-entity>
         </a-entity>
       </a-marker>
 
       <a-marker type="barcode" value="1" id="marker-1B">
         <a-entity rotation="180 180 0">
-          <a-sphere id="atom1B" position="0.000   0.000   0.000" color="grey" radius="0.4"></a-sphere>
-          <a-entity id="marker-1B-mol" gltf-model="#orb1" scale="0.2 0.2 0.2" rotation="45 45 0" position="0 0 0" visible=true model-opacity="0.5"></a-entity>
+          <a-sphere
+            id="atom1B"
+            position="0.000   0.000   0.000"
+            color="grey"
+            radius="0.4"
+          ></a-sphere>
+          <a-entity
+            id="marker-1B-mol"
+            gltf-model="#orb1"
+            scale="0.2 0.2 0.2"
+            rotation="45 45 0"
+            position="0 0 0"
+            visible="true"
+            model-opacity="0.5"
+          ></a-entity>
         </a-entity>
       </a-marker>
 
       <a-marker type="barcode" value="2" id="marker-2A">
         <a-entity rotation="0 0 0">
-          <a-sphere id="atom2A" position="0.000   0.000   0.000" color="grey" radius="0.4"></a-sphere>
-          <a-entity id="marker-2A-mol" gltf-model="#orb1" scale="0.2 0.2 0.2" rotation="45 45 0" position="0 0 0" visible=true model-opacity="0.5"></a-entity>
+          <a-sphere
+            id="atom2A"
+            position="0.000   0.000   0.000"
+            color="grey"
+            radius="0.4"
+          ></a-sphere>
+          <a-entity
+            id="marker-2A-mol"
+            gltf-model="#orb1"
+            scale="0.2 0.2 0.2"
+            rotation="45 45 0"
+            position="0 0 0"
+            visible="true"
+            model-opacity="0.5"
+          ></a-entity>
         </a-entity>
       </a-marker>
 
       <a-marker type="barcode" value="3" id="marker-2B">
         <a-entity rotation="180 180 0">
-          <a-sphere id="atom2B" position="0.000   0.000   0.000" color="grey" radius="0.4"></a-sphere>
-          <a-entity id="marker-2B-mol" gltf-model="#orb1" scale="0.2 0.2 0.2" rotation="45 45 0" position="0 0 0" visible=true model-opacity="0.5"></a-entity>
+          <a-sphere
+            id="atom2B"
+            position="0.000   0.000   0.000"
+            color="grey"
+            radius="0.4"
+          ></a-sphere>
+          <a-entity
+            id="marker-2B-mol"
+            gltf-model="#orb1"
+            scale="0.2 0.2 0.2"
+            rotation="45 45 0"
+            position="0 0 0"
+            visible="true"
+            model-opacity="0.5"
+          ></a-entity>
         </a-entity>
       </a-marker>
 
