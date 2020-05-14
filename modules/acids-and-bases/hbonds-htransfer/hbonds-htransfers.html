@@ -21,6 +21,7 @@
     <script src="/components/back-anchor/index.js"></script>
     <script src="/components/icons/tubes/index.js"></script>
     <script src="/components/loader/index.js"></script>
+    <script src="/components/flip-buttons/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="index.js"></script>
@@ -42,6 +43,7 @@
     </header>
     <back-anchor></back-anchor>
     <loader-component display="true"></loader-component>
+    <flip-video></flip-video>
     <a-scene
       embedded
       arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
@@ -490,5 +492,6 @@
       <a-entity camera></a-entity>
     </a-scene>
     <script src="/modules/utils/handleLoader.js"></script>
+    <script src="/modules/utils/handleFlips.js"></script>
   </body>
 </html>
