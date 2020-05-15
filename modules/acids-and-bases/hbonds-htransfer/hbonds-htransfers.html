@@ -21,12 +21,14 @@
     <script src="/components/back-anchor/index.js"></script>
     <script src="/components/icons/tubes/index.js"></script>
     <script src="/components/loader/index.js"></script>
-    <script src="/components/flip-buttons/index.js"></script>
+    <script src="/components/flip-video/index.js"></script>
+    <script src="/components/flip-graphics/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="index.js"></script>
     <script src="../utils/connector.js"></script>
-    <script src="../../utils/handleTranslation.js"></script>
+    <script src="/modules/utils/aframe/flip.js"></script>
+    <script src="/modules/utils/handleTranslation.js"></script>
   </head>
 
   <body>
@@ -35,15 +37,13 @@
         <figure>
           <tubes-icon></tubes-icon>
         </figure>
-        <h1
-          class="activity-title"
-          data-i18n="bonds.acidBase.title"
-        ></h1>
+        <h1 class="activity-title" data-i18n="bonds.acidBase.title"></h1>
       </div>
     </header>
     <back-anchor></back-anchor>
     <loader-component display="true"></loader-component>
     <flip-video></flip-video>
+    <flip-graphics></flip-graphics>
     <a-scene
       embedded
       arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
@@ -55,7 +55,7 @@
         <!-- This is a lysine side chain, starting from the CA atom, which is set to the origin
             All coordinates have been divided by 2,
             so any distance between two atoms must be multiplied by 2 to get the actual distance-->
-        <a-entity rotation="0 0 0">
+        <a-entity rotation="0 0 0" listen-to-flip>
           <a-sphere
             id="lys1A"
             position="0.000   0.000   0.000"
