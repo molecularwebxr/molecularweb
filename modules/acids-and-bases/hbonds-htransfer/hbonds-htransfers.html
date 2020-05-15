@@ -165,7 +165,7 @@
         <!-- This is a lysine side chain, starting from the CA atom, which is set to the origin
             All coordinates have been divided by 2,
             so any distance between two atoms must be multiplied by 2 to get the actual distance-->
-        <a-entity rotation="180 180 0">
+        <a-entity rotation="180 180 0"  listen-to-flip>
           <a-sphere
             id="lys1B"
             position="0.000   0.000   0.000"
@@ -273,7 +273,7 @@
 
       <a-marker type="barcode" id="gluA" value="2">
         <!-- This is a glutamate side chain, starting from the CA atom, which is set to the origin-->
-        <a-entity rotation="0 0 0">
+        <a-entity rotation="0 0 0"  listen-to-flip>
           <a-sphere
             id="glu1A"
             position="0.000   0.000   0.000"
@@ -353,7 +353,7 @@
 
       <a-marker type="barcode" id="gluB" value="3">
         <!-- This is a glutamate side chain, starting from the CA atom, which is set to the origin-->
-        <a-entity rotation="180 180 0">
+        <a-entity rotation="180 180 0"  listen-to-flip>
           <a-sphere
             id="glu1B"
             position="0.000   0.000   0.000"

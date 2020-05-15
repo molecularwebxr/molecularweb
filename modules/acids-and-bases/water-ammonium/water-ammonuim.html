@@ -22,11 +22,14 @@
     <script src="/components/icons/tubes/index.js"></script>
     <script src="/components/loader/index.js"></script>
     <script src="/components/flip-buttons/index.js"></script>
+    <script src="/components/flip-video/index.js"></script>
+    <script src="/components/flip-graphics/index.js"></script>
     
     <!-- Utils & A-Frame Components -->
     <script src="index.js"></script>
     <script src="../utils/connector.js"></script>
-    <script src="../../utils/handleTranslation.js"></script>
+    <script src="/modules/utils/aframe/flip.js"></script>
+    <script src="/modules/utils/handleTranslation.js"></script>
   </head>
 
   <body>
@@ -40,6 +43,7 @@
     </header>
     <back-anchor></back-anchor>
     <flip-video></flip-video>
+    <flip-graphics></flip-graphics>
     <loader-component display="true"></loader-component>
     <a-scene
       embedded
@@ -49,7 +53,7 @@
       update-stuff
     >
       <a-marker type="barcode" value="0" id="watA">
-        <a-entity id="lys" rotation="0 0 0">
+        <a-entity id="lys" rotation="0 0 0" listen-to-flip>
           <a-sphere
             id="wat1A"
             position="0 0 0"
@@ -120,7 +124,7 @@
       </a-marker>
 
       <a-marker type="barcode" value="1" id="watB">
-        <a-entity id="lys" rotation="180 180 0">
+        <a-entity id="lys" rotation="180 180 0" listen-to-flip>
           <a-sphere
             id="wat1B"
             position="0 0 0"
@@ -191,7 +195,7 @@
       </a-marker>
 
       <a-marker type="barcode" value="2" id="amoA"">
-        <a-entity rotation="0 0 0">
+        <a-entity rotation="0 0 0" listen-to-flip>
           <a-sphere
             id="amo1A"
             position="0 0 0"
@@ -262,7 +266,7 @@
       </a-marker>
 
       <a-marker type="barcode" value="3" id="amoB"">
-        <a-entity rotation="180 180 0">
+        <a-entity rotation="180 180 0" listen-to-flip>
           <a-sphere
             id="amo1B"
             position="0 0 0"
