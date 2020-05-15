@@ -21,11 +21,13 @@
     <script src="/components/icons/atom/index.js"></script>
     <script src="/components/back-anchor/index.js"></script>
     <script src="/components/loader/index.js"></script>
-    <script src="/components/flip-buttons/index.js"></script>
+    <script src="/components/flip-video/index.js"></script>
+    <script src="/components/flip-graphics/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="../utils/modelOpacity.js"></script>
-    <script src="../../utils/handleTranslation.js"></script>
+    <script src="/modules/utils/aframe/flip.js"></script>
+    <script src="/modules/utils/handleTranslation.js"></script>
   </head>
 
   <body>
@@ -43,6 +45,7 @@
     <back-anchor></back-anchor>
     <loader-component display="true"></loader-component>
     <flip-video></flip-video>
+    <flip-graphics></flip-graphics>
     <div class="selection-menu row">
       <div class="row">
         <img
@@ -304,7 +307,7 @@
       </a-assets>
 
       <a-marker type="barcode" value="0" id="marker-1A">
-        <a-entity rotation="0 0 0">
+        <a-entity rotation="0 0 0" listen-to-flip>
           <a-sphere
             id="atom1A"
             position="0.000   0.000   0.000"
@@ -324,7 +327,7 @@
       </a-marker>
 
       <a-marker type="barcode" value="1" id="marker-1B">
-        <a-entity rotation="180 180 0">
+        <a-entity rotation="180 180 0" listen-to-flip>
           <a-sphere
             id="atom1B"
             position="0.000   0.000   0.000"
@@ -344,7 +347,7 @@
       </a-marker>
 
       <a-marker type="barcode" value="2" id="marker-2A">
-        <a-entity rotation="0 0 0">
+        <a-entity rotation="0 0 0" listen-to-flip>
           <a-sphere
             id="atom2A"
             position="0.000   0.000   0.000"
@@ -364,7 +367,7 @@
       </a-marker>
 
       <a-marker type="barcode" value="3" id="marker-2B">
-        <a-entity rotation="180 180 0">
+        <a-entity rotation="180 180 0" listen-to-flip>
           <a-sphere
             id="atom2B"
             position="0.000   0.000   0.000"

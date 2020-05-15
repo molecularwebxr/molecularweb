@@ -5,7 +5,7 @@ const FlipVideoContent = /* html */ `
       position: absolute;
       top: 50%;
       right: 5px;
-      transform: translateY(-50%);
+      transform: translateY(-52.5%);
       z-index: 1;
     }
     svg {
