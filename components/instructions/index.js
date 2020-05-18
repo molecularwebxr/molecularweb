@@ -107,6 +107,7 @@ instructionsTemplate.innerHTML = /* html */ `
     @media screen and (max-width: 700px) {
       h1 {
         font-size: 1.25rem;
+        width: 95vw;
       }
 
       p {
@@ -118,7 +119,7 @@ instructionsTemplate.innerHTML = /* html */ `
       }
     }
 
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 350px) {
       h1 {
         font-size: 1rem;
       }
