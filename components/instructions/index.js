@@ -66,7 +66,7 @@ instructionsTemplate.innerHTML = /* html */ `
       
     }
   </style>
-  <div class="overlay active">
+  <div class="overlay active" id="overlay">
     <molecule-icon medium no-strokes></molecule-icon>
     <h1>Equilibria between an acid and a base</h1>
     <p>
@@ -81,19 +81,21 @@ instructionsTemplate.innerHTML = /* html */ `
 class ActivityInstructions extends HTMLElement {
   constructor() {
     super();
+    this.show = true;
 
-    this.handleClick = this.handleClick.bind(this);
+    this.toggle = this.toggle.bind(this);
 
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(instructionsTemplate.content.cloneNode(true));
 
     this.buttonElement = this.shadowRoot.querySelector("button");
+    this.buttonElement.addEventListener("click", this.toggle);
 
-    this.buttonElement.addEventListener("click", this.handleClick);
+    this.overlayElement = this.shadowRoot.getElementById("overlay");
   }
 
-  handleClick() {
-    this.dispatchEvent(new CustomEvent("hideInstructions"));
+  toggle() {
+    this.overlayElement.classList.toggle("active");
   }
 }
 
