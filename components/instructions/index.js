@@ -31,6 +31,7 @@ instructionsTemplate.innerHTML = /* html */ `
       margin: 2rem 0 1.5rem 0;
       font-size: 3rem;
       font-weight: 600;
+      text-align: center;
     }
 
     p{
@@ -62,8 +63,73 @@ instructionsTemplate.innerHTML = /* html */ `
       transform: scale(.9);
     }
 
-    @media screen and (max-width: 500px) {
-      
+    @media screen and (max-width: 1000px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      p {
+        font-size: 1.3rem;
+        width: 70vw;
+      }
+
+      button {
+        font-size: 1rem;
+      }
+    }
+
+    @media screen and (max-width: 850px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media screen and (max-width: 700px) {
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      button {
+        font-size: 0.8rem;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media screen and (max-width: 700px) {
+      h1 {
+        font-size: 1.25rem;
+      }
+
+      p {
+        font-size: 0.8rem;
+      }
+
+      button {
+        font-size: 0.75rem;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      h1 {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: 0.75rem;
+      }
+
+      button {
+        font-size: 0.6rem;
+      }
     }
   </style>
   <div class="overlay active" id="overlay">
