@@ -27,4 +27,5 @@ i18next
 
 function updateContent() {
   localize("#header");
+  localize("#instructions")
 }

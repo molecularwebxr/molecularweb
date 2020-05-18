@@ -13,7 +13,7 @@ instructionsTemplate.innerHTML = /* html */ `
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      transition: .6s ease-in;
+      transition: .3s ease-in;
       opacity: 0;
       z-index: 1;
       visibility: hidden;
@@ -68,34 +68,57 @@ instructionsTemplate.innerHTML = /* html */ `
   </style>
   <div class="overlay active" id="overlay">
     <molecule-icon medium no-strokes></molecule-icon>
-    <h1>Equilibria between an acid and a base</h1>
+    <h1>
+      <slot name="title"></slot>
+    </h1>
     <p>
-      Click <strong>here</strong> to find the AR markers with print and assemble instructions.
+      <intl-message key="app.markers"></intl-message>
     </p>
     <p>
-      Move the AR markers to explore hydrogen bonding and proton transfer by approaching the two molecules from different sides.
+      <slot name="instructions"></slot>
     </p>
     <button>Continue</button>
   </div>`;
 
 class ActivityInstructions extends HTMLElement {
+  static get observedAttributes() {
+    return ["title"];
+  }
+
+  set title(value) {
+    this._title = value;
+    this.titleI18n.key = this._title;
+    console.log(this.titleI18n.key);
+  }
+
+  get title() {
+    return this._title;
+  }
+
   constructor() {
     super();
     this.show = true;
 
     this.toggle = this.toggle.bind(this);
 
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(instructionsTemplate.content.cloneNode(true));
 
     this.buttonElement = this.shadowRoot.querySelector("button");
     this.buttonElement.addEventListener("click", this.toggle);
 
     this.overlayElement = this.shadowRoot.getElementById("overlay");
+    this.titleI18n = this.shadowRoot.getElementById("title-i18n");
   }
 
   toggle() {
     this.overlayElement.classList.toggle("active");
+  }
+
+  attributeChangedCallback(attrName, oldValue, newValue) {
+    if (attrName === "title") {
+      this.title = newValue;
+    }
   }
 }
 

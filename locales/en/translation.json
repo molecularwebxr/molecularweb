@@ -9,7 +9,8 @@
     "title": "Molecular Mirror",
     "description": "A website for chemistry and biology education through augmented reality, available out of the box in commodity devices",
     "policy": "Copyright © 2020 Laboratory for biomolecular modeling, EPFL. All rights reserved.",
-    "contactUs": "Contact us"
+    "contactUs": "Contact us",
+    "markers": "Click here to find the AR markers with print and assemble instructions"
   },
   "orbitals": {
     "title": "Orbitals and molecular shapes",
@@ -32,6 +33,7 @@
   },
   "bonds": {
     "title": "Hydrogen bonding, acids and bases",
+    "instructions": "Move the AR markers to explore hydrogen bonding and proton transfer by approaching the two molecules from different sides",
     "waterProtonation": {
       "title": "Equilibria of water protonation",
       "description": "Explore how two water molecules establish hydrogen bonds and transfer protons interconverting between hydronium cation, neutral water and hydroxide anion. The equilibrium is dynamic and gives rise to the water dissociation constant Kw."

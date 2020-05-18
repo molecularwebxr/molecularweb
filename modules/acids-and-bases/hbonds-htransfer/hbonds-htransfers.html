@@ -46,7 +46,10 @@
     <loader-component display="true"></loader-component>
     <flip-video></flip-video>
     <flip-graphics></flip-graphics>
-    <activity-instructions></activity-instructions>
+    <activity-instructions id="instructions">
+      <span slot="title" data-i18n="bonds.acidBase.title"></span>
+      <span slot="instructions" data-i18n="bonds.instructions"></span>
+    </activity-instructions>
     <a-scene
       embedded
       arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
