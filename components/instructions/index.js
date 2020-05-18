@@ -28,7 +28,7 @@ instructionsTemplate.innerHTML = /* html */ `
     }
 
     h1 {
-      margin: 0 0 2rem 0;
+      margin: 2rem 0 1.5rem 0;
       font-size: 3rem;
       font-weight: 600;
     }
@@ -67,6 +67,7 @@ instructionsTemplate.innerHTML = /* html */ `
     }
   </style>
   <div class="overlay active">
+    <molecule-icon medium no-strokes></molecule-icon>
     <h1>Equilibria between an acid and a base</h1>
     <p>
       Click <strong>here</strong> to find the AR markers with print and assemble instructions.
