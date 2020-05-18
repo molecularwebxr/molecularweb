@@ -20,9 +20,11 @@
     <!-- Web Components -->
     <script src="/components/back-anchor/index.js"></script>
     <script src="/components/icons/tubes/index.js"></script>
+    <script src="/components/icons/molecule/index.js"></script>
     <script src="/components/loader/index.js"></script>
     <script src="/components/flip-video/index.js"></script>
     <script src="/components/flip-graphics/index.js"></script>
+    <script src="/components/instructions/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="index.js"></script>
@@ -47,6 +49,10 @@
     <loader-component display="true"></loader-component>
     <flip-video></flip-video>
     <flip-graphics></flip-graphics>
+    <activity-instructions id="instructions">
+      <span slot="title" data-i18n="bonds.acidDeprotonation.title"></span>
+      <span slot="instructions" data-i18n="bonds.instructions"></span>
+    </activity-instructions>
     <a-scene
       embedded
       arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
@@ -410,5 +416,6 @@
     </a-scene>
     <script src="/modules/utils/handleLoader.js"></script>
     <script src="/modules/utils/handleFlips.js"></script>
+    <script src="/modules/utils/handleOverlays.js"></script>
   </body>
 </html>

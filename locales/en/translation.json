@@ -16,7 +16,8 @@
     "title": "Orbitals and molecular shapes",
     "atomicOrbitals": {
       "title": "Atomic orbitals and VSEPR theory",
-      "description": "Visualize and compare all the most common pure and hybrid atomic orbitals, and the basic VSEPR geometries."
+      "description": "Visualize and compare all the most common pure and hybrid atomic orbitals, and the basic VSEPR geometries.",
+      "instructions": "Choose an orbital or simple molecule to be displayed on each AR marker."
     },
     "molecularOrbitals": {
       "title": "Molecular orbitals",
