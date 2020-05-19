@@ -54,6 +54,17 @@ figure {
   margin: 0;
 }
 
+.side-menu {
+  position: fixed;
+  width: 50px;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
 .selection-menu {
   position: fixed;
   bottom: 5px;

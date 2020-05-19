@@ -2,11 +2,6 @@ const FlipGraphicsContent = /* html */ `
   <style>
     a {
       cursor: pointer;
-      position: absolute;
-      top: 50%;
-      right: 5px;
-      transform: translateY(52.5%);
-      z-index: 1;
     }
     svg {
       transition: transform 0.2s;

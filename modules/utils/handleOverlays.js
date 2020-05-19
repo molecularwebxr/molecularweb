@@ -1,7 +1,16 @@
-const instructionsOverlay = document.querySelector("activity-instructions");
+const instructionsOverlay = document.getElementById("instructions");
+const instructionsButton = document.querySelector("toggle-instructions");
 
-// function hideInstructionsOverlay() {
-//   console.log("Hide me!");
-// }
+const descriptionOverlay = document.getElementById("description");
+const descriptionButton = document.querySelector("toggle-description");
 
-// instructionsOverlay.addEventListener("hideInstructions", hideInstructionsOverlay);
+function hideInstructionsOverlay() {
+  instructionsOverlay.toggle();
+}
+
+function hideDescriptionOverlay() {
+  descriptionOverlay.toggle();
+}
+
+instructionsButton.addEventListener("toggleInstructions", hideInstructionsOverlay);
+descriptionButton.addEventListener("toggleDescription", hideDescriptionOverlay);

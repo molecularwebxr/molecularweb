@@ -24,7 +24,9 @@
     <script src="/components/loader/index.js"></script>
     <script src="/components/flip-video/index.js"></script>
     <script src="/components/flip-graphics/index.js"></script>
-    <script src="/components/instructions/index.js"></script>
+    <script src="/components/overlay/index.js"></script>
+    <script src="/components/toggle-instructions/index.js"></script>
+    <script src="/components/toggle-description/index.js"></script>
     
     <!-- Utils & A-Frame Components -->
     <script src="index.js"></script>
@@ -34,6 +36,7 @@
   </head>
 
   <body>
+    <!-- Header -->
     <header id="header">
       <div class="row">
         <figure>
@@ -42,14 +45,31 @@
         <h1 class="activity-title" data-i18n="bonds.ammoniaProtonation.title"></h1>
       </div>
     </header>
+
+    <!-- UI Components -->
     <back-anchor></back-anchor>
-    <flip-video></flip-video>
-    <flip-graphics></flip-graphics>
     <loader-component display="true"></loader-component>
-    <activity-instructions id="instructions">
+    
+    <!-- Side buttons -->
+    <div class="side-menu column">
+      <flip-video></flip-video>
+      <flip-graphics></flip-graphics>
+      <toggle-instructions></toggle-instructions>
+      <toggle-description></toggle-description>
+    </div>
+
+    <!-- Overlays -->
+    <activity-overlay id="instructions" default="open" type="instructions">
       <span slot="title" data-i18n="bonds.ammoniaProtonation.title"></span>
       <span slot="instructions" data-i18n="bonds.instructions"></span>
-    </activity-instructions>
+    </activity-overlay>
+
+    <activity-overlay id="description" default="hidden" type="description">
+      <span slot="title" data-i18n="bonds.ammoniaProtonation.title"></span>
+      <span slot="description" data-i18n="bonds.ammoniaProtonation.description"></span>
+    </activity-overlay>
+
+
     <a-scene
       embedded
       arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"

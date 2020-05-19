@@ -1,5 +1,5 @@
-const instructionsTemplate = document.createElement("template");
-instructionsTemplate.innerHTML = /* html */ `
+const overlayTemplate = document.createElement("template");
+overlayTemplate.innerHTML = /* html */ `
   <style>
     .overlay {
       background-color: rgba(23, 58, 123, 0.6);
@@ -26,20 +26,24 @@ instructionsTemplate.innerHTML = /* html */ `
       opacity: 1;
       visibility: visible;
     }
-
+    
     h1 {
       margin: 2rem 0 1.5rem 0;
       font-size: 3rem;
       font-weight: 600;
       text-align: center;
     }
-
+    
     p{
       margin: 0.5rem 0;
       font-size: 1.5rem;
       font-weight: normal;
       text-align: center;
       width: 54rem;
+    }
+    
+    p.hidden {
+      display: none;
     }
 
     button {
@@ -133,49 +137,69 @@ instructionsTemplate.innerHTML = /* html */ `
       }
     }
   </style>
-  <div class="overlay active" id="overlay">
+  <div class="overlay" id="overlay">
     <molecule-icon medium no-strokes></molecule-icon>
     <h1>
       <slot name="title"></slot>
     </h1>
-    <p>
+    <p id="markers">
       <intl-message key="app.markers"></intl-message>
     </p>
     <p>
       <slot name="instructions"></slot>
     </p>
+    <p>
+      <slot name="description"></slot>
+    </p>
     <button>Continue</button>
   </div>`;
 
-class ActivityInstructions extends HTMLElement {
+class ActivityOverlay extends HTMLElement {
+
   static get observedAttributes() {
-    return ["title"];
+    return ["default", "type"];
   }
 
-  set title(value) {
-    this._title = value;
-    this.titleI18n.key = this._title;
-    console.log(this.titleI18n.key);
+  set default(value) {
+    this._default = value;
   }
 
-  get title() {
-    return this._title;
+  get default() {
+    return this._default;
   }
 
+  set type(value) {
+    this._type = value;
+  }
+
+  get type() {
+    return this._type;
+  }
+  
   constructor() {
     super();
-    this.show = true;
 
     this.toggle = this.toggle.bind(this);
 
     this.attachShadow({ mode: "open" });
-    this.shadowRoot.appendChild(instructionsTemplate.content.cloneNode(true));
+    this.shadowRoot.appendChild(overlayTemplate.content.cloneNode(true));
 
     this.buttonElement = this.shadowRoot.querySelector("button");
     this.buttonElement.addEventListener("click", this.toggle);
 
     this.overlayElement = this.shadowRoot.getElementById("overlay");
-    this.titleI18n = this.shadowRoot.getElementById("title-i18n");
+
+    this.markersTextElement = this.shadowRoot.getElementById("markers");
+  }
+
+  connectedCallback() {
+    if(this.default === "open") {
+      this.overlayElement.classList.add("active");
+    }
+
+    if(this.type === "description") {
+      this.markersTextElement.classList.add("hidden");
+    }
   }
 
   toggle() {
@@ -183,10 +207,15 @@ class ActivityInstructions extends HTMLElement {
   }
 
   attributeChangedCallback(attrName, oldValue, newValue) {
-    if (attrName === "title") {
-      this.title = newValue;
+    if (attrName === "default") {
+      this.default = newValue;
+    }
+
+    if (attrName === "type") {
+      this.type = newValue;
     }
   }
+
 }
 
-customElements.define("activity-instructions", ActivityInstructions);
+customElements.define("activity-overlay", ActivityOverlay);
