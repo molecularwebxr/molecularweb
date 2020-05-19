@@ -1,7 +1,8 @@
 const instructionsOverlay = document.querySelector("activity-instructions");
+const instructionsButton = document.querySelector("toggle-instructions");
 
-// function hideInstructionsOverlay() {
-//   console.log("Hide me!");
-// }
+function hideInstructionsOverlay() {
+  instructionsOverlay.toggle();
+}
 
-// instructionsOverlay.addEventListener("hideInstructions", hideInstructionsOverlay);
+instructionsButton.addEventListener("toggleInstructions", hideInstructionsOverlay);
