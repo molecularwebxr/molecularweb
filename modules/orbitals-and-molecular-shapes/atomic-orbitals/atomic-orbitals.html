@@ -24,7 +24,9 @@
     <script src="/components/loader/index.js"></script>
     <script src="/components/flip-video/index.js"></script>
     <script src="/components/flip-graphics/index.js"></script>
-    <script src="/components/instructions/index.js"></script>
+    <script src="/components/overlay/index.js"></script>
+    <script src="/components/toggle-instructions/index.js"></script>
+    <script src="/components/toggle-description/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="../utils/modelOpacity.js"></script>
@@ -33,6 +35,7 @@
   </head>
 
   <body>
+    <!-- Header -->
     <header id="header">
       <div class="row">
         <figure>
@@ -44,14 +47,29 @@
         ></h1>
       </div>
     </header>
+    
+    <!-- UI Components -->
     <back-anchor></back-anchor>
     <loader-component display="true"></loader-component>
-    <flip-video></flip-video>
-    <flip-graphics></flip-graphics>
-    <activity-instructions id="instructions">
+    
+    <!-- Side buttons -->
+    <div class="side-menu column">
+      <flip-video></flip-video>
+      <flip-graphics></flip-graphics>
+      <toggle-instructions></toggle-instructions>
+      <toggle-description></toggle-description>
+    </div>
+
+    <activity-overlay id="instructions" default="open" type="instructions">
       <span slot="title" data-i18n="orbitals.atomicOrbitals.title"></span>
       <span slot="instructions" data-i18n="orbitals.atomicOrbitals.instructions"></span>
-    </activity-instructions>
+    </activity-overlay>
+
+    <activity-overlay id="description" default="hidden" type="description">
+      <span slot="title" data-i18n="orbitals.atomicOrbitals.title"></span>
+      <span slot="description" data-i18n="orbitals.atomicOrbitals.description"></span>
+    </activity-overlay>
+
     <div class="selection-menu row">
       <div class="row">
         <img
