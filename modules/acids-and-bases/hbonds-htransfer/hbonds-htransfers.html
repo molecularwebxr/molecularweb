@@ -59,11 +59,15 @@
     </div>
 
     <!-- Overlays -->
-    <activity-instructions id="instructions">
+    <activity-overlay id="instructions" default="open" type="instructions">
       <span slot="title" data-i18n="bonds.acidBase.title"></span>
       <span slot="instructions" data-i18n="bonds.instructions"></span>
-    </activity-instructions>
+    </activity-overlay>
 
+    <activity-overlay id="description" default="hidden" type="description">
+      <span slot="title" data-i18n="bonds.acidBase.title"></span>
+      <span slot="description" data-i18n="bonds.acidBase.description"></span>
+    </activity-overlay>
 
     <a-scene
       embedded
@@ -186,7 +190,7 @@
         <!-- This is a lysine side chain, starting from the CA atom, which is set to the origin
             All coordinates have been divided by 2,
             so any distance between two atoms must be multiplied by 2 to get the actual distance-->
-        <a-entity rotation="180 180 0"  listen-to-flip>
+        <a-entity rotation="180 180 0" listen-to-flip>
           <a-sphere
             id="lys1B"
             position="0.000   0.000   0.000"
@@ -294,7 +298,7 @@
 
       <a-marker type="barcode" id="gluA" value="2">
         <!-- This is a glutamate side chain, starting from the CA atom, which is set to the origin-->
-        <a-entity rotation="0 0 0"  listen-to-flip>
+        <a-entity rotation="0 0 0" listen-to-flip>
           <a-sphere
             id="glu1A"
             position="0.000   0.000   0.000"
@@ -374,7 +378,7 @@
 
       <a-marker type="barcode" id="gluB" value="3">
         <!-- This is a glutamate side chain, starting from the CA atom, which is set to the origin-->
-        <a-entity rotation="180 180 0"  listen-to-flip>
+        <a-entity rotation="180 180 0" listen-to-flip>
           <a-sphere
             id="glu1B"
             position="0.000   0.000   0.000"
