@@ -35,6 +35,7 @@
   </head>
 
   <body>
+    <!-- Header -->
     <header id="header">
       <div class="row">
         <figure>
@@ -43,15 +44,25 @@
         <h1 class="activity-title" data-i18n="bonds.acidBase.title"></h1>
       </div>
     </header>
+
+    <!-- UI Components -->
     <back-anchor></back-anchor>
     <loader-component display="true"></loader-component>
-    <flip-video></flip-video>
-    <flip-graphics></flip-graphics>
-    <toggle-instructions></toggle-instructions>
+
+    <!-- Side buttons -->
+    <div class="side-menu column">
+      <flip-video></flip-video>
+      <flip-graphics></flip-graphics>
+      <toggle-instructions></toggle-instructions>
+    </div>
+
+    <!-- Overlays -->
     <activity-instructions id="instructions">
       <span slot="title" data-i18n="bonds.acidBase.title"></span>
       <span slot="instructions" data-i18n="bonds.instructions"></span>
     </activity-instructions>
+
+
     <a-scene
       embedded
       arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"

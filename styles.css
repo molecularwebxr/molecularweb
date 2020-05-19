@@ -94,7 +94,7 @@ footer {
   visibility: hidden;
   position: absolute;
   z-index: 1;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .language-menu li {
@@ -332,7 +332,7 @@ footer {
 .module-header {
   align-items: center;
   margin-bottom: 1.5rem;
-  transition: margin-bottom .25s ease-in-out;
+  transition: margin-bottom 0.25s ease-in-out;
   position: relative;
 }
 
@@ -341,11 +341,11 @@ footer {
   position: absolute;
   top: 45%;
   right: -10px;
-  transform: translate(0,-50%);
+  transform: translate(0, -50%);
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
   border-left: 5px solid var(--blue);
-  transition: transform .2s ease-out;
+  transition: transform 0.2s ease-out;
   transform: rotate(-90deg);
 }
 
@@ -356,7 +356,7 @@ footer {
   column-gap: 2.5rem;
   row-gap: 1.5rem;
   overflow: hidden;
-  transition: max-height .25s ease-in-out;
+  transition: max-height 0.25s ease-in-out;
 }
 
 .module-activities.empty-grid {
@@ -371,7 +371,7 @@ footer {
   margin-bottom: 1rem;
 }
 
-.module-header.expanded .triangle{
+.module-header.expanded .triangle {
   transform: rotate(90deg);
 }
 
@@ -380,13 +380,13 @@ footer {
   height: 14rem;
   position: relative;
   border-radius: 0.25rem;
-  border: 1px solid #D6D6D6;
-  box-shadow: 0 2px 10px 0 #E2E8EE;
+  border: 1px solid #d6d6d6;
+  box-shadow: 0 2px 10px 0 #e2e8ee;
   padding: 1rem;
 }
 
 .activity:hover {
-  box-shadow: 0 2px 30px 0 #E2E8EE;
+  box-shadow: 0 2px 30px 0 #e2e8ee;
 }
 
 .activity.short-text {
@@ -479,19 +479,19 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
     justify-content: center;
   }
-  .module-title{
+  .module-title {
     font-size: 1.1rem;
   }
   .activity-description {
     font-size: 0.8rem;
   }
-  .module-header{
+  .module-header {
     margin-bottom: 0;
   }
   .module-activities.empty-grid {
     grid-template-columns: repeat(auto-fill, minmax(300px, 380px));
   }
-  .activity-title{
+  .activity-title {
     font-size: 1rem;
     height: auto;
   }
@@ -552,7 +552,6 @@ footer {
     height: 7.5rem;
   }
 }
-
 
 @media screen and (max-width: 500px) {
   .activity {

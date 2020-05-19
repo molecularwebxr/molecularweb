@@ -3,11 +3,6 @@ instructionsIconTemplate.innerHTML = /* html */ `
   <style>
     a {
       cursor: pointer;
-      position: absolute;
-      top: 70%;
-      right: 5px;
-      transform: translateY(-70%);
-      z-index: 1;
     }
     svg {
       transition: transform 0.2s;
