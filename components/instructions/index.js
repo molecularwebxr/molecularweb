@@ -148,23 +148,9 @@ instructionsTemplate.innerHTML = /* html */ `
   </div>`;
 
 class ActivityInstructions extends HTMLElement {
-  static get observedAttributes() {
-    return ["title"];
-  }
-
-  set title(value) {
-    this._title = value;
-    this.titleI18n.key = this._title;
-    console.log(this.titleI18n.key);
-  }
-
-  get title() {
-    return this._title;
-  }
-
+  
   constructor() {
     super();
-    this.show = true;
 
     this.toggle = this.toggle.bind(this);
 
@@ -182,11 +168,6 @@ class ActivityInstructions extends HTMLElement {
     this.overlayElement.classList.toggle("active");
   }
 
-  attributeChangedCallback(attrName, oldValue, newValue) {
-    if (attrName === "title") {
-      this.title = newValue;
-    }
-  }
 }
 
 customElements.define("activity-instructions", ActivityInstructions);

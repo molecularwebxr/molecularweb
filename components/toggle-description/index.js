@@ -43,7 +43,7 @@ class ToggleDescription extends HTMLElement {
   }
 
   handleClick() {
-    this.dispatchEvent(new CustomEvent("toggleInstructions"));
+    this.dispatchEvent(new CustomEvent("toggleDescription"));
   }
 }
 
