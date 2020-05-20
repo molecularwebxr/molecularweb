@@ -1,6 +1,6 @@
 /* global AFRAME, THREE */
 
-AFRAME.registerComponent("update-stuff", {
+AFRAME.registerComponent("interactive-molecules", {
   init: function() {
     // Get elements from the scene
 
@@ -75,6 +75,10 @@ AFRAME.registerComponent("update-stuff", {
         (marker) => marker !== markerLost
       );
     };
+
+    this.reset = this.reset.bind(this);
+    const resetActivityButton = document.querySelector("reset-activity");
+    resetActivityButton.addEventListener("resetActivity", this.reset);
   },
 
   tick: function(t) {
@@ -234,5 +238,47 @@ AFRAME.registerComponent("update-stuff", {
     } else {
       this.bridge.setAttribute("visible", false);
     }
+  },
+
+  reset: function() {
+    this.protoWat = 2; 
+    this.protoAce = 1;
+
+    this.wat2A.setAttribute("visible", false);
+    this.wat2B.setAttribute("visible", false);
+
+    this.wat3A.setAttribute("visible", true);
+    this.wat3B.setAttribute("visible", true);
+
+    this.wat4A.setAttribute("visible", false);
+    this.wat4B.setAttribute("visible", false);
+
+    this.wat5A.setAttribute("visible", true);
+    this.wat5B.setAttribute("visible", true);
+
+    this.watorb2A.setAttribute("visible", true);
+    this.watorb2B.setAttribute("visible", true);
+
+    this.watorb3A.setAttribute("visible", false);
+    this.watorb3B.setAttribute("visible", false);
+
+    this.watorb4A.setAttribute("visible", true);
+    this.watorb4B.setAttribute("visible", true);
+
+    this.watorb5A.setAttribute("visible", false);
+    this.watorb5B.setAttribute("visible", false);
+
+    this.ace7A.setAttribute("visible", true);
+    this.ace7B.setAttribute("visible", true);
+
+    this.ace8A.setAttribute("visible", false);
+    this.ace8B.setAttribute("visible", false);
+
+    this.aceorb7A.setAttribute("visible", false);
+    this.aceorb7B.setAttribute("visible", false);
+
+    this.aceorb8A.setAttribute("visible", true);
+    this.aceorb8B.setAttribute("visible", true);
+
   }
 });

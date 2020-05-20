@@ -8,11 +8,39 @@ const marker1BModel = document.getElementById("marker-1B-mol");
 const marker2AModel = document.getElementById("marker-2A-mol");
 const marker2BModel = document.getElementById("marker-2B-mol");
 
+const resetActivityButton = document.querySelector("reset-activity");
+
 const modelsMarker1 = [marker1AModel, marker1BModel];
 const modelsMarker2 = [marker2AModel, marker2BModel];
 
 marker1Select.selectedIndex = 0;
 marker2Select.selectedIndex = 0;
+
+function handleReset(e) {
+  marker1Select.selectedIndex = 0;
+  marker2Select.selectedIndex = 0;
+
+  marker1AModel.removeAttribute("gltf-model");
+  marker1BModel.removeAttribute("gltf-model");
+  marker1AModel.removeAttribute("obj-model");
+  marker1AModel.removeAttribute("obj-model");
+
+  marker2AModel.removeAttribute("gltf-model");
+  marker2BModel.removeAttribute("gltf-model");
+  marker2AModel.removeAttribute("obj-model");
+  marker2AModel.removeAttribute("obj-model");
+
+  marker1AModel.setAttribute("gltf-model", "#orb1");
+  marker1BModel.setAttribute("gltf-model", "#orb1");
+  marker2AModel.setAttribute("gltf-model", "#orb1");
+  marker2BModel.setAttribute("gltf-model", "#orb1");
+
+  marker1AModel.setAttribute("model-opacity", 0.5);
+  marker1BModel.setAttribute("model-opacity", 0.5);
+  marker2AModel.setAttribute("model-opacity", 0.5);
+  marker2BModel.setAttribute("model-opacity", 0.5);
+ 
+}
 
 function handleSelection(e) {
   e.preventDefault();
@@ -57,3 +85,4 @@ function handleSelection(e) {
 
 marker1Select.addEventListener("change", handleSelection);
 marker2Select.addEventListener("change", handleSelection);
+resetActivityButton.addEventListener("resetActivity", handleReset);

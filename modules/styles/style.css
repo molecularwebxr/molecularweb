@@ -66,6 +66,7 @@ figure {
 }
 
 .selection-menu {
+  z-index: 1;
   position: fixed;
   bottom: 5px;
   left: 50%;

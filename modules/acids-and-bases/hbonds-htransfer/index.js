@@ -1,6 +1,7 @@
 /* global AFRAME, THREE */
 
-AFRAME.registerComponent("update-stuff", {
+// Ths component handles interactivity between molecules
+AFRAME.registerComponent("interactive-molecules", {
   init: function () {
     // Get elements from the scene
 
@@ -70,6 +71,10 @@ AFRAME.registerComponent("update-stuff", {
         (marker) => marker !== markerLost
       );
     };
+
+    this.reset = this.reset.bind(this);
+    const resetActivityButton = document.querySelector("reset-activity");
+    resetActivityButton.addEventListener("resetActivity", this.reset);
   },
 
   tick: function (t) {
@@ -86,7 +91,7 @@ AFRAME.registerComponent("update-stuff", {
         this.visibleMarkers.includes("lysB")) ||
       (this.visibleMarkers.includes("gluA") &&
         this.visibleMarkers.includes("gluB"));
-    
+
     const areEnoughMarkers = this.visibleMarkers.length === 2;
 
     if (areMarkersInvalid || !areEnoughMarkers) {
@@ -143,8 +148,10 @@ AFRAME.registerComponent("update-stuff", {
     const lysineSide = this.visibleMarkers.includes("lysA") ? "A" : "B";
     const glutamateSide = this.visibleMarkers.includes("gluA") ? "A" : "B";
 
-    const lysinePositions = lysineSide === "A" ? lysineAPositions : lysineBPositions;
-    const glutamatePositions = glutamateSide === "A" ? glutamateAPositions : glutamateBPositions;
+    const lysinePositions =
+      lysineSide === "A" ? lysineAPositions : lysineBPositions;
+    const glutamatePositions =
+      glutamateSide === "A" ? glutamateAPositions : glutamateBPositions;
 
     const lysine = lysineSide === "A" ? lysineA : lysineB;
     const glutamate = glutamateSide === "A" ? glutamateA : glutamateB;
@@ -156,8 +163,14 @@ AFRAME.registerComponent("update-stuff", {
 
     lysinePositions.forEach((lysineItem, lysineIndex) => {
       glutamatePositions.forEach((glutamateItem, glutamateIndex) => {
-        const distance = 2 * Math.sqrt(Math.pow(glutamateItem.x-lysineItem.x,2) + Math.pow(glutamateItem.y-lysineItem.y,2) + Math.pow(glutamateItem.z-lysineItem.z,2));
-        if(distance < closestDistance) {
+        const distance =
+          2 *
+          Math.sqrt(
+            Math.pow(glutamateItem.x - lysineItem.x, 2) +
+              Math.pow(glutamateItem.y - lysineItem.y, 2) +
+              Math.pow(glutamateItem.z - lysineItem.z, 2)
+          );
+        if (distance < closestDistance) {
           closestDistance = distance;
           closestLysine = lysineIndex;
           closestGlutamate = glutamateIndex;
@@ -173,74 +186,124 @@ AFRAME.registerComponent("update-stuff", {
         const correspondingOxygen = closestGlutamate === 0 ? "glu6" : "glu5";
         connector.setAttribute(
           "connector",
-          `src: #lys${closestLysine + 15}${lysineSide}; dest: #${correspondingOxygen}${glutamateSide}; alpha: ` + index / 10,
+          `src: #lys${
+            closestLysine + 15
+          }${lysineSide}; dest: #${correspondingOxygen}${glutamateSide}; alpha: ` +
+            index / 10
         );
       });
     } else if (this.glu_prot == 1) {
       [...this.connectors].forEach((connector, index) => {
         connector.setAttribute(
           "connector",
-          `src: #lys6${lysineSide}; dest: #glu11${glutamateSide}; alpha: ` + index / 10
+          `src: #lys6${lysineSide}; dest: #glu11${glutamateSide}; alpha: ` +
+            index / 10
         );
       });
     } else if (this.glu_prot == 2) {
       [...this.connectors].forEach((connector, index) => {
         connector.setAttribute(
           "connector",
-          `src: #lys6${lysineSide}; dest: #glu12${glutamateSide}; alpha: ` + index / 10
+          `src: #lys6${lysineSide}; dest: #glu12${glutamateSide}; alpha: ` +
+            index / 10
         );
       });
     }
 
-      // Which element are closer? should we display bridge?
-      const isClosestLysineVisible = lysine[closestLysine].getAttribute('visible');
-      const isClosestGlutamateVisible = glutamate[closestGlutamate].getAttribute('visible');
+    // Which element are closer? should we display bridge?
+    const isClosestLysineVisible = lysine[closestLysine].getAttribute(
+      "visible"
+    );
+    const isClosestGlutamateVisible = glutamate[closestGlutamate].getAttribute(
+      "visible"
+    );
 
-      if(closestDistance < 2) {
-        this.bridge.setAttribute("visible", true);
-        if (closestGlutamate === 0 && (this.glu_prot == 0 || this.glu_prot == 1)) {
-          if (Math.random() < 0.2) {
-            if(isClosestGlutamateVisible && !isClosestLysineVisible && this.lys_prot === 0) {
-              lysineA[closestLysine].setAttribute('visible', true);
-              lysineB[closestLysine].setAttribute('visible', true);
-              this.glu11A.setAttribute("visible", false);
-              this.glu11B.setAttribute("visible", false);
-              this.glu_prot = 0;
-              this.lys_prot = 1;
-            }
-          } else {
-            if(!isClosestGlutamateVisible && isClosestLysineVisible && this.lys_prot === 1) {
-              lysineA[closestLysine].setAttribute('visible', false);
-              lysineB[closestLysine].setAttribute('visible', false);
-              this.glu11A.setAttribute("visible", true);
-              this.glu11B.setAttribute("visible", true);
-              this.glu_prot = 1;
-              this.lys_prot = 0;
-            }
+    if (closestDistance < 2) {
+      this.bridge.setAttribute("visible", true);
+      if (
+        closestGlutamate === 0 &&
+        (this.glu_prot == 0 || this.glu_prot == 1)
+      ) {
+        if (Math.random() < 0.2) {
+          if (
+            isClosestGlutamateVisible &&
+            !isClosestLysineVisible &&
+            this.lys_prot === 0
+          ) {
+            lysineA[closestLysine].setAttribute("visible", true);
+            lysineB[closestLysine].setAttribute("visible", true);
+            this.glu11A.setAttribute("visible", false);
+            this.glu11B.setAttribute("visible", false);
+            this.glu_prot = 0;
+            this.lys_prot = 1;
           }
-        } else if (closestGlutamate === 1 && (this.glu_prot == 0 || this.glu_prot == 2)) {
-          if (Math.random() < 0.2) {
-            if(isClosestGlutamateVisible && !isClosestLysineVisible && this.lys_prot === 0) {
-              lysineA[closestLysine].setAttribute('visible', true);
-              lysineB[closestLysine].setAttribute('visible', true);
-              this.glu12A.setAttribute("visible", false);
-              this.glu12B.setAttribute("visible", false);
-              this.glu_prot = 0;
-              this.lys_prot = 1;
-            }
-          } else {
-            if(!isClosestGlutamateVisible && isClosestLysineVisible && this.lys_prot === 1) {
-              lysineA[closestLysine].setAttribute('visible', false);
-              lysineB[closestLysine].setAttribute('visible', false);
-              this.glu12A.setAttribute("visible", true);
-              this.glu12B.setAttribute("visible", true);
-              this.glu_prot = 2;
-              this.lys_prot = 0;
-            }
+        } else {
+          if (
+            !isClosestGlutamateVisible &&
+            isClosestLysineVisible &&
+            this.lys_prot === 1
+          ) {
+            lysineA[closestLysine].setAttribute("visible", false);
+            lysineB[closestLysine].setAttribute("visible", false);
+            this.glu11A.setAttribute("visible", true);
+            this.glu11B.setAttribute("visible", true);
+            this.glu_prot = 1;
+            this.lys_prot = 0;
           }
         }
-      } else {
-        this.bridge.setAttribute("visible", false);
+      } else if (
+        closestGlutamate === 1 &&
+        (this.glu_prot == 0 || this.glu_prot == 2)
+      ) {
+        if (Math.random() < 0.2) {
+          if (
+            isClosestGlutamateVisible &&
+            !isClosestLysineVisible &&
+            this.lys_prot === 0
+          ) {
+            lysineA[closestLysine].setAttribute("visible", true);
+            lysineB[closestLysine].setAttribute("visible", true);
+            this.glu12A.setAttribute("visible", false);
+            this.glu12B.setAttribute("visible", false);
+            this.glu_prot = 0;
+            this.lys_prot = 1;
+          }
+        } else {
+          if (
+            !isClosestGlutamateVisible &&
+            isClosestLysineVisible &&
+            this.lys_prot === 1
+          ) {
+            lysineA[closestLysine].setAttribute("visible", false);
+            lysineB[closestLysine].setAttribute("visible", false);
+            this.glu12A.setAttribute("visible", true);
+            this.glu12B.setAttribute("visible", true);
+            this.glu_prot = 2;
+            this.lys_prot = 0;
+          }
+        }
       }
+    } else {
+      this.bridge.setAttribute("visible", false);
+    }
   },
+
+  reset: function () {
+    // Reset Glutamate
+    this.glu11A.setAttribute("visible", false);
+    this.glu11B.setAttribute("visible", false);
+    this.glu12A.setAttribute("visible", false);
+    this.glu12B.setAttribute("visible", false);
+
+    // Reset Lysine
+    this.lys17A.setAttribute("visible", true);
+    this.lys17B.setAttribute("visible", true);
+    this.lys16A.setAttribute("visible", true);
+    this.lys16B.setAttribute("visible", true);
+    this.lys15A.setAttribute("visible", true);
+    this.lys15B.setAttribute("visible", true);
+
+    this.lys_prot = 1; 
+    this.glu_prot = 0;
+  }
 });
