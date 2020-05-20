@@ -1,6 +1,6 @@
 /* global AFRAME, THREE */
 
-AFRAME.registerComponent("update-stuff", {
+AFRAME.registerComponent("interactive-molecules", {
   init: function() {
     // Get elements from the scene
 

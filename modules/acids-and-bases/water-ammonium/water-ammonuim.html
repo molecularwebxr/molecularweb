@@ -27,7 +27,8 @@
     <script src="/components/overlay/index.js"></script>
     <script src="/components/toggle-instructions/index.js"></script>
     <script src="/components/toggle-description/index.js"></script>
-    
+    <script src="/components/reset-activity/index.js"></script>
+
     <!-- Utils & A-Frame Components -->
     <script src="index.js"></script>
     <script src="../utils/connector.js"></script>
@@ -56,6 +57,7 @@
       <flip-graphics></flip-graphics>
       <toggle-instructions></toggle-instructions>
       <toggle-description></toggle-description>
+      <reset-activity></reset-activity>
     </div>
 
     <!-- Overlays -->
@@ -75,7 +77,7 @@
       arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
       id="scene"
       renderer="logarithmicDepthBuffer: true;"
-      update-stuff
+      interactive-molecules
     >
       <a-marker type="barcode" value="0" id="watA">
         <a-entity id="lys" rotation="0 0 0" listen-to-flip>
