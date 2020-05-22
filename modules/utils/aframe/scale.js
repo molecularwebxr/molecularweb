@@ -1,8 +1,10 @@
 AFRAME.registerComponent("listen-to-scale", {
   init: function () {
     this.scale = this.scale.bind(this);
-    const scaleGraphicsButton = document.querySelector("scale-graphics");
-    scaleGraphicsButton.addEventListener("scaleGraphics", this.scale);
+    const scaleUpButton = document.getElementById("scale-up");
+    const scaleDownButton = document.getElementById("scale-down");
+    scaleUpButton.addEventListener("scaleGraphics", this.scale);
+    scaleDownButton.addEventListener("scaleGraphics", this.scale);
   },
 
   scale: function (e) {

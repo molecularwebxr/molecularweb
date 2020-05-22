@@ -46,7 +46,7 @@ scaleIconTemplate.innerHTML = /* html */ `
             <rect class="icon-path" x="30" y="37" width="2" height="4" />
             <rect class="icon-path" x="30" y="49" width="2" height="4" />
             <rect class="icon-path" x="30" y="55" width="2" height="4" />
-            <g transform="matrix(-0.999974,0.00723202,-0.00723202,-0.999974,97.8153,29.9393)">
+            <g id="arrow" transform="matrix(-0.999974,0.00723202,-0.00723202,-0.999974,97.8153,29.9393)">
                 <path class="icon-path" d="M40,12L40,23L41,24L52,24L52,22L43.414,22L57.707,7.707L56.293,6.293L42,20.586L42,12L40,12Z" />
             </g>
         </g>
@@ -55,6 +55,19 @@ scaleIconTemplate.innerHTML = /* html */ `
   </a>`;
 
 class ScaleGraphics extends HTMLElement {
+
+  static get observedAttributes() {
+    return ["type"];
+  }
+
+  set type(value) {
+    this._type = value;
+  }
+
+  get type() {
+    return this._type;
+  }
+
   constructor() {
     super();
 
@@ -64,12 +77,25 @@ class ScaleGraphics extends HTMLElement {
     this.shadowRoot.appendChild(scaleIconTemplate.content.cloneNode(true));
 
     this.buttonElement = this.shadowRoot.querySelector("a");
+    this.arrowPath = this.shadowRoot.getElementById("arrow");
 
     this.buttonElement.addEventListener("click", this.handleClick);
   }
 
+  connectedCallback() {
+    if(this.type === "down") {
+      this.arrowPath.style.transform= "none";
+    }
+  }
+
   handleClick() {
-    this.dispatchEvent(new CustomEvent("scaleGraphics", { detail: "UP" }));
+    this.dispatchEvent(new CustomEvent("scaleGraphics", { detail: this.type }));
+  }
+
+  attributeChangedCallback(attrName, oldValue, newValue) {
+    if (attrName === "type") {
+      this.type = newValue;
+    }
   }
 }
 
