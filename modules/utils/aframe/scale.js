@@ -1,7 +1,7 @@
 AFRAME.registerComponent("listen-to-scale", {
   init: function () {
     this.scale = this.scale.bind(this);
-    this.scaleFactor = 2;
+    this.scaleFactor = 1;
 
     const scaleUpButton = document.getElementById("scale-up");
     const scaleDownButton = document.getElementById("scale-down");
