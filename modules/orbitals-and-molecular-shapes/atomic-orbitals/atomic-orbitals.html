@@ -29,11 +29,14 @@
     <script src="/components/toggle-description/index.js"></script>
     <script src="/components/reset-activity/index.js"></script>
     <script src="/components/scale-graphics/index.js"></script>
+    <script src="/components/enable-gestures/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="../utils/modelOpacity.js"></script>
     <script src="/modules/utils/aframe/flip.js"></script>
     <script src="/modules/utils/aframe/scale.js"></script>
+    <script src="/modules/utils/aframe/gesture-detector.js"></script>
+    <script src="/modules/utils/aframe/gesture-handler.js"></script>
     <script src="/modules/utils/handleTranslation.js"></script>
   </head>
 
@@ -64,6 +67,8 @@
       <reset-activity></reset-activity>
       <scale-graphics id="scale-up" type="up"></scale-graphics>
       <scale-graphics id="scale-down" type="down"></scale-graphics>
+      <enable-gestures id="marker1"></enable-gestures>
+      <enable-gestures id="marker2"></enable-gestures>
     </div>
 
     <div class="selection-menu row">
@@ -224,6 +229,7 @@
       renderer="logarithmicDepthBuffer: true;"
       loading-screen="enabled: false"
       gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;"
+      gesture-detector
     >
       <a-assets>
         <!--struct assets-->
@@ -343,8 +349,8 @@
         ></a-asset-item>
       </a-assets>
 
-      <a-marker type="barcode" value="0" id="marker-1A">
-        <a-entity rotation="0 0 0" listen-to-flip listen-to-scale>
+      <a-marker type="barcode" value="0">
+        <a-entity rotation="0 0 0" listen-to-flip listen-to-scale id="marker1A">
           <a-sphere
             id="atom1A"
             position="0.000   0.000   0.000"
@@ -363,8 +369,8 @@
         </a-entity>
       </a-marker>
 
-      <a-marker type="barcode" value="1" id="marker-1B">
-        <a-entity rotation="180 180 0" listen-to-flip listen-to-scale>
+      <a-marker type="barcode" value="1">
+        <a-entity rotation="180 180 0" listen-to-flip listen-to-scale id="marker1B">
           <a-sphere
             id="atom1B"
             position="0.000   0.000   0.000"
@@ -383,8 +389,8 @@
         </a-entity>
       </a-marker>
 
-      <a-marker type="barcode" value="2" id="marker-2A">
-        <a-entity rotation="0 0 0" listen-to-flip listen-to-scale>
+      <a-marker type="barcode" value="2">
+        <a-entity rotation="0 0 0" listen-to-flip listen-to-scale id="marker2A">
           <a-sphere
             id="atom2A"
             position="0.000   0.000   0.000"
@@ -403,8 +409,8 @@
         </a-entity>
       </a-marker>
 
-      <a-marker type="barcode" value="3" id="marker-2B">
-        <a-entity rotation="180 180 0" listen-to-flip listen-to-scale>
+      <a-marker type="barcode" value="3">
+        <a-entity rotation="180 180 0" listen-to-flip listen-to-scale id="marker2B">
           <a-sphere
             id="atom2B"
             position="0.000   0.000   0.000"
@@ -429,5 +435,6 @@
     <script src="/modules/utils/handleLoader.js"></script>
     <script src="/modules/utils/handleFlips.js"></script>
     <script src="/modules/utils/handleOverlays.js"></script>
+    <script src="/modules/utils/handleGestures.js"></script>
   </body>
 </html>
