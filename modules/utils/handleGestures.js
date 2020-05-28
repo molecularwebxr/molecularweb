@@ -16,35 +16,57 @@ function handleGestureState(event) {
   if (markerSelected === "marker1") {
     isMarker1Enabled = !isMarker1Enabled;
     marker1Handler.isActive = isMarker1Enabled;
+
+    if (isMarker1Enabled) {
+      enableMarker1();
+    } else {
+      disableMarker1();
+    }
+
     if (isMarker2Enabled) {
       isMarker2Enabled = false;
       marker2Handler.isActive = false;
+      disableMarker2();
     }
   }
 
   if (markerSelected === "marker2") {
     isMarker2Enabled = !isMarker2Enabled;
     marker2Handler.isActive = isMarker2Enabled;
+
+    if (isMarker2Enabled) {
+      enableMarker2();
+    } else {
+      disableMarker2();
+    }
+
+
     if (isMarker2Enabled) {
       isMarker1Enabled = false;
       marker1Handler.isActive = false;
+      disableMarker1();
     }
   }
+}
 
-  if (isMarker1Enabled) {
-    console.log("hi")
-    marker1A.setAttribute("gesture-handler", { factor: 5 });
-    marker1B.setAttribute("gesture-handler", { factor: 5 });
-    marker2A.removeAttribute("gesture-handler");
-    marker2B.removeAttribute("gesture-handler");
-  }
+function disableMarker1() {
+  marker1A.removeAttribute("gesture-handler");
+  marker1B.removeAttribute("gesture-handler");
+}
 
-  if (isMarker2Enabled) {
-    marker1A.removeAttribute("gesture-handler", {});
-    marker1B.removeAttribute("gesture-handler", {});
-    marker2A.setAttribute("gesture-handler", { factor: 5 });
-    marker2B.setAttribute("gesture-handler", { factor: 5 });
-  }
+function enableMarker1() {
+  marker1A.setAttribute("gesture-handler", { factor: 5 });
+  marker1B.setAttribute("gesture-handler", { factor: 5 });
+}
+
+function disableMarker2() {
+  marker2A.removeAttribute("gesture-handler");
+  marker2B.removeAttribute("gesture-handler");
+}
+
+function enableMarker2() {
+  marker2A.setAttribute("gesture-handler", { factor: 5 });
+  marker2B.setAttribute("gesture-handler", { factor: 5 });
 }
 
 marker1Handler.addEventListener("click", handleGestureState);

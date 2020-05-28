@@ -89,9 +89,6 @@
       gesture-detector
     >
       <a-marker type="barcode" value="0">
-        <!-- This is a lysine side chain, starting from the CA atom, which is set to the origin
-            All coordinates have been divided by 2,
-            so any distance between two atoms must be multiplied by 2 to get the actual distance-->
         <a-entity rotation="0 0 0" listen-to-flip listen-to-scale  id="marker1A">
           <a-sphere
             id="lys1A"
@@ -199,9 +196,6 @@
       </a-marker>
 
       <a-marker type="barcode" value="1" >
-        <!-- This is a lysine side chain, starting from the CA atom, which is set to the origin
-            All coordinates have been divided by 2,
-            so any distance between two atoms must be multiplied by 2 to get the actual distance-->
         <a-entity rotation="180 180 0" listen-to-flip listen-to-scale id="marker1B">
           <a-sphere
             id="lys1B"
@@ -309,7 +303,6 @@
       </a-marker>
 
       <a-marker type="barcode" value="2">
-        <!-- This is a glutamate side chain, starting from the CA atom, which is set to the origin-->
         <a-entity rotation="0 0 0" listen-to-flip listen-to-scale id="marker2A">
           <a-sphere
             id="glu1A"
@@ -389,7 +382,6 @@
       </a-marker>
 
       <a-marker type="barcode" value="3">
-        <!-- This is a glutamate side chain, starting from the CA atom, which is set to the origin-->
         <a-entity rotation="180 180 0" listen-to-flip listen-to-scale id="marker2B">
           <a-sphere
             id="glu1B"
