@@ -94,8 +94,14 @@
       interactive-molecules
       gesture-detector
     >
-      <a-marker type="barcode" value="0" >
-        <a-entity rotation="0 0 0" listen-to-flip listen-to-scale id="marker1A">
+      <a-marker type="barcode" value="0" id="watA">
+        <a-entity
+          rotation="0 0 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker1A"
+          gesture-handler="linkedMarker: #marker1B"
+        >
           <a-sphere
             id="wat1A"
             position="0 0 0"
@@ -165,8 +171,14 @@
         </a-entity>
       </a-marker>
 
-      <a-marker type="barcode" value="1">
-        <a-entity rotation="180 180 0" listen-to-flip listen-to-scale id="marker1B">
+      <a-marker type="barcode" value="1" id="watB">
+        <a-entity
+          rotation="180 180 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker1B"
+          gesture-handler="linkedMarker: #marker1A"
+        >
           <a-sphere
             id="wat1B"
             position="0 0 0"
@@ -236,8 +248,14 @@
         </a-entity>
       </a-marker>
 
-      <a-marker type="barcode" value="2">
-        <a-entity rotation="0 0 0" listen-to-flip listen-to-scale id="marker2A">
+      <a-marker type="barcode" value="2" id="aceA">
+        <a-entity
+          rotation="0 0 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker2A"
+          gesture-handler="linkedMarker: #marker2B"
+        >
           <a-sphere
             id="ace0A"
             position="0.01 0.06 0"
@@ -313,7 +331,13 @@
       </a-marker>
 
       <a-marker type="barcode" value="3" id="aceB">
-        <a-entity rotation="180 180 0" listen-to-flip listen-to-scale id="marker2B">
+        <a-entity
+          rotation="180 180 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker2B"
+          gesture-handler="linkedMarker: #marker2A"
+        >
           <a-sphere
             id="ace0B"
             position="0.01 0.06 0"
