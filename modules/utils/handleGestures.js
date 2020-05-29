@@ -50,23 +50,23 @@ function handleGestureState(event) {
 }
 
 function disableMarker1() {
-  marker1A.removeAttribute("gesture-handler");
-  marker1B.removeAttribute("gesture-handler");
+  marker1A.setAttribute("gesture-handler", { enabled: false });
+  marker1B.setAttribute("gesture-handler", { enabled: false });
 }
 
 function enableMarker1() {
-  marker1A.setAttribute("gesture-handler", { factor: 5 });
-  marker1B.setAttribute("gesture-handler", { factor: 5 });
+  marker1A.setAttribute("gesture-handler", { enabled: true });
+  marker1B.setAttribute("gesture-handler", { enabled: true });
 }
 
 function disableMarker2() {
-  marker2A.removeAttribute("gesture-handler");
-  marker2B.removeAttribute("gesture-handler");
+  marker2A.setAttribute("gesture-handler", { enabled: false });
+  marker2B.setAttribute("gesture-handler", { enabled: false });
 }
 
 function enableMarker2() {
-  marker2A.setAttribute("gesture-handler", { factor: 5 });
-  marker2B.setAttribute("gesture-handler", { factor: 5 });
+  marker2A.setAttribute("gesture-handler", { enabled: true });
+  marker2B.setAttribute("gesture-handler", { enabled: true });
 }
 
 marker1Handler.addEventListener("click", handleGestureState);
