@@ -5,12 +5,15 @@ AFRAME.registerComponent("gesture-handler", {
     enabled: { default: false },
     rotationFactor: { default: 5 },
     minScale: { default: 0.3 },
-    maxScale: { default: 8 }
+    maxScale: { default: 8 },
+    linkedMarker:{ default: "" }
   },
 
   init: function() {
     this.handleScale = this.handleScale.bind(this);
     this.handleRotation = this.handleRotation.bind(this);
+
+    this.linkedMarker = document.querySelector(this.data.linkedMarker);
 
     this.isVisible = false;
     this.initialScale = this.el.object3D.scale.clone();
@@ -54,6 +57,11 @@ AFRAME.registerComponent("gesture-handler", {
         event.detail.positionChange.x * this.data.rotationFactor;
       this.el.object3D.rotation.x +=
         event.detail.positionChange.y * this.data.rotationFactor;
+
+      this.linkedMarker.object3D.rotation.y +=
+        event.detail.positionChange.x * this.data.rotationFactor;
+      this.linkedMarker.object3D.rotation.x +=
+        event.detail.positionChange.y * this.data.rotationFactor;
     }
   },
 
@@ -70,6 +78,10 @@ AFRAME.registerComponent("gesture-handler", {
       this.el.object3D.scale.x = this.scaleFactor * this.initialScale.x;
       this.el.object3D.scale.y = this.scaleFactor * this.initialScale.y;
       this.el.object3D.scale.z = this.scaleFactor * this.initialScale.z;
+      
+      this.linkedMarker.object3D.scale.x = this.scaleFactor * this.initialScale.x;
+      this.linkedMarker.object3D.scale.y = this.scaleFactor * this.initialScale.y;
+      this.linkedMarker.object3D.scale.z = this.scaleFactor * this.initialScale.z;
     }
   }
 });
