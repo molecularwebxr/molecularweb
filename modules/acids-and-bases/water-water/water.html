@@ -29,17 +29,20 @@
     <script src="/components/toggle-description/index.js"></script>
     <script src="/components/reset-activity/index.js"></script>
     <script src="/components/scale-graphics/index.js"></script>
+    <script src="/components/enable-gestures/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="index.js"></script>
     <script src="../utils/connector.js"></script>
     <script src="/modules/utils/aframe/flip.js"></script>
     <script src="/modules/utils/aframe/scale.js"></script>
+    <script src="/modules/utils/aframe/gesture-detector.js"></script>
+    <script src="/modules/utils/aframe/gesture-handler.js"></script>
     <script src="/modules/utils/handleTranslation.js"></script>
   </head>
 
   <body>
-     <!-- Header -->
+    <!-- Header -->
     <header id="header">
       <div class="row">
         <figure>
@@ -52,10 +55,10 @@
       </div>
     </header>
 
-     <!-- UI Components -->
+    <!-- UI Components -->
     <back-anchor></back-anchor>
-    <loader-component display="true"></loader-component> 
-   
+    <loader-component display="true"></loader-component>
+
     <!-- Side buttons -->
     <div class="side-menu column">
       <flip-video></flip-video>
@@ -65,6 +68,8 @@
       <reset-activity></reset-activity>
       <scale-graphics id="scale-up" type="up"></scale-graphics>
       <scale-graphics id="scale-down" type="down"></scale-graphics>
+      <enable-gestures id="marker1"></enable-gestures>
+      <enable-gestures id="marker2"></enable-gestures>
     </div>
 
     <!-- Overlays -->
@@ -75,7 +80,10 @@
 
     <activity-overlay id="description" default="hidden" type="description">
       <span slot="title" data-i18n="bonds.waterProtonation.title"></span>
-      <span slot="description" data-i18n="bonds.waterProtonation.description"></span>
+      <span
+        slot="description"
+        data-i18n="bonds.waterProtonation.description"
+      ></span>
     </activity-overlay>
 
     <a-scene
@@ -84,9 +92,16 @@
       id="scene"
       renderer="logarithmicDepthBuffer: true;"
       interactive-molecules
+      gesture-detector
     >
       <a-marker type="barcode" value="0" id="watA">
-        <a-entity rotation="0 0 0" listen-to-flip listen-to-scale>
+        <a-entity
+          rotation="0 0 0"
+          listen-to-flip
+          listen-to-scale
+          gesture-handler="linkedMarker: #marker1B"
+          id="marker1A"
+        >
           <a-sphere
             id="wat1A"
             position="0 0 0"
@@ -157,7 +172,13 @@
       </a-marker>
 
       <a-marker type="barcode" value="1" id="watB">
-        <a-entity rotation="180 180 0" listen-to-flip listen-to-scale>
+        <a-entity
+          rotation="180 180 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker1B"
+          gesture-handler="linkedMarker: #marker1A"
+        >
           <a-sphere
             id="wat1B"
             position="0 0 0"
@@ -228,7 +249,13 @@
       </a-marker>
 
       <a-marker type="barcode" value="2" id="vatA">
-        <a-entity id="vat" rotation="0 0 0" listen-to-flip listen-to-scale>
+        <a-entity
+          rotation="0 0 0"
+          listen-to-flip
+          listen-to-scale
+          gesture-handler="linkedMarker: #marker2B"
+          id="marker2A"
+        >
           <a-sphere
             id="vat1A"
             position="0 0 0"
@@ -299,7 +326,13 @@
       </a-marker>
 
       <a-marker type="barcode" value="3" id="vatB">
-        <a-entity id="vat" rotation="180 180 0" listen-to-flip listen-to-scale>
+        <a-entity
+          rotation="180 180 0"
+          listen-to-flip
+          listen-to-scale
+          gesture-handler="linkedMarker: #marker2A"
+          id="marker2B"
+        >
           <a-sphere
             id="vat1B"
             position="0 0 0"
@@ -432,5 +465,6 @@
     <script src="/modules/utils/handleLoader.js"></script>
     <script src="/modules/utils/handleFlips.js"></script>
     <script src="/modules/utils/handleOverlays.js"></script>
+    <script src="/modules/utils/handleGestures.js"></script>
   </body>
 </html>
