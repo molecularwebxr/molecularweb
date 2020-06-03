@@ -11,36 +11,32 @@ const ArrowAnchorContent = /* html */`
     }
     #arrow-path {
       transition: 0.2s;
-      will-change: fill;
-      fill: var(--orange);
+      fill: var(--primary);
+    }
+    #circle {
+      transition: 0.2s;
+      fill: var(--secondary);
     }
     a:hover #arrow-path{
-      fill: var(--blue);
+      fill: #FFFFFF;
+    }
+    a:hover #circle{
+      fill: var(--primary);
     }
     a:hover svg {
       transform: translateX(6px);
     }
+    @media screen and (max-width: 450px) {
+      svg {
+        width: 25px;
+        height: 25px;
+      }
+    }
   </style>
   <a id="anchor">
-    <svg
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    version="1.1"
-    x="0px"
-    y="0px"
-    viewBox="0 0 512 512"
-    style="enable-background: new 0 0 512 512;"
-    xml:space="preserve"
-    width="25"
-    height="25"
-    >
-      <path
-        d="M508.875,248.458l-160-160c-4.167-4.167-10.917-4.167-15.083,0c-4.167,4.167-4.167,10.917,0,15.083l141.792,141.792    H10.667C4.771,245.333,0,250.104,0,256s4.771,10.667,10.667,10.667h464.917L333.792,408.458c-4.167,4.167-4.167,10.917,0,15.083    c2.083,2.083,4.813,3.125,7.542,3.125c2.729,0,5.458-1.042,7.542-3.125l160-160C513.042,259.375,513.042,252.625,508.875,248.458z    "
-        data-original="#000000"
-        class="active-path"
-        data-old_color="#000000"
-        id="arrow-path"
-      />
+    <svg width="35" height="35" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect id="circle" width="40" height="40" rx="20"/>
+      <path id="arrow-path" d="M25.3709 19.3206L18.3927 11.7842C17.9997 11.3598 17.3297 11.3563 16.9323 11.7765L16.6429 12.0826C16.2811 12.4652 16.278 13.0627 16.6357 13.4491L22.0723 19.3206C22.4273 19.704 22.4273 20.296 22.0723 20.6794L16.6571 26.5277C16.3049 26.9081 16.3018 27.4947 16.65 27.8788L16.9335 28.1914C17.3276 28.6261 18.0095 28.6297 18.4081 28.1992L25.3709 20.6794C25.7259 20.296 25.7259 19.704 25.3709 19.3206Z"/>
     </svg>
   </a>`;
 
