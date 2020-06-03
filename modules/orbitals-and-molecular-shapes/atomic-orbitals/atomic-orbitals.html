@@ -8,7 +8,7 @@
 
     <!-- 3D Libraries -->
     <script src="/lib/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="/lib/aframe-ar.js"></script>
 
     <!-- Translation Libraries -->
     <script src="/lib/i18n/i18next.min.js"></script>
@@ -37,6 +37,7 @@
     <script src="/modules/utils/aframe/scale.js"></script>
     <script src="/modules/utils/aframe/gesture-detector.js"></script>
     <script src="/modules/utils/aframe/gesture-handler.js"></script>
+    <script src="/modules/utils/aframe/loader.js"></script>
     <script src="/modules/utils/handleTranslation.js"></script>
   </head>
 
@@ -230,6 +231,7 @@
       loading-screen="enabled: false"
       gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;"
       gesture-detector
+      loader
     >
       <a-assets>
         <!--struct assets-->
@@ -456,7 +458,6 @@
       <a-entity camera></a-entity>
     </a-scene>
     <script src="index.js"></script>
-    <script src="/modules/utils/handleLoader.js"></script>
     <script src="/modules/utils/handleFlips.js"></script>
     <script src="/modules/utils/handleOverlays.js"></script>
     <script src="/modules/utils/handleGestures.js"></script>

@@ -103,12 +103,12 @@ class Loader extends HTMLElement {
   constructor() {
     super();
 
-    this.hide = this.hide.bind(this);
-
     let shadow = this.attachShadow({ mode: "open" });
     shadow.innerHTML = LoaderContent;
 
     this.loader = this.shadowRoot.getElementById("loader");
+
+    this.display = true;
   }
 
   static get observedAttributes() {
@@ -131,13 +131,9 @@ class Loader extends HTMLElement {
   attributeChangedCallback(attrName, oldValue, newValue) {
     if (attrName === "display") {
       this.display = newValue;
-      this.hide();
     }
   }
 
-  hide() {
-    this.loader.classList.add("loaded");
-  }
 }
 
 customElements.define("loader-component", Loader);

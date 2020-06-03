@@ -8,7 +8,7 @@
 
     <!-- 3D Libraries -->
     <script src="/lib/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="/lib/aframe-ar.js"></script>
 
     <!-- Translation Libraries -->
     <script src="/lib/i18n/i18next.min.js"></script>
@@ -38,6 +38,7 @@
     <script src="/modules/utils/aframe/scale.js"></script>
     <script src="/modules/utils/aframe/gesture-detector.js"></script>
     <script src="/modules/utils/aframe/gesture-handler.js"></script>
+    <script src="/modules/utils/aframe/loader.js"></script>
     <script src="/modules/utils/handleTranslation.js"></script>
   </head>
 
@@ -93,6 +94,7 @@
       renderer="logarithmicDepthBuffer: true;"
       interactive-molecules
       gesture-detector
+      loader
     >
       <a-marker type="barcode" value="0" id="watA">
         <a-entity
@@ -462,7 +464,6 @@
 
       <a-entity camera></a-entity>
     </a-scene>
-    <script src="/modules/utils/handleLoader.js"></script>
     <script src="/modules/utils/handleFlips.js"></script>
     <script src="/modules/utils/handleOverlays.js"></script>
     <script src="/modules/utils/handleGestures.js"></script>
