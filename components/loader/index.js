@@ -115,8 +115,22 @@ class Loader extends HTMLElement {
     return ["display"];
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (newValue === "false") {
+  set display(value) {
+    this._display = value;
+    if(this._display) {
+      this.loader.classList.remove("loaded");
+    } else {
+      this.loader.classList.add("loaded");
+    }
+  }
+
+  get display() {
+    return this._display;
+  }
+
+  attributeChangedCallback(attrName, oldValue, newValue) {
+    if (attrName === "display") {
+      this.display = newValue;
       this.hide();
     }
   }
