@@ -3,7 +3,7 @@ const AppFooterContent = /* html */ `
     footer {
       height: 15rem;
       padding: 0 10vw;
-      background-color: var(--blue);
+      background: linear-gradient(156.2deg, #173A7B 0%, #5C45EB 101.87%);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -67,7 +67,7 @@ const AppFooterContent = /* html */ `
     .privacy-policy {
       font-family: "Roboto", sans-serif;
       font-size: 12px;
-      color: var(--azure);
+      color: #FFFFFF;
       text-align: center;
       position: absolute;
       bottom: 0.1rem;
