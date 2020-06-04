@@ -8,21 +8,21 @@ const FlipVideoContent = /* html */ `
       width: 40px;
       height: 40px;
     }
-    .camera-path {
+    #circle {
+      fill: #FFFFFF;
       transition: 0.2s;
-      fill: white;
     }
-    a:hover .camera-path{
-      fill: var(--orange);
+    .camera-path {
+      fill: var(--primarydark);
     }
-    @media screen and (max-width: 500px) {
-      
+    a:hover #circle{
+      fill: var(--secondary);
     }
   </style>
   <a id="anchor">
     <svg width="100%" height="100%" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
       <g transform="matrix(1.79021,0,0,1.79021,53.7063,19.6923)">
-          <circle cx="113" cy="132" r="143" style="fill:rgb(23,58,123);"/>
+          <circle id="circle" cx="113" cy="132" r="143" />
       </g>
       <g transform="matrix(0.755859,0,0,0.755859,62.5,62.2476)">
           <path class="camera-path" d="M256,275C214.828,275 181.332,241.508 181.332,200.332C181.332,159.16 214.828,125.668 256,125.668C297.172,125.668 330.668,159.16 330.668,200.332C330.668,241.508 297.172,275 256,275ZM256,157.668C232.469,157.668 213.332,176.801 213.332,200.332C213.332,223.863 232.469,243 256,243C279.531,243 298.668,223.863 298.668,200.332C298.668,176.801 279.531,157.668 256,157.668Z" />

@@ -7,6 +7,8 @@
   --azure: #edf7f6;
 
   --primary: #5C45EB;
+  --primarydark: #4432B0;
+  --primarylight: rgba(92, 69, 235, 0.8);
   --secondary: #9BF99F;
   --lightgray: #6B707A;
   --lightergray: rgba(241, 239, 255, 0.25);

@@ -43,13 +43,15 @@ figure {
 
 .side-menu {
   position: fixed;
-  width: 50px;
   align-items: center;
   justify-content: center;
   top: 50%;
-  right: 5px;
+  right: 3px;
   transform: translateY(-50%);
   z-index: 1;
+  background-color: var(--primarylight);
+  border-radius: 10px;
+  padding: 1rem 0.75rem;
 }
 
 .selection-menu {
