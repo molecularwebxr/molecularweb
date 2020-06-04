@@ -1,17 +1,47 @@
-const marker1A = document.querySelector("#marker1A");
-const marker1B = document.querySelector("#marker1B");
-const marker2A = document.querySelector("#marker2A");
-const marker2B = document.querySelector("#marker2B");
-const marker1Handler = document.getElementById("marker1");
-const marker2Handler = document.getElementById("marker2");
+var marker1A = document.querySelector("#marker1A");
+var marker1B = document.querySelector("#marker1B");
+var marker2A = document.querySelector("#marker2A");
+var marker2B = document.querySelector("#marker2B");
+var marker1Handler = document.getElementById("marker1");
+var marker2Handler = document.getElementById("marker2");
 
-let isMarker1Enabled = false;
-let isMarker2Enabled = false;
+var isMarker1Enabled = false;
+var isMarker2Enabled = false;
 marker1Handler.isActive = false;
 marker2Handler.isActive = false;
 
+var hasTouchScreen = false;
+
+if ("maxTouchPoints" in navigator) { 
+    hasTouchScreen = navigator.maxTouchPoints > 0;
+} else if ("msMaxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.msMaxTouchPoints > 0; 
+} else {
+    var mQ = window.matchMedia && matchMedia("(pointer:coarse)");
+    if (mQ && mQ.media === "(pointer:coarse)") {
+        hasTouchScreen = !!mQ.matches;
+    } else if ('orientation' in window) {
+        hasTouchScreen = true; // deprecated, but good fallback
+    } else {
+        // Only as a last resort, fall back to user agent sniffing
+        var UA = navigator.userAgent;
+        hasTouchScreen = (
+            /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
+            /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA)
+        );
+    }
+}
+
+if (hasTouchScreen) {
+  marker1Handler.addEventListener("click", handleGestureState);
+  marker2Handler.addEventListener("click", handleGestureState);
+} else {
+  marker1Handler.classList.add("hide");
+  marker2Handler.classList.add("hide");
+}
+
 function handleGestureState(event) {
-  const markerSelected = event.target.id;
+  var markerSelected = event.target.id;
 
   if (markerSelected === "marker1") {
     isMarker1Enabled = !isMarker1Enabled;
@@ -68,6 +98,3 @@ function enableMarker2() {
   marker2A.setAttribute("gesture-handler", { enabled: true });
   marker2B.setAttribute("gesture-handler", { enabled: true });
 }
-
-marker1Handler.addEventListener("click", handleGestureState);
-marker2Handler.addEventListener("click", handleGestureState);

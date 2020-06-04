@@ -94,6 +94,10 @@ figure {
   font-size: 0.7rem;
 }
 
+.hide {
+  display: none;
+}
+
 @media screen and (max-width: 630px) {
   .selection-menu {
     width: 18rem;
