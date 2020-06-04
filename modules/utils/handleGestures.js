@@ -38,6 +38,8 @@ if (hasTouchScreen) {
 } else {
   marker1Handler.classList.add("hide");
   marker2Handler.classList.add("hide");
+  // TO DO: Remove this once scale controls are in place
+  document.getElementById("scale-down").classList.remove("icon-margin");
 }
 
 function handleGestureState(event) {

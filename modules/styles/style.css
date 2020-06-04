@@ -54,6 +54,14 @@ figure {
   padding: 1rem 0.75rem;
 }
 
+.icon-margin {
+  margin-bottom: 0.5rem;
+}
+
+.icon-margin:last-child {
+  margin: 0;
+}
+
 .selection-menu {
   z-index: 1;
   position: fixed;
