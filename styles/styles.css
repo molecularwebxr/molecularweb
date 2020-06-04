@@ -359,7 +359,7 @@ footer {
 
 .module-header.expanded + .module-activities {
   max-height: 200vh;
-  padding: 0.75rem;
+  padding: 0.75rem 0;
 }
 
 .module-header.expanded {
