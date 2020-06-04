@@ -1,0 +1,63 @@
+/* Color palette */
+:root {
+  --orange: #f19953;
+  --blue: #173a7b;
+  --lightblue: #2660a4;
+  --blue2: #486497;
+  --azure: #edf7f6;
+
+  --primary: #5C45EB;
+  --secondary: #9BF99F;
+  --lightgray: #6B707A;
+  --lightergray: rgba(241, 239, 255, 0.25);
+}
+
+/* Fonts */
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-display: swap;
+  src: local('Roboto'), local('Roboto-Regular'), url(/assets/fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-display: swap;
+  src: local('Roboto Medium'), local('Roboto-Medium'), url(/assets/fonts/Roboto-Medium.ttf);
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 700;
+  font-display: swap;
+  src: local('Roboto Bold'), local('Roboto-Bold'), url(/assets/fonts/Roboto-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-display: swap;
+  src: local('Montserrat'), local('Montserrat-Regular'), url(/assets/fonts/Montserrat-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-display: swap;
+  src: local('Montserrat Medium'), local('Montserrat-Medium'), url(/assets/fonts/Montserrat-Medium.ttf);
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 600;
+  font-display: swap;
+  src: local('Montserrat SemiBold'), local('Montserrat-SemiBold'), url(/assets/fonts/Montserrat-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 700;
+  font-display: swap;
+  src: local('Montserrat Bold'), local('Montserrat-Bold'), url(/assets/fonts/Montserrat-Bold.ttf);
+}

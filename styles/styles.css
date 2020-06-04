@@ -1,11 +1,3 @@
-/* Color palette */
-:root {
-  --primary: #5C45EB;
-  --secondary: #9BF99F;
-  --lightgray: #6B707A;
-  --lightergray: rgba(241, 239, 255, 0.25);
-}
-
 body {
   margin: 0px;
   height: 100vh;
