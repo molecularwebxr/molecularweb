@@ -22,7 +22,7 @@ const LoaderContent = /* html */ `
     position: absolute;
     width: 6px;
     height: 6px;
-    background: var(--blue);
+    background: var(--primary);
     border-radius: 50%;
     animation: lds-default 1.2s linear infinite;
   }
