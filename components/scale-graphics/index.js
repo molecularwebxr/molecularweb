@@ -10,18 +10,30 @@ scaleIconTemplate.innerHTML = /* html */ `
       width: 40px;
       height: 40px;
     }
-    .icon-path {
+    #circle {
       transition: 0.2s;
       fill: white;
     }
-    a:hover .icon-path{
-      fill: var(--orange);
+    .icon-path {
+      fill: var(--primarydark);
+    }
+    .transform {
+      transform: matrix(-0.999974,0.00723202,-0.00723202,-0.999974,97.8153,29.9393);
+    }
+    a:hover #circle {
+      fill: var(--secondary);
+    }
+    @media (max-width: 440px) {
+      svg {
+        width: 30px;
+        height: 30px;
+      }
     }
   </style>
   <a id="anchor">
   <svg width="100%" height="100%" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(1.79021,0,0,1.79021,53.7063,19.6923)">
-        <circle cx="113" cy="132" r="143" style="fill:rgb(23,58,123);"/>
+        <circle cx="113" cy="132" r="143" id="circle" />
     </g>
     <g id="reduce" transform="matrix(5.01563,0,0,4.6875,256,256)">
         <g transform="matrix(1,0,0,1,-32,-32)">
@@ -46,7 +58,7 @@ scaleIconTemplate.innerHTML = /* html */ `
             <rect class="icon-path" x="30" y="37" width="2" height="4" />
             <rect class="icon-path" x="30" y="49" width="2" height="4" />
             <rect class="icon-path" x="30" y="55" width="2" height="4" />
-            <g id="arrow" transform="matrix(-0.999974,0.00723202,-0.00723202,-0.999974,97.8153,29.9393)">
+            <g id="arrow" class="transform">
                 <path class="icon-path" d="M40,12L40,23L41,24L52,24L52,22L43.414,22L57.707,7.707L56.293,6.293L42,20.586L42,12L40,12Z" />
             </g>
         </g>
@@ -84,7 +96,7 @@ class ScaleGraphics extends HTMLElement {
 
   connectedCallback() {
     if(this.type === "down") {
-      this.arrowPath.style.transform= "none";
+      this.arrowPath.classList.remove("transform");
     }
   }
 

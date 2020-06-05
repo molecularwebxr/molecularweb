@@ -3,41 +3,40 @@ const BackAnchorContent = /* html */`
     a {
       cursor: pointer;
       position: absolute;
-      bottom: 5px;
-      left: 5px;
+      bottom: 3px;
+      left: 3px;
       z-index: 1;
     }
     svg {
       transition: transform 0.2s;
-      width: 40px;
-      height: 40px;
     }
     #arrow-path {
       transition: 0.2s;
-      will-change: fill;
-      fill: white;
+      fill: var(--primary);
+    }
+    #circle {
+      transition: 0.2s;
+      fill: var(--secondary);
     }
     a:hover #arrow-path{
-      fill: var(--orange);
+      fill: #FFFFFF;
     }
-    @media screen and (max-width: 500px) {
-      a {
-        left: 0.5rem;
+    a:hover #circle{
+      fill: var(--primary);
+    }
+
+    @media (max-width: 440px) {
+      svg {
+        width: 30px;
+        height: 30px;
       }
     }
+
   </style>
-  <a id="anchor" href="/index.html">
-    <svg width="100%" height="100%" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-      <g id="Artboard1" transform="matrix(4.54545,0,0,5.55556,-95.4545,-38.8889)">
-        <g clip-path="url(#_clip1)">
-          <g transform="matrix(1.22222,0,0,0.75,-1,-3.5)">
-              <ellipse cx="22.5" cy="20" rx="4.5" ry="6" style="fill:rgb(23,58,123);"/>
-          </g>
-          <g transform="matrix(0.260741,0,0,0.213333,24.5202,8.62)">
-              <path id="arrow-path" d="M14.608,23.25C15.379,24.029 15.379,25.284 14.608,26.063L13.907,26.771C13.605,27.076 13.115,27.076 12.813,26.771L0.227,14.053C-0.076,13.748 -0.076,13.252 0.227,12.947L12.813,0.229C13.115,-0.076 13.605,-0.076 13.907,0.229L14.608,0.937C15.379,1.716 15.379,2.971 14.608,3.75L5.506,12.947C5.204,13.252 5.204,13.748 5.506,14.053L14.608,23.25Z" />
-          </g>
-        </g>
-      </g>
+  <a href="/index.html">
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect id="circle" x="40" y="40" width="40" height="40" rx="20" transform="rotate(-180 40 40)" />
+      <path id="arrow-path" d="M14.6291 20.6794L21.6073 28.2158C22.0003 28.6402 22.6703 28.6437 23.0677 28.2235L23.3571 27.9174C23.7189 27.5348 23.722 26.9373 23.3643 26.5509L17.9277 20.6794C17.5727 20.296 17.5727 19.704 17.9277 19.3206L23.3429 13.4723C23.6951 13.0919 23.6982 12.5053 23.35 12.1212L23.0665 11.8086C22.6724 11.3739 21.9905 11.3703 21.5919 11.8008L14.6291 19.3206C14.2741 19.704 14.2741 20.296 14.6291 20.6794Z" />
     </svg>
   </a>`;
 

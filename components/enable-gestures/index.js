@@ -9,13 +9,19 @@ gesturesIconTemplate.innerHTML = /* html */ `
       height: 40px;
     }
     path {
-      fill: white;
+      fill: var(--primarydark);
     }
     .circle {
-      fill: var(--blue);
+      fill: #FFFFFF;
     }
     .circle.active {
-      fill: palegreen;
+      fill: var(--secondary);
+    }
+    @media (max-width: 440px) {
+      svg {
+        width: 30px;
+        height: 30px;
+      }
     }
   </style>
   <a id="anchor">

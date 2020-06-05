@@ -1,18 +1,18 @@
-const bar1 = document.getElementById("bar1");
-const bar2 = document.getElementById("bar2");
-const bar3 = document.getElementById("bar3");
-const hamburger = document.getElementById("hamburger");
-const mobileMenu  = document.getElementById("mobile-menu");
-const overlay  = document.getElementById("overlay");
-const orbitals = document.getElementById("orbitals");
-const bonds = document.getElementById("bonds");
-const molecules = document.getElementById("molecules");
-const assemblies = document.getElementById("assemblies");
-const modeling = document.getElementById("modeling");
+var bar1 = document.getElementById("bar1");
+var bar2 = document.getElementById("bar2");
+var bar3 = document.getElementById("bar3");
+var hamburger = document.getElementById("hamburger");
+var mobileMenu  = document.getElementById("mobile-menu");
+var overlay  = document.getElementById("overlay");
+var orbitals = document.getElementById("orbitals");
+var bonds = document.getElementById("bonds");
+var molecules = document.getElementById("molecules");
+var assemblies = document.getElementById("assemblies");
+var modeling = document.getElementById("modeling");
 
-let menuActive = false;
+var menuActive = false;
 
-const handleExpasion = (event) => {
+var handleExpasion = (event) => {
   event.currentTarget.classList.toggle("expanded");
 }
 

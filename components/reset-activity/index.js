@@ -9,21 +9,27 @@
       width: 40px;
       height: 40px;
     }
-    path {
+    #circle {
+      fill: #FFFFFF;
       transition: 0.2s;
-      fill: white;
     }
-    a:hover path{
-      fill: var(--orange);
+    path {
+      fill: var(--primarydark);
     }
-    @media screen and (max-width: 500px) {
-      
+    a:hover #circle {
+      fill: var(--secondary);
+    }
+    @media (max-width: 440px) {
+      svg {
+        width: 30px;
+        height: 30px;
+      }
     }
   </style>
   <a id="anchor">
     <svg width="100%" height="100%" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
       <g transform="matrix(1.79021,0,0,1.79021,53.7063,19.6923)">
-          <circle cx="113" cy="132" r="143" style="fill:rgb(23,58,123);"/>
+          <circle cx="113" cy="132" r="143" id="circle" />
       </g>
       <g id="reload" transform="matrix(20,0,0,20,256,256)">
           <g transform="matrix(1,0,0,1,-12.5,-12.5)">

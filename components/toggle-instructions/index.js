@@ -3,24 +3,29 @@ instructionsIconTemplate.innerHTML = /* html */ `
   <style>
     a {
       cursor: pointer;
+      display: flex;
+      align-items:center;
     }
     svg {
       transition: transform 0.2s;
-      width: 40px;
-      height: 40px;
+      width: 20px;
+      height: 20px;
+    }
+    #circle {
+      fill: rgba(255, 255, 255, 0.5);
     }
     path {
       transition: 0.2s;
-      fill: white;
+      fill: var(--primary);
     }
-    a:hover path{
-      fill: var(--orange);
+    a:hover #circle{
+      fill: var(--secondary);
     }
   </style>
   <a id="anchor">
     <svg width="100%" height="100%" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
       <g transform="matrix(1.79021,0,0,1.79021,53.7063,19.6923)">
-          <circle cx="113" cy="132" r="143" style="fill:rgb(23,58,123);"/>
+          <circle cx="113" cy="132" r="143" id="circle"/>
       </g>
       <g id="camera" transform="matrix(0.71875,0,0,0.722656,256,256)">
           <g transform="matrix(1,0,0,1,-256,-256)">
