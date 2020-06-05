@@ -63,8 +63,6 @@ figure {
 }
 
 .selection-menu {
-  /* height: 2.5rem;
-  width: 25.5rem; */
   padding: 0.75rem;
   position: fixed;
   bottom: 3px;
@@ -137,10 +135,6 @@ figure {
 }
 
 @media screen and (max-width: 630px) {
-  .selection-menu {
-    width: 18rem;
-  }
-
   .orbital-selector {
     width: 90px;
   }
@@ -148,41 +142,64 @@ figure {
 
 @media screen and (max-width: 450px) {
   .selection-menu {
-    width: 15rem;
+    padding: 0.5rem;
+    bottom: 5px;
+    transform: translateX(-56%);
+  }
+
+  .line {
+    height: 18px;
   }
 
   .orbital-selector {
-    width: 70px;
-    font-size: 0.6rem;
+    width: 55px;
+    font-size: 0.5rem;
+    margin: 0 0.25rem;
   }
 
   .orbital-selector optgroup {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
+  }
+
+  .marker-sample {
+    width: 20px;
+    height: 20px;
+  }
+
+  .extra-info-icon {
+    margin-left: 0.25rem;
+  }
+
+  .marker-sample.left-margin {
+    margin-left: 0.25rem;
   }
 }
 
 @media screen and (max-width: 400px) {
-  .selection-menu {
-    width: 13rem;
-  }
-
   .orbital-selector {
     width: 50px;
   }
 }
 
 @media screen and (max-width: 350px) {
-  .selection-menu {
-    width: 11rem;
-  }
-
   .orbital-selector {
     width: 45px;
     height: 25px;
   }
-  .marker-sample {
-    width: 25px;
-    height: 25px;
+  .extra-info-icon {
+    margin-left: 0.2rem;
+  }
+
+  .marker-sample.left-margin {
+    margin-left: 0.2rem;
+  }
+
+  .orbital-selector {
+    margin: 0 0.2rem;
+  }
+
+  .line {
+    margin: 0 0.2rem;
   }
 }
 
