@@ -18,7 +18,7 @@ overlayTemplate.innerHTML = /* html */ `
       z-index: 1;
       visibility: hidden;
       will-change: opacity;
-      color: var(--azure);
+      color: #FFFFFF;
       font-family: "Montserrat", sans-serif;
     }
 
@@ -52,7 +52,7 @@ overlayTemplate.innerHTML = /* html */ `
       font-weight: 600;
       padding: .5rem 1rem .6rem;
       border: none;
-      color: var(--blue);
+      color: var(--primary);
       margin: 2rem 0 0 0;
       border-radius: 5px;
       cursor: pointer;
@@ -60,7 +60,7 @@ overlayTemplate.innerHTML = /* html */ `
       outline: 0;
       transition: .2s;
       will-change: transform;
-      background-color: var(--orange);
+      background-color: var(--secondary);
     }
 
     button:active {
