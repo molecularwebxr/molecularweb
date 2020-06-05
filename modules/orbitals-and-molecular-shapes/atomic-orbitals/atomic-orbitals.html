@@ -64,23 +64,27 @@
     <div class="side-menu column">
       <flip-video class="icon-margin"></flip-video>
       <flip-graphics class="icon-margin"></flip-graphics>
-      <!-- TO DO: This should be placed once bottom menu is available -->
-      <!-- <toggle-instructions></toggle-instructions>
-      <toggle-description></toggle-description> -->
       <reset-activity class="icon-margin"></reset-activity>
-      <scale-graphics class="icon-margin" id="scale-up" type="up"></scale-graphics>
-      <scale-graphics class="icon-margin" id="scale-down" type="down"></scale-graphics>
+      <scale-graphics
+        class="icon-margin"
+        id="scale-up"
+        type="up"
+      ></scale-graphics>
+      <scale-graphics
+        class="icon-margin"
+        id="scale-down"
+        type="down"
+      ></scale-graphics>
       <enable-gestures class="icon-margin" id="marker1"></enable-gestures>
       <enable-gestures class="icon-margin" id="marker2"></enable-gestures>
     </div>
 
-    <div class="selection-menu row">
-      <div class="row">
+    <div class="selection-menu">
+      <div class="marker">
         <img
           class="marker-sample"
           src="/assets/img/0.png"
           alt="sample marker"
-          width="30"
         />
         <select id="select-marker-1" class="orbital-selector">
           <optgroup label="Atomic Orbitals">
@@ -141,12 +145,12 @@
           </optgroup>
         </select>
       </div>
-      <div class="row">
+      <span class="line"></span>
+      <div class="marker">
         <img
-          class="marker-sample"
+          class="marker-sample left-margin"
           src="/assets/img/2.png"
           alt="sample marker"
-          width="30"
         />
         <select id="select-marker-2" class="orbital-selector">
           <optgroup label="Atomic Orbitals">
@@ -207,9 +211,13 @@
           </optgroup>
         </select>
       </div>
+      <div class="extra-info">
+        <toggle-instructions class="extra-info-icon"></toggle-instructions>
+        <toggle-description class="extra-info-icon"></toggle-description>
+      </div>
     </div>
 
-     <!-- Overlays -->
+    <!-- Overlays -->
     <activity-overlay id="instructions" default="open" type="instructions">
       <span slot="title" data-i18n="orbitals.atomicOrbitals.title"></span>
       <span

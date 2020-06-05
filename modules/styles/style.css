@@ -63,43 +63,73 @@ figure {
 }
 
 .selection-menu {
-  z-index: 1;
+  /* height: 2.5rem;
+  width: 25.5rem; */
+  padding: 0.75rem;
   position: fixed;
-  bottom: 5px;
+  bottom: 3px;
   left: 50%;
   transform: translateX(-50%);
-  width: 25.5rem;
-  height: 2.5rem;
-  background: rgba(23, 58, 123, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  z-index: 1;
+  background: var(--primarylight);
+  border-radius: 10px;
   box-sizing: border-box;
-  border-radius: 4px;
-  justify-content: space-between;
+  display: flex;
   align-items: center;
-  padding: 0 0.5rem;
+}
+
+.marker {
+  display: flex;
+  align-items: center;
+}
+
+.marker-sample {
+  width: 36px;
+  height: 36px;
+}
+
+.marker-sample.left-margin {
+  margin-left: 0.5rem;
 }
 
 .orbital-selector {
-  width: 150px;
-  height: 28px;
-  margin-left: 0.25rem;
+  width: 163px;
+  height: 22px;
+  margin: 0 0.5rem;
   font-family: "Roboto";
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   border-radius: 0.25rem;
   padding: 0.25rem;
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
   background-color: white;
-  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-image: url("/assets/img/arrow-select.png");
   background-repeat: no-repeat;
-  background-position: top 0.1rem right 0;
+  background-position: top 0.5rem right 0.2rem;
 }
 
 .orbital-selector optgroup {
   font-family: "Roboto";
   font-style: normal;
-  font-size: 0.7rem;
+  font-size: 0.6rem;
+}
+
+.line {
+  width: 2px;
+  height: 36px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 1px;
+  margin: 0 8px;
+}
+
+.extra-info {
+  display: flex;
+  align-items: center;
+}
+
+.extra-info-icon {
+  margin-left: 0.5rem;
 }
 
 .hide {
@@ -152,6 +182,7 @@ figure {
   }
   .marker-sample {
     width: 25px;
+    height: 25px;
   }
 }
 
