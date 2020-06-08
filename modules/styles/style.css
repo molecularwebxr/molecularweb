@@ -134,6 +134,67 @@ figure {
   display: none;
 }
 
+.rotation-controls {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  width: 540px;
+  display: flex;
+}
+
+.rotation-marker1{
+  width: 241px;
+  padding:  0 12px;
+  box-sizing: border-box;
+}
+
+.rotation-bar {
+  width: 180px;
+  height: 20px;
+  background-color: rgba(91, 69, 235, 0.8);
+  margin: 4px 0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px 0 8px;
+  
+}
+
+.slider {
+  height: 3px;
+  width: 90px;
+  border-radius: 2px;
+  margin: 8px;
+  background-color: black;
+  position: relative;
+}
+
+.handler{
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 6px;
+  position: absolute;
+  top: -5px;
+}
+
+.number-box{
+  width: 26px;
+}
+
+p.small {
+  margin: 0;
+  font-size: 12px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+p.small.num {
+  text-align: right;
+}
+
 @media screen and (max-width: 630px) {
   .orbital-selector {
     width: 90px;
