@@ -31,6 +31,7 @@
     <script src="/components/reset-activity/index.js"></script>
     <script src="/components/scale-graphics/index.js"></script>
     <script src="/components/enable-gestures/index.js"></script>
+    <script src="/components/rotation-controls/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="../utils/modelOpacity.js"></script>
@@ -80,49 +81,9 @@
     </div>
 
     <!-- Rotation controls -->
-    <div class="rotation-controls">
-      <div class="rotation-marker1">
-        <div class="rotation-bar">
-          <p class="small">Rotate Y</p>
-          <div class="slider">
-            <div class="handler"></div>
-          </div>
-          <div class="number-box">
-            <p class="small num">0°</p>
-          </div>
-        </div>
-        <div class="rotation-bar">
-          <p class="small">Rotate X</p>
-          <div class="slider">
-            <div class="handler"></div>
-          </div>
-          <div class="number-box">
-            <p class="small num">180°</p>
-          </div>
-        </div>
-      </div>
-      <div class="rotation-marker1">
-        <div class="rotation-bar">
-          <p class="small">Rotate Y</p>
-          <div class="slider">
-            <div class="handler"></div>
-          </div>
-          <div class="number-box">
-            <p class="small num">0°</p>
-          </div>
-        </div>
-        <div class="rotation-bar">
-          <p class="small">Rotate X</p>
-          <div class="slider">
-            <div class="handler"></div>
-          </div>
-          <div class="number-box">
-            <p class="small num">180°</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <rotation-controls></rotation-controls>
 
+    <!-- Selection Menu -->
     <div class="selection-menu">
       <div class="marker">
         <img
