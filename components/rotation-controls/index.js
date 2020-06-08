@@ -151,6 +151,12 @@ RotationControlsContent.innerHTML = /* html */ `
   p.small.num {
     text-align: right;
   }
+
+  @media screen and (max-width: 450px) {
+    .rotation-controls {
+     display: none;
+    }
+  }
   </style>
   <div class="rotation-controls">
     <div class="rotation-marker1">
