@@ -156,32 +156,40 @@ RotationControlsContent.innerHTML = /* html */ `
     <div class="rotation-marker1">
       <div class="rotation-bar">
         <p class="small">Rotate Y</p>
-        <input type="range" />
+        <input type="range" min="0" max="180" value="0" step="5" id="marker1-y" />
         <div class="number-box">
-          <p class="small num">0°</p>
+          <p class="small num">
+            <span id="marker1-y-value">0</span><span>°</span>
+          </p>
         </div>
       </div>
       <div class="rotation-bar">
         <p class="small">Rotate X</p>
-        <input type="range" />
+        <input type="range" min="0" max="180" value="0" step="5" id="marker1-x" />
         <div class="number-box">
-          <p class="small num">180°</p>
+          <p class="small num">
+            <span id="marker1-x-value">0</span><span>°</span>
+          </p>
         </div>
       </div>
     </div>
     <div class="rotation-marker1">
       <div class="rotation-bar">
         <p class="small">Rotate Y</p>
-        <input type="range" />
+        <input type="range" min="0" max="180" value="0" step="5" id="marker2-y" />
         <div class="number-box">
-          <p class="small num">0°</p>
+          <p class="small num">
+            <span id="marker2-y-value">0</span><span>°</span>
+          </p>
         </div>
       </div>
       <div class="rotation-bar">
         <p class="small">Rotate X</p>
-        <input type="range" />
+        <input type="range" min="0" max="180" value="0" step="5" id="marker2-x" />
         <div class="number-box">
-          <p class="small num">180°</p>
+          <p class="small num">
+            <span id="marker2-x-value">0</span><span>°</span>
+          </p>
         </div>
       </div>
     </div>
@@ -191,9 +199,50 @@ class RotationControls extends HTMLElement {
   constructor() {
     super();
 
-    this.attachShadow({ mode: "open" });
-    this.shadowRoot.appendChild(RotationControlsContent.content.cloneNode(true));
+    this.handleChange = this.handleChange.bind(this);
 
+    this.attachShadow({ mode: "open" });
+    this.shadowRoot.appendChild(
+      RotationControlsContent.content.cloneNode(true)
+    );
+
+    this.marker1Y = this.shadowRoot.getElementById("marker1-y");
+    this.marker1X = this.shadowRoot.getElementById("marker1-x");
+    this.marker2Y = this.shadowRoot.getElementById("marker2-y");
+    this.marker2X = this.shadowRoot.getElementById("marker2-x");
+
+    this.marker1Yvalue = this.shadowRoot.getElementById("marker1-y-value");
+    this.marker1Xvalue = this.shadowRoot.getElementById("marker1-x-value");
+    this.marker2Yvalue = this.shadowRoot.getElementById("marker2-y-value");
+    this.marker2Xvalue = this.shadowRoot.getElementById("marker2-x-value");
+
+    this.marker1Y.addEventListener("input", this.handleChange);
+    this.marker1X.addEventListener("input", this.handleChange);
+    this.marker2Y.addEventListener("input", this.handleChange);
+    this.marker2X.addEventListener("input", this.handleChange);
+  }
+
+  handleChange(e) {
+    var selectedElement = e.target.id;
+    var newValue = e.target.value;
+    var selectedValue;
+
+    switch (selectedElement) {
+      case "marker1-y":
+        selectedValue = this.marker1Yvalue;
+        break;
+      case "marker1-x":
+        selectedValue = this.marker1Xvalue;
+        break;
+      case "marker2-y":
+        selectedValue = this.marker2Yvalue;
+        break;
+      case "marker2-x":
+        selectedValue = this.marker2Xvalue;
+        break;
+    }
+
+    selectedValue.innerHTML = newValue;
   }
 
   static get observedAttributes() {
@@ -213,7 +262,6 @@ class RotationControls extends HTMLElement {
       this.display = newValue;
     }
   }
-
 }
 
 customElements.define("rotation-controls", RotationControls);
