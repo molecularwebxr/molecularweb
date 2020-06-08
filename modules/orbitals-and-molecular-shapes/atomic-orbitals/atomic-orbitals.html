@@ -31,6 +31,7 @@
     <script src="/components/reset-activity/index.js"></script>
     <script src="/components/scale-graphics/index.js"></script>
     <script src="/components/enable-gestures/index.js"></script>
+    <script src="/components/rotation-controls/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="../utils/modelOpacity.js"></script>
@@ -39,6 +40,7 @@
     <script src="/modules/utils/aframe/gesture-detector.js"></script>
     <script src="/modules/utils/aframe/gesture-handler.js"></script>
     <script src="/modules/utils/aframe/loader.js"></script>
+    <script src="/modules/utils/aframe/rotation.js"></script>
     <script src="/modules/utils/handleTranslation.js"></script>
   </head>
 
@@ -79,6 +81,10 @@
       <enable-gestures class="icon-margin" id="marker2"></enable-gestures>
     </div>
 
+    <!-- Rotation controls -->
+    <rotation-controls></rotation-controls>
+
+    <!-- Selection Menu -->
     <div class="selection-menu">
       <div class="marker">
         <img
@@ -243,6 +249,7 @@
       gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;"
       gesture-detector
       loader
+      rotate-molecules
     >
       <a-assets>
         <!--struct assets-->
