@@ -225,24 +225,38 @@ class RotationControls extends HTMLElement {
   handleChange(e) {
     var selectedElement = e.target.id;
     var newValue = e.target.value;
+    var markerSelected = selectedElement === "marker1-y" || selectedElement === "marker1-x" ? 1 : 2;
     var selectedValue;
+    var axis;
 
     switch (selectedElement) {
       case "marker1-y":
         selectedValue = this.marker1Yvalue;
+        axis = "y";
         break;
       case "marker1-x":
         selectedValue = this.marker1Xvalue;
+        axis = "x";
         break;
       case "marker2-y":
         selectedValue = this.marker2Yvalue;
+        axis = "y";
         break;
       case "marker2-x":
         selectedValue = this.marker2Xvalue;
+        axis = "x";
         break;
     }
 
+    var detail = {
+      marker: markerSelected,
+      axis,
+      value: newValue,
+    }
+
     selectedValue.innerHTML = newValue;
+
+    this.dispatchEvent(new CustomEvent("rotateGraphics", { detail }));
   }
 
   static get observedAttributes() {
