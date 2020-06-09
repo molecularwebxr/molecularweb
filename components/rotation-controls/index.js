@@ -183,18 +183,12 @@ class RotationControls extends HTMLElement {
 
     this.markerY = this.shadowRoot.getElementById("marker-y");
     this.markerX = this.shadowRoot.getElementById("marker-x");
-    // this.marker2Y = this.shadowRoot.getElementById("marker2-y");
-    // this.marker2X = this.shadowRoot.getElementById("marker2-x");
 
     this.markerYvalue = this.shadowRoot.getElementById("marker-y-value");
     this.markerXvalue = this.shadowRoot.getElementById("marker-x-value");
-    // this.marker2Yvalue = this.shadowRoot.getElementById("marker2-y-value");
-    // this.marker2Xvalue = this.shadowRoot.getElementById("marker2-x-value");
 
     this.markerY.addEventListener("input", this.handleChange);
     this.markerX.addEventListener("input", this.handleChange);
-    // this.marker2Y.addEventListener("input", this.handleChange);
-    // this.marker2X.addEventListener("input", this.handleChange);
   }
 
   handleChange(e) {
