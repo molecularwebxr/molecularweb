@@ -91,10 +91,15 @@ RotationControlsContent.innerHTML = /* html */ `
     background: #000000;
   }
 
-  .rotation-marker{
+  .rotation-marker {
     width: 241px;
     padding:  0 12px;
     box-sizing: border-box;
+  }
+
+  .embedded-container {
+    padding-right: 0.5rem;
+    width: auto;
   }
 
   .rotation-bar {
@@ -109,22 +114,9 @@ RotationControlsContent.innerHTML = /* html */ `
     
   }
 
-  .slider {
-    height: 3px;
-    width: 90px;
-    border-radius: 2px;
-    margin: 8px;
-    background-color: black;
-    position: relative;
-  }
-
-  .handler{
-    width: 12px;
-    height: 12px;
-    background-color: white;
-    border-radius: 6px;
-    position: absolute;
-    top: -5px;
+  .embedded {
+    background-color: transparent;
+    padding-right: 0;
   }
 
   .number-box{
@@ -148,8 +140,8 @@ RotationControlsContent.innerHTML = /* html */ `
     }
   }
   </style>
-    <div class="rotation-marker">
-      <div class="rotation-bar">
+    <div id="container" class="rotation-marker">
+      <div id="bar-y" class="rotation-bar">
         <p class="small">Rotate Y</p>
         <input type="range" min="0" max="180" value="0" step="5" id="marker-y" />
         <div class="number-box">
@@ -158,7 +150,7 @@ RotationControlsContent.innerHTML = /* html */ `
           </p>
         </div>
       </div>
-      <div class="rotation-bar">
+      <div id="bar-x" class="rotation-bar">
         <p class="small">Rotate X</p>
         <input type="range" min="0" max="180" value="0" step="5" id="marker-x" />
         <div class="number-box">
@@ -183,6 +175,9 @@ class RotationControls extends HTMLElement {
 
     this.markerY = this.shadowRoot.getElementById("marker-y");
     this.markerX = this.shadowRoot.getElementById("marker-x");
+    this.barY = this.shadowRoot.getElementById("bar-y");
+    this.barX = this.shadowRoot.getElementById("bar-x");
+    this.container = this.shadowRoot.getElementById("container");
 
     this.markerYvalue = this.shadowRoot.getElementById("marker-y-value");
     this.markerXvalue = this.shadowRoot.getElementById("marker-x-value");
@@ -221,7 +216,7 @@ class RotationControls extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["marker"];
+    return ["marker", "type"];
   }
 
   set marker(value) {
@@ -232,9 +227,26 @@ class RotationControls extends HTMLElement {
     return this._marker;
   }
 
+  set type(value) {
+    this._type = value;
+    if (this._type === "embedded") {
+      this.barY.classList.add("embedded");
+      this.barX.classList.add("embedded");
+      this.container.classList.add("embedded-container");
+    }
+  }
+
+  get type() {
+    return this._type;
+  }
+
   attributeChangedCallback(attrName, oldValue, newValue) {
     if (attrName === "marker") {
       this.marker = newValue;
+    }
+
+    if (attrName === "type") {
+      this.type = newValue;
     }
   }
 }
