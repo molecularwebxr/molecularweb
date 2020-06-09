@@ -4,6 +4,8 @@ var marker2A = document.querySelector("#marker2A");
 var marker2B = document.querySelector("#marker2B");
 var marker1Handler = document.getElementById("marker1");
 var marker2Handler = document.getElementById("marker2");
+var markerControl1 = document.getElementById("rotation-marker-1");
+var markerControl2 = document.getElementById("rotation-marker-2");
 
 var isMarker1Enabled = false;
 var isMarker2Enabled = false;
@@ -35,6 +37,8 @@ if ("maxTouchPoints" in navigator) {
 if (hasTouchScreen) {
   marker1Handler.addEventListener("click", handleGestureState);
   marker2Handler.addEventListener("click", handleGestureState);
+  markerControl1.classList.add("hide");
+  markerControl2.classList.add("hide");
 } else {
   marker1Handler.classList.add("hide");
   marker2Handler.classList.add("hide");

@@ -90,6 +90,10 @@ figure {
   margin-left: 0.5rem;
 }
 
+.right-margin {
+  margin-right: 0.5rem;
+}
+
 .orbital-selector {
   width: 163px;
   height: 22px;
@@ -155,6 +159,10 @@ figure {
     padding: 0.5rem;
     bottom: 5px;
     transform: translateX(-56%);
+  }
+
+  .marker-sample.left-margin {
+    margin-left: 0;
   }
 
   .line {
