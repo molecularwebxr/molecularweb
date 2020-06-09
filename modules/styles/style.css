@@ -138,6 +138,13 @@ figure {
   display: none;
 }
 
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
 .rotation-controls {
   position: fixed;
   bottom: 64px;
