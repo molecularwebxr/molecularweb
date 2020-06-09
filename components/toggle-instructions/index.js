@@ -8,8 +8,8 @@ instructionsIconTemplate.innerHTML = /* html */ `
     }
     svg {
       transition: transform 0.2s;
-      width: 20px;
-      height: 20px;
+      width: 25px;
+      height: 25px;
     }
     #circle {
       fill: rgba(255, 255, 255, 0.5);

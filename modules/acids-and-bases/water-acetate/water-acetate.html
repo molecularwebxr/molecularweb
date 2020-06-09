@@ -31,6 +31,7 @@
     <script src="/components/reset-activity/index.js"></script>
     <script src="/components/scale-graphics/index.js"></script>
     <script src="/components/enable-gestures/index.js"></script>
+    <script src="/components/rotation-controls/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="index.js"></script>
@@ -40,6 +41,7 @@
     <script src="/modules/utils/aframe/gesture-detector.js"></script>
     <script src="/modules/utils/aframe/gesture-handler.js"></script>
     <script src="/modules/utils/aframe/loader.js"></script>
+    <script src="/modules/utils/aframe/rotation.js"></script>
     <script src="/modules/utils/handleTranslation.js"></script>
   </head>
 
@@ -65,14 +67,52 @@
     <div class="side-menu column">
       <flip-video class="icon-margin"></flip-video>
       <flip-graphics class="icon-margin"></flip-graphics>
-      <!-- TO DO: This should be placed once bottom menu is available -->
-      <!-- <toggle-instructions></toggle-instructions>
-      <toggle-description></toggle-description> -->
       <reset-activity class="icon-margin"></reset-activity>
-      <scale-graphics class="icon-margin" id="scale-up" type="up"></scale-graphics>
-      <scale-graphics class="icon-margin" id="scale-down" type="down"></scale-graphics>
-      <enable-gestures class="icon-margin" id="marker1"></enable-gestures>
-      <enable-gestures class="icon-margin" id="marker2"></enable-gestures>
+      <scale-graphics
+        class="icon-margin"
+        id="scale-up"
+        type="up"
+      ></scale-graphics>
+      <scale-graphics
+        class="icon-margin"
+        id="scale-down"
+        type="down"
+      ></scale-graphics>
+    </div>
+
+    <!-- Bottom Menu -->
+    <div class="selection-menu">
+      <div class="marker">
+        <img
+          class="marker-sample"
+          src="/assets/img/0.png"
+          alt="sample marker"
+        />
+        <rotation-controls
+          id="rotation-marker-1"
+          marker="1"
+          type="embedded"
+        ></rotation-controls>
+        <enable-gestures id="marker1"></enable-gestures>
+      </div>
+      <span class="line"></span>
+      <div class="marker">
+        <img
+          class="marker-sample left-margin"
+          src="/assets/img/2.png"
+          alt="sample marker"
+        />
+        <rotation-controls
+          id="rotation-marker-2"
+          marker="2"
+          type="embedded"
+        ></rotation-controls>
+        <enable-gestures class="right-margin" id="marker2"></enable-gestures>
+      </div>
+      <div class="extra-info">
+        <toggle-instructions class="extra-info-icon"></toggle-instructions>
+        <toggle-description class="extra-info-icon"></toggle-description>
+      </div>
     </div>
 
     <!-- Overlays -->
@@ -96,6 +136,7 @@
       renderer="logarithmicDepthBuffer: true;"
       interactive-molecules
       gesture-detector
+      rotate-molecules
       loader
     >
       <a-marker type="barcode" value="0" id="watA">

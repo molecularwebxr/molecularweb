@@ -3,25 +3,22 @@ gesturesIconTemplate.innerHTML = /* html */ `
   <style>
     a {
       cursor: pointer;
+      display: flex;
+      align-items:center;
+      margin: 0 0 0 0.5rem;
     }
     svg {
-      width: 40px;
-      height: 40px;
+      width: 25px;
+      height: 25px;
     }
     path {
-      fill: var(--primarydark);
+      fill: var(--primary);
     }
     .circle {
-      fill: #FFFFFF;
+      fill: rgba(255, 255, 255, 0.5);
     }
     .circle.active {
       fill: var(--secondary);
-    }
-    @media (max-width: 440px) {
-      svg {
-        width: 30px;
-        height: 30px;
-      }
     }
   </style>
   <a id="anchor">
