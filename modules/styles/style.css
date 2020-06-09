@@ -134,6 +134,16 @@ figure {
   display: none;
 }
 
+.rotation-controls {
+  position: fixed;
+  bottom: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  width: 540px;
+  display: flex;
+}
+
 @media screen and (max-width: 630px) {
   .orbital-selector {
     width: 90px;

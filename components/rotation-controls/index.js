@@ -91,17 +91,7 @@ RotationControlsContent.innerHTML = /* html */ `
     background: #000000;
   }
 
-  .rotation-controls {
-    position: fixed;
-    bottom: 64px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    width: 540px;
-    display: flex;
-  }
-
-  .rotation-marker1{
+  .rotation-marker{
     width: 241px;
     padding:  0 12px;
     box-sizing: border-box;
@@ -158,48 +148,27 @@ RotationControlsContent.innerHTML = /* html */ `
     }
   }
   </style>
-  <div class="rotation-controls">
-    <div class="rotation-marker1">
+    <div class="rotation-marker">
       <div class="rotation-bar">
         <p class="small">Rotate Y</p>
-        <input type="range" min="0" max="180" value="0" step="5" id="marker1-y" />
+        <input type="range" min="0" max="180" value="0" step="5" id="marker-y" />
         <div class="number-box">
           <p class="small num">
-            <span id="marker1-y-value">0</span><span>°</span>
+            <span id="marker-y-value">0</span><span>°</span>
           </p>
         </div>
       </div>
       <div class="rotation-bar">
         <p class="small">Rotate X</p>
-        <input type="range" min="0" max="180" value="0" step="5" id="marker1-x" />
+        <input type="range" min="0" max="180" value="0" step="5" id="marker-x" />
         <div class="number-box">
           <p class="small num">
-            <span id="marker1-x-value">0</span><span>°</span>
+            <span id="marker-x-value">0</span><span>°</span>
           </p>
         </div>
       </div>
     </div>
-    <div class="rotation-marker1">
-      <div class="rotation-bar">
-        <p class="small">Rotate Y</p>
-        <input type="range" min="0" max="180" value="0" step="5" id="marker2-y" />
-        <div class="number-box">
-          <p class="small num">
-            <span id="marker2-y-value">0</span><span>°</span>
-          </p>
-        </div>
-      </div>
-      <div class="rotation-bar">
-        <p class="small">Rotate X</p>
-        <input type="range" min="0" max="180" value="0" step="5" id="marker2-x" />
-        <div class="number-box">
-          <p class="small num">
-            <span id="marker2-x-value">0</span><span>°</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>`;
+    `;
 
 class RotationControls extends HTMLElement {
   constructor() {
@@ -212,44 +181,36 @@ class RotationControls extends HTMLElement {
       RotationControlsContent.content.cloneNode(true)
     );
 
-    this.marker1Y = this.shadowRoot.getElementById("marker1-y");
-    this.marker1X = this.shadowRoot.getElementById("marker1-x");
-    this.marker2Y = this.shadowRoot.getElementById("marker2-y");
-    this.marker2X = this.shadowRoot.getElementById("marker2-x");
+    this.markerY = this.shadowRoot.getElementById("marker-y");
+    this.markerX = this.shadowRoot.getElementById("marker-x");
+    // this.marker2Y = this.shadowRoot.getElementById("marker2-y");
+    // this.marker2X = this.shadowRoot.getElementById("marker2-x");
 
-    this.marker1Yvalue = this.shadowRoot.getElementById("marker1-y-value");
-    this.marker1Xvalue = this.shadowRoot.getElementById("marker1-x-value");
-    this.marker2Yvalue = this.shadowRoot.getElementById("marker2-y-value");
-    this.marker2Xvalue = this.shadowRoot.getElementById("marker2-x-value");
+    this.markerYvalue = this.shadowRoot.getElementById("marker-y-value");
+    this.markerXvalue = this.shadowRoot.getElementById("marker-x-value");
+    // this.marker2Yvalue = this.shadowRoot.getElementById("marker2-y-value");
+    // this.marker2Xvalue = this.shadowRoot.getElementById("marker2-x-value");
 
-    this.marker1Y.addEventListener("input", this.handleChange);
-    this.marker1X.addEventListener("input", this.handleChange);
-    this.marker2Y.addEventListener("input", this.handleChange);
-    this.marker2X.addEventListener("input", this.handleChange);
+    this.markerY.addEventListener("input", this.handleChange);
+    this.markerX.addEventListener("input", this.handleChange);
+    // this.marker2Y.addEventListener("input", this.handleChange);
+    // this.marker2X.addEventListener("input", this.handleChange);
   }
 
   handleChange(e) {
     var selectedElement = e.target.id;
     var newValue = e.target.value;
-    var markerSelected = selectedElement === "marker1-y" || selectedElement === "marker1-x" ? 1 : 2;
+    var markerSelected = this.marker
     var selectedValue;
     var axis;
 
     switch (selectedElement) {
-      case "marker1-y":
-        selectedValue = this.marker1Yvalue;
+      case "marker-y":
+        selectedValue = this.markerYvalue;
         axis = "y";
         break;
-      case "marker1-x":
-        selectedValue = this.marker1Xvalue;
-        axis = "x";
-        break;
-      case "marker2-y":
-        selectedValue = this.marker2Yvalue;
-        axis = "y";
-        break;
-      case "marker2-x":
-        selectedValue = this.marker2Xvalue;
+      case "marker-x":
+        selectedValue = this.markerXvalue;
         axis = "x";
         break;
     }
@@ -266,20 +227,20 @@ class RotationControls extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["display"];
+    return ["marker"];
   }
 
-  set display(value) {
-    this._display = value;
+  set marker(value) {
+    this._marker = value;
   }
 
-  get display() {
-    return this._display;
+  get marker() {
+    return this._marker;
   }
 
   attributeChangedCallback(attrName, oldValue, newValue) {
-    if (attrName === "display") {
-      this.display = newValue;
+    if (attrName === "marker") {
+      this.marker = newValue;
     }
   }
 }
