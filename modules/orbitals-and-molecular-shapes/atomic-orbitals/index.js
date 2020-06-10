@@ -1,17 +1,17 @@
-const marker1Select = document.getElementById("select-marker-1");
-const marker2Select = document.getElementById("select-marker-2");
-const markers = [marker1Select, marker2Select];
+var marker1Select = document.getElementById("select-marker-1");
+var marker2Select = document.getElementById("select-marker-2");
+var markers = [marker1Select, marker2Select];
 
-const marker1AModel = document.getElementById("marker-1A-mol");
-const marker1BModel = document.getElementById("marker-1B-mol");
+var marker1AModel = document.getElementById("marker-1A-mol");
+var marker1BModel = document.getElementById("marker-1B-mol");
 
-const marker2AModel = document.getElementById("marker-2A-mol");
-const marker2BModel = document.getElementById("marker-2B-mol");
+var marker2AModel = document.getElementById("marker-2A-mol");
+var marker2BModel = document.getElementById("marker-2B-mol");
 
-const resetActivityButton = document.querySelector("reset-activity");
+var resetActivityButton = document.querySelector("reset-activity");
 
-const modelsMarker1 = [marker1AModel, marker1BModel];
-const modelsMarker2 = [marker2AModel, marker2BModel];
+var modelsMarker1 = [marker1AModel, marker1BModel];
+var modelsMarker2 = [marker2AModel, marker2BModel];
 
 marker1Select.selectedIndex = 0;
 marker2Select.selectedIndex = 0;
@@ -45,11 +45,11 @@ function handleReset(e) {
 function handleSelection(e) {
   e.preventDefault();
 
-  const markerSelected =
+  var markerSelected =
     e.target.id === "select-marker-1" ? markers[0] : markers[1];
-  const modelsSelected =
+  var modelsSelected =
     e.target.id === "select-marker-1" ? modelsMarker1 : modelsMarker2;
-  const index = markerSelected.selectedIndex;
+  var index = markerSelected.selectedIndex;
 
   let assetIndex;
   if (index < 25) {
