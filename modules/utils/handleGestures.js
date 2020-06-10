@@ -6,9 +6,15 @@ var marker1Handler = document.getElementById("marker1");
 var marker2Handler = document.getElementById("marker2");
 var markerControl1 = document.getElementById("rotation-marker-1");
 var markerControl2 = document.getElementById("rotation-marker-2");
+var markerOptions1 = document.getElementById("marker-options-1");
+var markerOptions2 = document.getElementById("marker-options-2");
+var markerImage1 = document.getElementById("marker-image-1");
+var markerImage2 = document.getElementById("marker-image-2");
 
 var isMarker1Enabled = false;
 var isMarker2Enabled = false;
+var isMarker1OptionsEnabled = false;
+var isMarker2OptionsEnabled = false;
 marker1Handler.isActive = false;
 marker2Handler.isActive = false;
 
@@ -35,11 +41,23 @@ if ("maxTouchPoints" in navigator) {
 }
 
 if (hasTouchScreen) {
+  // Enable listeners on marker images for triggering marker's menu
+  markerImage1.addEventListener("click", handleMarkerSelection);
+  markerImage2.addEventListener("click", handleMarkerSelection);
+  
+  // handle gesture listeners/controls
   marker1Handler.addEventListener("click", handleGestureState);
   marker2Handler.addEventListener("click", handleGestureState);
+
+  // Hide manual rotation controls
   markerControl1.classList.add("hide");
   markerControl2.classList.add("hide");
+
+  // Hide marker options by default
+  markerOptions1.classList.add("touch");
+  markerOptions2.classList.add("touch");
 } else {
+  // Hide gesture controls
   marker1Handler.classList.add("hide");
   marker2Handler.classList.add("hide");
 }
@@ -101,4 +119,16 @@ function disableMarker2() {
 function enableMarker2() {
   marker2A.setAttribute("gesture-handler", { enabled: true });
   marker2B.setAttribute("gesture-handler", { enabled: true });
+}
+
+function handleMarkerSelection(e) {
+  var markerSelected = e.target.id;
+
+  if (markerSelected === "marker-image-1") {
+    markerOptions1.classList.toggle("active");
+    markerOptions2.classList.remove("active");
+  } else {
+    markerOptions1.classList.remove("active");
+    markerOptions2.classList.toggle("active");
+  }
 }

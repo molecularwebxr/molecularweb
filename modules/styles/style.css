@@ -140,9 +140,19 @@ figure {
 
 .options {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
   justify-content: center;
+}
+
+.options.touch {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+}
+
+.options.touch.active {
+  display: flex;
 }
 
 .rotation-controls {
