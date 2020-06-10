@@ -12,24 +12,28 @@ AFRAME.registerComponent("gesture-handler", {
   init: function() {
     this.handleScale = this.handleScale.bind(this);
     this.handleRotation = this.handleRotation.bind(this);
+    this.handleReset = this.handleReset.bind(this);
 
     this.linkedMarker = document.querySelector(this.data.linkedMarker);
+    var resetActivityButton = document.querySelector("reset-activity");
 
     this.isVisible = false;
     this.initialScale = this.el.object3D.scale.clone();
     this.scaleFactor = 1;
 
+    resetActivityButton.addEventListener("resetActivity", this.handleReset);
+
     this.el.sceneEl.addEventListener("markerFound", e => {
-      const markerChildren = e.target.childNodes;
-      const isThisMarkerFound =  [...markerChildren].some(element => element.id === this.el.id);
+      var markerChildren = e.target.childNodes;
+      var isThisMarkerFound =  [...markerChildren].some(element => element.id === this.el.id);
       if (isThisMarkerFound) {
         this.isVisible = true;
       }
     });
 
     this.el.sceneEl.addEventListener("markerLost", e => {
-      const markerChildren = e.target.childNodes;
-      const isThisMarkerLost =  [...markerChildren].some(element => element.id === this.el.id);
+      var markerChildren = e.target.childNodes;
+      var isThisMarkerLost =  [...markerChildren].some(element => element.id === this.el.id);
       if(isThisMarkerLost) {
         this.isVisible = false;
       }
@@ -83,5 +87,25 @@ AFRAME.registerComponent("gesture-handler", {
       this.linkedMarker.object3D.scale.y = this.scaleFactor * this.initialScale.y;
       this.linkedMarker.object3D.scale.z = this.scaleFactor * this.initialScale.z;
     }
-  }
+  },
+
+  handleReset: function (e) {
+    if(this.el.id === "marker1A" || this.el.id === "marker1B") {
+      this.el.object3D.rotation.set(
+        THREE.Math.degToRad(0),
+        THREE.Math.degToRad(0),
+        THREE.Math.degToRad(0)
+      );
+    } else {
+      this.marker2B.object3D.rotation.set(
+        THREE.Math.degToRad(180),
+        THREE.Math.degToRad(180),
+        THREE.Math.degToRad(0)
+      );
+
+    }
+
+    this.scaleFactor = 1;
+    this.el.object3D.scale.set(1, 1, 1);
+  },
 });
