@@ -1,13 +1,16 @@
 AFRAME.registerComponent("listen-to-scale", {
   init: function () {
     this.scale = this.scale.bind(this);
+    this.handleReset = this.handleReset.bind(this);
     this.scaleFactor = 1;
 
-    const scaleUpButton = document.getElementById("scale-up");
-    const scaleDownButton = document.getElementById("scale-down");
+    var scaleUpButton = document.getElementById("scale-up");
+    var scaleDownButton = document.getElementById("scale-down");
+    var resetActivityButton = document.querySelector("reset-activity");
 
     scaleUpButton.addEventListener("scaleGraphics", this.scale);
     scaleDownButton.addEventListener("scaleGraphics", this.scale);
+    resetActivityButton.addEventListener("resetActivity", this.handleReset);
   },
 
   scale: function (e) {
@@ -21,4 +24,9 @@ AFRAME.registerComponent("listen-to-scale", {
     this.el.object3D.scale.y = this.scaleFactor;
     this.el.object3D.scale.z = this.scaleFactor;
   },
+
+  handleReset: function(e) {
+    this.scaleFactor = 1;
+    this.el.object3D.scale.set(1, 1, 1);
+  }
 });

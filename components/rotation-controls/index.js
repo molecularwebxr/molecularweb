@@ -167,6 +167,7 @@ class RotationControls extends HTMLElement {
     super();
 
     this.handleChange = this.handleChange.bind(this);
+    this.reset = this.reset.bind(this);
 
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(
@@ -213,6 +214,14 @@ class RotationControls extends HTMLElement {
     selectedValue.innerHTML = newValue;
 
     this.dispatchEvent(new CustomEvent("rotateGraphics", { detail }));
+  }
+
+  reset() {
+    this.markerX.value = 0;
+    this.markerY.value = 0;
+
+    this.markerYvalue.innerHTML = "0";
+    this.markerXvalue.innerHTML = "0";
   }
 
   static get observedAttributes() {
