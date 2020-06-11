@@ -86,7 +86,7 @@ figure {
   height: 36px;
 }
 
-.marker-sample.left-margin {
+.left-margin {
   margin-left: 0.5rem;
 }
 
@@ -171,7 +171,6 @@ figure {
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
   border-left: 5px solid var(--primarylight);
-  transition: transform 0.2s ease-out;
   transform: rotate(90deg);
 }
 
@@ -235,12 +234,6 @@ figure {
 
   .marker-sample.left-margin {
     margin-left: 0.25rem;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .orbital-selector {
-    /* width: 50px; */
   }
 }
 
