@@ -5,7 +5,6 @@ gesturesIconTemplate.innerHTML = /* html */ `
       cursor: pointer;
       display: flex;
       align-items:center;
-      margin: 0 0 0 0.5rem;
     }
     svg {
       width: 25px;
