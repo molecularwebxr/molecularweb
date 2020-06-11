@@ -56,6 +56,10 @@ if (hasTouchScreen) {
   // Hide marker options by default
   markerOptions1.classList.add("touch");
   markerOptions2.classList.add("touch");
+
+  // Some styles depends on touch capabilities
+  markerImage2.classList.remove("left-margin");
+  markerImage2.classList.add("right-margin");
 } else {
   // Hide gesture controls
   marker1Handler.classList.add("hide");
