@@ -142,7 +142,9 @@ RotationControlsContent.innerHTML = /* html */ `
   </style>
     <div id="container" class="rotation-marker">
       <div id="bar-y" class="rotation-bar">
-        <p class="small">Rotate Y</p>
+        <p class="small">
+          <intl-message key="app.rotate"></intl-message><span>Y</span>
+        </p>
         <input type="range" min="0" max="180" value="0" step="5" id="marker-y" />
         <div class="number-box">
           <p class="small num">
@@ -151,7 +153,9 @@ RotationControlsContent.innerHTML = /* html */ `
         </div>
       </div>
       <div id="bar-x" class="rotation-bar">
-        <p class="small">Rotate X</p>
+        <p class="small">
+          <intl-message key="app.rotate"></intl-message><span>X</span>
+        </p>
         <input type="range" min="0" max="180" value="0" step="5" id="marker-x" />
         <div class="number-box">
           <p class="small num">

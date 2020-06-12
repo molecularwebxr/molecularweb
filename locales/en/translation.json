@@ -10,6 +10,10 @@
     "description": "A website for chemistry and biology education through augmented reality, available out of the box in commodity devices",
     "policy": "Copyright © 2020 Laboratory for biomolecular modeling, EPFL. All rights reserved.",
     "contactUs": "Contact us",
+    "feedbackMsg": "Hi! Would you like to help us with a quick survey?",
+    "sure": "Sure!",
+    "dismiss": "Dismiss",
+    "rotate": "Rotate ",
     "markers": "Click here to find the AR markers with print and assemble instructions"
   },
   "orbitals": {
