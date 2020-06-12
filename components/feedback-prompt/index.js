@@ -66,12 +66,11 @@ feedbackPromptTemplate.innerHTML = /* html */ `
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
   }
 
-  .btn-primary:active {
-    transform: scale(.95);
-  }
-
+  .btn-primary:active,
   .btn-dismiss:active {
     transform: scale(.95);
   }
@@ -111,7 +110,7 @@ feedbackPromptTemplate.innerHTML = /* html */ `
       <p class="medium-text-bold">Hi! Would you like to help us with a quick survey?</p>
     </div>
     <div class="btn-container">
-      <div class="btn-primary" id="ok-button">🙂Sure!</div>
+      <a class="btn-primary" id="ok-button" href="/pages/feedback.html" target="_blank">🙂Sure!</a>
       <div class="btn-dismiss" id="dismiss">Dismiss</div>
     </div>
   </div>`;

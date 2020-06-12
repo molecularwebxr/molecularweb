@@ -1,7 +1,7 @@
-const localize = locI18next.init(i18next);
+var localize = locI18next.init(i18next);
 
-const english = document.getElementById("en");
-const spanish = document.getElementById("es");
+var english = document.getElementById("en");
+var spanish = document.getElementById("es");
 
 i18next
   .use(i18nextHttpBackend)
@@ -35,12 +35,12 @@ function updateContent() {
 }
 
 function handleLanguageChange(e) {
-  const lang = e.target.id;
+  var lang = e.target.id;
   e.preventDefault();
   i18next.changeLanguage(lang);
 }
 
-i18next.on("languageChanged", () => {
+i18next.on("languageChanged", function(){
   updateContent();
 });
 

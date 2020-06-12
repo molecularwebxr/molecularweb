@@ -10,7 +10,7 @@
     />
     <link rel="stylesheet" href="styles/base.css" />
     <link rel="stylesheet" href="styles/styles.css" />
- 
+
     <!-- Translation Libraries -->
     <script src="/lib/i18n/i18next.min.js"></script>
     <script src="/lib/i18n/i18next-wc.js"></script>
@@ -26,7 +26,6 @@
     <script src="/components/icons/tubes/index.js"></script>
     <script src="/components/icons/dna/index.js"></script>
     <script src="/components/icons/bacteria/index.js"></script>
-    
   </head>
   <body>
     <div id="overlay" class="overlay"></div>
@@ -38,7 +37,11 @@
         <div class="menu row">
           <a class="menu-link" data-i18n="menu.about"></a>
           <a class="menu-link" data-i18n="menu.getInTouch"></a>
-          <a class="menu-link" data-i18n="menu.feedback"></a>
+          <a
+            href="/pages/feedback.html"
+            class="menu-link"
+            data-i18n="menu.feedback"
+          ></a>
           <div class="language">
             <a class="menu-link language" data-i18n="menu.language"></a>
             <ul class="language-menu">
@@ -61,7 +64,11 @@
           <div class="mobile-menu-links column">
             <a class="mobile-menu-link" data-i18n="menu.about"></a>
             <a class="mobile-menu-link" data-i18n="menu.getInTouch"></a>
-            <a class="mobile-menu-link" data-i18n="menu.feedback"></a>
+            <a
+              class="mobile-menu-link"
+              href="/pages/feedback.html"
+              data-i18n="menu.feedback"
+            ></a>
             <a class="mobile-menu-link" data-i18n="menu.language"></a>
           </div>
         </div>
@@ -363,7 +370,8 @@
     <footer>
       <app-footer />
     </footer>
-    <script src="/index.js"></script>
-    <script src="/translate.js"></script>
+    <script src="/js/handleExpansionPanels.js"></script>
+    <script src="/js/translate.js"></script>
+    <script src="/js/handleMobile.js"></script>
   </body>
 </html>
