@@ -41,7 +41,6 @@ feedbackPromptTemplate.innerHTML = /* html */ `
   p.icon-survey {
     font-size: 24px;
     margin-right: 8px;
-    
   }
 
   .medium-text-bold {
@@ -103,6 +102,110 @@ feedbackPromptTemplate.innerHTML = /* html */ `
       transform: translate(-50%, -100px);
     }
   }
+
+  @media screen and (max-width: 900px) {
+      .medium-text-bold {
+        font-size: 16px;
+      }
+
+      p.icon-survey {
+        font-size: 20px;
+      }
+
+      .btn-primary,
+      .btn-dismiss {
+        font-size: 14px;
+      }
+    }
+
+    @media screen and (max-width: 750px) {
+      .survey {
+        padding: 16px 24px;
+      }
+
+      p.icon-survey {
+        font-size: 18px;
+      }
+
+      .btn-primary,
+      .btn-dismiss {
+        padding: 5px 16px;
+      }
+    }
+
+    @media screen and (max-width: 750px) {
+      .survey {
+        padding: 16px 20px;
+      }
+
+      .medium-text-bold {
+        font-size: 14px;
+      }
+
+      p.icon-survey {
+        font-size: 16px;
+      }
+
+      .btn-primary,
+      .btn-dismiss {
+        font-size: 12px;
+        padding: 5px 14px;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .survey {
+        flex-direction: column;
+      }
+
+      .btn-container {
+        margin: 10px 0 0 0;
+      }
+      
+    }
+
+    @media screen and (max-width: 420px) {
+      .survey {
+        padding: 14px 16px;
+      }
+      .medium-text-bold {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      p.icon-survey {
+        font-size: 14px;
+        margin-right: 4px;
+      }
+
+      .btn-primary,
+      .btn-dismiss {
+        font-weight: 500;
+      }
+    }
+
+    @media screen and (max-width: 380px) {
+      .survey {
+        padding: 14px 12px;
+      }
+    }
+
+    @media screen and (max-width: 350px) {
+      .medium-text-bold {
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      p.icon-survey {
+        font-size: 12px;
+        margin-right: 3px;
+      }
+
+      .btn-primary,
+      .btn-dismiss {
+        font-size: 10px;
+      }
+    }
   </style>
   <div class="survey" id="survey-container">
     <div class="text-container">
@@ -113,7 +216,7 @@ feedbackPromptTemplate.innerHTML = /* html */ `
     </div>
     <div class="btn-container">
       <a class="btn-primary" id="ok-button" href="/pages/feedback.html" target="_blank">
-        <span>🙂</span><intl-message key="app.sure"></intl-message>
+        <span>🙂 </span><intl-message key="app.sure"></intl-message>
       </a>
       <div class="btn-dismiss" id="dismiss">
         <intl-message key="app.dismiss"></intl-message>
