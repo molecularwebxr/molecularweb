@@ -107,11 +107,17 @@ feedbackPromptTemplate.innerHTML = /* html */ `
   <div class="survey" id="survey-container">
     <div class="text-container">
       <p class="icon-survey">👋</p>
-      <p class="medium-text-bold">Hi! Would you like to help us with a quick survey?</p>
+      <p class="medium-text-bold">
+        <intl-message key="app.feedbackMsg"></intl-message>
+      </p>
     </div>
     <div class="btn-container">
-      <a class="btn-primary" id="ok-button" href="/pages/feedback.html" target="_blank">🙂Sure!</a>
-      <div class="btn-dismiss" id="dismiss">Dismiss</div>
+      <a class="btn-primary" id="ok-button" href="/pages/feedback.html" target="_blank">
+        <span>🙂</span><intl-message key="app.sure"></intl-message>
+      </a>
+      <div class="btn-dismiss" id="dismiss">
+        <intl-message key="app.dismiss"></intl-message>
+      </div>
     </div>
   </div>`;
 
