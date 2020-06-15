@@ -42,6 +42,7 @@
     <script src="/components/overlay/index.js"></script>
     <script src="/components/toggle-instructions/index.js"></script>
     <script src="/components/toggle-description/index.js"></script>
+    <script src="/components/toggle-menu/index.js"></script>
     <script src="/components/reset-activity/index.js"></script>
     <script src="/components/scale-graphics/index.js"></script>
     <script src="/components/enable-gestures/index.js"></script>
@@ -96,6 +97,7 @@
         id="scale-down"
         type="down"
       ></scale-graphics>
+      <toggle-menu class="icon-margin"></toggle-menu>
     </div>
 
     <!-- Bottom Menu -->
@@ -153,6 +155,9 @@
         slot="description"
         data-i18n="bonds.waterProtonation.description"
       ></span>
+    </activity-overlay>
+
+    <activity-overlay id="menu" default="hidden" type="menu">
     </activity-overlay>
 
     <a-scene
