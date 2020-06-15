@@ -145,10 +145,10 @@ overlayTemplate.innerHTML = /* html */ `
     <p id="markers">
       <intl-message key="app.markers"></intl-message>
     </p>
-    <p>
+    <p id="instructions">
       <slot name="instructions"></slot>
     </p>
-    <p>
+    <p id="description">
       <slot name="description"></slot>
     </p>
     <p id="menu" class="hidden">
@@ -193,6 +193,8 @@ class ActivityOverlay extends HTMLElement {
     this.overlayElement = this.shadowRoot.getElementById("overlay");
 
     this.markersTextElement = this.shadowRoot.getElementById("markers");
+    this.descriptionTextElement = this.shadowRoot.getElementById("description");
+    this.instructionsTextElement = this.shadowRoot.getElementById("instructions");
     this.menuTextElement = this.shadowRoot.getElementById("menu");
   }
 
@@ -203,10 +205,17 @@ class ActivityOverlay extends HTMLElement {
 
     if(this.type === "description") {
       this.markersTextElement.classList.add("hidden");
+      this.instructionsTextElement.classList.add("hidden");
+    }
+
+    if(this.type === "instructions") {
+      this.descriptionTextElement.classList.add("hidden");
     }
 
     if(this.type === "menu") {
       this.markersTextElement.classList.add("hidden");
+      this.instructionsTextElement.classList.add("hidden");
+      this.descriptionTextElement.classList.add("hidden");
       this.menuTextElement.classList.remove("hidden");
     }
   }
