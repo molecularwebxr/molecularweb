@@ -151,6 +151,9 @@ overlayTemplate.innerHTML = /* html */ `
     <p>
       <slot name="description"></slot>
     </p>
+    <p id="menu" class="hidden">
+      Here will be the menu :)
+    </p>
     <button>Continue</button>
   </div>`;
 
@@ -190,6 +193,7 @@ class ActivityOverlay extends HTMLElement {
     this.overlayElement = this.shadowRoot.getElementById("overlay");
 
     this.markersTextElement = this.shadowRoot.getElementById("markers");
+    this.menuTextElement = this.shadowRoot.getElementById("menu");
   }
 
   connectedCallback() {
@@ -199,6 +203,11 @@ class ActivityOverlay extends HTMLElement {
 
     if(this.type === "description") {
       this.markersTextElement.classList.add("hidden");
+    }
+
+    if(this.type === "menu") {
+      this.markersTextElement.classList.add("hidden");
+      this.menuTextElement.classList.remove("hidden");
     }
   }
 
