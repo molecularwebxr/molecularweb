@@ -1,4 +1,4 @@
-const localize = locI18next.init(i18next);
+var localize = locI18next.init(i18next);
 
 i18next
   .use(i18nextHttpBackend)
