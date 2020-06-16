@@ -1,5 +1,3 @@
-/* global AFRAME, THREE */
-
 AFRAME.registerComponent("connector", {
   schema: {
     src: { type: "selector" },
@@ -23,4 +21,3 @@ AFRAME.registerComponent("connector", {
   },
   
 });
-

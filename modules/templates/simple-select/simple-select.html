@@ -15,7 +15,7 @@
 
       gtag("config", "UA-91563073-2");
     </script>
-    <title>Atomic orbitals and molecular shapes</title>
+    <title>Simple select template</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="/styles/base.css" />
@@ -62,6 +62,7 @@
 
   <body>
     <!-- Header -->
+    <!-- Replace here the icon & title from the module that corresponds -->
     <header id="header">
       <div class="row">
         <figure>
@@ -77,7 +78,7 @@
     <!-- UI Components -->
     <back-anchor></back-anchor>
     <loader-component></loader-component>
-    
+
     <!-- Feedback Modal -->
     <feedback-prompt></feedback-prompt>
 
@@ -106,6 +107,8 @@
     </div>
 
     <!-- Selection Menu -->
+    <!-- Include the options & options group as needed for both markers -->
+    <!-- Keep in mind that this options MUST me aligned with a-assets -->
     <div class="selection-menu">
       <div class="marker">
         <img
@@ -123,58 +126,13 @@
               <option>2py (m=0)</option>
               <option>2pz (m=1)</option>
               <option>3dz<sup>2</sup> (m=0)</option>
-              <option>3dxz (m=-1)</option>
-              <option>3dyz (m=1)</option>
-              <option>3dxy (m=-2)</option>
-              <option>3dx2-y2 (m=2)</option>
-              <option>4f (m=-3)</option>
-              <option>4f (m=3)</option>
-              <option>4f (m=-2)</option>
-              <option>4f (m=2)</option>
-              <option>4f (m=-1)</option>
-              <option>4f (m=1)</option>
-              <option>4f (m=0)</option>
-              <option>5g (m=-4)</option>
-              <option>5g (m=4)</option>
-              <option>5g (m=-3)</option>
-              <option>5g (m=3)</option>
-              <option>5g (m=-2)</option>
-              <option>5g (m=2)</option>
-              <option>5g (m=-1)</option>
-              <option>5g (m=1)</option>
-              <option>5g (m=0)</option>
-            </optgroup>
-            <optgroup label="Hybridized Orbitals">
-              <option>2sp (1)</option>
-              <option>2sp (2)</option>
-              <option>2sp2 (1)</option>
-              <option>2sp2 (2)</option>
-              <option>2sp2 (3)</option>
-              <option>2sp3 (1)</option>
-              <option>2sp3 (2)</option>
-              <option>2sp3 (3)</option>
-              <option>2sp3 (4)</option>
-              <option>3sp3d (1)</option>
-              <option>3sp3d (2)</option>
-              <option>3sp3d (3)</option>
-              <option>3sp3d (4)</option>
-              <option>3sp3d (5)</option>
-              <option>3sp3d2 (1)</option>
-              <option>3sp3d2 (2)</option>
-              <option>3sp3d2 (3)</option>
-              <option>3sp3d2 (4)</option>
-              <option>3sp3d2 (5)</option>
-              <option>3sp3d2 (6)</option>
-            </optgroup>
-            <optgroup label="Ideal TRPEV geometries">
-              <option>Linear</option>
-              <option>Trigonal planar</option>
-              <option>Tetrahedral</option>
-              <option>Trigonal bipyramidal</option>
-              <option>Octahedral</option>
-            </optgroup>
-          </select>
-          <enable-gestures class="gesture-icon left-margin" id="marker1"></enable-gestures>
+            </optgroup></select
+          >
+
+          <enable-gestures
+            class="gesture-icon left-margin"
+            id="marker1"
+          ></enable-gestures>
         </div>
       </div>
       <span class="line"></span>
@@ -194,58 +152,13 @@
               <option>2py (m=0)</option>
               <option>2pz (m=1)</option>
               <option>3dz<sup>2</sup> (m=0)</option>
-              <option>3dxz (m=-1)</option>
-              <option>3dyz (m=1)</option>
-              <option>3dxy (m=-2)</option>
-              <option>3dx2-y2 (m=2)</option>
-              <option>4f (m=-3)</option>
-              <option>4f (m=3)</option>
-              <option>4f (m=-2)</option>
-              <option>4f (m=2)</option>
-              <option>4f (m=-1)</option>
-              <option>4f (m=1)</option>
-              <option>4f (m=0)</option>
-              <option>5g (m=-4)</option>
-              <option>5g (m=4)</option>
-              <option>5g (m=-3)</option>
-              <option>5g (m=3)</option>
-              <option>5g (m=-2)</option>
-              <option>5g (m=2)</option>
-              <option>5g (m=-1)</option>
-              <option>5g (m=1)</option>
-              <option>5g (m=0)</option>
-            </optgroup>
-            <optgroup label="Hybridized Orbitals">
-              <option>2sp (1)</option>
-              <option>2sp (2)</option>
-              <option>2sp2 (1)</option>
-              <option>2sp2 (2)</option>
-              <option>2sp2 (3)</option>
-              <option>2sp3 (1)</option>
-              <option>2sp3 (2)</option>
-              <option>2sp3 (3)</option>
-              <option>2sp3 (4)</option>
-              <option>3sp3d (1)</option>
-              <option>3sp3d (2)</option>
-              <option>3sp3d (3)</option>
-              <option>3sp3d (4)</option>
-              <option>3sp3d (5)</option>
-              <option>3sp3d2 (1)</option>
-              <option>3sp3d2 (2)</option>
-              <option>3sp3d2 (3)</option>
-              <option>3sp3d2 (4)</option>
-              <option>3sp3d2 (5)</option>
-              <option>3sp3d2 (6)</option>
-            </optgroup>
-            <optgroup label="Ideal TRPEV geometries">
-              <option>Linear</option>
-              <option>Trigonal planar</option>
-              <option>Tetrahedral</option>
-              <option>Trigonal bipyramidal</option>
-              <option>Octahedral</option>
-            </optgroup>
-          </select>
-          <enable-gestures class="gesture-icon left-margin" id="marker2"></enable-gestures>
+            </optgroup></select
+          >
+
+          <enable-gestures
+            class="gesture-icon left-margin"
+            id="marker2"
+          ></enable-gestures>
         </div>
       </div>
       <div class="extra-info">
@@ -255,6 +168,7 @@
     </div>
 
     <!-- Overlays -->
+    <!-- Replace here the title, description & instructions as needed -->
     <activity-overlay id="instructions" default="open" type="instructions">
       <span slot="title" data-i18n="orbitals.atomicOrbitals.title"></span>
       <span
@@ -286,121 +200,13 @@
       rotate-molecules
     >
       <a-assets>
-        <!--struct assets-->
+        <!-- Struct assets -->
+        <!-- Keep in mind that this assets MUST me aligned with options provided -->
         <a-asset-item id="orb1" src="./models/OA_2S.gltf"></a-asset-item>
         <a-asset-item id="orb2" src="./models/OA_2P_-1.gltf"></a-asset-item>
         <a-asset-item id="orb3" src="./models/OA_2P_0.gltf"></a-asset-item>
         <a-asset-item id="orb4" src="./models/OA_2P_1.gltf"></a-asset-item>
         <a-asset-item id="orb5" src="./models/OA_3D_0.gltf"></a-asset-item>
-        <a-asset-item id="orb6" src="./models/OA_3D_-1.gltf"></a-asset-item>
-        <a-asset-item id="orb7" src="./models/OA_3D_1.gltf"></a-asset-item>
-        <a-asset-item id="orb8" src="./models/OA_3D_-2.gltf"></a-asset-item>
-        <a-asset-item id="orb9" src="./models/OA_3D_2.gltf"></a-asset-item>
-        <a-asset-item id="orb10" src="./models/OA_4F_-3.gltf"></a-asset-item>
-        <a-asset-item id="orb11" src="./models/OA_4F_3.gltf"></a-asset-item>
-        <a-asset-item id="orb12" src="./models/OA_4F_-2.gltf"></a-asset-item>
-        <a-asset-item id="orb13" src="./models/OA_4F_2.gltf"></a-asset-item>
-        <a-asset-item id="orb14" src="./models/OA_4F_-1.gltf"></a-asset-item>
-        <a-asset-item id="orb15" src="./models/OA_4F_1.gltf"></a-asset-item>
-        <a-asset-item id="orb16" src="./models/OA_4F_0.gltf"></a-asset-item>
-        <a-asset-item id="orb17" src="./models/OA_5G_-4.gltf"></a-asset-item>
-        <a-asset-item id="orb18" src="./models/OA_5G_4.gltf"></a-asset-item>
-        <a-asset-item id="orb19" src="./models/OA_5G_-3.gltf"></a-asset-item>
-        <a-asset-item id="orb20" src="./models/OA_5G_3.gltf"></a-asset-item>
-        <a-asset-item id="orb21" src="./models/OA_5G_-2.gltf"></a-asset-item>
-        <a-asset-item id="orb22" src="./models/OA_5G_2.gltf"></a-asset-item>
-        <a-asset-item id="orb23" src="./models/OA_5G_-1.gltf"></a-asset-item>
-        <a-asset-item id="orb24" src="./models/OA_5G_1.gltf"></a-asset-item>
-        <a-asset-item id="orb25" src="./models/OA_5G_0.gltf"></a-asset-item>
-
-        <a-asset-item id="orb27" src="./models/HO_2sp_1.gltf"></a-asset-item>
-        <a-asset-item id="orb28" src="./models/HO_2sp_2.gltf"></a-asset-item>
-        <a-asset-item id="orb29" src="./models/HO_2sp2_1.gltf"></a-asset-item>
-        <a-asset-item id="orb30" src="./models/HO_2sp2_2.gltf"></a-asset-item>
-        <a-asset-item id="orb31" src="./models/HO_2sp2_3.gltf"></a-asset-item>
-        <a-asset-item id="orb32" src="./models/HO_2sp3_1.gltf"></a-asset-item>
-        <a-asset-item id="orb33" src="./models/HO_2sp3_2.gltf"></a-asset-item>
-        <a-asset-item id="orb34" src="./models/HO_2sp3_3.gltf"></a-asset-item>
-        <a-asset-item id="orb35" src="./models/HO_2sp3_4.gltf"></a-asset-item>
-        <a-asset-item
-          id="orb36"
-          src="./models/HO_3sp3d_1x-1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb37"
-          src="./models/HO_3sp3d_2x-1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb38"
-          src="./models/HO_3sp3d_3x-1.gltf"
-        ></a-asset-item>
-        <a-asset-item id="orb39" src="./models/HO_3sp3d_4.gltf"></a-asset-item>
-        <a-asset-item id="orb40" src="./models/HO_3sp3d_5.gltf"></a-asset-item>
-        <a-asset-item
-          id="orb41"
-          src="./models/HO_3sp3d2_1x-1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb42"
-          src="./models/HO_3sp3d2_2x-1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb43"
-          src="./models/HO_3sp3d2_3x-1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb44"
-          src="./models/HO_3sp3d2_4x-1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb45"
-          src="./models/HO_3sp3d2_5x-1.gltf"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb46"
-          src="./models/HO_3sp3d2_6x-1.gltf"
-        ></a-asset-item>
-
-        <a-asset-item
-          id="orb48obj"
-          src="./models/trpev_linear.obj"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb48mtl"
-          src="./models/trpev_linear.mtl"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb49obj"
-          src="./models/trpev_trigplanar.obj"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb49mtl"
-          src="./models/trpev_trigplanar.mtl"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb50obj"
-          src="./models/trpev_tetra.obj"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb50mtl"
-          src="./models/trpev_tetra.mtl"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb51obj"
-          src="./models/trpev_trigbipyr.obj"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb51mtl"
-          src="./models/trpev_trigbipyr.mtl"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb52obj"
-          src="./models/trpev_octa.obj"
-        ></a-asset-item>
-        <a-asset-item
-          id="orb52mtl"
-          src="./models/trpev_octa.mtl"
-        ></a-asset-item>
       </a-assets>
 
       <a-marker type="barcode" value="0">
