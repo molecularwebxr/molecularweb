@@ -25,7 +25,8 @@
     },
     "molecularOrbitals": {
       "title": "Molecular orbitals",
-      "description": "Visualize and compare all the molecular orbitals calculated for several small molecules."
+      "description": "Visualize and compare all the molecular orbitals calculated for several small molecules.",
+      "instructions": "Choose a molecule to be displayed on each AR marker. You can also use one finger to rotate and two fingers to zoom on the objects."
     },
     "webRemake": {
       "title": "Web remake of Martinez-Hung et al 2017",
