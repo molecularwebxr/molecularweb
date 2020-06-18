@@ -117,14 +117,21 @@
         <div class="options" id="marker-options-1">
           <div class="triangle"></div>
           <select id="select-marker-1" class="orbital-selector">
-            <optgroup label="Atomic Orbitals">
-              <option>2s</option>
-              <option>2px (m=-1)</option>
-              <option>2py (m=0)</option>
-              <option>2pz (m=1)</option>
-              <option>3dz<sup>2</sup> (m=0)</option>
-            </optgroup></select
-          >
+            <optgroup label="Molecule">
+              <option>Water</option>
+              <option>O2</option>
+              <option>BH3</option>
+              <option>CH4</option>
+              <option>CO</option>
+              <option>CO2</option>
+              <option>N2</option>
+              <option>N3-</option>
+              <option>NH3</option>
+              <option>NO2</option>
+              <option>BF3</option>
+              <option>SCN-</option>
+            </optgroup>
+          </select>
 
           <enable-gestures
             class="gesture-icon left-margin"
@@ -143,14 +150,21 @@
         <div class="options" id="marker-options-2">
           <div class="triangle"></div>
           <select id="select-marker-2" class="orbital-selector">
-            <optgroup label="Atomic Orbitals">
-              <option>2s</option>
-              <option>2px (m=-1)</option>
-              <option>2py (m=0)</option>
-              <option>2pz (m=1)</option>
-              <option>3dz<sup>2</sup> (m=0)</option>
-            </optgroup></select
-          >
+            <optgroup label="Molecule">
+              <option>Water</option>
+              <option>O2</option>
+              <option>BH3</option>
+              <option>CH4</option>
+              <option>CO</option>
+              <option>CO2</option>
+              <option>N2</option>
+              <option>N3-</option>
+              <option>NH3</option>
+              <option>NO2</option>
+              <option>BF3</option>
+              <option>SCN-</option>
+            </optgroup>
+          </select>
 
           <enable-gestures
             class="gesture-icon left-margin"
@@ -197,11 +211,996 @@
     >
       <a-assets>
         <!-- Struct assets -->
-        <a-asset-item id="orb1" src="./models/OA_2S.gltf"></a-asset-item>
-        <a-asset-item id="orb2" src="./models/OA_2P_-1.gltf"></a-asset-item>
-        <a-asset-item id="orb3" src="./models/OA_2P_0.gltf"></a-asset-item>
-        <a-asset-item id="orb4" src="./models/OA_2P_1.gltf"></a-asset-item>
-        <a-asset-item id="orb5" src="./models/OA_3D_0.gltf"></a-asset-item>
+        <a-asset-item id="mol1obj" src="./models/H2O/H2O.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo1_1a"
+          src="./models/H2O/H2O_O1azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo1_1r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo1_2a"
+          src="./models/H2O/H2O_O2azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo1_2r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo1_3a"
+          src="./models/H2O/H2O_O3azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo1_3r"
+          src="./models/H2O/H2O_O3rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo1_4a"
+          src="./models/H2O/H2O_O4azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo1_4r"
+          src="./models/H2O/H2O_O4rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo1_5a"
+          src="./models/H2O/H2O_O5azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo1_5r"
+          src="./models/H2O/H2O_O5rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo1_6a"
+          src="./models/H2O/H2O_O6azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo1_6r"
+          src="./models/H2O/H2O_O6rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo1_7a"
+          src="./models/H2O/H2O_O7azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo1_7r"
+          src="./models/H2O/H2O_O7rojo.gltf"
+        ></a-asset-item>
+
+        <a-asset-item id="mol2obj" src="./models/O2/O2.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo2_1a"
+          src="./models/O2/O2_O1azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo2_1r"
+          src="./models/O2/O2_O1rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo2_2a"
+          src="./models/O2/O2_O2azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo2_2r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo2_3a"
+          src="./models/O2/O2_O3azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo2_3r"
+          src="./models/O2/O2_O3rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo2_4a"
+          src="./models/O2/O2_O4azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo2_4r"
+          src="./models/O2/O2_O4rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo2_5a"
+          src="./models/O2/O2_O5azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo2_5r"
+          src="./models/O2/O2_O5rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo2_6a"
+          src="./models/O2/O2_O6azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo2_6r"
+          src="./models/O2/O2_O6rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo2_7a"
+          src="./models/O2/O2_O7azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo2_7r"
+          src="./models/O2/O2_O7rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo2_8a"
+          src="./models/O2/O2_O8azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo2_8r"
+          src="./models/O2/O2_O8rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo2_9a"
+          src="./models/O2/O2_O9azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo2_9r"
+          src="./models/O2/O2_O9rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo2_10a"
+          src="./models/O2/O2_O10azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo2_10r"
+          src="./models/O2/O2_O10rojo.gltf"
+        ></a-asset-item>
+
+        <a-asset-item id="mol3obj" src="./models/BH3/BH3.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo3_1a"
+          src="./models/BH3/BH3_O1azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo3_1r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo3_2a"
+          src="./models/BH3/BH3_O2azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo3_2r"
+          src="./models/BH3/BH3_O2rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo3_3a"
+          src="./models/BH3/BH3_O3azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo3_3r"
+          src="./models/BH3/BH3_O3rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo3_4a"
+          src="./models/BH3/BH3_O4azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo3_4r"
+          src="./models/BH3/BH3_O4rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo3_5a"
+          src="./models/BH3/BH3_O5azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo3_5r"
+          src="./models/BH3/BH3_O5rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo3_6a"
+          src="./models/BH3/BH3_O6azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo3_6r"
+          src="./models/BH3/BH3_O6rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo3_7a"
+          src="./models/BH3/BH3_O7azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo3_7r"
+          src="./models/BH3/BH3_O7rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo3_8a"
+          src="./models/BH3/BH3_O8azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo3_8r"
+          src="./models/BH3/BH3_O8rojo.gltf"
+        ></a-asset-item>
+
+        <a-asset-item id="mol4obj" src="./models/CH4/CH4.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo4_1a"
+          src="./models/CH4/CH4_O1azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo4_1r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo4_2a"
+          src="./models/CH4/CH4_O2azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo4_2r"
+          src="./models/CH4/CH4_O2rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo4_3a"
+          src="./models/CH4/CH4_O3azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo4_3r"
+          src="./models/CH4/CH4_O3rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo4_4a"
+          src="./models/CH4/CH4_O4azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo4_4r"
+          src="./models/CH4/CH4_O4rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo4_5a"
+          src="./models/CH4/CH4_O5azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo4_5r"
+          src="./models/CH4/CH4_O5rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo4_6a"
+          src="./models/CH4/CH4_O6azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo4_6r"
+          src="./models/CH4/CH4_O6rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo4_7a"
+          src="./models/CH4/CH4_O7azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo4_7r"
+          src="./models/CH4/CH4_O7rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo4_8a"
+          src="./models/CH4/CH4_O8azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo4_8r"
+          src="./models/CH4/CH4_O8rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo4_9a"
+          src="./models/CH4/CH4_O9azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo4_9r"
+          src="./models/CH4/CH4_O9rojo.gltf"
+        ></a-asset-item>
+
+        <a-asset-item id="mol5obj" src="./models/CO/CO.gltf"></a-asset-item>
+        <a-asset-item id="mol5mtl" src="./models/CO/CO.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo5_1a"
+          src="./models/CO/CO_O1azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo5_1r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo5_2a"
+          src="./models/CO/CO_O2azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo5_2r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo5_3a"
+          src="./models/CO/CO_O3azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo5_3r"
+          src="./models/CO/CO_O3rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo5_4a"
+          src="./models/CO/CO_O4azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo5_4r"
+          src="./models/CO/CO_O4rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo5_5a"
+          src="./models/CO/CO_O5azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo5_5r"
+          src="./models/CO/CO_O5rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo5_6a"
+          src="./models/CO/CO_O6azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo5_6r"
+          src="./models/CO/CO_O6rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo5_7a"
+          src="./models/CO/CO_O7azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo5_7r"
+          src="./models/CO/CO_O7rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo5_8a"
+          src="./models/CO/CO_O8azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo5_8r"
+          src="./models/CO/CO_O8rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo5_9a"
+          src="./models/CO/CO_O9azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo5_9r"
+          src="./models/CO/CO_O9rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo5_10a"
+          src="./models/CO/CO_O10azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo5_10r"
+          src="./models/CO/CO_O10rojo.gltf"
+        ></a-asset-item>
+
+        <a-asset-item id="mol6obj" src="./models/CO2/CO2.gltf"></a-asset-item>
+        <a-asset-item id="mol6mtl" src="./models/CO2/CO2.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo6_1a"
+          src="./models/CO2/CO2_orb1azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_1r"
+          src="./models/CO2/CO2_orb1rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_2a"
+          src="./models/CO2/CO2_orb2azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo6_2r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo6_3a"
+          src="./models/CO2/CO2_orb3azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo6_3r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo6_4a"
+          src="./models/CO2/CO2_orb4azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_4r"
+          src="./models/CO2/CO2_orb4rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_5a"
+          src="./models/CO2/CO2_orb5azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_5r"
+          src="./models/CO2/CO2_orb5rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_6a"
+          src="./models/CO2/CO2_orb6azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_6r"
+          src="./models/CO2/CO2_orb6rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_7a"
+          src="./models/CO2/CO2_orb7azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_7r"
+          src="./models/CO2/CO2_orb7rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_8a"
+          src="./models/CO2/CO2_orb8azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_8r"
+          src="./models/CO2/CO2_orb8rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_9a"
+          src="./models/CO2/CO2_orb9azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_9r"
+          src="./models/CO2/CO2_orb9rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_10a"
+          src="./models/CO2/CO2_orb10azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_10r"
+          src="./models/CO2/CO2_orb10rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_11a"
+          src="./models/CO2/CO2_orb11azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_11r"
+          src="./models/CO2/CO2_orb11rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_12a"
+          src="./models/CO2/CO2_orb12azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_12r"
+          src="./models/CO2/CO2_orb12rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_13a"
+          src="./models/CO2/CO2_orb13azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_13r"
+          src="./models/CO2/CO2_orb13rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_14a"
+          src="./models/CO2/CO2_orb14azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_14r"
+          src="./models/CO2/CO2_orb14rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_15a"
+          src="./models/CO2/CO2_orb15azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo6_15r"
+          src="./models/CO2/CO2_orb15rojo.gltf"
+        ></a-asset-item>
+
+        <a-asset-item id="mol7obj" src="./models/N2/N2.gltf"></a-asset-item>
+        <a-asset-item id="mol7mtl" src="./models/N2/N2.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo7_1a"
+          src="./models/N2/N2_orb1azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo7_1r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo7_2a"
+          src="./models/N2/N2_orb2azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo7_2r"
+          src="./models/N2/N2_orb2rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo7_3a"
+          src="./models/N2/N2_orb3azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo7_3r"
+          src="./models/N2/N2_orb3rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo7_4a"
+          src="./models/N2/N2_orb4azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo7_4r"
+          src="./models/N2/N2_orb4rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo7_5a"
+          src="./models/N2/N2_orb5azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo7_5r"
+          src="./models/N2/N2_orb5rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo7_6a"
+          src="./models/N2/N2_orb6azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo7_6r"
+          src="./models/N2/N2_orb6rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo7_7a"
+          src="./models/N2/N2_orb7azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo7_7r"
+          src="./models/N2/N2_orb7rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo7_8a"
+          src="./models/N2/N2_orb8azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo7_8r"
+          src="./models/N2/N2_orb8rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo7_9a"
+          src="./models/N2/N2_orb9azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo7_9r"
+          src="./models/N2/N2_orb9rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo7_10a"
+          src="./models/N2/N2_orb10azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo7_10r"
+          src="./models/N2/N2_orb10rojo.gltf"
+        ></a-asset-item>
+
+        <a-asset-item id="mol8obj" src="./models/N3-/N3.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo8_1a"
+          src="./models/N3-/N3_O1azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo8_1r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo8_2a"
+          src="./models/N3-/N3_O2azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_2r"
+          src="./models/N3-/N3_O2rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_3a"
+          src="./models/N3-/N3_O3azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo8_3r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo8_4a"
+          src="./models/N3-/N3_O4azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_4r"
+          src="./models/N3-/N3_O4rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_5a"
+          src="./models/N3-/N3_O5azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_5r"
+          src="./models/N3-/N3_O5rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_6a"
+          src="./models/N3-/N3_O6azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_6r"
+          src="./models/N3-/N3_O6rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_7a"
+          src="./models/N3-/N3_O7azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_7r"
+          src="./models/N3-/N3_O7rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_8a"
+          src="./models/N3-/N3_O8azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_8r"
+          src="./models/N3-/N3_O8rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_9a"
+          src="./models/N3-/N3_O9azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_9r"
+          src="./models/N3-/N3_O9rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_10a"
+          src="./models/N3-/N3_O10azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_10r"
+          src="./models/N3-/N3_O10rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_11a"
+          src="./models/N3-/N3_O11azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_11r"
+          src="./models/N3-/N3_O11rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_12a"
+          src="./models/N3-/N3_O12azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_12r"
+          src="./models/N3-/N3_O12rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_13a"
+          src="./models/N3-/N3_O13azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_13r"
+          src="./models/N3-/N3_O13rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_14a"
+          src="./models/N3-/N3_O14azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_14r"
+          src="./models/N3-/N3_O14rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_15a"
+          src="./models/N3-/N3_O15azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo8_15r"
+          src="./models/N3-/N3_O15rojo.gltf"
+        ></a-asset-item>
+
+        <a-asset-item id="mol9obj" src="./models/NH3/NH3.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo9_1a"
+          src="./models/NH3/NH3_O1azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo9_1r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo9_2a"
+          src="./models/NH3/NH3_O2azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo9_2r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo9_3a"
+          src="./models/NH3/NH3_O3azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo9_3r"
+          src="./models/NH3/NH3_O3rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo9_4a"
+          src="./models/NH3/NH3_O4azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo9_4r"
+          src="./models/NH3/NH3_O4rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo9_5a"
+          src="./models/NH3/NH3_O5azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo9_5r"
+          src="./models/NH3/NH3_O5rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo9_6a"
+          src="./models/NH3/NH3_O6azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo9_6r"
+          src="./models/NH3/NH3_O6rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo9_7a"
+          src="./models/NH3/NH3_O7azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo9_7r"
+          src="./models/NH3/NH3_O7rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo9_8a"
+          src="./models/NH3/NH3_O8azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo9_8r"
+          src="./models/NH3/NH3_O8rojo.gltf"
+        ></a-asset-item>
+
+        <a-asset-item id="mol10obj" src="./models/NO2/NO2.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo10_1a"
+          src="./models/NO2/NO2_O1azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_1r"
+          src="./models/NO2/NO2_O1rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_2a"
+          src="./models/NO2/NO2_O2azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo10_2r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo10_3a"
+          src="./models/NO2/NO2_O3azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo10_3r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo10_4a"
+          src="./models/NO2/NO2_O4azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_4r"
+          src="./models/NO2/NO2_O4rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_5a"
+          src="./models/NO2/NO2_O5azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_5r"
+          src="./models/NO2/NO2_O5rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_6a"
+          src="./models/NO2/NO2_O6azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_6r"
+          src="./models/NO2/NO2_O6rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_7a"
+          src="./models/NO2/NO2_O7azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_7r"
+          src="./models/NO2/NO2_O7rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_8a"
+          src="./models/NO2/NO2_O8azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_8r"
+          src="./models/NO2/NO2_O8rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_9a"
+          src="./models/NO2/NO2_O9azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_9r"
+          src="./models/NO2/NO2_O9rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_10a"
+          src="./models/NO2/NO2_O10azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_10r"
+          src="./models/NO2/NO2_O10rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_11a"
+          src="./models/NO2/NO2_O11azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_11r"
+          src="./models/NO2/NO2_O11rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_12a"
+          src="./models/NO2/NO2_O12azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_12r"
+          src="./models/NO2/NO2_O12rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_13a"
+          src="./models/NO2/NO2_O13azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_13r"
+          src="./models/NO2/NO2_O13rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_14a"
+          src="./models/NO2/NO2_O14azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_14r"
+          src="./models/NO2/NO2_O14rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_15a"
+          src="./models/NO2/NO2_O15azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo10_15r"
+          src="./models/NO2/NO2_O15rojo.gltf"
+        ></a-asset-item>
+
+        <a-asset-item id="mol11obj" src="./models/BF3/BF3.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo11_1a"
+          src="./models/BF3/BF3_homoazul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo11_1r"
+          src="./models/BF3/BF3_homorojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo11_2a"
+          src="./models/BF3/BF3_lumoazul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo11_2r"
+          src="./models/BF3/BF3_lumorojo.gltf"
+        ></a-asset-item>
+
+        <a-asset-item id="mol12obj" src="./models/SCN-/SCN.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo12_1a"
+          src="./models/SCN-/SCN_O1azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo12_1r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo12_2a"
+          src="./models/SCN-/SCN_O2azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo12_2r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo12_3a"
+          src="./models/SCN-/SCN_O3azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo12_3r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo12_4a"
+          src="./models/SCN-/SCN_O4azul.gltf"
+        ></a-asset-item>
+        <a-asset-item id="mo12_4r" src="./models/dummy.gltf"></a-asset-item>
+        <a-asset-item
+          id="mo12_5a"
+          src="./models/SCN-/SCN_O5azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_5r"
+          src="./models/SCN-/SCN_O5rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_6a"
+          src="./models/SCN-/SCN_O6azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_6r"
+          src="./models/SCN-/SCN_O6rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_7a"
+          src="./models/SCN-/SCN_O7azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_7r"
+          src="./models/SCN-/SCN_O7rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_8a"
+          src="./models/SCN-/SCN_O8azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_8r"
+          src="./models/SCN-/SCN_O8rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_9a"
+          src="./models/SCN-/SCN_O9azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_9r"
+          src="./models/SCN-/SCN_O9rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_10a"
+          src="./models/SCN-/SCN_O10azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_10r"
+          src="./models/SCN-/SCN_O10rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_11a"
+          src="./models/SCN-/SCN_O11azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_11r"
+          src="./models/SCN-/SCN_O11rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_12a"
+          src="./models/SCN-/SCN_O12azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_12r"
+          src="./models/SCN-/SCN_O12rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_13a"
+          src="./models/SCN-/SCN_O13azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_13r"
+          src="./models/SCN-/SCN_O13rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_14a"
+          src="./models/SCN-/SCN_O14azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_14r"
+          src="./models/SCN-/SCN_O14rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_15a"
+          src="./models/SCN-/SCN_O15azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_15r"
+          src="./models/SCN-/SCN_O15rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_16a"
+          src="./models/SCN-/SCN_O16azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_16r"
+          src="./models/SCN-/SCN_O16rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_17a"
+          src="./models/SCN-/SCN_O17azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_17r"
+          src="./models/SCN-/SCN_O17rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_18a"
+          src="./models/SCN-/SCN_O18azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_18r"
+          src="./models/SCN-/SCN_O18rojo.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_19a"
+          src="./models/SCN-/SCN_O19azul.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mo12_19r"
+          src="./models/SCN-/SCN_O19rojo.gltf"
+        ></a-asset-item>
       </a-assets>
 
       <a-marker type="barcode" value="0">
@@ -212,20 +1211,31 @@
           id="marker1A"
           gesture-handler="linkedMarker: #marker1B"
         >
-          <a-sphere
-            id="atom1A"
-            position="0.000   0.000   0.000"
-            color="grey"
-            radius="0.4"
-          ></a-sphere>
           <a-entity
-            id="marker-1A-mol"
-            gltf-model="#orb1"
-            scale="0.2 0.2 0.2"
-            rotation="45 45 0"
+            id="mrk1mol"
+            gltf-model="#mol1obj"
+            scale="2 2 2"
+            rotation="90 0 0"
             position="0 0 0"
             visible="true"
-            model-opacity="0.5"
+          ></a-entity>
+          <a-entity
+            id="mrk1oma"
+            gltf-model="#mo1_1a"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="true"
+            material="color: blue; opacity: 0.5"
+          ></a-entity>
+          <a-entity
+            id="mrk1omr"
+            gltf-model="#mo1_1r"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="true"
+            material="color: red; opacity: 0.5"
           ></a-entity>
         </a-entity>
       </a-marker>
@@ -238,20 +1248,31 @@
           id="marker1B"
           gesture-handler="linkedMarker: #marker1A"
         >
-          <a-sphere
-            id="atom1B"
-            position="0.000   0.000   0.000"
-            color="grey"
-            radius="0.4"
-          ></a-sphere>
           <a-entity
-            id="marker-1B-mol"
-            gltf-model="#orb1"
-            scale="0.2 0.2 0.2"
-            rotation="45 45 0"
+            id="mrk1mol"
+            gltf-model="#mol1obj"
+            scale="2 2 2"
+            rotation="90 0 0"
             position="0 0 0"
             visible="true"
-            model-opacity="0.5"
+          ></a-entity>
+          <a-entity
+            id="mrk1oma"
+            gltf-model="#mo1_1a"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="true"
+            material="color: blue; opacity: 0.5"
+          ></a-entity>
+          <a-entity
+            id="mrk1omr"
+            gltf-model="#mo1_1r"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="true"
+            material="color: red; opacity: 0.5"
           ></a-entity>
         </a-entity>
       </a-marker>
@@ -264,20 +1285,31 @@
           id="marker2A"
           gesture-handler="linkedMarker: #marker2B"
         >
-          <a-sphere
-            id="atom2A"
-            position="0.000   0.000   0.000"
-            color="grey"
-            radius="0.4"
-          ></a-sphere>
           <a-entity
-            id="marker-2A-mol"
-            gltf-model="#orb1"
-            scale="0.2 0.2 0.2"
-            rotation="45 45 0"
+            id="mrk2mol"
+            gltf-model="#mol1obj"
+            scale="2 2 2"
+            rotation="90 0 0"
             position="0 0 0"
             visible="true"
-            model-opacity="0.5"
+          ></a-entity>
+          <a-entity
+            id="mrk2oma"
+            gltf-model="#mo1_1a"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="true"
+            material="color: blue; opacity: 0.5"
+          ></a-entity>
+          <a-entity
+            id="mrk2omr"
+            gltf-model="#mo1_1r"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="true"
+            material="color: red; opacity: 0.5"
           ></a-entity>
         </a-entity>
       </a-marker>
@@ -290,20 +1322,31 @@
           id="marker2B"
           gesture-handler="linkedMarker: #marker2A"
         >
-          <a-sphere
-            id="atom2B"
-            position="0.000   0.000   0.000"
-            color="grey"
-            radius="0.4"
-          ></a-sphere>
           <a-entity
-            id="marker-2B-mol"
-            gltf-model="#orb1"
-            scale="0.2 0.2 0.2"
-            rotation="45 45 0"
+            id="mrk2mol"
+            gltf-model="#mol1obj"
+            scale="2 2 2"
+            rotation="90 0 0"
             position="0 0 0"
             visible="true"
-            model-opacity="0.5"
+          ></a-entity>
+          <a-entity
+            id="mrk2oma"
+            gltf-model="#mo1_1a"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="true"
+            material="color: blue; opacity: 0.5"
+          ></a-entity>
+          <a-entity
+            id="mrk2omr"
+            gltf-model="#mo1_1r"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="true"
+            material="color: red; opacity: 0.5"
           ></a-entity>
         </a-entity>
       </a-marker>
