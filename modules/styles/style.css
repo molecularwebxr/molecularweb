@@ -94,6 +94,13 @@ figure {
   margin-right: 0.5rem;
 }
 
+.select-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .orbital-selector {
   width: 163px;
   height: 22px;
@@ -109,6 +116,10 @@ figure {
   background-image: url("/assets/img/arrow-select.png");
   background-repeat: no-repeat;
   background-position: top 0.5rem right 0.2rem;
+}
+
+.bottom-margin {
+  margin-bottom: 0.25rem;
 }
 
 .orbital-selector optgroup {
@@ -186,6 +197,10 @@ figure {
   z-index: 1;
   width: 540px;
   display: flex;
+}
+
+.rotation-controls.multiple-select {
+  bottom: 76px;
 }
 
 .hide {

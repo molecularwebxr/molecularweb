@@ -100,7 +100,7 @@
     </div>
 
     <!-- Rotation controls -->
-    <div class="rotation-controls">
+    <div class="rotation-controls multiple-select">
       <rotation-controls id="rotation-marker-1" marker="1"></rotation-controls>
       <rotation-controls id="rotation-marker-2" marker="2"></rotation-controls>
     </div>
@@ -116,22 +116,36 @@
         />
         <div class="options" id="marker-options-1">
           <div class="triangle"></div>
-          <select id="select-marker-1" class="orbital-selector">
-            <optgroup label="Molecule">
-              <option>Water</option>
-              <option>O2</option>
-              <option>BH3</option>
-              <option>CH4</option>
-              <option>CO</option>
-              <option>CO2</option>
-              <option>N2</option>
-              <option>N3-</option>
-              <option>NH3</option>
-              <option>NO2</option>
-              <option>BF3</option>
-              <option>SCN-</option>
-            </optgroup>
-          </select>
+          <div class="select-container">
+            <select id="select-marker-1" class="orbital-selector bottom-margin">
+              <optgroup label="Molecule">
+                <option>Water</option>
+                <option>O2</option>
+                <option>BH3</option>
+                <option>CH4</option>
+                <option>CO</option>
+                <option>CO2</option>
+                <option>N2</option>
+                <option>N3-</option>
+                <option>NH3</option>
+                <option>NO2</option>
+                <option>BF3</option>
+                <option>SCN-</option>
+              </optgroup>
+            </select>
+
+            <select id="select-marker-1B" class="orbital-selector">
+              <optgroup label="Orbtital">
+                <option>Orbital 1</option>
+                <option>Orbital 2</option>
+                <option>Orbital 3</option>
+                <option>Orbital 4</option>
+                <option>Orbital 5</option>
+                <option>Orbital 6</option>
+                <option>Orbital 7</option>
+              </optgroup>
+            </select>
+          </div>
 
           <enable-gestures
             class="gesture-icon left-margin"
@@ -149,22 +163,36 @@
         />
         <div class="options" id="marker-options-2">
           <div class="triangle"></div>
-          <select id="select-marker-2" class="orbital-selector">
-            <optgroup label="Molecule">
-              <option>Water</option>
-              <option>O2</option>
-              <option>BH3</option>
-              <option>CH4</option>
-              <option>CO</option>
-              <option>CO2</option>
-              <option>N2</option>
-              <option>N3-</option>
-              <option>NH3</option>
-              <option>NO2</option>
-              <option>BF3</option>
-              <option>SCN-</option>
-            </optgroup>
-          </select>
+          <div class="select-container">
+            <select id="select-marker-2" class="orbital-selector bottom-margin">
+              <optgroup label="Molecule">
+                <option>Water</option>
+                <option>O2</option>
+                <option>BH3</option>
+                <option>CH4</option>
+                <option>CO</option>
+                <option>CO2</option>
+                <option>N2</option>
+                <option>N3-</option>
+                <option>NH3</option>
+                <option>NO2</option>
+                <option>BF3</option>
+                <option>SCN-</option>
+              </optgroup>
+            </select>
+
+            <select id="select-marker-2B" class="orbital-selector">
+              <optgroup label="Orbital">
+                <option>Orbital 1</option>
+                <option>Orbital 2</option>
+                <option>Orbital 3</option>
+                <option>Orbital 4</option>
+                <option>Orbital 5</option>
+                <option>Orbital 6</option>
+                <option>Orbital 7</option>
+              </optgroup>
+            </select>
+          </div>
 
           <enable-gestures
             class="gesture-icon left-margin"
