@@ -1,0 +1,133 @@
+{
+  "accessors": [
+    {
+      "name": "vmd_mol0_rep1_1_0_indices",
+      "componentType": 5123,
+      "count": 708,
+      "min": [
+        0
+      ],
+      "max": [
+        178
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "name": "vmd_mol0_rep1_1_0_positions",
+      "componentType": 5126,
+      "count": 122,
+      "min": [
+        -0.41538798809051514,
+        -0.32647600769996643,
+        -0.04297399893403053
+      ],
+      "max": [
+        0.07358600199222565,
+        0.14478699862957,
+        0.4405379891395569
+      ],
+      "type": "VEC3"
+    },
+    {
+      "name": "vmd_mol0_rep1_1_0_normals",
+      "componentType": 5126,
+      "count": 122,
+      "min": [
+        -0.9810522198677063,
+        -0.9812639951705933,
+        -0.9891751408576965
+      ],
+      "max": [
+        0.9927945733070374,
+        0.9723688960075378,
+        0.9928795099258423
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "asset": {
+    "generator": "obj2gltf",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "name": "N2_orb2azul.gltf",
+      "byteLength": 1064,
+      "uri": "data:application/octet-stream;base64,RFJBQ08CAgEBAAAAeuwBAesBDQI5IhsqAT1vW+37iGo9qtWWqrZU6UOrqlX1qFaraLWsfaqotpRW6aOK7mlRqtpCfVHloaqlRZ/SUqUppaWUNRRaFFUAAQEQ/wJscAL/AAAAAAABAAkDAAACAQEJAwABAwEBAQAPB4iIB4glA60DJQOVAeEHKQ7NGw0BKMbPTWnuJ1YT1ujktpt3pPco2wQspfabM6/r/tqlRS9YUphxq4jyb4CeogofvEAwfMQJJWx4MIDMJ+mEVmES+HMmx/dqsUJvpIymov7M+3RqmU05uwhOAzB2YRCJs3x1ElFdT3MV2Bafcq91heH+KMMDINOSpsElZ8XGSuWFi63Z4vZVYCsWQ/6ZjP55puD1nf5shEnRd2KmJ+b+GKMWmI9Gj14Nl0Ha82Cu3hnYUrVqVOrBdnqysbSKAFVEoq/qx7mfYtwmLgBgtPcL0kkA1MaOwuyHIgj4SPx4GXJjTmhdOJrvm6VAH8kKaBKe5AQCWCKkIdHJVk0vdpIpAOTvVoj+AHK5XXzypzD+7NhCFWGOAoupxk27Dk15s9gpFMj1/BT7latwTBImOPtOivqsqc+0zLdVcslqRYoF0sJeYJqTSVfVBQcIApRg+4pOkDIFVteHei5kX0WNYsYhG1wtSZ2F983/SVVkBZcBomsBeCkPoEreLA4L/P2ZrJChPIeGIhtWY1xpfQFhPDbq5M1dvlF98luxmmJNoJx1Yxs0xcWA/kPYRnWdzNHYmjN2wxtiA4b2mzcdPLvn0g/LEAk0wxFXoHTgF3sAQxC7QQdxgZ7awpE+Xc0Ii6yEY+reukA2Kb6IJhr80LRXQuSifkllNG/XO4iEIT3rO1U2cGzqoRJDip7rfgPVX9FUgRdD2UlzeVva7g45xUpGCcbPIw2F7wePziHJQyLq/ebLtmJWCKrQMAC5jxAAAAAA/z8AALyt1L7dJ6e+gQUwvcxa+j4OBgMBAAsHiAdBBaECJQMHdTQRmhdGh9jsd2CUVqpf5/mg0VLVCxLmn4+D/d0bIb8E/EeA/XKSvv78W7D+/NGHsEP871NgfAv029B/B/jvL3wBPZU9DPWT//7+9z+AcfsAsO/BPPm3YMHy2DjH+T4YD0H9EpzvgfbkX0D/+/KzrYH59F+PQfjlt08B+98b8EH93mcwAu78m/99ADGgz4L8CAyvvADtjx+C+S4Qb3779fNgew0VhN+k9O8Qa5qff7BCsK8rR6A6Ad6/oL74JhQwvw7sx58B/AiQb0Qhav38Kcjfv/rnxy+1Bdxbt7/++AuxPvcpbM97DbkPAb8EfBCPPQUR5H87Bv5jYL4NQ5SfNobuh9J7rC+wjzsD8otAuPkTyH9+/9mTML6Ya9PC+/aH7zoV9gPQfwcTXG/B+/8DAAD/AQAA/wIYSgoAAAA="
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 1061
+    }
+  ],
+  "materials": [
+    {
+      "name": "vmd_mat_cindex_0",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.5,
+          0.5,
+          0.5,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "vmd_mol0_rep1_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2
+          },
+          "indices": 0,
+          "material": 0,
+          "mode": 4,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "vmd_mol0_rep1",
+      "mesh": 0
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ]
+}

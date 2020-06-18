@@ -1,0 +1,133 @@
+{
+  "accessors": [
+    {
+      "name": "vmd_mol1_rep1_1_0_indices",
+      "componentType": 5123,
+      "count": 852,
+      "min": [
+        0
+      ],
+      "max": [
+        147
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "name": "vmd_mol1_rep1_1_0_positions",
+      "componentType": 5126,
+      "count": 144,
+      "min": [
+        -0.42197999358177185,
+        -0.4273729920387268,
+        -0.4214639961719513
+      ],
+      "max": [
+        0.4300299882888794,
+        0.4321439862251282,
+        0.4267039895057678
+      ],
+      "type": "VEC3"
+    },
+    {
+      "name": "vmd_mol1_rep1_1_0_normals",
+      "componentType": 5126,
+      "count": 144,
+      "min": [
+        -0.978815495967865,
+        -0.9806405305862427,
+        -0.9755294322967529
+      ],
+      "max": [
+        0.9886914491653442,
+        0.9889848232269287,
+        0.9721877574920654
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "asset": {
+    "generator": "obj2gltf",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "name": "CH4_O1azul.gltf",
+      "byteLength": 1216,
+      "uri": "data:application/octet-stream;base64,RFJBQ08CAgEBAAAAkAGcAgGbAgoAR9/aVrVaam197aMVbalHPdSfVhStailVb1tRrbetqBbVqhZtqYeiWlWUalVRtEqpqmpRVeVRVUVblFZLUbRKUaWqqihFVSkFAQEQ/wPoRoAC/wAAAAAAAQAJAwAAAgEBCQMAAQMBAQEADxPkA8kByQXJAXA5ApEfHRNwJgdrQsJBQb9uYxxv4ARpwA5QlIjOO8pDi7FBUgG70WRYzwGB7b+FpXcNHRvYVzKZ5w6rt2A0CROvjRSFMSx3k1Oq0yNZlDoi5ofOUlkzjGJG+B7Udge1HoInDRBpEKF87JeQjID6ElfHHCsK3lYGNI8PAx2cqOXGgsABAh4FNRu4YfO59vT8zoe2QF9CztGYVyjXbmP135y8acZb5Qzcobe+WuxLcYUgDJ26OU0fAN4rGiMFsM+4pla3nqQsOlj/XIzMcdrHROIe3XReRAUHlrrtcZp0ExAE8fb5QI00jyABvh2xAGQevDcXj5dhoadNTVjq/T6BJ2FiASOLD2HhEEi0KklUkcV+QRb3YbHZN6fcjEydy6yAGSk43Q9I6yrREqZIoHw5slTe+WcHZVMaOFH4iR55F9/XtQuWZBdsJKdJ2fctXDZ/uoFDIWDUgIMr6ET+JDlTFPbzOXr5I+eNUT9haVTxl6nE3bhwG+2aehEWmDn4BZFKKA4wVYUuudXvwCQBihSvh+tzJIKsPRpUfWVa2mkVmdon1AIfVPog3tuXbd8OdUTzE/5CbQKt8b8lmTGScZDn1hGilJoJecPISfkRq4rCuZADx+f0Ct+paUWF5GIai8IoQifqABfagC6xN0WOgw0yEfutKMiKoSIcB6oAAYDG6KZLoDlajzYg0nRRa27NHOPBkItcG5aGJRrg+jE686gE7Uu+VYO9xGv1UCts1VsasvD5kAVZKdR28W3/wPkCAIsspSHJcrLZfN3oH4wSpQzSWYyp1cwYkhFx69h0HqsHB0x2hQYsRnEAgERG4jsDmFf61A8zkJX+4gi29r4KpAiSH07Yu6ehpAEGSA23SVrBG/nk9sgoyEbTc+jWE5odAdmpVggAAAAA/z8AAMMN2L6i0Nq+IcrXvk4JXD8OBgMBAAsPVQFxBHEErQIHITMWqaqkBY/NVEuLuzJRZ9fKgHgL6i+okf6f0P/5NZg/Q/UGOO9+9cCH8Onabr/02etgPgnuM6B9AOPzH4P+TawfwemoHwAG3FveewfQi1AK25uwRin0/z74KaRfP/oQmE+MPTDPPQpu3EcQQvX7a1D8/oq28AWMX38M7uP/QftDhLpY+L/C+uuHEAD77WM/w/A1MP8B++Dzz0D/UO6d2sepQf8aaH+9+czn330CBBi/QPg+6U+E/EgUUL0R3fvRP8P4z9OfPwndw9+8/ARsL8EkmHK8O0yfg/JKiX0FcQPgPgbAS5D9BMJTQLwB1kN/Av/Z23+B/jmQT8P8Ocwvwvvpo88C++LTbfQ3DKC+/NCbH3/cXS+ABPvrjgP1IEBQPxXNv39ABtljHwH/GKSAOxtUH0EB6TMx+ClQur/9qvvg/wkgpD8++OGTf2P2LoX115uPvQzIp/D8A/O73z77EOAH/wMAAP8BAAD/An1MCg=="
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 1216
+    }
+  ],
+  "materials": [
+    {
+      "name": "vmd_mat_cindex_0",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.5,
+          0.5,
+          0.5,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "vmd_mol1_rep1_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2
+          },
+          "indices": 0,
+          "material": 0,
+          "mode": 4,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "vmd_mol1_rep1",
+      "mesh": 0
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ]
+}
