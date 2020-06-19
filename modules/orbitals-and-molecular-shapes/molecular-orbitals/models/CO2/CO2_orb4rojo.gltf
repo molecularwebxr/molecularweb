@@ -1,0 +1,133 @@
+{
+  "accessors": [
+    {
+      "name": "vmd_mol0_rep2_1_0_indices",
+      "componentType": 5123,
+      "count": 240,
+      "min": [
+        0
+      ],
+      "max": [
+        45
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "name": "vmd_mol0_rep2_1_0_positions",
+      "componentType": 5126,
+      "count": 55,
+      "min": [
+        -0.4630419909954071,
+        -0.171656996011734,
+        -0.5256639719009399
+      ],
+      "max": [
+        0.46897199749946594,
+        0.18688300251960754,
+        0.5376949906349182
+      ],
+      "type": "VEC3"
+    },
+    {
+      "name": "vmd_mol0_rep2_1_0_normals",
+      "componentType": 5126,
+      "count": 55,
+      "min": [
+        -0.8629342317581177,
+        -0.9406927824020386,
+        -0.9142306447029114
+      ],
+      "max": [
+        0.9310742616653442,
+        0.901986300945282,
+        0.930666983127594
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "asset": {
+    "generator": "obj2gltf",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "name": "CO2_orb4rojo.gltf",
+      "byteLength": 540,
+      "uri": "data:application/octet-stream;base64,RFJBQ08CAgEBAAAAN1ABTwEAFt/+tNqqUsq7trSqqpTi+9pqtapKKQDNA2OzgP8C+UgC/wAAAAAAAQAJAwAAAgEBCQMAAQMBAQEADx9VAv0GJQhNEO0bA1UCEeu9CeoFG42AgzeyRdA9FQmDAKCuX4mcU0pefYOievMBjwgs3xyx9DKzpap8vIQgU84pJS/mHph6zQ7KkhtRmsSVu7Oin0qJbZ/QuY64mP4PAM6a0xKI3yF2RJT1TSn+ELp9tS9v8juuBiAB4GP5opI8jXzPhzInM+GEuErAo3fNsaczUM7xe6kVrfLEHFk8AVeSuBSQg7uzu3B+qbgcSLQJtcGHSjIJuLLv5v0ukw3YbDTgiSyOGFky2kJ16o6OiZ3KiCiBq3AoeeF2SEy0A7RNC+J3yY2+qG4gAwBU7vQ92quL7MJiGfcRaSj+FM03Aea5XGBRJgAAAAD/PwAA1xPtvtrGL77qkQa/JhyIPw4GAwEACxMpAVUCVQJRCX0DZS0MMNQjkLLyxJpoly6fOkttt6hZuQ5dQ91m0dJ39SsfC/dNQOr80wK/38HgrTbWnJB0d7JAL+nX/gcPgcbLT0LKnX71MfQuPgvyl78LB94brwMUp4svARLbS69/89wHgHuW4KUKqFG/uMjxyLATt3bkYWnP8eTR1VstRNqaZ46G2DrRmAM9827WXrnfiDP/AwAA/wEAAO0FC4x7iYEKAAAA"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 537
+    }
+  ],
+  "materials": [
+    {
+      "name": "vmd_mat_cindex_1",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.5,
+          0.5,
+          0.5,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "vmd_mol0_rep2_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2
+          },
+          "indices": 0,
+          "material": 0,
+          "mode": 4,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "vmd_mol0_rep2",
+      "mesh": 0
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ]
+}
