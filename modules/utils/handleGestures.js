@@ -60,6 +60,7 @@ if (hasTouchScreen) {
   // Some styles depends on touch capabilities
   markerImage2.classList.remove("left-margin");
   markerImage2.classList.add("right-margin");
+
 } else {
   // Hide gesture controls
   marker1Handler.classList.add("hide");
