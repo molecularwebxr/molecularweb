@@ -196,23 +196,37 @@ function handleReset(e) {
   orbital1Select.selectedIndex = 0;
   orbital2Select.selectedIndex = 0;
 
-  // There's a bug on A-frame. We need to remove the
-  // attribute and add it again in order see the model change
-  // marker1AModel.removeAttribute("gltf-model");
-  // marker1BModel.removeAttribute("gltf-model");
+  moleculesMarker1.forEach(function (item) {
+    item.removeAttribute("gltf-model");
+    item.setAttribute("gltf-model", "#mol1");
+  });
 
-  // marker2AModel.removeAttribute("gltf-model");
-  // marker2BModel.removeAttribute("gltf-model");
+  moleculesMarker2.forEach(function (item) {
+    item.removeAttribute("gltf-model");
+    item.setAttribute("gltf-model", "#mol1");
+  });
 
-  // marker1AModel.setAttribute("gltf-model", "#orb1");
-  // marker1BModel.setAttribute("gltf-model", "#orb1");
-  // marker2AModel.setAttribute("gltf-model", "#orb1");
-  // marker2BModel.setAttribute("gltf-model", "#orb1");
+  redOrbitalsMarker1.forEach(function (item) {
+    item.removeAttribute("gltf-model");
+    item.setAttribute("gltf-model", "#mo1_1r");
+  });
 
-  // marker1AModel.setAttribute("model-opacity", 0.5);
-  // marker1BModel.setAttribute("model-opacity", 0.5);
-  // marker2AModel.setAttribute("model-opacity", 0.5);
-  // marker2BModel.setAttribute("model-opacity", 0.5);
+  redOrbitalsMarker2.forEach(function (item) {
+    item.removeAttribute("gltf-model");
+    item.setAttribute("gltf-model", "#mo1_1r");
+  });
+
+  blueOrbitalsMarker1.forEach(function (item) {
+    item.removeAttribute("gltf-model");
+    item.setAttribute("gltf-model", "#mo1_1a");
+  });
+
+  blueOrbitalsMarker2.forEach(function (item) {
+    item.removeAttribute("gltf-model");
+    item.setAttribute("gltf-model", "#mo1_1a");
+  });
+
+
 }
 
 function handleMoleculeSelection(e) {
