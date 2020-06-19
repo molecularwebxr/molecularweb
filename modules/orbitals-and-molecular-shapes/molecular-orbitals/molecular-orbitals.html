@@ -117,7 +117,7 @@
         <div class="options" id="marker-options-1">
           <div class="triangle"></div>
           <div class="select-container">
-            <select id="select-marker-1" class="orbital-selector bottom-margin">
+            <select id="select-molecule-1" class="orbital-selector bottom-margin">
               <optgroup label="Molecule">
                 <option>Water</option>
                 <option>O2</option>
@@ -134,7 +134,7 @@
               </optgroup>
             </select>
 
-            <select id="select-marker-1B" class="orbital-selector">
+            <select id="select-orbital-1" class="orbital-selector">
               <optgroup label="Orbtital">
                 <option>Orbital 1</option>
                 <option>Orbital 2</option>
@@ -164,7 +164,7 @@
         <div class="options" id="marker-options-2">
           <div class="triangle"></div>
           <div class="select-container">
-            <select id="select-marker-2" class="orbital-selector bottom-margin">
+            <select id="select-molecule-2" class="orbital-selector bottom-margin">
               <optgroup label="Molecule">
                 <option>Water</option>
                 <option>O2</option>
@@ -181,7 +181,7 @@
               </optgroup>
             </select>
 
-            <select id="select-marker-2B" class="orbital-selector">
+            <select id="select-orbital-2" class="orbital-selector">
               <optgroup label="Orbital">
                 <option>Orbital 1</option>
                 <option>Orbital 2</option>
@@ -239,7 +239,7 @@
     >
       <a-assets>
         <!-- Struct assets -->
-        <a-asset-item id="mol1obj" src="./models/H2O/H2O.gltf"></a-asset-item>
+        <a-asset-item id="mol1" src="./models/H2O/H2O.gltf"></a-asset-item>
         <a-asset-item
           id="mo1_1a"
           src="./models/H2O/H2O_O1azul.gltf"
@@ -291,7 +291,7 @@
           src="./models/H2O/H2O_O7rojo.gltf"
         ></a-asset-item>
 
-        <a-asset-item id="mol2obj" src="./models/O2/O2.gltf"></a-asset-item>
+        <a-asset-item id="mol2" src="./models/O2/O2.gltf"></a-asset-item>
         <a-asset-item
           id="mo2_1a"
           src="./models/O2/O2_O1azul.gltf"
@@ -370,7 +370,7 @@
           src="./models/O2/O2_O10rojo.gltf"
         ></a-asset-item>
 
-        <a-asset-item id="mol3obj" src="./models/BH3/BH3.gltf"></a-asset-item>
+        <a-asset-item id="mol3" src="./models/BH3/BH3.gltf"></a-asset-item>
         <a-asset-item
           id="mo3_1a"
           src="./models/BH3/BH3_O1azul.gltf"
@@ -433,7 +433,7 @@
           src="./models/BH3/BH3_O8rojo.gltf"
         ></a-asset-item>
 
-        <a-asset-item id="mol4obj" src="./models/CH4/CH4.gltf"></a-asset-item>
+        <a-asset-item id="mol4" src="./models/CH4/CH4.gltf"></a-asset-item>
         <a-asset-item
           id="mo4_1a"
           src="./models/CH4/CH4_O1azul.gltf"
@@ -504,8 +504,7 @@
           src="./models/CH4/CH4_O9rojo.gltf"
         ></a-asset-item>
 
-        <a-asset-item id="mol5obj" src="./models/CO/CO.gltf"></a-asset-item>
-        <a-asset-item id="mol5mtl" src="./models/CO/CO.gltf"></a-asset-item>
+        <a-asset-item id="mol5" src="./models/CO/CO.gltf"></a-asset-item>
         <a-asset-item
           id="mo5_1a"
           src="./models/CO/CO_O1azul.gltf"
@@ -581,8 +580,7 @@
           src="./models/CO/CO_O10rojo.gltf"
         ></a-asset-item>
 
-        <a-asset-item id="mol6obj" src="./models/CO2/CO2.gltf"></a-asset-item>
-        <a-asset-item id="mol6mtl" src="./models/CO2/CO2.gltf"></a-asset-item>
+        <a-asset-item id="mol6" src="./models/CO2/CO2.gltf"></a-asset-item>
         <a-asset-item
           id="mo6_1a"
           src="./models/CO2/CO2_orb1azul.gltf"
@@ -698,8 +696,7 @@
           src="./models/CO2/CO2_orb15rojo.gltf"
         ></a-asset-item>
 
-        <a-asset-item id="mol7obj" src="./models/N2/N2.gltf"></a-asset-item>
-        <a-asset-item id="mol7mtl" src="./models/N2/N2.gltf"></a-asset-item>
+        <a-asset-item id="mol7" src="./models/N2/N2.gltf"></a-asset-item>
         <a-asset-item
           id="mo7_1a"
           src="./models/N2/N2_orb1azul.gltf"
@@ -778,7 +775,7 @@
           src="./models/N2/N2_orb10rojo.gltf"
         ></a-asset-item>
 
-        <a-asset-item id="mol8obj" src="./models/N3-/N3.gltf"></a-asset-item>
+        <a-asset-item id="mol8" src="./models/N3-/N3.gltf"></a-asset-item>
         <a-asset-item
           id="mo8_1a"
           src="./models/N3-/N3_O1azul.gltf"
@@ -894,7 +891,7 @@
           src="./models/N3-/N3_O15rojo.gltf"
         ></a-asset-item>
 
-        <a-asset-item id="mol9obj" src="./models/NH3/NH3.gltf"></a-asset-item>
+        <a-asset-item id="mol9" src="./models/NH3/NH3.gltf"></a-asset-item>
         <a-asset-item
           id="mo9_1a"
           src="./models/NH3/NH3_O1azul.gltf"
@@ -954,7 +951,7 @@
           src="./models/NH3/NH3_O8rojo.gltf"
         ></a-asset-item>
 
-        <a-asset-item id="mol10obj" src="./models/NO2/NO2.gltf"></a-asset-item>
+        <a-asset-item id="mol10" src="./models/NO2/NO2.gltf"></a-asset-item>
         <a-asset-item
           id="mo10_1a"
           src="./models/NO2/NO2_O1azul.gltf"
@@ -1070,7 +1067,7 @@
           src="./models/NO2/NO2_O15rojo.gltf"
         ></a-asset-item>
 
-        <a-asset-item id="mol11obj" src="./models/BF3/BF3.gltf"></a-asset-item>
+        <a-asset-item id="mol11" src="./models/BF3/BF3.gltf"></a-asset-item>
         <a-asset-item
           id="mo11_1a"
           src="./models/BF3/BF3_homoazul.gltf"
@@ -1088,7 +1085,7 @@
           src="./models/BF3/BF3_lumorojo.gltf"
         ></a-asset-item>
 
-        <a-asset-item id="mol12obj" src="./models/SCN-/SCN.gltf"></a-asset-item>
+        <a-asset-item id="mol12" src="./models/SCN-/SCN.gltf"></a-asset-item>
         <a-asset-item
           id="mo12_1a"
           src="./models/SCN-/SCN_O1azul.gltf"
@@ -1240,15 +1237,15 @@
           gesture-handler="linkedMarker: #marker1B"
         >
           <a-entity
-            id="mrk1mol"
-            gltf-model="#mol1obj"
+            id="mrk1Amol"
+            gltf-model="#mol1"
             scale="2 2 2"
             rotation="90 0 0"
             position="0 0 0"
             visible="true"
           ></a-entity>
           <a-entity
-            id="mrk1oma"
+            id="mrk1Aoma"
             gltf-model="#mo1_1a"
             scale="2 2 2"
             rotation="90 0 0"
@@ -1257,7 +1254,7 @@
             material="color: blue; opacity: 0.5"
           ></a-entity>
           <a-entity
-            id="mrk1omr"
+            id="mrk1Aomr"
             gltf-model="#mo1_1r"
             scale="2 2 2"
             rotation="90 0 0"
@@ -1277,15 +1274,15 @@
           gesture-handler="linkedMarker: #marker1A"
         >
           <a-entity
-            id="mrk1mol"
-            gltf-model="#mol1obj"
+            id="mrk1Bmol"
+            gltf-model="#mol1"
             scale="2 2 2"
             rotation="90 0 0"
             position="0 0 0"
             visible="true"
           ></a-entity>
           <a-entity
-            id="mrk1oma"
+            id="mrk1Boma"
             gltf-model="#mo1_1a"
             scale="2 2 2"
             rotation="90 0 0"
@@ -1294,7 +1291,7 @@
             material="color: blue; opacity: 0.5"
           ></a-entity>
           <a-entity
-            id="mrk1omr"
+            id="mrk1Bomr"
             gltf-model="#mo1_1r"
             scale="2 2 2"
             rotation="90 0 0"
@@ -1314,15 +1311,15 @@
           gesture-handler="linkedMarker: #marker2B"
         >
           <a-entity
-            id="mrk2mol"
-            gltf-model="#mol1obj"
+            id="mrk2Amol"
+            gltf-model="#mol1"
             scale="2 2 2"
             rotation="90 0 0"
             position="0 0 0"
             visible="true"
           ></a-entity>
           <a-entity
-            id="mrk2oma"
+            id="mrk2Aoma"
             gltf-model="#mo1_1a"
             scale="2 2 2"
             rotation="90 0 0"
@@ -1331,7 +1328,7 @@
             material="color: blue; opacity: 0.5"
           ></a-entity>
           <a-entity
-            id="mrk2omr"
+            id="mrk2Aomr"
             gltf-model="#mo1_1r"
             scale="2 2 2"
             rotation="90 0 0"
@@ -1351,15 +1348,15 @@
           gesture-handler="linkedMarker: #marker2A"
         >
           <a-entity
-            id="mrk2mol"
-            gltf-model="#mol1obj"
+            id="mrk2Bmol"
+            gltf-model="#mol1"
             scale="2 2 2"
             rotation="90 0 0"
             position="0 0 0"
             visible="true"
           ></a-entity>
           <a-entity
-            id="mrk2oma"
+            id="mrk2Boma"
             gltf-model="#mo1_1a"
             scale="2 2 2"
             rotation="90 0 0"
@@ -1368,7 +1365,7 @@
             material="color: blue; opacity: 0.5"
           ></a-entity>
           <a-entity
-            id="mrk2omr"
+            id="mrk2Bomr"
             gltf-model="#mo1_1r"
             scale="2 2 2"
             rotation="90 0 0"
