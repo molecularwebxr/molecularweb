@@ -1,11 +1,161 @@
 // Get select elements
 var molecule1Select = document.getElementById("select-molecule-1");
 var molecule2Select = document.getElementById("select-molecule-2");
-var moleculeSelects = [molecule1Select, molecule2Select];
 
 var orbital1Select = document.getElementById("select-orbital-1");
 var orbital2Select = document.getElementById("select-orbital-2");
-var orbitalSelects = [orbital1Select, orbital2Select];
+
+var orbitalNames = [
+  [
+    "Orbital 1",
+    "Orbital 2",
+    "Orbital 3",
+    "Orbital 4",
+    "Orbital 5",
+    "Orbital 6",
+    "Orbital 7",
+  ],
+  [
+    "Orbital 1",
+    "Orbital 2",
+    "Orbital 3",
+    "Orbital 4",
+    "Orbital 5",
+    "Orbital 6",
+    "Orbital 7",
+    "Orbital 8",
+    "Orbital 9",
+    "Orbital 10",
+  ],
+  [
+    "Orbital 1",
+    "Orbital 2",
+    "Orbital 3",
+    "Orbital 4",
+    "Orbital 5",
+    "Orbital 6",
+    "Orbital 7",
+    "Orbital 8",
+  ],
+  [
+    "Orbital 1",
+    "Orbital 2",
+    "Orbital 3",
+    "Orbital 4",
+    "Orbital 5",
+    "Orbital 6",
+    "Orbital 7",
+    "Orbital 8",
+    "Orbital 9",
+  ],
+  [
+    "Orbital 1",
+    "Orbital 2",
+    "Orbital 3",
+    "Orbital 4",
+    "Orbital 5",
+    "Orbital 6",
+    "Orbital 7",
+    "Orbital 8",
+    "Orbital 9",
+    "Orbital 10",
+  ],
+  [
+    "Orbital 1",
+    "Orbital 2",
+    "Orbital 3",
+    "Orbital 4",
+    "Orbital 5",
+    "Orbital 6",
+    "Orbital 7",
+    "Orbital 8",
+    "Orbital 9",
+    "Orbital 10",
+    "Orbital 11",
+    "Orbital 12",
+    "Orbital 13",
+    "Orbital 14",
+    "Orbital 15",
+  ],
+  [
+    "Orbital 1",
+    "Orbital 2",
+    "Orbital 3",
+    "Orbital 4",
+    "Orbital 5",
+    "Orbital 6",
+    "Orbital 7",
+    "Orbital 8",
+    "Orbital 9",
+    "Orbital 10",
+  ],
+  [
+    "Orbital 1",
+    "Orbital 2",
+    "Orbital 3",
+    "Orbital 4",
+    "Orbital 5",
+    "Orbital 6",
+    "Orbital 7",
+    "Orbital 8",
+    "Orbital 9",
+    "Orbital 10",
+    "Orbital 11",
+    "Orbital 12",
+    "Orbital 13",
+    "Orbital 14",
+    "Orbital 15",
+  ],
+  [
+    "Orbital 1",
+    "Orbital 2",
+    "Orbital 3",
+    "Orbital 4",
+    "Orbital 5",
+    "Orbital 6",
+    "Orbital 7",
+    "Orbital 8",
+  ],
+  [
+    "Orbital 1",
+    "Orbital 2",
+    "Orbital 3",
+    "Orbital 4",
+    "Orbital 5",
+    "Orbital 6",
+    "Orbital 7",
+    "Orbital 8",
+    "Orbital 9",
+    "Orbital 10",
+    "Orbital 11",
+    "Orbital 12",
+    "Orbital 13",
+    "Orbital 14",
+    "Orbital 15",
+  ],
+  ["HOMO", "LUMO"],
+  [
+    "Orbital 1",
+    "Orbital 2",
+    "Orbital 3",
+    "Orbital 4",
+    "Orbital 5",
+    "Orbital 6",
+    "Orbital 7",
+    "Orbital 8",
+    "Orbital 9",
+    "Orbital 10",
+    "Orbital 11",
+    "Orbital 12",
+    "Orbital 13",
+    "Orbital 14",
+    "Orbital 15",
+    "Orbital 16",
+    "Orbital 17",
+    "Orbital 18",
+    "Orbital 19",
+  ],
+];
 
 // Get 3D elements from each marker
 var marker1AMolecule = document.querySelector("#mrk1Amol");
@@ -67,69 +217,90 @@ function handleReset(e) {
 
 function handleMoleculeSelection(e) {
   e.preventDefault();
-  console.log(e);
 
   var moleculeSelected;
   var redOrbitalSelected;
   var blueOrbitalSelected;
+  var orbitalSelector;
   var selectedIndex = e.target.selectedIndex;
-  var molIndex = selectedIndex  + 1;
+  var molIndex = selectedIndex + 1;
+  var orbitals = orbitalNames[selectedIndex];
 
   // Which marker was selected? Get its molecules & orbitals
   if (e.target.id === "select-molecule-1") {
     moleculeSelected = moleculesMarker1;
     redOrbitalSelected = redOrbitalsMarker1;
     blueOrbitalSelected = blueOrbitalsMarker1;
+    orbitalSelector = orbital1Select;
   } else {
     moleculeSelected = moleculesMarker2;
     redOrbitalSelected = redOrbitalsMarker2;
     blueOrbitalSelected = blueOrbitalsMarker2;
+    orbitalSelector = orbital2Select;
   }
 
   // There's a bug on A-frame. We need to remove the
   // attribute and add it again in order see the model change
-  moleculeSelected.forEach(function(item){
+  moleculeSelected.forEach(function (item) {
     item.removeAttribute("gltf-model");
   });
-  redOrbitalSelected.forEach(function(item){
+  redOrbitalSelected.forEach(function (item) {
     item.removeAttribute("gltf-model");
   });
-  blueOrbitalSelected.forEach(function(item){
+  blueOrbitalSelected.forEach(function (item) {
     item.removeAttribute("gltf-model");
   });
 
   // Set molecule selected and default orbitals
-  moleculeSelected.forEach(function(item){
+  moleculeSelected.forEach(function (item) {
     item.setAttribute("gltf-model", "#mol" + molIndex);
   });
-  redOrbitalSelected.forEach(function(item){
+  redOrbitalSelected.forEach(function (item) {
     item.setAttribute("gltf-model", "#mo" + molIndex + "_1r");
   });
-  blueOrbitalSelected.forEach(function(item){
+  blueOrbitalSelected.forEach(function (item) {
     item.setAttribute("gltf-model", "#mo" + molIndex + "_1a");
   });
 
-
-  
-
-  // var modelsSelected =
-  //   e.target.id === "select-marker-1" ? modelsMarker1 : modelsMarker2;
-  // var index = markerSelected.selectedIndex;
-
-  // // Select index starts with 0 and IDs starts with 1
-  // // Be careful if using multiple option groups
-  // var assetIndex = index + 1;
-
-
-  // // Select the asset that corresponds to the option selected
-  // modelsSelected[0].setAttribute("gltf-model", "#orb" + assetIndex);
-  // modelsSelected[0].setAttribute("model-opacity", 0.5);
-  // modelsSelected[1].setAttribute("gltf-model", "#orb" + assetIndex);
-  // modelsSelected[1].setAttribute("model-opacity", 0.5);
+  // Add orbital options to orbital selector
+  orbitalSelector.options.length = 0;
+  orbitals.forEach(function (item) {
+    var option = document.createElement("option");
+    option.text = item;
+    orbitalSelector.add(option);
+  });
 }
 
 function handleOrbitalSelection(e) {
-  console.log(e);
+  var selectedIndex = e.target.selectedIndex + 1;
+  var redOrbitalSelected;
+  var blueOrbitalSelected;
+  var molIndex;
+
+  if (e.target.id === "select-orbital-1") {
+    redOrbitalSelected = redOrbitalsMarker1;
+    blueOrbitalSelected = blueOrbitalsMarker1;
+    molIndex = molecule1Select.selectedIndex + 1;
+  } else {
+    redOrbitalSelected = redOrbitalsMarker2;
+    blueOrbitalSelected = blueOrbitalsMarker2;
+    molIndex = molecule2Select.selectedIndex + 1;
+  }
+
+  redOrbitalSelected.forEach(function (item) {
+    item.removeAttribute("gltf-model");
+  });
+  blueOrbitalSelected.forEach(function (item) {
+    item.removeAttribute("gltf-model");
+  });
+
+  redOrbitalSelected.forEach(function (item) {
+    item.setAttribute("gltf-model", "#mo" + molIndex + "_" + selectedIndex + "r");
+  });
+  blueOrbitalSelected.forEach(function (item) {
+    item.setAttribute("gltf-model", "#mo" + molIndex + "_" + selectedIndex + "a");
+  });
+
 }
 
 molecule1Select.addEventListener("change", handleMoleculeSelection);
