@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-91563073-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-91563073-2");
+    </script>
+    <title>Simple select template</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/modules/styles/style.css" />
+
+    <!-- 3D Libraries -->
+    <script src="/lib/aframe.min.js"></script>
+    <script src="/lib/aframe-ar.js"></script>
+
+    <!-- Translation Libraries -->
+    <script src="/lib/i18n/i18next.min.js"></script>
+    <script src="/lib/i18n/i18next-wc.js"></script>
+    <script src="/lib/i18n/loc-i18next.min.js"></script>
+    <script src="/lib/i18n/i18nextBrowserLanguageDetector.js"></script>
+    <script src="/lib/i18n/i18nextHttpBackend.min.js"></script>
+
+    <!-- Web Components -->
+    <script src="/components/icons/atom/index.js"></script>
+    <script src="/components/icons/molecule/index.js"></script>
+    <script src="/components/back-anchor/index.js"></script>
+    <script src="/components/loader/index.js"></script>
+    <script src="/components/flip-video/index.js"></script>
+    <script src="/components/flip-graphics/index.js"></script>
+    <script src="/components/overlay/index.js"></script>
+    <script src="/components/toggle-instructions/index.js"></script>
+    <script src="/components/toggle-description/index.js"></script>
+    <script src="/components/toggle-menu/index.js"></script>
+    <script src="/components/reset-activity/index.js"></script>
+    <script src="/components/scale-graphics/index.js"></script>
+    <script src="/components/enable-gestures/index.js"></script>
+    <script src="/components/rotation-controls/index.js"></script>
+    <script src="/components/feedback-prompt/index.js"></script>
+
+    <!-- Utils & A-Frame Components -->
+    <script src="/modules/utils/aframe/modelOpacity.js"></script>
+    <script src="/modules/utils/aframe/flip.js"></script>
+    <script src="/modules/utils/aframe/scale.js"></script>
+    <script src="/modules/utils/aframe/gesture-detector.js"></script>
+    <script src="/modules/utils/aframe/gesture-handler.js"></script>
+    <script src="/modules/utils/aframe/loader.js"></script>
+    <script src="/modules/utils/aframe/rotation.js"></script>
+    <script src="/modules/utils/handleTranslation.js"></script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <!-- Replace here the icon & title from the module that corresponds -->
+    <header id="header">
+      <div class="row">
+        <figure>
+          <atom-icon></atom-icon>
+        </figure>
+        <h1
+          class="activity-title"
+          data-i18n="orbitals.atomicOrbitals.title"
+        ></h1>
+      </div>
+    </header>
+
+    <!-- UI Components -->
+    <back-anchor></back-anchor>
+    <loader-component></loader-component>
+
+    <!-- Feedback Modal -->
+    <feedback-prompt></feedback-prompt>
+
+    <!-- Side buttons -->
+    <div class="side-menu column">
+      <flip-video class="icon-margin"></flip-video>
+      <flip-graphics class="icon-margin"></flip-graphics>
+      <reset-activity class="icon-margin"></reset-activity>
+      <scale-graphics
+        class="icon-margin"
+        id="scale-up"
+        type="up"
+      ></scale-graphics>
+      <scale-graphics
+        class="icon-margin"
+        id="scale-down"
+        type="down"
+      ></scale-graphics>
+      <toggle-menu class="icon-margin"></toggle-menu>
+    </div>
+
+    <!-- Rotation controls -->
+    <div class="rotation-controls">
+      <rotation-controls id="rotation-marker-1" marker="1"></rotation-controls>
+      <rotation-controls id="rotation-marker-2" marker="2"></rotation-controls>
+    </div>
+
+    <!-- Selection Menu -->
+    <!-- Include the options & options group as needed for both markers -->
+    <!-- Keep in mind that this options MUST me aligned with a-assets -->
+    <div class="selection-menu">
+      <div class="marker">
+        <img
+          class="marker-sample"
+          src="/assets/img/0.png"
+          alt="sample marker"
+          id="marker-image-1"
+        />
+        <div class="options" id="marker-options-1">
+          <div class="triangle"></div>
+          <select id="select-marker-1" class="orbital-selector">
+            <optgroup label="Atomic Orbitals">
+              <option>2s</option>
+              <option>2px (m=-1)</option>
+              <option>2py (m=0)</option>
+              <option>2pz (m=1)</option>
+              <option>3dz<sup>2</sup> (m=0)</option>
+            </optgroup></select
+          >
+
+          <enable-gestures
+            class="gesture-icon left-margin"
+            id="marker1"
+          ></enable-gestures>
+        </div>
+      </div>
+      <span class="line"></span>
+      <div class="marker">
+        <img
+          class="marker-sample left-margin"
+          src="/assets/img/2.png"
+          alt="sample marker"
+          id="marker-image-2"
+        />
+        <div class="options" id="marker-options-2">
+          <div class="triangle"></div>
+          <select id="select-marker-2" class="orbital-selector">
+            <optgroup label="Atomic Orbitals">
+              <option>2s</option>
+              <option>2px (m=-1)</option>
+              <option>2py (m=0)</option>
+              <option>2pz (m=1)</option>
+              <option>3dz<sup>2</sup> (m=0)</option>
+            </optgroup></select
+          >
+
+          <enable-gestures
+            class="gesture-icon left-margin"
+            id="marker2"
+          ></enable-gestures>
+        </div>
+      </div>
+      <div class="extra-info">
+        <toggle-instructions class="extra-info-icon"></toggle-instructions>
+        <toggle-description class="extra-info-icon"></toggle-description>
+      </div>
+    </div>
+
+    <!-- Overlays -->
+    <!-- Replace here the title, description & instructions as needed -->
+    <activity-overlay id="instructions" default="open" type="instructions">
+      <span slot="title" data-i18n="orbitals.atomicOrbitals.title"></span>
+      <span
+        slot="instructions"
+        data-i18n="orbitals.atomicOrbitals.instructions"
+      ></span>
+    </activity-overlay>
+
+    <activity-overlay id="description" default="hidden" type="description">
+      <span slot="title" data-i18n="orbitals.atomicOrbitals.title"></span>
+      <span
+        slot="description"
+        data-i18n="orbitals.atomicOrbitals.description"
+      ></span>
+    </activity-overlay>
+
+    <activity-overlay id="menu" default="hidden" type="menu">
+    </activity-overlay>
+
+    <a-scene
+      embedded
+      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
+      id="scene"
+      renderer="logarithmicDepthBuffer: true;"
+      loading-screen="enabled: false"
+      gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;"
+      gesture-detector
+      loader
+      rotate-molecules
+    >
+      <a-assets>
+        <!-- Struct assets -->
+        <!-- Keep in mind that this assets MUST me aligned with options provided -->
+        <a-asset-item id="orb1" src="./models/OA_2S.gltf"></a-asset-item>
+        <a-asset-item id="orb2" src="./models/OA_2P_-1.gltf"></a-asset-item>
+        <a-asset-item id="orb3" src="./models/OA_2P_0.gltf"></a-asset-item>
+        <a-asset-item id="orb4" src="./models/OA_2P_1.gltf"></a-asset-item>
+        <a-asset-item id="orb5" src="./models/OA_3D_0.gltf"></a-asset-item>
+      </a-assets>
+
+      <a-marker type="barcode" value="0">
+        <a-entity
+          rotation="0 0 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker1A"
+          gesture-handler="linkedMarker: #marker1B"
+        >
+          <a-sphere
+            id="atom1A"
+            position="0.000   0.000   0.000"
+            color="grey"
+            radius="0.4"
+          ></a-sphere>
+          <a-entity
+            id="marker-1A-mol"
+            gltf-model="#orb1"
+            scale="0.2 0.2 0.2"
+            rotation="45 45 0"
+            position="0 0 0"
+            visible="true"
+            model-opacity="0.5"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="1">
+        <a-entity
+          rotation="180 180 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker1B"
+          gesture-handler="linkedMarker: #marker1A"
+        >
+          <a-sphere
+            id="atom1B"
+            position="0.000   0.000   0.000"
+            color="grey"
+            radius="0.4"
+          ></a-sphere>
+          <a-entity
+            id="marker-1B-mol"
+            gltf-model="#orb1"
+            scale="0.2 0.2 0.2"
+            rotation="45 45 0"
+            position="0 0 0"
+            visible="true"
+            model-opacity="0.5"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="2">
+        <a-entity
+          rotation="0 0 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker2A"
+          gesture-handler="linkedMarker: #marker2B"
+        >
+          <a-sphere
+            id="atom2A"
+            position="0.000   0.000   0.000"
+            color="grey"
+            radius="0.4"
+          ></a-sphere>
+          <a-entity
+            id="marker-2A-mol"
+            gltf-model="#orb1"
+            scale="0.2 0.2 0.2"
+            rotation="45 45 0"
+            position="0 0 0"
+            visible="true"
+            model-opacity="0.5"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="3">
+        <a-entity
+          rotation="180 180 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker2B"
+          gesture-handler="linkedMarker: #marker2A"
+        >
+          <a-sphere
+            id="atom2B"
+            position="0.000   0.000   0.000"
+            color="grey"
+            radius="0.4"
+          ></a-sphere>
+          <a-entity
+            id="marker-2B-mol"
+            gltf-model="#orb1"
+            scale="0.2 0.2 0.2"
+            rotation="45 45 0"
+            position="0 0 0"
+            visible="true"
+            model-opacity="0.5"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+    <script src="index.js"></script>
+    <script src="/modules/utils/handleFlips.js"></script>
+    <script src="/modules/utils/handleOverlays.js"></script>
+    <script src="/modules/utils/handleGestures.js"></script>
+  </body>
+</html>
