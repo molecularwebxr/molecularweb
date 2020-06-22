@@ -36,7 +36,8 @@
 
     "webRemake": {
       "title": "Web remake of Martinez-Hung et al 2017",
-      "description": "Examples of crystalline structures and water complexes from a previous work, repurposed for webAR."
+      "description": "Examples of crystalline structures, TRPEV shapes and water complexes from a previous publication by Martinez-Hung et al Revista Cubana de Quimica 2017, repurposed for webAR.",
+      "instructions": "Choose the examples from the dropdown menus, refer to the original publication for details."
     },
     "modelingKit": {
       "title": "Virtual modeling kit",
