@@ -50,7 +50,6 @@
     <script src="/components/feedback-prompt/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
-    <script src="/modules/utils/aframe/modelOpacity.js"></script>
     <script src="/modules/utils/aframe/flip.js"></script>
     <script src="/modules/utils/aframe/scale.js"></script>
     <script src="/modules/utils/aframe/gesture-detector.js"></script>
@@ -106,8 +105,6 @@
     </div>
 
     <!-- Selection Menu -->
-    <!-- Include the options & options group as needed for both markers -->
-    <!-- Keep in mind that this options MUST me aligned with a-assets -->
     <div class="selection-menu">
       <div class="marker">
         <img
@@ -120,11 +117,18 @@
           <div class="triangle"></div>
           <select id="select-marker-1" class="orbital-selector">
             <optgroup label="Atomic Orbitals">
-              <option>2s</option>
-              <option>2px (m=-1)</option>
-              <option>2py (m=0)</option>
-              <option>2pz (m=1)</option>
-              <option>3dz<sup>2</sup> (m=0)</option>
+              <option>BH3</option>
+              <option>BrF5</option>
+              <option>CH4</option>
+              <option>ClF3</option>
+              <option>CO</option>
+              <option>H2O</option>
+              <option>NH3</option>
+              <option>PCl5</option>
+              <option>SF4</option>
+              <option>SF6</option>
+              <option>XeF2</option>
+              <option>XeF4</option>
             </optgroup></select
           >
 
@@ -146,11 +150,18 @@
           <div class="triangle"></div>
           <select id="select-marker-2" class="orbital-selector">
             <optgroup label="Atomic Orbitals">
-              <option>2s</option>
-              <option>2px (m=-1)</option>
-              <option>2py (m=0)</option>
-              <option>2pz (m=1)</option>
-              <option>3dz<sup>2</sup> (m=0)</option>
+              <option>BH3</option>
+              <option>BrF5</option>
+              <option>CH4</option>
+              <option>ClF3</option>
+              <option>CO</option>
+              <option>H2O</option>
+              <option>NH3</option>
+              <option>PCl5</option>
+              <option>SF4</option>
+              <option>SF6</option>
+              <option>XeF2</option>
+              <option>XeF4</option>
             </optgroup></select
           >
 
@@ -199,12 +210,18 @@
     >
       <a-assets>
         <!-- Struct assets -->
-        <!-- Keep in mind that this assets MUST me aligned with options provided -->
-        <a-asset-item id="orb1" src="./models/OA_2S.gltf"></a-asset-item>
-        <a-asset-item id="orb2" src="./models/OA_2P_-1.gltf"></a-asset-item>
-        <a-asset-item id="orb3" src="./models/OA_2P_0.gltf"></a-asset-item>
-        <a-asset-item id="orb4" src="./models/OA_2P_1.gltf"></a-asset-item>
-        <a-asset-item id="orb5" src="./models/OA_3D_0.gltf"></a-asset-item>
+        <a-asset-item id="mol1" src="./models/BH3.gltf"></a-asset-item>
+        <a-asset-item id="mol2" src="./models/BrF5.gltf"></a-asset-item>
+        <a-asset-item id="mol3" src="./models/CH4.gltf"></a-asset-item>
+        <a-asset-item id="mol4" src="./models/ClF3.gltf"></a-asset-item>
+        <a-asset-item id="mol5" src="./models/CO.gltf"></a-asset-item>
+        <a-asset-item id="mol6" src="./models/H2O.gltf"></a-asset-item>
+        <a-asset-item id="mol7" src="./models/NH3.gltf"></a-asset-item>
+        <a-asset-item id="mol8" src="./models/PCl5.gltf"></a-asset-item>
+        <a-asset-item id="mol9" src="./models/SF4.gltf"></a-asset-item>
+        <a-asset-item id="mol10" src="./models/SF6.gltf"></a-asset-item>
+        <a-asset-item id="mol11" src="./models/XeF2.gltf"></a-asset-item>
+        <a-asset-item id="mol12" src="./models/XeF4.gltf"></a-asset-item>
       </a-assets>
 
       <a-marker type="barcode" value="0">
@@ -215,20 +232,12 @@
           id="marker1A"
           gesture-handler="linkedMarker: #marker1B"
         >
-          <a-sphere
-            id="atom1A"
-            position="0.000   0.000   0.000"
-            color="grey"
-            radius="0.4"
-          ></a-sphere>
           <a-entity
             id="marker-1A-mol"
-            gltf-model="#orb1"
-            scale="0.2 0.2 0.2"
-            rotation="45 45 0"
-            position="0 0 0"
+            gltf-model="#mol1"
+            scale="2 2 2"
+            rotation="0 0 0"
             visible="true"
-            model-opacity="0.5"
           ></a-entity>
         </a-entity>
       </a-marker>
@@ -241,20 +250,12 @@
           id="marker1B"
           gesture-handler="linkedMarker: #marker1A"
         >
-          <a-sphere
-            id="atom1B"
-            position="0.000   0.000   0.000"
-            color="grey"
-            radius="0.4"
-          ></a-sphere>
           <a-entity
             id="marker-1B-mol"
-            gltf-model="#orb1"
-            scale="0.2 0.2 0.2"
-            rotation="45 45 0"
-            position="0 0 0"
+            gltf-model="#mol1"
+            scale="2 2 2"
+            rotation="0 0 0"
             visible="true"
-            model-opacity="0.5"
           ></a-entity>
         </a-entity>
       </a-marker>
@@ -267,20 +268,12 @@
           id="marker2A"
           gesture-handler="linkedMarker: #marker2B"
         >
-          <a-sphere
-            id="atom2A"
-            position="0.000   0.000   0.000"
-            color="grey"
-            radius="0.4"
-          ></a-sphere>
           <a-entity
             id="marker-2A-mol"
-            gltf-model="#orb1"
-            scale="0.2 0.2 0.2"
-            rotation="45 45 0"
-            position="0 0 0"
+            gltf-model="#mol1"
+            scale="2 2 2"
+            rotation="0 0 0"
             visible="true"
-            model-opacity="0.5"
           ></a-entity>
         </a-entity>
       </a-marker>
@@ -293,20 +286,12 @@
           id="marker2B"
           gesture-handler="linkedMarker: #marker2A"
         >
-          <a-sphere
-            id="atom2B"
-            position="0.000   0.000   0.000"
-            color="grey"
-            radius="0.4"
-          ></a-sphere>
           <a-entity
             id="marker-2B-mol"
-            gltf-model="#orb1"
-            scale="0.2 0.2 0.2"
-            rotation="45 45 0"
-            position="0 0 0"
+            gltf-model="#mol1"
+            scale="2 2 2"
+            rotation="0 0 0"
             visible="true"
-            model-opacity="0.5"
           ></a-entity>
         </a-entity>
       </a-marker>
