@@ -33,15 +33,10 @@ function handleReset(e) {
   marker2AModel.removeAttribute("gltf-model");
   marker2BModel.removeAttribute("gltf-model");
 
-  marker1AModel.setAttribute("gltf-model", "#orb1");
-  marker1BModel.setAttribute("gltf-model", "#orb1");
-  marker2AModel.setAttribute("gltf-model", "#orb1");
-  marker2BModel.setAttribute("gltf-model", "#orb1");
-
-  marker1AModel.setAttribute("model-opacity", 0.5);
-  marker1BModel.setAttribute("model-opacity", 0.5);
-  marker2AModel.setAttribute("model-opacity", 0.5);
-  marker2BModel.setAttribute("model-opacity", 0.5);
+  marker1AModel.setAttribute("gltf-model", "#mol1");
+  marker1BModel.setAttribute("gltf-model", "#mol1");
+  marker2AModel.setAttribute("gltf-model", "#mol1");
+  marker2BModel.setAttribute("gltf-model", "#mol1");
 }
 
 function handleSelection(e) {
@@ -64,10 +59,8 @@ function handleSelection(e) {
   modelsSelected[1].removeAttribute("gltf-model");
 
   // Select the asset that corresponds to the option selected
-  modelsSelected[0].setAttribute("gltf-model", "#orb" + assetIndex);
-  modelsSelected[0].setAttribute("model-opacity", 0.5);
-  modelsSelected[1].setAttribute("gltf-model", "#orb" + assetIndex);
-  modelsSelected[1].setAttribute("model-opacity", 0.5);
+  modelsSelected[0].setAttribute("gltf-model", "#mol" + assetIndex);
+  modelsSelected[1].setAttribute("gltf-model", "#mol" + assetIndex);
 }
 
 marker1Select.addEventListener("change", handleSelection);

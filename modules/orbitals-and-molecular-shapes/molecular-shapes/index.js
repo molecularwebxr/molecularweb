@@ -37,11 +37,6 @@ function handleReset(e) {
   marker1BModel.setAttribute("gltf-model", "#mol1");
   marker2AModel.setAttribute("gltf-model", "#mol1");
   marker2BModel.setAttribute("gltf-model", "#mol1");
-
-  marker1AModel.setAttribute("model-opacity", 0.5);
-  marker1BModel.setAttribute("model-opacity", 0.5);
-  marker2AModel.setAttribute("model-opacity", 0.5);
-  marker2BModel.setAttribute("model-opacity", 0.5);
 }
 
 function handleSelection(e) {
@@ -65,9 +60,7 @@ function handleSelection(e) {
 
   // Select the asset that corresponds to the option selected
   modelsSelected[0].setAttribute("gltf-model", "#mol" + assetIndex);
-  modelsSelected[0].setAttribute("model-opacity", 0.5);
   modelsSelected[1].setAttribute("gltf-model", "#mol" + assetIndex);
-  modelsSelected[1].setAttribute("model-opacity", 0.5);
 }
 
 marker1Select.addEventListener("change", handleSelection);
