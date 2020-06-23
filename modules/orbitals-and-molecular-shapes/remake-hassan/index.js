@@ -66,11 +66,25 @@ function handleSelection(e) {
   // Select the asset that corresponds to the option selected
   var isWavefront = assetIndex >= 9 && assetIndex !== 15 && assetIndex !== 10;
   if (isWavefront) {
-    modelsSelected[0].setAttribute("obj-model", "obj: #mol" + assetIndex + "obj; mtl: #mol" + assetIndex + "mtl");
-    modelsSelected[1].setAttribute("obj-model", "obj: #mol" + assetIndex + "obj; mtl: #mol" + assetIndex + "mtl");
+    modelsSelected[0].setAttribute(
+      "obj-model",
+      "obj: #mol" + assetIndex + "obj; mtl: #mol" + assetIndex + "mtl"
+    );
+    modelsSelected[1].setAttribute(
+      "obj-model",
+      "obj: #mol" + assetIndex + "obj; mtl: #mol" + assetIndex + "mtl"
+    );
   } else {
     modelsSelected[0].setAttribute("gltf-model", "#mol" + assetIndex);
     modelsSelected[1].setAttribute("gltf-model", "#mol" + assetIndex);
+  }
+
+  if (assetIndex > 8 && assetIndex < 15) {
+    modelsSelected[0].setAttribute("scale", "0.5, 0.5, 0.5");
+    modelsSelected[1].setAttribute("scale", "0.5, 0.5, 0.5");
+  } else {
+    modelsSelected[0].setAttribute("scale", "0.1, 0.1, 0.1");
+    modelsSelected[1].setAttribute("scale", "0.1, 0.1, 0.1");
   }
 }
 
