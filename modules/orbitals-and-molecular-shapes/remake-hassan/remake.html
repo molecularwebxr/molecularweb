@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-91563073-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-91563073-2");
+    </script>
+    <title>Web remake of Martinez-Hung et al 2017</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/modules/styles/style.css" />
+
+    <!-- 3D Libraries -->
+    <script src="/lib/aframe.min.js"></script>
+    <script src="/lib/aframe-ar.js"></script>
+
+    <!-- Translation Libraries -->
+    <script src="/lib/i18n/i18next.min.js"></script>
+    <script src="/lib/i18n/i18next-wc.js"></script>
+    <script src="/lib/i18n/loc-i18next.min.js"></script>
+    <script src="/lib/i18n/i18nextBrowserLanguageDetector.js"></script>
+    <script src="/lib/i18n/i18nextHttpBackend.min.js"></script>
+
+    <!-- Web Components -->
+    <script src="/components/icons/atom/index.js"></script>
+    <script src="/components/icons/molecule/index.js"></script>
+    <script src="/components/back-anchor/index.js"></script>
+    <script src="/components/loader/index.js"></script>
+    <script src="/components/flip-video/index.js"></script>
+    <script src="/components/flip-graphics/index.js"></script>
+    <script src="/components/overlay/index.js"></script>
+    <script src="/components/toggle-instructions/index.js"></script>
+    <script src="/components/toggle-description/index.js"></script>
+    <script src="/components/toggle-menu/index.js"></script>
+    <script src="/components/reset-activity/index.js"></script>
+    <script src="/components/scale-graphics/index.js"></script>
+    <script src="/components/enable-gestures/index.js"></script>
+    <script src="/components/rotation-controls/index.js"></script>
+    <script src="/components/feedback-prompt/index.js"></script>
+
+    <!-- Utils & A-Frame Components -->
+    <script src="/modules/utils/aframe/flip.js"></script>
+    <script src="/modules/utils/aframe/scale.js"></script>
+    <script src="/modules/utils/aframe/gesture-detector.js"></script>
+    <script src="/modules/utils/aframe/gesture-handler.js"></script>
+    <script src="/modules/utils/aframe/loader.js"></script>
+    <script src="/modules/utils/aframe/rotation.js"></script>
+    <script src="/modules/utils/handleTranslation.js"></script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header id="header">
+      <div class="row">
+        <figure>
+          <atom-icon></atom-icon>
+        </figure>
+        <h1 class="activity-title" data-i18n="orbitals.webRemake.title"></h1>
+      </div>
+    </header>
+
+    <!-- UI Components -->
+    <back-anchor></back-anchor>
+    <loader-component></loader-component>
+
+    <!-- Feedback Modal -->
+    <feedback-prompt></feedback-prompt>
+
+    <!-- Side buttons -->
+    <div class="side-menu column">
+      <flip-video class="icon-margin"></flip-video>
+      <flip-graphics class="icon-margin"></flip-graphics>
+      <reset-activity class="icon-margin"></reset-activity>
+      <scale-graphics
+        class="icon-margin"
+        id="scale-up"
+        type="up"
+      ></scale-graphics>
+      <scale-graphics
+        class="icon-margin"
+        id="scale-down"
+        type="down"
+      ></scale-graphics>
+      <toggle-menu class="icon-margin"></toggle-menu>
+    </div>
+
+    <!-- Rotation controls -->
+    <div class="rotation-controls">
+      <rotation-controls id="rotation-marker-1" marker="1"></rotation-controls>
+      <rotation-controls id="rotation-marker-2" marker="2"></rotation-controls>
+    </div>
+
+    <!-- Selection Menu -->
+    <div class="selection-menu">
+      <div class="marker">
+        <img
+          class="marker-sample"
+          src="/assets/img/0.png"
+          alt="sample marker"
+          id="marker-image-1"
+        />
+        <div class="options" id="marker-options-1">
+          <div class="triangle"></div>
+          <select id="select-marker-1" class="orbital-selector">
+            <optgroup label="Crystals">
+              <option>ZnS</option>
+              <option>Metal</option>
+              <option>Metal with holes</option>
+              <option>NaCl</option>
+              <option>CuCaF2</option>
+              <option>CuCsCl</option>
+              <option>CuZnS</option>
+              <option>Cell</option>
+            </optgroup>
+            <optgroup label="Complexes">
+              <option>cis-diacuodiclorodiamminhierro</option>
+              <option>cisplatin</option>
+              <option>cis-tetrammindiclorocromo</option>
+              <option>Fac-acuotriammindiclorohierro</option>
+              <option>l-cis-diacuodiclorodiamminhierro</option>
+              <option>levo-mer-acuotriammin-cis-diclorohierro</option>
+            </optgroup>
+            <optgroup label="TRPEV">
+              <option>TRPEV2</option>
+              <option>sp3d</option>
+              <option>sp3d2</option>
+              <option>sp32</option>
+            </optgroup>
+          </select>
+
+          <enable-gestures
+            class="gesture-icon left-margin"
+            id="marker1"
+          ></enable-gestures>
+        </div>
+      </div>
+      <span class="line"></span>
+      <div class="marker">
+        <img
+          class="marker-sample left-margin"
+          src="/assets/img/2.png"
+          alt="sample marker"
+          id="marker-image-2"
+        />
+        <div class="options" id="marker-options-2">
+          <div class="triangle"></div>
+          <select id="select-marker-2" class="orbital-selector">
+            <optgroup label="Crystals">
+              <option>ZnS</option>
+              <option>Metal</option>
+              <option>Metal with holes</option>
+              <option>NaCl</option>
+              <option>CuCaF2</option>
+              <option>CuCsCl</option>
+              <option>CuZnS</option>
+              <option>Cell</option>
+            </optgroup>
+            <optgroup label="Complexes">
+              <option>cis-diacuodiclorodiamminhierro</option>
+              <option>cisplatin</option>
+              <option>cis-tetrammindiclorocromo</option>
+              <option>Fac-acuotriammindiclorohierro</option>
+              <option>l-cis-diacuodiclorodiamminhierro</option>
+              <option>levo-mer-acuotriammin-cis-diclorohierro</option>
+            </optgroup>
+            <optgroup label="TRPEV">
+              <option>TRPEV2</option>
+              <option>sp3d</option>
+              <option>sp3d2</option>
+              <option>sp32</option>
+            </optgroup>
+          </select>
+
+          <enable-gestures
+            class="gesture-icon left-margin"
+            id="marker2"
+          ></enable-gestures>
+        </div>
+      </div>
+      <div class="extra-info">
+        <toggle-instructions class="extra-info-icon"></toggle-instructions>
+        <toggle-description class="extra-info-icon"></toggle-description>
+      </div>
+    </div>
+
+    <!-- Overlays -->
+    <activity-overlay id="instructions" default="open" type="instructions">
+      <span slot="title" data-i18n="orbitals.webRemake.title"></span>
+      <span
+        slot="instructions"
+        data-i18n="orbitals.webRemake.instructions"
+      ></span>
+    </activity-overlay>
+
+    <activity-overlay id="description" default="hidden" type="description">
+      <span slot="title" data-i18n="orbitals.webRemake.title"></span>
+      <span
+        slot="description"
+        data-i18n="orbitals.webRemake.description"
+      ></span>
+    </activity-overlay>
+
+    <activity-overlay id="menu" default="hidden" type="menu">
+    </activity-overlay>
+
+    <a-scene
+      embedded
+      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
+      id="scene"
+      renderer="logarithmicDepthBuffer: true;"
+      loading-screen="enabled: false"
+      gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;"
+      gesture-detector
+      loader
+      rotate-molecules
+    >
+      <a-assets>
+        <!-- Struct assets -->
+        <a-asset-item id="mol1" src="./models/blendaZnS.gltf"></a-asset-item>
+        <a-asset-item id="mol2" src="./models/CCCaMetal.gltf"></a-asset-item>
+        <a-asset-item id="mol3" src="./models/CCCmetalhuecos_senalizados.gltf"></a-asset-item>
+        <a-asset-item id="mol4" src="./models/CCCNaCl.gltf"></a-asset-item>
+        <a-asset-item id="mol5" src="./models/CCCuCaF2.gltf"></a-asset-item>
+        <a-asset-item id="mol6" src="./models/CCCuCsCl.gltf"></a-asset-item>
+        <a-asset-item id="mol7" src="./models/CCCuZnS.gltf"></a-asset-item>
+        <a-asset-item id="mol8" src="./models/compartimiento_en_una_celda.gltf"></a-asset-item>
+
+        <a-asset-item id="mol9obj" src="./models/cis-diacuodiclorodiamminhierro.obj"></a-asset-item>
+        <a-asset-item id="mol9mtl" src="./models/cis-diacuodiclorodiamminhierro.mtl"></a-asset-item>
+        <a-asset-item id="mol10" src="./models/cisplatin.gltf"></a-asset-item>
+        <a-asset-item id="mol11obj" src="./models/cis-tetrammindiclorocromo.obj"></a-asset-item>
+        <a-asset-item id="mol11mtl" src="./models/cis-tetrammindiclorocromo.mtl"></a-asset-item>
+        <a-asset-item id="mol12obj" src="./models/fac-acuotriammindiclorohierro.obj"></a-asset-item>
+        <a-asset-item id="mol12mtl" src="./models/fac-acuotriammindiclorohierro.mtl"></a-asset-item>
+        <a-asset-item id="mol13obj" src="./models/l-cis-diacuodiclorodiamminhierro.obj"></a-asset-item>
+        <a-asset-item id="mol13mtl" src="./models/l-cis-diacuodiclorodiamminhierro.mtl"></a-asset-item>
+        <a-asset-item id="mol14obj" src="./models/levo-mer-acuotriammin-cis-diclorohierro.obj"></a-asset-item>
+        <a-asset-item id="mol14mtl" src="./models/levo-mer-acuotriammin-cis-diclorohierro.mtl"></a-asset-item>
+        
+        <a-asset-item id="mol15" src="./models/geometria_segun_TRPEV2.gltf"></a-asset-item>
+        <a-asset-item id="mol16obj" src="./models/hibridaciones_sp3d.obj"></a-asset-item>
+        <a-asset-item id="mol16mtl" src="./models/hibridaciones_sp3d.mtl"></a-asset-item>
+        <a-asset-item id="mol17obj" src="./models/hibridaciones_sp3d2.obj"></a-asset-item>
+        <a-asset-item id="mol17mtl" src="./models/hibridaciones_sp3d2.mtl"></a-asset-item>
+        <a-asset-item id="mol18obj" src="./models/hibridaciones_sp32.obj"></a-asset-item>
+        <a-asset-item id="mol18mtl" src="./models/hibridaciones_sp32.mtl"></a-asset-item>  
+      </a-assets>
+
+      <a-marker type="barcode" value="0">
+        <a-entity
+          rotation="0 0 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker1A"
+          gesture-handler="linkedMarker: #marker1B"
+        >
+          <a-entity
+            id="marker-1A-mol"
+            gltf-model="#mol1"
+            scale="0.1 0.1 0.1"
+            rotation="0 0 0"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="1">
+        <a-entity
+          rotation="180 180 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker1B"
+          gesture-handler="linkedMarker: #marker1A"
+        >
+          <a-entity
+            id="marker-1B-mol"
+            gltf-model="#mol1"
+            scale="0.1 0.1 0.1"
+            rotation="0 0 0"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="2">
+        <a-entity
+          rotation="0 0 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker2A"
+          gesture-handler="linkedMarker: #marker2B"
+        >
+          <a-entity
+            id="marker-2A-mol"
+            gltf-model="#mol1"
+            scale="0.1 0.1 0.1"
+            rotation="0 0 0"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="3">
+        <a-entity
+          rotation="180 180 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker2B"
+          gesture-handler="linkedMarker: #marker2A"
+        >
+          <a-entity
+            id="marker-2B-mol"
+            gltf-model="#mol1"
+            scale="0.1 0.1 0.1"
+            rotation="0 0 0"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+    <script src="index.js"></script>
+    <script src="/modules/utils/handleFlips.js"></script>
+    <script src="/modules/utils/handleOverlays.js"></script>
+    <script src="/modules/utils/handleGestures.js"></script>
+  </body>
+</html>
