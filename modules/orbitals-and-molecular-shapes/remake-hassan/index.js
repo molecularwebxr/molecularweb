@@ -29,9 +29,13 @@ function handleReset(e) {
   // attribute and add it again in order see the model change
   marker1AModel.removeAttribute("gltf-model");
   marker1BModel.removeAttribute("gltf-model");
+  marker1AModel.removeAttribute("obj-model");
+  marker1BModel.removeAttribute("obj-model");
 
   marker2AModel.removeAttribute("gltf-model");
   marker2BModel.removeAttribute("gltf-model");
+  marker2AModel.removeAttribute("obj-model");
+  marker2BModel.removeAttribute("obj-model");
 
   marker1AModel.setAttribute("gltf-model", "#mol1");
   marker1BModel.setAttribute("gltf-model", "#mol1");
@@ -50,17 +54,24 @@ function handleSelection(e) {
   var index = markerSelected.selectedIndex;
 
   // Select index starts with 0 and IDs starts with 1
-  // Be careful if using multiple option groups
   var assetIndex = index + 1;
 
   // There's a bug on A-frame. We need to remove the
   // attribute and add it again in order see the model change
   modelsSelected[0].removeAttribute("gltf-model");
+  modelsSelected[0].removeAttribute("obj-model");
   modelsSelected[1].removeAttribute("gltf-model");
+  modelsSelected[1].removeAttribute("obj-model");
 
   // Select the asset that corresponds to the option selected
-  modelsSelected[0].setAttribute("gltf-model", "#mol" + assetIndex);
-  modelsSelected[1].setAttribute("gltf-model", "#mol" + assetIndex);
+  var isWavefront = assetIndex >= 9 && assetIndex !== 15 && assetIndex !== 10;
+  if (isWavefront) {
+    modelsSelected[0].setAttribute("obj-model", "obj: #mol" + assetIndex + "obj; mtl: #mol" + assetIndex + "mtl");
+    modelsSelected[1].setAttribute("obj-model", "obj: #mol" + assetIndex + "obj; mtl: #mol" + assetIndex + "mtl");
+  } else {
+    modelsSelected[0].setAttribute("gltf-model", "#mol" + assetIndex);
+    modelsSelected[1].setAttribute("gltf-model", "#mol" + assetIndex);
+  }
 }
 
 marker1Select.addEventListener("change", handleSelection);
