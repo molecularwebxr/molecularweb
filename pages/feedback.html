@@ -10,7 +10,8 @@
     />
     <link rel="stylesheet" href="/styles/base.css" />
     <link rel="stylesheet" href="/styles/styles.css" />
- 
+    <link rel="stylesheet" href="/styles/feedback.css" />
+
     <!-- Translation Libraries -->
     <script src="/lib/i18n/i18next.min.js"></script>
     <script src="/lib/i18n/i18next-wc.js"></script>
@@ -26,7 +27,6 @@
     <script src="/components/icons/tubes/index.js"></script>
     <script src="/components/icons/dna/index.js"></script>
     <script src="/components/icons/bacteria/index.js"></script>
-    
   </head>
   <body>
     <div id="overlay" class="overlay"></div>
@@ -63,15 +63,179 @@
           <div class="mobile-menu-links column">
             <a class="mobile-menu-link" data-i18n="menu.about"></a>
             <a class="mobile-menu-link" data-i18n="menu.getInTouch"></a>
-            <a class="mobile-menu-link" href="/pages/feedback.html" data-i18n="menu.feedback"></a>
+            <a
+              class="mobile-menu-link"
+              href="/pages/feedback.html"
+              data-i18n="menu.feedback"
+            ></a>
             <a class="mobile-menu-link" data-i18n="menu.language"></a>
           </div>
         </div>
         <p class="mobile-menu-footer" data-i18n="app.policy"></p>
       </div>
 
-      Acá irá la encuesta :)
-     
+      <div class="survey-container">
+        <div class="hi-container">👋 Hi... (message)</div>
+        <form action="">
+          <div class="question-container">
+            <h4 class="question">1. Please, select your profile</h4>
+            <label for="option1" class="answer" id="educator">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="option1"
+                name="profile"
+                value="educator"
+              />
+              <p class="normal-text">Educator</p>
+            </label>
+            <label for="option2" class="answer is-selected" id="student">
+              <input
+                type="radio"
+                checked
+                class="radio-btn"
+                id="option2"
+                name="profile"
+                value="student"
+              />
+              <p class="normal-text">Student</p>
+            </label>
+          </div>
+          <div class="question-container">
+            <h4 class="question">
+              2. I had used other augmented reality applications before using
+              this website
+            </h4>
+            <label for="option1" class="answer">
+              <input type="radio" class="radio-btn" id="option1" />
+              <p class="normal-text">Not at all</p>
+            </label>
+            <label for="option2" class="answer is-selected" id="student">
+              <input type="radio" checked class="radio-btn" id="option2" />
+              <p class="normal-text">Only 1, 2, perhaps 3 times</p>
+            </label>
+            <label for="option1" class="answer">
+              <input type="radio" class="radio-btn" id="option3" />
+              <p class="normal-text">Several times</p>
+            </label>
+          </div>
+          <div class="question-container">
+            <h4 class="question">
+              3. I could easily use this website to view molecules on the
+              markers
+            </h4>
+            <label for="option1" class="answer">
+              <input type="radio" class="radio-btn" id="option1" />
+              <p class="normal-text">No, I couldn’t make it work</p>
+            </label>
+            <label for="option2" class="answer is-selected" id="student">
+              <input type="radio" checked class="radio-btn" id="option2" />
+              <p class="normal-text">
+                It was hard to make it work, but eventually succeeded
+              </p>
+            </label>
+            <label for="option1" class="answer">
+              <input type="radio" class="radio-btn" id="option3" />
+              <p class="normal-text">
+                It took some effort the first time, but then was easy to use
+                multiple times
+              </p>
+            </label>
+            <label for="option1" class="answer">
+              <input type="radio" class="radio-btn" id="option3" />
+              <p class="normal-text">
+                It was quite easy to use the website right from my first attempt
+              </p>
+            </label>
+          </div>
+          <div class="question-container">
+            <h4 class="question">
+              4. Using augmented reality helped me to better understand the
+              structures of molecules and chemistry concepts
+            </h4>
+            <label for="option1" class="answer">
+              <input type="radio" class="radio-btn" id="option1" />
+              <p class="normal-text">Not at all</p>
+            </label>
+            <label for="option2" class="answer is-selected" id="student">
+              <input type="radio" checked class="radio-btn" id="option2" />
+              <p class="normal-text">Yes, a little</p>
+            </label>
+            <label for="option1" class="answer">
+              <input type="radio" class="radio-btn" id="option3" />
+              <p class="normal-text">Yes, a lot</p>
+            </label>
+          </div>
+          <div class="question-container">
+            <h4 class="question">
+              5. Using this website made me gain interest in chemistry
+            </h4>
+            <label for="option1" class="answer">
+              <input type="radio" class="radio-btn" id="option1" />
+              <p class="normal-text">Not at all</p>
+            </label>
+            <label for="option2" class="answer is-selected" id="student">
+              <input type="radio" checked class="radio-btn" id="option2" />
+              <p class="normal-text">Yes, a little</p>
+            </label>
+            <label for="option1" class="answer">
+              <input type="radio" class="radio-btn" id="option3" />
+              <p class="normal-text">Yes, a lot</p>
+            </label>
+          </div>
+          <div class="question-container">
+            <h4 class="question">
+              6. Using this website made me gain interest in programming,
+              augmented reality, etc.
+            </h4>
+            <label for="option1" class="answer">
+              <input type="radio" class="radio-btn" id="option1" />
+              <p class="normal-text">Not at all</p>
+            </label>
+            <label for="option2" class="answer is-selected" id="student">
+              <input type="radio" checked class="radio-btn" id="option2" />
+              <p class="normal-text">Yes, a little</p>
+            </label>
+            <label for="option1" class="answer">
+              <input type="radio" class="radio-btn" id="option3" />
+              <p class="normal-text">Yes, a lot</p>
+            </label>
+          </div>
+          <div class="question-container">
+            <h4 class="question">
+              7. Have you used the website at school, your home, or both?
+            </h4>
+            <label for="option1" class="answer">
+              <input type="radio" class="radio-btn" id="option1" />
+              <p class="normal-text">At school only</p>
+            </label>
+            <label for="option2" class="answer is-selected" id="student">
+              <input type="radio" checked class="radio-btn" id="option2" />
+              <p class="normal-text">At home only</p>
+            </label>
+            <label for="option1" class="answer">
+              <input type="radio" class="radio-btn" id="option3" />
+              <p class="normal-text">Both at school and home</p>
+            </label>
+          </div>
+          <div class="question-container">
+            <h4 class="question">
+              8. What other molecules or content would you like that we prepare?
+            </h4>
+            <label for="textarea" class="label-textarea">Tell us below</label>
+            <textarea
+              name="answer-q8"
+              id="textarea"
+              placeholder="Add your answer..."
+              cols="30"
+              rows="5"
+            ></textarea>
+          </div>
+          <div class="question-container">
+            <h4 class="question">9. Do you live in...</h4>
+          </div>
+        </form>
+      </div>
     </div>
     <footer>
       <app-footer />

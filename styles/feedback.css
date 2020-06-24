@@ -1,0 +1,143 @@
+
+@supports(-webkit-appearance: none) or (-moz-appearance: none) {
+  input[type='radio'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+}
+
+
+h4 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 29px;
+  color: var(--primary);
+  margin: 24px 0;
+}
+
+textarea {
+  margin: 8px 16px;
+  padding: 16px;
+  width: auto;
+  border: 3px solid var(--primary);
+  border-radius: 10px;
+  resize: none;
+  outline: none;
+  /* outline: 2px solid green; */
+  /* outline-offset: 2px; */
+}
+
+textarea:focus{
+  box-shadow: 0px 0px 6px 2px var(--primary);
+}
+
+
+textarea::placeholder{
+  color: var(--primarylight);
+  font-size: 14px;
+  font-family: Roboto;
+}
+
+.label-textarea{
+  padding-left: 16px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--primarylight);
+}
+
+.normal-text {
+  color:  var(--primary);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.survey-container {
+  width: 900px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.question-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.question {
+  margin-top: 56px;
+}
+
+.answer {
+  display: flex;
+  align-items: center;
+  min-width: 189px;
+  max-width: 600px;
+  width: fit-content;
+  height: 40px;
+  background-color: #FFFFFF;
+  padding: 16px 12px;
+  box-sizing: border-box;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  margin: 8px;
+  }
+
+.answer:hover{
+  background-color: var(--primary);
+}
+
+.answer:hover .radio-btn{
+  border: 1px solid #FFFFFF;
+  background-color: var(--primary);
+}
+
+.answer:hover .normal-text{
+  color: white;
+}
+
+.answer.is-selected {
+  background-color: var(--primary);
+}
+
+.answer.is-selected .normal-text {
+  color: white;
+}
+
+.radio-btn {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--primary);
+  border-radius: 50%;
+  margin: 0;
+  margin-right: 8px;
+  
+}
+
+
+.radio-btn:checked {
+  border: 3px solid var(--primary);
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0px 1px rgb(255, 255, 255);  
+}
+
+.radio-btn:focus {
+  outline: none;
+  /* box-shadow: 0 0 0px 2px var(--secondary); */
+  
+}
+
+.radio-btn:checked:hover {
+  border: 3px solid var(--primary);
+  background-color: #FFFFFF;
+  box-shadow: 
+  0 0 0px 1px #FFFFFF;
+  
+  
+}
