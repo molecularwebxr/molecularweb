@@ -1,11 +1,9 @@
-
-@supports(-webkit-appearance: none) or (-moz-appearance: none) {
-  input[type='radio'] {
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+  input[type="radio"] {
     -webkit-appearance: none;
     -moz-appearance: none;
   }
 }
-
 
 h4 {
   font-family: Montserrat;
@@ -20,27 +18,29 @@ h4 {
 textarea {
   margin: 8px 16px;
   padding: 16px;
-  width: auto;
   border: 3px solid var(--primary);
   border-radius: 10px;
   resize: none;
   outline: none;
+  min-width: 189px;
+  max-width: 600px;
+  /* width: fit-content; */
+  /* width: -moz-fit-content; */
   /* outline: 2px solid green; */
   /* outline-offset: 2px; */
 }
 
-textarea:focus{
+textarea:focus {
   box-shadow: 0px 0px 6px 2px var(--primary);
 }
 
-
-textarea::placeholder{
+textarea::placeholder {
   color: var(--primarylight);
   font-size: 14px;
   font-family: Roboto;
 }
 
-.label-textarea{
+.label-textarea {
   padding-left: 16px;
   font-family: Roboto;
   font-style: normal;
@@ -51,7 +51,7 @@ textarea::placeholder{
 }
 
 .normal-text {
-  color:  var(--primary);
+  color: var(--primary);
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -61,7 +61,6 @@ textarea::placeholder{
 
 .survey-container {
   width: 900px;
-  height: auto;
   margin: 0 auto;
 }
 
@@ -74,31 +73,38 @@ textarea::placeholder{
   margin-top: 56px;
 }
 
+.answers-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .answer {
   display: flex;
   align-items: center;
   min-width: 189px;
   max-width: 600px;
   width: fit-content;
+  width: -moz-fit-content;
   height: 40px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 16px 12px;
   box-sizing: border-box;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   margin: 8px;
-  }
+}
 
-.answer:hover{
+.answer:hover {
   background-color: var(--primary);
 }
 
-.answer:hover .radio-btn{
-  border: 1px solid #FFFFFF;
+.answer:hover .radio-btn {
+  border: 1px solid #ffffff;
   background-color: var(--primary);
 }
 
-.answer:hover .normal-text{
+.answer:hover .normal-text {
   color: white;
 }
 
@@ -117,27 +123,41 @@ textarea::placeholder{
   border-radius: 50%;
   margin: 0;
   margin-right: 8px;
-  
 }
-
 
 .radio-btn:checked {
   border: 3px solid var(--primary);
-  background-color: #FFFFFF;
-  box-shadow: 0 0 0px 1px rgb(255, 255, 255);  
+  background-color: #ffffff;
+  box-shadow: 0 0 0px 1px rgb(255, 255, 255);
 }
 
 .radio-btn:focus {
   outline: none;
   /* box-shadow: 0 0 0px 2px var(--secondary); */
-  
 }
 
 .radio-btn:checked:hover {
   border: 3px solid var(--primary);
-  background-color: #FFFFFF;
-  box-shadow: 
-  0 0 0px 1px #FFFFFF;
-  
-  
+  background-color: #ffffff;
+  box-shadow: 0 0 0px 1px #ffffff;
+}
+
+.submit-btn {
+  display: block;
+  border-radius: 6px;
+  border-style: none;
+  border-width: 0;
+  cursor: pointer;
+  -webkit-appearance: button;
+  padding: 1rem 3rem;
+  background-color: var(--secondary);
+  color: var(--primary);
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 24px;
+  margin: 3rem auto;
+}
+
+.submit-btn:active {
+  transform: scale(0.9);
 }
