@@ -112,5 +112,28 @@
   },
   "modelingKit": {
     "title": "Molecular modeling kit"
+  },
+  "surveys": {
+    "welcomeMsg": "Hi... (message)",
+    "selectProfile": "Please, select your profile",
+    "educator": "Educator",
+    "student": "Student",
+    "questions": {
+      "usedARBefore": "I had used other augmented reality applications before using this website",
+      "easilyUse": "I could easily use this website to view molecules on the markers",
+      "understand": "Using augmented reality helped me to better understand the structures of molecules and chemistry concepts",
+      "interestInChemistry": "Using this website made me gain interest in chemistry"
+    },
+    "answers": {
+      "notAtAll": "Not at all",
+      "aLittle": "Yes, a little",
+      "aLot": "Yes, a lot",
+      "perhaps": "Only 1, 2, perhaps 3 times",
+      "severalTimes": "Several times",
+      "didntWork": "No, I couldn’t make it work",
+      "hardToWork": "It was hard to make it work, but eventually succeeded",
+      "someEffort": "It took some effort the first time, but then was easy to use multiple times",
+      "easyToWork": "It was quite easy to use the website right from my first attempt"
+    }
   }
 }

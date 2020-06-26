@@ -75,114 +75,188 @@
       </div>
 
       <div class="survey-container">
-        <div class="hi-container">👋 Hi... (message)</div>
+        <div class="hi-container"><span>👋</span></div>
         <form action="">
+          <!-- Question -->
           <div class="question-container">
-            <h4 class="question">1. Please, select your profile</h4>
-            <label for="option1" class="answer" id="educator">
+            <h4 class="question" data-i18n="surveys.selectProfile"></h4>
+            <label for="profile-option-1" class="answer" id="educator">
               <input
                 type="radio"
                 class="radio-btn"
-                id="option1"
+                id="profile-option-1"
                 name="profile"
                 value="educator"
               />
-              <p class="normal-text">Educator</p>
+              <p class="normal-text" data-i18n="surveys.educator"></p>
             </label>
-            <label for="option2" class="answer is-selected" id="student">
+            <label
+              for="profile-option-2"
+              class="answer is-selected"
+              id="student"
+            >
               <input
                 type="radio"
                 checked
                 class="radio-btn"
-                id="option2"
+                id="profile-option-2"
                 name="profile"
                 value="student"
               />
-              <p class="normal-text">Student</p>
+              <p class="normal-text" data-i18n="surveys.student"></p>
             </label>
           </div>
+
+          <!-- Question -->
           <div class="question-container">
-            <h4 class="question">
-              2. I had used other augmented reality applications before using
-              this website
-            </h4>
-            <label for="option1" class="answer">
-              <input type="radio" class="radio-btn" id="option1" />
-              <p class="normal-text">Not at all</p>
+            <h4
+              class="question"
+              data-i18n="surveys.questions.usedARBefore"
+            ></h4>
+            <label for="ar-before-option-1" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="ar-before-option-1"
+                name="ar-before"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.notAtAll"></p>
             </label>
-            <label for="option2" class="answer is-selected" id="student">
-              <input type="radio" checked class="radio-btn" id="option2" />
-              <p class="normal-text">Only 1, 2, perhaps 3 times</p>
+            <label for="ar-before-option-2" class="answer is-selected">
+              <input
+                type="radio"
+                checked
+                class="radio-btn"
+                id="ar-before-option-2"
+                name="ar-before"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.perhaps"></p>
             </label>
-            <label for="option1" class="answer">
-              <input type="radio" class="radio-btn" id="option3" />
-              <p class="normal-text">Several times</p>
+            <label for="ar-before-option-3" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="ar-before-option-3"
+                name="ar-before"
+              />
+              <p
+                class="normal-text"
+                data-i18n="surveys.answers.severalTimes"
+              ></p>
             </label>
           </div>
+
+          <!-- Question -->
           <div class="question-container">
-            <h4 class="question">
-              3. I could easily use this website to view molecules on the
-              markers
-            </h4>
-            <label for="option1" class="answer">
-              <input type="radio" class="radio-btn" id="option1" />
-              <p class="normal-text">No, I couldn’t make it work</p>
+            <h4 class="question" data-i18n="surveys.questions.easilyUse"></h4>
+            <label for="easy-use-option-1" class="answer is-selected">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="easy-use-option-1"
+                name="easy-use"
+                checked
+              />
+              <p class="normal-text" data-i18n="surveys.answers.didntWork"></p>
             </label>
-            <label for="option2" class="answer is-selected" id="student">
-              <input type="radio" checked class="radio-btn" id="option2" />
-              <p class="normal-text">
-                It was hard to make it work, but eventually succeeded
-              </p>
+            <label for="easy-use-option-2" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="easy-use-option-2"
+                name="easy-use"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.hardToWork"></p>
             </label>
-            <label for="option1" class="answer">
-              <input type="radio" class="radio-btn" id="option3" />
-              <p class="normal-text">
-                It took some effort the first time, but then was easy to use
-                multiple times
-              </p>
+            <label for="easy-use-option-3" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="easy-use-option-3"
+                name="easy-use"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.someEffort"></p>
             </label>
-            <label for="option1" class="answer">
-              <input type="radio" class="radio-btn" id="option3" />
-              <p class="normal-text">
-                It was quite easy to use the website right from my first attempt
-              </p>
+            <label for="easy-use-option-4" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="easy-use-option-4"
+                name="easy-use"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.easyToWork"></p>
             </label>
           </div>
+
+          <!-- Question -->
           <div class="question-container">
-            <h4 class="question">
-              4. Using augmented reality helped me to better understand the
-              structures of molecules and chemistry concepts
-            </h4>
-            <label for="option1" class="answer">
-              <input type="radio" class="radio-btn" id="option1" />
-              <p class="normal-text">Not at all</p>
+            <h4 class="question" data-i18n="surveys.questions.understand"></h4>
+            <label for="understand-option-1" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="understand-option-1"
+                name="understand"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.notAtAll"></p>
             </label>
-            <label for="option2" class="answer is-selected" id="student">
-              <input type="radio" checked class="radio-btn" id="option2" />
-              <p class="normal-text">Yes, a little</p>
+            <label for="understand-option-2" class="answer is-selected">
+              <input
+                type="radio"
+                checked
+                class="radio-btn"
+                id="understand-option-2"
+                name="understand"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.aLittle"></p>
             </label>
-            <label for="option1" class="answer">
-              <input type="radio" class="radio-btn" id="option3" />
-              <p class="normal-text">Yes, a lot</p>
+            <label for="understand-option-3" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="understand-option-3"
+                name="understand"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.aLot"></p>
             </label>
           </div>
+
+          <!-- Question -->
           <div class="question-container">
-            <h4 class="question">
-              5. Using this website made me gain interest in chemistry
-            </h4>
-            <label for="option1" class="answer">
-              <input type="radio" class="radio-btn" id="option1" />
-              <p class="normal-text">Not at all</p>
+            <h4
+              class="question"
+              data-i18n="surveys.questions.interestInChemistry"
+            ></h4>
+            <label for="interest-option-1" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="interest-option-1"
+                name="interestInChemistry"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.notAtAll"></p>
             </label>
-            <label for="option2" class="answer is-selected" id="student">
-              <input type="radio" checked class="radio-btn" id="option2" />
-              <p class="normal-text">Yes, a little</p>
+            <label for="interest-option-2" class="answer is-selected">
+              <input
+                type="radio"
+                checked
+                class="radio-btn"
+                id="interest-option-2"
+                name="interestInChemistry"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.aLittle"></p>
             </label>
-            <label for="option1" class="answer">
-              <input type="radio" class="radio-btn" id="option3" />
-              <p class="normal-text">Yes, a lot</p>
+            <label for="interest-option-3" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="interest-option-3"
+                name="interestInChemistry"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.aLot"></p>
             </label>
           </div>
+
           <div class="question-container">
             <h4 class="question">
               6. Using this website made me gain interest in programming,
@@ -192,7 +266,7 @@
               <input type="radio" class="radio-btn" id="option1" />
               <p class="normal-text">Not at all</p>
             </label>
-            <label for="option2" class="answer is-selected" id="student">
+            <label for="option2" class="answer is-selected">
               <input type="radio" checked class="radio-btn" id="option2" />
               <p class="normal-text">Yes, a little</p>
             </label>
