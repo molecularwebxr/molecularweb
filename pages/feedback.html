@@ -257,84 +257,166 @@
             </label>
           </div>
 
+          <!-- Question -->
           <div class="question-container">
-            <h4 class="question">
-              6. Using this website made me gain interest in programming,
-              augmented reality, etc.
-            </h4>
-            <label for="option1" class="answer">
-              <input type="radio" class="radio-btn" id="option1" />
-              <p class="normal-text">Not at all</p>
+            <h4
+              class="question"
+              data-i18n="surveys.questions.interestInTech"
+            ></h4>
+            <label for="interest-tech-option-1" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="interest-tech-option-1"
+                name="interestInTech"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.notAtAll"></p>
             </label>
-            <label for="option2" class="answer is-selected">
-              <input type="radio" checked class="radio-btn" id="option2" />
-              <p class="normal-text">Yes, a little</p>
+            <label for="interest-tech-option-2" class="answer is-selected">
+              <input
+                type="radio"
+                checked
+                class="radio-btn"
+                id="interest-tech-option-2"
+                name="interestInTech"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.aLittle"></p>
             </label>
-            <label for="option1" class="answer">
-              <input type="radio" class="radio-btn" id="option3" />
-              <p class="normal-text">Yes, a lot</p>
+            <label for="interest-tech-option-3" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="interest-tech-option-3"
+                name="interestInTech"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.aLot"></p>
             </label>
           </div>
+
+          <!-- Question -->
           <div class="question-container">
-            <h4 class="question">
-              7. Have you used the website at school, your home, or both?
-            </h4>
-            <label for="option1" class="answer">
-              <input type="radio" class="radio-btn" id="option1" />
-              <p class="normal-text">At school only</p>
+            <h4 class="question" data-i18n="surveys.questions.place"></h4>
+            <label for="place-option-1" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="place-option-1"
+                name="place"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.school"></p>
             </label>
-            <label for="option2" class="answer is-selected" id="student">
-              <input type="radio" checked class="radio-btn" id="option2" />
-              <p class="normal-text">At home only</p>
+            <label for="place-option-2" class="answer is-selected" id="student">
+              <input
+                type="radio"
+                checked
+                class="radio-btn"
+                id="place-option-2"
+                name="place"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.home"></p>
             </label>
-            <label for="option1" class="answer">
-              <input type="radio" class="radio-btn" id="option3" />
-              <p class="normal-text">Both at school and home</p>
+            <label for="place-option-3" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="place-option-3"
+                name="place"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.both"></p>
             </label>
           </div>
+
+          <!-- Question -->
           <div class="question-container">
-            <h4 class="question">
-              8. What other molecules or content would you like that we prepare?
-            </h4>
-            <label for="textarea" class="label-textarea">Tell us below</label>
+            <h4 class="question" data-i18n="surveys.questions.suggestions"></h4>
+            <label
+              for="textarea"
+              class="label-textarea"
+              data-i18n="surveys.tellUs"
+            ></label>
             <textarea
-              name="answer-q8"
+              name="suggestions"
               id="textarea"
-              placeholder="Add your answer..."
+              data-i18n="[placeholder]surveys.textPlaceholder"
               cols="30"
               rows="5"
             ></textarea>
           </div>
+
+          <!-- Question -->
           <div class="question-container">
-            <h4 class="question">9. Do you live in...</h4>
+            <h4 class="question" data-i18n="surveys.questions.liveIn"></h4>
             <div class="answers-container">
-              <label for="option1" class="answer">
-                <input type="radio" class="radio-btn" id="option1" />
-                <p class="normal-text">Africa</p>
+              <label for="continents-option-1" class="answer">
+                <input
+                  type="radio"
+                  class="radio-btn"
+                  id="continents-option-1"
+                  name="location"
+                />
+                <p class="normal-text" data-i18n="surveys.answers.africa"></p>
               </label>
-              <label for="option2" class="answer is-selected" id="student">
-                <input type="radio" checked class="radio-btn" id="option2" />
-                <p class="normal-text">Asia</p>
+              <label
+                for="continents-option-2"
+                class="answer is-selected"
+                id="student"
+              >
+                <input
+                  type="radio"
+                  checked
+                  class="radio-btn"
+                  id="continents-option-2"
+                  name="location"
+                />
+                <p class="normal-text" data-i18n="surveys.answers.asia"></p>
               </label>
-              <label for="option1" class="answer">
-                <input type="radio" class="radio-btn" id="option3" />
-                <p class="normal-text">North America</p>
+              <label for="continents-option-3" class="answer">
+                <input
+                  type="radio"
+                  class="radio-btn"
+                  id="continents-option-3"
+                  name="location"
+                />
+                <p
+                  class="normal-text"
+                  data-i18n="surveys.answers.northAmerica"
+                ></p>
               </label>
-              <label for="option1" class="answer">
-                <input type="radio" class="radio-btn" id="option3" />
-                <p class="normal-text">Latin America</p>
+              <label for="continents-option-4" class="answer">
+                <input
+                  type="radio"
+                  class="radio-btn"
+                  id="continents-option-4"
+                  name="location"
+                />
+                <p class="normal-text" data-i18n="surveys.answers.latam"></p>
               </label>
-              <label for="option1" class="answer">
-                <input type="radio" class="radio-btn" id="option3" />
-                <p class="normal-text">Europe</p>
+              <label for="continents-option-5" class="answer">
+                <input
+                  type="radio"
+                  class="radio-btn"
+                  id="continents-option-5"
+                  name="location"
+                />
+                <p class="normal-text" data-i18n="surveys.answers.europe"></p>
               </label>
-              <label for="option1" class="answer">
-                <input type="radio" class="radio-btn" id="option3" />
-                <p class="normal-text">Middle East</p>
+              <label for="continents-option-6" class="answer">
+                <input
+                  type="radio"
+                  class="radio-btn"
+                  id="continents-option-6"
+                  name="location"
+                />
+                <p class="normal-text" data-i18n="surveys.answers.asia"></p>
               </label>
-              <label for="option1" class="answer">
-                <input type="radio" class="radio-btn" id="option3" />
-                <p class="normal-text">Oceania</p>
+              <label for="continents-option-7" class="answer">
+                <input
+                  type="radio"
+                  class="radio-btn"
+                  id="continents-option-7"
+                  name="location"
+                />
+                <p class="normal-text" data-i18n="surveys.answers.oceania"></p>
               </label>
             </div>
           </div>

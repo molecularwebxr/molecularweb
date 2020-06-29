@@ -118,11 +118,17 @@
     "selectProfile": "Please, select your profile",
     "educator": "Educator",
     "student": "Student",
+    "tellUs": "Tell us below:",
+    "textPlaceholder": "Type your answer here",
     "questions": {
       "usedARBefore": "I had used other augmented reality applications before using this website",
       "easilyUse": "I could easily use this website to view molecules on the markers",
       "understand": "Using augmented reality helped me to better understand the structures of molecules and chemistry concepts",
-      "interestInChemistry": "Using this website made me gain interest in chemistry"
+      "interestInChemistry": "Using this website made me gain interest in chemistry",
+      "interestInTech": "Using this website made me gain interest in programming, augmented reality, etc",
+      "place": "Have you used the website at school, your home, or both?",
+      "suggestions": "What other molecules or content would you like that we prepare?",
+      "liveIn": "Do you live in..."
     },
     "answers": {
       "notAtAll": "Not at all",
@@ -133,7 +139,17 @@
       "didntWork": "No, I couldn’t make it work",
       "hardToWork": "It was hard to make it work, but eventually succeeded",
       "someEffort": "It took some effort the first time, but then was easy to use multiple times",
-      "easyToWork": "It was quite easy to use the website right from my first attempt"
+      "easyToWork": "It was quite easy to use the website right from my first attempt",
+      "school": "At school only",
+      "home": "At home only",
+      "both": "Both at school and home",
+      "africa": "Africa",
+      "asia": "Asia",
+      "northAmerica": "North America",
+      "latam": "Latin America",
+      "europe": "Europe",
+      "middleEast": "Middle East",
+      "oceania": "Oceania"
     }
   }
 }
