@@ -24,10 +24,9 @@ textarea {
   outline: none;
   min-width: 189px;
   max-width: 600px;
-  /* width: fit-content; */
-  /* width: -moz-fit-content; */
-  /* outline: 2px solid green; */
-  /* outline-offset: 2px; */
+  font-family: Roboto;
+  color: var(--primary);
+  font-size: 14px;
 }
 
 textarea:focus {

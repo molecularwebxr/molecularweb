@@ -77,6 +77,7 @@
       <div class="survey-container">
         <div class="hi-container"><span>👋</span></div>
         <form action="">
+
           <!-- Question -->
           <div class="question-container">
             <h4 class="question" data-i18n="surveys.selectProfile"></h4>
@@ -119,6 +120,7 @@
                 class="radio-btn"
                 id="ar-before-option-1"
                 name="ar-before"
+                value="Not at all"
               />
               <p class="normal-text" data-i18n="surveys.answers.notAtAll"></p>
             </label>
@@ -129,6 +131,7 @@
                 class="radio-btn"
                 id="ar-before-option-2"
                 name="ar-before"
+                value="Only 1, 2, perhaps 3 times"
               />
               <p class="normal-text" data-i18n="surveys.answers.perhaps"></p>
             </label>
@@ -138,6 +141,7 @@
                 class="radio-btn"
                 id="ar-before-option-3"
                 name="ar-before"
+                value="Several times"
               />
               <p
                 class="normal-text"
@@ -156,6 +160,7 @@
                 id="easy-use-option-1"
                 name="easy-use"
                 checked
+                value="No, I couldn’t make it work"
               />
               <p class="normal-text" data-i18n="surveys.answers.didntWork"></p>
             </label>
@@ -165,6 +170,7 @@
                 class="radio-btn"
                 id="easy-use-option-2"
                 name="easy-use"
+                value="It was hard to make it work, but eventually succeeded"
               />
               <p class="normal-text" data-i18n="surveys.answers.hardToWork"></p>
             </label>
@@ -174,6 +180,7 @@
                 class="radio-btn"
                 id="easy-use-option-3"
                 name="easy-use"
+                value="It took some effort the first time, but then was easy to use multiple times"
               />
               <p class="normal-text" data-i18n="surveys.answers.someEffort"></p>
             </label>
@@ -183,6 +190,7 @@
                 class="radio-btn"
                 id="easy-use-option-4"
                 name="easy-use"
+                value="It was quite easy to use the website right from my first attempt"
               />
               <p class="normal-text" data-i18n="surveys.answers.easyToWork"></p>
             </label>
@@ -197,6 +205,7 @@
                 class="radio-btn"
                 id="understand-option-1"
                 name="understand"
+                value="Not at all"
               />
               <p class="normal-text" data-i18n="surveys.answers.notAtAll"></p>
             </label>
@@ -207,6 +216,7 @@
                 class="radio-btn"
                 id="understand-option-2"
                 name="understand"
+                value="Yes, a little"
               />
               <p class="normal-text" data-i18n="surveys.answers.aLittle"></p>
             </label>
@@ -216,6 +226,7 @@
                 class="radio-btn"
                 id="understand-option-3"
                 name="understand"
+                value="Yes, a lot"
               />
               <p class="normal-text" data-i18n="surveys.answers.aLot"></p>
             </label>
@@ -233,6 +244,7 @@
                 class="radio-btn"
                 id="interest-option-1"
                 name="interestInChemistry"
+                value="Not at all"
               />
               <p class="normal-text" data-i18n="surveys.answers.notAtAll"></p>
             </label>
@@ -243,6 +255,7 @@
                 class="radio-btn"
                 id="interest-option-2"
                 name="interestInChemistry"
+                value="Yes, a little"
               />
               <p class="normal-text" data-i18n="surveys.answers.aLittle"></p>
             </label>
@@ -252,6 +265,7 @@
                 class="radio-btn"
                 id="interest-option-3"
                 name="interestInChemistry"
+                value="Yes, a lot"
               />
               <p class="normal-text" data-i18n="surveys.answers.aLot"></p>
             </label>
@@ -269,6 +283,7 @@
                 class="radio-btn"
                 id="interest-tech-option-1"
                 name="interestInTech"
+                value="Not at all"
               />
               <p class="normal-text" data-i18n="surveys.answers.notAtAll"></p>
             </label>
@@ -279,6 +294,7 @@
                 class="radio-btn"
                 id="interest-tech-option-2"
                 name="interestInTech"
+                value="Yes, a little"
               />
               <p class="normal-text" data-i18n="surveys.answers.aLittle"></p>
             </label>
@@ -288,6 +304,7 @@
                 class="radio-btn"
                 id="interest-tech-option-3"
                 name="interestInTech"
+                value="Yes, a lot"
               />
               <p class="normal-text" data-i18n="surveys.answers.aLot"></p>
             </label>
@@ -302,6 +319,7 @@
                 class="radio-btn"
                 id="place-option-1"
                 name="place"
+                value="At school only"
               />
               <p class="normal-text" data-i18n="surveys.answers.school"></p>
             </label>
@@ -312,6 +330,7 @@
                 class="radio-btn"
                 id="place-option-2"
                 name="place"
+                value="At home only"
               />
               <p class="normal-text" data-i18n="surveys.answers.home"></p>
             </label>
@@ -321,6 +340,7 @@
                 class="radio-btn"
                 id="place-option-3"
                 name="place"
+                value="Both at school and home"
               />
               <p class="normal-text" data-i18n="surveys.answers.both"></p>
             </label>
@@ -340,6 +360,7 @@
               data-i18n="[placeholder]surveys.textPlaceholder"
               cols="30"
               rows="5"
+              maxlength="240"
             ></textarea>
           </div>
 
@@ -353,6 +374,7 @@
                   class="radio-btn"
                   id="continents-option-1"
                   name="location"
+                  value="Africa"
                 />
                 <p class="normal-text" data-i18n="surveys.answers.africa"></p>
               </label>
@@ -367,6 +389,7 @@
                   class="radio-btn"
                   id="continents-option-2"
                   name="location"
+                  value="Asia"
                 />
                 <p class="normal-text" data-i18n="surveys.answers.asia"></p>
               </label>
@@ -376,6 +399,7 @@
                   class="radio-btn"
                   id="continents-option-3"
                   name="location"
+                  value="North America"
                 />
                 <p
                   class="normal-text"
@@ -388,6 +412,7 @@
                   class="radio-btn"
                   id="continents-option-4"
                   name="location"
+                  value="Latin America"
                 />
                 <p class="normal-text" data-i18n="surveys.answers.latam"></p>
               </label>
@@ -397,6 +422,7 @@
                   class="radio-btn"
                   id="continents-option-5"
                   name="location"
+                  value="Europe"
                 />
                 <p class="normal-text" data-i18n="surveys.answers.europe"></p>
               </label>
@@ -406,6 +432,7 @@
                   class="radio-btn"
                   id="continents-option-6"
                   name="location"
+                  value="Asia"
                 />
                 <p class="normal-text" data-i18n="surveys.answers.asia"></p>
               </label>
@@ -415,14 +442,13 @@
                   class="radio-btn"
                   id="continents-option-7"
                   name="location"
+                  value="Oceania"
                 />
                 <p class="normal-text" data-i18n="surveys.answers.oceania"></p>
               </label>
             </div>
           </div>
-          <button class="submit-btn">
-            Submit
-          </button>
+          <button class="submit-btn" data-i18n="app.submit"></button>
         </form>
       </div>
     </div>
