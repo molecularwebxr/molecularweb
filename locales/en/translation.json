@@ -130,10 +130,15 @@
       "place": "Have you used the website at school, your home, or both?",
       "suggestions": "What other molecules or content would you like that we prepare?",
       "liveIn": "Do you live in...",
-      "age": "How old are you?"
+      "age": "How old are you?",
+      "howManyStudents": "If you used the website with students, how many students per device did you have?",
+      "studentsInterest": "I perceived interest of the students on the use of the tool",
+      "studentsUnderstanding": "I perceived that using the tool helped the students to better understand molecular structure and other chemistry concepts",
+      "emailAddress": "Your email address, if you want to stay updated about new releases."
     },
     "answers": {
       "notAtAll": "Not at all",
+      "notReally": "Not really",
       "aLittle": "Yes, a little",
       "aLot": "Yes, a lot",
       "perhaps": "Only 1, 2, perhaps 3 times",
