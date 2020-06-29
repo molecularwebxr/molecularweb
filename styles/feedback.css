@@ -29,7 +29,8 @@ textarea {
   font-size: 14px;
 }
 
-textarea:focus {
+textarea:focus,
+.text-input:focus {
   box-shadow: 0px 0px 6px 2px var(--primary);
 }
 
@@ -37,6 +38,20 @@ textarea::placeholder {
   color: var(--primarylight);
   font-size: 14px;
   font-family: Roboto;
+}
+
+.text-input {
+  margin: 8px 16px;
+  padding: 16px;
+  border: 3px solid var(--primary);
+  border-radius: 10px;
+  resize: none;
+  outline: none;
+  min-width: 150px;
+  max-width: 200px;
+  font-family: Roboto;
+  color: var(--primary);
+  font-size: 14px;
 }
 
 .label-textarea {

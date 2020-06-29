@@ -76,9 +76,9 @@
 
       <div class="survey-container">
         <div class="hi-container"><span>👋</span></div>
-        <form action="">
+        <form id="survey-form">
 
-          <!-- Question -->
+          <!-- Common Question -->
           <div class="question-container">
             <h4 class="question" data-i18n="surveys.selectProfile"></h4>
             <label for="profile-option-1" class="answer" id="educator">
@@ -108,7 +108,7 @@
             </label>
           </div>
 
-          <!-- Question -->
+          <!-- Common Question -->
           <div class="question-container">
             <h4
               class="question"
@@ -150,7 +150,7 @@
             </label>
           </div>
 
-          <!-- Question -->
+          <!-- Common Question -->
           <div class="question-container">
             <h4 class="question" data-i18n="surveys.questions.easilyUse"></h4>
             <label for="easy-use-option-1" class="answer is-selected">
@@ -196,7 +196,7 @@
             </label>
           </div>
 
-          <!-- Question -->
+          <!-- Students Question -->
           <div class="question-container">
             <h4 class="question" data-i18n="surveys.questions.understand"></h4>
             <label for="understand-option-1" class="answer">
@@ -232,7 +232,7 @@
             </label>
           </div>
 
-          <!-- Question -->
+          <!-- Students Question -->
           <div class="question-container">
             <h4
               class="question"
@@ -271,7 +271,7 @@
             </label>
           </div>
 
-          <!-- Question -->
+          <!-- Students Question -->
           <div class="question-container">
             <h4
               class="question"
@@ -310,7 +310,7 @@
             </label>
           </div>
 
-          <!-- Question -->
+          <!-- Students Question -->
           <div class="question-container">
             <h4 class="question" data-i18n="surveys.questions.place"></h4>
             <label for="place-option-1" class="answer">
@@ -346,7 +346,7 @@
             </label>
           </div>
 
-          <!-- Question -->
+          <!-- Common Question -->
           <div class="question-container">
             <h4 class="question" data-i18n="surveys.questions.suggestions"></h4>
             <label
@@ -364,7 +364,7 @@
             ></textarea>
           </div>
 
-          <!-- Question -->
+          <!-- Common Question -->
           <div class="question-container">
             <h4 class="question" data-i18n="surveys.questions.liveIn"></h4>
             <div class="answers-container">
@@ -448,6 +448,24 @@
               </label>
             </div>
           </div>
+
+          <!-- Students Question -->
+          <div class="question-container">
+            <h4 class="question" data-i18n="surveys.questions.age"></h4>
+            <label
+              for="age"
+              class="label-textarea"
+              data-i18n="surveys.tellUs"
+            ></label>
+            <input
+              name="age"
+              id="age"
+              data-i18n="[placeholder]surveys.textPlaceholder"
+              type="text"
+              class="text-input"
+            />
+          </div>
+
           <button class="submit-btn" data-i18n="app.submit"></button>
         </form>
       </div>
@@ -457,5 +475,6 @@
     </footer>
     <script src="/js/translate.js"></script>
     <script src="/js/handleMobile.js"></script>
+    <script src="/js/handleSurvey.js"></script>
   </body>
 </html>
