@@ -10,7 +10,8 @@
     />
     <link rel="stylesheet" href="/styles/base.css" />
     <link rel="stylesheet" href="/styles/styles.css" />
- 
+    <link rel="stylesheet" href="/styles/feedback.css" />
+
     <!-- Translation Libraries -->
     <script src="/lib/i18n/i18next.min.js"></script>
     <script src="/lib/i18n/i18next-wc.js"></script>
@@ -26,7 +27,6 @@
     <script src="/components/icons/tubes/index.js"></script>
     <script src="/components/icons/dna/index.js"></script>
     <script src="/components/icons/bacteria/index.js"></script>
-    
   </head>
   <body>
     <div id="overlay" class="overlay"></div>
@@ -63,20 +63,575 @@
           <div class="mobile-menu-links column">
             <a class="mobile-menu-link" data-i18n="menu.about"></a>
             <a class="mobile-menu-link" data-i18n="menu.getInTouch"></a>
-            <a class="mobile-menu-link" href="/pages/feedback.html" data-i18n="menu.feedback"></a>
+            <a
+              class="mobile-menu-link"
+              href="/pages/feedback.html"
+              data-i18n="menu.feedback"
+            ></a>
             <a class="mobile-menu-link" data-i18n="menu.language"></a>
           </div>
         </div>
         <p class="mobile-menu-footer" data-i18n="app.policy"></p>
       </div>
 
-      Acá irá la encuesta :)
-     
+      <div class="survey-container">
+        <div class="hi-container">
+          <span>👋 </span
+          ><span class="normal-text" data-i18n="surveys.welcomeMsg"></span>
+        </div>
+        <form id="survey-form">
+          <!-- Common Question -->
+          <div class="question-container">
+            <h4 class="question" data-i18n="surveys.selectProfile"></h4>
+            <label for="profile-option-1" class="answer" id="educator">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="profile-option-1"
+                name="profile"
+                value="educator"
+              />
+              <p class="normal-text" data-i18n="surveys.educator"></p>
+            </label>
+            <label
+              for="profile-option-2"
+              class="answer is-selected"
+              id="student"
+            >
+              <input
+                type="radio"
+                checked
+                class="radio-btn"
+                id="profile-option-2"
+                name="profile"
+                value="student"
+              />
+              <p class="normal-text" data-i18n="surveys.student"></p>
+            </label>
+          </div>
+
+          <!-- Common Question -->
+          <div class="question-container">
+            <h4
+              class="question"
+              data-i18n="surveys.questions.usedARBefore"
+            ></h4>
+            <label for="ar-before-option-1" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="ar-before-option-1"
+                name="ar-before"
+                value="Not at all"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.notAtAll"></p>
+            </label>
+            <label for="ar-before-option-2" class="answer is-selected">
+              <input
+                type="radio"
+                checked
+                class="radio-btn"
+                id="ar-before-option-2"
+                name="ar-before"
+                value="Only 1, 2, perhaps 3 times"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.perhaps"></p>
+            </label>
+            <label for="ar-before-option-3" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="ar-before-option-3"
+                name="ar-before"
+                value="Several times"
+                onchange="handleSelection(event)"
+              />
+              <p
+                class="normal-text"
+                data-i18n="surveys.answers.severalTimes"
+              ></p>
+            </label>
+          </div>
+
+          <!-- Common Question -->
+          <div class="question-container">
+            <h4 class="question" data-i18n="surveys.questions.easilyUse"></h4>
+            <label for="easy-use-option-1" class="answer is-selected">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="easy-use-option-1"
+                name="easy-use"
+                checked
+                value="No, I couldn’t make it work"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.didntWork"></p>
+            </label>
+            <label for="easy-use-option-2" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="easy-use-option-2"
+                name="easy-use"
+                value="It was hard to make it work, but eventually succeeded"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.hardToWork"></p>
+            </label>
+            <label for="easy-use-option-3" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="easy-use-option-3"
+                name="easy-use"
+                value="It took some effort the first time, but then was easy to use multiple times"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.someEffort"></p>
+            </label>
+            <label for="easy-use-option-4" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="easy-use-option-4"
+                name="easy-use"
+                value="It was quite easy to use the website right from my first attempt"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.easyToWork"></p>
+            </label>
+          </div>
+
+          <!-- Educators Question -->
+          <div class="question-container educators">
+            <h4
+              class="question"
+              data-i18n="surveys.questions.howManyStudents"
+            ></h4>
+            <label
+              for="students-number"
+              class="label-textarea"
+              data-i18n="surveys.tellUs"
+            ></label>
+            <input
+              name="students-number"
+              id="students-number"
+              data-i18n="[placeholder]surveys.textPlaceholder"
+              type="text"
+              class="text-input"
+            />
+          </div>
+
+          <!-- Educators Question -->
+          <div class="question-container educators">
+            <h4
+              class="question"
+              data-i18n="surveys.questions.studentsInterest"
+            ></h4>
+            <label for="students-interest-option-1" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="students-interest-option-1"
+                name="students-interest"
+                value="Not really"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.notReally"></p>
+            </label>
+            <label for="students-interest-option-2" class="answer is-selected">
+              <input
+                type="radio"
+                checked
+                class="radio-btn"
+                id="students-interest-option-2"
+                name="students-interest"
+                value="Yes, a little"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.aLittle"></p>
+            </label>
+            <label for="students-interest-option-3" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="students-interest-option-3"
+                name="students-interest"
+                value="Yes, a lot"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.aLot"></p>
+            </label>
+          </div>
+
+          <!-- Educators Question -->
+          <div class="question-container educators">
+            <h4
+              class="question"
+              data-i18n="surveys.questions.studentsUnderstanding"
+            ></h4>
+            <label for="students-understanding-option-1" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="students-understanding-option-1"
+                name="students-understanding"
+                value="Not really"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.notReally"></p>
+            </label>
+            <label
+              for="students-understanding-option-2"
+              class="answer is-selected"
+            >
+              <input
+                type="radio"
+                checked
+                class="radio-btn"
+                id="students-understanding-option-2"
+                name="students-understanding"
+                value="Yes, a little"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.aLittle"></p>
+            </label>
+            <label for="students-understanding-option-3" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="students-understanding-option-3"
+                name="students-understanding"
+                value="Yes, a lot"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.aLot"></p>
+            </label>
+          </div>
+
+          <!-- Students Question -->
+          <div class="question-container students">
+            <h4 class="question" data-i18n="surveys.questions.understand"></h4>
+            <label for="understand-option-1" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="understand-option-1"
+                name="understand"
+                value="Not at all"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.notAtAll"></p>
+            </label>
+            <label for="understand-option-2" class="answer is-selected">
+              <input
+                type="radio"
+                checked
+                class="radio-btn"
+                id="understand-option-2"
+                name="understand"
+                value="Yes, a little"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.aLittle"></p>
+            </label>
+            <label for="understand-option-3" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="understand-option-3"
+                name="understand"
+                value="Yes, a lot"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.aLot"></p>
+            </label>
+          </div>
+
+          <!-- Students Question -->
+          <div class="question-container students">
+            <h4
+              class="question"
+              data-i18n="surveys.questions.interestInChemistry"
+            ></h4>
+            <label for="interest-option-1" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="interest-option-1"
+                name="interestInChemistry"
+                value="Not at all"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.notAtAll"></p>
+            </label>
+            <label for="interest-option-2" class="answer is-selected">
+              <input
+                type="radio"
+                checked
+                class="radio-btn"
+                id="interest-option-2"
+                name="interestInChemistry"
+                value="Yes, a little"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.aLittle"></p>
+            </label>
+            <label for="interest-option-3" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="interest-option-3"
+                name="interestInChemistry"
+                value="Yes, a lot"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.aLot"></p>
+            </label>
+          </div>
+
+          <!-- Students Question -->
+          <div class="question-container students">
+            <h4
+              class="question"
+              data-i18n="surveys.questions.interestInTech"
+            ></h4>
+            <label for="interest-tech-option-1" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="interest-tech-option-1"
+                name="interestInTech"
+                value="Not at all"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.notAtAll"></p>
+            </label>
+            <label for="interest-tech-option-2" class="answer is-selected">
+              <input
+                type="radio"
+                checked
+                class="radio-btn"
+                id="interest-tech-option-2"
+                name="interestInTech"
+                value="Yes, a little"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.aLittle"></p>
+            </label>
+            <label for="interest-tech-option-3" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="interest-tech-option-3"
+                name="interestInTech"
+                value="Yes, a lot"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.aLot"></p>
+            </label>
+          </div>
+
+          <!-- Students Question -->
+          <div class="question-container students">
+            <h4 class="question" data-i18n="surveys.questions.place"></h4>
+            <label for="place-option-1" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="place-option-1"
+                name="place"
+                value="At school only"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.school"></p>
+            </label>
+            <label for="place-option-2" class="answer is-selected" id="student">
+              <input
+                type="radio"
+                checked
+                class="radio-btn"
+                id="place-option-2"
+                name="place"
+                value="At home only"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.home"></p>
+            </label>
+            <label for="place-option-3" class="answer">
+              <input
+                type="radio"
+                class="radio-btn"
+                id="place-option-3"
+                name="place"
+                value="Both at school and home"
+                onchange="handleSelection(event)"
+              />
+              <p class="normal-text" data-i18n="surveys.answers.both"></p>
+            </label>
+          </div>
+
+          <!-- Common Question -->
+          <div class="question-container">
+            <h4 class="question" data-i18n="surveys.questions.suggestions"></h4>
+            <label
+              for="textarea"
+              class="label-textarea"
+              data-i18n="surveys.tellUs"
+            ></label>
+            <textarea
+              name="suggestions"
+              id="textarea"
+              data-i18n="[placeholder]surveys.textPlaceholder"
+              cols="30"
+              rows="5"
+              maxlength="240"
+            ></textarea>
+          </div>
+
+          <!-- Common Question -->
+          <div class="question-container">
+            <h4 class="question" data-i18n="surveys.questions.liveIn"></h4>
+            <div class="answers-container">
+              <label for="continents-option-1" class="answer">
+                <input
+                  type="radio"
+                  class="radio-btn"
+                  id="continents-option-1"
+                  name="location"
+                  value="Africa"
+                  onchange="handleSelection(event)"
+                />
+                <p class="normal-text" data-i18n="surveys.answers.africa"></p>
+              </label>
+              <label
+                for="continents-option-2"
+                class="answer is-selected"
+                id="student"
+              >
+                <input
+                  type="radio"
+                  checked
+                  class="radio-btn"
+                  id="continents-option-2"
+                  name="location"
+                  value="Asia"
+                  onchange="handleSelection(event)"
+                />
+                <p class="normal-text" data-i18n="surveys.answers.asia"></p>
+              </label>
+              <label for="continents-option-3" class="answer">
+                <input
+                  type="radio"
+                  class="radio-btn"
+                  id="continents-option-3"
+                  name="location"
+                  value="North America"
+                  onchange="handleSelection(event)"
+                />
+                <p
+                  class="normal-text"
+                  data-i18n="surveys.answers.northAmerica"
+                ></p>
+              </label>
+              <label for="continents-option-4" class="answer">
+                <input
+                  type="radio"
+                  class="radio-btn"
+                  id="continents-option-4"
+                  name="location"
+                  value="Latin America"
+                  onchange="handleSelection(event)"
+                />
+                <p class="normal-text" data-i18n="surveys.answers.latam"></p>
+              </label>
+              <label for="continents-option-5" class="answer">
+                <input
+                  type="radio"
+                  class="radio-btn"
+                  id="continents-option-5"
+                  name="location"
+                  value="Europe"
+                  onchange="handleSelection(event)"
+                />
+                <p class="normal-text" data-i18n="surveys.answers.europe"></p>
+              </label>
+              <label for="continents-option-6" class="answer">
+                <input
+                  type="radio"
+                  class="radio-btn"
+                  id="continents-option-6"
+                  name="location"
+                  value="Asia"
+                  onchange="handleSelection(event)"
+                />
+                <p class="normal-text" data-i18n="surveys.answers.asia"></p>
+              </label>
+              <label for="continents-option-7" class="answer">
+                <input
+                  type="radio"
+                  class="radio-btn"
+                  id="continents-option-7"
+                  name="location"
+                  value="Oceania"
+                  onchange="handleSelection(event)"
+                />
+                <p class="normal-text" data-i18n="surveys.answers.oceania"></p>
+              </label>
+            </div>
+          </div>
+
+          <!-- Students Question -->
+          <div class="question-container students">
+            <h4 class="question" data-i18n="surveys.questions.age"></h4>
+            <label
+              for="age"
+              class="label-textarea"
+              data-i18n="surveys.tellUs"
+            ></label>
+            <input
+              name="age"
+              id="age"
+              data-i18n="[placeholder]surveys.textPlaceholder"
+              type="text"
+              class="text-input"
+            />
+          </div>
+
+          <!-- Educators Question -->
+          <div class="question-container educators">
+            <h4
+              class="question"
+              data-i18n="surveys.questions.emailAddress"
+            ></h4>
+            <label
+              for="age"
+              class="label-textarea"
+              data-i18n="surveys.tellUs"
+            ></label>
+            <input
+              name="age"
+              id="age"
+              data-i18n="[placeholder]surveys.textPlaceholder"
+              type="text"
+              class="text-input"
+            />
+          </div>
+
+          <p class="label-textarea educators" data-i18n="surveys.contactUs"></p>
+
+          <button class="submit-btn" data-i18n="app.submit"></button>
+        </form>
+      </div>
     </div>
     <footer>
       <app-footer />
     </footer>
     <script src="/js/translate.js"></script>
     <script src="/js/handleMobile.js"></script>
+    <script src="/js/handleSurvey.js"></script>
   </body>
 </html>

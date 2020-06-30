@@ -1,11 +1,5 @@
 /* Color palette */
 :root {
-  --orange: #f19953;
-  --blue: #173a7b;
-  --lightblue: #2660a4;
-  --blue2: #486497;
-  --azure: #edf7f6;
-
   --primary: #5C45EB;
   --primarydark: #4432B0;
   --primarylight: rgba(92, 69, 235, 0.8);
