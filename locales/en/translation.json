@@ -115,12 +115,13 @@
     "title": "Molecular modeling kit"
   },
   "surveys": {
-    "welcomeMsg": "Hi... (message)",
+    "welcomeMsg": "Hi, Thank you so much, we really appreciate you taking the time out to share your experience with us",
     "selectProfile": "Please, select your profile",
     "educator": "Educator",
     "student": "Student",
     "tellUs": "Tell us below:",
     "textPlaceholder": "Type your answer here",
+    "contactUs": "You can also get in touch with us at luciano.abriata@epfl.ch to propose new ideas, help us prepare new examples, share your experiences with students, etc.",
     "questions": {
       "usedARBefore": "I had used other augmented reality applications before using this website",
       "easilyUse": "I could easily use this website to view molecules on the markers",

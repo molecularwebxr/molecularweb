@@ -75,9 +75,11 @@
       </div>
 
       <div class="survey-container">
-        <div class="hi-container"><span>👋</span></div>
+        <div class="hi-container">
+          <span>👋 </span
+          ><span class="normal-text" data-i18n="surveys.welcomeMsg"></span>
+        </div>
         <form id="survey-form">
-
           <!-- Common Question -->
           <div class="question-container">
             <h4 class="question" data-i18n="surveys.selectProfile"></h4>
@@ -203,9 +205,12 @@
             </label>
           </div>
 
-           <!-- Educators Question -->
-           <div class="question-container educators">
-            <h4 class="question" data-i18n="surveys.questions.howManyStudents"></h4>
+          <!-- Educators Question -->
+          <div class="question-container educators">
+            <h4
+              class="question"
+              data-i18n="surveys.questions.howManyStudents"
+            ></h4>
             <label
               for="students-number"
               class="label-textarea"
@@ -222,7 +227,10 @@
 
           <!-- Educators Question -->
           <div class="question-container educators">
-            <h4 class="question" data-i18n="surveys.questions.studentsInterest"></h4>
+            <h4
+              class="question"
+              data-i18n="surveys.questions.studentsInterest"
+            ></h4>
             <label for="students-interest-option-1" class="answer">
               <input
                 type="radio"
@@ -261,7 +269,10 @@
 
           <!-- Educators Question -->
           <div class="question-container educators">
-            <h4 class="question" data-i18n="surveys.questions.studentsUnderstanding"></h4>
+            <h4
+              class="question"
+              data-i18n="surveys.questions.studentsUnderstanding"
+            ></h4>
             <label for="students-understanding-option-1" class="answer">
               <input
                 type="radio"
@@ -273,7 +284,10 @@
               />
               <p class="normal-text" data-i18n="surveys.answers.notReally"></p>
             </label>
-            <label for="students-understanding-option-2" class="answer is-selected">
+            <label
+              for="students-understanding-option-2"
+              class="answer is-selected"
+            >
               <input
                 type="radio"
                 checked
@@ -587,9 +601,12 @@
             />
           </div>
 
-           <!-- Educators Question -->
-           <div class="question-container educators">
-            <h4 class="question" data-i18n="surveys.questions.emailAddress"></h4>
+          <!-- Educators Question -->
+          <div class="question-container educators">
+            <h4
+              class="question"
+              data-i18n="surveys.questions.emailAddress"
+            ></h4>
             <label
               for="age"
               class="label-textarea"
@@ -603,6 +620,8 @@
               class="text-input"
             />
           </div>
+
+          <p class="label-textarea educators" data-i18n="surveys.contactUs"></p>
 
           <button class="submit-btn" data-i18n="app.submit"></button>
         </form>

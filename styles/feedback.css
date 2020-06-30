@@ -164,6 +164,7 @@ textarea::placeholder,
   border-radius: 6px;
   border-style: none;
   border-width: 0;
+  outline: none;
   cursor: pointer;
   -webkit-appearance: button;
   padding: 1rem 3rem;
