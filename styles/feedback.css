@@ -183,3 +183,103 @@ textarea::placeholder,
 .hidden {
   display: none;
 }
+
+@media screen and (max-width: 1060px) {
+  .survey-container{
+    width: 75vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  h4 {
+    font-size: 20px;
+    line-height: 25px;
+    margin: 20px 0;
+  }
+  .submit-btn {
+    font-size: 20px;
+    padding: 1rem 2.5rem;
+  }
+
+  .answer {
+    /* min-height: 40px;
+    height: auto; */
+    padding: 14px 12px;
+  }
+
+  label .normal-text {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  h4 {
+    font-size: 16px;
+    line-height: 20px;
+    margin: 14px 0;
+  }
+  .submit-btn {
+    font-size: 16px;
+    padding: 1rem 2rem;
+  }
+
+  .answer {
+    padding: 12px 10px;
+  }
+
+  .normal-text,
+  .label-textarea {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  label .normal-text {
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .radio-btn {
+    width: 12px;
+    height: 12px;
+  }
+  .question {
+    margin-top: 32px;
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  h4 {
+    font-size: 14px;
+    line-height: 16px;
+    margin: 12px 0;
+  }
+
+  .answer {
+    padding: 12px 10px;
+  }
+
+  .submit-btn {
+    font-size: 14px;
+    padding: 1rem 1.8rem;
+  }
+
+  .normal-text,
+  .label-textarea {
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  label .normal-text {
+    font-size: 10px;
+    line-height: 12px;
+  }
+  .radio-btn {
+    width: 10px;
+    height: 10px;
+  }
+  .question {
+    margin-top: 24px;
+  }
+}
+
