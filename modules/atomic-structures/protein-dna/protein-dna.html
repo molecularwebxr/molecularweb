@@ -51,7 +51,6 @@
 
     <!-- Utils & A-Frame Components -->
     <script src="index.js"></script>
-    <script src="/modules/utils/aframe/connector.js"></script>
     <script src="/modules/utils/aframe/flip.js"></script>
     <script src="/modules/utils/aframe/scale.js"></script>
     <script src="/modules/utils/aframe/gesture-detector.js"></script>
@@ -59,6 +58,8 @@
     <script src="/modules/utils/aframe/loader.js"></script>
     <script src="/modules/utils/aframe/rotation.js"></script>
     <script src="/modules/utils/handleTranslation.js"></script>
+    <script src="/modules/utils/utils.js"></script>
+    <script src="/modules/utils/colormaps.js"></script>
   </head>
 
   <body>
@@ -146,7 +147,10 @@
     <!-- Overlays -->
     <activity-overlay id="instructions" default="open" type="instructions">
       <span slot="title" data-i18n="macromolecules.proteinDNA.title"></span>
-      <span slot="instructions" data-i18n="macromolecules.proteinDNA.instructions"></span>
+      <span
+        slot="instructions"
+        data-i18n="macromolecules.proteinDNA.instructions"
+      ></span>
     </activity-overlay>
 
     <activity-overlay id="description" default="hidden" type="description">
@@ -165,11 +169,18 @@
       arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
       id="scene"
       renderer="logarithmicDepthBuffer: true;"
-      interactive-molecules
+      gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;"
       gesture-detector
       rotate-molecules
       loader
     >
+      <a-assets>
+        <!--struct assets-->
+        <a-asset-item id="prot_dna" src="./models/prot-dna.gltf"></a-asset-item>
+        <a-asset-item id="dna" src="./models/dna.gltf"></a-asset-item>
+        <a-asset-item id="prot" src="./models/prot.gltf"></a-asset-item>
+      </a-assets>
+
       <a-marker type="barcode" value="0" id="watA">
         <a-entity
           rotation="0 0 0"
@@ -178,12 +189,43 @@
           gesture-handler="linkedMarker: #marker1B"
           id="marker1A"
         >
-          <a-sphere
-            id="wat1A"
+          <a-entity
+            id="protA"
+            gltf-model="#prot"
+            scale="-2 2 2"
+            rotation="90 0 0"
             position="0 0 0"
-            color="red"
-            radius="0.6"
+            visible="true"
+          ></a-entity>
+          <a-sphere
+            id="sp0A"
+            radius="0.05"
+            color="white"
+            position="0.65 0.60 0.2"
+            visible="false"
           ></a-sphere>
+          <a-sphere
+            id="sp1A"
+            radius="0.05"
+            color="white"
+            position="-0.05 0.7 1.15"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="sp2A"
+            radius="0.05"
+            color="white"
+            position="0.2 0.9 -0.5"
+            visible="false"
+          ></a-sphere>
+          <a-entity
+            id="prot-dnaA"
+            gltf-model="#prot_dna"
+            scale="-2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="false"
+          ></a-entity>
         </a-entity>
       </a-marker>
 
@@ -195,12 +237,43 @@
           id="marker1B"
           gesture-handler="linkedMarker: #marker1A"
         >
-          <a-sphere
-            id="wat1B"
+          <a-entity
+            id="protB"
+            gltf-model="#prot"
+            scale="-2 2 2"
+            rotation="90 0 0"
             position="0 0 0"
-            color="red"
-            radius="0.6"
+            visible="true"
+          ></a-entity>
+          <a-sphere
+            id="sp0B"
+            radius="0.05"
+            color="white"
+            position="0.65 0.60 0.2"
+            visible="false"
           ></a-sphere>
+          <a-sphere
+            id="sp1B"
+            radius="0.05"
+            color="white"
+            position="-0.05 0.7 1.15"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="sp2B"
+            radius="0.05"
+            color="white"
+            position="0.2 0.9 -0.5"
+            visible="false"
+          ></a-sphere>
+          <a-entity
+            id="prot-dnaB"
+            gltf-model="#prot_dna"
+            scale="-2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="false"
+          ></a-entity>
         </a-entity>
       </a-marker>
 
@@ -212,11 +285,34 @@
           gesture-handler="linkedMarker: #marker2B"
           id="marker2A"
         >
-          <a-sphere
-            id="vat1A"
+          <a-entity
+            id="dnaA"
+            gltf-model="#dna"
+            scale="-2 2 2"
+            rotation="90 0 0"
             position="0 0 0"
-            color="red"
-            radius="0.6"
+            visible="true"
+          ></a-entity>
+          <a-sphere
+            id="sd0A"
+            radius="0.05"
+            color="white"
+            position="-0.5 -0.55 0.925"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="sd1A"
+            radius="0.05"
+            color="white"
+            position="-1.05 -0.4 1.7"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="sd2A"
+            radius="0.05"
+            color="white"
+            position="-0.9 0.5 -0.2"
+            visible="false"
           ></a-sphere>
         </a-entity>
       </a-marker>
@@ -229,72 +325,70 @@
           gesture-handler="linkedMarker: #marker2A"
           id="marker2B"
         >
-          <a-sphere
-            id="vat1B"
+          <a-entity
+            id="dnaB"
+            gltf-model="#dna"
+            scale="-2 2 2"
+            rotation="90 0 0"
             position="0 0 0"
-            color="red"
-            radius="0.6"
+            visible="true"
+          ></a-entity>
+          <a-sphere
+            id="sd0B"
+            radius="0.05"
+            color="white"
+            position="-0.5 -0.55 0.925"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="sd1B"
+            radius="0.05"
+            color="white"
+            position="-1.05 -0.4 1.7"
+            visible="false"
+          ></a-sphere>
+          <a-sphere
+            id="sd2B"
+            radius="0.05"
+            color="white"
+            position="-0.9 0.5 -0.2"
+            visible="false"
           ></a-sphere>
         </a-entity>
       </a-marker>
 
       <!-- Connecting charged atoms -->
-      <a-entity id="bridge">
-        <a-sphere
-          id="bond1"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.1"
-        ></a-sphere>
-        <a-sphere
-          id="bond2"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.2"
-        ></a-sphere>
-        <a-sphere
-          id="bond3"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.3"
-        ></a-sphere>
-        <a-sphere
-          id="bond4"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.4"
-        ></a-sphere>
-        <a-sphere
-          id="bond5"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.5"
-        ></a-sphere>
-        <a-sphere
-          id="bond6"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.6"
-        ></a-sphere>
-        <a-sphere
-          id="bond7"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.7"
-        ></a-sphere>
-        <a-sphere
-          id="bond8"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.6"
-        ></a-sphere>
-        <a-sphere
-          id="bond9"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.9"
-        ></a-sphere>
-      </a-entity>
+      <a-sphere id="b01" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.1"></a-sphere>
+      <a-sphere id="b02" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.2"></a-sphere>
+      <a-sphere id="b03" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.3"></a-sphere>
+      <a-sphere id="b04" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.4"></a-sphere>
+      <a-sphere id="b05" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.5"></a-sphere>
+      <a-sphere id="b06" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.6"></a-sphere>
+      <a-sphere id="b07" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.7"></a-sphere>
+      <a-sphere id="b08" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.8"></a-sphere>
+      <a-sphere id="b09" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.9"></a-sphere>
+
+      <!-- Connecting charged atoms -->
+      <a-sphere id="b11" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.1"></a-sphere>
+      <a-sphere id="b12" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.2"></a-sphere>
+      <a-sphere id="b13" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.3"></a-sphere>
+      <a-sphere id="b14" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.4"></a-sphere>
+      <a-sphere id="b15" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.5"></a-sphere>
+      <a-sphere id="b16" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.6"></a-sphere>
+      <a-sphere id="b17" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.7"></a-sphere>
+      <a-sphere id="b18" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.8"></a-sphere>
+      <a-sphere id="b19" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.9"></a-sphere>
+
+      <!-- Connecting charged atoms -->
+      <a-sphere id="b21" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.1"></a-sphere>
+      <a-sphere id="b22" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.2"></a-sphere>
+      <a-sphere id="b23" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.3"></a-sphere>
+      <a-sphere id="b24" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.4"></a-sphere>
+      <a-sphere id="b25" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.5"></a-sphere>
+      <a-sphere id="b26" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.6"></a-sphere>
+      <a-sphere id="b27" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.7"></a-sphere>
+      <a-sphere id="b28" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.8"></a-sphere>
+      <a-sphere id="b29" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.9"></a-sphere>
 
       <a-entity camera></a-entity>
     </a-scene>
