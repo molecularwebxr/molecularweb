@@ -69,7 +69,8 @@
     "title": "Atomic structure of biological macromolecules",
     "proteinDNA": {
       "title": "Protein-DNA complex",
-      "description": "Dock a domain of a transcription factor onto its cognate DNA; check the electrostatic interactions formed."
+      "description": "Dock a do1main of a transcription factor onto its cognate DNA; check the electrostatic interactions formed. This example comes from an experimental structure, PDB 1FJL.",
+      "instructions": "Drive each molecule with one AR marker, trying to find the correctly docked position."
     },
     "peptide": {
       "title": "Dock peptide on electron density",
