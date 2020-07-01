@@ -188,6 +188,29 @@ AFRAME.registerComponent("interactive-molecules", {
     var d1 = norm(protPositions[1].toArray(), dnaPositions[1].toArray(), 3);
     var d2 = norm(protPositions[2].toArray(), dnaPositions[2].toArray(), 3);
 
+    // Set connectors src & dest according to visible markers
+    [...this.connectors1].forEach((connector, index) => {
+      connector.setAttribute(
+        "connector",
+        `src: #sp0${protSide}; dest: #sd0${dnaSide}; alpha: ` + (index + 1) / 10
+      );
+    });
+
+    [...this.connectors2].forEach((connector, index) => {
+      connector.setAttribute(
+        "connector",
+        `src: #sp1${protSide}; dest: #sd1${dnaSide}; alpha: ` + (index + 1) / 10
+      );
+    });
+
+    [...this.connectors3].forEach((connector, index) => {
+      connector.setAttribute(
+        "connector",
+        `src: #sp2${protSide}; dest: #sd2${dnaSide}; alpha: ` + (index + 1) / 10
+      );
+    });
+
+    // Should dock molecules?
     if (
       d0 < this.tol_d &&
       d1 < this.tol_d &&
