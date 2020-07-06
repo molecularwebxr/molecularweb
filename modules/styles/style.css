@@ -20,7 +20,11 @@ header {
   left: 0;
   width: 100%;
   height: 80px;
-  background: linear-gradient(179.76deg, #1C1447 -10.84%, rgba(92, 69, 235, 0) 94.12%);
+  background: linear-gradient(
+    179.76deg,
+    #1c1447 -10.84%,
+    rgba(92, 69, 235, 0) 94.12%
+  );
   padding: 1.5rem;
 }
 
@@ -207,6 +211,29 @@ figure {
   bottom: 76px;
 }
 
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin: 0 0.25rem 0 0.25rem;
+}
+
+.toggle-btn {
+  background-color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.25rem;
+  color: var(--primary);
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  margin: 0 0.25rem;
+}
+
+.toggle-btn:hover {
+  background-color: var(--secondary);
+}
+
 .hide {
   display: none;
 }
@@ -238,7 +265,7 @@ figure {
     margin: 0 0.25rem;
   }
 
- .orbital-selector.bottom-margin {
+  .orbital-selector.bottom-margin {
     margin-bottom: 0.25rem;
   }
 
@@ -347,7 +374,3 @@ figure {
     transform: scale(1, 1);
   }
 }
-
-
-
-
