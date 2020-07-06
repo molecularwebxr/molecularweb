@@ -232,9 +232,10 @@ figure {
   font-family: "Roboto", sans-serif;
   cursor: pointer;
   margin: 0 0.25rem;
+  transition: background-color 0.2s;
 }
 
-.toggle-btn:hover {
+.toggle-btn.active {
   background-color: var(--secondary);
 }
 
