@@ -170,6 +170,10 @@ figure {
   box-sizing: border-box;
 }
 
+.options.touch.row {
+  transform: translateX(-65px);
+}
+
 .options.touch.active {
   display: flex;
   align-items: center;
@@ -195,6 +199,10 @@ figure {
 
 .options.touch.active .triangle {
   display: block;
+}
+
+.options.touch.row .triangle {
+  transform: translateX(65px) rotate(90deg);;
 }
 
 .rotation-controls {
