@@ -15,6 +15,9 @@
     "dismiss": "Dismiss",
     "rotate": "Rotate ",
     "submit": "Submit",
+    "cartoon": "Cartoon",
+    "sticks": "Sticks",
+    "interactions": "Interactions",
     "markers": "Click here to find the AR markers with print and assemble instructions"
   },
   "orbitals": {
@@ -77,8 +80,9 @@
       "description": "Dock two portions of a peptide into the electron density map determined by x-ray diffraction. This gives you a sense of how experimental structures are obtained."
     },
     "protein": {
-      "title": "Stabilization of protein secondary structures",
-      "description": "Inspect the detailed atomic structure, hydrogen bonds and salt bridges that stabilize protein secondary structures."
+      "title": "Protein secondary structures and stabilizing interactions",
+      "description": "Inspect the detailed atomic structure, hydrogen bonds and salt bridges that stabilize protein secondary structures. You have an alpha helix on one AR marker and a beta sheet on the other.",
+      "instructions": "Click the buttons to toggle between the different representations."
     },
     "example": {
       "title": "Example structures",

@@ -20,7 +20,11 @@ header {
   left: 0;
   width: 100%;
   height: 80px;
-  background: linear-gradient(179.76deg, #1C1447 -10.84%, rgba(92, 69, 235, 0) 94.12%);
+  background: linear-gradient(
+    179.76deg,
+    #1c1447 -10.84%,
+    rgba(92, 69, 235, 0) 94.12%
+  );
   padding: 1.5rem;
 }
 
@@ -166,6 +170,10 @@ figure {
   box-sizing: border-box;
 }
 
+.options.touch.row {
+  transform: translateX(-65px);
+}
+
 .options.touch.active {
   display: flex;
   align-items: center;
@@ -193,6 +201,10 @@ figure {
   display: block;
 }
 
+.options.touch.row .triangle {
+  transform: translateX(65px) rotate(90deg);;
+}
+
 .rotation-controls {
   position: fixed;
   bottom: 64px;
@@ -205,6 +217,34 @@ figure {
 
 .rotation-controls.multiple-select {
   bottom: 76px;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin: 0 0.25rem 0 0.25rem;
+}
+
+.toggle-btn {
+  background-color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.25rem;
+  color: var(--primary);
+  border-style: none;
+  border-width: 0;
+  outline: none;
+  -webkit-appearance: button;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  margin: 0 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.toggle-btn.active {
+  background-color: var(--secondary);
 }
 
 .hide {
@@ -238,7 +278,7 @@ figure {
     margin: 0 0.25rem;
   }
 
- .orbital-selector.bottom-margin {
+  .orbital-selector.bottom-margin {
     margin-bottom: 0.25rem;
   }
 
@@ -347,7 +387,3 @@ figure {
     transform: scale(1, 1);
   }
 }
-
-
-
-

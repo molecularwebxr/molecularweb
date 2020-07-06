@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-91563073-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-91563073-2");
+    </script>
+    <title>Protein secondary structures and stabilizing interactions</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/modules/styles/style.css" />
+
+    <!-- 3D Libraries -->
+    <script src="/lib/aframe.min.js"></script>
+    <script src="/lib/aframe-ar.js"></script>
+
+    <!-- Translation Libraries -->
+    <script src="/lib/i18n/i18next.min.js"></script>
+    <script src="/lib/i18n/i18next-wc.js"></script>
+    <script src="/lib/i18n/loc-i18next.min.js"></script>
+    <script src="/lib/i18n/i18nextBrowserLanguageDetector.js"></script>
+    <script src="/lib/i18n/i18nextHttpBackend.min.js"></script>
+
+    <!-- Web Components -->
+    <script src="/components/icons/atom/index.js"></script>
+    <script src="/components/icons/molecule/index.js"></script>
+    <script src="/components/back-anchor/index.js"></script>
+    <script src="/components/loader/index.js"></script>
+    <script src="/components/flip-video/index.js"></script>
+    <script src="/components/flip-graphics/index.js"></script>
+    <script src="/components/overlay/index.js"></script>
+    <script src="/components/toggle-instructions/index.js"></script>
+    <script src="/components/toggle-description/index.js"></script>
+    <script src="/components/toggle-menu/index.js"></script>
+    <script src="/components/reset-activity/index.js"></script>
+    <script src="/components/scale-graphics/index.js"></script>
+    <script src="/components/enable-gestures/index.js"></script>
+    <script src="/components/rotation-controls/index.js"></script>
+    <script src="/components/feedback-prompt/index.js"></script>
+
+    <!-- Utils & A-Frame Components -->
+    <script src="/modules/utils/aframe/modelOpacity.js"></script>
+    <script src="/modules/utils/aframe/flip.js"></script>
+    <script src="/modules/utils/aframe/scale.js"></script>
+    <script src="/modules/utils/aframe/gesture-detector.js"></script>
+    <script src="/modules/utils/aframe/gesture-handler.js"></script>
+    <script src="/modules/utils/aframe/loader.js"></script>
+    <script src="/modules/utils/aframe/rotation.js"></script>
+    <script src="/modules/utils/handleTranslation.js"></script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header id="header">
+      <div class="row">
+        <figure>
+          <atom-icon></atom-icon>
+        </figure>
+        <h1
+          class="activity-title"
+          data-i18n="macromolecules.protein.title"
+        ></h1>
+      </div>
+    </header>
+
+    <!-- UI Components -->
+    <back-anchor></back-anchor>
+    <loader-component></loader-component>
+
+    <!-- Feedback Modal -->
+    <feedback-prompt></feedback-prompt>
+
+    <!-- Side buttons -->
+    <div class="side-menu column">
+      <flip-video class="icon-margin"></flip-video>
+      <flip-graphics class="icon-margin"></flip-graphics>
+      <reset-activity class="icon-margin"></reset-activity>
+      <scale-graphics
+        class="icon-margin"
+        id="scale-up"
+        type="up"
+      ></scale-graphics>
+      <scale-graphics
+        class="icon-margin"
+        id="scale-down"
+        type="down"
+      ></scale-graphics>
+      <toggle-menu class="icon-margin"></toggle-menu>
+    </div>
+
+    <!-- Rotation controls -->
+    <div class="rotation-controls">
+      <rotation-controls id="rotation-marker-1" marker="1"></rotation-controls>
+      <rotation-controls id="rotation-marker-2" marker="2"></rotation-controls>
+    </div>
+
+    <!-- Selection Menu -->
+    <div class="selection-menu" id="selection-menu">
+      <div class="marker">
+        <img
+          class="marker-sample"
+          src="/assets/img/0.png"
+          alt="sample marker"
+          id="marker-image-1"
+        />
+        <div class="options row" id="marker-options-1">
+          <div class="triangle"></div>
+          <div id="select-container-1" class="button-container">
+            <button
+              class="toggle-btn active"
+              id="cartoon-1"
+              data-i18n="app.cartoon"
+            ></button>
+            <button
+              class="toggle-btn active"
+              id="sticks-1"
+              data-i18n="app.sticks"
+            ></button>
+            <button
+              class="toggle-btn active"
+              id="bonds-1"
+              data-i18n="app.interactions"
+            ></button>
+          </div>
+
+          <enable-gestures
+            class="gesture-icon left-margin"
+            id="marker1"
+          ></enable-gestures>
+        </div>
+      </div>
+      <span class="line"></span>
+      <div class="marker">
+        <img
+          class="marker-sample left-margin"
+          src="/assets/img/2.png"
+          alt="sample marker"
+          id="marker-image-2"
+        />
+        <div class="options row" id="marker-options-2">
+          <div class="triangle"></div>
+          <div id="select-container-2" class="button-container">
+            <button
+              class="toggle-btn active"
+              id="cartoon-2"
+              data-i18n="app.cartoon"
+            ></button>
+            <button
+              class="toggle-btn active"
+              id="sticks-2"
+              data-i18n="app.sticks"
+            ></button>
+            <button
+              class="toggle-btn active"
+              id="bonds-2"
+              data-i18n="app.interactions"
+            ></button>
+          </div>
+
+          <enable-gestures
+            class="gesture-icon left-margin"
+            id="marker2"
+          ></enable-gestures>
+        </div>
+      </div>
+      <div class="extra-info">
+        <toggle-instructions class="extra-info-icon"></toggle-instructions>
+        <toggle-description class="extra-info-icon"></toggle-description>
+      </div>
+    </div>
+
+    <!-- Overlays -->
+    <activity-overlay id="instructions" default="open" type="instructions">
+      <span slot="title" data-i18n="macromolecules.protein.title"></span>
+      <span
+        slot="instructions"
+        data-i18n="macromolecules.protein.instructions"
+      ></span>
+    </activity-overlay>
+
+    <activity-overlay id="description" default="hidden" type="description">
+      <span slot="title" data-i18n="macromolecules.protein.title"></span>
+      <span
+        slot="description"
+        data-i18n="macromolecules.protein.description"
+      ></span>
+    </activity-overlay>
+
+    <activity-overlay id="menu" default="hidden" type="menu">
+    </activity-overlay>
+
+    <a-scene
+      embedded
+      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
+      id="scene"
+      renderer="logarithmicDepthBuffer: true;"
+      loading-screen="enabled: false"
+      gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;"
+      gesture-detector
+      loader
+      rotate-molecules
+    >
+      <a-assets>
+        <!-- Struct assets -->
+        <a-asset-item
+          id="hlx_sticks"
+          src="./models/modelo-relajado-desk-wt-with-Hs--helix-sticks.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="hlx_cartoon"
+          src="./models/modelo-relajado-desk-wt-with-Hs--helix-cartoon.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="hlx_hbonds_mtl"
+          src="./models/modelo-relajado-desk-wt-with-Hs--helix-hbonds.mtl"
+        ></a-asset-item>
+        <a-asset-item
+          id="hlx_hbonds_obj"
+          src="./models/modelo-relajado-desk-wt-with-Hs--helix-hbonds.obj"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="sht_sticks"
+          src="./models/4r80-with-Hs--sheet-sticks.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="sht_cartoon"
+          src="./models/4r80-with-Hs--sheet-cartoon.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="sht_hbonds_mtl"
+          src="./models/4r80-with-Hs--sheet-hbonds.mtl"
+        ></a-asset-item>
+        <a-asset-item
+          id="sht_hbonds_obj"
+          src="./models/4r80-with-Hs--sheet-hbonds.obj"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-marker type="barcode" value="0">
+        <a-entity
+          rotation="0 0 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker1A"
+          gesture-handler="linkedMarker: #marker1B"
+        >
+          <a-entity
+            id="sticks1A"
+            gltf-model="#hlx_sticks"
+            scale="2 2 -2"
+            rotation="0 0 90"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+          <a-entity
+            id="cartoon1A"
+            gltf-model="#hlx_cartoon"
+            scale="2 2 -2"
+            rotation="0 0 90"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+          <a-entity
+            id="bonds1A"
+            obj-model="obj: #hlx_hbonds_obj; mtl: #hlx_hbonds_mtl"
+            scale="2 2 2"
+            rotation="0 0 90"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="1">
+        <a-entity
+          rotation="180 180 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker1B"
+          gesture-handler="linkedMarker: #marker1A"
+        >
+          <a-entity
+            id="sticks1B"
+            gltf-model="#hlx_sticks"
+            scale="2 2 -2"
+            rotation="0 0 90"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+          <a-entity
+            id="cartoon1B"
+            gltf-model="#hlx_cartoon"
+            scale="2 2 -2"
+            rotation="0 0 90"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+          <a-entity
+            id="bonds1B"
+            obj-model="obj: #hlx_hbonds_obj; mtl: #hlx_hbonds_mtl"
+            scale="2 2 2"
+            rotation="0 0 90"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="2">
+        <a-entity
+          rotation="0 0 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker2A"
+          gesture-handler="linkedMarker: #marker2B"
+        >
+          <a-entity
+            id="sticks2A"
+            gltf-model="#sht_sticks"
+            scale="2 2 -2"
+            rotation="90 0 45"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+          <a-entity
+            id="cartoon2A"
+            gltf-model="#sht_cartoon"
+            scale="2 2 -2"
+            rotation="90 0 45"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+          <a-entity
+            id="bonds2A"
+            obj-model="obj: #sht_hbonds_obj; mtl: #sht_hbonds_mtl"
+            scale="2 2 2"
+            rotation="90 0 45"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="3">
+        <a-entity
+          rotation="180 180 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker2B"
+          gesture-handler="linkedMarker: #marker2A"
+        >
+          <a-entity
+            id="sticks2B"
+            gltf-model="#sht_sticks"
+            scale="2 2 -2"
+            rotation="90 0 45"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+          <a-entity
+            id="cartoon2B"
+            gltf-model="#sht_cartoon"
+            scale="2 2 -2"
+            rotation="90 0 45"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+          <a-entity
+            id="bonds2B"
+            obj-model="obj: #sht_hbonds_obj; mtl: #sht_hbonds_mtl"
+            scale="2 2 2"
+            rotation="90 0 45"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+    <script src="index.js"></script>
+    <script src="/modules/utils/handleFlips.js"></script>
+    <script src="/modules/utils/handleOverlays.js"></script>
+    <script src="/modules/utils/handleGestures.js"></script>
+  </body>
+</html>
