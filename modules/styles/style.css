@@ -225,6 +225,10 @@ figure {
   padding: 0.3rem 0.5rem;
   border-radius: 0.25rem;
   color: var(--primary);
+  border-style: none;
+  border-width: 0;
+  outline: none;
+  -webkit-appearance: button;
   font-family: "Roboto", sans-serif;
   cursor: pointer;
   margin: 0 0.25rem;

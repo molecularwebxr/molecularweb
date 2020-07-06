@@ -29,4 +29,5 @@ function updateContent() {
   localize("#header");
   localize("#instructions");
   localize("#description");
+  localize("#selection-menu");
 }
