@@ -149,8 +149,25 @@ AFRAME.registerComponent("interactive-molecules", {
   },
 
   reset: function () {
-    // Add here the code to reset molecules to their initial state.
-    // Only reset molecule state. Rotation & scale will be restored on their own components
-    console.log("Reset molecules");
+    this.docked = false;
+
+    this.markerMeshA.setAttribute("visible", false);
+    this.markerMeshB.setAttribute("visible", false);
+    this.markerFullProtA.setAttribute("visible", false);
+    this.markerFullProtB.setAttribute("visible", false);
+    this.markerPept2A.setAttribute("visible", false);
+    this.markerPept2B.setAttribute("visible", false);
+    this.fixedPept1.setAttribute("visible", false);
+
+    this.markerPept1A.setAttribute("visible", true);
+    this.markerPept1B.setAttribute("visible", true);
+    this.fixedMesh.setAttribute("visible", true);
+
+    this.tol_r = 0.58;
+    this.tol_d = 0.58;
+
+    this.tp = this.p0;
+    this.tr = this.r0;
+    this.stage = 0;
   },
 });
