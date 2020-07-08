@@ -77,7 +77,8 @@
     },
     "peptide": {
       "title": "Dock peptide on electron density",
-      "description": "Dock two portions of a peptide into the electron density map determined by x-ray diffraction. This gives you a sense of how experimental structures are obtained."
+      "description": "Dock two portions of a peptide into the electron density map determined by x-ray diffraction. This example gives you a sense of how experimental structures are obtained. It comes from an experimental structure, PDB 3HYD.7",
+      "instructions": "Use the marker to dock the first group of atoms and once it’s docked you’ll have the chance to dock the second set. At the end you can inspect the full molecule fit inside its electron density."
     },
     "protein": {
       "title": "Protein secondary structures and stabilizing interactions",

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-91563073-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-91563073-2");
+    </script>
+    <title>Dock peptide on electron density</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/modules/styles/style.css" />
+
+    <!-- 3D Libraries -->
+    <script src="/lib/aframe.min.js"></script>
+    <script src="/lib/aframe-ar.js"></script>
+
+    <!-- Translation Libraries -->
+    <script src="/lib/i18n/i18next.min.js"></script>
+    <script src="/lib/i18n/i18next-wc.js"></script>
+    <script src="/lib/i18n/loc-i18next.min.js"></script>
+    <script src="/lib/i18n/i18nextBrowserLanguageDetector.js"></script>
+    <script src="/lib/i18n/i18nextHttpBackend.min.js"></script>
+
+    <!-- Web Components -->
+    <script src="/components/back-anchor/index.js"></script>
+    <script src="/components/icons/molecule/index.js"></script>
+    <script src="/components/icons/tubes/index.js"></script>
+    <script src="/components/loader/index.js"></script>
+    <script src="/components/flip-video/index.js"></script>
+    <script src="/components/flip-graphics/index.js"></script>
+    <script src="/components/overlay/index.js"></script>
+    <script src="/components/toggle-instructions/index.js"></script>
+    <script src="/components/toggle-description/index.js"></script>
+    <script src="/components/toggle-menu/index.js"></script>
+    <script src="/components/reset-activity/index.js"></script>
+    <script src="/components/scale-graphics/index.js"></script>
+    <script src="/components/enable-gestures/index.js"></script>
+    <script src="/components/rotation-controls/index.js"></script>
+    <script src="/components/feedback-prompt/index.js"></script>
+
+    <!-- Utils & A-Frame Components -->
+    <script src="index.js"></script>
+    <script src="/modules/utils/aframe/connector.js"></script>
+    <script src="/modules/utils/aframe/flip.js"></script>
+    <script src="/modules/utils/aframe/scale.js"></script>
+    <script src="/modules/utils/aframe/gesture-detector.js"></script>
+    <script src="/modules/utils/aframe/gesture-handler.js"></script>
+    <script src="/modules/utils/aframe/loader.js"></script>
+    <script src="/modules/utils/aframe/rotation.js"></script>
+    <script src="/modules/utils/handleTranslation.js"></script>
+    <script src="/modules/utils/utils.js"></script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header id="header">
+      <div class="row">
+        <figure>
+          <tubes-icon></tubes-icon>
+        </figure>
+        <h1
+          class="activity-title"
+          data-i18n="macromolecules.peptide.title"
+        ></h1>
+      </div>
+    </header>
+
+    <!-- UI Components -->
+    <back-anchor></back-anchor>
+    <loader-component></loader-component>
+
+    <!-- Feedback Modal -->
+    <feedback-prompt></feedback-prompt>
+
+    <!-- Side buttons -->
+    <div class="side-menu column">
+      <flip-video class="icon-margin"></flip-video>
+      <flip-graphics class="icon-margin"></flip-graphics>
+      <reset-activity class="icon-margin"></reset-activity>
+      <scale-graphics
+        class="icon-margin"
+        id="scale-up"
+        type="up"
+      ></scale-graphics>
+      <scale-graphics
+        class="icon-margin"
+        id="scale-down"
+        type="down"
+      ></scale-graphics>
+      <toggle-menu class="icon-margin"></toggle-menu>
+    </div>
+
+    <!-- Bottom Menu -->
+    <div class="selection-menu">
+      <div class="marker">
+        <img
+          class="marker-sample"
+          src="/assets/img/0.png"
+          alt="sample marker"
+          id="marker-image-1"
+        />
+        <rotation-controls
+          id="rotation-marker-1"
+          marker="1"
+          type="embedded"
+        ></rotation-controls>
+        <div class="options" id="marker-options-1">
+          <div class="triangle"></div>
+          <enable-gestures class="gesture-icon" id="marker1"></enable-gestures>
+        </div>
+      </div>
+      <span class="line hide"></span>
+      <div class="marker hide">
+        <img
+          class="marker-sample left-margin"
+          src="/assets/img/2.png"
+          alt="sample marker"
+          id="marker-image-2"
+        />
+        <rotation-controls
+          id="rotation-marker-2"
+          marker="2"
+          type="embedded"
+        ></rotation-controls>
+        <div class="options" id="marker-options-2">
+          <div class="triangle"></div>
+          <enable-gestures class="gesture-icon" id="marker2"></enable-gestures>
+        </div>
+      </div>
+      <div class="extra-info">
+        <toggle-instructions class="extra-info-icon"></toggle-instructions>
+        <toggle-description class="extra-info-icon"></toggle-description>
+      </div>
+    </div>
+
+    <!-- Overlays -->
+    <activity-overlay id="instructions" default="open" type="instructions">
+      <span slot="title" data-i18n="macromolecules.peptide.title"></span>
+      <span
+        slot="instructions"
+        data-i18n="macromolecules.peptide.instructions"
+      ></span>
+    </activity-overlay>
+
+    <activity-overlay id="description" default="hidden" type="description">
+      <span slot="title" data-i18n="macromolecules.peptide.title"></span>
+      <span
+        slot="description"
+        data-i18n="macromolecules.peptide.description"
+      ></span>
+    </activity-overlay>
+
+    <activity-overlay id="menu" default="hidden" type="menu">
+    </activity-overlay>
+
+    <a-scene
+      embedded
+      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
+      id="scene"
+      renderer="logarithmicDepthBuffer: true;"
+      gesture-detector
+      rotate-molecules
+      loader
+      interactive-molecules
+      gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;"
+    >
+      <a-assets>
+        <!--mesh assets-->
+        <a-asset-item
+          id="mesh_mtl"
+          src="./models/mesh-silver.mtl"
+        ></a-asset-item>
+        <a-asset-item
+          id="mesh_obj"
+          src="./models/mesh-silver.obj"
+        ></a-asset-item>
+
+        <!--struct assets-->
+        <a-asset-item id="fullprot" src="./models/fullprot.gltf"></a-asset-item>
+        <a-asset-item id="pept1" src="./models/pept2.gltf"></a-asset-item>
+        <a-asset-item id="pept2" src="./models/pept1.gltf"></a-asset-item>
+      </a-assets>
+
+      <!--fixed mesh-->
+      <a-entity
+        id="fixed-mesh"
+        obj-model="obj: #mesh_obj; mtl: #mesh_mtl"
+        scale="2 -2 -2"
+        rotation="0 0 0"
+        position="0 0 -10"
+        visible="true"
+      ></a-entity>
+
+      <!--fixed objects-->
+      <a-entity
+        id="fixed-pept1"
+        gltf-model="#pept1"
+        scale="2 -2 2"
+        rotation="0 0 0"
+        position="0 0 -10"
+        visible="false"
+      ></a-entity>
+
+      <a-marker type="barcode" value="0" id="watA">
+        <a-entity
+          rotation="0 0 0"
+          listen-to-flip
+          listen-to-scale
+          gesture-handler="linkedMarker: #marker1B"
+          id="marker1A"
+        >
+          <a-entity
+            id="marker-pept1A"
+            gltf-model="#pept1"
+            scale="2 2 -2"
+            rotation="90 0 0"
+            position="-1.2 0 -0.3"
+            visible="true"
+          ></a-entity>
+          <a-entity
+            id="marker-pept2A"
+            gltf-model="#pept2"
+            scale="2 2 -2"
+            rotation="90 0 0"
+            position="1.5 0 -0.3"
+            visible="false"
+          ></a-entity>
+          <a-entity
+            id="marker-fullprotA"
+            gltf-model="#fullprot"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="false"
+          ></a-entity>
+          <a-entity
+            id="marker-meshA"
+            obj-model="obj: #mesh_obj; mtl: #mesh_mtl"
+            scale="2 2 -2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="false"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="1" id="watB">
+        <a-entity
+          rotation="180 180 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker1B"
+          gesture-handler="linkedMarker: #marker1A"
+        >
+          <a-entity
+            id="marker-pept1B"
+            gltf-model="#pept1"
+            scale="2 2 -2"
+            rotation="90 0 0"
+            position="-1.2 0 -0.3"
+            visible="true"
+          ></a-entity>
+          <a-entity
+            id="marker-pept2B"
+            gltf-model="#pept2"
+            scale="2 2 -2"
+            rotation="90 0 0"
+            position="1.5 0 -0.3"
+            visible="false"
+          ></a-entity>
+          <a-entity
+            id="marker-fullprotB"
+            gltf-model="#fullprot"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="false"
+          ></a-entity>
+          <a-entity
+            id="marker-meshB"
+            obj-model="obj: #mesh_obj; mtl: #mesh_mtl"
+            scale="2 2 -2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="false"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="2" id="vatA">
+        <a-entity
+          rotation="0 0 0"
+          listen-to-flip
+          listen-to-scale
+          gesture-handler="linkedMarker: #marker2B"
+          id="marker2A"
+        >
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="3" id="vatB">
+        <a-entity
+          rotation="180 180 0"
+          listen-to-flip
+          listen-to-scale
+          gesture-handler="linkedMarker: #marker2A"
+          id="marker2B"
+        >
+        </a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+    <script src="/modules/utils/handleFlips.js"></script>
+    <script src="/modules/utils/handleOverlays.js"></script>
+    <script src="/modules/utils/handleGestures.js"></script>
+  </body>
+</html>
