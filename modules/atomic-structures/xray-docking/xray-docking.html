@@ -59,6 +59,7 @@
     <script src="/modules/utils/aframe/loader.js"></script>
     <script src="/modules/utils/aframe/rotation.js"></script>
     <script src="/modules/utils/handleTranslation.js"></script>
+    <script src="/modules/utils/utils.js"></script>
   </head>
 
   <body>
@@ -193,7 +194,7 @@
 
       <!--fixed mesh-->
       <a-entity
-        id="mesh0"
+        id="fixed-mesh"
         obj-model="obj: #mesh_obj; mtl: #mesh_mtl"
         scale="2 -2 -2"
         rotation="0 0 0"
@@ -203,24 +204,8 @@
 
       <!--fixed objects-->
       <a-entity
-        id="fixed-fullprot"
-        gltf-model="#fullprot"
-        scale="2 -2 2"
-        rotation="0 0 0"
-        position="0 0 -10"
-        visible="false"
-      ></a-entity>
-      <a-entity
         id="fixed-pept1"
         gltf-model="#pept1"
-        scale="2 -2 2"
-        rotation="0 0 0"
-        position="0 0 -10"
-        visible="false"
-      ></a-entity>
-      <a-entity
-        id="fixed-pept2"
-        gltf-model="#pept2"
         scale="2 -2 2"
         rotation="0 0 0"
         position="0 0 -10"
@@ -236,16 +221,16 @@
           id="marker1A"
         >
           <a-entity
-            id="marker-pept1"
-            gltf-model="#pept1A"
+            id="marker-pept1A"
+            gltf-model="#pept1"
             scale="2 2 -2"
             rotation="90 0 0"
             position="-1.2 0 -0.3"
             visible="true"
           ></a-entity>
           <a-entity
-            id="marker-pept2"
-            gltf-model="#pept2A"
+            id="marker-pept2A"
+            gltf-model="#pept2"
             scale="2 2 -2"
             rotation="90 0 0"
             position="1.5 0 -0.3"

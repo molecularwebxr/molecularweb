@@ -2,6 +2,8 @@
 
 AFRAME.registerComponent("interactive-molecules", {
   init: function () {
+    this.docked = false;
+
     // Get elements from the scene
 
     // Marker - Side A & Side B
@@ -9,15 +11,18 @@ AFRAME.registerComponent("interactive-molecules", {
     this.marker1B = this.el.sceneEl.querySelector("#watB");
 
     // 3D elements
-    this.fixedFullProt = this.el.sceneEl.querySelector("#fixed-fullprot");
     this.fixedPept1 = this.el.sceneEl.querySelector("#fixed-pept1");
-    this.fixedPept2 = this.el.sceneEl.querySelector("#fixed-pept2");
-    this.markerFullProt = this.el.sceneEl.querySelector("#marker-fullprotA");
-    this.markerPept1 = this.el.sceneEl.querySelector("#marker-pept1A");
-    this.markerPept2 = this.el.sceneEl.querySelector("#marker-pept2A");
-    this.markerFullProt = this.el.sceneEl.querySelector("#marker-fullprotB");
-    this.markerPept1 = this.el.sceneEl.querySelector("#marker-pept1B");
-    this.markerPept2 = this.el.sceneEl.querySelector("#marker-pept2B");
+    this.fixedMesh = this.el.sceneEl.querySelector("#fixed-mesh");
+
+    this.markerMeshA = this.el.sceneEl.querySelector("#marker-meshA");
+    this.markerFullProtA = this.el.sceneEl.querySelector("#marker-fullprotA");
+    this.markerPept1A = this.el.sceneEl.querySelector("#marker-pept1A");
+    this.markerPept2A = this.el.sceneEl.querySelector("#marker-pept2A");
+
+    this.markerMeshB = this.el.sceneEl.querySelector("#marker-meshB");
+    this.markerFullProtB = this.el.sceneEl.querySelector("#marker-fullprotB");
+    this.markerPept1B = this.el.sceneEl.querySelector("#marker-pept1B");
+    this.markerPept2B = this.el.sceneEl.querySelector("#marker-pept2B");
 
     // Global parameters: Targets, positions and quaternions
     // first piece
@@ -75,6 +80,11 @@ AFRAME.registerComponent("interactive-molecules", {
     }
     this.time = t;
 
+    // Are objects docked? return if so
+    if (this.docked) {
+      return;
+    }
+
     // Don't do anything if find wrong marker setup or if there are not enough markers
     // e. g. 3 or more markers at the same time or both sides of a single molecule
     const areMarkersValid =
@@ -92,12 +102,50 @@ AFRAME.registerComponent("interactive-molecules", {
     var marker = markerSide === "A" ? this.marker1A : this.marker1B;
 
     marker3DObject = marker.object3D;
-    // get positon of marker
+
     var mp = marker3DObject.position.toArray();
     var mr = marker3DObject.quaternion.toArray();
 
-    console.log(mp, mr);
-    
+    // compute distance to reference
+    var d = norm(this.tp, mp, 3);
+
+    // compute L2 distance of euler angles with reference
+    var r = norm(this.tr, mr, 4);
+
+    if (r < this.tol_r && d < this.tol_d) {
+      if (this.stage === 1) {
+        // hide all fixed objects
+        this.markerPept2A.setAttribute("visible", false);
+        this.markerPept2B.setAttribute("visible", false);
+
+        this.fixedMesh.setAttribute("visible", false);
+        this.fixedPept1.setAttribute("visible", false);
+
+        // Show full object in the marker
+        this.markerMeshA.setAttribute("visible", true);
+        this.markerMeshB.setAttribute("visible", true);
+        this.markerFullProtA.setAttribute("visible", true);
+        this.markerFullProtB.setAttribute("visible", true);
+
+        this.docked = true;
+      }
+
+      if (this.stage === 0) {
+        // hide marker object and show placed piece
+        this.markerPept1A.setAttribute("visible", false);
+        this.markerPept1B.setAttribute("visible", false);
+        this.fixedPept1.setAttribute("visible", true);
+        this.markerPept2A.setAttribute("visible", true);
+        this.markerPept2B.setAttribute("visible", true);
+
+        // change target
+        this.tp = this.p1;
+        this.tr = this.r1;
+
+        // increment stage
+        this.stage += 1;
+      }
+    }
   },
 
   reset: function () {
