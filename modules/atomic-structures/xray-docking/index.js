@@ -4,28 +4,38 @@ AFRAME.registerComponent("interactive-molecules", {
   init: function () {
     // Get elements from the scene
 
-    // Water - Side A & Side B
-    this.wat1A = this.el.sceneEl.querySelector("#wat1A");
-    this.wat1B = this.el.sceneEl.querySelector("#wat1B");
+    // Marker - Side A & Side B
+    this.marker1A = this.el.sceneEl.querySelector("#watA");
+    this.marker1B = this.el.sceneEl.querySelector("#watB");
 
-    // Second water (vat) - Side A & Side B
-    this.vat1A = this.el.sceneEl.querySelector("#vat1A");
-    this.vat1B = this.el.sceneEl.querySelector("#vat1B");
+    // 3D elements
+    this.fixedFullProt = this.el.sceneEl.querySelector("#fixed-fullprot");
+    this.fixedPept1 = this.el.sceneEl.querySelector("#fixed-pept1");
+    this.fixedPept2 = this.el.sceneEl.querySelector("#fixed-pept2");
+    this.markerFullProt = this.el.sceneEl.querySelector("#marker-fullprotA");
+    this.markerPept1 = this.el.sceneEl.querySelector("#marker-pept1A");
+    this.markerPept2 = this.el.sceneEl.querySelector("#marker-pept2A");
+    this.markerFullProt = this.el.sceneEl.querySelector("#marker-fullprotB");
+    this.markerPept1 = this.el.sceneEl.querySelector("#marker-pept1B");
+    this.markerPept2 = this.el.sceneEl.querySelector("#marker-pept2B");
 
-    // Bridge
-    this.bridge = this.el.sceneEl.querySelector("#bridge");
-    this.connectors = this.bridge.querySelectorAll("*");
+    // Global parameters: Targets, positions and quaternions
+    // first piece
+    this.p0 = [1.24, -0.32, -10.0];
+    this.r0 = [0.7, 0.0, 0.0, 0.71];
 
-    // Create Position vectors for further use
-    this.wat1APosition = new THREE.Vector3();
-    this.wat1BPosition = new THREE.Vector3();
+    // second piece
+    this.p1 = [-1.56, -0.28, -10.0];
+    this.r1 = [0.7, 0.0, 0.0, 0.71];
 
-    this.vat1APosition = new THREE.Vector3();
-    this.vat1BPosition = new THREE.Vector3();
+    // tolerances
+    this.tol_r = 0.58;
+    this.tol_d = 0.58;
 
-    // Not used in this sample. This vars are here as reminder of placing them here.
-    this.protoWat = 2;
-    this.protoVat = 2;
+    // define starting target position
+    this.tp = this.p0;
+    this.tr = this.r0;
+    this.stage = 0;
 
     // Interval for running tick function - in ms
     this.interval = 200;
@@ -67,95 +77,27 @@ AFRAME.registerComponent("interactive-molecules", {
 
     // Don't do anything if find wrong marker setup or if there are not enough markers
     // e. g. 3 or more markers at the same time or both sides of a single molecule
-    const areMarkersInvalid =
-      (this.visibleMarkers.includes("watA") &&
-        this.visibleMarkers.includes("watB")) ||
-      (this.visibleMarkers.includes("vatA") &&
-        this.visibleMarkers.includes("vatB"));
+    const areMarkersValid =
+      this.visibleMarkers.includes("watA") ||
+      this.visibleMarkers.includes("watB");
 
-    const areEnoughMarkers = this.visibleMarkers.length === 2;
+    const areEnoughMarkers = this.visibleMarkers.length >= 1;
 
-    if (areMarkersInvalid || !areEnoughMarkers) {
-      this.bridge.setAttribute("visible", false);
+    if (!areMarkersValid || !areEnoughMarkers) {
       return;
     }
 
-    this.el.sceneEl.object3D.updateMatrixWorld();
+    var markerSide = this.visibleMarkers.includes("watA") ? "A" : "B";
 
-    //  Get positions
-    this.wat1APosition.setFromMatrixPosition(this.wat1A.object3D.matrixWorld);
-    this.wat1BPosition.setFromMatrixPosition(this.wat1B.object3D.matrixWorld);
-    this.vat1APosition.setFromMatrixPosition(this.vat1A.object3D.matrixWorld);
-    this.vat1BPosition.setFromMatrixPosition(this.vat1B.object3D.matrixWorld);
+    var marker = markerSide === "A" ? this.marker1A : this.marker1B;
 
-    // Store a reference of all elements in arrays for easier handling
-    const waterA = [this.wat1A];
-    const waterB = [this.wat1B];
+    marker3DObject = marker.object3D;
+    // get positon of marker
+    var mp = marker3DObject.position.toArray();
+    var mr = marker3DObject.quaternion.toArray();
 
-    const vaterA = [this.vat1A];
-    const vaterB = [this.vat1B];
-
-    // Store a reference of all positions in arrays for easier handling
-    const waterAPositions = [this.wat1APosition];
-    const waterBPositions = [this.wat1BPosition];
-    const vaterAPositions = [this.vat1APosition];
-    const vaterBPositions = [this.vat1BPosition];
-
-    // Which side of each molecule is visible? Select corresponding positions & elements
-    const waterSide = this.visibleMarkers.includes("watA") ? "A" : "B";
-    const vaterSide = this.visibleMarkers.includes("vatA") ? "A" : "B";
-
-    const waterPositions =
-      waterSide === "A" ? waterAPositions : waterBPositions;
-    const vaterPositions =
-      vaterSide === "A" ? vaterAPositions : vaterBPositions;
-
-    const water = waterSide === "A" ? waterA : waterB;
-    const vater = vaterSide === "A" ? vaterA : vaterB;
-
-    let closestDistance = 10000000;
-    let closestWater;
-    let closestVater;
-
-    // Calc distances
-    waterPositions.forEach((waterItem, waterIndex) => {
-      vaterPositions.forEach((vaterItem, vaterIndex) => {
-        const distance =
-          2 *
-          Math.sqrt(
-            Math.pow(vaterItem.x - waterItem.x, 2) +
-              Math.pow(vaterItem.y - waterItem.y, 2) +
-              Math.pow(vaterItem.z - waterItem.z, 2)
-          );
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestWater = waterIndex;
-          closestVater = vaterIndex;
-        }
-      });
-    });
-
-    // Not used here but may be useful to know if the closest molecules are visible or not
-    const isClosestWaterVisible = water[closestWater].getAttribute("visible");
-    const isClosestVaterVisible = vater[closestVater].getAttribute("visible");
-
-    // Here should be the logic to apply to molecules according to its distance and visibility
-    // Just showing the bridge as example
-    // For examples of this logic take a look at acids & bases activities
-    if (closestDistance < 5.5) {
-      this.bridge.setAttribute("visible", true);
-      [...this.connectors].forEach((connector, index) => {
-        connector.setAttribute(
-          "connector",
-          `src: #vat${closestVater + 1}${vaterSide}; dest: #wat${
-            closestWater + 1
-          }${waterSide}; alpha: ` +
-            index / 10
-        );
-      });
-    } else {
-      this.bridge.setAttribute("visible", false);
-    }
+    console.log(mp, mr);
+    
   },
 
   reset: function () {

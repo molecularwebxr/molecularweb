@@ -15,7 +15,7 @@
 
       gtag("config", "UA-91563073-2");
     </script>
-    <title>Interactive marker template</title>
+    <title>Dock peptide on electron density</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="/styles/base.css" />
@@ -171,6 +171,7 @@
       gesture-detector
       rotate-molecules
       loader
+      interactive-molecules
       gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;"
     >
       <a-assets>
@@ -202,15 +203,15 @@
 
       <!--fixed objects-->
       <a-entity
-        id="obj0"
+        id="fixed-fullprot"
         gltf-model="#fullprot"
         scale="2 -2 2"
         rotation="0 0 0"
         position="0 0 -10"
-        visible="true"
+        visible="false"
       ></a-entity>
       <a-entity
-        id="obj1"
+        id="fixed-pept1"
         gltf-model="#pept1"
         scale="2 -2 2"
         rotation="0 0 0"
@@ -218,7 +219,7 @@
         visible="false"
       ></a-entity>
       <a-entity
-        id="obj2"
+        id="fixed-pept2"
         gltf-model="#pept2"
         scale="2 -2 2"
         rotation="0 0 0"
@@ -234,12 +235,38 @@
           gesture-handler="linkedMarker: #marker1B"
           id="marker1A"
         >
-          <a-sphere
-            id="wat1A"
+          <a-entity
+            id="marker-pept1"
+            gltf-model="#pept1A"
+            scale="2 2 -2"
+            rotation="90 0 0"
+            position="-1.2 0 -0.3"
+            visible="true"
+          ></a-entity>
+          <a-entity
+            id="marker-pept2"
+            gltf-model="#pept2A"
+            scale="2 2 -2"
+            rotation="90 0 0"
+            position="1.5 0 -0.3"
+            visible="false"
+          ></a-entity>
+          <a-entity
+            id="marker-fullprotA"
+            gltf-model="#fullprot"
+            scale="2 2 2"
+            rotation="90 0 0"
             position="0 0 0"
-            color="red"
-            radius="0.6"
-          ></a-sphere>
+            visible="false"
+          ></a-entity>
+          <a-entity
+            id="marker-meshA"
+            obj-model="obj: #mesh_obj; mtl: #mesh_mtl"
+            scale="2 2 -2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="false"
+          ></a-entity>
         </a-entity>
       </a-marker>
 
@@ -251,12 +278,38 @@
           id="marker1B"
           gesture-handler="linkedMarker: #marker1A"
         >
-          <a-sphere
-            id="wat1B"
+          <a-entity
+            id="marker-pept1B"
+            gltf-model="#pept1"
+            scale="2 2 -2"
+            rotation="90 0 0"
+            position="-1.2 0 -0.3"
+            visible="true"
+          ></a-entity>
+          <a-entity
+            id="marker-pept2B"
+            gltf-model="#pept2"
+            scale="2 2 -2"
+            rotation="90 0 0"
+            position="1.5 0 -0.3"
+            visible="false"
+          ></a-entity>
+          <a-entity
+            id="marker-fullprotB"
+            gltf-model="#fullprot"
+            scale="2 2 2"
+            rotation="90 0 0"
             position="0 0 0"
-            color="red"
-            radius="0.6"
-          ></a-sphere>
+            visible="false"
+          ></a-entity>
+          <a-entity
+            id="marker-meshB"
+            obj-model="obj: #mesh_obj; mtl: #mesh_mtl"
+            scale="2 2 -2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="false"
+          ></a-entity>
         </a-entity>
       </a-marker>
 
@@ -268,12 +321,6 @@
           gesture-handler="linkedMarker: #marker2B"
           id="marker2A"
         >
-          <a-sphere
-            id="vat1A"
-            position="0 0 0"
-            color="red"
-            radius="0.6"
-          ></a-sphere>
         </a-entity>
       </a-marker>
 
@@ -285,72 +332,8 @@
           gesture-handler="linkedMarker: #marker2A"
           id="marker2B"
         >
-          <a-sphere
-            id="vat1B"
-            position="0 0 0"
-            color="red"
-            radius="0.6"
-          ></a-sphere>
         </a-entity>
       </a-marker>
-
-      <!-- Connecting charged atoms -->
-      <a-entity id="bridge">
-        <a-sphere
-          id="bond1"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.1"
-        ></a-sphere>
-        <a-sphere
-          id="bond2"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.2"
-        ></a-sphere>
-        <a-sphere
-          id="bond3"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.3"
-        ></a-sphere>
-        <a-sphere
-          id="bond4"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.4"
-        ></a-sphere>
-        <a-sphere
-          id="bond5"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.5"
-        ></a-sphere>
-        <a-sphere
-          id="bond6"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.6"
-        ></a-sphere>
-        <a-sphere
-          id="bond7"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.7"
-        ></a-sphere>
-        <a-sphere
-          id="bond8"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.6"
-        ></a-sphere>
-        <a-sphere
-          id="bond9"
-          radius="0.05"
-          color="yellow"
-          connector="src: #wat1A; dest: #vat1A; alpha: 0.9"
-        ></a-sphere>
-      </a-entity>
 
       <a-entity camera></a-entity>
     </a-scene>
