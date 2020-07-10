@@ -150,7 +150,7 @@ AFRAME.registerComponent("interactive-molecules", {
         this.docked = true;
       }
 
-      if (this.stage === 0) {
+      if (this.stage === 11) {
         // hide marker object and show placed piece
         this.markerPept1A.setAttribute("visible", false);
         this.markerPept1B.setAttribute("visible", false);
