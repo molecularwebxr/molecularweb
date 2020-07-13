@@ -97,7 +97,7 @@ AFRAME.registerComponent("gesture-handler", {
         THREE.Math.degToRad(0)
       );
     } else {
-      this.marker2B.object3D.rotation.set(
+      this.el.object3D.rotation.set(
         THREE.Math.degToRad(180),
         THREE.Math.degToRad(180),
         THREE.Math.degToRad(0)
