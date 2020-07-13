@@ -216,11 +216,8 @@ AFRAME.registerComponent("interactive-molecules", {
     this.markerPept1B.setAttribute("visible", true);
     this.fixedMesh.setAttribute("visible", true);
 
-    this.tol_r = 0.58;
-    this.tol_d = 0.58;
-
-    this.tp = this.p0;
-    this.tr = this.r0;
+    this.ref1 = this.r1Pept1;
+    this.ref2 = this.r2Pept1;
     this.stage = 0;
   },
 });
