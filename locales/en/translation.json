@@ -87,7 +87,8 @@
     },
     "example": {
       "title": "Example structures",
-      "description": "Inspect a set of pre-made views of biological macromolecules."
+      "description": "Inspect a set of pre-made views of biological macromolecules.",
+      "instructions": "Choose among the examples in the dropdown menus, to see one system on each marker."
     }
   },
   "biological": {
