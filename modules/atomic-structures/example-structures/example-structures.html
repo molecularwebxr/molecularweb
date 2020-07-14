@@ -50,7 +50,6 @@
     <script src="/components/feedback-prompt/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
-    <script src="/modules/utils/aframe/modelOpacity.js"></script>
     <script src="/modules/utils/aframe/flip.js"></script>
     <script src="/modules/utils/aframe/scale.js"></script>
     <script src="/modules/utils/aframe/gesture-detector.js"></script>
@@ -117,15 +116,12 @@
         <div class="options" id="marker-options-1">
           <div class="triangle"></div>
           <select id="select-marker-1" class="orbital-selector">
-            <optgroup label="Atomic Orbitals">
-              <option>2s</option>
-              <option>2px (m=-1)</option>
-              <option>2py (m=0)</option>
-              <option>2pz (m=1)</option>
-              <option>3dz<sup>2</sup> (m=0)</option>
-            </optgroup></select
-          >
-
+            <option>DNA-binding protein</option>
+            <option>Piece of double-strand DNA</option>
+            <option>Protein-DNA complex</option>
+            <option>Short peptide with all atoms</option>
+            <option>Trimeric protein with ligands</option>
+          </select>
           <enable-gestures
             class="gesture-icon left-margin"
             id="marker1"
@@ -143,15 +139,12 @@
         <div class="options" id="marker-options-2">
           <div class="triangle"></div>
           <select id="select-marker-2" class="orbital-selector">
-            <optgroup label="Atomic Orbitals">
-              <option>2s</option>
-              <option>2px (m=-1)</option>
-              <option>2py (m=0)</option>
-              <option>2pz (m=1)</option>
-              <option>3dz<sup>2</sup> (m=0)</option>
-            </optgroup></select
-          >
-
+            <option>DNA-binding protein</option>
+            <option>Piece of double-strand DNA</option>
+            <option>Protein-DNA complex</option>
+            <option>Short peptide with all atoms</option>
+            <option>Trimeric protein with ligands</option>
+          </select>
           <enable-gestures
             class="gesture-icon left-margin"
             id="marker2"
@@ -197,12 +190,11 @@
     >
       <a-assets>
         <!-- Struct assets -->
-        <!-- Keep in mind that this assets MUST me aligned with options provided -->
-        <a-asset-item id="orb1" src="./models/OA_2S.gltf"></a-asset-item>
-        <a-asset-item id="orb2" src="./models/OA_2P_-1.gltf"></a-asset-item>
-        <a-asset-item id="orb3" src="./models/OA_2P_0.gltf"></a-asset-item>
-        <a-asset-item id="orb4" src="./models/OA_2P_1.gltf"></a-asset-item>
-        <a-asset-item id="orb5" src="./models/OA_3D_0.gltf"></a-asset-item>
+        <a-asset-item id="mol1" src="./models/prot.gltf"></a-asset-item>
+        <a-asset-item id="mol2" src="./models/dna.gltf"></a-asset-item>
+        <a-asset-item id="mol3" src="./models/prot-dna.gltf"></a-asset-item>
+        <a-asset-item id="mol4" src="./models/3hyd.gltf"></a-asset-item>
+        <a-asset-item id="mol5" src="./models/1vyq.gltf"></a-asset-item>
       </a-assets>
 
       <a-marker type="barcode" value="0">
@@ -213,20 +205,13 @@
           id="marker1A"
           gesture-handler="linkedMarker: #marker1B"
         >
-          <a-sphere
-            id="atom1A"
-            position="0.000   0.000   0.000"
-            color="grey"
-            radius="0.4"
-          ></a-sphere>
           <a-entity
             id="marker-1A-mol"
-            gltf-model="#orb1"
-            scale="0.2 0.2 0.2"
-            rotation="45 45 0"
+            gltf-model="#mol1"
+            scale="2 2 2"
+            rotation="90 0 0"
             position="0 0 0"
             visible="true"
-            model-opacity="0.5"
           ></a-entity>
         </a-entity>
       </a-marker>
@@ -239,20 +224,13 @@
           id="marker1B"
           gesture-handler="linkedMarker: #marker1A"
         >
-          <a-sphere
-            id="atom1B"
-            position="0.000   0.000   0.000"
-            color="grey"
-            radius="0.4"
-          ></a-sphere>
           <a-entity
             id="marker-1B-mol"
-            gltf-model="#orb1"
-            scale="0.2 0.2 0.2"
-            rotation="45 45 0"
+            gltf-model="#mol1"
+            scale="2 2 2"
+            rotation="90 0 0"
             position="0 0 0"
             visible="true"
-            model-opacity="0.5"
           ></a-entity>
         </a-entity>
       </a-marker>
@@ -265,20 +243,13 @@
           id="marker2A"
           gesture-handler="linkedMarker: #marker2B"
         >
-          <a-sphere
-            id="atom2A"
-            position="0.000   0.000   0.000"
-            color="grey"
-            radius="0.4"
-          ></a-sphere>
           <a-entity
             id="marker-2A-mol"
-            gltf-model="#orb1"
-            scale="0.2 0.2 0.2"
-            rotation="45 45 0"
+            gltf-model="#mol1"
+            scale="2 2 2"
+            rotation="90 0 0"
             position="0 0 0"
             visible="true"
-            model-opacity="0.5"
           ></a-entity>
         </a-entity>
       </a-marker>
@@ -291,20 +262,13 @@
           id="marker2B"
           gesture-handler="linkedMarker: #marker2A"
         >
-          <a-sphere
-            id="atom2B"
-            position="0.000   0.000   0.000"
-            color="grey"
-            radius="0.4"
-          ></a-sphere>
           <a-entity
             id="marker-2B-mol"
-            gltf-model="#orb1"
-            scale="0.2 0.2 0.2"
-            rotation="45 45 0"
+            gltf-model="#mol1"
+            scale="2 2 2"
+            rotation="90 0 0"
             position="0 0 0"
             visible="true"
-            model-opacity="0.5"
           ></a-entity>
         </a-entity>
       </a-marker>
