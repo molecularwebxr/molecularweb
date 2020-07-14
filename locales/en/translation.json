@@ -111,7 +111,8 @@
     },
     "bacterial": {
       "title": "Bacterial pilus base",
-      "description": "Baseplate of a bacterial pilus solved by cryo-electron microscopy including portions of the two cell membranes and peptidoglycan (PDB 3JC8 + EMD-3247)."
+      "description": "Baseplate of a bacterial pilus solved by cryo-electron microscopy including portions of the two cell membranes and peptidoglycan (PDB 3JC8 + EMD-3247).",
+      "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "nucleosome": {
       "title": "Nucleosome",
