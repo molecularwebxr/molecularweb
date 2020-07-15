@@ -103,7 +103,8 @@
     },
     "bacteriophage": {
       "title": "Bacteriophage on bacterial wall",
-      "description": "Cryo-electron microscopy of a bacteriophage that has punched its needle through the two bacterial membranes (EMD-9010)."
+      "description": "Cryo-electron microscopy of a bacteriophage that has punched its needle through the two bacterial membranes (EMD-9010).",
+      "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "sarscov2": {
       "title": "SARS-Cov-2 – human ACE2 complex",

@@ -50,7 +50,6 @@
     <script src="/components/feedback-prompt/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
-    <script src="/modules/utils/aframe/gltf-material.js"></script>
     <script src="/modules/utils/aframe/connector.js"></script>
     <script src="/modules/utils/aframe/flip.js"></script>
     <script src="/modules/utils/aframe/scale.js"></script>
@@ -68,7 +67,7 @@
         <figure>
           <tubes-icon></tubes-icon>
         </figure>
-        <h1 class="activity-title" data-i18n="biological.bacterial.title"></h1>
+        <h1 class="activity-title" data-i18n="biological.bacteriophage.title"></h1>
       </div>
     </header>
 
@@ -142,18 +141,18 @@
 
     <!-- Overlays -->
     <activity-overlay id="instructions" default="open" type="instructions">
-      <span slot="title" data-i18n="biological.bacterial.title"></span>
+      <span slot="title" data-i18n="biological.bacteriophage.title"></span>
       <span
         slot="instructions"
-        data-i18n="biological.bacterial.instructions"
+        data-i18n="biological.bacteriophage.instructions"
       ></span>
     </activity-overlay>
 
     <activity-overlay id="description" default="hidden" type="description">
-      <span slot="title" data-i18n="biological.bacterial.title"></span>
+      <span slot="title" data-i18n="biological.bacteriophage.title"></span>
       <span
         slot="description"
-        data-i18n="biological.bacterial.description"
+        data-i18n="biological.bacteriophage.description"
       ></span>
     </activity-overlay>
 
@@ -171,8 +170,7 @@
       loader
     >
       <a-assets>
-        <a-asset-item id="trimer_asset" src="./models/pilus.gltf"></a-asset-item>
-        <a-asset-item id="map" src="./models/pilusmap.gltf"></a-asset-item>
+        <a-asset-item id="virus" src="./models/viruscoloreado.gltf"></a-asset-item>
       </a-assets>
 
       <a-marker type="barcode" value="0" id="watA">
@@ -185,18 +183,10 @@
         >
           <a-entity
             id="obj1"
-            gltf-model="#trimer_asset"
+            gltf-model="#virus"
             scale="2 2 -2"
             rotation="0 0 90"
             visible="true"
-          ></a-entity>
-          <a-entity
-            id="obj2"
-            gltf-model="#map"
-            scale="2 2 -2"
-            rotation="0 0 90"
-            visible="true"
-            gltf-material="color: orange; opacity: 0.5"
           ></a-entity>
         </a-entity>
       </a-marker>
@@ -211,18 +201,10 @@
         >
           <a-entity
             id="obj1"
-            gltf-model="#trimer_asset"
+            gltf-model="#virus"
             scale="2 2 -2"
             rotation="0 0 90"
             visible="true"
-          ></a-entity>
-          <a-entity
-            id="obj2"
-            gltf-model="#map"
-            scale="2 2 -2"
-            rotation="0 0 90"
-            visible="true"
-            gltf-material="color: orange; opacity: 0.5"
           ></a-entity>
         </a-entity>
       </a-marker>
