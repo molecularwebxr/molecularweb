@@ -95,7 +95,8 @@
     "title": "Low-resolution structures of biological assemblies",
     "nuclear": {
       "title": "Nuclear pore complex",
-      "description": "Electron microscopy map of the human nuclear pore complex obtained in situ (EMDB-3103)"
+      "description": "Electron microscopy map of the human nuclear pore complex obtained in situ (EMDB-3103)",
+      "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "ribosome": {
       "title": "Ribosome with mRNA and tRNAs",
