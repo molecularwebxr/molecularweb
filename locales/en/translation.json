@@ -95,11 +95,13 @@
     "title": "Low-resolution structures of biological assemblies",
     "nuclear": {
       "title": "Nuclear pore complex",
-      "description": "Electron microscopy map of the human nuclear pore complex obtained in situ (EMDB-3103)"
+      "description": "Electron microscopy map of the human nuclear pore complex obtained in situ (EMDB-3103)",
+      "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "ribosome": {
-      "title": "Ribosome with mRNA and tRNAs",
-      "description": "Cryo-electron microscopy structure of a mammal ribosome with a tRNA in the A/P position paired to a stretch of mRNA and another tRNA in the P/E position (PDB 6HCJ)."
+      "title": "Ribosome loaded with mRNA and tRNAs",
+      "description": "Cryo-electron microscopy structure of a mammal ribosome with a tRNA in the A/P position paired to a stretch of mRNA and another tRNA in the P/E position (PDB 6HCJ).",
+      "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "bacteriophage": {
       "title": "Bacteriophage on bacterial wall",
@@ -107,8 +109,9 @@
       "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "sarscov2": {
-      "title": "SARS-Cov-2 – human ACE2 complex",
-      "description": "Integrative model of the SARS-Cov-2 spike protein bound to the human ACE2 (PDB IDs 6VYB, 6M17 and 6M0J)."
+      "title": "SARS-Cov-2 spike – human ACE2 complex",
+      "description": "Integrative model of the SARS-Cov-2 spike protein bound to the human ACE2 (PDB IDs 6VYB, 6M17 and 6M0J), each embedded in a membrane patch.",
+      "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "bacterial": {
       "title": "Bacterial pilus base",
@@ -117,7 +120,8 @@
     },
     "nucleosome": {
       "title": "Nucleosome",
-      "description": "X-ray structure of a nucleosome including the 4 histones and 2 rounds of ssDNA wrapped (PDB ID 1AOI)."
+      "description": "X-ray structure of a nucleosome including the 4 histones and 2 rounds of ssDNA wrapped (PDB ID 1AOI).",
+      "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     }
   },
   "modelingKit": {
