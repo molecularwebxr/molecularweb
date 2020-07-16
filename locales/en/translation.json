@@ -118,7 +118,8 @@
     },
     "nucleosome": {
       "title": "Nucleosome",
-      "description": "X-ray structure of a nucleosome including the 4 histones and 2 rounds of ssDNA wrapped (PDB ID 1AOI)."
+      "description": "X-ray structure of a nucleosome including the 4 histones and 2 rounds of ssDNA wrapped (PDB ID 1AOI).",
+      "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     }
   },
   "modelingKit": {
