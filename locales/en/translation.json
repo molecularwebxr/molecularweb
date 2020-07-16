@@ -108,8 +108,9 @@
       "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "sarscov2": {
-      "title": "SARS-Cov-2 – human ACE2 complex",
-      "description": "Integrative model of the SARS-Cov-2 spike protein bound to the human ACE2 (PDB IDs 6VYB, 6M17 and 6M0J)."
+      "title": "SARS-Cov-2 spike – human ACE2 complex",
+      "description": "Integrative model of the SARS-Cov-2 spike protein bound to the human ACE2 (PDB IDs 6VYB, 6M17 and 6M0J), each embedded in a membrane patch.",
+      "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "bacterial": {
       "title": "Bacterial pilus base",
