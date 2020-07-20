@@ -30,4 +30,5 @@ function updateContent() {
   localize("#instructions");
   localize("#description");
   localize("#selection-menu");
+  localize("#title");
 }
