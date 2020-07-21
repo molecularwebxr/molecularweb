@@ -3,6 +3,9 @@ menuIconTemplate.innerHTML = /* html */ `
   <style>
     a {
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     svg {
       transition: transform 0.2s;
@@ -20,6 +23,12 @@ menuIconTemplate.innerHTML = /* html */ `
       fill: var(--secondary);
     }
     @media (max-width: 440px) {
+      svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+    @media screen and (orientation: landscape) {
       svg {
         width: 30px;
         height: 30px;

@@ -261,7 +261,7 @@ figure {
   .selection-menu {
     padding: 0.5rem;
     bottom: 5px;
-    transform: translateX(-56%);
+    transform: translateX(-50%);
   }
 
   .marker-sample.left-margin {
@@ -369,7 +369,7 @@ figure {
   .selection-menu {
     padding: 0.5rem;
     bottom: 5px;
-    transform: translateX(-56%);
+    transform: translateX(-50%);
   }
 
   .marker-sample.left-margin {
@@ -405,6 +405,14 @@ figure {
 
   .marker-sample.left-margin {
     margin-left: 0.25rem;
+  }
+
+  .icon-margin {
+    margin-bottom: 0.2rem;
+  }
+
+  .side-menu {
+    padding: 0.75rem 0.5rem;
   }
 }
 
