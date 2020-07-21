@@ -136,6 +136,23 @@ overlayTemplate.innerHTML = /* html */ `
         font-size: 0.6rem;
       }
     }
+
+    @media screen and (orientation: landscape) {
+      h1 {
+        font-size: 1rem;
+        margin: 1.25rem 0 1rem 0;
+      }
+
+      p {
+        font-size: 0.75rem;
+        margin: 0.25rem 0;
+      }
+
+      button {
+        font-size: 0.6rem;
+        margin: 1.25rem 0 0 0;
+      }
+    }
   </style>
   <div class="overlay" id="overlay">
     <molecule-icon medium no-strokes></molecule-icon>
@@ -158,7 +175,6 @@ overlayTemplate.innerHTML = /* html */ `
   </div>`;
 
 class ActivityOverlay extends HTMLElement {
-
   static get observedAttributes() {
     return ["default", "type"];
   }
@@ -178,7 +194,7 @@ class ActivityOverlay extends HTMLElement {
   get type() {
     return this._type;
   }
-  
+
   constructor() {
     super();
 
@@ -194,25 +210,27 @@ class ActivityOverlay extends HTMLElement {
 
     this.markersTextElement = this.shadowRoot.getElementById("markers");
     this.descriptionTextElement = this.shadowRoot.getElementById("description");
-    this.instructionsTextElement = this.shadowRoot.getElementById("instructions");
+    this.instructionsTextElement = this.shadowRoot.getElementById(
+      "instructions"
+    );
     this.menuTextElement = this.shadowRoot.getElementById("menu");
   }
 
   connectedCallback() {
-    if(this.default === "open") {
+    if (this.default === "open") {
       this.overlayElement.classList.add("active");
     }
 
-    if(this.type === "description") {
+    if (this.type === "description") {
       this.markersTextElement.classList.add("hidden");
       this.instructionsTextElement.classList.add("hidden");
     }
 
-    if(this.type === "instructions") {
+    if (this.type === "instructions") {
       this.descriptionTextElement.classList.add("hidden");
     }
 
-    if(this.type === "menu") {
+    if (this.type === "menu") {
       this.markersTextElement.classList.add("hidden");
       this.instructionsTextElement.classList.add("hidden");
       this.descriptionTextElement.classList.add("hidden");
@@ -233,7 +251,6 @@ class ActivityOverlay extends HTMLElement {
       this.type = newValue;
     }
   }
-
 }
 
 customElements.define("activity-overlay", ActivityOverlay);
