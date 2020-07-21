@@ -360,7 +360,7 @@ figure {
   -moz-transform: scale(-1, 1);
   -webkit-transform: scale(-1, 1);
   -o-transform: scale(-1, 1);
-  -ms-transform: scale(1, 1);
+  -ms-transform: scale(-1, 1);
   transform: scale(-1, 1);
 }
 
@@ -447,6 +447,29 @@ figure {
 
   .side-menu {
     padding: 0.75rem 0.5rem;
+  }
+
+  canvas {
+    -moz-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  video {
+    -moz-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+  
+  .flip {
+    -moz-transform: scale(-1, 1);
+    -webkit-transform: scale(-1, 1);
+    -o-transform: scale(-1, 1);
+    -ms-transform: scale(-1, 1);
+    transform: scale(-1, 1);
   }
 
 }
