@@ -355,6 +355,21 @@ figure {
   }
 }
 
+/* Landscape styles */
+@media screen and (orientation: landscape) {
+  .activity-title {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+  }
+  header {
+    padding: 0.5rem;
+    height: 60px;
+  }
+  /* .side-menu {
+    padding: 0.75rem 0.5rem;
+  } */
+}
+
 /* flip styles */
 .flip {
   -moz-transform: scale(-1, 1);
