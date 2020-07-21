@@ -19,7 +19,13 @@
     a:hover #circle {
       fill: var(--secondary);
     }
-    @media (max-width: 440px) {
+    @media screen and (max-width: 440px) {
+      svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+    @media screen and (max-height: 450px) and (orientation: landscape) {
       svg {
         width: 30px;
         height: 30px;

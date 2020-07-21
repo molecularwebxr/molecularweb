@@ -261,7 +261,7 @@ figure {
   .selection-menu {
     padding: 0.5rem;
     bottom: 5px;
-    transform: translateX(-56%);
+    transform: translateX(-50%);
   }
 
   .marker-sample.left-margin {
@@ -386,4 +386,67 @@ figure {
     -ms-transform: scale(1, 1);
     transform: scale(1, 1);
   }
+}
+
+
+/* Landscape styles */
+@media screen and (max-height: 450px) and (orientation: landscape) {
+  .activity-title {
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+  }
+  header {
+    padding: 0.5rem;
+    height: 50px;
+  }
+  
+  .selection-menu {
+    padding: 0.5rem;
+    bottom: 5px;
+    transform: translateX(-50%);
+  }
+
+  .marker-sample.left-margin {
+    margin-left: 0;
+  }
+
+  .line {
+    height: 20px;
+  }
+
+  .orbital-selector {
+    width: 100px;
+    font-size: 0.5rem;
+    margin: 0 0.25rem;
+  }
+
+  .orbital-selector.bottom-margin {
+    margin-bottom: 0.25rem;
+  }
+
+  .orbital-selector optgroup {
+    font-size: 0.5rem;
+  }
+
+  .marker-sample {
+    width: 25px;
+    height: 25px;
+  }
+
+  .extra-info-icon {
+    margin-left: 0.25rem;
+  }
+
+  .marker-sample.left-margin {
+    margin-left: 0.25rem;
+  }
+
+  .icon-margin {
+    margin-bottom: 0.2rem;
+  }
+
+  .side-menu {
+    padding: 0.75rem 0.5rem;
+  }
+
 }
