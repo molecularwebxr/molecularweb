@@ -137,7 +137,7 @@ overlayTemplate.innerHTML = /* html */ `
       }
     }
 
-    @media screen and (orientation: landscape) {
+    @media screen and (max-height: 450px) and (orientation: landscape) {
       h1 {
         font-size: 1rem;
         margin: 1.25rem 0 1rem 0;

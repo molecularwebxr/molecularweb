@@ -24,7 +24,7 @@ const FlipGraphicsContent = /* html */ `
         height: 30px;
       }
     }
-    @media screen and (orientation: landscape) {
+    @media screen and (max-height: 450px) and (orientation: landscape) {
       svg {
         width: 30px;
         height: 30px;
