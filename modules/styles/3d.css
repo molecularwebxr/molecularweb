@@ -1,0 +1,55 @@
+body {
+  margin: 0px;
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background-color: var(--lightergray);
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+header {
+  width: 100%;
+  background: linear-gradient(156.2deg, #173A7B 0%, #5C45EB 101.87%);
+  padding: 1.5rem;
+}
+
+header .row {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+figure {
+  margin: 0;
+}
+
+.activity-title {
+  font-family: "Montserrat";
+  font-weight: bold;
+  font-size: 2rem;
+  color: white;
+  margin: 0 0 0 1rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+.container {
+  width: 80vw;
+  margin: 0 auto;
+}
