@@ -36,23 +36,69 @@
     <script src="/components/arrow-anchor/index.js"></script>
     <script src="/components/footer/index.js"></script>
     <script src="/components/icons/tubes/index.js"></script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"
+    ></script>
   </head>
   <body>
     <div class="content">
-     <!-- Header -->
-    <header id="header">
-      <div class="row">
-        <figure>
-          <tubes-icon></tubes-icon>
-        </figure>
-        <h1 class="activity-title" data-i18n="biological.bacteriophage.title"></h1>
+      <!-- Header -->
+      <header id="header">
+        <div class="row">
+          <figure>
+            <tubes-icon></tubes-icon>
+          </figure>
+          <h1
+            class="activity-title"
+            data-i18n="biological.bacteriophage.title"
+          ></h1>
+        </div>
+      </header>
+
+      <div class="container">
+        <model-viewer
+          ar
+          ar-modes="webxr scene-viewer quick-look fallback"
+          src="./models/viruscoloreado.gltf"
+          auto-rotate
+          camera-controls
+          alt="Bacteriophage on bacterial wall"
+          shadow-intensity="1"
+          exposure="0.5"
+        >
+          <button
+            slot="hotspot-visor"
+            data-position="0 -0.3 0"
+            data-normal="0 0 1"
+          >
+            <div class="annotation"><b>Needle</b></div>
+          </button>
+          <button slot="hotspot-hand" data-position="0 1 0" data-normal="0 0 1">
+            <div class="annotation"><b>Capsid</b></div>
+          </button>
+          <button
+            slot="hotspot-foot"
+            data-position="-0.7 -0.5 0.4"
+            data-normal="0 0 1"
+          >
+            <div class="annotation left"><b>Outer bacterial membrane</b></div>
+          </button>
+          <button
+            slot="hotspot-foot2"
+            data-position="0.4 -1 0.4"
+            data-normal="0 0 1"
+          >
+            <div class="annotation"><b>Inner bacterial membrane</b></div>
+          </button>
+        </model-viewer>
+
+        <p
+          class="activity-description"
+          data-i18n="biological.bacteriophage.description"
+        ></p>
       </div>
-    </header>
-
-    <div class="container">
-      Here goes the model
-    </div>
-
     </div>
     <footer>
       <app-footer />

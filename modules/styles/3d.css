@@ -14,7 +14,7 @@ footer {
 
 header {
   width: 100%;
-  background: linear-gradient(156.2deg, #173A7B 0%, #5C45EB 101.87%);
+  background: linear-gradient(156.2deg, #173a7b 0%, #5c45eb 101.87%);
   padding: 1.5rem;
 }
 
@@ -25,14 +25,6 @@ header .row {
 
 figure {
   margin: 0;
-}
-
-.activity-title {
-  font-family: "Montserrat";
-  font-weight: bold;
-  font-size: 2rem;
-  color: white;
-  margin: 0 0 0 1rem;
 }
 
 .row {
@@ -52,4 +44,74 @@ figure {
 .container {
   width: 80vw;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-title {
+  font-family: "Montserrat";
+  font-weight: bold;
+  font-size: 2rem;
+  color: white;
+  margin: 0 0 0 1rem;
+}
+
+.activity-description {
+  color: var(--primary);
+  font-family: "Roboto";
+  font-size: 1.25rem;
+  margin: 0.5rem 0 2rem 0;
+  text-align: center;
+  width: 400px;
+}
+
+/* Model Viewer styles */
+model-viewer {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+button {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: orange;
+  box-sizing: border-box;
+}
+
+button[slot="hotspot-hand"] {
+  --min-hotspot-opacity: 0;
+  background-color: orange;
+}
+
+button[slot="hotspot-foot"] {
+  --min-hotspot-opacity: 0;
+  background-color: orange;
+}
+
+button[slot="hotspot-foot2"] {
+  --min-hotspot-opacity: 0;
+  background-color: orange;
+}
+
+.annotation {
+  background-color: #9bf99f;
+  position: absolute;
+  transform: translate(10px, 10px);
+  border-radius: 10px;
+  padding: 10px;
+  color: #5c45eb;
+}
+
+.annotation.left {
+  transform: translate(-100%, 10px);
+}
+/* This keeps child nodes hidden while the element loads */
+:not(:defined) > * {
+  display: none;
 }
