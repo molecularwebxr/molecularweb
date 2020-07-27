@@ -8,6 +8,7 @@ body {
   background-color: var(--lightergray);
 }
 
+/* delete! */
 header {
   width: 100%;
   box-sizing: border-box;
@@ -49,6 +50,8 @@ footer {
   margin: 0 auto;
 }
 
+
+/* Delete */
 .menu {
   width: 23rem;
   align-items: center;
@@ -284,6 +287,8 @@ footer {
     transform: translateY(0);
   }
 }
+/* Delete */
+
 
 .home-banner {
   background: linear-gradient(149.14deg, #4432B0 0%, #5C45EB 100%);
@@ -487,6 +492,8 @@ footer {
     font-size: 1rem;
     height: auto;
   }
+
+  /* delete */
   .hamburger-menu {
     display: flex;
   }
@@ -499,6 +506,8 @@ footer {
   header {
     padding: 1rem 2rem;
   }
+  /* delete */
+
   .home-banner-title {
     font-size: 3rem;
   }

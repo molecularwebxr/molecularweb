@@ -1,7 +1,7 @@
 var localize = locI18next.init(i18next);
 
-var english = document.getElementById("en");
-var spanish = document.getElementById("es");
+var english = document.querySelector("app-header").shadowRoot.querySelector("#en");
+var spanish = document.querySelector("app-header").shadowRoot.querySelector("#es");
 
 i18next
   .use(i18nextHttpBackend)

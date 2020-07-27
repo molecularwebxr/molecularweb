@@ -115,3 +115,27 @@ button[slot="hotspot-foot2"] {
 :not(:defined) > * {
   display: none;
 }
+
+@media screen and (max-width: 800px) {
+  model-viewer {
+    width: 70vw;
+    height: 70vw;
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .activity-description{
+    font-size: 1rem;
+    margin: 0.5rem 0 1.5rem 0;
+    text-align: center;
+    width: 70vw;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .activity-description{
+    font-size: 0.8rem;
+    margin: 1rem 0 ;
+  }
+}
