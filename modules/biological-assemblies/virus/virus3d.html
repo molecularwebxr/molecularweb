@@ -50,6 +50,11 @@
       <app-header></app-header>
 
       <div class="container">
+        <h1
+          class="activity-title"
+          data-i18n="biological.bacteriophage.title"
+        ></h1>
+
         <model-viewer
           ar
           ar-modes="webxr scene-viewer quick-look fallback"
@@ -60,6 +65,7 @@
           shadow-intensity="1"
           exposure="0.5"
         >
+          <button slot="ar-button" class="ar-button">View in your space</button>
           <button
             slot="hotspot-visor"
             data-position="0 -0.3 0"
@@ -90,6 +96,12 @@
           class="activity-description"
           data-i18n="biological.bacteriophage.description"
         ></p>
+
+        <a
+          class="back-btn"
+          href="/modules/biological-assemblies/virus/virus.html"
+          >Return to AR mode</a
+        >
       </div>
     </div>
     <footer>
