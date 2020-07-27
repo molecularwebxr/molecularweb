@@ -384,7 +384,6 @@ class AppHeader extends HTMLElement {
       this.bar3.style.animation = "bar3out .5s forwards";
       this.menuActive = false;
     } else {
-      console.log("hey")
       this.menuActive = true;
       this.bar1.style.animation = "bar1in .5s forwards";
       this.bar2.style.animation = "bar2in .5s forwards";

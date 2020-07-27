@@ -22,6 +22,7 @@
     <!-- Web Components -->
     <script src="/components/arrow-anchor/index.js"></script>
     <script src="/components/footer/index.js"></script>
+    <script src="/components/app-header/index.js"></script>
     <script src="/components/icons/molecule/index.js"></script>
     <script src="/components/icons/atom/index.js"></script>
     <script src="/components/icons/tubes/index.js"></script>
@@ -29,50 +30,9 @@
     <script src="/components/icons/bacteria/index.js"></script>
   </head>
   <body>
-    <div id="overlay" class="overlay"></div>
     <div class="content">
-      <header class="row">
-        <figure>
-          <a href="/index.html">
-            <molecule-icon></molecule-icon>
-          </a>
-        </figure>
-        <div class="menu row">
-          <a class="menu-link" data-i18n="menu.about"></a>
-          <a class="menu-link" data-i18n="menu.getInTouch"></a>
-          <a class="menu-link" data-i18n="menu.feedback"></a>
-          <div class="language">
-            <a class="menu-link language" data-i18n="menu.language"></a>
-            <ul class="language-menu">
-              <li id="en">English</li>
-              <li id="es">Spanish</li>
-            </ul>
-          </div>
-        </div>
-        <div id="hamburger" class="hamburger-menu">
-          <div id="bar1" class="bar"></div>
-          <div id="bar2" class="bar"></div>
-          <div id="bar3" class="bar"></div>
-        </div>
-      </header>
-      <div id="mobile-menu" class="mobile-menu column">
-        <div class="mobile-menu-content column">
-          <figure>
-            <molecule-icon medium no-strokes />
-          </figure>
-          <div class="mobile-menu-links column">
-            <a class="mobile-menu-link" data-i18n="menu.about"></a>
-            <a class="mobile-menu-link" data-i18n="menu.getInTouch"></a>
-            <a
-              class="mobile-menu-link"
-              href="/pages/feedback.html"
-              data-i18n="menu.feedback"
-            ></a>
-            <a class="mobile-menu-link" data-i18n="menu.language"></a>
-          </div>
-        </div>
-        <p class="mobile-menu-footer" data-i18n="app.policy"></p>
-      </div>
+
+      <app-header></app-header>
 
       <div class="survey-container">
         <div class="hi-container">
@@ -631,7 +591,6 @@
       <app-footer />
     </footer>
     <script src="/js/translate.js"></script>
-    <script src="/js/handleMobile.js"></script>
     <script src="/js/handleSurvey.js"></script>
   </body>
 </html>
