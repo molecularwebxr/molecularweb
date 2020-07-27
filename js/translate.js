@@ -32,6 +32,7 @@ function updateContent() {
   localStorage.setItem("i18nextLng", i18next.language);
   localize(".content");
   localize(".contact-us");
+  localize("#title");
 }
 
 function handleLanguageChange(e) {
