@@ -62,21 +62,20 @@ figure {
   text-align: center;
   font-size: 1.2rem;
   font-weight: 600;
-  padding: .5rem 1rem .6rem;
+  padding: 0.5rem 1rem 0.6rem;
   border: none;
   color: var(--primary);
-  margin: 1.5rem 0 3.5rem 0;
+  margin: 1rem 0 0.5rem 0;
   border-radius: 5px;
   cursor: pointer;
-  box-shadow: inset 0 -.2em rgba(0, 0, 0, .2);
+  box-shadow: inset 0 -0.2em rgba(0, 0, 0, 0.2);
   outline: 0;
-  transition: .2s;
-  will-change: transform;
+  transition: 0.2s;
   background-color: var(--secondary);
 }
 
 .back-btn:active {
-  transform: scale(.9);
+  transform: scale(0.9);
 }
 
 /* Model Viewer styles */
@@ -112,11 +111,11 @@ button[slot="hotspot-foot2"] {
 }
 
 .ar-button {
-  background-image: url(/assets/img/icon-ar.png);
+  background-image: url(/assets/img/icon-ar2.png);
   background-repeat: no-repeat;
   background-size: 20px 20px;
   background-position: 12px 50%;
-  background-color: #fff;
+  background-color: var(--secondary);
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -124,16 +123,18 @@ button[slot="hotspot-foot2"] {
   padding: 0px 16px 0px 40px;
   font-family: "Roboto";
   font-size: 14px;
-  color:#4285f4;
+  font-weight: 600;
+  color: var(--primary);
   height: 36px;
   width: 190px;
   line-height: 36px;
-  border-radius: 18px;
-  border: 1px solid #DADCE0;
+  border-radius: 5px;
+  box-shadow: inset 0 -0.2em rgba(0, 0, 0, 0.2);
+  outline: 0;
 }
 
 .ar-button:active {
-  background-color: #E8EAED;
+  background-color: #e8eaed;
 }
 
 .ar-button:focus {
@@ -150,7 +151,7 @@ button[slot="hotspot-foot2"] {
   transform: translate(10px, 10px);
   border-radius: 10px;
   padding: 10px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .annotation.left {
@@ -161,7 +162,6 @@ button[slot="hotspot-foot2"] {
   display: none;
 }
 
-
 @media screen and (max-width: 800px) {
   model-viewer {
     width: 100vw;
@@ -171,7 +171,7 @@ button[slot="hotspot-foot2"] {
 }
 
 @media screen and (max-width: 500px) {
-  .activity-description{
+  .activity-description {
     font-size: 1rem;
     margin: 0.5rem 0 1.5rem 0;
     text-align: center;
@@ -179,17 +179,21 @@ button[slot="hotspot-foot2"] {
   }
 
   .back-btn {
-    font-size: 1rem;
+    font-size: 14px;
+    line-height: 36px;
+    height: 36px;
+    width: 190px;
+    padding: 0px;
   }
 }
 
 @media screen and (max-width: 450px) {
-  .activity-description{
+  .activity-description {
     font-size: 0.8rem;
-    margin: 1rem 0 ;
+    margin: 1rem;
   }
 
   .back-btn {
-    margin: 1.5rem 0 2.5rem 0;
+    margin: 1rem 0 0rem 0;
   }
 }
