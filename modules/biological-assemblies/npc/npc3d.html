@@ -50,10 +50,7 @@
       <app-header></app-header>
 
       <div class="container">
-        <h1
-          class="activity-title"
-          data-i18n="biological.nuclear.title"
-        ></h1>
+        <h1 class="activity-title" data-i18n="biological.nuclear.title"></h1>
 
         <model-viewer
           ar
@@ -65,22 +62,25 @@
           shadow-intensity="1"
           exposure="0.5"
         >
-          <button slot="ar-button" class="ar-button">View in your space</button>
-        
+          <button
+            slot="ar-button"
+            class="ar-button"
+            data-i18n="app.viewInYourSpace"
+          ></button>
+
           <!-- TO DO: add annotations! -->
         </model-viewer>
-       
+
         <a
           class="back-btn"
           href="/modules/biological-assemblies/npc/npc.html"
-          >Return to AR mode</a
-        >
+          data-i18n="app.returnToAR"
+        ></a>
 
         <p
           class="activity-description"
           data-i18n="biological.nuclear.description"
         ></p>
-
       </div>
     </div>
     <footer>
