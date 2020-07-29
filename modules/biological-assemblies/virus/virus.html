@@ -68,13 +68,18 @@
         <figure>
           <tubes-icon></tubes-icon>
         </figure>
-        <h1 class="activity-title" data-i18n="biological.bacteriophage.title"></h1>
+        <h1
+          class="activity-title"
+          data-i18n="biological.bacteriophage.title"
+        ></h1>
       </div>
     </header>
 
     <!-- UI Components -->
     <back-anchor></back-anchor>
-    <mv-anchor url="/modules/biological-assemblies/virus/virus3d.html"></mv-anchor>
+    <mv-anchor
+      url="/modules/biological-assemblies/virus/virus3d.html"
+    ></mv-anchor>
     <loader-component></loader-component>
 
     <!-- Feedback Modal -->
@@ -174,7 +179,10 @@
       loading-screen="enabled: false"
     >
       <a-assets>
-        <a-asset-item id="virus" src="./models/viruscoloreado.gltf"></a-asset-item>
+        <a-asset-item
+          id="virus"
+          src="./models/viruscoloreado.gltf"
+        ></a-asset-item>
       </a-assets>
 
       <a-marker type="barcode" value="0" id="watA">
@@ -221,7 +229,6 @@
           gesture-handler="linkedMarker: #marker2B"
           id="marker2A"
         >
-         
         </a-entity>
       </a-marker>
 
@@ -233,7 +240,6 @@
           gesture-handler="linkedMarker: #marker2A"
           id="marker2B"
         >
-          
         </a-entity>
       </a-marker>
 
