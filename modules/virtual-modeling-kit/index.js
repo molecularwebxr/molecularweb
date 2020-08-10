@@ -150,11 +150,19 @@ function animate() {
 }
 
 function loadPdb() {
-  var rawPdb = `HETATM    1  C1  UNK     1       0.000   0.000   0.000  1.00  0.00           C  
-HETATM    2  H2  UNK     1       0.000  -0.890  -0.629  1.00  0.00           H  
-HETATM    3  H3  UNK     1       0.000   0.890  -0.629  1.00  0.00           H  
-HETATM    4  H4  UNK     1      -0.890   0.000   0.629  1.00  0.00           H  
-HETATM    5  H5  UNK     1       0.890   0.000   0.629  1.00  0.00           H`
+  var rawPdb = `HETATM    1  N1  UNK     1       0.000   0.000   0.000  1.00  0.00           N  
+HETATM    2  H2  UNK     1       0.000  -0.824  -0.583  1.00  0.00           H  
+HETATM    3  H3  UNK     1       0.000   0.824  -0.583  1.00  0.00           H  
+HETATM    4  H4  UNK     1      -0.824   0.000   0.583  1.00  0.00           H  
+HETATM    5  H5  UNK     1       0.824   0.000   0.583  1.00  0.00           H  
+CONECT    1    2
+CONECT    1    3
+CONECT    1    4
+CONECT    1    5
+CONECT    2    1
+CONECT    3    1
+CONECT    4    1
+CONECT    5    1`
 
   pdb = setupPdb(rawPdb);
 

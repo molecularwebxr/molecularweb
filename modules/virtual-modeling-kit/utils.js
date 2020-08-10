@@ -57,7 +57,7 @@ var bondfirstatom = [];
 var bondlength = [];
 var radiusfactor = 0.35;
 
-var sphereGeometry = new THREE.SphereGeometry(3, 3, 3);
+var sphereGeometry = new THREE.SphereGeometry(1, 32, 16);
 
 function cylindricalSegment(A, B, radius, material) {
   var vec = B.clone();
@@ -89,8 +89,6 @@ function setupPdb(rawPdb) {
   };
 
   var lines = rawPdb.split("\n");
-
-  console.log(lines);
 
   // Read all lines, when a line starts with ATOM or HETATM
   // then it encodes an atom whose properties are read
@@ -128,19 +126,12 @@ function setupPdb(rawPdb) {
 function createSticks(pdb) {
   for (i = 0; i < pdb.atoms; i++) {
     var distsqr;
-    let sphere1 = new THREE.Mesh( //create a sphere representing atom i
-      sphereGeometry,
-      new THREE.MeshLambertMaterial({
-        color: elementColors[pdb.elements[i]],
-        opacity: 1,
-        transparent: false,
-        side: THREE.DoubleSide,
-        depthWrite: false,
-      })
+    //create a vec3 representing atom i
+    var point1 = new THREE.Vector3( 
+      -(pdb.xCoords[i] - pdb.xAvg),
+      pdb.yCoords[i] - pdb.yAvg,
+      pdb.zCoords[i] - pdb.zAvg
     );
-    sphere1.position.x = -(pdb.xCoords[i] - pdb.xAvg);
-    sphere1.position.y = pdb.yCoords[i] - pdb.yAvg;
-    sphere1.position.z = pdb.zCoords[i] - pdb.zAvg;
 
     for (
       j = i + 1;
@@ -161,32 +152,22 @@ function createSticks(pdb) {
             2
           )
       ) {
-        var sphere2 = new THREE.Mesh(
-          sphereGeometry,
-          new THREE.MeshLambertMaterial({
-            color: elementColors[pdb.elements[i]],
-          })
+        var point2 = new THREE.Vector3(
+          -(pdb.xCoords[j]/2 + pdb.xCoords[i]/2 - pdb.xAvg),
+          pdb.yCoords[j]/2 + pdb.yCoords[i]/2 - pdb.yAvg,
+          pdb.zCoords[j]/2 + pdb.zCoords[i]/2 - pdb.zAvg
         );
-        sphere2.position.x = -(
-          pdb.xCoords[j] / 2 +
-          pdb.xCoords[i] / 2 -
-          pdb.xAvg
+
+        var point3 = new THREE.Vector3( 
+          -(pdb.xCoords[j] - pdb.xAvg),
+          pdb.yCoords[j] - pdb.yAvg,
+          pdb.zCoords[j] - pdb.zAvg
         );
-        sphere2.position.y = pdb.yCoords[j] / 2 + pdb.yCoords[i] / 2 - pdb.yAvg;
-        sphere2.position.z = pdb.zCoords[j] / 2 + pdb.zCoords[i] / 2 - pdb.zAvg;
-        var sphere3 = new THREE.Mesh(
-          sphereGeometry,
-          new THREE.MeshLambertMaterial({
-            color: elementColors[pdb.elements[i]],
-          })
-        );
-        sphere3.position.x = -(pdb.xCoords[j] - pdb.xAvg);
-        sphere3.position.y = pdb.yCoords[j] - pdb.yAvg;
-        sphere3.position.z = pdb.zCoords[j] - pdb.zAvg;
-        //sphere1 was the first atom (i), now sphere3 is the second atom (j)
-        //sphere2 is at the center in-between atoms i and j
+       
+        //point1 was the first atom (i), now point3 is the second atom (j)
+        //point2 is at the center in-between atoms i and j
         //then the first half of the bond is from sphere 1 to 2 and the
-        //second half of the bond is from sphere2 to sphere3
+        //second half of the bond is from point2 to point3
         var radius = 0.12;
         var angle1 = 109;
         var angle2 = 109;
@@ -303,16 +284,16 @@ function createSticks(pdb) {
 
         //we last draw the bond, which is split in two parts each coloured as the closest atom
         var bond1 = cylindricalSegment(
-          sphere2.position,
-          sphere1.position,
+          point2,
+          point1,
           radius,
           new THREE.MeshLambertMaterial({
             color: elementColors[pdb.elements[i]],
           })
         ); // , opacity: 1, transparent: false, side: THREE.DoubleSide, depthWrite: false} ))
         var bond2 = cylindricalSegment(
-          sphere2.position,
-          sphere3.position,
+          point2,
+          point3,
           radius,
           new THREE.MeshLambertMaterial({
             color: elementColors[pdb.elements[j]],
@@ -333,15 +314,15 @@ function createSpheres(pdb) {
   //this loop will create the spheres to display the atoms at the defined radius
   //and the actual physical cannon spheres
   for (i = 0; i < pdb.atoms; i++) {
-    let sphereMesh = new THREE.Mesh(
-      new THREE.SphereGeometry(
-        radiusfactor * elementradii[pdb.elements[i]],
-        16,
-        16
-      ),
+    var sphereRadius = radiusfactor * elementradii[pdb.elements[i]];
+    var sphereMesh = new THREE.Mesh(
+      sphereGeometry,
       //new THREE.MeshLambertMaterial({ color: elementcolors[elements[i]] , opacity: 1, transparent: false, side: THREE.DoubleSide, depthWrite: false})
       new THREE.MeshLambertMaterial({ color: elementColors[pdb.elements[i]] })
     );
+
+    sphereMesh.scale.setScalar(sphereRadius);
+
     sphereMesh.position.x = -(pdb.xCoords[i] - pdb.xAvg);
     sphereMesh.position.y = pdb.yCoords[i] - pdb.yAvg;
     sphereMesh.position.z = pdb.zCoords[i] - pdb.zAvg;
