@@ -202,7 +202,7 @@ figure {
 }
 
 .options.touch.row .triangle {
-  transform: translateX(65px) rotate(90deg);;
+  transform: translateX(65px) rotate(90deg);
 }
 
 .rotation-controls {
@@ -249,6 +249,133 @@ figure {
 
 .hide {
   display: none;
+}
+
+.modeling-container {
+  position: fixed;
+  top: 150px;
+  right: 150px;
+  z-index: 1;
+  background-color: var(--primarylight);
+  border-radius: 10px;
+  width: 433px;
+  padding: 1.5rem 1rem;
+}
+
+.modeling-info {
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  padding: 1rem 0.75rem;
+}
+
+.modeling-info p {
+  margin: 0;
+}
+
+.modeling-instructions {
+  font-family: "Roboto";
+  color: #ffffff;
+  font-size: 1rem;
+  text-align: left;
+  margin-left: 0.75rem !important;
+}
+
+.modeling-options {
+  justify-content: space-between;
+  margin: 1.5rem 0;
+}
+
+.modeling-marker-options p {
+  font-family: "Roboto";
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 0.25rem 0;
+}
+
+.modeling-marker-options a {
+  font-family: "Roboto";
+  color: var(--secondary);
+  font-size: 12px;
+}
+
+.pdb-load {
+  margin-right: 25px;
+}
+
+.pdb-option {
+  font-family: "Roboto";
+  color: #ffffff;
+  font-size: 12px;
+  margin: 0 0 0.5rem 0;
+}
+
+.upload-pdb {
+  background-color: #ffffff;
+  color: var(--primary);
+  padding: 3px 22px;
+  border-radius: 6px;
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.pdb-selector {
+  width: 100%;
+  height: 20px;
+  margin: 0;
+  font-family: "Roboto";
+  font-size: 0.6rem;
+  border-radius: 0.25rem;
+  border: none;
+  outline: none;
+  padding: 0.25rem;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  background-image: url("/assets/img/arrow-select.png");
+  background-repeat: no-repeat;
+  background-position: top 0.5rem right 0.2rem;
+}
+
+.pdb-selector optgroup {
+  font-family: "Roboto";
+  font-style: normal;
+  font-size: 0.6rem;
+}
+
+.pdb-text {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0.25rem;
+  box-sizing: border-box;
+  resize: none;
+  font-family: "Roboto";
+  font-size: 12px;
+}
+
+.btn-primary {
+  margin: 1.5rem auto 0 auto;
+  display: block;
+  padding: 5px 24px;
+  background: #9BF99F;
+  border-radius: 6px;
+  color: #5C45EB;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.btn-primary:active {
+  transform: scale(.95);
 }
 
 @media screen and (max-width: 630px) {
@@ -388,7 +515,6 @@ figure {
   }
 }
 
-
 /* Landscape styles */
 @media screen and (max-height: 450px) and (orientation: landscape) {
   .activity-title {
@@ -399,7 +525,7 @@ figure {
     padding: 0.5rem;
     height: 50px;
   }
-  
+
   .selection-menu {
     padding: 0.5rem;
     bottom: 5px;
@@ -463,7 +589,7 @@ figure {
     -ms-transform: scale(1, 1);
     transform: scale(1, 1);
   }
-  
+
   .flip {
     -moz-transform: scale(-1, 1);
     -webkit-transform: scale(-1, 1);
@@ -471,5 +597,4 @@ figure {
     -ms-transform: scale(-1, 1);
     transform: scale(-1, 1);
   }
-
 }

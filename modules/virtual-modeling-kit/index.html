@@ -84,6 +84,56 @@
       <toggle-menu class="icon-margin"></toggle-menu>
     </div>
 
+    <div class="modeling-container">
+      <div class="modeling-info row">
+        <p>👉</p>
+        <p class="modeling-instructions">
+          Copy molecule in PDB format or load a preset example, then click
+          “Start AR”
+        </p>
+      </div>
+
+      <div class="modeling-options row">
+        <div class="modeling-marker-options column">
+          <p>Marker</p>
+          <a href="">Get Marker</a>
+        </div>
+        <div class="row">
+          <div class="pdb-load">
+            <p class="pdb-option">Load your file</p>
+            <label class="upload-pdb">
+              <input id="pdb-input" name="pdb" type="file" hidden />
+              Load
+            </label>
+          </div>
+          <div class="pdb-select">
+            <p class="pdb-option">Choose example</p>
+            <select id="select-pdb" class="pdb-selector">
+              <optgroup label="Group 1">
+                <option>Option 1</option>
+                <option>Option 2</option>
+              </optgroup>
+              <optgroup label="Group 2">
+                <option>Option 3</option>
+                <option>Option 4</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <textarea
+        class="pdb-text"
+        id="pdb-text"
+        name="textarea"
+        rows="10"
+        cols="50"
+        placeholder="Copy-paste PDB here"
+      ></textarea>
+
+      <button class="btn-primary">Start AR</button>
+    </div>
+
     <script src="utils.js"></script>
     <script src="index.js"></script>
     <script src="/modules/utils/handleFlips.js"></script>
