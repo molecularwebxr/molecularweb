@@ -8,9 +8,13 @@ var sceneGroup;
 
 var pdb;
 
+var startAR = document.getElementById("start-ar");
+var pdbText = document.getElementById("pdb-text");
+
+startAR.addEventListener("click", handleClick);
+
 initialize();
 animate();
-loadPdb();
 
 function initialize() {
   scene = new THREE.Scene();
@@ -149,24 +153,20 @@ function animate() {
   render();
 }
 
-function loadPdb() {
-  var rawPdb = `HETATM    1  N1  UNK     1       0.000   0.000   0.000  1.00  0.00           N  
-HETATM    2  H2  UNK     1       0.000  -0.824  -0.583  1.00  0.00           H  
-HETATM    3  H3  UNK     1       0.000   0.824  -0.583  1.00  0.00           H  
-HETATM    4  H4  UNK     1      -0.824   0.000   0.583  1.00  0.00           H  
-HETATM    5  H5  UNK     1       0.824   0.000   0.583  1.00  0.00           H  
-CONECT    1    2
-CONECT    1    3
-CONECT    1    4
-CONECT    1    5
-CONECT    2    1
-CONECT    3    1
-CONECT    4    1
-CONECT    5    1`
-
+function loadPdb(rawPdb) {
   pdb = setupPdb(rawPdb);
 
   createSticks(pdb);
 
   createSpheres(pdb);
+}
+
+function handleClick(e) {
+  var pdbInserted = pdbText.value;
+
+  if(pdbInserted.length > 0) {
+    loadPdb(pdbInserted);
+  } else {
+    console.log("No pdb!")
+  }
 }
