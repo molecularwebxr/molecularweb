@@ -10,8 +10,11 @@ var pdb;
 
 var startAR = document.getElementById("start-ar");
 var pdbText = document.getElementById("pdb-text");
+var pdbInput = document.getElementById("pdb-input");
 
 startAR.addEventListener("click", handleClick);
+
+pdbInput.addEventListener("change", handleUpload);
 
 initialize();
 animate();
@@ -28,7 +31,7 @@ function initialize() {
   renderer = new THREE.WebGLRenderer({
     antialias: true,
     alpha: true,
-    logarithmicDepthBuffer: true 
+    logarithmicDepthBuffer: true,
   });
   renderer.setClearColor(new THREE.Color("lightgrey"), 0);
   renderer.setSize(640, 480);
@@ -164,9 +167,20 @@ function loadPdb(rawPdb) {
 function handleClick(e) {
   var pdbInserted = pdbText.value;
 
-  if(pdbInserted.length > 0) {
+  if (pdbInserted.length > 0) {
     loadPdb(pdbInserted);
   } else {
-    console.log("No pdb!")
+    console.log("No pdb!");
   }
+}
+
+function handleUpload(e) {
+  var input = e.target;
+  var reader = new FileReader();
+
+  reader.onload = function () {
+    pdbText.value = reader.result;
+  };
+
+  reader.readAsText(input.files[0]);
 }
