@@ -127,7 +127,7 @@ function createSticks(pdb) {
   for (i = 0; i < pdb.atoms; i++) {
     var distsqr;
     //create a vec3 representing atom i
-    var point1 = new THREE.Vector3( 
+    var point1 = new THREE.Vector3(
       -(pdb.xCoords[i] - pdb.xAvg),
       pdb.yCoords[i] - pdb.yAvg,
       pdb.zCoords[i] - pdb.zAvg
@@ -153,17 +153,17 @@ function createSticks(pdb) {
           )
       ) {
         var point2 = new THREE.Vector3(
-          -(pdb.xCoords[j]/2 + pdb.xCoords[i]/2 - pdb.xAvg),
-          pdb.yCoords[j]/2 + pdb.yCoords[i]/2 - pdb.yAvg,
-          pdb.zCoords[j]/2 + pdb.zCoords[i]/2 - pdb.zAvg
+          -(pdb.xCoords[j] / 2 + pdb.xCoords[i] / 2 - pdb.xAvg),
+          pdb.yCoords[j] / 2 + pdb.yCoords[i] / 2 - pdb.yAvg,
+          pdb.zCoords[j] / 2 + pdb.zCoords[i] / 2 - pdb.zAvg
         );
 
-        var point3 = new THREE.Vector3( 
+        var point3 = new THREE.Vector3(
           -(pdb.xCoords[j] - pdb.xAvg),
           pdb.yCoords[j] - pdb.yAvg,
           pdb.zCoords[j] - pdb.zAvg
         );
-       
+
         //point1 was the first atom (i), now point3 is the second atom (j)
         //point2 is at the center in-between atoms i and j
         //then the first half of the bond is from sphere 1 to 2 and the
@@ -328,5 +328,16 @@ function createSpheres(pdb) {
     sphereMesh.position.z = pdb.zCoords[i] - pdb.zAvg;
     sceneGroup.add(sphereMesh); //added the sphere representation for atom i
     atomsarray.push(sphereMesh);
+  }
+}
+
+function clearScene(group) {
+  var length = group.children.length;
+
+  for (var i = length - 1; i >= 0; i--) {
+    if (group.children[i].geometry) group.children[i].geometry.dispose();
+    if (group.children[i].material) group.children[i].material.dispose();
+    if (group.children[i].texture) group.children[i].texture.dispose();
+    group.remove(group.children[i]);
   }
 }

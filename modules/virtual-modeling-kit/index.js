@@ -159,6 +159,8 @@ function animate() {
 function loadPdb(rawPdb) {
   pdb = setupPdb(rawPdb);
 
+  clearScene(sceneGroup);
+
   createSticks(pdb);
 
   createSpheres(pdb);
