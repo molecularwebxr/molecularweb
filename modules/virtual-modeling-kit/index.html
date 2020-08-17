@@ -45,6 +45,7 @@
     <script src="/components/flip-video/index.js"></script>
     <script src="/components/flip-graphics/index.js"></script>
     <script src="/components/scale-graphics/index.js"></script>
+    <script src="/components/mk-button/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="/modules/utils/handleTranslation.js"></script>
@@ -72,6 +73,7 @@
     <div class="side-menu column">
       <flip-video class="icon-margin"></flip-video>
       <flip-graphics class="icon-margin"></flip-graphics>
+      <enable-mk-menu class="icon-margin"></enable-mk-menu>
       <scale-graphics
         class="icon-margin"
         id="scale-up"
@@ -82,10 +84,14 @@
         id="scale-down"
         type="down"
       ></scale-graphics>
-      <toggle-menu class="icon-margin"></toggle-menu>
     </div>
 
-    <div class="modeling-container">
+    <div class="modeling-container" id="mk-menu">
+      <div class="triangle-mk"></div>
+      <div id="close-menu" class="close-menu">
+        <div class="bar-1"></div>
+        <div class="bar-2"></div>
+      </div>
       <div class="modeling-info row">
         <p>👉</p>
         <p class="modeling-instructions">
@@ -129,7 +135,7 @@
     </div>
 
     <script src="utils.js"></script>
-    <script src="api.js"></script>
+    <script src="handlePdbs.js"></script>
     <script src="index.js"></script>
     <script src="/modules/utils/handleFlips.js"></script>
   </body>

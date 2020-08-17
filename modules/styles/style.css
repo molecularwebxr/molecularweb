@@ -253,8 +253,8 @@ figure {
 
 .modeling-container {
   position: fixed;
-  top: 150px;
-  right: 150px;
+  top: 160px;
+  right: 77px;
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -262,10 +262,46 @@ figure {
   padding: 1.5rem 1rem;
 }
 
+.triangle-mk {
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid var(--primarylight);
+  transform: translateY(-50%);
+}
+
+.close-menu {
+  position: relative;
+  top: -5px;
+  right: -420px;
+  cursor: pointer;
+}
+
+.bar-1 {
+  position: absolute;
+  width: 14.87px;
+  height: 2.7px;
+  background: #ffffff;
+  border-radius: 16px;
+  transform: rotate(45deg);
+}
+
+.bar-2 {
+  position: absolute;
+  width: 14.87px;
+  height: 2.7px;
+  background: #ffffff;
+  border-radius: 16px;
+  transform: rotate(-45deg);
+}
+
 .modeling-info {
   border: 2px solid #ffffff;
   border-radius: 10px;
   padding: 1rem 0.75rem;
+  margin-top: 15px;
 }
 
 .modeling-info p {
@@ -363,10 +399,10 @@ figure {
   margin: 1.5rem auto 0 auto;
   display: block;
   padding: 5px 24px;
-  background: #9BF99F;
+  background: #9bf99f;
   border-radius: 6px;
-  color: #5C45EB;
-  font-family: 'Roboto', sans-serif;
+  color: #5c45eb;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
@@ -375,7 +411,7 @@ figure {
 }
 
 .btn-primary:active {
-  transform: scale(.95);
+  transform: scale(0.95);
 }
 
 @media screen and (max-width: 630px) {
