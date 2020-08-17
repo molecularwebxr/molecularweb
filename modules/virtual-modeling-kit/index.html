@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-91563073-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-91563073-2");
+    </script>
+    <title id="title" data-i18n="orbitals.modelingKit.title"></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/modules/styles/style.css" />
+
+    <!-- 3D Libraries -->
+    <script src="/lib/three.js"></script>
+    <script src="/lib/jsartoolkit5/artoolkit.min.js"></script>
+    <script src="/lib/jsartoolkit5/artoolkit.api.js"></script>
+    <script src="/lib/threex/threex-artoolkitsource.js"></script>
+    <script src="/lib/threex/threex-artoolkitcontext.js"></script>
+    <script src="/lib/threex/threex-arbasecontrols.js"></script>
+    <script src="/lib/threex/threex-armarkercontrols.js"></script>
+
+    <!-- Translation Libraries -->
+    <script src="/lib/i18n/i18next.min.js"></script>
+    <script src="/lib/i18n/i18next-wc.js"></script>
+    <script src="/lib/i18n/loc-i18next.min.js"></script>
+    <script src="/lib/i18n/i18nextBrowserLanguageDetector.js"></script>
+    <script src="/lib/i18n/i18nextHttpBackend.min.js"></script>
+
+    <!-- Web Components -->
+    <script src="/components/icons/atom/index.js"></script>
+    <script src="/components/loader/index.js"></script>
+    <script src="/components/back-anchor/index.js"></script>
+    <script src="/components/feedback-prompt/index.js"></script>
+    <script src="/components/flip-video/index.js"></script>
+    <script src="/components/flip-graphics/index.js"></script>
+    <script src="/components/scale-graphics/index.js"></script>
+    <script src="/components/mk-button/index.js"></script>
+
+    <!-- Utils & A-Frame Components -->
+    <script src="/modules/utils/handleTranslation.js"></script>
+
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header id="header">
+      <div class="row">
+        <figure>
+          <atom-icon></atom-icon>
+        </figure>
+        <h1 class="activity-title" data-i18n="orbitals.modelingKit.title"></h1>
+      </div>
+    </header>
+
+    <!-- UI Components -->
+    <back-anchor></back-anchor>
+
+    <!-- Feedback Modal -->
+    <feedback-prompt></feedback-prompt>
+
+    <!-- Side buttons -->
+    <div class="side-menu column">
+      <flip-video class="icon-margin"></flip-video>
+      <flip-graphics class="icon-margin"></flip-graphics>
+      <enable-mk-menu class="icon-margin"></enable-mk-menu>
+      <scale-graphics
+        class="icon-margin"
+        id="scale-up"
+        type="up"
+      ></scale-graphics>
+      <scale-graphics
+        class="icon-margin"
+        id="scale-down"
+        type="down"
+      ></scale-graphics>
+    </div>
+
+    <div class="modeling-container" id="mk-menu">
+      <div class="triangle-mk"></div>
+      <div id="close-menu" class="close-menu">
+        <div class="bar-1"></div>
+        <div class="bar-2"></div>
+      </div>
+      <div class="modeling-info row">
+        <p>👉</p>
+        <p class="modeling-instructions">
+          Copy molecule in PDB format or load a preset example, then click
+          “Start AR”
+        </p>
+      </div>
+
+      <div class="modeling-options row">
+        <div class="modeling-marker-options column">
+          <p>Marker</p>
+          <a href="">Get Marker</a>
+        </div>
+        <div class="row">
+          <div class="pdb-load">
+            <p class="pdb-option">Load your file</p>
+            <label class="upload-pdb">
+              <input id="pdb-input" name="pdb" type="file" hidden />
+              Load
+            </label>
+          </div>
+          <div class="pdb-select">
+            <p class="pdb-option">Choose example</p>
+            <select id="select-pdb" class="pdb-selector">
+              <option value="">--Examples--</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <textarea
+        class="pdb-text"
+        id="pdb-text"
+        name="textarea"
+        rows="10"
+        cols="50"
+        placeholder="Copy-paste PDB here"
+      ></textarea>
+
+      <button id="start-ar" class="btn-primary">Start AR</button>
+    </div>
+
+    <script src="utils.js"></script>
+    <script src="handlePdbs.js"></script>
+    <script src="index.js"></script>
+    <script src="/modules/utils/handleFlips.js"></script>
+  </body>
+</html>
