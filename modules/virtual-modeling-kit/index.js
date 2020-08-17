@@ -9,12 +9,8 @@ var sceneGroup;
 var pdb;
 
 var startAR = document.getElementById("start-ar");
-var pdbText = document.getElementById("pdb-text");
-var pdbInput = document.getElementById("pdb-input");
 
 startAR.addEventListener("click", handleClick);
-
-pdbInput.addEventListener("change", handleUpload);
 
 initialize();
 animate();
@@ -176,13 +172,3 @@ function handleClick(e) {
   }
 }
 
-function handleUpload(e) {
-  var input = e.target;
-  var reader = new FileReader();
-
-  reader.onload = function () {
-    pdbText.value = reader.result;
-  };
-
-  reader.readAsText(input.files[0]);
-}
