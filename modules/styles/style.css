@@ -253,8 +253,9 @@ figure {
 
 .modeling-container {
   position: fixed;
-  top: 160px;
-  right: 77px;
+  top: 50%;
+  right: 76px;
+  transform: translateY(-56%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -265,7 +266,7 @@ figure {
 .triangle-mk {
   position: absolute;
   top: 50%;
-  right: -10px;
+  right: -9px;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
   border-left: 10px solid var(--primarylight);
