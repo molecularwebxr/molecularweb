@@ -148,6 +148,7 @@ function animate() {
   requestAnimationFrame(animate);
   deltaTime = clock.getDelta();
   totalTime += deltaTime;
+  updatePhysics();
   update();
   render();
 }
@@ -160,6 +161,8 @@ function loadPdb(rawPdb) {
   createSticks(pdb);
 
   createSpheres(pdb);
+
+  setupConstraints(pdb);
 }
 
 function handleClick(e) {

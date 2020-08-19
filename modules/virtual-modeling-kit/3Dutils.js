@@ -328,6 +328,19 @@ function createSpheres(pdb) {
     sphereMesh.position.z = pdb.zCoords[i] - pdb.zAvg;
     sceneGroup.add(sphereMesh); //added the sphere representation for atom i
     atomsarray.push(sphereMesh);
+
+    var sphereShape = new CANNON.Sphere(0.5 * elementradii[pdb.elements[i]]); // Step 1
+    var sphereBody = new CANNON.Body({ mass: 5, shape: sphereShape }); // Step 2
+    sphereBody.position.set(
+      sphereMesh.position.x,
+      sphereMesh.position.y,
+      sphereMesh.position.z
+    );
+    sphereBody.velocity.x = 0; //10*Math.random(1)-5  //a small random number will give some initial velocity
+    sphereBody.velocity.y = 0; //10*Math.random(1)-5
+    sphereBody.velocity.z = 0; //10*Math.random(1)-5
+    spheresarray.push(sphereBody);
+    world.add(sphereBody); //added the sphere to the world
   }
 }
 
