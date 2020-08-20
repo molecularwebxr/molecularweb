@@ -3,7 +3,7 @@ world.gravity.set(0, 0, 0);
 world.broadphase = new CANNON.NaiveBroadphase();
 world.solver.iterations = 10;
 
-var temperature = 1000;
+var temperature = 600;
 
 function setupConstraints(pdb) {
   //this loop will search and build the cannon constraints
@@ -179,7 +179,7 @@ function updatePhysics() {
   world.step(1 / 600);
   // Copy coordinates from Cannon.js to Three.js
   // And update temperatures
-  var velsum_expected = Math.sqrt(temperature) * 20;
+  var velsum_expected = Math.sqrt(temperature) * atoms;
   //var velsum_expected = temperature;
   var velsum = 0;
   var sumax = 0;
@@ -256,7 +256,7 @@ function updatePhysics() {
     quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), vec);
     bondsarray[i].position.set(0, 0, 0);
     bondsarray[i].rotation.set(0, 0, 0);
-    bondsarray[i].translate(0, h / 2, 0);
+    bondsarray[i].translateOnAxis(0, h / 2, 0);
     bondsarray[i].applyQuaternion(quaternion);
     bondsarray[i].position.set(A.x, A.y, A.z);
 
@@ -281,8 +281,21 @@ function updatePhysics() {
     quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), vec);
     bondsarray[i + 1].position.set(0, 0, 0);
     bondsarray[i + 1].rotation.set(0, 0, 0);
-    bondsarray[i + 1].translate(0, h / 2, 0);
+    bondsarray[i + 1].translateOnAxis(0, h / 2, 0);
     bondsarray[i + 1].applyQuaternion(quaternion);
     bondsarray[i + 1].position.set(A.x, A.y, A.z);
+  }
+}
+
+function clearPhysics() {
+  var bodies = world.bodies;
+  var cs = world.constraints;
+
+  for (var i = bodies.length - 1; i >= 0; i--) {
+    world.removeBody(bodies[i]);
+  }
+
+  for (var i = cs.length - 1; i >= 0; i--) {
+    world.removeConstraint(cs[i]);
   }
 }

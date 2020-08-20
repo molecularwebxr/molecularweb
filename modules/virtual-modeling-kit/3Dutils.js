@@ -55,6 +55,7 @@ var bondsarray = [];
 var spheresarray = [];
 var bondfirstatom = [];
 var bondlength = [];
+var atoms = 0;
 var radiusfactor = 0.35;
 
 var sphereGeometry = new THREE.SphereGeometry(1, 32, 16);

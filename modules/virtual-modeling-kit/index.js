@@ -156,6 +156,14 @@ function animate() {
 function loadPdb(rawPdb) {
   pdb = setupPdb(rawPdb);
 
+  atomsarray = [];
+  bondsarray = [];
+  spheresarray = [];
+  bondfirstatom = [];
+  bondlength = [];
+  atoms = pdb.atoms;
+
+  clearPhysics();
   clearScene(sceneGroup);
 
   createSticks(pdb);
@@ -175,4 +183,3 @@ function handleClick(e) {
     console.log("No pdb!");
   }
 }
-
