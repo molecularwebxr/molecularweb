@@ -1,4 +1,4 @@
-const StopTempContent = /* html */ `
+const PlayTempContent = /* html */ `
   <style>
     a {
       cursor: pointer;
@@ -39,20 +39,20 @@ const StopTempContent = /* html */ `
       <g transform="matrix(1.79021,0,0,1.79021,53.7063,19.6923)">
           <circle id="circle" cx="113" cy="132" r="143" />
       </g>
-      <g class="path" transform="matrix(0.808824,0,0,0.986547,48.9412,-21.713)">
-        <path d="M392,192.3C392,179.992 379.812,170 364.8,170L147.2,170C132.188,170 120,179.992 120,192.3L120,370.7C120,383.008 132.188,393 147.2,393L364.8,393C379.812,393 392,383.008 392,370.7L392,192.3Z" />
+      <g class="path" transform="matrix(3.97069e-16,1.40127,-1.44737,4.10123e-16,624.921,25.4904)">
+        <path d="M164.5,163L243,315L86,315L164.5,163Z" />
     </g>
     </svg>
   </a>`;
 
-class StopTemp extends HTMLElement {
+class PlayTemp extends HTMLElement {
   constructor() {
     super();
 
     this.handleClick = this.handleClick.bind(this);
 
     let shadow = this.attachShadow({ mode: "open" });
-    shadow.innerHTML = StopTempContent;
+    shadow.innerHTML = PlayTempContent;
 
     this.buttonElement = this.shadowRoot.querySelector("a");
 
@@ -60,8 +60,8 @@ class StopTemp extends HTMLElement {
   }
 
   handleClick() {
-    this.dispatchEvent(new CustomEvent("stopTemp"));
+    this.dispatchEvent(new CustomEvent("playTemp"));
   }
 }
 
-customElements.define("stop-temp", StopTemp);
+customElements.define("play-temp", PlayTemp);
