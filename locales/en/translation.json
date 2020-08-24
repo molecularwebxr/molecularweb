@@ -47,7 +47,8 @@
     },
     "modelingKit": {
       "title": "Virtual modeling kit",
-      "description": "Display *any* molecule from its atomic coordinates, to explore its structure and its motions in AR."
+      "description": "Display *any* molecule from its atomic coordinates, to explore its structure and its motions in AR.",
+      "instructions": "Select a preset example or paste your own atomic coordinates, then launch AR experience. To see motions, raise temperature."
     }
   },
   "bonds": {
