@@ -52,6 +52,7 @@
     <script src="/components/toggle-description/index.js"></script>
     <script src="/components/toggle-menu/index.js"></script>
     <script src="/components/overlay/index.js"></script>
+    <script src="/components/stop-temp/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="/modules/utils/handleTranslation.js"></script>
@@ -94,8 +95,28 @@
     </div>
 
     <div class="selection-menu">
-      
-      <span class="line"></span>
+      <div class="temp-box row">
+        <p class="temp-title">Temperature:</p>
+        <p id="temperature" class="temp">50</p>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="temp-controls row">
+        <stop-temp class="right-margin"></stop-temp>
+        <stop-temp></stop-temp>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="type-controls">
+        <select id="select-type" class="type-selector">
+          <option>Sticks</option>
+          <option>Spheres</option>
+        </select>
+      </div>
+
+      <div class="line"></div>
      
       <div class="extra-info">
         <toggle-instructions class="extra-info-icon"></toggle-instructions>

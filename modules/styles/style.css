@@ -415,6 +415,46 @@ figure {
   transform: scale(0.95);
 }
 
+.temp-box {
+  color: #ffffff;
+  font-family: "Roboto";
+  margin-right: 0.5rem;
+}
+
+.temp {
+  margin: 0;
+}
+
+.temp-title {
+  margin: 0 1rem 0 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.temp-controls,
+.type-controls {
+  margin: 0 0.5rem;
+}
+
+.type-selector {
+  width: 70px;
+  height: 20px;
+  margin: 0;
+  font-family: "Roboto";
+  font-size: 0.6rem;
+  border-radius: 0.25rem;
+  border: none;
+  outline: none;
+  padding: 0.25rem;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  background-image: url("/assets/img/arrow-select.png");
+  background-repeat: no-repeat;
+  background-position: top 0.5rem right 0.2rem;
+}
+
 @media screen and (max-width: 630px) {
   .orbital-selector {
     width: 90px;
