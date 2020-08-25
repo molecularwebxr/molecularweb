@@ -54,6 +54,7 @@
     <script src="/components/overlay/index.js"></script>
     <script src="/components/stop-temp/index.js"></script>
     <script src="/components/play-temp/index.js"></script>
+    <script src="/components/temp-control/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="/modules/utils/handleTranslation.js"></script>
@@ -123,6 +124,13 @@
         <toggle-instructions class="extra-info-icon"></toggle-instructions>
         <toggle-description class="extra-info-icon"></toggle-description>
       </div>
+    </div>
+
+    <!-- Temperature controls -->
+    <div class="temperature-container column">
+      <temp-control class="icon-margin" size="big" type="increase" ></temp-control>
+      <temp-control class="icon-margin" size="medium" type="increase" ></temp-control>
+      <temp-control size="small" type="increase" ></temp-control>
     </div>
 
     <!-- Menu for loading PDBs -->

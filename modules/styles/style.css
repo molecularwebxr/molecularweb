@@ -255,7 +255,7 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-56%);
+  transform: translateY(-61%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -453,6 +453,18 @@ figure {
   background-image: url("/assets/img/arrow-select.png");
   background-repeat: no-repeat;
   background-position: top 0.5rem right 0.2rem;
+}
+
+.temperature-container {
+  position: fixed;
+  top: 50%;
+  left: 76px;
+  transform: translateY(-61%);
+  z-index: 1;
+  background-color: var(--primarylight);
+  border-radius: 10px;
+  width: 50px;
+  padding: 1.5rem 1rem;
 }
 
 @media screen and (max-width: 630px) {
