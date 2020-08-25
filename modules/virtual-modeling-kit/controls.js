@@ -5,6 +5,7 @@ var low = 10;
 var scaleUp = document.getElementById("scale-up");
 var scaleDown = document.getElementById("scale-down");
 var tempControls = document.querySelectorAll("temp-control");
+var tempLabel = document.getElementById("temperature");
 
 // var flipGraphics = document.querySelector("flip-graphics");
 
@@ -23,7 +24,7 @@ function handleScale(e) {
 
 function handleTempControls(e) {
   var type = e.detail.type;
-  var size = e.detail.type;
+  var size = e.detail.size;
 
   var tempOffset;
 
@@ -41,6 +42,7 @@ function handleTempControls(e) {
     temperature - tempOffset;
   }
 
+  tempLabel.innerText = temperature;
 }
 
 scaleUp.addEventListener("scaleGraphics", handleScale);

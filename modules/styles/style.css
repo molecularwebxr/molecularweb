@@ -423,6 +423,8 @@ figure {
 
 .temp {
   margin: 0;
+  width: 36px;
+  text-align: right;
 }
 
 .temp-title {
