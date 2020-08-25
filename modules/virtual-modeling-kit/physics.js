@@ -3,7 +3,7 @@ world.gravity.set(0, 0, 0);
 world.broadphase = new CANNON.NaiveBroadphase();
 world.solver.iterations = 10;
 
-var temperature = 600;
+var temperature = 0;
 
 function setupConstraints(pdb) {
   //this loop will search and build the cannon constraints

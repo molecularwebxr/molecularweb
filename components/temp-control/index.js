@@ -130,12 +130,12 @@ class TempControl extends HTMLElement {
         this.increaseLow.classList.remove("hidden");
       }
     }
-
-    
   }
 
   handleClick() {
-    this.dispatchEvent(new CustomEvent("increaseTemp"));
+    this.dispatchEvent(new CustomEvent("updateTemp", {
+      detail: { type: this.type, size: this.size },
+    }));
   }
 
   attributeChangedCallback(attrName, oldValue, newValue) {

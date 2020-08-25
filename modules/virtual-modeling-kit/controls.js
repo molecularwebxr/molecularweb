@@ -1,5 +1,11 @@
+var high = 100;
+var medium = 50;
+var low = 10;
+
 var scaleUp = document.getElementById("scale-up");
 var scaleDown = document.getElementById("scale-down");
+var tempControls = document.querySelectorAll("temp-control");
+
 // var flipGraphics = document.querySelector("flip-graphics");
 
 // function handleFlip(e) {
@@ -15,6 +21,32 @@ function handleScale(e) {
   }
 }
 
+function handleTempControls(e) {
+  var type = e.detail.type;
+  var size = e.detail.type;
+
+  var tempOffset;
+
+  if (size === "big") {
+    tempOffset = high;
+  } else if (size === "medium") {
+    tempOffset = medium;
+  } else {
+    tempOffset = low;
+  }
+
+  if (type === "increase") {
+    temperature = temperature + tempOffset
+  } else {
+    temperature - tempOffset;
+  }
+
+}
+
 scaleUp.addEventListener("scaleGraphics", handleScale);
 scaleDown.addEventListener("scaleGraphics", handleScale);
 // flipGraphics.addEventListener("flipGraphics", handleFlip);
+
+tempControls.forEach(function(item) {
+  item.addEventListener("updateTemp", handleTempControls)
+})
