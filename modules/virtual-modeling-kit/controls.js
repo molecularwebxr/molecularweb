@@ -43,7 +43,8 @@ function handleTempControls(e) {
   if (type === "increase") {
     temperature = temperature + tempOffset
   } else {
-    temperature = temperature - tempOffset;
+    var newTemp = temperature - tempOffset;
+    temperature = newTemp < 0 ? 0 : newTemp;
   }
 
   tempLabel.innerText = temperature;
