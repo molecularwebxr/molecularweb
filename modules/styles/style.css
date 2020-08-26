@@ -62,6 +62,10 @@ figure {
   margin-bottom: 0.5rem;
 }
 
+.small-icon-margin {
+  margin-bottom: 6px;
+}
+
 .icon-margin:last-child {
   margin: 0;
 }
@@ -145,8 +149,9 @@ figure {
 }
 
 .line.horizontal {
-  transform: rotate(90deg);
-  margin: 0 auto;
+  width: 30px;
+  height: 2px;
+  margin: 14px auto;
 }
 
 .extra-info {
@@ -470,8 +475,7 @@ figure {
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
-  width: 50px;
-  padding: 1.5rem 1rem;
+  padding: 0.75rem 0.5rem;
 }
 
 @media screen and (max-width: 630px) {
