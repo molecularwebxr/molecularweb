@@ -144,6 +144,11 @@ figure {
   margin: 0 8px;
 }
 
+.line.horizontal {
+  transform: rotate(90deg);
+  margin: 0 auto;
+}
+
 .extra-info {
   display: flex;
   align-items: center;
