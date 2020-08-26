@@ -26,7 +26,7 @@ const TempControlContent = /* html */ `
   </style>
   <a id="anchor">
 
-    <svg id="increase-high" class="hidden" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg id="increase-high" class="hidden" width="30" height="31" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="15" cy="15" r="15" class="circle" />
       <path fill-rule="evenodd" clip-rule="evenodd" d="M15.6318 12.3157C15.6318 11.9669 15.3491 11.6841 15.0003 11.6841C14.6514 11.6841 14.3687 11.9669 14.3687 12.3157V14.2104H12.4744C12.1255 14.2104 11.8428 14.4932 11.8428 14.842C11.8428 15.1908 12.1255 15.4736 12.4744 15.4736H14.3687V17.3683C14.3687 17.7172 14.6514 17.9999 15.0003 17.9999C15.3491 17.9999 15.6318 17.7172 15.6318 17.3683V15.4736H17.527C17.8758 15.4736 18.1586 15.1908 18.1586 14.842C18.1586 14.4932 17.8758 14.2104 17.527 14.2104H15.6318V12.3157Z" />
       <path fill-rule="evenodd" clip-rule="evenodd" d="M24.4746 12.3157C24.4746 11.9669 24.1918 11.6841 23.843 11.6841C23.4942 11.6841 23.2114 11.9669 23.2114 12.3157V14.2104H21.3162C20.9673 14.2104 20.6846 14.4932 20.6846 14.842C20.6846 15.1908 20.9673 15.4736 21.3162 15.4736H23.2114V17.3683C23.2114 17.7172 23.4942 17.9999 23.843 17.9999C24.1918 17.9999 24.4746 17.7172 24.4746 17.3683V15.4736H26.3688C26.7176 15.4736 27.0004 15.1908 27.0004 14.842C27.0004 14.4932 26.7176 14.2104 26.3688 14.2104H24.4746V12.3157Z" />
@@ -39,19 +39,19 @@ const TempControlContent = /* html */ `
       <path fill-rule="evenodd" clip-rule="evenodd" d="M16.6318 9.63158C16.6318 9.28277 16.3491 9 16.0003 9C15.6514 9 15.3687 9.28277 15.3687 9.63158V11.5264H13.4734C13.1246 11.5264 12.8418 11.8091 12.8418 12.158C12.8418 12.5068 13.1246 12.7895 13.4734 12.7895H15.3687V14.6843C15.3687 15.0331 15.6514 15.3158 16.0003 15.3158C16.3491 15.3158 16.6318 15.0331 16.6318 14.6843V12.7895H18.5261C18.8749 12.7895 19.1576 12.5068 19.1576 12.158C19.1576 11.8091 18.8749 11.5264 18.5261 11.5264H16.6318V9.63158Z" />
     </svg>
 
-    <svg id="increase-low" class="hidden" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg id="increase-low" class="hidden" width="20" height="21" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="10" cy="10" r="10" class="circle" />
       <path fill-rule="evenodd" clip-rule="evenodd" d="M10.79 7.63158C10.79 7.28277 10.5073 7 10.1585 7C9.80964 7 9.52687 7.28277 9.52687 7.63158V9.52637H7.63158C7.28277 9.52637 7 9.80914 7 10.158C7 10.5068 7.28277 10.7895 7.63158 10.7895H9.52687V12.6843C9.52687 13.0331 9.80964 13.3158 10.1585 13.3158C10.5073 13.3158 10.79 13.0331 10.79 12.6843V10.7895H12.6843C13.0331 10.7895 13.3158 10.5068 13.3158 10.158C13.3158 9.80914 13.0331 9.52637 12.6843 9.52637H10.79V7.63158Z" />
     </svg>
 
-    <svg id="decrease-high" class="hidden" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg id="decrease-high" class="hidden" width="30" height="30" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle class="circle" r="15" transform="matrix(1 0 0 -1 15 15)" />
       <rect width="6.31584" height="1.26317" rx="0.631584" transform="matrix(1 0 0 -1 11.8428 15.7896)" fill="#4432B0"/>
       <rect width="6.31584" height="1.26317" rx="0.631584" transform="matrix(1 0 0 -1 20.6846 15.7896)" fill="#4432B0"/>
       <rect width="6.31584" height="1.26317" rx="0.631584" transform="matrix(1 0 0 -1 3 15.7896)" fill="#4432B0"/>
     </svg>
 
-    <svg id="decrease-medium" class="hidden" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg id="decrease-medium" class="hidden" width="24" height="24" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle class="circle" r="12" transform="matrix(1 0 0 -1 12 12)" />
       <rect width="6.31584" height="1.26317" rx="0.631584" transform="matrix(1 0 0 -1 4 12.4736)" fill="#4432B0"/>
       <rect width="6.31584" height="1.26317" rx="0.631584" transform="matrix(1 0 0 -1 12.8418 12.4736)" fill="#4432B0"/>

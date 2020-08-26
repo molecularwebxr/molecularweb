@@ -470,12 +470,22 @@ figure {
 .temperature-container {
   position: fixed;
   top: 50%;
-  left: 76px;
+  right: 76px;
   transform: translateY(-61%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
   padding: 0.75rem 0.5rem;
+}
+
+.triangle-temp {
+  position: absolute;
+  top: 50%;
+  right: -9px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid var(--primarylight);
+  transform: translateY(-50%);
 }
 
 @media screen and (max-width: 630px) {

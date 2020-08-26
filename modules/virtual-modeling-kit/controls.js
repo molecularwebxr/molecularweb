@@ -10,6 +10,10 @@ var tempControls = document.querySelectorAll("temp-control");
 var tempLabel = document.getElementById("temperature");
 var stopTemp = document.querySelector("stop-temp");
 var playTemp = document.querySelector("play-temp");
+var tempMenu = document.querySelector("enable-temp-controls");
+var tempMenuContainer = document.getElementById("temp-container");
+
+tempMenu.isActive = false;
 
 // var flipGraphics = document.querySelector("flip-graphics");
 
@@ -61,10 +65,20 @@ function handlePlayTemp(e) {
   tempLabel.innerText = temperature;
 }
 
+function handleTempMenu(e) {
+  tempMenuContainer.classList.toggle("hide");
+  tempMenu.isActive = !tempMenu.isActive;
+  if (mkMenu.isActive) {
+    mkMenu.isActive = false;
+    menuContainer.classList.add("hide");
+  }
+}
+
 scaleUp.addEventListener("scaleGraphics", handleScale);
 scaleDown.addEventListener("scaleGraphics", handleScale);
 stopTemp.addEventListener("stopTemp", handleStopTemp);
 playTemp.addEventListener("playTemp", handlePlayTemp);
+tempMenu.addEventListener("click", handleTempMenu);
 // flipGraphics.addEventListener("flipGraphics", handleFlip);
 
 tempControls.forEach(function(item) {

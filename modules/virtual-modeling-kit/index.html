@@ -55,6 +55,7 @@
     <script src="/components/stop-temp/index.js"></script>
     <script src="/components/play-temp/index.js"></script>
     <script src="/components/temp-control/index.js"></script>
+    <script src="/components/temp-button/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="/modules/utils/handleTranslation.js"></script>
@@ -82,6 +83,7 @@
       <flip-video class="icon-margin"></flip-video>
       <!-- <flip-graphics class="icon-margin"></flip-graphics> -->
       <enable-mk-menu class="icon-margin"></enable-mk-menu>
+      <enable-temp-controls class="icon-margin"></enable-temp-controls>
       <scale-graphics
         class="icon-margin"
         id="scale-up"
@@ -126,7 +128,8 @@
     </div>
 
     <!-- Temperature controls -->
-    <div class="temperature-container column">
+    <div id="temp-container" class="temperature-container hide column">
+      <div class="triangle-temp"></div>
       <temp-control
         class="small-icon-margin"
         size="big"

@@ -54,7 +54,11 @@ function handleUpload(e) {
 // Handle MK Menu
 function handleMenu(e) {
   menuContainer.classList.toggle("hide");
-  mkMenu.toggle();
+  mkMenu.isActive = !mkMenu.isActive;
+  if (tempMenu.isActive) {
+    tempMenu.isActive = false;
+    tempMenuContainer.classList.add("hide");
+  }
 }
 
 selectMenu.addEventListener("change", handleChange);
