@@ -148,6 +148,7 @@ function animate() {
   requestAnimationFrame(animate);
   deltaTime = clock.getDelta();
   totalTime += deltaTime;
+  updatePhysics();
   update();
   render();
 }
@@ -155,11 +156,21 @@ function animate() {
 function loadPdb(rawPdb) {
   pdb = setupPdb(rawPdb);
 
+  atomsarray = [];
+  bondsarray = [];
+  spheresarray = [];
+  bondfirstatom = [];
+  bondlength = [];
+  atoms = pdb.atoms;
+
+  clearPhysics();
   clearScene(sceneGroup);
 
   createSticks(pdb);
 
   createSpheres(pdb);
+
+  setupConstraints(pdb);
 }
 
 function handleClick(e) {
@@ -168,8 +179,8 @@ function handleClick(e) {
   if (pdbInserted.length > 0) {
     loadPdb(pdbInserted);
     handleMenu(e);
+    handleTempMenu(e)
   } else {
     console.log("No pdb!");
   }
 }
-

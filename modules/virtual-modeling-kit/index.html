@@ -23,6 +23,7 @@
 
     <!-- 3D Libraries -->
     <script src="/lib/three.js"></script>
+    <script src="/lib/cannon.min.js"></script>
     <script src="/lib/jsartoolkit5/artoolkit.min.js"></script>
     <script src="/lib/jsartoolkit5/artoolkit.api.js"></script>
     <script src="/lib/threex/threex-artoolkitsource.js"></script>
@@ -39,6 +40,7 @@
 
     <!-- Web Components -->
     <script src="/components/icons/atom/index.js"></script>
+    <script src="/components/icons/molecule/index.js"></script>
     <script src="/components/loader/index.js"></script>
     <script src="/components/back-anchor/index.js"></script>
     <script src="/components/feedback-prompt/index.js"></script>
@@ -46,10 +48,17 @@
     <script src="/components/flip-graphics/index.js"></script>
     <script src="/components/scale-graphics/index.js"></script>
     <script src="/components/mk-button/index.js"></script>
+    <script src="/components/toggle-instructions/index.js"></script>
+    <script src="/components/toggle-description/index.js"></script>
+    <script src="/components/toggle-menu/index.js"></script>
+    <script src="/components/overlay/index.js"></script>
+    <script src="/components/stop-temp/index.js"></script>
+    <script src="/components/play-temp/index.js"></script>
+    <script src="/components/temp-control/index.js"></script>
+    <script src="/components/temp-button/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="/modules/utils/handleTranslation.js"></script>
-
   </head>
 
   <body>
@@ -73,6 +82,7 @@
     <div class="side-menu column">
       <flip-video class="icon-margin"></flip-video>
       <!-- <flip-graphics class="icon-margin"></flip-graphics> -->
+      <enable-temp-controls class="icon-margin"></enable-temp-controls>
       <enable-mk-menu class="icon-margin"></enable-mk-menu>
       <scale-graphics
         class="icon-margin"
@@ -84,8 +94,70 @@
         id="scale-down"
         type="down"
       ></scale-graphics>
+      <toggle-menu class="icon-margin"></toggle-menu>
     </div>
 
+    <div class="selection-menu">
+      <div class="temp-box row">
+        <p class="temp-title">Temperature:</p>
+        <p id="temperature" class="temp">0</p>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="temp-controls row">
+        <stop-temp class="right-margin"></stop-temp>
+        <play-temp></play-temp>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="type-controls">
+        <select id="select-type" class="type-selector">
+          <option>Sticks</option>
+          <option>Spheres</option>
+        </select>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="extra-info">
+        <toggle-instructions class="extra-info-icon"></toggle-instructions>
+        <toggle-description class="extra-info-icon"></toggle-description>
+      </div>
+    </div>
+
+    <!-- Temperature controls -->
+    <div id="temp-container" class="temperature-container hide column">
+      <div class="triangle-temp"></div>
+      <temp-control
+        class="small-icon-margin"
+        size="big"
+        type="increase"
+      ></temp-control>
+      <temp-control
+        class="small-icon-margin"
+        size="medium"
+        type="increase"
+      ></temp-control>
+      <temp-control size="small" type="increase"></temp-control>
+
+      <div class="line horizontal"></div>
+
+      <temp-control
+        class="small-icon-margin"
+        size="small"
+        type="decrease"
+      ></temp-control>
+      <temp-control
+        class="small-icon-margin"
+        size="medium"
+        type="decrease"
+      ></temp-control>
+      <temp-control size="big" type="decrease"></temp-control>
+    </div>
+
+    <!-- Menu for loading PDBs -->
     <div class="modeling-container" id="mk-menu">
       <div class="triangle-mk"></div>
       <div id="close-menu" class="close-menu">
@@ -134,10 +206,32 @@
       <button id="start-ar" class="btn-primary">Start AR</button>
     </div>
 
-    <script src="utils.js"></script>
+    <!-- Overlays -->
+    <activity-overlay id="instructions" default="open" type="instructions">
+      <span slot="title" data-i18n="orbitals.modelingKit.title"></span>
+      <span
+        slot="instructions"
+        data-i18n="orbitals.modelingKit.instructions"
+      ></span>
+    </activity-overlay>
+
+    <activity-overlay id="description" default="hidden" type="description">
+      <span slot="title" data-i18n="orbitals.modelingKit.title"></span>
+      <span
+        slot="description"
+        data-i18n="orbitals.modelingKit.description"
+      ></span>
+    </activity-overlay>
+
+    <activity-overlay id="menu" default="hidden" type="menu">
+    </activity-overlay>
+
+    <script src="3Dutils.js"></script>
     <script src="handlePdbs.js"></script>
+    <script src="physics.js"></script>
     <script src="index.js"></script>
     <script src="controls.js"></script>
     <script src="/modules/utils/handleFlips.js"></script>
+    <script src="/modules/utils/handleOverlays.js"></script>
   </body>
 </html>

@@ -62,6 +62,10 @@ figure {
   margin-bottom: 0.5rem;
 }
 
+.small-icon-margin {
+  margin-bottom: 6px;
+}
+
 .icon-margin:last-child {
   margin: 0;
 }
@@ -142,6 +146,12 @@ figure {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 1px;
   margin: 0 8px;
+}
+
+.line.horizontal {
+  width: 30px;
+  height: 2px;
+  margin: 14px auto;
 }
 
 .extra-info {
@@ -255,7 +265,7 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-56%);
+  transform: translateY(-55%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -413,6 +423,69 @@ figure {
 
 .btn-primary:active {
   transform: scale(0.95);
+}
+
+.temp-box {
+  color: #ffffff;
+  font-family: "Roboto";
+  margin-right: 0.5rem;
+}
+
+.temp {
+  margin: 0;
+  width: 36px;
+  text-align: right;
+}
+
+.temp-title {
+  margin: 0 1rem 0 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.temp-controls,
+.type-controls {
+  margin: 0 0.5rem;
+}
+
+.type-selector {
+  width: 70px;
+  height: 20px;
+  margin: 0;
+  font-family: "Roboto";
+  font-size: 0.6rem;
+  border-radius: 0.25rem;
+  border: none;
+  outline: none;
+  padding: 0.25rem;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  background-image: url("/assets/img/arrow-select.png");
+  background-repeat: no-repeat;
+  background-position: top 0.5rem right 0.2rem;
+}
+
+.temperature-container {
+  position: fixed;
+  top: 50%;
+  right: 76px;
+  transform: translateY(-83%);
+  z-index: 1;
+  background-color: var(--primarylight);
+  border-radius: 10px;
+  padding: 0.75rem 0.5rem;
+}
+
+.triangle-temp {
+  position: absolute;
+  top: 50%;
+  right: -9px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid var(--primarylight);
+  transform: translateY(-50%);
 }
 
 @media screen and (max-width: 630px) {
