@@ -179,6 +179,7 @@ function handleClick(e) {
   if (pdbInserted.length > 0) {
     loadPdb(pdbInserted);
     handleMenu(e);
+    handleTempMenu(e)
   } else {
     console.log("No pdb!");
   }
