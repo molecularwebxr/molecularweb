@@ -52,6 +52,7 @@ function handleTempControls(e) {
     temperature = newTemp < 0 ? 0 : newTemp;
   }
 
+  prevTemp = temperature;
   tempLabel.innerText = temperature;
 }
 
@@ -62,7 +63,8 @@ function handleStopTemp(e) {
 }
 
 function handlePlayTemp(e) {
-  temperature = prevTemp;
+  temperature = prevTemp === 0 ? 300 : prevTemp;
+  prevTemp = temperature;
   tempLabel.innerText = temperature;
 }
 
