@@ -80,12 +80,18 @@ function handleRenderType(e) {
 
   if (value === "spheres") {
     stickGroup.visible = false;
-    // spheresGroup.scale.multiplyScalar(1.5);
-    console.log(spheresGroup.children);
-    console.log(pdb.elements);
+
+    spheresGroup.children.forEach(function (atom, index) {
+      var scale = radiusfactor2 * elementradii[pdb.elements[index]]
+      atom.scale.setScalar(scale);
+    });
   } else {
     stickGroup.visible = true;
-    // spheresGroup.scale.multiplyScalar(1);
+
+    spheresGroup.children.forEach(function (atom, index) {
+      var scale = radiusfactor1 * elementradii[pdb.elements[index]]
+      atom.scale.setScalar(scale);
+    });
   }
 }
 

@@ -56,7 +56,8 @@ var spheresarray = [];
 var bondfirstatom = [];
 var bondlength = [];
 var atoms = 0;
-var radiusfactor = 0.35;
+var radiusfactor1 = 0.35;
+var radiusfactor2 = 1.4;
 
 var sphereGeometry = new THREE.SphereGeometry(1, 32, 16);
 
@@ -316,7 +317,7 @@ function createSpheres(pdb) {
   //this loop will create the spheres to display the atoms at the defined radius
   //and the actual physical cannon spheres
   for (i = 0; i < pdb.atoms; i++) {
-    var sphereRadius = radiusfactor * elementradii[pdb.elements[i]];
+    var sphereRadius = radiusfactor1 * elementradii[pdb.elements[i]];
     var sphereMesh = new THREE.Mesh(
       sphereGeometry,
       //new THREE.MeshLambertMaterial({ color: elementcolors[elements[i]] , opacity: 1, transparent: false, side: THREE.DoubleSide, depthWrite: false})
