@@ -56,7 +56,8 @@ var spheresarray = [];
 var bondfirstatom = [];
 var bondlength = [];
 var atoms = 0;
-var radiusfactor = 0.35;
+var radiusfactor1 = 0.35;
+var radiusfactor2 = 1.4;
 
 var sphereGeometry = new THREE.SphereGeometry(1, 32, 16);
 
@@ -300,8 +301,8 @@ function createSticks(pdb) {
             color: elementColors[pdb.elements[j]],
           })
         ); // , opacity: 1, transparent: false, side: THREE.DoubleSide, depthWrite: false} ))
-        sceneGroup.add(bond1);
-        sceneGroup.add(bond2);
+        stickGroup.add(bond1);
+        stickGroup.add(bond2);
         bondsarray.push(bond1);
         bondsarray.push(bond2);
         bondfirstatom.push(i);
@@ -309,13 +310,14 @@ function createSticks(pdb) {
       }
     }
   }
+  sceneGroup.add(stickGroup);
 }
 
 function createSpheres(pdb) {
   //this loop will create the spheres to display the atoms at the defined radius
   //and the actual physical cannon spheres
   for (i = 0; i < pdb.atoms; i++) {
-    var sphereRadius = radiusfactor * elementradii[pdb.elements[i]];
+    var sphereRadius = radiusfactor1 * elementradii[pdb.elements[i]];
     var sphereMesh = new THREE.Mesh(
       sphereGeometry,
       //new THREE.MeshLambertMaterial({ color: elementcolors[elements[i]] , opacity: 1, transparent: false, side: THREE.DoubleSide, depthWrite: false})
@@ -327,7 +329,7 @@ function createSpheres(pdb) {
     sphereMesh.position.x = -(pdb.xCoords[i] - pdb.xAvg);
     sphereMesh.position.y = pdb.yCoords[i] - pdb.yAvg;
     sphereMesh.position.z = pdb.zCoords[i] - pdb.zAvg;
-    sceneGroup.add(sphereMesh); //added the sphere representation for atom i
+    spheresGroup.add(sphereMesh); //added the sphere representation for atom i
     atomsarray.push(sphereMesh);
 
     var sphereShape = new CANNON.Sphere(0.5 * elementradii[pdb.elements[i]]); // Step 1
@@ -343,9 +345,10 @@ function createSpheres(pdb) {
     spheresarray.push(sphereBody);
     world.add(sphereBody); //added the sphere to the world
   }
+  sceneGroup.add(spheresGroup);
 }
 
-function clearScene(group) {
+function clearGroup(group) {
   var length = group.children.length;
 
   for (var i = length - 1; i >= 0; i--) {

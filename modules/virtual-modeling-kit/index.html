@@ -58,7 +58,7 @@
     <script src="/components/temp-button/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
-    <script src="/modules/utils/handleTranslation.js"></script>
+    <script src="translate.js"></script>
   </head>
 
   <body>
@@ -97,9 +97,9 @@
       <toggle-menu class="icon-margin"></toggle-menu>
     </div>
 
-    <div class="selection-menu">
+    <div id="selection-menu" class="selection-menu">
       <div class="temp-box row">
-        <p class="temp-title">Temperature:</p>
+        <p class="temp-title" data-i18n="orbitals.modelingKit.temperature"></p>
         <p id="temperature" class="temp">0</p>
       </div>
 
@@ -114,8 +114,15 @@
 
       <div class="type-controls">
         <select id="select-type" class="type-selector">
-          <option>Sticks</option>
-          <option>Spheres</option>
+          <option
+            value="sticks"
+            selected
+            data-i18n="orbitals.modelingKit.sticks"
+          ></option>
+          <option
+            value="spheres"
+            data-i18n="orbitals.modelingKit.spheres"
+          ></option>
         </select>
       </div>
 
@@ -166,29 +173,39 @@
       </div>
       <div class="modeling-info row">
         <p>👉</p>
-        <p class="modeling-instructions">
-          Copy molecule in PDB format or load a preset example, then click
-          “Start AR”
-        </p>
+        <p
+          class="modeling-instructions"
+          data-i18n="orbitals.modelingKit.pdbInstructions"
+        ></p>
       </div>
 
       <div class="modeling-options row">
         <div class="modeling-marker-options column">
-          <p>Marker</p>
-          <a href="">Get Marker</a>
+          <p data-i18n="orbitals.modelingKit.marker"></p>
+          <a
+            href="/assets/markers/cube.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="orbitals.modelingKit.getMarker"
+          ></a>
         </div>
         <div class="row">
           <div class="pdb-load">
-            <p class="pdb-option">Load your file</p>
-            <label class="upload-pdb">
+            <p class="pdb-option" data-i18n="orbitals.modelingKit.loadFile"></p>
+            <label class="upload-pdb" data-i18n="orbitals.modelingKit.load">
               <input id="pdb-input" name="pdb" type="file" hidden />
-              Load
             </label>
           </div>
           <div class="pdb-select">
-            <p class="pdb-option">Choose example</p>
+            <p
+              class="pdb-option"
+              data-i18n="orbitals.modelingKit.chooseExample"
+            ></p>
             <select id="select-pdb" class="pdb-selector">
-              <option value="">--Examples--</option>
+              <option
+                value=""
+                data-i18n="orbitals.modelingKit.examples"
+              ></option>
             </select>
           </div>
         </div>
@@ -200,10 +217,14 @@
         name="textarea"
         rows="10"
         cols="50"
-        placeholder="Copy-paste PDB here"
+        data-i18n="[placeholder]orbitals.modelingKit.placeholder"
       ></textarea>
 
-      <button id="start-ar" class="btn-primary">Start AR</button>
+      <button
+        id="start-ar"
+        class="btn-primary"
+        data-i18n="orbitals.modelingKit.startAR"
+      ></button>
     </div>
 
     <!-- Overlays -->

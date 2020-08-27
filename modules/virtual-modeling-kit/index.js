@@ -4,7 +4,7 @@ var arToolkitSource, arToolkitContext;
 
 var patternArray, markerRootArray, markerGroupArray;
 
-var sceneGroup;
+var sceneGroup, stickGroup, spheresGroup;
 
 var pdb;
 
@@ -117,6 +117,8 @@ function initialize() {
 
   // setup scene
   sceneGroup = new THREE.Group();
+  stickGroup = new THREE.Group();
+  spheresGroup = new THREE.Group();
   // a 1x1x1 cube model with scale factor 1.25 fills up the physical cube
   sceneGroup.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
 
@@ -164,7 +166,8 @@ function loadPdb(rawPdb) {
   atoms = pdb.atoms;
 
   clearPhysics();
-  clearScene(sceneGroup);
+  clearGroup(stickGroup);
+  clearGroup(spheresGroup);
 
   createSticks(pdb);
 

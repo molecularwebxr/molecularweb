@@ -12,6 +12,7 @@ var stopTemp = document.querySelector("stop-temp");
 var playTemp = document.querySelector("play-temp");
 var tempMenu = document.querySelector("enable-temp-controls");
 var tempMenuContainer = document.getElementById("temp-container");
+var renderType = document.getElementById("select-type");
 
 tempMenu.isActive = false;
 
@@ -51,6 +52,7 @@ function handleTempControls(e) {
     temperature = newTemp < 0 ? 0 : newTemp;
   }
 
+  prevTemp = temperature;
   tempLabel.innerText = temperature;
 }
 
@@ -61,7 +63,8 @@ function handleStopTemp(e) {
 }
 
 function handlePlayTemp(e) {
-  temperature = prevTemp;
+  temperature = prevTemp === 0 ? 300 : prevTemp;
+  prevTemp = temperature;
   tempLabel.innerText = temperature;
 }
 
@@ -74,11 +77,32 @@ function handleTempMenu(e) {
   }
 }
 
+function handleRenderType(e) {
+  var value = e.target.value;
+
+  if (value === "spheres") {
+    stickGroup.visible = false;
+
+    spheresGroup.children.forEach(function (atom, index) {
+      var scale = radiusfactor2 * elementradii[pdb.elements[index]]
+      atom.scale.setScalar(scale);
+    });
+  } else {
+    stickGroup.visible = true;
+
+    spheresGroup.children.forEach(function (atom, index) {
+      var scale = radiusfactor1 * elementradii[pdb.elements[index]]
+      atom.scale.setScalar(scale);
+    });
+  }
+}
+
 scaleUp.addEventListener("scaleGraphics", handleScale);
 scaleDown.addEventListener("scaleGraphics", handleScale);
 stopTemp.addEventListener("stopTemp", handleStopTemp);
 playTemp.addEventListener("playTemp", handlePlayTemp);
 tempMenu.addEventListener("click", handleTempMenu);
+renderType.addEventListener("change", handleRenderType);
 // flipGraphics.addEventListener("flipGraphics", handleFlip);
 
 tempControls.forEach(function(item) {

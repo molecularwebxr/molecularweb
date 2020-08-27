@@ -48,7 +48,19 @@
     "modelingKit": {
       "title": "Virtual modeling kit",
       "description": "Display *any* molecule from its atomic coordinates, to explore its structure and its motions in AR.",
-      "instructions": "Select a preset example or paste your own atomic coordinates, then launch AR experience. To see motions, raise temperature."
+      "instructions": "Select a preset example or paste your own atomic coordinates, then launch AR experience. To see motions, raise temperature.",
+      "temperature": "Temperature: ", 
+      "sticks": "Sticks",
+      "spheres": "Spheres",
+      "pdbInstructions": "Copy molecule in PDB format or load a preset example, then click “Start AR”",
+      "marker": "Marker",
+      "getMarker": "Get marker",
+      "loadFile": "Load your file",
+      "load": "load",
+      "chooseExample": "Choose example",
+      "examples": "--Examples--",
+      "startAR": "Start AR",
+      "placeholder": "Copy-paste PDB here"
     }
   },
   "bonds": {
