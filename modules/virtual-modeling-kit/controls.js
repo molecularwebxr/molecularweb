@@ -12,6 +12,7 @@ var stopTemp = document.querySelector("stop-temp");
 var playTemp = document.querySelector("play-temp");
 var tempMenu = document.querySelector("enable-temp-controls");
 var tempMenuContainer = document.getElementById("temp-container");
+var renderType = document.getElementById("select-type");
 
 tempMenu.isActive = false;
 
@@ -74,11 +75,26 @@ function handleTempMenu(e) {
   }
 }
 
+function handleRenderType(e) {
+  var value = e.target.value;
+
+  if (value === "spheres") {
+    stickGroup.visible = false;
+    // spheresGroup.scale.multiplyScalar(1.5);
+    console.log(spheresGroup.children);
+    console.log(pdb.elements);
+  } else {
+    stickGroup.visible = true;
+    // spheresGroup.scale.multiplyScalar(1);
+  }
+}
+
 scaleUp.addEventListener("scaleGraphics", handleScale);
 scaleDown.addEventListener("scaleGraphics", handleScale);
 stopTemp.addEventListener("stopTemp", handleStopTemp);
 playTemp.addEventListener("playTemp", handlePlayTemp);
 tempMenu.addEventListener("click", handleTempMenu);
+renderType.addEventListener("change", handleRenderType);
 // flipGraphics.addEventListener("flipGraphics", handleFlip);
 
 tempControls.forEach(function(item) {

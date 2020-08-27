@@ -300,8 +300,8 @@ function createSticks(pdb) {
             color: elementColors[pdb.elements[j]],
           })
         ); // , opacity: 1, transparent: false, side: THREE.DoubleSide, depthWrite: false} ))
-        sceneGroup.add(bond1);
-        sceneGroup.add(bond2);
+        stickGroup.add(bond1);
+        stickGroup.add(bond2);
         bondsarray.push(bond1);
         bondsarray.push(bond2);
         bondfirstatom.push(i);
@@ -309,6 +309,7 @@ function createSticks(pdb) {
       }
     }
   }
+  sceneGroup.add(stickGroup);
 }
 
 function createSpheres(pdb) {
@@ -327,7 +328,7 @@ function createSpheres(pdb) {
     sphereMesh.position.x = -(pdb.xCoords[i] - pdb.xAvg);
     sphereMesh.position.y = pdb.yCoords[i] - pdb.yAvg;
     sphereMesh.position.z = pdb.zCoords[i] - pdb.zAvg;
-    sceneGroup.add(sphereMesh); //added the sphere representation for atom i
+    spheresGroup.add(sphereMesh); //added the sphere representation for atom i
     atomsarray.push(sphereMesh);
 
     var sphereShape = new CANNON.Sphere(0.5 * elementradii[pdb.elements[i]]); // Step 1
@@ -343,9 +344,10 @@ function createSpheres(pdb) {
     spheresarray.push(sphereBody);
     world.add(sphereBody); //added the sphere to the world
   }
+  sceneGroup.add(spheresGroup);
 }
 
-function clearScene(group) {
+function clearGroup(group) {
   var length = group.children.length;
 
   for (var i = length - 1; i >= 0; i--) {
