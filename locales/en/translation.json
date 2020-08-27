@@ -56,9 +56,11 @@
       "marker": "Marker",
       "getMarker": "Get marker",
       "loadFile": "Load your file",
+      "load": "load",
       "chooseExample": "Choose example",
       "examples": "--Examples--",
-      "startAR": "Start AR"
+      "startAR": "Start AR",
+      "placeholder": "Copy-paste PDB here"
     }
   },
   "bonds": {
