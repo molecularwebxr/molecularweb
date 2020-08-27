@@ -34,15 +34,17 @@ overlayTemplate.innerHTML = /* html */ `
       text-align: center;
     }
     
-    p{
+    .text {
       margin: 0.5rem 0;
       font-size: 1.5rem;
       font-weight: normal;
       text-align: center;
       width: 54rem;
+      text-decoration: none;
+      color: #FFFFFF;
     }
     
-    p.hidden {
+    .text.hidden {
       display: none;
     }
 
@@ -72,7 +74,7 @@ overlayTemplate.innerHTML = /* html */ `
         font-size: 2.5rem;
       }
 
-      p {
+      .text {
         font-size: 1.3rem;
         width: 70vw;
       }
@@ -93,7 +95,7 @@ overlayTemplate.innerHTML = /* html */ `
         font-size: 1.75rem;
       }
 
-      p {
+      .text {
         font-size: 1rem;
       }
 
@@ -114,7 +116,7 @@ overlayTemplate.innerHTML = /* html */ `
         width: 95vw;
       }
 
-      p {
+      .text {
         font-size: 0.8rem;
       }
 
@@ -128,7 +130,7 @@ overlayTemplate.innerHTML = /* html */ `
         font-size: 1rem;
       }
 
-      p {
+      .text {
         font-size: 0.75rem;
       }
 
@@ -143,7 +145,7 @@ overlayTemplate.innerHTML = /* html */ `
         margin: 1.25rem 0 1rem 0;
       }
 
-      p {
+      .text {
         font-size: 0.75rem;
         margin: 0.25rem 0;
       }
@@ -159,18 +161,28 @@ overlayTemplate.innerHTML = /* html */ `
     <h1>
       <slot name="title"></slot>
     </h1>
-    <p id="markers">
+
+    <a id="markers"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="text"
+       href="/assets/markers/cube.pdf"
+    >
       <intl-message key="app.markers"></intl-message>
-    </p>
-    <p id="instructions">
+    </a>
+
+    <p class="text" id="instructions">
       <slot name="instructions"></slot>
     </p>
-    <p id="description">
+
+    <p class="text" id="description">
       <slot name="description"></slot>
     </p>
-    <p id="menu" class="hidden">
+
+    <p class="text hidden" id="menu">
       Here will be the menu :)
     </p>
+
     <button>Continue</button>
   </div>`;
 
