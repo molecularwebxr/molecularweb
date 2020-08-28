@@ -19,8 +19,6 @@ tempMenu.isActive = false;
 var flipGraphics = document.querySelector("flip-graphics");
 
 function handleFlip(e) {
-  // sceneGroup.scale.x = -sceneGroup.scale.x;
-  // sceneGroup.applyMatrix4(new THREE.Matrix4().makeScale(-1, 1, 1));
 
   for (i = 0; i < atomsarray.length; i++) {
     world.bodies[i].position.x = - world.bodies[i].position.x;
