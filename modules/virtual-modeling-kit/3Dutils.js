@@ -316,8 +316,9 @@ function createSticks(pdb) {
 function createSpheres(pdb) {
   //this loop will create the spheres to display the atoms at the defined radius
   //and the actual physical cannon spheres
+  var radiusFactor = renderType.value === "spheres" ? radiusfactor2 : radiusfactor1;
   for (i = 0; i < pdb.atoms; i++) {
-    var sphereRadius = radiusfactor1 * elementradii[pdb.elements[i]];
+    var sphereRadius = radiusFactor * elementradii[pdb.elements[i]];
     var sphereMesh = new THREE.Mesh(
       sphereGeometry,
       //new THREE.MeshLambertMaterial({ color: elementcolors[elements[i]] , opacity: 1, transparent: false, side: THREE.DoubleSide, depthWrite: false})
