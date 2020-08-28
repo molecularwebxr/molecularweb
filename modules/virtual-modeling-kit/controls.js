@@ -16,12 +16,18 @@ var renderType = document.getElementById("select-type");
 
 tempMenu.isActive = false;
 
-// var flipGraphics = document.querySelector("flip-graphics");
+var flipGraphics = document.querySelector("flip-graphics");
 
-// function handleFlip(e) {
-//   sceneGroup.scale.x = -sceneGroup.scale.x;
-//   // sceneGroup.applyMatrix4(new THREE.Matrix4().makeScale(-1, 1, 1));
-// }
+function handleFlip(e) {
+  // sceneGroup.scale.x = -sceneGroup.scale.x;
+  // sceneGroup.applyMatrix4(new THREE.Matrix4().makeScale(-1, 1, 1));
+
+  for (i = 0; i < atomsarray.length; i++) {
+    world.bodies[i].position.x = - world.bodies[i].position.x;
+    // world.bodies[i].position.y = - world.bodies[i].position.y;
+    // world.bodies[i].position.z = - world.bodies[i].position.z;
+  }
+}
 
 function handleScale(e) {
   if(e.detail === "up") {
@@ -103,7 +109,7 @@ stopTemp.addEventListener("stopTemp", handleStopTemp);
 playTemp.addEventListener("playTemp", handlePlayTemp);
 tempMenu.addEventListener("click", handleTempMenu);
 renderType.addEventListener("change", handleRenderType);
-// flipGraphics.addEventListener("flipGraphics", handleFlip);
+flipGraphics.addEventListener("flipGraphics", handleFlip);
 
 tempControls.forEach(function(item) {
   item.addEventListener("updateTemp", handleTempControls)
