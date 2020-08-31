@@ -54,11 +54,11 @@ function setupPdb(rawPdb) {
       pdb.xAvg = pdb.xAvg + pdb.xCoords[pdb.atoms];
       pdb.yAvg = pdb.yAvg + pdb.yCoords[pdb.atoms];
       pdb.zAvg = pdb.zAvg + pdb.zCoords[pdb.atoms];
+      var element = lines[i].substring(76, 79).trim().toUpperCase();
       for (j = 0; j < elementNames.length; j++) {
-        if (
-          lines[i].substring(76, 79).trim().toUpperCase() == elementNames[j]
-        ) {
+        if (element == elementNames[j]) {
           pdb.elements[pdb.atoms] = j;
+          break;
         }
       }
       pdb.atoms++;
@@ -264,7 +264,8 @@ function createSticks(pdb) {
 function createSpheres(pdb) {
   //this loop will create the spheres to display the atoms at the defined radius
   //and the actual physical cannon spheres
-  var radiusFactor = renderType.value === "spheres" ? radiusfactor2 : radiusfactor1;
+  var radiusFactor =
+    renderType.value === "spheres" ? radiusfactor2 : radiusfactor1;
   for (i = 0; i < pdb.atoms; i++) {
     var sphereRadius = radiusFactor * elementradii[pdb.elements[i]];
     var sphereMesh = new THREE.Mesh(
@@ -282,7 +283,7 @@ function createSpheres(pdb) {
     atomsarray.push(sphereMesh);
 
     var sphereShape = new CANNON.Sphere(0.5 * elementradii[pdb.elements[i]]); // Step 1
-    var sphereBody = new CANNON.Body({ mass: 5, shape: sphereShape }); // Step 2
+    var sphereBody = new CANNON.Body({ mass: elementmasses[pdb.elements[i]], shape: sphereShape }); // Step 2
     sphereBody.position.set(
       sphereMesh.position.x,
       sphereMesh.position.y,
