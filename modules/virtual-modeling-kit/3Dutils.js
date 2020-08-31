@@ -127,10 +127,10 @@ function createSticks(pdb) {
         //if both atoms are C, N or O then we have to check whether they are forming a double bond
         //to know this we check if they have at least one 120 degree angle around
         if (
-          (pdb.elements[i] == 1 ||
-            pdb.elements[i] == 2 ||
-            pdb.elements[i] == 3) &&
-          (pdb.elements[j] == 1 || pdb.elements[j] == 2 || pdb.elements[j] == 3)
+          (pdb.elements[i] == 5 ||
+            pdb.elements[i] == 6 ||
+            pdb.elements[i] == 7) &&
+          (pdb.elements[j] == 5 || pdb.elements[j] == 6 || pdb.elements[j] == 7)
         ) {
           for (
             k = 0;
