@@ -246,7 +246,7 @@ var elementColors = [
   new THREE.Color(0xcc80ff),
   new THREE.Color(0xc2ff00),
   new THREE.Color(0xffb5b5),
-  new THREE.Color(909090),
+  new THREE.Color(0x909090),
   new THREE.Color(0x3050f8),
   new THREE.Color("red"),
   new THREE.Color("lime"),
