@@ -283,7 +283,10 @@ function createSpheres(pdb) {
     atomsarray.push(sphereMesh);
 
     var sphereShape = new CANNON.Sphere(0.5 * elementradii[pdb.elements[i]]); // Step 1
-    var sphereBody = new CANNON.Body({ mass: elementmasses[pdb.elements[i]], shape: sphereShape }); // Step 2
+    var sphereBody = new CANNON.Body({
+      mass: elementmasses[pdb.elements[i]],
+      shape: sphereShape,
+    }); // Step 2
     sphereBody.position.set(
       sphereMesh.position.x,
       sphereMesh.position.y,
