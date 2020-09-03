@@ -9,7 +9,7 @@ const StopTempContent = /* html */ `
     svg {
       transition: transform 0.2s;
       width: 28px;
-      height: 28px;
+      height: 29px;
     }
     #circle {
       fill: #FFFFFF;

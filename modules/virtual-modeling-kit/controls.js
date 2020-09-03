@@ -7,14 +7,14 @@ var prevTemp = 0;
 var scaleUp = document.getElementById("scale-up");
 var scaleDown = document.getElementById("scale-down");
 var tempControls = document.querySelectorAll("temp-control");
-var tempLabel = document.getElementById("temperature");
 var stopTemp = document.querySelector("stop-temp");
 var playTemp = document.querySelector("play-temp");
 var tempMenu = document.querySelector("enable-temp-controls");
 var tempMenuContainer = document.getElementById("temp-container");
-var renderType = document.getElementById("select-type");
+var renderType = document.querySelector("render-type-icon");
 
 tempMenu.isActive = false;
+renderType.isActive = true;
 
 var flipGraphics = document.querySelector("flip-graphics");
 
@@ -57,19 +57,16 @@ function handleTempControls(e) {
   }
 
   prevTemp = temperature;
-  tempLabel.innerText = temperature;
 }
 
 function handleStopTemp(e) {
   prevTemp = temperature;
   temperature = 0;
-  tempLabel.innerText = temperature;
 }
 
 function handlePlayTemp(e) {
   temperature = prevTemp === 0 ? 300 : prevTemp;
   prevTemp = temperature;
-  tempLabel.innerText = temperature;
 }
 
 function handleTempMenu(e) {
@@ -82,9 +79,8 @@ function handleTempMenu(e) {
 }
 
 function handleRenderType(e) {
-  var value = e.target.value;
-
-  if (value === "spheres") {
+  renderType.isActive = !renderType.isActive;
+  if (!renderType.isActive) {
     stickGroup.visible = false;
 
     spheresGroup.children.forEach(function (atom, index) {
@@ -106,7 +102,7 @@ scaleDown.addEventListener("scaleGraphics", handleScale);
 stopTemp.addEventListener("stopTemp", handleStopTemp);
 playTemp.addEventListener("playTemp", handlePlayTemp);
 tempMenu.addEventListener("click", handleTempMenu);
-renderType.addEventListener("change", handleRenderType);
+renderType.addEventListener("click", handleRenderType);
 flipGraphics.addEventListener("flipGraphics", handleFlip);
 
 tempControls.forEach(function(item) {

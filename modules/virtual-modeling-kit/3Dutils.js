@@ -265,7 +265,7 @@ function createSpheres(pdb) {
   //this loop will create the spheres to display the atoms at the defined radius
   //and the actual physical cannon spheres
   var radiusFactor =
-    renderType.value === "spheres" ? radiusfactor2 : radiusfactor1;
+    renderType.isActive ? radiusfactor1 : radiusfactor2;
   for (i = 0; i < pdb.atoms; i++) {
     var sphereRadius = radiusFactor * elementradii[pdb.elements[i]];
     var sphereMesh = new THREE.Mesh(

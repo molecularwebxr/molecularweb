@@ -60,6 +60,7 @@
     <script src="/components/play-temp/index.js"></script>
     <script src="/components/temp-control/index.js"></script>
     <script src="/components/temp-button/index.js"></script>
+    <script src="/components/render-type/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="translate.js"></script>
@@ -88,6 +89,7 @@
       <flip-graphics class="icon-margin"></flip-graphics>
       <enable-temp-controls class="icon-margin"></enable-temp-controls>
       <enable-mk-menu class="icon-margin"></enable-mk-menu>
+      <render-type-icon class="icon-margin"></render-type-icon>
       <scale-graphics
         class="icon-margin"
         id="scale-up"
@@ -102,24 +104,8 @@
     </div>
 
     <div id="selection-menu" class="selection-menu">
-      <div class="type-controls">
-        <select id="select-type" class="type-selector">
-          <option
-            value="sticks"
-            selected
-            data-i18n="orbitals.modelingKit.sticks"
-          ></option>
-          <option
-            value="spheres"
-            data-i18n="orbitals.modelingKit.spheres"
-          ></option>
-        </select>
-      </div>
-
-      <div class="line"></div>
-
       <div class="extra-info">
-        <toggle-instructions class="extra-info-icon"></toggle-instructions>
+        <toggle-instructions></toggle-instructions>
         <toggle-description class="extra-info-icon"></toggle-description>
       </div>
     </div>
