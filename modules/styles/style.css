@@ -63,6 +63,10 @@ figure {
 }
 
 .small-icon-margin {
+  margin: 0 auto;
+}
+
+.small-icon-margin-bottom {
   margin-bottom: 6px;
 }
 

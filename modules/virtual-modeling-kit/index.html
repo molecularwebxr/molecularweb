@@ -15,7 +15,10 @@
 
       gtag("config", "UA-91563073-2");
     </script>
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
     <title id="title" data-i18n="orbitals.modelingKit.title"></title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -99,20 +102,6 @@
     </div>
 
     <div id="selection-menu" class="selection-menu">
-      <div class="temp-box row">
-        <p class="temp-title" data-i18n="orbitals.modelingKit.temperature"></p>
-        <p id="temperature" class="temp">0</p>
-      </div>
-
-      <div class="line"></div>
-
-      <div class="temp-controls row">
-        <stop-temp class="right-margin"></stop-temp>
-        <play-temp></play-temp>
-      </div>
-
-      <div class="line"></div>
-
       <div class="type-controls">
         <select id="select-type" class="type-selector">
           <option
@@ -139,30 +128,45 @@
     <div id="temp-container" class="temperature-container hide column">
       <div class="triangle-temp"></div>
       <temp-control
-        class="small-icon-margin"
+        class="small-icon-margin small-icon-margin-bottom"
         size="big"
         type="increase"
       ></temp-control>
       <temp-control
-        class="small-icon-margin"
+        class="small-icon-margin small-icon-margin-bottom"
         size="medium"
         type="increase"
       ></temp-control>
-      <temp-control size="small" type="increase"></temp-control>
+      <temp-control
+        size="small"
+        type="increase"
+        class="small-icon-margin"
+      ></temp-control>
 
       <div class="line horizontal"></div>
 
       <temp-control
-        class="small-icon-margin"
+        class="small-icon-margin small-icon-margin-bottom"
         size="small"
         type="decrease"
       ></temp-control>
       <temp-control
-        class="small-icon-margin"
+        class="small-icon-margin small-icon-margin-bottom"
         size="medium"
         type="decrease"
       ></temp-control>
-      <temp-control size="big" type="decrease"></temp-control>
+      <temp-control
+        size="big"
+        type="decrease"
+        class="small-icon-margin"
+      ></temp-control>
+
+      <div class="line horizontal"></div>
+
+      <div class="temp-controls row">
+        <stop-temp class="right-margin"></stop-temp>
+        <play-temp></play-temp>
+      </div>
     </div>
 
     <!-- Menu for loading PDBs -->
