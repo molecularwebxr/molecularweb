@@ -475,7 +475,7 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-60%);
+  transform: translateY(40%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -550,6 +550,24 @@ figure {
   .marker-sample.left-margin {
     margin-left: 0.25rem;
   }
+  .side-menu {
+    padding: 0.75rem 0.5rem;
+  }
+  .zoom-container,
+  .temperature-container,
+  .modeling-container  {
+    right: 58px;
+  }
+  .temperature-container {
+    padding: 0.5rem 0.5rem;
+    transform: translateY(-65%);
+  }
+  .temp-controls {
+    margin: 0;
+  }
+  .zoom-container {
+    transform: translateY(30%);
+  }
 }
 
 @media screen and (max-width: 350px) {
@@ -595,9 +613,7 @@ figure {
     padding: 0.5rem;
     height: 60px;
   }
-  .side-menu {
-    padding: 0.75rem 0.5rem;
-  }
+  
 }
 
 @media screen and (max-width: 400px) {
@@ -698,6 +714,21 @@ figure {
 
   .side-menu {
     padding: 0.75rem 0.5rem;
+  }
+
+  .zoom-container,
+  .temperature-container,
+  .modeling-container  {
+    right: 58px;
+  }
+
+  .temperature-container {
+    padding: 0.5rem 0.5rem;
+    transform: translateY(-64%);
+  }
+
+  .temp-controls {
+    margin: 0;
   }
 
   canvas {

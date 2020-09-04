@@ -117,8 +117,8 @@ function handleRenderType(e) {
   }
 }
 
-// scaleUp.addEventListener("scaleGraphics", handleScale);
-// scaleDown.addEventListener("scaleGraphics", handleScale);
+scaleUp.addEventListener("scaleGraphics", handleScale);
+scaleDown.addEventListener("scaleGraphics", handleScale);
 stopTemp.addEventListener("stopTemp", handleStopTemp);
 playTemp.addEventListener("playTemp", handlePlayTemp);
 tempMenu.addEventListener("click", handleTempMenu);

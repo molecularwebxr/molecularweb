@@ -23,14 +23,14 @@ const PlayTempContent = /* html */ `
     }
     @media (max-width: 440px) {
       svg {
-        width: 30px;
-        height: 30px;
+        width: 24px;
+        height: 25px;
       }
     }
     @media screen and (max-height: 450px) and (orientation: landscape) {
       svg {
-        width: 30px;
-        height: 30px;
+        width: 24px;
+        height: 25px;
       }
     }
   </style>
