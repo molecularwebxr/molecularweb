@@ -61,6 +61,7 @@
     <script src="/components/temp-control/index.js"></script>
     <script src="/components/temp-button/index.js"></script>
     <script src="/components/render-type/index.js"></script>
+    <script src="/components/zoom-icon/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="translate.js"></script>
@@ -90,16 +91,7 @@
       <enable-temp-controls class="icon-margin"></enable-temp-controls>
       <enable-mk-menu class="icon-margin"></enable-mk-menu>
       <render-type-icon class="icon-margin"></render-type-icon>
-      <scale-graphics
-        class="icon-margin"
-        id="scale-up"
-        type="up"
-      ></scale-graphics>
-      <scale-graphics
-        class="icon-margin"
-        id="scale-down"
-        type="down"
-      ></scale-graphics>
+      <zoom-icon class="icon-margin"></zoom-icon>
       <toggle-menu class="icon-margin"></toggle-menu>
     </div>
 
@@ -108,6 +100,22 @@
         <toggle-instructions></toggle-instructions>
         <toggle-description class="extra-info-icon"></toggle-description>
       </div>
+    </div>
+
+    <!-- Zoom controls -->
+    <div id="zoom-container" class="zoom-container hide column">
+      <div class="triangle-zoom"></div>
+      <scale-graphics
+        class="icon-margin"
+        id="scale-up"
+        type="up"
+      ></scale-graphics>
+      <div class="line horizontal"></div>
+      <scale-graphics
+        class="icon-margin"
+        id="scale-down"
+        type="down"
+      ></scale-graphics>
     </div>
 
     <!-- Temperature controls -->

@@ -471,6 +471,17 @@ figure {
   background-position: top 0.5rem right 0.2rem;
 }
 
+.zoom-container {
+  position: fixed;
+  top: 50%;
+  right: 76px;
+  transform: translateY(-60%);
+  z-index: 1;
+  background-color: var(--primarylight);
+  border-radius: 10px;
+  padding: 0.75rem 0.5rem;
+}
+
 .temperature-container {
   position: fixed;
   top: 50%;

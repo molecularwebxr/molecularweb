@@ -59,6 +59,10 @@ function handleMenu(e) {
     tempMenu.isActive = false;
     tempMenuContainer.classList.add("hide");
   }
+  if (zoomMenu.isActive) {
+    zoomMenu.isActive = false;
+    zoomMenuContainer.classList.add("hide");
+  }
 }
 
 selectMenu.addEventListener("change", handleChange);

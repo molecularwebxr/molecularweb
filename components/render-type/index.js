@@ -6,7 +6,7 @@ const RenderIconContent = /* html */ `
     svg {
       transition: transform 0.2s;
       width: 40px;
-      height: 40px;
+      height: 41px;
     }
     #circle {
       fill: #FFFFFF;
