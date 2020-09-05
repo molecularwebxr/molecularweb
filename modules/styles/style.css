@@ -290,8 +290,8 @@ figure {
 .close-menu {
   position: relative;
   top: -5px;
-  right: -420px;
-  cursor: pointer;
+  right: -97%;
+  cursor: pointer;  
 }
 
 .bar-1 {
@@ -503,6 +503,71 @@ figure {
   transform: translateY(-50%);
 }
 
+@media screen and (max-width: 768px) {
+  .modeling-container {
+    width: 50vw;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .modeling-info p {
+    font-size: 0.8rem;
+  }
+  .modeling-marker-options p {
+    font-size: 1rem;
+    margin: 0 0 0.25rem 0;
+  }
+
+  .pdb-option {
+    font-size: 10px;
+  }
+
+  .upload-pdb {
+    padding: 3px 22px;
+    font-size: 10px;
+  }
+
+  .pdb-selector {
+    font-size: 10px;
+  }
+
+  .pdb-text {
+    height: 120px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .modeling-container {
+    width: 60vw;
+  }
+  .modeling-info {
+    padding: 0.75rem 0.5rem;
+    margin-top: 10px;
+  }
+  .modeling-options {
+    margin: 1rem 0;;
+  }
+  .btn-primary {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .pdb-selector {
+    width: 90px;
+  }
+  .pdb-load {
+    margin-right: 15px;
+  }
+  .modeling-marker-options p {
+    font-size: 12px;
+  }
+
+  .modeling-marker-options a {
+    font-size: 10px;
+  }
+}
+
 @media screen and (max-width: 630px) {
   .orbital-selector {
     width: 90px;
@@ -555,7 +620,7 @@ figure {
   }
   .zoom-container,
   .temperature-container,
-  .modeling-container  {
+  .modeling-container {
     right: 58px;
   }
   .temperature-container {
@@ -567,6 +632,15 @@ figure {
   }
   .zoom-container {
     transform: translateY(30%);
+  }
+  .pdb-selector {
+    width: 80px;
+  }
+  .upload-pdb {
+    padding: 3px 15px;
+  }
+  .pdb-load {
+    margin-right: 10px;
   }
 }
 
@@ -589,6 +663,15 @@ figure {
 
   .line {
     margin: 0 0.2rem;
+  }
+
+  .pdb-selector {
+    width: 60px;
+    font-size: 0.5rem;
+  }
+  .upload-pdb {
+    padding: 3px 12px;
+    font-size: 0.5rem;
   }
 }
 
@@ -613,7 +696,6 @@ figure {
     padding: 0.5rem;
     height: 60px;
   }
-  
 }
 
 @media screen and (max-width: 400px) {
@@ -718,7 +800,7 @@ figure {
 
   .zoom-container,
   .temperature-container,
-  .modeling-container  {
+  .modeling-container {
     right: 58px;
   }
 
