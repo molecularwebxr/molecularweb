@@ -673,6 +673,20 @@ figure {
     padding: 3px 12px;
     font-size: 0.5rem;
   }
+  .pdb-load {
+    margin-right: 8px;
+  }
+  .modeling-marker-options {
+    margin-right: 10px;
+  }
+  .modeling-marker-options p {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+
+  .modeling-marker-options a {
+    font-size: 10px;
+  }
 }
 
 @media screen and (max-width: 768px) {
