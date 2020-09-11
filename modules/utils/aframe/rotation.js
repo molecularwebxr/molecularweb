@@ -25,17 +25,23 @@ AFRAME.registerComponent("rotate-molecules", {
       if (details.axis === "x") {
         this.marker1A.object3D.rotation.x = degrees;
         this.marker1B.object3D.rotation.x = degrees + Math.PI;
-      } else {
+      } else if (details.axis === "y") {
         this.marker1A.object3D.rotation.y = degrees;
         this.marker1B.object3D.rotation.y = -degrees + Math.PI;
+      } else {
+        this.marker1A.object3D.rotation.z = degrees;
+        this.marker1B.object3D.rotation.z = degrees;
       }
     } else {
       if (details.axis === "x") {
         this.marker2A.object3D.rotation.x = degrees;
         this.marker2B.object3D.rotation.x = degrees + Math.PI;
-      } else {
+      } else if (details.axis === "y") {
         this.marker2A.object3D.rotation.y = degrees;
         this.marker2B.object3D.rotation.y = -degrees + Math.PI;
+      } else {
+        this.marker2A.object3D.rotation.z = degrees;
+        this.marker2B.object3D.rotation.z = degrees;
       }
     }
   },
