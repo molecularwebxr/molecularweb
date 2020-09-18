@@ -15,7 +15,7 @@
 
       gtag("config", "UA-91563073-2");
     </script>
-    <title id="title" data-i18n="macromolecules.proteinDNA.title" ></title>
+    <title id="title" data-i18n="macromolecules.proteinDNA.title"></title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="/styles/base.css" />
@@ -48,6 +48,7 @@
     <script src="/components/enable-gestures/index.js"></script>
     <script src="/components/rotation-controls/index.js"></script>
     <script src="/components/feedback-prompt/index.js"></script>
+    <script src="/components/zoom-icon/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="index.js"></script>
@@ -83,21 +84,28 @@
     <!-- Feedback Modal -->
     <feedback-prompt></feedback-prompt>
 
+    <!-- Zoom controls -->
+    <div id="zoom-container" class="zoom-container small-menu hide column">
+      <div class="triangle-temp"></div>
+      <scale-graphics
+        class="small-icon-margin"
+        id="scale-up"
+        type="up"
+      ></scale-graphics>
+      <div class="line horizontal"></div>
+      <scale-graphics
+        class="small-icon-margin"
+        id="scale-down"
+        type="down"
+      ></scale-graphics>
+    </div>
+
     <!-- Side buttons -->
     <div class="side-menu column">
       <flip-video class="icon-margin"></flip-video>
       <flip-graphics class="icon-margin"></flip-graphics>
       <reset-activity class="icon-margin"></reset-activity>
-      <scale-graphics
-        class="icon-margin"
-        id="scale-up"
-        type="up"
-      ></scale-graphics>
-      <scale-graphics
-        class="icon-margin"
-        id="scale-down"
-        type="down"
-      ></scale-graphics>
+      <zoom-icon class="icon-margin"></zoom-icon>
       <toggle-menu class="icon-margin"></toggle-menu>
     </div>
 
@@ -361,39 +369,174 @@
       </a-marker>
 
       <a-entity id="bridge-1">
-        <a-sphere id="b01" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.1"></a-sphere>
-        <a-sphere id="b02" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.2"></a-sphere>
-        <a-sphere id="b03" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.3"></a-sphere>
-        <a-sphere id="b04" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.4"></a-sphere>
-        <a-sphere id="b05" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.5"></a-sphere>
-        <a-sphere id="b06" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.6"></a-sphere>
-        <a-sphere id="b07" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.7"></a-sphere>
-        <a-sphere id="b08" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.8"></a-sphere>
-        <a-sphere id="b09" radius="0.08" color="yellow" connector="src: #sp0A; dest: #sd0A; alpha: 0.9"></a-sphere>
+        <a-sphere
+          id="b01"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp0A; dest: #sd0A; alpha: 0.1"
+        ></a-sphere>
+        <a-sphere
+          id="b02"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp0A; dest: #sd0A; alpha: 0.2"
+        ></a-sphere>
+        <a-sphere
+          id="b03"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp0A; dest: #sd0A; alpha: 0.3"
+        ></a-sphere>
+        <a-sphere
+          id="b04"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp0A; dest: #sd0A; alpha: 0.4"
+        ></a-sphere>
+        <a-sphere
+          id="b05"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp0A; dest: #sd0A; alpha: 0.5"
+        ></a-sphere>
+        <a-sphere
+          id="b06"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp0A; dest: #sd0A; alpha: 0.6"
+        ></a-sphere>
+        <a-sphere
+          id="b07"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp0A; dest: #sd0A; alpha: 0.7"
+        ></a-sphere>
+        <a-sphere
+          id="b08"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp0A; dest: #sd0A; alpha: 0.8"
+        ></a-sphere>
+        <a-sphere
+          id="b09"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp0A; dest: #sd0A; alpha: 0.9"
+        ></a-sphere>
       </a-entity>
 
       <a-entity id="bridge-2">
-        <a-sphere id="b11" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.1"></a-sphere>
-        <a-sphere id="b12" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.2"></a-sphere>
-        <a-sphere id="b13" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.3"></a-sphere>
-        <a-sphere id="b14" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.4"></a-sphere>
-        <a-sphere id="b15" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.5"></a-sphere>
-        <a-sphere id="b16" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.6"></a-sphere>
-        <a-sphere id="b17" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.7"></a-sphere>
-        <a-sphere id="b18" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.8"></a-sphere>
-        <a-sphere id="b19" radius="0.08" color="yellow" connector="src: #sp1A; dest: #sd1A; alpha: 0.9"></a-sphere>
+        <a-sphere
+          id="b11"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp1A; dest: #sd1A; alpha: 0.1"
+        ></a-sphere>
+        <a-sphere
+          id="b12"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp1A; dest: #sd1A; alpha: 0.2"
+        ></a-sphere>
+        <a-sphere
+          id="b13"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp1A; dest: #sd1A; alpha: 0.3"
+        ></a-sphere>
+        <a-sphere
+          id="b14"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp1A; dest: #sd1A; alpha: 0.4"
+        ></a-sphere>
+        <a-sphere
+          id="b15"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp1A; dest: #sd1A; alpha: 0.5"
+        ></a-sphere>
+        <a-sphere
+          id="b16"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp1A; dest: #sd1A; alpha: 0.6"
+        ></a-sphere>
+        <a-sphere
+          id="b17"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp1A; dest: #sd1A; alpha: 0.7"
+        ></a-sphere>
+        <a-sphere
+          id="b18"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp1A; dest: #sd1A; alpha: 0.8"
+        ></a-sphere>
+        <a-sphere
+          id="b19"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp1A; dest: #sd1A; alpha: 0.9"
+        ></a-sphere>
       </a-entity>
 
       <a-entity id="bridge-3">
-        <a-sphere id="b21" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.1"></a-sphere>
-        <a-sphere id="b22" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.2"></a-sphere>
-        <a-sphere id="b23" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.3"></a-sphere>
-        <a-sphere id="b24" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.4"></a-sphere>
-        <a-sphere id="b25" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.5"></a-sphere>
-        <a-sphere id="b26" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.6"></a-sphere>
-        <a-sphere id="b27" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.7"></a-sphere>
-        <a-sphere id="b28" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.8"></a-sphere>
-        <a-sphere id="b29" radius="0.08" color="yellow" connector="src: #sp2A; dest: #sd2A; alpha: 0.9"></a-sphere>
+        <a-sphere
+          id="b21"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp2A; dest: #sd2A; alpha: 0.1"
+        ></a-sphere>
+        <a-sphere
+          id="b22"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp2A; dest: #sd2A; alpha: 0.2"
+        ></a-sphere>
+        <a-sphere
+          id="b23"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp2A; dest: #sd2A; alpha: 0.3"
+        ></a-sphere>
+        <a-sphere
+          id="b24"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp2A; dest: #sd2A; alpha: 0.4"
+        ></a-sphere>
+        <a-sphere
+          id="b25"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp2A; dest: #sd2A; alpha: 0.5"
+        ></a-sphere>
+        <a-sphere
+          id="b26"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp2A; dest: #sd2A; alpha: 0.6"
+        ></a-sphere>
+        <a-sphere
+          id="b27"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp2A; dest: #sd2A; alpha: 0.7"
+        ></a-sphere>
+        <a-sphere
+          id="b28"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp2A; dest: #sd2A; alpha: 0.8"
+        ></a-sphere>
+        <a-sphere
+          id="b29"
+          radius="0.08"
+          color="yellow"
+          connector="src: #sp2A; dest: #sd2A; alpha: 0.9"
+        ></a-sphere>
       </a-entity>
 
       <a-entity camera></a-entity>

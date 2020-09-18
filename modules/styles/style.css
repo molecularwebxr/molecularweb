@@ -482,6 +482,10 @@ figure {
   padding: 0.75rem 0.5rem;
 }
 
+.zoom-container.small-menu {
+  transform: translateY(-4%);
+}
+
 .temperature-container {
   position: fixed;
   top: 50%;

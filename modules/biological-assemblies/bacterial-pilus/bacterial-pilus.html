@@ -49,6 +49,7 @@
     <script src="/components/enable-gestures/index.js"></script>
     <script src="/components/rotation-controls/index.js"></script>
     <script src="/components/feedback-prompt/index.js"></script>
+    <script src="/components/zoom-icon/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="/modules/utils/aframe/gltf-material.js"></script>
@@ -83,21 +84,28 @@
     <!-- Feedback Modal -->
     <feedback-prompt></feedback-prompt>
 
+    <!-- Zoom controls -->
+    <div id="zoom-container" class="zoom-container small-menu hide column">
+      <div class="triangle-temp"></div>
+      <scale-graphics
+        class="small-icon-margin"
+        id="scale-up"
+        type="up"
+      ></scale-graphics>
+      <div class="line horizontal"></div>
+      <scale-graphics
+        class="small-icon-margin"
+        id="scale-down"
+        type="down"
+      ></scale-graphics>
+    </div>
+
     <!-- Side buttons -->
     <div class="side-menu column">
       <flip-video class="icon-margin"></flip-video>
       <flip-graphics class="icon-margin"></flip-graphics>
       <reset-activity class="icon-margin"></reset-activity>
-      <scale-graphics
-        class="icon-margin"
-        id="scale-up"
-        type="up"
-      ></scale-graphics>
-      <scale-graphics
-        class="icon-margin"
-        id="scale-down"
-        type="down"
-      ></scale-graphics>
+      <zoom-icon class="icon-margin"></zoom-icon>
       <toggle-menu class="icon-margin"></toggle-menu>
     </div>
 
@@ -177,7 +185,10 @@
       loading-screen="enabled: false"
     >
       <a-assets>
-        <a-asset-item id="trimer_asset" src="./models/pilus.gltf"></a-asset-item>
+        <a-asset-item
+          id="trimer_asset"
+          src="./models/pilus.gltf"
+        ></a-asset-item>
         <a-asset-item id="map" src="./models/pilusmap.gltf"></a-asset-item>
       </a-assets>
 
@@ -241,7 +252,6 @@
           gesture-handler="linkedMarker: #marker2B"
           id="marker2A"
         >
-         
         </a-entity>
       </a-marker>
 
@@ -253,7 +263,6 @@
           gesture-handler="linkedMarker: #marker2A"
           id="marker2B"
         >
-          
         </a-entity>
       </a-marker>
 

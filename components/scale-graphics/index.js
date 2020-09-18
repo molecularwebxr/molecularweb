@@ -83,7 +83,6 @@ class ScaleGraphics extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log(this.type);
     if (this.type === "up") {
       this.increase.classList.remove("hidden");
     } else {
