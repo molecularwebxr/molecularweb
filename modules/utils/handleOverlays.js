@@ -30,4 +30,7 @@ function handleZoomMenu(e) {
 instructionsButton.addEventListener("toggleInstructions", hideInstructionsOverlay);
 descriptionButton.addEventListener("toggleDescription", hideDescriptionOverlay);
 menuButton.addEventListener("toggleMenu", hideMenuOverlay);
-zoomMenu.addEventListener("click", handleZoomMenu);
+
+if(window.location.pathname !== "/modules/virtual-modeling-kit/") {
+  zoomMenu.addEventListener("click", handleZoomMenu);
+}
