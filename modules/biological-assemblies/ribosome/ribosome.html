@@ -49,6 +49,7 @@
     <script src="/components/enable-gestures/index.js"></script>
     <script src="/components/rotation-controls/index.js"></script>
     <script src="/components/feedback-prompt/index.js"></script>
+    <script src="/components/zoom-icon/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="/modules/utils/aframe/connector.js"></script>
@@ -62,6 +63,15 @@
   </head>
 
   <body>
+    <p style="display: none">
+      <a href="https://clustrmaps.com/site/1ar2f" title="Visit tracker"
+        ><img
+          src="//www.clustrmaps.com/map_v2.png?d=b_oWfSB8TUOlxHdLX1ftmUWKcboQmBFu1xmiYd_PbS4&cl=ffffff"
+          alt=""
+          width="1%"
+          height="1%"
+      /></a>
+    </p>
     <!-- Header -->
     <header id="header">
       <div class="row">
@@ -82,21 +92,28 @@
     <!-- Feedback Modal -->
     <feedback-prompt></feedback-prompt>
 
+    <!-- Zoom controls -->
+    <div id="zoom-container" class="zoom-container small-menu hide column">
+      <div class="triangle-temp"></div>
+      <scale-graphics
+        class="small-icon-margin"
+        id="scale-up"
+        type="up"
+      ></scale-graphics>
+      <div class="line horizontal"></div>
+      <scale-graphics
+        class="small-icon-margin"
+        id="scale-down"
+        type="down"
+      ></scale-graphics>
+    </div>
+
     <!-- Side buttons -->
     <div class="side-menu column">
       <flip-video class="icon-margin"></flip-video>
       <flip-graphics class="icon-margin"></flip-graphics>
       <reset-activity class="icon-margin"></reset-activity>
-      <scale-graphics
-        class="icon-margin"
-        id="scale-up"
-        type="up"
-      ></scale-graphics>
-      <scale-graphics
-        class="icon-margin"
-        id="scale-down"
-        type="down"
-      ></scale-graphics>
+      <zoom-icon class="icon-margin"></zoom-icon>
       <toggle-menu class="icon-margin"></toggle-menu>
     </div>
 

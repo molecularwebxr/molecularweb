@@ -15,6 +15,10 @@
 
       gtag("config", "UA-91563073-2");
     </script>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
     <title id="title" data-i18n="orbitals.modelingKit.title"></title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -56,12 +60,23 @@
     <script src="/components/play-temp/index.js"></script>
     <script src="/components/temp-control/index.js"></script>
     <script src="/components/temp-button/index.js"></script>
+    <script src="/components/render-type/index.js"></script>
+    <script src="/components/zoom-icon/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="translate.js"></script>
   </head>
 
-  <body>
+  <body style="margin: 0px; overflow: hidden">
+    <p style="display: none">
+      <a href="https://clustrmaps.com/site/1ar2f" title="Visit tracker"
+        ><img
+          src="//www.clustrmaps.com/map_v2.png?d=b_oWfSB8TUOlxHdLX1ftmUWKcboQmBFu1xmiYd_PbS4&cl=ffffff"
+          alt=""
+          width="1%"
+          height="1%"
+      /></a>
+    </p>
     <!-- Header -->
     <header id="header">
       <div class="row">
@@ -84,84 +99,77 @@
       <flip-graphics class="icon-margin"></flip-graphics>
       <enable-temp-controls class="icon-margin"></enable-temp-controls>
       <enable-mk-menu class="icon-margin"></enable-mk-menu>
-      <scale-graphics
-        class="icon-margin"
-        id="scale-up"
-        type="up"
-      ></scale-graphics>
-      <scale-graphics
-        class="icon-margin"
-        id="scale-down"
-        type="down"
-      ></scale-graphics>
+      <render-type-icon class="icon-margin"></render-type-icon>
+      <zoom-icon class="icon-margin"></zoom-icon>
       <toggle-menu class="icon-margin"></toggle-menu>
     </div>
 
     <div id="selection-menu" class="selection-menu">
-      <div class="temp-box row">
-        <p class="temp-title" data-i18n="orbitals.modelingKit.temperature"></p>
-        <p id="temperature" class="temp">0</p>
-      </div>
-
-      <div class="line"></div>
-
-      <div class="temp-controls row">
-        <stop-temp class="right-margin"></stop-temp>
-        <play-temp></play-temp>
-      </div>
-
-      <div class="line"></div>
-
-      <div class="type-controls">
-        <select id="select-type" class="type-selector">
-          <option
-            value="sticks"
-            selected
-            data-i18n="orbitals.modelingKit.sticks"
-          ></option>
-          <option
-            value="spheres"
-            data-i18n="orbitals.modelingKit.spheres"
-          ></option>
-        </select>
-      </div>
-
-      <div class="line"></div>
-
       <div class="extra-info">
-        <toggle-instructions class="extra-info-icon"></toggle-instructions>
+        <toggle-instructions></toggle-instructions>
         <toggle-description class="extra-info-icon"></toggle-description>
       </div>
+    </div>
+
+    <!-- Zoom controls -->
+    <div id="zoom-container" class="zoom-container hide column">
+      <div class="triangle-temp"></div>
+      <scale-graphics
+        class="small-icon-margin"
+        id="scale-up"
+        type="up"
+      ></scale-graphics>
+      <div class="line horizontal"></div>
+      <scale-graphics
+        class="small-icon-margin"
+        id="scale-down"
+        type="down"
+      ></scale-graphics>
     </div>
 
     <!-- Temperature controls -->
     <div id="temp-container" class="temperature-container hide column">
       <div class="triangle-temp"></div>
       <temp-control
-        class="small-icon-margin"
+        class="small-icon-margin small-icon-margin-bottom"
         size="big"
         type="increase"
       ></temp-control>
       <temp-control
-        class="small-icon-margin"
+        class="small-icon-margin small-icon-margin-bottom"
         size="medium"
         type="increase"
       ></temp-control>
-      <temp-control size="small" type="increase"></temp-control>
+      <temp-control
+        size="small"
+        type="increase"
+        class="small-icon-margin"
+      ></temp-control>
 
       <div class="line horizontal"></div>
 
       <temp-control
-        class="small-icon-margin"
+        class="small-icon-margin small-icon-margin-bottom"
         size="small"
         type="decrease"
       ></temp-control>
       <temp-control
-        class="small-icon-margin"
+        class="small-icon-margin small-icon-margin-bottom"
         size="medium"
         type="decrease"
       ></temp-control>
-      <temp-control size="big" type="decrease"></temp-control>
+      <temp-control
+        size="big"
+        type="decrease"
+        class="small-icon-margin"
+      ></temp-control>
+
+      <div class="line horizontal"></div>
+
+      <div class="temp-controls row">
+        <stop-temp class="right-margin"></stop-temp>
+        <play-temp></play-temp>
+      </div>
     </div>
 
     <!-- Menu for loading PDBs -->
@@ -171,60 +179,67 @@
         <div class="bar-1"></div>
         <div class="bar-2"></div>
       </div>
-      <div class="modeling-info row">
-        <p>👉</p>
-        <p
-          class="modeling-instructions"
-          data-i18n="orbitals.modelingKit.pdbInstructions"
-        ></p>
+      <div class="mk-left">
+        <div class="modeling-info row">
+          <p>👉</p>
+          <p
+            class="modeling-instructions"
+            data-i18n="orbitals.modelingKit.pdbInstructions"
+          ></p>
+        </div>
+
+        <div class="modeling-options row">
+          <div class="modeling-marker-options column">
+            <p data-i18n="orbitals.modelingKit.marker"></p>
+            <a
+              href="/assets/markers/cube.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="orbitals.modelingKit.getMarker"
+            ></a>
+          </div>
+          <div class="row">
+            <div class="pdb-load">
+              <p
+                class="pdb-option"
+                data-i18n="orbitals.modelingKit.loadFile"
+              ></p>
+              <label class="upload-pdb" data-i18n="orbitals.modelingKit.load">
+                <input id="pdb-input" name="pdb" type="file" hidden />
+              </label>
+            </div>
+            <div class="pdb-select">
+              <p
+                class="pdb-option"
+                data-i18n="orbitals.modelingKit.chooseExample"
+              ></p>
+              <select id="select-pdb" class="pdb-selector">
+                <option
+                  value=""
+                  data-i18n="orbitals.modelingKit.examples"
+                ></option>
+              </select>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="modeling-options row">
-        <div class="modeling-marker-options column">
-          <p data-i18n="orbitals.modelingKit.marker"></p>
-          <a
-            href="/assets/markers/cube.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-i18n="orbitals.modelingKit.getMarker"
-          ></a>
-        </div>
-        <div class="row">
-          <div class="pdb-load">
-            <p class="pdb-option" data-i18n="orbitals.modelingKit.loadFile"></p>
-            <label class="upload-pdb" data-i18n="orbitals.modelingKit.load">
-              <input id="pdb-input" name="pdb" type="file" hidden />
-            </label>
-          </div>
-          <div class="pdb-select">
-            <p
-              class="pdb-option"
-              data-i18n="orbitals.modelingKit.chooseExample"
-            ></p>
-            <select id="select-pdb" class="pdb-selector">
-              <option
-                value=""
-                data-i18n="orbitals.modelingKit.examples"
-              ></option>
-            </select>
-          </div>
-        </div>
+      <div>
+        <textarea
+          class="pdb-text"
+          id="pdb-text"
+          name="textarea"
+          rows="10"
+          cols="50"
+          data-i18n="[placeholder]orbitals.modelingKit.placeholder"
+        ></textarea>
+
+        <button
+          id="start-ar"
+          class="btn-primary"
+          data-i18n="orbitals.modelingKit.startAR"
+        ></button>
       </div>
-
-      <textarea
-        class="pdb-text"
-        id="pdb-text"
-        name="textarea"
-        rows="10"
-        cols="50"
-        data-i18n="[placeholder]orbitals.modelingKit.placeholder"
-      ></textarea>
-
-      <button
-        id="start-ar"
-        class="btn-primary"
-        data-i18n="orbitals.modelingKit.startAR"
-      ></button>
     </div>
 
     <!-- Overlays -->

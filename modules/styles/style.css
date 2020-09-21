@@ -63,6 +63,10 @@ figure {
 }
 
 .small-icon-margin {
+  margin: 0 auto;
+}
+
+.small-icon-margin-bottom {
   margin-bottom: 6px;
 }
 
@@ -73,7 +77,7 @@ figure {
 .selection-menu {
   padding: 0.75rem;
   position: fixed;
-  bottom: 3px;
+  bottom: 7px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
@@ -217,7 +221,7 @@ figure {
 
 .rotation-controls {
   position: fixed;
-  bottom: 64px;
+  bottom: 71px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
@@ -226,7 +230,7 @@ figure {
 }
 
 .rotation-controls.multiple-select {
-  bottom: 76px;
+  bottom: 83px;
 }
 
 .button-container {
@@ -286,8 +290,8 @@ figure {
 .close-menu {
   position: relative;
   top: -5px;
-  right: -420px;
-  cursor: pointer;
+  right: -97%;
+  cursor: pointer;  
 }
 
 .bar-1 {
@@ -467,11 +471,26 @@ figure {
   background-position: top 0.5rem right 0.2rem;
 }
 
+.zoom-container {
+  position: fixed;
+  top: 50%;
+  right: 76px;
+  transform: translateY(45%);
+  z-index: 1;
+  background-color: var(--primarylight);
+  border-radius: 10px;
+  padding: 0.75rem 0.5rem;
+}
+
+.zoom-container.small-menu {
+  transform: translateY(-4%);
+}
+
 .temperature-container {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-73%);
+  transform: translateY(-68%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -486,6 +505,71 @@ figure {
   border-bottom: 10px solid transparent;
   border-left: 10px solid var(--primarylight);
   transform: translateY(-50%);
+}
+
+@media screen and (max-width: 768px) {
+  .modeling-container {
+    width: 50vw;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .modeling-info p {
+    font-size: 0.8rem;
+  }
+  .modeling-marker-options p {
+    font-size: 1rem;
+    margin: 0 0 0.25rem 0;
+  }
+
+  .pdb-option {
+    font-size: 10px;
+  }
+
+  .upload-pdb {
+    padding: 3px 22px;
+    font-size: 10px;
+  }
+
+  .pdb-selector {
+    font-size: 10px;
+  }
+
+  .pdb-text {
+    height: 120px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .modeling-container {
+    width: 60vw;
+  }
+  .modeling-info {
+    padding: 0.75rem 0.5rem;
+    margin-top: 10px;
+  }
+  .modeling-options {
+    margin: 1rem 0;;
+  }
+  .btn-primary {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .pdb-selector {
+    width: 90px;
+  }
+  .pdb-load {
+    margin-right: 15px;
+  }
+  .modeling-marker-options p {
+    font-size: 12px;
+  }
+
+  .modeling-marker-options a {
+    font-size: 10px;
+  }
 }
 
 @media screen and (max-width: 630px) {
@@ -535,6 +619,34 @@ figure {
   .marker-sample.left-margin {
     margin-left: 0.25rem;
   }
+  .side-menu {
+    padding: 0.75rem 0.5rem;
+  }
+  .zoom-container,
+  .temperature-container,
+  .modeling-container {
+    right: 58px;
+  }
+  .temperature-container {
+    padding: 0.5rem 0.5rem;
+    transform: translateY(-65%);
+  }
+  .temp-controls {
+    margin: 0;
+  }
+  .zoom-container {
+    transform: translateY(40%);
+    padding: 0.5rem 0.5rem;
+  }
+  .pdb-selector {
+    width: 80px;
+  }
+  .upload-pdb {
+    padding: 3px 15px;
+  }
+  .pdb-load {
+    margin-right: 10px;
+  }
 }
 
 @media screen and (max-width: 350px) {
@@ -556,6 +668,29 @@ figure {
 
   .line {
     margin: 0 0.2rem;
+  }
+
+  .pdb-selector {
+    width: 60px;
+    font-size: 0.5rem;
+  }
+  .upload-pdb {
+    padding: 3px 12px;
+    font-size: 0.5rem;
+  }
+  .pdb-load {
+    margin-right: 8px;
+  }
+  .modeling-marker-options {
+    margin-right: 10px;
+  }
+  .modeling-marker-options p {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+
+  .modeling-marker-options a {
+    font-size: 10px;
   }
 }
 
@@ -579,9 +714,6 @@ figure {
   header {
     padding: 0.5rem;
     height: 60px;
-  }
-  .side-menu {
-    padding: 0.75rem 0.5rem;
   }
 }
 
@@ -685,6 +817,30 @@ figure {
     padding: 0.75rem 0.5rem;
   }
 
+  .zoom-container,
+  .temperature-container,
+  .modeling-container {
+    right: 58px;
+  }
+
+  .temperature-container {
+    padding: 0.5rem 0.5rem;
+    transform: translateY(-64%);
+  }
+
+  .temp-controls {
+    margin: 0;
+  }
+
+  .zoom-container {
+    transform: translateY(48%);
+    padding: 0.5rem 0.5rem;
+  }
+
+  .temperature-container .triangle-temp{
+    transform: translateY(-72%);
+  }
+
   canvas {
     -moz-transform: scale(1, 1);
     -webkit-transform: scale(1, 1);
@@ -706,5 +862,54 @@ figure {
     -o-transform: scale(-1, 1);
     -ms-transform: scale(-1, 1);
     transform: scale(-1, 1);
+  }
+
+  .line.horizontal {
+    margin: 8px auto;
+  }
+
+  .modeling-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 1rem;
+    width: 440px;
+  }
+
+  .mk-left {
+    margin-right: 1rem;
+    min-width: 230px;
+  }
+
+  .modeling-info {
+    margin: 0;
+  }
+
+  .modeling-options {
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .modeling-marker-options {
+    flex-direction: row;
+    margin: 0.5rem 0
+  }
+
+  .modeling-marker-options a {
+    padding-top: 4px;
+    margin-left: 1rem;
+  }
+
+  .pdb-text {
+    width: 10rem;
+  }
+
+  .close-menu {
+    display: none;
+  }
+
+  .hide {
+    display: none;
   }
 }

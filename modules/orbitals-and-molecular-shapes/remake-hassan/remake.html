@@ -48,6 +48,7 @@
     <script src="/components/enable-gestures/index.js"></script>
     <script src="/components/rotation-controls/index.js"></script>
     <script src="/components/feedback-prompt/index.js"></script>
+    <script src="/components/zoom-icon/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="/modules/utils/aframe/flip.js"></script>
@@ -60,6 +61,15 @@
   </head>
 
   <body>
+    <p style="display: none">
+      <a href="https://clustrmaps.com/site/1ar2f" title="Visit tracker"
+        ><img
+          src="//www.clustrmaps.com/map_v2.png?d=b_oWfSB8TUOlxHdLX1ftmUWKcboQmBFu1xmiYd_PbS4&cl=ffffff"
+          alt=""
+          width="1%"
+          height="1%"
+      /></a>
+    </p>
     <!-- Header -->
     <header id="header">
       <div class="row">
@@ -77,21 +87,28 @@
     <!-- Feedback Modal -->
     <feedback-prompt></feedback-prompt>
 
+    <!-- Zoom controls -->
+    <div id="zoom-container" class="zoom-container small-menu hide column">
+      <div class="triangle-temp"></div>
+      <scale-graphics
+        class="small-icon-margin"
+        id="scale-up"
+        type="up"
+      ></scale-graphics>
+      <div class="line horizontal"></div>
+      <scale-graphics
+        class="small-icon-margin"
+        id="scale-down"
+        type="down"
+      ></scale-graphics>
+    </div>
+
     <!-- Side buttons -->
     <div class="side-menu column">
       <flip-video class="icon-margin"></flip-video>
       <flip-graphics class="icon-margin"></flip-graphics>
       <reset-activity class="icon-margin"></reset-activity>
-      <scale-graphics
-        class="icon-margin"
-        id="scale-up"
-        type="up"
-      ></scale-graphics>
-      <scale-graphics
-        class="icon-margin"
-        id="scale-down"
-        type="down"
-      ></scale-graphics>
+      <zoom-icon class="icon-margin"></zoom-icon>
       <toggle-menu class="icon-margin"></toggle-menu>
     </div>
 
@@ -231,32 +248,89 @@
         <!-- Struct assets -->
         <a-asset-item id="mol1" src="./models/blendaZnS.gltf"></a-asset-item>
         <a-asset-item id="mol2" src="./models/CCCaMetal.gltf"></a-asset-item>
-        <a-asset-item id="mol3" src="./models/CCCmetalhuecos_senalizados.gltf"></a-asset-item>
+        <a-asset-item
+          id="mol3"
+          src="./models/CCCmetalhuecos_senalizados.gltf"
+        ></a-asset-item>
         <a-asset-item id="mol4" src="./models/CCCNaCl.gltf"></a-asset-item>
         <a-asset-item id="mol5" src="./models/CCCuCaF2.gltf"></a-asset-item>
         <a-asset-item id="mol6" src="./models/CCCuCsCl.gltf"></a-asset-item>
         <a-asset-item id="mol7" src="./models/CCCuZnS.gltf"></a-asset-item>
-        <a-asset-item id="mol8" src="./models/compartimiento_en_una_celda.gltf"></a-asset-item>
+        <a-asset-item
+          id="mol8"
+          src="./models/compartimiento_en_una_celda.gltf"
+        ></a-asset-item>
 
-        <a-asset-item id="mol9obj" src="./models/cis-diacuodiclorodiamminhierro.obj"></a-asset-item>
-        <a-asset-item id="mol9mtl" src="./models/cis-diacuodiclorodiamminhierro.mtl"></a-asset-item>
+        <a-asset-item
+          id="mol9obj"
+          src="./models/cis-diacuodiclorodiamminhierro.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="mol9mtl"
+          src="./models/cis-diacuodiclorodiamminhierro.mtl"
+        ></a-asset-item>
         <a-asset-item id="mol10" src="./models/cisplatin.gltf"></a-asset-item>
-        <a-asset-item id="mol11obj" src="./models/cis-tetrammindiclorocromo.obj"></a-asset-item>
-        <a-asset-item id="mol11mtl" src="./models/cis-tetrammindiclorocromo.mtl"></a-asset-item>
-        <a-asset-item id="mol12obj" src="./models/fac-acuotriammindiclorohierro.obj"></a-asset-item>
-        <a-asset-item id="mol12mtl" src="./models/fac-acuotriammindiclorohierro.mtl"></a-asset-item>
-        <a-asset-item id="mol13obj" src="./models/l-cis-diacuodiclorodiamminhierro.obj"></a-asset-item>
-        <a-asset-item id="mol13mtl" src="./models/l-cis-diacuodiclorodiamminhierro.mtl"></a-asset-item>
-        <a-asset-item id="mol14obj" src="./models/levo-mer-acuotriammin-cis-diclorohierro.obj"></a-asset-item>
-        <a-asset-item id="mol14mtl" src="./models/levo-mer-acuotriammin-cis-diclorohierro.mtl"></a-asset-item>
-        
-        <a-asset-item id="mol15" src="./models/geometria_segun_TRPEV2.gltf"></a-asset-item>
-        <a-asset-item id="mol16obj" src="./models/hibridaciones_sp3d.obj"></a-asset-item>
-        <a-asset-item id="mol16mtl" src="./models/hibridaciones_sp3d.mtl"></a-asset-item>
-        <a-asset-item id="mol17obj" src="./models/hibridaciones_sp3d2.obj"></a-asset-item>
-        <a-asset-item id="mol17mtl" src="./models/hibridaciones_sp3d2.mtl"></a-asset-item>
-        <a-asset-item id="mol18obj" src="./models/hibridaciones_sp32.obj"></a-asset-item>
-        <a-asset-item id="mol18mtl" src="./models/hibridaciones_sp32.mtl"></a-asset-item>  
+        <a-asset-item
+          id="mol11obj"
+          src="./models/cis-tetrammindiclorocromo.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="mol11mtl"
+          src="./models/cis-tetrammindiclorocromo.mtl"
+        ></a-asset-item>
+        <a-asset-item
+          id="mol12obj"
+          src="./models/fac-acuotriammindiclorohierro.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="mol12mtl"
+          src="./models/fac-acuotriammindiclorohierro.mtl"
+        ></a-asset-item>
+        <a-asset-item
+          id="mol13obj"
+          src="./models/l-cis-diacuodiclorodiamminhierro.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="mol13mtl"
+          src="./models/l-cis-diacuodiclorodiamminhierro.mtl"
+        ></a-asset-item>
+        <a-asset-item
+          id="mol14obj"
+          src="./models/levo-mer-acuotriammin-cis-diclorohierro.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="mol14mtl"
+          src="./models/levo-mer-acuotriammin-cis-diclorohierro.mtl"
+        ></a-asset-item>
+
+        <a-asset-item
+          id="mol15"
+          src="./models/geometria_segun_TRPEV2.gltf"
+        ></a-asset-item>
+        <a-asset-item
+          id="mol16obj"
+          src="./models/hibridaciones_sp3d.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="mol16mtl"
+          src="./models/hibridaciones_sp3d.mtl"
+        ></a-asset-item>
+        <a-asset-item
+          id="mol17obj"
+          src="./models/hibridaciones_sp3d2.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="mol17mtl"
+          src="./models/hibridaciones_sp3d2.mtl"
+        ></a-asset-item>
+        <a-asset-item
+          id="mol18obj"
+          src="./models/hibridaciones_sp32.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="mol18mtl"
+          src="./models/hibridaciones_sp32.mtl"
+        ></a-asset-item>
       </a-assets>
 
       <a-marker type="barcode" value="0">

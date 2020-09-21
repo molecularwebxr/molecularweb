@@ -23,6 +23,18 @@ const TempControlContent = /* html */ `
     a:hover .circle{
       fill: var(--secondary);
     }
+    @media (max-width: 440px) {
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+    @media screen and (max-height: 450px) and (orientation: landscape) {
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
   </style>
   <a id="anchor">
 

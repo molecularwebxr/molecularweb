@@ -7,6 +7,9 @@ var menuButton = document.querySelector("toggle-menu");
 var descriptionOverlay = document.getElementById("description");
 var descriptionButton = document.querySelector("toggle-description");
 
+var zoomMenu = document.querySelector("zoom-icon");
+var zoomMenuContainer = document.getElementById("zoom-container");
+
 function hideInstructionsOverlay() {
   instructionsOverlay.toggle();
 }
@@ -19,6 +22,15 @@ function hideMenuOverlay() {
   menuOverlay.toggle();
 }
 
+function handleZoomMenu(e) {
+  zoomMenuContainer.classList.toggle("hide");
+  zoomMenu.isActive = !zoomMenu.isActive;
+}
+
 instructionsButton.addEventListener("toggleInstructions", hideInstructionsOverlay);
 descriptionButton.addEventListener("toggleDescription", hideDescriptionOverlay);
 menuButton.addEventListener("toggleMenu", hideMenuOverlay);
+
+if(window.location.pathname !== "/modules/virtual-modeling-kit/") {
+  zoomMenu.addEventListener("click", handleZoomMenu);
+}
