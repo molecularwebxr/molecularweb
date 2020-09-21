@@ -141,11 +141,22 @@ RotationControlsContent.innerHTML = /* html */ `
   }
   </style>
     <div id="container" class="rotation-marker">
+      <div id="bar-z" class="rotation-bar">
+        <p class="small">
+          <intl-message key="app.rotate"></intl-message><span>Z</span>
+        </p>
+        <input type="range" min="0" max="360" value="0" step="5" id="marker-z" />
+        <div class="number-box">
+          <p class="small num">
+            <span id="marker-z-value">0</span><span>°</span>
+          </p>
+        </div>
+      </div>
       <div id="bar-y" class="rotation-bar">
         <p class="small">
           <intl-message key="app.rotate"></intl-message><span>Y</span>
         </p>
-        <input type="range" min="0" max="180" value="0" step="5" id="marker-y" />
+        <input type="range" min="0" max="360" value="0" step="5" id="marker-y" />
         <div class="number-box">
           <p class="small num">
             <span id="marker-y-value">0</span><span>°</span>
@@ -156,7 +167,7 @@ RotationControlsContent.innerHTML = /* html */ `
         <p class="small">
           <intl-message key="app.rotate"></intl-message><span>X</span>
         </p>
-        <input type="range" min="0" max="180" value="0" step="5" id="marker-x" />
+        <input type="range" min="0" max="360" value="0" step="5" id="marker-x" />
         <div class="number-box">
           <p class="small num">
             <span id="marker-x-value">0</span><span>°</span>
@@ -178,15 +189,19 @@ class RotationControls extends HTMLElement {
       RotationControlsContent.content.cloneNode(true)
     );
 
+    this.markerZ = this.shadowRoot.getElementById("marker-z");
     this.markerY = this.shadowRoot.getElementById("marker-y");
     this.markerX = this.shadowRoot.getElementById("marker-x");
+    this.barZ = this.shadowRoot.getElementById("bar-z");
     this.barY = this.shadowRoot.getElementById("bar-y");
     this.barX = this.shadowRoot.getElementById("bar-x");
     this.container = this.shadowRoot.getElementById("container");
 
+    this.markerZvalue = this.shadowRoot.getElementById("marker-z-value");
     this.markerYvalue = this.shadowRoot.getElementById("marker-y-value");
     this.markerXvalue = this.shadowRoot.getElementById("marker-x-value");
 
+    this.markerZ.addEventListener("input", this.handleChange);
     this.markerY.addEventListener("input", this.handleChange);
     this.markerX.addEventListener("input", this.handleChange);
   }
@@ -194,11 +209,15 @@ class RotationControls extends HTMLElement {
   handleChange(e) {
     var selectedElement = e.target.id;
     var newValue = e.target.value;
-    var markerSelected = this.marker
+    var markerSelected = this.marker;
     var selectedValue;
     var axis;
 
     switch (selectedElement) {
+      case "marker-z":
+        selectedValue = this.markerZvalue;
+        axis = "z";
+        break;
       case "marker-y":
         selectedValue = this.markerYvalue;
         axis = "y";
@@ -213,7 +232,7 @@ class RotationControls extends HTMLElement {
       marker: markerSelected,
       axis,
       value: newValue,
-    }
+    };
 
     selectedValue.innerHTML = newValue;
 
@@ -221,9 +240,11 @@ class RotationControls extends HTMLElement {
   }
 
   reset() {
+    this.markerZ.value = 0;
     this.markerX.value = 0;
     this.markerY.value = 0;
 
+    this.markerZvalue.innerHTML = "0";
     this.markerYvalue.innerHTML = "0";
     this.markerXvalue.innerHTML = "0";
   }
@@ -243,6 +264,7 @@ class RotationControls extends HTMLElement {
   set type(value) {
     this._type = value;
     if (this._type === "embedded") {
+      this.barZ.classList.add("embedded");
       this.barY.classList.add("embedded");
       this.barX.classList.add("embedded");
       this.container.classList.add("embedded-container");
