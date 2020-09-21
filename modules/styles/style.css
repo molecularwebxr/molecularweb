@@ -636,6 +636,7 @@ figure {
   }
   .zoom-container {
     transform: translateY(30%);
+    padding: 0.5rem 0.5rem;
   }
   .pdb-selector {
     width: 80px;
@@ -831,6 +832,15 @@ figure {
     margin: 0;
   }
 
+  .zoom-container {
+    transform: translateY(48%);
+    padding: 0.5rem 0.5rem;
+  }
+
+  .temperature-container .triangle-temp{
+    transform: translateY(-72%);
+  }
+
   canvas {
     -moz-transform: scale(1, 1);
     -webkit-transform: scale(1, 1);
@@ -852,5 +862,9 @@ figure {
     -o-transform: scale(-1, 1);
     -ms-transform: scale(-1, 1);
     transform: scale(-1, 1);
+  }
+
+  .line.horizontal {
+    margin: 8px auto;
   }
 }

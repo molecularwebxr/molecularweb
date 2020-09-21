@@ -32,8 +32,8 @@ scaleIconTemplate.innerHTML = /* html */ `
     }
     @media screen and (max-height: 450px) and (orientation: landscape) {
       svg {
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
       }
     }
   </style>
