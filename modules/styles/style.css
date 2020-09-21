@@ -475,7 +475,7 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(40%);
+  transform: translateY(45%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -635,7 +635,7 @@ figure {
     margin: 0;
   }
   .zoom-container {
-    transform: translateY(30%);
+    transform: translateY(40%);
     padding: 0.5rem 0.5rem;
   }
   .pdb-selector {
@@ -866,5 +866,50 @@ figure {
 
   .line.horizontal {
     margin: 8px auto;
+  }
+
+  .modeling-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 1rem;
+    width: 440px;
+  }
+
+  .mk-left {
+    margin-right: 1rem;
+    min-width: 230px;
+  }
+
+  .modeling-info {
+    margin: 0;
+  }
+
+  .modeling-options {
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .modeling-marker-options {
+    flex-direction: row;
+    margin: 0.5rem 0
+  }
+
+  .modeling-marker-options a {
+    padding-top: 4px;
+    margin-left: 1rem;
+  }
+
+  .pdb-text {
+    width: 10rem;
+  }
+
+  .close-menu {
+    display: none;
+  }
+
+  .hide {
+    display: none;
   }
 }
