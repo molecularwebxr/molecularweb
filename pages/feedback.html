@@ -81,7 +81,7 @@
                 type="radio"
                 class="radio-btn"
                 id="ar-before-option-1"
-                name="ar-before"
+                name="arBefore"
                 value="Not at all"
                 onchange="handleSelection(event)"
               />
@@ -93,7 +93,7 @@
                 checked
                 class="radio-btn"
                 id="ar-before-option-2"
-                name="ar-before"
+                name="arBefore"
                 value="Only 1, 2, perhaps 3 times"
                 onchange="handleSelection(event)"
               />
@@ -104,7 +104,7 @@
                 type="radio"
                 class="radio-btn"
                 id="ar-before-option-3"
-                name="ar-before"
+                name="arBefore"
                 value="Several times"
                 onchange="handleSelection(event)"
               />
@@ -123,7 +123,7 @@
                 type="radio"
                 class="radio-btn"
                 id="easy-use-option-1"
-                name="easy-use"
+                name="easyUse"
                 checked
                 value="No, I couldn’t make it work"
                 onchange="handleSelection(event)"
@@ -135,7 +135,7 @@
                 type="radio"
                 class="radio-btn"
                 id="easy-use-option-2"
-                name="easy-use"
+                name="easyUse"
                 value="It was hard to make it work, but eventually succeeded"
                 onchange="handleSelection(event)"
               />
@@ -146,7 +146,7 @@
                 type="radio"
                 class="radio-btn"
                 id="easy-use-option-3"
-                name="easy-use"
+                name="easyUse"
                 value="It took some effort the first time, but then was easy to use multiple times"
                 onchange="handleSelection(event)"
               />
@@ -157,7 +157,7 @@
                 type="radio"
                 class="radio-btn"
                 id="easy-use-option-4"
-                name="easy-use"
+                name="easyUse"
                 value="It was quite easy to use the website right from my first attempt"
                 onchange="handleSelection(event)"
               />
@@ -177,7 +177,7 @@
               data-i18n="surveys.tellUs"
             ></label>
             <input
-              name="students-number"
+              name="studentsNumber"
               id="students-number"
               data-i18n="[placeholder]surveys.textPlaceholder"
               type="text"
@@ -196,7 +196,7 @@
                 type="radio"
                 class="radio-btn"
                 id="students-interest-option-1"
-                name="students-interest"
+                name="studentsInterest"
                 value="Not really"
                 onchange="handleSelection(event)"
               />
@@ -208,7 +208,7 @@
                 checked
                 class="radio-btn"
                 id="students-interest-option-2"
-                name="students-interest"
+                name="studentsInterest"
                 value="Yes, a little"
                 onchange="handleSelection(event)"
               />
@@ -219,7 +219,7 @@
                 type="radio"
                 class="radio-btn"
                 id="students-interest-option-3"
-                name="students-interest"
+                name="studentsInterest"
                 value="Yes, a lot"
                 onchange="handleSelection(event)"
               />
@@ -238,7 +238,7 @@
                 type="radio"
                 class="radio-btn"
                 id="students-understanding-option-1"
-                name="students-understanding"
+                name="studentsUnderstanding"
                 value="Not really"
                 onchange="handleSelection(event)"
               />
@@ -253,7 +253,7 @@
                 checked
                 class="radio-btn"
                 id="students-understanding-option-2"
-                name="students-understanding"
+                name="studentsUnderstanding"
                 value="Yes, a little"
                 onchange="handleSelection(event)"
               />
@@ -264,7 +264,7 @@
                 type="radio"
                 class="radio-btn"
                 id="students-understanding-option-3"
-                name="students-understanding"
+                name="studentsUnderstanding"
                 value="Yes, a lot"
                 onchange="handleSelection(event)"
               />
@@ -568,13 +568,13 @@
               data-i18n="surveys.questions.emailAddress"
             ></h4>
             <label
-              for="age"
+              for="email"
               class="label-textarea"
               data-i18n="surveys.tellUs"
             ></label>
             <input
-              name="age"
-              id="age"
+              name="email"
+              id="email"
               data-i18n="[placeholder]surveys.textPlaceholder"
               type="text"
               class="text-input"
@@ -591,6 +591,7 @@
       <app-footer />
     </footer>
     <script src="/js/translate.js"></script>
+    <script src="/js/surveyUtils.js"></script>
     <script src="/js/handleSurvey.js"></script>
   </body>
 </html>

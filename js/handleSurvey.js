@@ -16,7 +16,9 @@ function handleSubmit(e) {
   e.preventDefault();
   var formData = e.target;
 
-  console.log(formData.profile.value);
+  var data = prepareData(formData);
+
+  console.log(data);
 }
 
 function handleProfileChange(event) {
