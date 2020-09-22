@@ -16,7 +16,33 @@ function handleSubmit(e) {
   e.preventDefault();
   var formData = e.target;
 
-  console.log(formData.profile.value);
+  var data = prepareData(formData);
+
+  fetch("https://killpop-api.glitch.me/sendSurveyReport", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (myJson) {
+      // sendButton.disabled = false;
+      swal({
+        title: "Thanks for your feedback!",
+        text: "🙂",
+        icon: "success",
+        button: {
+          text: "Ok",
+        },
+      });
+    })
+    .catch(function (error) {
+      // sendButton.disabled = false;
+      swal("Something went wrong", "Please, try again", "error");
+    });
 }
 
 function handleProfileChange(event) {
