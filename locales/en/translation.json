@@ -187,5 +187,18 @@
       "middleEast": "Middle East",
       "oceania": "Oceania"
     }
+  },
+  "about": {
+    "firstPart": "moleculARweb is a website for chemistry and structural biology education through commodity, web-based augmented reality that you can use in your webcam-enabled computer, smartphone or tablet, just on your web browser. It was designed and programmed mainly by Fabio Cortés Rodríguez and Luciano A. Abriata from the  ",
+    "lbm": "Laboratory of Biomolecular Modeling",
+    "epfl": "at École Polytechnique Fédérale de Lausanne",
+    "secondPart": " (EPFL) in Switzerland, with help from several collaborators from the group as well as researchers and educators from other institutions. The project is funded by Spark grant CRSK-1_190376 from the ",
+    "snf": "Swiss National Science Foundation ",
+    "toLAB": "to Luciano A. Abriata, ",
+    "snfDB": "described here at the SNF project database.",
+    "thirdPart": "The website is based on client-side web programming (see",
+    "this": "this",
+    "and": " and ",
+    "fourthPart": ") which means that the activities run entirely locally inside your browser, in your computer. The kind of technologies used to program moleculARweb are described in "
   }
 }

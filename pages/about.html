@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title id="title" data-i18n="menu.about"></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/feedback.css" />
+
+    <!-- Translation Libraries -->
+    <script src="/lib/i18n/i18next.min.js"></script>
+    <script src="/lib/i18n/i18next-wc.js"></script>
+    <script src="/lib/i18n/loc-i18next.min.js"></script>
+    <script src="/lib/i18n/i18nextBrowserLanguageDetector.js"></script>
+    <script src="/lib/i18n/i18nextHttpBackend.min.js"></script>
+    <script src="/lib/sweetalert.min.js"></script>
+
+    <!-- Web Components -->
+    <script src="/components/arrow-anchor/index.js"></script>
+    <script src="/components/footer/index.js"></script>
+    <script src="/components/app-header/index.js"></script>
+    <script src="/components/icons/molecule/index.js"></script>
+    <script src="/components/icons/atom/index.js"></script>
+    <script src="/components/icons/tubes/index.js"></script>
+    <script src="/components/icons/dna/index.js"></script>
+    <script src="/components/icons/bacteria/index.js"></script>
+  </head>
+  <body>
+    <div class="content">
+
+      <app-header></app-header>
+
+      <section class="home-banner column">
+        <figure>
+          <molecule-icon big no-strokes />
+        </figure>
+        <h1 class="home-banner-title" data-i18n="app.title"></h1>
+        <p class="home-banner-text" data-i18n="app.description"></p>
+      </section>
+
+      <div class="survey-container">
+        <p class="normal-text" data-i18n="[prepend]about.firstPart">
+          <span><a class="normal-text" href="https://www.epfl.ch/labs/lbm/" data-i18n="about.lbm"></a></span>
+          <span><a class="normal-text" href="https://www.epfl.ch" data-i18n="about.epfl"></a></span>
+          <span data-i18n="about.secondPart"></span>
+          <span><a class="normal-text" href="https://www.snf.ch" data-i18n="about.snf"></a></span>
+          <span data-i18n="about.toLAB"></span>
+          <span><a class="normal-text" href="http://p3.snf.ch/project-190376" data-i18n="about.snfDB"></a></span>
+        </p>
+        <p class="normal-text" data-i18n="[prepend]about.thirdPart">
+          <span><a class="normal-text" href="https://www.mdpi.com/2227-9709/4/3/28" data-i18n="about.this"></a></span>
+          <span data-i18n="about.and"></span>
+          <span><a class="normal-text" href="https://pubmed.ncbi.nlm.nih.gov/29254737/" data-i18n="about.this"></a></span>
+          <span data-i18n="about.fourthPart"></span>
+        </p>
+      </div>
+        
+    </div>
+    <footer>
+      <app-footer></app-footer>
+    </footer>
+    <script src="/js/translate.js"></script>
+  </body>
+</html>
