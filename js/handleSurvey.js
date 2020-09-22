@@ -18,7 +18,32 @@ function handleSubmit(e) {
 
   var data = prepareData(formData);
 
-  console.log(data);
+  fetch('https://killpop-api.glitch.me/sendSurveyReport',{
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json"
+      }
+    }
+  )
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(myJson) {
+      // sendButton.disabled = false;
+      console.log(myJson);
+      // // Acá debe ir la acción de envío correcto
+      // MicroModal.close('modal-1');
+      // swal("Thanks to contact me!", "I'll reply you soon", "success");
+      // email.value = "";
+      // msg.value = "";
+    })
+    .catch(function(error) {
+      // sendButton.disabled = false;
+      console.log("Something went wrong");
+      // Acá debe ir la acción de envío fallido
+      // swal("Something went wrong", "Please, try again", "error");
+    });
 }
 
 function handleProfileChange(event) {
