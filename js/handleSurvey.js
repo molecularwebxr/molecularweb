@@ -18,31 +18,30 @@ function handleSubmit(e) {
 
   var data = prepareData(formData);
 
-  fetch('https://killpop-api.glitch.me/sendSurveyReport',{
+  fetch("https://killpop-api.glitch.me/sendSurveyReport", {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
-      "Content-Type": "application/json"
-      }
-    }
-  )
-    .then(function(response) {
+      "Content-Type": "application/json",
+    },
+  })
+    .then(function (response) {
       return response.json();
     })
-    .then(function(myJson) {
+    .then(function (myJson) {
       // sendButton.disabled = false;
-      console.log(myJson);
-      // // Acá debe ir la acción de envío correcto
-      // MicroModal.close('modal-1');
-      // swal("Thanks to contact me!", "I'll reply you soon", "success");
-      // email.value = "";
-      // msg.value = "";
+      swal({
+        title: "Thanks for your feedback!",
+        text: "🙂",
+        icon: "success",
+        button: {
+          text: "Ok",
+        },
+      });
     })
-    .catch(function(error) {
+    .catch(function (error) {
       // sendButton.disabled = false;
-      console.log("Something went wrong");
-      // Acá debe ir la acción de envío fallido
-      // swal("Something went wrong", "Please, try again", "error");
+      swal("Something went wrong", "Please, try again", "error");
     });
 }
 
