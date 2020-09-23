@@ -287,11 +287,11 @@ headerTemplate.innerHTML = /* html */ `
       </a>
     </figure>
     <div class="menu row">
-      <a class="menu-link">
+      <a class="menu-link" href="/pages/about.html">
         <intl-message key="menu.about"></intl-message>
       </a>
 
-      <a class="menu-link">
+      <a class="menu-link" href="/pages/contact.html">
         <intl-message key="menu.getInTouch"></intl-message>
       </a>
 

@@ -288,3 +288,32 @@ textarea::placeholder,
   background-color: var(--secondary);
   color: var(--primary);
 }
+
+.margins {
+  margin: 2rem auto;
+}
+
+.contact-margins {
+  margin: 4rem auto;
+}
+
+.authors-container {
+  margin-top: 2rem;
+}
+
+.authors-container .normal-text {
+  margin: 0.5rem 0;
+}
+
+.authors-container .title{
+  margin: 1.5rem 0 0.75rem 0;
+  font-weight: bold;
+}
+
+.social-icon-margin {
+  margin-right: 1rem;
+}
+
+.author-margin {
+  margin-top: 1.5rem !important;
+}

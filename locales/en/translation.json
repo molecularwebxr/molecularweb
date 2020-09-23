@@ -187,5 +187,37 @@
       "middleEast": "Middle East",
       "oceania": "Oceania"
     }
+  },
+  "about": {
+    "firstPart": "MoleculARweb is a website for chemistry and structural biology education through commodity, web-based augmented reality that you can use in your webcam-enabled computer, smartphone or tablet, just on your web browser. It was designed and programmed mainly by Fabio Cortés Rodríguez and Luciano A. Abriata from the  ",
+    "lbm": "Laboratory of Biomolecular Modeling",
+    "epfl": "at École Polytechnique Fédérale de Lausanne",
+    "secondPart": " (EPFL) in Switzerland, with help from several collaborators from the group as well as researchers and educators from other institutions. The project is funded by Spark grant CRSK-1_190376 from the ",
+    "snf": "Swiss National Science Foundation ",
+    "toLAB": "to Luciano A. Abriata, ",
+    "snfDB": "described here at the SNF project database.",
+    "thirdPart": "The website is based on client-side web programming (see",
+    "this": "this",
+    "and": " and ",
+    "fourthPart": ") which means that the activities run entirely locally inside your browser, in your computer. The kind of technologies used to program moleculARweb are described in ",
+    "article": "this open-access peer-reviewed article at PeerJ Comp Sci, ",
+    "fifthPart": "while the exact activities provided in moleculARweb are described in ",
+    "preprint": "this preprint at ChemRxiv, ",
+    "sixthPart": "which also lists all contributing authors and other acknowledgements.",
+    "seventhPart": "MoleculARweb is powered by ",
+    "eighthPart": "The icons used in the website were downloaded from ",
+    "madeBy": "made by Pixel Perfect, Smashicons, Freebies, Diacanvas Studio and Dario Ferrando. The website’s logo was composed from free, open icons taken from the same authors at ",
+    "openSource": "This is an open source project, you can find the repository at GitHub: ",
+    "aboutAuthors": "About the main authors: ",
+    "fabio": "Eng. Fabio Cortés Rodríguez  is a software engineer and technologist, passionate about augmented and virtual reality and exploring the intersection between art and technology. Currently he is WebXR engineer at the Laboratory for Biomolecular Modeling at EPFL.",
+    "luciano": "Dr. Luciano A. Abriata is a biotechnologist with a PhD in chemistry and years of experience in biological nuclear magnetic resonance and in molecular modeling and simulations of biological systems, passionate about web programming and about modern human-computer technologies for improving work and education. He is currently the expert in NMR at EPFL’s Protein Biophysics group, and Senior Scientist at the Laboratory for Biomolecular Modeling at EPFL."
+  },
+  "contact": {
+    "firstPart": "Cannot run the activities? Conceptual problems? Bugs? Suggestions?",
+    "secondPart": "Don’t hesitate to write us at luciano.abriata@epfl.ch or fabio.cortesrodriguez@epfl.ch",
+    "thirdPart": "And please fill the surveys available in this ",
+    "link": "link.",
+    "fourthPart": "To know more about the website, the project, and the authors, go ",
+    "here": "here."
   }
 }
