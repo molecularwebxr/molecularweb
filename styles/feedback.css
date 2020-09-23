@@ -293,6 +293,10 @@ textarea::placeholder,
   margin: 2rem auto;
 }
 
+.contact-margins {
+  margin: 4rem auto;
+}
+
 .authors-container {
   margin-top: 2rem;
 }

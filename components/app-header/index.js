@@ -291,7 +291,7 @@ headerTemplate.innerHTML = /* html */ `
         <intl-message key="menu.about"></intl-message>
       </a>
 
-      <a class="menu-link">
+      <a class="menu-link" href="/pages/contact.html">
         <intl-message key="menu.getInTouch"></intl-message>
       </a>
 
