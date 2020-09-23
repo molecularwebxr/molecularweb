@@ -21,14 +21,11 @@
     <script src="/lib/sweetalert.min.js"></script>
 
     <!-- Web Components -->
-    <script src="/components/arrow-anchor/index.js"></script>
     <script src="/components/footer/index.js"></script>
     <script src="/components/app-header/index.js"></script>
     <script src="/components/icons/molecule/index.js"></script>
-    <script src="/components/icons/atom/index.js"></script>
-    <script src="/components/icons/tubes/index.js"></script>
-    <script src="/components/icons/dna/index.js"></script>
-    <script src="/components/icons/bacteria/index.js"></script>
+    <script src="/components/twitter-icon/index.js"></script>
+    <script src="/components/web-icon/index.js"></script>
   </head>
   <body>
     <div class="content">
@@ -80,12 +77,23 @@
         <p class="normal-text" data-i18n="[prepend]about.openSource">
           <span><a class="normal-text" target="_blank" href="https://github.com/fcor/molecular-mirror-app">https://github.com/fcor/molecular-mirror-app</a></span>
         </p>
-        <p class="normal-text" style="font-weight: bold;" data-i18n="about.aboutAuthors">
-        </p>
-        <p class="normal-text" data-i18n="about.fabio">
-        </p>
-        <p class="normal-text" data-i18n="about.luciano">
-        </p>
+        <div class="authors-container">
+          <p class="normal-text title" data-i18n="about.aboutAuthors"></p>
+          <p class="normal-text" data-i18n="about.fabio"></p>
+          <a href="https://twitter.com/fabiojcortes" target="_blank">
+            <twitter-icon class="social-icon-margin"></twitter-icon>
+          </a>
+          <a href="https://www.fjcr.pro/"  target="_blank">
+            <web-icon></web-icon>
+          </a>
+          <p class="normal-text author-margin" data-i18n="about.luciano"></p>
+          <a href="https://twitter.com/labriataphd" target="_blank">
+            <twitter-icon class="social-icon-margin"></twitter-icon>
+          </a>
+          <a href="http://labriataphd.altervista.org/"  target="_blank">
+            <web-icon></web-icon>
+          </a>
+        </div>
       </div>
     </div>
         
