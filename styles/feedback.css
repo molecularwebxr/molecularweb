@@ -288,3 +288,7 @@ textarea::placeholder,
   background-color: var(--secondary);
   color: var(--primary);
 }
+
+.margins {
+  margin: 2rem auto;
+}
