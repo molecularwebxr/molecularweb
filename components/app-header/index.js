@@ -324,14 +324,20 @@ headerTemplate.innerHTML = /* html */ `
   <div id="mobile-menu" class="mobile-menu column">
     <div class="mobile-menu-content column">
       <figure>
-        <molecule-icon medium no-strokes />
+        <a href="/index.html">
+          <molecule-icon medium no-strokes />
+        </a>
       </figure>
       <div class="mobile-menu-links column">
-        <a class="mobile-menu-link">
+        <a class="mobile-menu-link"
+           href="/pages/about.html"
+        >
           <intl-message key="menu.about"></intl-message>
         </a>
 
-        <a class="mobile-menu-link">
+        <a class="mobile-menu-link"
+           href="/pages/contact.html"
+        >
           <intl-message key="menu.getInTouch"></intl-message>
         </a>
 

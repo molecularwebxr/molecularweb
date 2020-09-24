@@ -65,7 +65,8 @@ textarea::placeholder,
   color: var(--primarylight);
 }
 
-.normal-text {
+.normal-text,
+.about-text {
   color: var(--primary);
   font-family: Roboto;
   font-style: normal;
@@ -301,7 +302,7 @@ textarea::placeholder,
   margin-top: 2rem;
 }
 
-.authors-container .normal-text {
+.authors-container .about-text {
   margin: 0.5rem 0;
 }
 
