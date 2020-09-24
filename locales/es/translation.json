@@ -1,18 +1,221 @@
 {
   "menu": {
     "about": "Acerca de",
-    "getInTouch": "Contáctanos",
+    "getInTouch": "Contacto",
     "feedback": "Encuesta",
     "language": "Idioma"
   },
   "app": {
     "title": "MoleculARweb",
+    "description": " Sitio web para estudiar y enseñar química y biología mediante realidad aumentada en computadoras, teléfonos y tablets",
     "policy": "Copyright © 2020 Laboratory for biomolecular modeling, EPFL. Todos los derechos reservados.",
-    "contactUs": "Contáctanos"
+    "contactUs": "Contáctanos",
+    "feedbackMsg": "Hola! ¿te gustaría ayudarnos con una encuesta?",
+    "sure": "Si!",
+    "dismiss": "Mas adelante",
+    "rotate": "Rotar ",
+    "submit": "Enviar",
+    "viewInYourSpace": "Ver en tu espacio",
+    "returnToAR": "Regresar a modo AR",
+    "cartoon": "Cartoon",
+    "sticks": "Sticks",
+    "interactions": "Interactions",
+    "markers": "Encuentra aquí los marcadores con instrucciones para imprimir y armar"
   },
   "orbitals": {
+    "title": "Orbitals and molecular shapes",
     "atomicOrbitals": {
-      "title": "Orbitales atómicos y teoría VSEPR"
+      "title": "Orbitales atómicos y teoría TRPEV",
+      "description": "Visualiza y compara orbitales atómicos puros e híbridos, y algunas de las geometrías más básicas según la teoría de repulsión de los pares electrónicos de valencia (TRPEV)",
+      "instructions": "Elige orbitales y moléculas para mostrarlos en cada marcador. En pantalla táctil también puedes usar un dedo para rotar y dos para zoomear los objetos."
+    },
+    "molecularOrbitals": {
+      "title": "Molecular orbitals",
+      "description": "Visualiza y compara orbitales moleculares precalculados para moléculas sencillas.",
+      "instructions": "Elige moléculas para mostrarlos en cada marcador. En pantalla táctil también puedes usar un dedo para rotar y dos para zoomear los objetos."
+    },
+    "molecularShapes": {
+      "title": "Formas de moléculas según teoría TRPEV",
+      "description": "Visualiza y compara las formas de moléculas sencillas según la teoría de repulsión de los pares electrónicos de valencia (TRPEV).",
+      "instructions": "Elige moléculas para mostrarlos en cada marcador. En pantalla táctil también puedes usar un dedo para rotar y dos para zoomear los objetos."
+    },
+    "webRemake": {
+      "title": "Ejemplos de Martinez-Hung et al 2017",
+      "description": "Ejemplos de estructuras cristalinas, formas TRPEV y complejos acuosos de la publicación Martinez-Hung et al en Revista Cubana de Quimica 2017, re-escritos para realidad aumentada web.",
+      "instructions": "Elige entre los ejemplos de los menus. Para más información referirse al artículo original"
+    },
+    "modelingKit": {
+      "title": "Kit de modelado molecular virtual",
+      "description": "Explora la estructura y dinámica de cualquier molécula de interés",
+      "instructions": "Selecciona un ejemplo de la lista o pega las coordenadas de tu propia molécula, luego inicia la experiencia AR. Para ver movimientos incrementa la temperatura",
+      "temperature": "Temperatura: ", 
+      "sticks": "Sticks",
+      "spheres": "Spheres",
+      "pdbInstructions": "Copia una molécula en formato PDB o carga uno de los ejemplos, luego haz click en “Empezar RA”",
+      "marker": "Marcador",
+      "getMarker": "Obtener marcador",
+      "loadFile": "Carga tu archivo",
+      "load": "cargar",
+      "chooseExample": "Escoger ejemplo",
+      "examples": "--Ejemplos--",
+      "startAR": "Empezar RA",
+      "placeholder": "Copia y pega el PDB aquí"
     }
+  },
+  "bonds": {
+    "title": "Hydrogen bonding, acids and bases",
+    "instructions": "Move the AR markers to explore hydrogen bonding and proton transfer by approaching the two molecules from different sides",
+    "waterProtonation": {
+      "title": "Equilibrios de protonación del agua",
+      "description": "Explora como dos moléculas de agua establecen enlaces de puente hidrógeno para interconvertirse entre catión hidronio, agua neutra y anión hidroxilo. El equilibrio es dinámico y da lugar a la constante de autodisociación del agua, Kw."
+    },
+    "acidDeprotonation": {
+      "title": "Equilibrios de desprotonación de un ácido en agua",
+      "description": "Explora como una molécula de ácido acético forma puentes hidrógeno con una molécula de agua y transfiere un protón quedando cargada negativamente y formando un catión hidronio. Átomos grises son C, rojos O, blancos H. Este equilibrio dinámico da lugar a la constante de disociación ácida, Ka. "
+    },
+    "ammoniaProtonation": {
+      "title": "Equilibrios de protonación de una base en agua",
+      "description": "Explora como una molécula de amonio forma puentes hidrógeno con una molécula de agua y toma un protón quedando cargada positivamente y formando un anión hidróxido. Átomos grises son C, azul es N, rojo O, blancos H. Este equilibrio dinámico da lugar a la constante básica, Kb."
+    },
+    "acidBase": {
+      "title": "Equilibrio entre las cadenas laterales de un aminoácido ácido y uno básico",
+      "description": "Explora cómo las cadenas laterales de glutamato y lisina intercambian protones interconviertiéndose entre formas neutrales y cargadas. Átomos grises son C, rojos O, blancos H, azul N. Los puntos amarillos marcan los puentes hidrógeno."
+    }
+  },
+  "macromolecules": {
+    "title": "Atomic structure of biological macromolecules",
+    "proteinDNA": {
+      "title": "Complejo DNA - proteina",
+      "description": "Une esta proteína de unión a ADN a su molécula de ADN, verificando que se formen las interacciones electrostáticas esperadas. Este ejemplo proviene de una estructura experimental, PDB 1FJL.",
+      "instructions": "Mueve cada molécula con un marcador de realidad aumentada, intentando encontrar la forma de unir ambas moléculas optimizando las interacciones mostradas"
+    },
+    "peptide": {
+      "title": "Encaja un péptido en su densidad electrónica",
+      "description": "Encaja dos porciones de un péptido dentro de la densidad electrónica determinada mediante difracción de rayos X. Este ejercicio demuestra cómo se conocen experimentalmente las estructuras de las proteínas. Proviene de una estructura experimental, PDB 3HYD.",
+      "instructions": "Usa el marcador para encajar un primer fragmento, y cuando este esté encajado podrás encajar el segundo fragmento. Al final puedes inspeccionar la molécula completa encajada dentro de la densidad electrónica"
+    },
+    "protein": {
+      "title": "Estructuras secundarias en proteínas, y las interacciones que las estabilizan",
+      "description": "Inspecciona en detalle la estructura atómica de los dos tipos principales de estructura secundaria (alfa hélice en un marcador y lamina beta en el otro) y las interacciones de puente hidrogeno y electrostáticas que las estabilizan.",
+      "instructions": "Cliqueando en los botones se puede cambiar entre distintas representaciones"
+    },
+    "example": {
+      "title": "Compilado de estructuras atomísticas de biomoléculas ",
+      "description": "Inspecciona vistas 3D preparadas para distintas macromoléculas biológicas.",
+      "instructions": "Elige entre los ejemplos de las listas, para ver un sistema en cada marcador."
+    }
+  },
+  "biological": {
+    "title": "Large biological assemblies",
+    "nuclear": {
+      "title": "Poro nuclear",
+      "description": "Mapa de microscopía electrónica (EMDB-3103) de un poro nuclear obtenido in situ",
+      "instructions": "Visualiza en 3D con un marcador de realidad aumentada o posicionando el objeto sobre una superficie horizontal tal como el piso o una mesa"
+    },
+    "ribosome": {
+      "title": "Ribosoma cargado con ARN mensajero y de transferencia",
+      "description": "Estructura de microscopía crioelectrónica de un ribosoma de mamífero cargador con una molécula de ARN de transferencia en P-E y otra en position A/P apareada al ARN mensajero (PDB 6HCJ)",
+      "instructions": "Visualiza en 3D con un marcador de realidad aumentada o posicionando el objeto sobre una superficie horizontal tal como el piso o una mesa"
+    },
+    "bacteriophage": {
+      "title": "Bacteriófago en pared cellular bacteriana",
+      "description": "Mapa de microscopía crioelectrónica de un bacteriófago con su aguja atravesando las dos membranas celulares de una bacteria Salmonella (EMD-9010)",
+      "instructions": "Visualiza en 3D con un marcador de realidad aumentada o posicionando el objeto sobre una superficie horizontal tal como el piso o una mesa"
+    },
+    "sarscov2": {
+      "title": "Modelo del complejo entre la proteína S de SARS-Cov2 y la proteína ACE2 humana",
+      "description": "Model integrative de la proteína S (spike) del virus SARS-Cov-2 unida a la proteína ACE2 de humano, cada una en el contexto de su membrana (PDB IDs 6VYB, 6M17 and 6M0J).",
+      "instructions": "Visualiza en 3D con un marcador de realidad aumentada o posicionando el objeto sobre una superficie horizontal tal como el piso o una mesa"
+    },
+    "bacterial": {
+      "title": "Base del pilo bacteriano",
+      "description": "Estructura crioelectrónica de la base de un pilo bacteriano, incluyendo porciones de peptidoglicano y de las membranas internas y externa (PDB 3JC8 + EMD-3247)",
+      "instructions": "Visualiza en 3D con un marcador de realidad aumentada o posicionando el objeto sobre una superficie horizontal tal como el piso o una mesa"
+    },
+    "nucleosome": {
+      "title": "Nucleosoma",
+      "description": "Estructura de rayos X de un nucleosoma completo incluyendo 4 histonas y 2 vueltas de ADN (PDB ID 1AOI)",
+      "instructions": "Visualiza en 3D con un marcador de realidad aumentada o posicionando el objeto sobre una superficie horizontal tal como el piso o una mesa"
+    }
+  },
+  "modelingKit": {
+    "title": "Kit de modelado molecular virtual"
+  },
+  "surveys": {
+    "welcomeMsg": "Hola, gracias, apreciamos que te tomes un poco de tiempo en compartir tu experiencia con nosotros",
+    "selectProfile": "Por favor, selecciona tu perfil",
+    "educator": "Educador",
+    "student": "Estudiante",
+    "tellUs": "Cuéntanos a continuación:",
+    "textPlaceholder": "Escribe tu respuesta aquí",
+    "contactUs": "También puedes contactarnos por email a luciano.abriata@epfl.ch para proponer ideas, ayudar con nuevos ejemplos, compartir tus experiencias con estudiantes, etc.",
+    "questions": {
+      "usedARBefore": "Yo ya tenía experiencia en realidad aumentada antes de usar este sitio",
+      "easilyUse": "Pude hacer funcionar el sitio fácilmente",
+      "understand": "Usar este sitio de realidad aumentada me ayudo a entender mejor las estructuras de las moléculas y otros conceptos de química",
+      "interestInChemistry": "Usar este sitio me hizo mas interesado/a en la química",
+      "interestInTech": "Usar este sitio me dio curiosidad por la programación, la realidad aumentada, etc.",
+      "place": "¿Usaste este sitio en la escuela, tu casa, o ambos?",
+      "suggestions": "¿Qué otras moléculas o contenido te gustaría que agreguemos?",
+      "liveIn": "Vives en...",
+      "age": "¿Qué edad tienes?",
+      "howManyStudents": "Si usaste el sitio con estudiantes, ¿cuántos estudiantes por dispositivo (teléfono, computadora, etc.) tuviste?",
+      "studentsInterest": "Percibí interés de los alumnos en el uso del sitio",
+      "studentsUnderstanding": "Percibí que usar el sitio permitió a los alumnos entender mejor las estructuras moleculares y otros conceptos",
+      "emailAddress": "Tu dirección de email, si quieres estar al tanto de novedades"
+    },
+    "answers": {
+      "notAtAll": "No",
+      "notReally": "No",
+      "aLittle": "Si, un poco",
+      "aLot": "Si, mucho",
+      "perhaps": "Solo unas pocas veces (1-3)",
+      "severalTimes": "Varias veces",
+      "didntWork": "No, no lo pude hacer funcionar",
+      "hardToWork": "Fue difícil, pero logre hacerlo funcionar",
+      "someEffort": "Fue complicado hacerlo funcionar la primera vez, pero después pude usarlo varias veces",
+      "easyToWork": "Fue fácil hacerlo funcionar ya desde el primer intento",
+      "school": "Solamente en la escuela",
+      "home": " Solamente en casa",
+      "both": "En ambos lugares",
+      "africa": "Africa",
+      "asia": "Asia",
+      "northAmerica": "Norte América ",
+      "latam": "América Latina",
+      "europe": "Europa",
+      "middleEast": "Oriente Medio",
+      "oceania": "Oceanía"
+    }
+  },
+  "about": {
+    "firstPart": "MoleculARweb es un sitio web para la educación en química y biología estructural a través de realidad aumentada web que los alumnos y profesores puede utilizar en su computadora, teléfono o tableta, usando lacámara webdel dispositivo directamente en su navegador web. Fue diseñado y programado principalmente por Fabio Cortés Rodríguez y Luciano A. Abriata de  ",
+    "lbm": " laboratorio de modelado de biomoléculas",
+    "epfl": "de la École Polytechnique Fédérale de Lausanne",
+    "secondPart": " (EPFL) ) en Suiza, con la ayuda de varios colaboradores del grupo así como de investigadores y educadores de otras instituciones. El proyecto es financiado por el subsidio Spark CRSK-1_190376 de la ",
+    "snf": "Swiss National Science Foundation ",
+    "toLAB": "a Luciano A. Abriata.",
+    "snfDB": " Este proyecto se describe aquí en la base de datos del SNF.",
+    "thirdPart": "El sitio web se basa en programación web del lado del cliente (vea ",
+    "this": "esto",
+    "and": " y ",
+    "fourthPart": "), lo que significa que las actividades se ejecutan completamente localmente dentro de su navegador, en su computadora o dispositivo portátil. El tipo de tecnologías utilizadas para programar moleculARweb se describen en ",
+    "article": "este artículo de acceso abierto en PeerJ Comp Sci, ",
+    "fifthPart": "mientras que las actividades exactas proporcionadas en moleculARweb se describen en ",
+    "preprint": "este preprint en ChemRxiv, ",
+    "sixthPart": "que también enumera todos los autores contribuyentes y otros agradecimientos.",
+    "seventhPart": "MoleculARweb funciona con ",
+    "eighthPart": "Los íconos utilizados en el sitio web se descargaron de ",
+    "madeBy": "realizados por Pixel Perfect, Smashicons, Freebies, Diacanvas Studio y Dario Ferrando. El logotipo del sitio web se compuso a partir de íconos abiertos gratuitos tomados de los mismos autores en ",
+    "openSource": "Este es un proyecto de código abierto, puede encontrar el repositorio en GitHub: ",
+    "aboutAuthors": "Sobre los autores: ",
+    "fabio": "Ing. Fabio Cortés Rodríguez es ingeniero de software, apasionado por la realidad aumentada y virtual así como la intersección entre arte y tecnología. Actualmente es ingeniero de WebXR en el Laboratorio de Modelado Biomolecular de EPFL.",
+    "luciano": "Dr. Luciano A. Abriata  es un biotecnólogo con un doctorado en química y años de experiencia en resonancia magnética nuclear biológica y en modelado molecular y simulaciones de sistemas biológicos, apasionado por la programación web, las modernas tecnologías de interacción humano-computadora, y su aplicación en educación. Actualmente es experto en RMN en el grupo de Biofísica de Proteínas de EPFL y Científico Senior en el Laboratorio de Modelado Biomolecular de EPFL."
+  },
+  "contact": {
+    "firstPart": "Para reportar problemas, errores, o sugerencias, escribanos a luciano.abriata@epfl.ch o fabio.cortesrodriguez@epfl.ch",
+    "thirdPart": "Y por favor llene las encuestas disponibles en este ",
+    "link": "enlace.",
+    "fourthPart": "Para saber más sobre el sitio web, el proyecto y los autores, vaya ",
+    "here": "aquí."
   }
 }
