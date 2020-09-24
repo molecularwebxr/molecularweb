@@ -1,7 +1,7 @@
 {
   "menu": {
     "about": "About",
-    "getInTouch": "Get in touch",
+    "getInTouch": "Contact",
     "feedback": "Feedback",
     "language": "Language"
   },
@@ -26,12 +26,12 @@
     "title": "Orbitals and molecular shapes",
     "atomicOrbitals": {
       "title": "Atomic orbitals and VSEPR theory",
-      "description": "Visualize and compare all the most common pure and hybrid atomic orbitals, and the basic VSEPR geometries.",
-      "instructions": "Choose an orbital or simple molecule to be displayed on each AR marker."
+      "description": " Visualize and compare all the most common pure and hybrid atomic orbitals, and the basic molecular geometries as in the valence shell electron repulsion theory (VSEPR). ",
+      "instructions": "Choose an orbital or molecule to be displayed on each AR marker. You can also use one finger to rotate and two fingers to zoom on the objects."
     },
     "molecularOrbitals": {
-      "title": "Molecular orbitals",
-      "description": "Visualize and compare all the molecular orbitals calculated for several small molecules.",
+      "title": "Molecular orbitals and shapes",
+      "description": "Visualize and compare all the molecular orbitals precalculated for several small molecules.",
       "instructions": "Choose a molecule to be displayed on each AR marker. You can also use one finger to rotate and two fingers to zoom on the objects."
     },
     "molecularShapes": {
@@ -39,7 +39,6 @@
       "description": "Examples molecules for each of the main kinds of shapes according to Valence Shell Electron Pair Repulsion (VSEPR) theory.",
       "instructions": "Choose the examples from the dropdown menus to see the different molecular shapes as explained by VSPER theory."
     },
-
     "webRemake": {
       "title": "Web remake of Martinez-Hung et al 2017",
       "description": "Examples of crystalline structures, TRPEV shapes and water complexes from a previous publication by Martinez-Hung et al Revista Cubana de Quimica 2017, repurposed for webAR.",
@@ -79,8 +78,8 @@
       "description": "Explore how an ammonia molecule establishes hydrogen bonds with a water molecule and takes a proton becoming positively charged and forming a hydroxide anion. Grey atoms are C, red ones are O, white are Hs, blue is N. This dynamic equilibrium gives rise to the basic constant, Kb."
     },
     "acidBase": {
-      "title": "Equilibria between an acid and a base",
-      "description": "Explore how glutamate and lysine interconvert between charged and neutral species by exchanging protons. Grey atoms are C, red ones are O, white are Hs, blue is N. The yellow dots show the hydrogen bonds between H and O or N."
+      "title": "Equilibrium between acidic and basic amino acid side chains",
+      "description": "Explore how the side chains of glutamate and lysine interconvert between charged and neutral species by exchanging protons. Grey atoms are C, red ones are O, white are Hs, blue is N. The yellow dots show the hydrogen bonds between H and O or N."
     }
   },
   "macromolecules": {
@@ -101,7 +100,7 @@
       "instructions": "Click the buttons to toggle between the different representations."
     },
     "example": {
-      "title": "Example structures",
+      "title": "Compilation of atomistic structures of biomolecules",
       "description": "Inspect a set of pre-made views of biological macromolecules.",
       "instructions": "Choose among the examples in the dropdown menus, to see one system on each marker."
     }
@@ -194,8 +193,8 @@
     "epfl": "at École Polytechnique Fédérale de Lausanne",
     "secondPart": " (EPFL) in Switzerland, with help from several collaborators from the group as well as researchers and educators from other institutions. The project is funded by Spark grant CRSK-1_190376 from the ",
     "snf": "Swiss National Science Foundation ",
-    "toLAB": "to Luciano A. Abriata, ",
-    "snfDB": "described here at the SNF project database.",
+    "toLAB": "to Luciano A. Abriata.",
+    "snfDB": " This project is described here at the SNF project database.",
     "thirdPart": "The website is based on client-side web programming (see",
     "this": "this",
     "and": " and ",
@@ -213,8 +212,7 @@
     "luciano": "Dr. Luciano A. Abriata is a biotechnologist with a PhD in chemistry and years of experience in biological nuclear magnetic resonance and in molecular modeling and simulations of biological systems, passionate about web programming and about modern human-computer technologies for improving work and education. He is currently the expert in NMR at EPFL’s Protein Biophysics group, and Senior Scientist at the Laboratory for Biomolecular Modeling at EPFL."
   },
   "contact": {
-    "firstPart": "Cannot run the activities? Conceptual problems? Bugs? Suggestions?",
-    "secondPart": "Don’t hesitate to write us at luciano.abriata@epfl.ch or fabio.cortesrodriguez@epfl.ch",
+    "firstPart": "To report problems, bugs or suggestions don’t hesitate to write us at luciano.abriata@epfl.ch or fabio.cortesrodriguez@epfl.ch",
     "thirdPart": "And please fill the surveys available in this ",
     "link": "link.",
     "fourthPart": "To know more about the website, the project, and the authors, go ",
