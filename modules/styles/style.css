@@ -393,8 +393,8 @@ figure {
   background-position: top 0.5rem right 0.2rem;
 }
 
-.pdb-selector optgroup {
-  font-family: "Roboto";
+.pdb-selector option {
+  /* font-family: "Roboto"; */
   font-style: normal;
   font-size: 0.6rem;
 }
