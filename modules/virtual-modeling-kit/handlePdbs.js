@@ -33,6 +33,7 @@ function populateMenu(pdbs) {
       var optionItem = document.createElement("option");
       optionItem.textContent = item;
       optionItem.value = item;
+      optionItem.classList.add("option");
       optionGroup.appendChild(optionItem);
     });
     selectMenu.appendChild(optionGroup);
