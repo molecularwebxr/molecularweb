@@ -24,19 +24,27 @@ request.onload = function () {
 
 // Set select options after getting PDBs from JSON
 function populateMenu(pdbs) {
-  var examples = Object.keys(pdbs);
-  examples.forEach(function (item, index) {
-    var optionItem = document.createElement("option");
-    optionItem.textContent = item;
-    optionItem.value = item;
-    selectMenu.appendChild(optionItem);
-  });
+  var categories = Object.keys(pdbs);
+  categories.forEach(function (category, index) {
+    var optionGroup = document.createElement("optgroup");
+    optionGroup.label = category;
+    var examples = Object.keys(pdbs[category]);
+    examples.forEach(function (item, index) {
+      var optionItem = document.createElement("option");
+      optionItem.textContent = item;
+      optionItem.value = item;
+      optionGroup.appendChild(optionItem);
+    });
+    selectMenu.appendChild(optionGroup);
+  })
 }
 
 // Set PDB on text area after selection
 function handleChange(e) {
-  var selectedPdb = pdbs[selectMenu.value];
-  pdbText.value = selectedPdb;
+  var selectedPdb = selectMenu.options[selectMenu.selectedIndex];
+  var selectedGroup = selectedPdb.parentElement.label;
+  var rawPdb = pdbs[selectedGroup][selectedPdb.value]
+  pdbText.value = rawPdb;
 }
 
 // Handle file upload and set text area if ok
