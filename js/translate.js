@@ -2,6 +2,7 @@ var localize = locI18next.init(i18next);
 
 var english = document.querySelector("app-header").shadowRoot.querySelector("#en");
 var spanish = document.querySelector("app-header").shadowRoot.querySelector("#es");
+var french = document.querySelector("app-header").shadowRoot.querySelector("#fr");
 
 i18next
   .use(i18nextHttpBackend)
@@ -47,3 +48,4 @@ i18next.on("languageChanged", function(){
 
 english.addEventListener("click", handleLanguageChange);
 spanish.addEventListener("click", handleLanguageChange);
+french.addEventListener("click", handleLanguageChange);
