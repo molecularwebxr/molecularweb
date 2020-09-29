@@ -25,6 +25,10 @@ i18next
     }
   );
 
+i18next.on("languageChanged", function () {
+  updateContent();
+});
+
 function updateContent() {
   localize("#header");
   localize("#instructions");

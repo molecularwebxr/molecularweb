@@ -34,6 +34,7 @@ function updateContent() {
   localize(".content");
   localize(".contact-us");
   localize("#title");
+  localize(".activity-title");
 }
 
 function handleLanguageChange(e) {
