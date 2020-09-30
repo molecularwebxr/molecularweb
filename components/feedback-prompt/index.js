@@ -18,7 +18,7 @@ feedbackPromptTemplate.innerHTML = /* html */ `
     display: flex;
     align-items: center;
     transform: translate(-50%, -100px);
-    animation: fadeInDown 3s 2s forwards ease-out;
+    animation: fadeInDown 3s 120s forwards ease-out;
   }
 
   @keyframes fadeInDown {

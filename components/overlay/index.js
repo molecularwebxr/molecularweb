@@ -44,8 +44,18 @@ overlayTemplate.innerHTML = /* html */ `
       color: #FFFFFF;
     }
     
-    .text.hidden {
+    .hidden {
       display: none;
+    }
+
+    .buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .button-margins {
+      margin: 2rem 0.5rem 0 0.5rem;
     }
 
     button {
@@ -67,6 +77,11 @@ overlayTemplate.innerHTML = /* html */ `
 
     button:active {
       transform: scale(.9);
+    }
+
+    .buttons button {
+      color: var(--primary);
+      background-color: #ffffff;
     }
 
     @media screen and (max-width: 1000px) {
@@ -179,11 +194,18 @@ overlayTemplate.innerHTML = /* html */ `
       <slot name="description"></slot>
     </p>
 
-    <p class="text hidden" id="menu">
-      Here will be the menu :)
-    </p>
+    <div class="hidden" id="menu">
+      <p class="text">
+        Select your preferred language
+      </p>
+      <div class="buttons">
+        <button id="en">English</button>
+        <button id="es" class="button-margins">Español</button>
+        <button id="fr">Français</button>
+      </div>
+    </div>
 
-    <button>Continue</button>
+    <button id="continue-button">Continue</button>
   </div>`;
 
 class ActivityOverlay extends HTMLElement {
@@ -211,11 +233,12 @@ class ActivityOverlay extends HTMLElement {
     super();
 
     this.toggle = this.toggle.bind(this);
+    this.handleLanguageChange = this.handleLanguageChange.bind(this);
 
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(overlayTemplate.content.cloneNode(true));
 
-    this.buttonElement = this.shadowRoot.querySelector("button");
+    this.buttonElement = this.shadowRoot.getElementById("continue-button");
     this.buttonElement.addEventListener("click", this.toggle);
 
     this.overlayElement = this.shadowRoot.getElementById("overlay");
@@ -226,6 +249,14 @@ class ActivityOverlay extends HTMLElement {
       "instructions"
     );
     this.menuTextElement = this.shadowRoot.getElementById("menu");
+
+    this.english = this.shadowRoot.querySelector("#en");
+    this.spanish = this.shadowRoot.querySelector("#es");
+    this.french = this.shadowRoot.querySelector("#fr");
+
+    this.english.addEventListener("click", this.handleLanguageChange);
+    this.spanish.addEventListener("click", this.handleLanguageChange);
+    this.french.addEventListener("click", this.handleLanguageChange);
   }
 
   connectedCallback() {
@@ -252,6 +283,13 @@ class ActivityOverlay extends HTMLElement {
 
   toggle() {
     this.overlayElement.classList.toggle("active");
+  }
+
+  handleLanguageChange(e) {
+    var lang = e.target.id;
+    e.preventDefault();
+    i18next.changeLanguage(lang);
+    this.toggle();
   }
 
   attributeChangedCallback(attrName, oldValue, newValue) {
