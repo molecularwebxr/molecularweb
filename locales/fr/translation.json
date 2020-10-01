@@ -9,28 +9,28 @@
     "title": "MoleculARweb",
     "description": " Site web pour étudier et enseigner la chimie et la biologie en utilisant la réalité augmentée sur ordinateurs, téléphones et tablettes",
     "policy": "Copyright © 2020 Laboratory for biomolecular modeling, EPFL. All rights reserved.",
-    "contactUs": "Contact us",
-    "feedbackMsg": "Hi! Would you like to help us with a quick survey?",
-    "sure": "Sure!",
-    "dismiss": "Dismiss",
-    "rotate": "Rotate ",
-    "submit": "Submit",
-    "viewInYourSpace": "View in your space",
-    "returnToAR": "Return to AR mode",
-    "cartoon": "Cartoon",
-    "sticks": "Sticks",
+    "contactUs": "Nous contacter",
+    "feedbackMsg": "Salut! Pouvez-vous nous aider avec une enquête rapide?",
+    "sure": "Oui!",
+    "dismiss": "Plus tard",
+    "rotate": "Tourner ",
+    "submit": "Envoyer",
+    "viewInYourSpace": "Voir dans votre espace",
+    "returnToAR": "Revenir en mode RA",
+    "cartoon": "Cartons",
+    "sticks": "Bâtons",
     "interactions": "Interactions",
-    "markers": "Click here to find the AR markers with print and assemble instructions"
+    "markers": "Cliquez ici pour imprimer les marqueurs de réalité augmentée"
   },
   "orbitals": {
-    "title": "Orbitals and molecular shapes",
+    "title": "Formes d'orbitales et de molécules",
     "atomicOrbitals": {
       "title": "Orbitales atomiques et théorie TRPEV",
       "description": "Visualisez et comparez les orbitales atomiques pures et hybrides et les géométries moléculaires les plus élémentaires selon la théorie de la répulsion des paires d'électrons de valence (TRPEV)",
       "instructions": "Choisissez les orbitales et les molécules à afficher sur chaque marqueur. Sur l'écran tactile, vous pouvez également utiliser un doigt pour faire pivoter et deux pour zoomer sur les objets"
     },
     "molecularOrbitals": {
-      "title": "Molecular orbitals",
+      "title": "Orbitales moléculaires",
       "description": "Visualisez et comparez les orbitales moléculaires calcules pour des molécules plus simples.",
       "instructions": "Choisissez des molécules à afficher sur chaque marqueur. Sur l'écran tactile, vous pouvez également utiliser un doigt pour faire pivoter et deux pour zoomer sur les objets"
     },
@@ -48,22 +48,22 @@
       "title": "Kit de modélisation moléculaire virtuelle",
       "description": "Explorez la structure et la dynamique de n'importe quelle molécule d'intérêt",
       "instructions": "Sélectionnez un exemple dans la liste ou collez les coordonnées de votre molécule d'intérêt, puis démarrez l'expérience AR. Pour voir les mouvements augmenter la température.",
-      "temperature": "Temperature: ", 
-      "sticks": "Sticks",
-      "spheres": "Spheres",
-      "pdbInstructions": "Copy molecule in PDB format or load a preset example, then click “Start AR”",
-      "marker": "Marker",
-      "getMarker": "Get marker",
-      "loadFile": "Load your file",
-      "load": "load",
-      "chooseExample": "Choose example",
-      "examples": "--Examples--",
-      "startAR": "Start AR",
-      "placeholder": "Copy-paste PDB here"
+      "temperature": "Température: ", 
+      "sticks": "Bâtons",
+      "spheres": "Sphères",
+      "pdbInstructions": "Copiez et collez la molécule au format PDB ou chargez un exemple, et appuyez sur “Début”",
+      "marker": "Marqueur",
+      "getMarker": "Obtenir un marqueur",
+      "loadFile": "Télécharger fichier",
+      "load": "Charger",
+      "chooseExample": "Choisissez un exemple",
+      "examples": "--Exemples--",
+      "startAR": "Début",
+      "placeholder": "Coller la molécule ici"
     }
   },
   "bonds": {
-    "title": "Hydrogen bonding, acids and bases",
+    "title": "Ponts hydrogène, acides et bases",
     "instructions": "Déplacez les marqueurs AR pour explorer la liaison hydrogène et le transfert de protons en approchant les deux molécules de diverses côtés",
     "waterProtonation": {
       "title": "Équilibres de protonation de l'eau",
@@ -83,7 +83,7 @@
     }
   },
   "macromolecules": {
-    "title": "Atomic structure of biological macromolecules",
+    "title": "Structure atomique des molécules biologiques",
     "proteinDNA": {
       "title": "Complexe ADN-protéine",
       "description": "Tentez de lier cette protéine de liaison à l'ADN à sa molécule d'ADN, vérifiant que les interactions électrostatiques attendues se forment. Cet exemple provient d'une structure expérimentale, PDB 1FJL.",
@@ -106,7 +106,7 @@
     }
   },
   "biological": {
-    "title": "Large biological assemblies",
+    "title": "Complexes macromoléculaires biologiques",
     "nuclear": {
       "title": "Pore nucléaire",
       "description": "Image 3D d'un pore nucléaire obtenu in situ par microscopie électronique (EMDB-3103)",
@@ -142,12 +142,12 @@
     "title": "Kit de modélisation moléculaire virtuelle"
   },
   "surveys": {
-    "welcomeMsg": "Hi, Thank you so much, we really appreciate you taking the time out to share your experience with us",
-    "selectProfile": "Please, select your profile",
+    "welcomeMsg": "Bonjour et merci d'utiliser le site. Merci de bien vouloir remplir cette enquête pour nous aider à améliorer le site.",
+    "selectProfile": "Veuillez sélectionner si vous êtes étudiant ou enseignant",
     "educator": "Enseignant",
     "student": "Etudiant",
-    "tellUs": "Tell us below:",
-    "textPlaceholder": "Type your answer here",
+    "tellUs": "Faites-nous savoir ci-dessous:",
+    "textPlaceholder": "Écrivez votre réponse ici",
     "contactUs": "Vous pouvez également nous contacter à luciano.abriata@epfl.chpour proposer de nouvelles idées, nous aider à préparer de nouveaux exemples, partager vos expériences avec les étudiants, etc",
     "questions": {
       "usedARBefore": "J'avaisdéjàutilisé d'autres applications de réalité augmentée avant d'utiliser ce site web",
