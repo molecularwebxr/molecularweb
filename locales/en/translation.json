@@ -12,7 +12,7 @@
     "contactUs": "Contact us",
     "feedbackMsg": "Hi! Would you like to help us with a quick survey?",
     "sure": "Sure!",
-    "dismiss": "Dismiss",
+    "dismiss": "Maybe later",
     "rotate": "Rotate ",
     "submit": "Submit",
     "viewInYourSpace": "View in your space",
@@ -59,7 +59,7 @@
       "chooseExample": "Choose example",
       "examples": "--Examples--",
       "startAR": "Start AR",
-      "placeholder": "Copy-paste PDB here"
+      "placeholder": "Copy-paste molecule here"
     }
   },
   "bonds": {
@@ -142,9 +142,9 @@
     "title": "Molecular modeling kit"
   },
   "surveys": {
-    "welcomeMsg": "Hi, Thank you so much, we really appreciate you taking the time out to share your experience with us",
-    "selectProfile": "Please, select your profile",
-    "educator": "Educator",
+    "welcomeMsg": "Hi, thank you for using the site. We'd really appreciate that you take the time to share your experience with us",
+    "selectProfile": "Please, select if you are a student or teacher",
+    "educator": "Teacher",
     "student": "Student",
     "tellUs": "Tell us below:",
     "textPlaceholder": "Type your answer here",

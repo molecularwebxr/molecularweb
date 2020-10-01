@@ -8,29 +8,29 @@
   "app": {
     "title": "MoleculARweb",
     "description": "Sitio web para estudiar y enseñar química y biología mediante realidad aumentada en computadoras, teléfonos y tablets",
-    "policy": "Copyright © 2020 Laboratory for biomolecular modeling, EPFL. Todos los derechos reservados.",
+    "policy": "Copyright © 2020 Laboratory for biomolecular modeling, EPFL. All rights reserved.",
     "contactUs": "Contáctanos",
-    "feedbackMsg": "Hola! ¿te gustaría ayudarnos con una encuesta?",
+    "feedbackMsg": "Hola! Nos ayudarías con una encuesta rápida?",
     "sure": "Si!",
-    "dismiss": "Mas adelante",
+    "dismiss": "Más tarde",
     "rotate": "Rotar ",
     "submit": "Enviar",
     "viewInYourSpace": "Ver en tu espacio",
     "returnToAR": "Regresar a modo AR",
-    "cartoon": "Cartoon",
-    "sticks": "Sticks",
-    "interactions": "Interactions",
-    "markers": "Encuentra aquí los marcadores con instrucciones para imprimir y armar"
+    "cartoon": "Cartones",
+    "sticks": "Palos",
+    "interactions": "Interacciones",
+    "markers": "Click aquí para imprimir los marcadores de realidad aumentada"
   },
   "orbitals": {
-    "title": "Orbitals and molecular shapes",
+    "title": "Formas de orbitales y moléculas",
     "atomicOrbitals": {
       "title": "Orbitales atómicos y teoría TRPEV",
       "description": "Visualiza y compara orbitales atómicos puros e híbridos, y algunas de las geometrías más básicas según la teoría de repulsión de los pares electrónicos de valencia (TRPEV)",
       "instructions": "Elige orbitales y moléculas para mostrarlos en cada marcador. En pantalla táctil también puedes usar un dedo para rotar y dos para zoomear los objetos."
     },
     "molecularOrbitals": {
-      "title": "Molecular orbitals",
+      "title": "Orbitales moleculares",
       "description": "Visualiza y compara orbitales moleculares precalculados para moléculas sencillas.",
       "instructions": "Elige moléculas para mostrarlos en cada marcador. En pantalla táctil también puedes usar un dedo para rotar y dos para zoomear los objetos."
     },
@@ -49,8 +49,8 @@
       "description": "Explora la estructura y dinámica de cualquier molécula de interés",
       "instructions": "Selecciona un ejemplo de la lista o pega las coordenadas de tu propia molécula, luego inicia la experiencia AR. Para ver movimientos incrementa la temperatura",
       "temperature": "Temperatura: ", 
-      "sticks": "Sticks",
-      "spheres": "Spheres",
+      "sticks": "Palos",
+      "spheres": "Esferas",
       "pdbInstructions": "Copia una molécula en formato PDB o carga uno de los ejemplos, luego haz click en “Empezar RA”",
       "marker": "Marcador",
       "getMarker": "Obtener marcador",
@@ -59,12 +59,12 @@
       "chooseExample": "Escoger ejemplo",
       "examples": "--Ejemplos--",
       "startAR": "Empezar RA",
-      "placeholder": "Copia y pega el PDB aquí"
+      "placeholder": "Pegar molécula aquí"
     }
   },
   "bonds": {
-    "title": "Hydrogen bonding, acids and bases",
-    "instructions": "Move the AR markers to explore hydrogen bonding and proton transfer by approaching the two molecules from different sides",
+    "title": "Puentes hidrógeno, ácidos y bases",
+    "instructions": "Mueve los marcadores AR para explorar los puentes hidrogeno y la transferencia de protones cuando las moléculas se acercan por diferentes lados.",
     "waterProtonation": {
       "title": "Equilibrios de protonación del agua",
       "description": "Explora como dos moléculas de agua establecen enlaces de puente hidrógeno para interconvertirse entre catión hidronio, agua neutra y anión hidroxilo. El equilibrio es dinámico y da lugar a la constante de autodisociación del agua, Kw."
@@ -83,7 +83,7 @@
     }
   },
   "macromolecules": {
-    "title": "Atomic structure of biological macromolecules",
+    "title": "Estructura atómica de moléculas biológicas",
     "proteinDNA": {
       "title": "Complejo DNA - proteina",
       "description": "Une esta proteína de unión a ADN a su molécula de ADN, verificando que se formen las interacciones electrostáticas esperadas. Este ejemplo proviene de una estructura experimental, PDB 1FJL.",
@@ -106,7 +106,7 @@
     }
   },
   "biological": {
-    "title": "Large biological assemblies",
+    "title": "Complejos macromoleculares biológicos",
     "nuclear": {
       "title": "Poro nuclear",
       "description": "Mapa de microscopía electrónica (EMDB-3103) de un poro nuclear obtenido in situ",
@@ -142,11 +142,11 @@
     "title": "Kit de modelado molecular virtual"
   },
   "surveys": {
-    "welcomeMsg": "Hola, gracias, apreciamos que te tomes un poco de tiempo en compartir tu experiencia con nosotros",
-    "selectProfile": "Por favor, selecciona tu perfil",
-    "educator": "Educador",
-    "student": "Estudiante",
-    "tellUs": "Cuéntanos a continuación:",
+    "welcomeMsg": "Hola y gracias por usar el sitio. Apreciaríamos que llenes esta encuesta, para ayudarnos a mejorar el sitio.",
+    "selectProfile": "Por favor selecciona si eres alumno o profesor",
+    "educator": "Profesor",
+    "student": "Alumno",
+    "tellUs": "Coméntanos abajo: ",
     "textPlaceholder": "Escribe tu respuesta aquí",
     "contactUs": "También puedes contactarnos por email a luciano.abriata@epfl.ch para proponer ideas, ayudar con nuevos ejemplos, compartir tus experiencias con estudiantes, etc.",
     "questions": {
