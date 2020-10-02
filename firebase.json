@@ -6,10 +6,11 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [
+    "redirects": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "destination": "https://molecularweb.epfl.ch/",
+        "type": 302
       }
     ]
   }
