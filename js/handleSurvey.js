@@ -1,4 +1,5 @@
 var form = document.getElementById("survey-form");
+var submitBtn = document.getElementById("submit");
 var educatorsProfile = document.getElementById("profile-option-1");
 var studentsProfile = document.getElementById("profile-option-2");
 var educatorQuestions = document.querySelectorAll(".educators");
@@ -17,6 +18,7 @@ function handleSubmit(e) {
   var formData = e.target;
 
   var data = prepareData(formData);
+  submitBtn.disabled = true;
 
   fetch("https://killpop-api.glitch.me/sendSurveyReport", {
     method: "POST",
@@ -29,7 +31,7 @@ function handleSubmit(e) {
       return response.json();
     })
     .then(function (myJson) {
-      // sendButton.disabled = false;
+      submitBtn.disabled = false;
       swal({
         title: "Thanks for your feedback!",
         text: "🙂",
@@ -40,7 +42,7 @@ function handleSubmit(e) {
       });
     })
     .catch(function (error) {
-      // sendButton.disabled = false;
+      submitBtn.disabled = false;
       swal("Something went wrong", "Please, try again", "error");
     });
 }
