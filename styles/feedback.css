@@ -41,6 +41,10 @@ textarea::placeholder,
   font-family: Roboto;
 }
 
+.hi-container {
+  margin-top: 2rem;
+}
+
 .text-input {
   margin: 8px 16px;
   padding: 16px;
