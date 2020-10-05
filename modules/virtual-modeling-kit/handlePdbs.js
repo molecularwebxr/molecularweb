@@ -4,6 +4,7 @@ var pdbInput = document.getElementById("pdb-input");
 var mkMenu = document.querySelector("enable-mk-menu");
 var menuContainer = document.getElementById("mk-menu");
 var closeMenu = document.getElementById("close-menu");
+var uploadLabel = document.getElementById("upload-label");
 
 var requestURL = "/modules/virtual-modeling-kit/PDB.json";
 var request = new XMLHttpRequest();
@@ -78,3 +79,6 @@ selectMenu.addEventListener("change", handleChange);
 pdbInput.addEventListener("change", handleUpload);
 mkMenu.addEventListener("click", handleMenu);
 closeMenu.addEventListener("click", handleMenu);
+uploadLabel.addEventListener("click", function (e) {
+  pdbInput.click();
+})

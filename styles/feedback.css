@@ -41,6 +41,10 @@ textarea::placeholder,
   font-family: Roboto;
 }
 
+.hi-container {
+  margin-top: 2rem;
+}
+
 .text-input {
   margin: 8px 16px;
   padding: 16px;
@@ -177,8 +181,12 @@ textarea::placeholder,
   margin: 3rem auto;
 }
 
-.submit-btn:active {
+.submit-btn:enabled:active {
   transform: scale(0.9);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
 }
 
 .hidden {
@@ -186,7 +194,7 @@ textarea::placeholder,
 }
 
 @media screen and (max-width: 1060px) {
-  .survey-container{
+  .survey-container {
     width: 75vw;
   }
 }
@@ -248,7 +256,6 @@ textarea::placeholder,
   }
 }
 
-
 @media screen and (max-width: 400px) {
   h4 {
     font-size: 14px;
@@ -306,7 +313,7 @@ textarea::placeholder,
   margin: 0.5rem 0;
 }
 
-.authors-container .title{
+.authors-container .title {
   margin: 1.5rem 0 0.75rem 0;
   font-weight: bold;
 }
