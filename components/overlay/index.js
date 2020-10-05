@@ -181,7 +181,7 @@ overlayTemplate.innerHTML = /* html */ `
        target="_blank"
        rel="noopener noreferrer"
        class="text"
-       href="/assets/markers/cube.pdf"
+       href="/assets/markers/markers.pdf"
     >
       <intl-message key="app.markers"></intl-message>
     </a>
@@ -211,7 +211,7 @@ overlayTemplate.innerHTML = /* html */ `
 
 class ActivityOverlay extends HTMLElement {
   static get observedAttributes() {
-    return ["default", "type"];
+    return ["default", "type", "marker"];
   }
 
   set default(value) {
@@ -228,6 +228,14 @@ class ActivityOverlay extends HTMLElement {
 
   get type() {
     return this._type;
+  }
+
+  set marker(value) {
+    this._marker = value;
+  }
+
+  get marker() {
+    return this._marker;
   }
 
   constructor() {
@@ -282,6 +290,11 @@ class ActivityOverlay extends HTMLElement {
       this.descriptionTextElement.classList.add("hidden");
       this.menuTextElement.classList.remove("hidden");
     }
+    console.log(this.marker)
+
+    if (this.marker === "cube") {
+      this.markersTextElement.href = "/assets/markers/cube.pdf"
+    }
   }
 
   toggle() {
@@ -302,6 +315,10 @@ class ActivityOverlay extends HTMLElement {
 
     if (attrName === "type") {
       this.type = newValue;
+    }
+
+    if (attrName === "marker") {
+      this.marker = newValue;
     }
   }
 }
