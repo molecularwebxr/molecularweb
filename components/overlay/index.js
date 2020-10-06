@@ -52,10 +52,8 @@ overlayTemplate.innerHTML = /* html */ `
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-
-    .button-margins {
-      margin: 2rem 0.5rem 0 0.5rem;
+      flex-wrap: wrap;
+      margin: 1.75rem 0 0 0;
     }
 
     button {
@@ -82,6 +80,12 @@ overlayTemplate.innerHTML = /* html */ `
     .buttons button {
       color: var(--primary);
       background-color: #ffffff;
+      margin: 0.25rem;
+    }
+
+    .buttons-text {
+      margin-left: auto;
+      margin-right: auto;
     }
 
     @media screen and (max-width: 1000px) {
@@ -195,13 +199,13 @@ overlayTemplate.innerHTML = /* html */ `
     </p>
 
     <div class="hidden" id="menu">
-      <p class="text">
+      <p class="text buttons-text">
         Select your preferred language
       </p>
       <div class="buttons">
         <button id="en">English</button>
-        <button id="es" class="button-margins">Español</button>
-        <button id="fr" class="button-margins">Français</button>
+        <button id="es">Español</button>
+        <button id="fr">Français</button>
         <button id="it">Italiano</button>
         <button id="pt">Português</button>
       </div>
