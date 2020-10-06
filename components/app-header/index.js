@@ -312,6 +312,7 @@ headerTemplate.innerHTML = /* html */ `
           <li id="es">Español</li>
           <li id="fr">Français</li>
           <li id="it">Italiano</li>
+          <li id="pt">Português</li>
         </ul>
       </div>
     </div>
