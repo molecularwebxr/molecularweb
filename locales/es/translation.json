@@ -20,7 +20,8 @@
     "cartoon": "Cartones",
     "sticks": "Palos",
     "interactions": "Interacciones",
-    "markers": "Click aquí para imprimir los marcadores de realidad aumentada"
+    "markers": "Click aquí para imprimir los marcadores de realidad aumentada",
+    "preferredLang": "Selecciona tu idioma preferido"
   },
   "orbitals": {
     "title": "Formas de orbitales y moléculas",

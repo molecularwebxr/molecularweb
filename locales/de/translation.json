@@ -1,0 +1,222 @@
+{
+  "menu": {
+    "about": "Über",
+    "getInTouch": "Kontakt",
+    "feedback": "Umfrage",
+    "language": "Sprache"
+  },
+  "app": {
+    "title": "MoleculARweb",
+    "description": " Website für die Ausbildung in Chemie und Biologie durch Augmented Reality, sofort verfügbar in Standardgeräten",
+    "policy": "Copyright © 2020 Laboratory for biomolecular modeling, EPFL. All rights reserved.",
+    "contactUs": "Kontaktiere uns",
+    "feedbackMsg": "Hallo! Würden Sie uns bei einer kurzen Umfrage helfen?",
+    "sure": "Sicher!",
+    "dismiss": "Vielleicht später",
+    "rotate": "Drehen ",
+    "submit": "einreichen",
+    "viewInYourSpace": "Ansicht in Ihrem Raum",
+    "returnToAR": "Kehren Sie zum AR-Modus zurück",
+    "cartoon": "Karikatur",
+    "sticks": "Sticks",
+    "interactions": "Interaktionen",
+    "markers": "Klicken Sie hier, um die AR-Markierungen mit Anweisungen zum Drucken und Zusammenbauen zu finden",
+    "preferredLang": "Wählen Sie Ihre bevorzugte Sprache"
+  },
+  "orbitals": {
+    "title": "Orbitale und Molekülformen",
+    "atomicOrbitals": {
+      "title": "Atomorbitale und VSEPR-Theorie",
+      "description": "Visualisieren und vergleichen Sie alle gängigen reinen und hybriden Atomorbitale sowie die grundlegenden VSEPR-Geometrien.",
+      "instructions": "Wählen Sie ein Orbital oder Molekül aus, das auf jedem AR-Marker angezeigt werden soll. Sie können auch einen Finger zum Drehen und zwei Finger zum Zoomen der Objekte verwenden."
+    },
+    "molecularOrbitals": {
+      "title": "Molekülorbitale",
+      "description": "Visualisieren und vergleichen Sie alle gängigen reinen und hybriden Atomorbitale sowie die grundlegenden VSEPR-Geometrien.",
+      "instructions": "Zeigen Sie die vorberechneten Molekülorbitale für die grundlegendsten Moleküle an und vergleichen Sie sie."
+    },
+    "molecularShapes": {
+      "title": "VSEPR-Theorie",
+      "description": "Visualisieren und vergleichen Sie die grundlegenden VSEPR-Geometrien.",
+      "instructions": "Wählen Sie eine Molekül aus, das auf jedem AR-Marker angezeigt werden soll. Sie können auch einen Finger zum Drehen und zwei Finger zum Zoomen der Objekte verwenden."
+    },
+    "webRemake": {
+      "title": "Beispiele von Martinez-Hung et al 2017",
+      "description": "Beispiele für kristalline Strukturen, TRPEV-Formen und Wasserkomplexe aus einer früheren Veröffentlichung von Martinez-Hung et al., Revista Cubana de Quimica 2017, die für webAR umfunktioniert wurde.",
+      "instructions": "Wählen Sie die Beispiele aus den Dropdown-Menüs. Einzelheiten finden Sie in der Originalveröffentlichung."
+    },
+    "modelingKit": {
+      "title": "Virtual modeling kit",
+      "description": "Erforschen Sie die Struktur und Dynamik jedes interessierenden Moleküls",
+      "instructions": "Wählen Sie ein Beispiel aus der Liste aus oder fügen Sie die Koordinaten Ihres eigenen Moleküls ein und starten Sie dann die AR-Erfahrung. Um Bewegungen zu sehen, erhöhen Sie die Temperatur.",
+      "temperature": "Temperatur: ", 
+      "sticks": "Sticks",
+      "spheres": "Kugeln",
+      "pdbInstructions": "Kopieren Sie das Molekül im PDB-Format oder laden Sie ein voreingestelltes Beispiel und klicken Sie dann auf. “Starten AR”",
+      "marker": "Marker",
+      "getMarker": "Holen sich Marker",
+      "loadFile": "Laden Ihre Datei",
+      "load": "Belastung",
+      "chooseExample": "Wählen ein Beispiel",
+      "examples": "Beispiele",
+      "startAR": "Starten AR",
+      "placeholder": "Einfügen Molekül hier"
+    }
+  },
+  "bonds": {
+    "title": "Wasserstoffbrücken, Säuren und Basen",
+    "instructions": "Bewegen Sie die AR-Marker, um die Wasserstoffbindung und den Protonentransfer zu untersuchen, indem Sie sich den beiden Molekülen von verschiedenen Seiten nähern",
+    "waterProtonation": {
+      "title": "Gleichgewichte der Wasserprotonierung",
+      "description": "Erforschen Sie, wie zwei Wassermoleküle Wasserstoffbrückenbindungen herstellen und Protonen übertragen, die sich zwischen Hydroniumkation, neutralem Wasser und Hydroxidanion umwandeln. Das Gleichgewicht ist dynamisch und führt zur Wasserdissoziationskonstante Kw."
+    },
+    "acidDeprotonation": {
+      "title": "Gleichgewicht der Deprotonierung von Säuren in Wasser",
+      "description": "Erfahren Sie, wie ein Essigsäuremolekül Wasserstoffbrücken mit einem Wassermolekül herstellt und ein Proton überträgt, das negativ geladen wird und ein Hydroniumkation bildet. Graue Atome sind C, rote sind O, weiße sind Hs. Dieses dynamische Gleichgewicht führt zur sauren Konstante Ka."
+    },
+    "ammoniaProtonation": {
+      "title": "ichgewichte der Ammoniakprotonierung in Wasser",
+      "description": "Erfahren Sie, wie ein Ammoniakmolekül Wasserstoffbrücken mit einem Wassermolekül herstellt und ein Proton positiv geladen wird und ein Hydroxidanion bildet. Graue Atome sind C, weiße sind Hs, blau ist N. Dieses dynamische Gleichgewicht führt zur Grundkonstante Kb."
+    },
+    "acidBase": {
+      "title": "Gleichgewicht zwischen sauren und basischen Aminosäureseitenketten",
+      "description": "Erforschen Sie, wie sich Glutamat und Lysin durch Austausch von Protonen zwischen geladenen und neutralen Spezies umwandeln. Graue Atome sind C, rote sind O, weiße sind Hs, blaue sind N. Die gelben Punkte zeigen die Wasserstoffbrücken zwischen H und O oder N."
+    }
+  },
+  "macromolecules": {
+    "title": "Atomstruktur biologischer Makromoleküle",
+    "proteinDNA": {
+      "title": "Protein-DNA-Komplex",
+      "description": "Docken Sie eine Domäne eines Transkriptionsfaktors an die zugehörige DNA an. Überprüfen Sie die gebildeten elektrostatischen Wechselwirkungen. Dieses Beispiel stammt aus einer experimentellen Struktur, PDB 1FJL.",
+      "instructions": "Fahren Sie jedes Molekül mit einem AR-Marker und versuchen Sie, die korrekt angedockte Position zu finden."
+    },
+    "peptide": {
+      "title": "Peptid in die Elektronendichte einpassen",
+      "description": "Passen Sie zwei Teile eines Peptids in die durch Röntgenbeugung bestimmte Elektronendichtekarte ein. Dieses Beispiel gibt Ihnen einen Eindruck davon, wie experimentelle Strukturen erhalten werden. Es stammt aus einer experimentellen Struktur, PDB 3HYD.",
+      "instructions": "Verwenden Sie den Marker, um die erste Gruppe von Atomen anzudocken. Sobald sie angedockt ist, haben Sie die Möglichkeit, den zweiten Satz anzudocken. Am Ende können Sie den vollständigen Molekülpass innerhalb seiner Elektronendichte untersuchen."
+    },
+    "protein": {
+      "title": "Proteinsekundärstrukturen und stabilisierende Wechselwirkungen",
+      "description": "Untersuchen Sie die detaillierte Atomstruktur, Wasserstoffbrücken und Salzbrücken, die Proteinsekundärstrukturen stabilisieren. Sie haben eine Alpha-Helix auf einem AR-Marker und ein Beta-Blatt auf dem anderen.",
+      "instructions": "Klicken Sie auf die Schaltflächen, um zwischen den verschiedenen Darstellungen zu wechseln."
+    },
+    "example": {
+      "title": "Zusammenstellung atomistischer Strukturen von Biomolekülen",
+      "description": "Überprüfen Sie eine Reihe von vorgefertigten Ansichten von biologischen Makromolekülen.",
+      "instructions": "Wählen Sie eines der Beispiele in den Dropdown-Menüs aus, um ein System auf jeder Markierung anzuzeigen."
+    }
+  },
+  "biological": {
+    "title": "Große biologische Strukturen",
+    "nuclear": {
+      "title": "Kernporenkomplex",
+      "description": "Elektronenmikroskopische Karte des menschlichen Kernporenkomplexes (EMDB-3103)",
+      "instructions": "Überprüfen Sie den AR-Marker in 3D oder stehen Sie direkt auf einer ebenen horizontalen Fläche wie dem Boden oder einem Tisch"
+    },
+    "ribosome": {
+      "title": "Ribosom mit mRNA und tRNAs",
+      "description": "Kryo-Elektronenmikroskopie-Struktur eines Säugetier-Ribosoms mit einer tRNA in der A / P-Position, gepaart mit einem Abschnitt der mRNA und einer anderen tRNA in der P / E-Position (PDB 6HCJ).",
+      "instructions": "Überprüfen Sie den AR-Marker in 3D oder stehen Sie direkt auf einer ebenen horizontalen Fläche wie dem Boden oder einem Tisch"
+    },
+    "bacteriophage": {
+      "title": "Bakteriophage an der Bakterienwand",
+      "description": "Kryo-Elektronenmikroskopie eines Bakteriophagen, der seine Nadel durch die beiden Bakterienmembranen gestanzt hat (EMD-9010).",
+      "instructions": "Überprüfen Sie den AR-Marker in 3D oder stehen Sie direkt auf einer ebenen horizontalen Fläche wie dem Boden oder einem Tisch"
+    },
+    "sarscov2": {
+      "title": "Modell des Komplexes zwischen dem SARS-Cov2-Protein S und dem menschlichen ACE2-Protein",
+      "description": "Integratives Modell des SARS-Cov-2-Virusproteins S (Spike), das an das humane ACE2-Protein gebunden ist, jeweils im Kontext seiner Membran (PDB-IDs 6VYB, 6M17 und 6M0J).",
+      "instructions": "Überprüfen Sie den AR-Marker in 3D oder stehen Sie direkt auf einer ebenen horizontalen Fläche wie dem Boden oder einem Tisch"
+    },
+    "bacterial": {
+      "title": "Pilus Grundplatte von Bakterien",
+      "description": "Grundplatte eines durch Kryo-Elektronenmikroskopie gelösten Bakterienpilus mit Teilen der beiden Zellmembranen und Peptidoglycan (PDB 3JC8 + EMD-3247)",
+      "instructions": "Überprüfen Sie den AR-Marker in 3D oder stehen Sie direkt auf einer ebenen horizontalen Fläche wie dem Boden oder einem Tisch"
+    },
+    "nucleosome": {
+      "title": "Nukleosom",
+      "description": "Röntgenstruktur eines vollständigen Nukleosoms mit 4 Histonen und 2 DNA-Windungen (PDB ID 1AOI)",
+      "instructions": "Überprüfen Sie den AR-Marker in 3D oder stehen Sie direkt auf einer ebenen horizontalen Fläche wie dem Boden oder einem Tisch"
+    }
+  },
+  "modelingKit": {
+    "title": "Virtual modeling kit"
+  },
+  "surveys": {
+    "welcomeMsg": "Hallo! Wir würden uns sehr freuen, wenn Sie sich die Zeit nehmen, Ihre Erfahrungen mit uns zu teilen.",
+    "selectProfile": "Bitte wählen Sie aus, ob Sie Schüler oder Lehrer sind.",
+    "educator": "Lehrer",
+    "student": "Student",
+    "tellUs": "Sagen Sie es uns unten:",
+    "textPlaceholder": "Geben Sie hier Ihre Antwort ein.",
+    "contactUs": "Sie können sich auch unter luciano.abriata@epfl.ch (auf Englisch, Spanisch, Italienisch or Französisch) mit uns in Verbindung setzen, um neue Ideen vorzuschlagen, uns bei der Vorbereitung neuer Beispiele zu helfen, Ihre Erfahrungen mit Studenten zu teilen usw.",
+    "questions": {
+      "usedARBefore": "Ich hatte vor der Nutzung dieser Website andere Augmented-Reality-Anwendungen verwendet ",
+      "easilyUse": "Ich könnte diese Website leicht benutzen, um Moleküle auf den Markern anzuzeigen",
+      "understand": "Die Verwendung von Augmented Reality hat mir geholfen, die Strukturen von Molekülen und Chemiekonzepten besser zu verstehen",
+      "interestInChemistry": "Durch die Nutzung dieser Website habe ich mich für Chemie interessiert",
+      "interestInTech": "Durch die Nutzung dieser Website habe ich mich für Programmierung, Augmented Reality usw. interessiert.",
+      "place": "Haben Sie die Website in der Schule, zu Hause oder in beiden Bereichen verwendet?",
+      "suggestions": "Welche anderen Moleküle oder Inhalte möchten Sie, die wir vorbereiten?",
+      "liveIn": "Lebst du in...",
+      "age": "Wie alt bist du?",
+      "howManyStudents": "Wenn Sie die Website mit Schülern genutzt haben, wie viele Schüler pro Gerät hatten Sie?",
+      "studentsInterest": "Ich habe das Interesse der Schüler an der Verwendung des Tools wahrgenommen",
+      "studentsUnderstanding": "Ich nahm wahr, dass die Verwendung des Tools den Schülern half, die Molekülstruktur und andere chemische Konzepte besser zu verstehen",
+      "emailAddress": "Ihre E-Mail-Adresse, wenn Sie über neue Versionen auf dem Laufenden bleiben möchten. "
+    },
+    "answers": {
+      "notAtAll": "Nicht",
+      "notReally": "Nicht wirklich",
+      "aLittle": " Ja, ein bisschen",
+      "aLot": "Ja, viel",
+      "perhaps": "Nur 1, 2, vielleicht 3 mal",
+      "severalTimes": "Mehrmals",
+      "didntWork": "Nein, ich konnte es nicht zum Laufen bringen ",
+      "hardToWork": "Es war schwer, es zum Laufen zu bringen, aber es gelang ihm schließlich",
+      "someEffort": "Das erste Mal war einige Mühe erforderlich, aber dann war es einfach, es mehrmals zu verwenden",
+      "easyToWork": "Es war von Anfang an recht einfach, die Website zu nutzen",
+      "school": "Nur in der Schule",
+      "home": "Nur zu Hause",
+      "both": "Sowohl in der Schule als auch zu Hause",
+      "africa": "Afrika",
+      "asia": "Asien",
+      "northAmerica": "Nordamerika",
+      "latam": "Lateinamerika",
+      "europe": "Europa",
+      "middleEast": "Naher Osten",
+      "oceania": "Ozeanien"
+    }
+  },
+  "about": {
+    "firstPart": "molekulARweb ist eine Website für die Ausbildung in Chemie und Strukturbiologie durch handelsübliche, webbasierte Augmented Reality, die Sie in Ihrem webcam-fähigen Computer, Smartphone oder Tablet direkt in Ihrem Webbrowser verwenden können. Es wurde hauptsächlich von Fabio Cortés Rodríguez und Luciano A. Abriata von der ",
+    "lbm": "Dal Peraro-Gruppe",
+    "epfl": "an der École Polytechnique Fédérale de Lausanne",
+    "secondPart": " (EPFL) in der Schweiz mit Hilfe mehrerer Mitarbeiter der Gruppe sowie von Forschern und Pädagogen anderer Institutionen entworfen und programmiert. Das Projekt wird durch den Spark Grant CRSK-1_190376 des ",
+    "snf": "Schweizerischen Nationalfonds ",
+    "toLAB": "an Luciano A. Abriata finanziert, ",
+    "snfDB": "hier in der SNF-Projektdatenbank beschrieben ist.",
+    "thirdPart": "Die Website basiert auf clientseitiger Webprogrammierung (siehe ",
+    "this": "dies",
+    "and": " und ",
+    "fourthPart": "Dies bedeutet, dass die Aktivitäten vollständig lokal in Ihrem Browser auf Ihrem Computer ausgeführt werden. Die Art der Technologien, die zum Programmieren von MoleculARweb verwendet werden, wird in diesem von Experten geprüften",
+    "article": " Open-Access-Artikel bei PeerJ Comp Sci beschrieben, ",
+    "fifthPart": "während die genauen Aktivitäten von MolecularARweb in diesem ",
+    "preprint": "Preprint bei ChemRxiv beschrieben werden, ",
+    "sixthPart": "in dem auch alle mitwirkenden Autoren und andere Anerkennungen aufgeführt sind.",
+    "seventhPart": "MoleculARweb wird von ",
+    "eighthPart": "Die auf der Website verwendeten Symbole wurden von ",
+    "madeBy": "heruntergeladen und von Pixel Perfect, Smashicons, Freebies, Diacanvas Studio und Dario Ferrando erstellt. Das Logo der Website bestand aus kostenlosen, offenen Symbolen, die von denselben Autoren auf ",
+    "openSource": "Dies ist ein Open Source-Projekt. Sie finden das Repository unter GitHub: ",
+    "aboutAuthors": "Über die Hauptautoren: ",
+    "fabio": "Eng. Fabio Cortés Rodríguez ist ein Software-Ingenieur und Technologe, der sich leidenschaftlich für erweiterte und virtuelle Realität interessiert und die Schnittstelle zwischen Kunst und Technologie erforscht. Derzeit ist er WebXR-Ingenieur am Labor für biomolekulare Modellierung an der EPFL.",
+    "luciano": " Dr. Luciano A. Abriata ist ein Biotechnologe mit einem Doktortitel in Chemie und langjähriger Erfahrung in der biologischen Kernspinresonanz sowie in der molekularen Modellierung und Simulation biologischer Systeme. Er ist begeistert von Webprogrammierung und modernen Mensch-Computer-Technologien zur Verbesserung von Arbeit und Bildung. Derzeit ist er Experte für NMR bei der Protein Biophysics Group der EPFL und Senior Scientist am Labor für biomolekulare Modellierung an der EPFL."
+  },
+  "contact": {
+    "firstPart": "Um Probleme, Fehler oder Vorschläge zu melden, schreiben Sie uns an luciano.abriata@epfl.ch oder fabio.cortesrodriguez@epfl.ch",
+    "thirdPart": "Und bitte füllen Sie die Umfragen aus, die unter diesem Link verfügbar ",
+    "link": "sind.",
+    "fourthPart": "Um mehr über die Website, das Projekt und die Autoren zu erfahren, klicken Sie ",
+    "here": "hier."
+  }
+}

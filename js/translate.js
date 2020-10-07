@@ -5,6 +5,7 @@ var spanish = document.querySelector("app-header").shadowRoot.querySelector("#es
 var french = document.querySelector("app-header").shadowRoot.querySelector("#fr");
 var italian = document.querySelector("app-header").shadowRoot.querySelector("#it");
 var portuguese = document.querySelector("app-header").shadowRoot.querySelector("#pt");
+var german = document.querySelector("app-header").shadowRoot.querySelector("#de");
 
 i18next
   .use(i18nextHttpBackend)
@@ -54,3 +55,4 @@ spanish.addEventListener("click", handleLanguageChange);
 french.addEventListener("click", handleLanguageChange);
 italian.addEventListener("click", handleLanguageChange);
 portuguese.addEventListener("click", handleLanguageChange);
+german.addEventListener("click", handleLanguageChange);
