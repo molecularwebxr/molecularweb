@@ -200,7 +200,7 @@ overlayTemplate.innerHTML = /* html */ `
 
     <div class="hidden" id="menu">
       <p class="text buttons-text">
-        Select your preferred language
+      <intl-message key="app.preferredLang"></intl-message>
       </p>
       <div class="buttons">
         <button id="en">English</button>

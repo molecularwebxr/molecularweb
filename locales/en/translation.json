@@ -20,7 +20,8 @@
     "cartoon": "Cartoon",
     "sticks": "Sticks",
     "interactions": "Interactions",
-    "markers": "Click here to find the AR markers with print and assemble instructions"
+    "markers": "Click here to find the AR markers with print and assemble instructions",
+    "preferredLang": "Select your preferred language"
   },
   "orbitals": {
     "title": "Orbitals and molecular shapes",
