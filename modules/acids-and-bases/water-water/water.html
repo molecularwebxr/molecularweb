@@ -49,6 +49,7 @@
     <script src="/components/rotation-controls/index.js"></script>
     <script src="/components/feedback-prompt/index.js"></script>
     <script src="/components/zoom-icon/index.js"></script>
+    <script src="/components/swap-camera/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="index.js"></script>
@@ -59,6 +60,7 @@
     <script src="/modules/utils/aframe/gesture-handler.js"></script>
     <script src="/modules/utils/aframe/loader.js"></script>
     <script src="/modules/utils/aframe/rotation.js"></script>
+    <script src="/modules/utils/aframe/selectCamera.js"></script>
     <script src="/modules/utils/handleTranslation.js"></script>
   </head>
 
@@ -189,6 +191,7 @@
       loader
       vr-mode-ui="enabled: false"
       loading-screen="enabled: false"
+      switch-camera
     >
       <a-marker type="barcode" value="0" id="watA">
         <a-entity
