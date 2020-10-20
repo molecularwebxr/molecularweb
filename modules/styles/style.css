@@ -277,6 +277,10 @@ figure {
   padding: 1.5rem 1rem;
 }
 
+.modeling-container.multiple-cams {
+  transform: translateY(-45%);
+}
+
 .triangle-mk {
   position: absolute;
   top: 50%;
@@ -631,12 +635,18 @@ figure {
     padding: 0.5rem 0.5rem;
     transform: translateY(-65%);
   }
+  .temperature-container.multiple-cams {
+    transform: translateY(-58%);
+  }
   .temp-controls {
     margin: 0;
   }
   .zoom-container {
     transform: translateY(40%);
     padding: 0.5rem 0.5rem;
+  }
+  .zoom-container.multiple-cams {
+    transform: translateY(61%);
   }
   .pdb-selector {
     width: 80px;
