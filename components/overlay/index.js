@@ -300,7 +300,6 @@ class ActivityOverlay extends HTMLElement {
       this.descriptionTextElement.classList.add("hidden");
       this.menuTextElement.classList.remove("hidden");
     }
-    console.log(this.marker)
 
     if (this.marker === "cube") {
       this.markersTextElement.href = "/assets/markers/cube.pdf"

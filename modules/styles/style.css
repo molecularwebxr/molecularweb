@@ -277,6 +277,10 @@ figure {
   padding: 1.5rem 1rem;
 }
 
+.modeling-container.multiple-cams {
+  transform: translateY(-45%);
+}
+
 .triangle-mk {
   position: absolute;
   top: 50%;
@@ -486,6 +490,10 @@ figure {
   transform: translateY(-4%);
 }
 
+.zoom-container.small-menu.multiple-cams-single {
+  transform: translateY(21%);
+}
+
 .temperature-container {
   position: fixed;
   top: 50%;
@@ -631,12 +639,18 @@ figure {
     padding: 0.5rem 0.5rem;
     transform: translateY(-65%);
   }
+  .temperature-container.multiple-cams {
+    transform: translateY(-58%);
+  }
   .temp-controls {
     margin: 0;
   }
   .zoom-container {
     transform: translateY(40%);
     padding: 0.5rem 0.5rem;
+  }
+  .zoom-container.multiple-cams {
+    transform: translateY(61%);
   }
   .pdb-selector {
     width: 80px;
@@ -828,6 +842,10 @@ figure {
     transform: translateY(-64%);
   }
 
+  .temperature-container.multiple-cams {
+    transform: translateY(-57%);
+  }
+
   .temp-controls {
     margin: 0;
   }
@@ -835,6 +853,14 @@ figure {
   .zoom-container {
     transform: translateY(48%);
     padding: 0.5rem 0.5rem;
+  }
+
+  .zoom-container.multiple-cams {
+    transform: translateY(69%);
+  }
+
+  .zoom-container.multiple-cams-single {
+    transform: translateY(21%);
   }
 
   .temperature-container .triangle-temp{

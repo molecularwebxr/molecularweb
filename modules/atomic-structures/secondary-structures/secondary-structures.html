@@ -49,6 +49,7 @@
     <script src="/components/rotation-controls/index.js"></script>
     <script src="/components/feedback-prompt/index.js"></script>
     <script src="/components/zoom-icon/index.js"></script>
+    <script src="/components/swap-camera/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="/modules/utils/aframe/modelOpacity.js"></script>
@@ -59,6 +60,7 @@
     <script src="/modules/utils/aframe/loader.js"></script>
     <script src="/modules/utils/aframe/rotation.js"></script>
     <script src="/modules/utils/handleTranslation.js"></script>
+    <script src="/modules/utils/aframe/selectCamera.js"></script>
   </head>
 
   <body>
@@ -110,6 +112,7 @@
     <!-- Side buttons -->
     <div class="side-menu column">
       <flip-video class="icon-margin"></flip-video>
+      <swap-camera class="hide icon-margin"></swap-camera>
       <flip-graphics class="icon-margin"></flip-graphics>
       <reset-activity class="icon-margin"></reset-activity>
       <zoom-icon class="icon-margin"></zoom-icon>
@@ -230,6 +233,7 @@
       rotate-molecules
       vr-mode-ui="enabled: false"
       loading-screen="enabled: false"
+      switch-camera
     >
       <a-assets>
         <!-- Struct assets -->

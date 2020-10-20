@@ -1,9 +1,3 @@
-var high = 100;
-var medium = 50;
-var low = 10;
-
-var prevTemp = 0;
-
 var scaleUp = document.getElementById("scale-up");
 var scaleDown = document.getElementById("scale-down");
 var tempControls = document.querySelectorAll("temp-control");
@@ -11,15 +5,107 @@ var stopTemp = document.querySelector("stop-temp");
 var playTemp = document.querySelector("play-temp");
 var tempMenu = document.querySelector("enable-temp-controls");
 var zoomMenu = document.querySelector("zoom-icon");
+var swapCam = document.querySelector("swap-camera");
 var tempMenuContainer = document.getElementById("temp-container");
 var zoomMenuContainer = document.getElementById("zoom-container");
 var renderType = document.querySelector("render-type-icon");
+var flipGraphics = document.querySelector("flip-graphics");
+
+var high = 100;
+var medium = 50;
+var low = 10;
+
+var prevTemp = 0;
+
+var devices = [];
+var selectedCamera = "env";
 
 tempMenu.isActive = false;
 renderType.isActive = true;
 zoomMenu.isActive = false;
 
-var flipGraphics = document.querySelector("flip-graphics");
+function handleError(error) {
+  console.log("Something went wrong: ", error.message, error.name);
+}
+
+function getDevices(deviceInfos) {
+  for (var i = 0; i !== deviceInfos.length; ++i) {
+    var deviceInfo = deviceInfos[i];
+    if (deviceInfo.kind === "videoinput") {
+      var id = deviceInfo.deviceId;
+      if (!devices.includes(id)) {
+        devices.push(id);
+      }
+    }
+  }
+
+  if (this.devices.length > 1) {
+    swapCam.classList.remove("hide");
+    swapCam.addEventListener("click", switchCam);
+    
+    menuContainer.classList.add("multiple-cams");
+    tempMenuContainer.classList.add("multiple-cams");
+    zoomMenuContainer.classList.add("multiple-cams");
+  }
+}
+
+function switchCam(e) {
+  var constraints;
+
+  if (selectedCamera === "env") {
+    constraints = {
+      audio: false,
+      video: {
+        facingMode: "user",
+        width: {
+          ideal: 640,
+        },
+        height: {
+          ideal: 480,
+        },
+      },
+    };
+    selectedCamera = "user";
+  } else {
+    constraints = {
+      audio: false,
+      video: {
+        facingMode: "environment",
+        width: {
+          ideal: 640,
+        },
+        height: {
+          ideal: 480,
+        },
+      },
+    };
+    selectedCamera = "env";
+  }
+  console.log("Contraints selected. Attempting to change camera...");
+
+  var domElement = document.querySelector("video");
+
+  var oldStream = domElement.srcObject;
+  oldStream.getTracks().forEach(function (track) {
+    track.stop();
+    console.log("Current stream stopped");
+  });
+
+  navigator.mediaDevices
+    .getUserMedia(constraints)
+    .then(function (stream) {
+      domElement.srcObject = stream;
+
+      var event = new CustomEvent("camera-init", { stream: stream });
+      window.dispatchEvent(event);
+      console.log("Event dispatched. Changing camera.");
+
+      document.body.addEventListener("click", function () {
+        domElement.play();
+      });
+    })
+    .catch(handleError);
+}
 
 function handleFlip(e) {
   for (i = 0; i < atomsarray.length; i++) {
@@ -129,3 +215,5 @@ flipGraphics.addEventListener("flipGraphics", handleFlip);
 tempControls.forEach(function (item) {
   item.addEventListener("updateTemp", handleTempControls);
 });
+
+navigator.mediaDevices.enumerateDevices().then(getDevices).catch(handleError);

@@ -31,8 +31,8 @@ const ZoomIconContent = /* html */ `
     }
     @media screen and (max-height: 450px) and (orientation: landscape) {
       svg {
-        width: 30px;
-        height: 31px;
+        width: 28px;
+        height: 29px;
       }
     }
   </style>
