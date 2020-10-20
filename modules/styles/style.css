@@ -490,6 +490,10 @@ figure {
   transform: translateY(-4%);
 }
 
+.zoom-container.small-menu.multiple-cams-single {
+  transform: translateY(21%);
+}
+
 .temperature-container {
   position: fixed;
   top: 50%;
@@ -853,6 +857,10 @@ figure {
 
   .zoom-container.multiple-cams {
     transform: translateY(69%);
+  }
+
+  .zoom-container.multiple-cams-single {
+    transform: translateY(21%);
   }
 
   .temperature-container .triangle-temp{
