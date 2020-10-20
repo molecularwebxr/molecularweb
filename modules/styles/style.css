@@ -838,6 +838,10 @@ figure {
     transform: translateY(-64%);
   }
 
+  .temperature-container.multiple-cams {
+    transform: translateY(-57%);
+  }
+
   .temp-controls {
     margin: 0;
   }
@@ -845,6 +849,10 @@ figure {
   .zoom-container {
     transform: translateY(48%);
     padding: 0.5rem 0.5rem;
+  }
+
+  .zoom-container.multiple-cams {
+    transform: translateY(69%);
   }
 
   .temperature-container .triangle-temp{

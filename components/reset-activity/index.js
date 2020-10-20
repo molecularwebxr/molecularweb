@@ -27,8 +27,8 @@
     }
     @media screen and (max-height: 450px) and (orientation: landscape) {
       svg {
-        width: 30px;
-        height: 30px;
+        width: 28px;
+        height: 28px;
       }
     }
   </style>
