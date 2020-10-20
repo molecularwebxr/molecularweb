@@ -87,22 +87,8 @@ AFRAME.registerComponent("switch-camera", {
     console.log("Something went wrong: ", error.message, error.name);
   },
   createBtn: function () {
-    var containerElement = document.createElement("swap-camera");
-    // containerElement.setAttribute("id", "#arjs-select-camera-container");
-    // containerElement.setAttribute(
-    //   "style",
-    //   "position: absolute; bottom: 5px; right: 0; background-color: rgba(111, 45, 189, 0.7); padding: 8px 16px; border-radius: 4px;"
-    // );
-    document.body.appendChild(containerElement);
-
-    // var selectCameraButton = document.createElement("button");
-    // selectCameraButton.innerText = "Switch";
-    // selectCameraButton.setAttribute(
-    //   "style",
-    //   "font-family: 'Roboto'; padding: 4px 8px; width: 100px; border: none; outline: none; border-radius: 4px; background-color: rgb(10, 255, 198); color: rgb(111, 45, 189); font-weight: bold; cursor: pointer;"
-    // );
-
-    // containerElement.appendChild(selectCameraButton);
+    var containerElement = document.querySelector("swap-camera");
+    containerElement.classList.remove("hide");
 
     containerElement.addEventListener("click", this.handleClick);
   },
