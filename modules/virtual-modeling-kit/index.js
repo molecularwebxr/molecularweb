@@ -124,6 +124,16 @@ function initialize() {
 
   let pointLight = new THREE.PointLight(0xffffff, 1, 50);
   pointLight.position.set(0.5, 3, 2);
+
+  var geometry = new THREE.BoxGeometry();
+
+  var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+
+  var cube = new THREE.Mesh(geometry, material);
+
+  cube.position.set(0, 0, -2);
+
+  scene.add(cube);
   scene.add(pointLight);
 }
 
@@ -182,7 +192,7 @@ function handleClick(e) {
   if (pdbInserted.length > 0) {
     loadPdb(pdbInserted);
     handleMenu(e);
-    handleTempMenu(e)
+    handleTempMenu(e);
   } else {
     console.log("No pdb!");
   }
