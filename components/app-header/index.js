@@ -278,6 +278,11 @@ headerTemplate.innerHTML = /* html */ `
       padding: 1rem 2rem;
     }
   }
+  @media screen and (max-width: 450px) {
+    .mobile-menu-links.lang-menu {
+      margin-top: 4rem;
+    }
+  }
   </style>
   <div id="overlay" class="overlay"></div>
   <header class="row">
@@ -370,33 +375,29 @@ headerTemplate.innerHTML = /* html */ `
           <molecule-icon medium no-strokes />
         </a>
       </figure>
-      <div class="mobile-menu-links column">
-        <a class="mobile-menu-link"
-        >
-        English
+      <div class="mobile-menu-links lang-menu column">
+        <a class="mobile-menu-link" id="en_">
+          English
         </a>
 
-        <a class="mobile-menu-link"
-        >
+        <a class="mobile-menu-link" id="es_">
           Español
         </a>
 
-        <a
-          class="mobile-menu-link"
-        >
-        Français
+        <a class="mobile-menu-link" id="fr_">
+          Français
         </a>
 
-        <a class="mobile-menu-link">
+        <a class="mobile-menu-link" id="it_">
           Italiano
         </a>
 
-        <a class="mobile-menu-link">
-        Português
+        <a class="mobile-menu-link" id="pt_">
+          Português
         </a>
 
-        <a class="mobile-menu-link">
-        Deutsche
+        <a class="mobile-menu-link" id="de_">
+          Deutsche
         </a>
       </div>
     </div>
