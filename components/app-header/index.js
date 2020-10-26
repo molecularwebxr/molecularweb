@@ -278,6 +278,11 @@ headerTemplate.innerHTML = /* html */ `
       padding: 1rem 2rem;
     }
   }
+  @media screen and (max-width: 450px) {
+    .mobile-menu-links.lang-menu {
+      margin-top: 4rem;
+    }
+  }
   </style>
   <div id="overlay" class="overlay"></div>
   <header class="row">
@@ -352,7 +357,7 @@ headerTemplate.innerHTML = /* html */ `
           <intl-message key="menu.feedback"></intl-message>
         </a>
 
-        <a class="mobile-menu-link">
+        <a class="mobile-menu-link" id="lang-option">
           <intl-message key="menu.language"></intl-message>
         </a>
       </div>
@@ -361,13 +366,55 @@ headerTemplate.innerHTML = /* html */ `
     <p class="mobile-menu-footer">
       <intl-message key="app.policy"></intl-message>
     </p>
-  </div>`;
+  </div>
+  
+  <div id="mobile-menu-lang" class="mobile-menu column">
+    <div class="mobile-menu-content column">
+      <figure>
+        <a href="/index.html">
+          <molecule-icon medium no-strokes />
+        </a>
+      </figure>
+      <div class="mobile-menu-links lang-menu column">
+        <a class="mobile-menu-link" id="en_">
+          English
+        </a>
+
+        <a class="mobile-menu-link" id="es_">
+          Español
+        </a>
+
+        <a class="mobile-menu-link" id="fr_">
+          Français
+        </a>
+
+        <a class="mobile-menu-link" id="it_">
+          Italiano
+        </a>
+
+        <a class="mobile-menu-link" id="pt_">
+          Português
+        </a>
+
+        <a class="mobile-menu-link" id="de_">
+          Deutsche
+        </a>
+      </div>
+    </div>
+    
+    <p class="mobile-menu-footer">
+      <intl-message key="app.policy"></intl-message>
+    </p>
+  </div>
+
+  `;
 
 class AppHeader extends HTMLElement {
   constructor() {
     super();
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleLangMenu = this.handleLangMenu.bind(this);
 
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(headerTemplate.content.cloneNode(true));
@@ -377,14 +424,25 @@ class AppHeader extends HTMLElement {
     this.bar3 = this.shadowRoot.querySelector("#bar3");
     this.hamburger = this.shadowRoot.querySelector("#hamburger");
     this.mobileMenu = this.shadowRoot.querySelector("#mobile-menu");
+    this.mobileMenuLang = this.shadowRoot.querySelector("#mobile-menu-lang");
+    this.langBtn = this.shadowRoot.querySelector("#lang-option");
     this.overlay = this.shadowRoot.querySelector("#overlay");
 
     this.menuActive = false;
+    this.langMenuActive = false;
 
     this.hamburger.addEventListener("click", this.handleClick);
+    this.langBtn.addEventListener("click", this.handleLangMenu);
   }
 
   handleClick(event) {
+    if(this.langMenuActive) {
+      this.mobileMenuLang.classList.remove("active");
+      this.langMenuActive = false;
+      return;
+    }
+
+
     this.hamburger.classList.toggle("active");
     this.mobileMenu.classList.toggle("active");
     this.overlay.classList.toggle("active");
@@ -399,6 +457,11 @@ class AppHeader extends HTMLElement {
       this.bar2.style.animation = "bar2in .5s forwards";
       this.bar3.style.animation = "bar3in .5s forwards";
     }
+  }
+
+  handleLangMenu(event) {
+    this.mobileMenuLang.classList.add("active");
+    this.langMenuActive = true;
   }
 }
 
