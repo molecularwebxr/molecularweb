@@ -134,6 +134,38 @@ footer {
   padding: 1rem;
 }
 
+.arrow-anchor {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 2rem;
+  transition: transform 0.2s;
+}
+
+.arrow-path {
+  transition: 0.2s;
+  fill: var(--primary);
+}
+.circle {
+  transition: 0.2s;
+  fill: var(--secondary);
+}
+.activity:hover .arrow-path{
+  fill: #FFFFFF;
+}
+.activity:hover .circle{
+  fill: var(--primary);
+}
+.activity:hover .arrow-anchor {
+  transform: translateX(6px);
+}
+
+@media screen and (max-width: 450px) {
+  .arrow-anchor {
+    width: 25px;
+    height: 25px;
+  }
+}
+
 .activity.short-text {
   height: 11rem;
 }
