@@ -111,19 +111,6 @@ footer {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
-.module-header.expanded + .module-activities {
-  max-height: 200vh;
-  padding: 0.75rem 0;
-}
-
-.module-header.expanded {
-  margin-bottom: 1rem;
-}
-
-.module-header.expanded .triangle {
-  transform: rotate(90deg);
-}
-
 .activity {
   /* width: 24rem; */
   height: 14rem;
@@ -272,6 +259,19 @@ footer {
   .activity-title {
     font-size: 1rem;
     height: auto;
+  }
+
+  .module-header.expanded + .module-activities {
+    max-height: 200vh;
+    padding: 0.75rem 0;
+  }
+  
+  .module-header.expanded {
+    margin-bottom: 1rem;
+  }
+  
+  .module-header.expanded .triangle {
+    transform: rotate(90deg);
   }
 
   .home-banner-title {
