@@ -111,19 +111,6 @@ footer {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
-.module-header.expanded + .module-activities {
-  max-height: 200vh;
-  padding: 0.75rem 0;
-}
-
-.module-header.expanded {
-  margin-bottom: 1rem;
-}
-
-.module-header.expanded .triangle {
-  transform: rotate(90deg);
-}
-
 .activity {
   /* width: 24rem; */
   height: 14rem;
@@ -132,6 +119,38 @@ footer {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
   border-radius: 16px;
   padding: 1rem;
+}
+
+.arrow-anchor {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 2rem;
+  transition: transform 0.2s;
+}
+
+.arrow-path {
+  transition: 0.2s;
+  fill: var(--primary);
+}
+.circle {
+  transition: 0.2s;
+  fill: var(--secondary);
+}
+.activity:hover .arrow-path{
+  fill: #FFFFFF;
+}
+.activity:hover .circle{
+  fill: var(--primary);
+}
+.activity:hover .arrow-anchor {
+  transform: translateX(6px);
+}
+
+@media screen and (max-width: 450px) {
+  .arrow-anchor {
+    width: 25px;
+    height: 25px;
+  }
 }
 
 .activity.short-text {
@@ -240,6 +259,19 @@ footer {
   .activity-title {
     font-size: 1rem;
     height: auto;
+  }
+
+  .module-header.expanded + .module-activities {
+    max-height: 200vh;
+    padding: 0.75rem 0;
+  }
+  
+  .module-header.expanded {
+    margin-bottom: 1rem;
+  }
+  
+  .module-header.expanded .triangle {
+    transform: rotate(90deg);
   }
 
   .home-banner-title {
