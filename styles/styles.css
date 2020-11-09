@@ -184,6 +184,46 @@ footer {
   border-bottom: 1px solid var(--primary);
 }
 
+.policy-banner {
+  background-color: var(--primary);
+  color: #FFFFFF;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-height: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.policy-banner a{
+  text-decoration: underline;
+  color: #FFFFFF;
+}
+
+.policy-banner button {
+  border-radius: 6px;
+  border-style: none;
+  border-width: 0;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: button;
+  padding: 0.5rem 0.8rem;
+  background-color: var(--secondary);
+  color: var(--primary);
+  font-family: "Roboto";
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+.policy-banner button:enabled:active {
+  transform: scale(0.9);
+}
+
+.hidden {
+  display: none;
+}
+
 @media screen and (max-width: 1500px) {
   .activity {
     height: 15rem;
@@ -215,6 +255,10 @@ footer {
   .activity {
     height: 14rem;
   }
+  .policy-banner,
+  .policy-banner button {
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-width: 900px) {
@@ -223,6 +267,13 @@ footer {
   }
   .activity.short-text {
     height: 12rem;
+  }
+  .policy-banner,
+  .policy-banner button {
+    font-size: 12px;
+  }
+  .policy-banner button {
+    padding: 0.2rem 0.6rem;
   }
 }
 
@@ -295,6 +346,21 @@ footer {
   }
   .triangle {
     display: block;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .policy-banner{
+    padding: 0 0.8rem;
+  }
+  .policy-banner,
+  .policy-banner button {
+    font-size: 10px;
+    text-align: center;
+  }
+  .policy-banner button {
+    padding: 0.2rem 0.5rem;
+    margin-left: 0.5rem;
   }
 }
 

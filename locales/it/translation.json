@@ -9,6 +9,8 @@
     "title": "MoleculARweb",
     "description": "Sito web per studiare e insegnare chimica e biologia utilizzando la realtà aumentata su computer, telefoni e tablet",
     "policy": "Copyright © 2020 Laboratory for biomolecular modeling, EPFL. All rights reserved.",
+    "policyMsg": "Utilizziamo i cookie per migliorare la tua esperienza sul nostro sito. Utilizzando MoleculARweb accetti la nostra politica sulla privacy.",
+    "learnMore": "Vedi altro",
     "contactUs": "Contattaci",
     "feedbackMsg": "Ciao! Ci aiuteresti con un rapido sondaggio?",
     "sure": "Sì!",
