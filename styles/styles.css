@@ -255,6 +255,10 @@ footer {
   .activity {
     height: 14rem;
   }
+  .policy-banner,
+  .policy-banner button {
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-width: 900px) {
@@ -263,6 +267,13 @@ footer {
   }
   .activity.short-text {
     height: 12rem;
+  }
+  .policy-banner,
+  .policy-banner button {
+    font-size: 12px;
+  }
+  .policy-banner button {
+    padding: 0.2rem 0.6rem;
   }
 }
 
@@ -335,6 +346,21 @@ footer {
   }
   .triangle {
     display: block;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .policy-banner{
+    padding: 0 0.8rem;
+  }
+  .policy-banner,
+  .policy-banner button {
+    font-size: 10px;
+    text-align: center;
+  }
+  .policy-banner button {
+    padding: 0.2rem 0.5rem;
+    margin-left: 0.5rem;
   }
 }
 

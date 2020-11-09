@@ -1,6 +1,7 @@
 var acceptBtn = document.getElementById("accept-privacy");
 var banner = document.getElementById("privacy");
 var expiresIn = 60000;
+// var expiresIn = 2629800000;
 
 function handleAccept(e) {
   banner.classList.add("hidden");
