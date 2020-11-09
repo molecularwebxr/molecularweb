@@ -46,6 +46,7 @@ function updateContent() {
   localize(".content");
   localize(".contact-us");
   localize("#title");
+  localize("#privacy");
   localize(".activity-title");
 }
 
