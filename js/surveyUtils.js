@@ -5,11 +5,11 @@ function prepareData(form) {
       profile: form.profile.value,
       usedARBefore: form.arBefore.value,
       easyUse: form.easyUse.value,
+      suggestions: form.suggestions.value,
+      location: form.location.value,
       studentsNumber: form.studentsNumber.value,
       studentsInterest: form.studentsInterest.value,
       studentsUnderstanding: form.studentsUnderstanding.value,
-      suggestions: form.suggestions.value,
-      location: form.location.value,
       email: form.email.value,
     }
   }  else {
@@ -17,12 +17,12 @@ function prepareData(form) {
       profile: form.profile.value,
       usedARBefore: form.arBefore.value,
       easyUse: form.easyUse.value,
+      suggestions: form.suggestions.value,
+      location: form.location.value,
       understand: form.understand.value,
       interestInChemistry: form.interestInChemistry.value,
       interestInTech: form.interestInTech.value,
       place: form.place.value,
-      suggestions: form.suggestions.value,
-      location: form.location.value,
       age: form.age.value,
     }
   }
