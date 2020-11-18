@@ -3,7 +3,6 @@ var maxSessionExpiration = 60000; // 1 min
 var timer = 20000; // 3s
 
 function startTimer(time) {
-  console.log(time)
   setTimeout(() => {
     console.log("Ask for feedback!");
   }, time);
@@ -45,10 +44,10 @@ if (!isActiveSession) {
   
     var sessionTime = parseInt(sessionValue, 10);
     var activeSessionTimer = new Date(sessionTime + timer) - Date.now();
+
+    var sessionTimer  = activeSessionTimer > 0 ? activeSessionTimer : timer;
     
     console.log("Active session found. Timer set to " + (sessionTimer/1000).toFixed(1) + "s");
-  
-    var sessionTimer  = activeSessionTimer > 0 ? activeSessionTimer : timer;
   
     startTimer(sessionTimer);
   }

@@ -20,31 +20,33 @@ function handleSubmit(e) {
   var data = prepareData(formData);
   submitBtn.disabled = true;
 
-  fetch("https://molecularweb.epfl.ch/backend/api/surveys/report", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (myJson) {
-      submitBtn.disabled = false;
-      swal({
-        title: "Thanks for your feedback!",
-        text: "🙂",
-        icon: "success",
-        button: {
-          text: "Ok",
-        },
-      });
-    })
-    .catch(function (error) {
-      submitBtn.disabled = false;
-      swal("Something went wrong", "Please, try again", "error");
-    });
+  document.cookie = `survey=answered; expires=60000; path=/; Secure`;
+
+  // fetch("https://molecularweb.epfl.ch/backend/api/surveys/report", {
+  //   method: "POST",
+  //   body: JSON.stringify(data),
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // })
+  //   .then(function (response) {
+  //     return response.json();
+  //   })
+  //   .then(function (myJson) {
+  //     submitBtn.disabled = false;
+  //     swal({
+  //       title: "Thanks for your feedback!",
+  //       text: "🙂",
+  //       icon: "success",
+  //       button: {
+  //         text: "Ok",
+  //       },
+  //     });
+  //   })
+  //   .catch(function (error) {
+  //     submitBtn.disabled = false;
+  //     swal("Something went wrong", "Please, try again", "error");
+  //   });
 }
 
 function handleProfileChange(event) {
