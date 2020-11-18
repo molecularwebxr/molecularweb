@@ -6,7 +6,6 @@ const mvAnchorContent = /* html */ `
       bottom: 3px;
       right: 3px;
       z-index: 1;
-      display: none;
     }
     svg {
       transition: transform 0.2s;
@@ -24,12 +23,6 @@ const mvAnchorContent = /* html */ `
     }
     a:hover #circle{
       fill: var(--primary);
-    }
-
-    @media (max-width: 800px) {
-      a {
-        display: block;
-      }
     }
 
     @media (max-width: 440px) {
