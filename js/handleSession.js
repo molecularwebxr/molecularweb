@@ -1,8 +1,7 @@
 var feedbackPrompt = document.querySelector("feedback-prompt");
 
-// var maxSessionExpiration = 7200000; // 2hs
-var maxSessionExpiration = 60000; // 1 min
-var timer = 20000; // 3s
+var maxSessionExpiration = 7200000; // 2hs
+var timer = 180000; // 3m 
 
 /******************  Session utils *************************/
 function checkForSurveyCookie() {
