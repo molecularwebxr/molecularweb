@@ -1,7 +1,7 @@
 var feedbackPrompt = document.querySelector("feedback-prompt");
 
 var maxSessionExpiration = 7200000; // 2hs
-var timer = 180000; // 3m 
+var timer = 20000; // 3m 
 
 /******************  Session utils *************************/
 function checkForSurveyCookie() {
@@ -46,8 +46,9 @@ function getSessionData() {
     var sessionEnd = sessionData
       .split("=")
       .find((row) => row.startsWith("start"))
-      .split(":")[2]
-  
+      .split("end:")[1]
+
+      
     var sessionTime = parseInt(sessionStart, 10);    
   }
 
@@ -60,7 +61,7 @@ function getSessionData() {
 // Update session data
 function updateSessionCookie() {
   var session = getSessionData();
-  document.cookie = `session=start:${Date.now()}end:${session.end}; expires=${session.end};`;
+  document.cookie = `session=start:${Date.now()}end:${session.end}; expires=${session.end}; path=/; secure`;
 }
 
 // Check if user has already answered the survey
@@ -111,7 +112,7 @@ if (!isActiveSession) {
   console.log(`No active session found. Timer set to ${timer/1000}s`);
   resetSurveyCookie();
   var sessionExpire = new Date(Date.now() + maxSessionExpiration);
-  document.cookie = `session=start:${Date.now()}end:${sessionExpire}; expires=${sessionExpire};`;
+  document.cookie = `session=start:${Date.now()}end:${sessionExpire}; expires=${sessionExpire}; path=/; secure`;
   startTimer(timer);
 } else {
   // If there's an active session, let's check if user already answered the survey
@@ -122,7 +123,9 @@ if (!isActiveSession) {
 
     var activeSessionTimer = new Date(session.start + timer) - Date.now();
 
-    var sessionTimer = activeSessionTimer > 0 ? activeSessionTimer : timer;
+    var sessionTimer = activeSessionTimer > 0 ? activeSessionTimer : (timer + activeSessionTimer);
+
+    console.log(activeSessionTimer)
 
     console.log("Active session found. Timer set to " + (sessionTimer / 1000).toFixed(1) + "s" );
 

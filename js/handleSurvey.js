@@ -32,7 +32,7 @@ function handleSubmit(e) {
     })
     .then(function (myJson) {
       submitBtn.disabled = false;
-      document.cookie = `survey=answered; expires=7200000; path=/; Secure`;
+      document.cookie = `survey=answered; expires=7200000; path=/; secure`;
       swal({
         title: "Thanks for your feedback!",
         text: "🙂",
