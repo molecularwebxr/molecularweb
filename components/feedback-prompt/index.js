@@ -18,7 +18,10 @@ feedbackPromptTemplate.innerHTML = /* html */ `
     display: flex;
     align-items: center;
     transform: translate(-50%, -100px);
-    animation: fadeInDown 3s 30s forwards ease-out;
+  }
+
+  .fadeIn {
+    animation: fadeInDown 3s forwards ease-out;
   }
 
   @keyframes fadeInDown {
@@ -229,6 +232,7 @@ class FeedbackPrompt extends HTMLElement {
     super();
 
     this.handleClick = this.handleClick.bind(this);
+    this.display = this.display.bind(this);
 
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(feedbackPromptTemplate.content.cloneNode(true));
@@ -243,7 +247,14 @@ class FeedbackPrompt extends HTMLElement {
   }
 
   handleClick() {
+    this.container.classList.remove("fadeIn");
     this.container.classList.add("out");
+    this.dispatchEvent(new CustomEvent("dismiss-survey"));
+  }
+
+  display() {
+    this.container.classList.remove("out")
+    this.container.classList.add("fadeIn")
   }
 }
 
