@@ -11,6 +11,7 @@ var marker2AModel = document.getElementById("marker-2A-mol");
 var marker2BModel = document.getElementById("marker-2B-mol");
 
 var resetActivityButton = document.querySelector("reset-activity");
+var mvButton = document.querySelector("mv-anchor");
 
 // Store models in arrays for easier handling
 var modelsMarker1 = [marker1AModel, marker1BModel];
@@ -19,6 +20,10 @@ var modelsMarker2 = [marker2AModel, marker2BModel];
 // Select first option by default
 marker1Select.selectedIndex = 0;
 marker2Select.selectedIndex = 0;
+
+function handleModelViewer(e) {
+  console.log("Click!")
+}
 
 // Reset both markers to default state
 function handleReset(e) {
@@ -66,3 +71,4 @@ function handleSelection(e) {
 marker1Select.addEventListener("change", handleSelection);
 marker2Select.addEventListener("change", handleSelection);
 resetActivityButton.addEventListener("resetActivity", handleReset);
+mvButton.addEventListener("click", handleModelViewer);
