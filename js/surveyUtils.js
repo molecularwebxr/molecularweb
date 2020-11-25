@@ -3,6 +3,7 @@ function prepareData(form) {
   if (form.profile.value === "educator") {
     data = {
       profile: form.profile.value,
+      date: new Date(Date.now()),
       usedARBefore: form.arBefore.value,
       easyUse: form.easyUse.value,
       suggestions: form.suggestions.value
@@ -17,6 +18,7 @@ function prepareData(form) {
   } else {
     data = {
       profile: form.profile.value,
+      date: new Date(Date.now()),
       usedARBefore: form.arBefore.value,
       easyUse: form.easyUse.value,
       suggestions: form.suggestions.value
