@@ -20,7 +20,7 @@ function handleSubmit(e) {
   var data = prepareData(formData);
   submitBtn.disabled = true;
 
-  fetch("https://molecularweb.epfl.ch/backend/api/surveys/report", {
+  fetch("http://localhost:3000/api/surveys/report", {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
