@@ -22,7 +22,18 @@ marker1Select.selectedIndex = 0;
 marker2Select.selectedIndex = 0;
 
 function handleModelViewer(e) {
-  console.log("Click!")
+  var marker1Element = marker1Select.selectedIndex + 1;
+  var marker2Element = marker2Select.selectedIndex + 1;
+
+  var marker1Src = document.getElementById(`mol${marker1Element}`).attributes.src.value;
+  var marker2Src = document.getElementById(`mol${marker2Element}`).attributes.src.value;
+  
+  var src1 = marker1Src.slice(9, -5);
+  var src2 = marker2Src.slice(9, -5);
+
+  var baseUrl = "/modules/atomic-structures/example-structures/example-structures3d.html"
+
+  location.href = `${baseUrl}?src1=${src1}&src2=${src2}`
 }
 
 // Reset both markers to default state
