@@ -11,6 +11,7 @@ var marker2AModel = document.getElementById("marker-2A-mol");
 var marker2BModel = document.getElementById("marker-2B-mol");
 
 var resetActivityButton = document.querySelector("reset-activity");
+var mvButton = document.querySelector("mv-anchor");
 
 // Store models in arrays for easier handling
 var modelsMarker1 = [marker1AModel, marker1BModel];
@@ -19,6 +20,21 @@ var modelsMarker2 = [marker2AModel, marker2BModel];
 // Select first option by default
 marker1Select.selectedIndex = 0;
 marker2Select.selectedIndex = 0;
+
+function handleModelViewer(e) {
+  var marker1Element = marker1Select.selectedIndex + 1;
+  var marker2Element = marker2Select.selectedIndex + 1;
+
+  var marker1Src = document.getElementById(`mol${marker1Element}`).attributes.src.value;
+  var marker2Src = document.getElementById(`mol${marker2Element}`).attributes.src.value;
+  
+  var src1 = marker1Src.slice(9, -5);
+  var src2 = marker2Src.slice(9, -5);
+
+  var baseUrl = "/modules/atomic-structures/example-structures/example-structures3d.html"
+
+  location.href = `${baseUrl}?src1=${src1}&src2=${src2}`
+}
 
 // Reset both markers to default state
 function handleReset(e) {
@@ -66,3 +82,4 @@ function handleSelection(e) {
 marker1Select.addEventListener("change", handleSelection);
 marker2Select.addEventListener("change", handleSelection);
 resetActivityButton.addEventListener("resetActivity", handleReset);
+mvButton.addEventListener("click", handleModelViewer);

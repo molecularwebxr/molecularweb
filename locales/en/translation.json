@@ -105,7 +105,27 @@
     "example": {
       "title": "Compilation of atomistic structures of biomolecules",
       "description": "Inspect a set of pre-made views of biological macromolecules.",
-      "instructions": "Choose among the examples in the dropdown menus, to see one system on each marker."
+      "instructions": "Choose among the examples in the dropdown menus, to see one system on each marker.",
+      "prot": {
+        "title": "DNA-binding protein",
+        "description": "A protein that binds DNA shown as cartoons, with the residues involved in DNA binding shown as sticks"
+      },
+      "dna": {
+        "title": "Piece of double-strand DNA",
+        "description": "A piece of double-strand DNA in B conformation"
+      },
+      "prot-dna": {
+        "title": "Protein-DNA complex",
+        "description": "A protein bound to its cognate DNA, where residues at the interface are shown as sticks"
+      },
+      "3hyd": {
+        "title": "Short peptide with all atoms",
+        "description": "A short peptide shown as sticks at fully atomic detail, including hydrogens"
+      },
+      "1vyq": {
+        "title": "Trimeric protein with ligands",
+        "description": "A trimeric protein with 3 ligands bound, same as in Berry et al Biochem Mol Biol Ed 2014"
+      }
     }
   },
   "biological": {

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/js/support.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-91563073-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-91563073-2");
+    </script>
+    <title id="title" data-i18n="macromolecules.example.title"></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/modules/styles/3d.css" />
+
+    <!-- Translation Libraries -->
+    <script src="/lib/i18n/i18next.min.js"></script>
+    <script src="/lib/i18n/i18next-wc.js"></script>
+    <script src="/lib/i18n/loc-i18next.min.js"></script>
+    <script src="/lib/i18n/i18nextBrowserLanguageDetector.js"></script>
+    <script src="/lib/i18n/i18nextHttpBackend.min.js"></script>
+
+    <!-- Web Components -->
+    <script src="/components/footer/index.js"></script>
+    <script src="/components/icons/tubes/index.js"></script>
+    <script src="/components/icons/molecule/index.js"></script>
+    <script src="/components/app-header/index.js"></script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"
+    ></script>
+  </head>
+  <body>
+    <div class="content">
+      <!-- Header -->
+      <app-header></app-header>
+
+      <div class="container compare">
+        <!-- Model 1 -->
+        <div class="model-container">
+          <h1 class="activity-title" id="title-1"></h1>
+          <model-viewer
+            id="mv-1"
+            ar
+            ar-modes="webxr scene-viewer quick-look fallback"
+            auto-rotate
+            camera-controls
+            alt="3D model"
+            shadow-intensity="1"
+            exposure="0.5"
+          >
+            <button
+              slot="ar-button"
+              class="ar-button"
+              data-i18n="app.viewInYourSpace"
+            ></button>
+
+            <!-- TO DO: add annotations! -->
+          </model-viewer>
+          <p
+            class="activity-description"
+            id="description-1"
+          ></p>
+        </div>
+
+        <!-- Model 2 -->
+        <div class="model-container">
+          <h1 class="activity-title" id="title-2"></h1>
+          <model-viewer
+            id="mv-2"
+            ar
+            ar-modes="webxr scene-viewer quick-look fallback"
+            auto-rotate
+            camera-controls
+            alt="3D model"
+            shadow-intensity="1"
+            exposure="0.5"
+          >
+            <button
+              slot="ar-button"
+              class="ar-button"
+              data-i18n="app.viewInYourSpace"
+            ></button>
+
+            <!-- TO DO: add annotations! -->
+          </model-viewer>
+          <!-- <a
+            class="back-btn"
+            href="/modules/biological-assemblies/npc/npc.html"
+            data-i18n="app.returnToAR"
+          ></a> -->
+          <p
+            class="activity-description"
+            id="description-2"
+          ></p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <app-footer />
+    </footer>
+    <script src="/js/translate.js"></script>
+    <script src="/js/handleSession.js"></script>
+    <script src="./handleViewer.js"></script>
+  </body>
+</html>
