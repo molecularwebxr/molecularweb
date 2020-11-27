@@ -39,13 +39,24 @@ figure {
   justify-content: center;
 }
 
+.container.compare {
+  flex-direction: row;
+}
+
+.model-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .activity-title {
   font-family: "Montserrat";
   font-weight: bold;
   font-size: 1.5rem;
   text-align: center;
   color: var(--primary);
-  margin: 0 0 0 1rem;
+  margin: 2rem 0 0 1rem;
 }
 
 .activity-description {
@@ -167,6 +178,9 @@ button[slot="hotspot-foot2"] {
     width: 100vw;
     height: 75vw;
     margin: 0;
+  }
+  .container.compare {
+    flex-direction: column;
   }
 }
 

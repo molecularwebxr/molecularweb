@@ -16,7 +16,7 @@
 
       gtag("config", "UA-91563073-2");
     </script>
-    <title id="title" data-i18n="biological.nuclear.title"></title>
+    <title id="title" data-i18n="macromolecules.example.title"></title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
@@ -49,38 +49,65 @@
       <!-- Header -->
       <app-header></app-header>
 
-      <div class="container">
-        <h1 class="activity-title" data-i18n="biological.nuclear.title"></h1>
+      <div class="container compare">
+        <!-- Model 1 -->
+        <div class="model-container">
+          <h1 class="activity-title" id="title-1"></h1>
+          <model-viewer
+            id="mv-1"
+            ar
+            ar-modes="webxr scene-viewer quick-look fallback"
+            auto-rotate
+            camera-controls
+            alt="3D model"
+            shadow-intensity="1"
+            exposure="0.5"
+          >
+            <button
+              slot="ar-button"
+              class="ar-button"
+              data-i18n="app.viewInYourSpace"
+            ></button>
 
-        <model-viewer
-          ar
-          ar-modes="webxr scene-viewer quick-look fallback"
-          src="./models/dna.gltf"
-          auto-rotate
-          camera-controls
-          alt="3D model"
-          shadow-intensity="1"
-          exposure="0.5"
-        >
-          <button
-            slot="ar-button"
-            class="ar-button"
-            data-i18n="app.viewInYourSpace"
-          ></button>
+            <!-- TO DO: add annotations! -->
+          </model-viewer>
+          <p
+            class="activity-description"
+            id="description-1"
+          ></p>
+        </div>
 
-          <!-- TO DO: add annotations! -->
-        </model-viewer>
+        <!-- Model 2 -->
+        <div class="model-container">
+          <h1 class="activity-title" id="title-2"></h1>
+          <model-viewer
+            id="mv-2"
+            ar
+            ar-modes="webxr scene-viewer quick-look fallback"
+            auto-rotate
+            camera-controls
+            alt="3D model"
+            shadow-intensity="1"
+            exposure="0.5"
+          >
+            <button
+              slot="ar-button"
+              class="ar-button"
+              data-i18n="app.viewInYourSpace"
+            ></button>
 
-        <a
-          class="back-btn"
-          href="/modules/biological-assemblies/npc/npc.html"
-          data-i18n="app.returnToAR"
-        ></a>
-
-        <p
-          class="activity-description"
-          data-i18n="biological.nuclear.description"
-        ></p>
+            <!-- TO DO: add annotations! -->
+          </model-viewer>
+          <!-- <a
+            class="back-btn"
+            href="/modules/biological-assemblies/npc/npc.html"
+            data-i18n="app.returnToAR"
+          ></a> -->
+          <p
+            class="activity-description"
+            id="description-2"
+          ></p>
+        </div>
       </div>
     </div>
     <footer>
