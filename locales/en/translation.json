@@ -125,6 +125,18 @@
       "1vyq": {
         "title": "Trimeric protein with ligands",
         "description": "A trimeric protein with 3 ligands bound, same as in Berry et al Biochem Mol Biol Ed 2014"
+      },
+      "a-dna": {
+        "title": "A-DNA",
+        "description": "DNA 3D model"
+      },
+      "b-dna": {
+        "title": "B-DNA",
+        "description": "DNA 3D model"
+      },
+      "z-dna": {
+        "title": "C-DNA",
+        "description": "DNA 3D model"
       }
     }
   },
