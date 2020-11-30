@@ -128,15 +128,15 @@
       },
       "a-dna": {
         "title": "A-DNA",
-        "description": "DNA 3D model"
+        "description": "Piece of double-stranded DNA in A conformation"
       },
       "b-dna": {
         "title": "B-DNA",
-        "description": "DNA 3D model"
+        "description": "Piece of double-stranded DNA in B conformation"
       },
       "z-dna": {
         "title": "C-DNA",
-        "description": "DNA 3D model"
+        "description": "Piece of double-stranded DNA in Z conformation"
       }
     }
   },
