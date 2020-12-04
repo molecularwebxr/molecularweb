@@ -81,6 +81,14 @@ const AppFooterContent = /* html */ `
       .contact-info {
         padding-left: 2rem;
       }
+
+      img{
+        height: 40px;
+      }
+
+      img.lbm {
+        height: 70px;
+      }
     }
 
     @media screen and (max-width: 1050px) {
@@ -225,13 +233,13 @@ const AppFooterContent = /* html */ `
     <div class="footer-top">
       <div class="logos">
         <a href="https://www.epfl.ch" target="_blank">
-          <img src="/assets/img/epfl.png" alt="epfl logo" height="40" />  
+          <img src="/assets/img/epfl.png" alt="epfl logo" height="50" />  
         </a>
         <a href="http://www.snf.ch" target="_blank">
-          <img src="/assets/img/snf.png" alt="snf logo" height="40" />  
+          <img src="/assets/img/snf.png" alt="snf logo" height="50" />  
         </a>
         <a href="https://www.epfl.ch/labs/lbm/" target="_blank">
-          <img class="lbm" src="/assets/img/lbm2.png" alt="lbm logo" height="80" />  
+          <img class="lbm" src="/assets/img/lbm2.png" alt="lbm logo" height="90" />  
         </a>
       </div>
       <div class="contact-info">
