@@ -130,6 +130,10 @@ const AppFooterContent = /* html */ `
       img {
         height: 30px;
       }
+
+      img.lbm {
+        height: 50px;
+      }
     }
     @media screen and (max-width: 900px) {
       .logos {
@@ -182,6 +186,10 @@ const AppFooterContent = /* html */ `
       .contact-email {
         font-size: 10px;
       }
+
+      img.lbm {
+        height: 50px;
+      }
     }
     @media screen and (max-width: 450px) {
       .logos {
@@ -223,7 +231,7 @@ const AppFooterContent = /* html */ `
           <img src="/assets/img/snf.png" alt="snf logo" height="40" />  
         </a>
         <a href="https://www.epfl.ch/labs/lbm/" target="_blank">
-          <img src="/assets/img/lbm.jpg" alt="lbm logo" height="40" />  
+          <img class="lbm" src="/assets/img/lbm2.png" alt="lbm logo" height="80" />  
         </a>
       </div>
       <div class="contact-info">
