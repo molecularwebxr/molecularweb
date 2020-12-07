@@ -314,11 +314,11 @@ headerTemplate.innerHTML = /* html */ `
 
         <ul class="language-menu">
           <li id="en">English</li>
-          <li id="es">Español</li>
           <li id="fr">Français</li>
-          <li id="it">Italiano</li>
-          <li id="pt">Português</li>
           <li id="de">Deutsche</li>
+          <li id="it">Italiano</li>
+          <li id="es">Español</li>
+          <li id="pt">Português</li>
         </ul>
       </div>
     </div>

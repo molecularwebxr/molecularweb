@@ -204,11 +204,11 @@ overlayTemplate.innerHTML = /* html */ `
       </p>
       <div class="buttons">
         <button id="en">English</button>
-        <button id="es">Español</button>
         <button id="fr">Français</button>
-        <button id="it">Italiano</button>
-        <button id="pt">Português</button>
         <button id="de">Deutsche</button>
+        <button id="it">Italiano</button>
+        <button id="es">Español</button>
+        <button id="pt">Português</button>
       </div>
     </div>
 
