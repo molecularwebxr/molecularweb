@@ -3,6 +3,10 @@ AFRAME.registerComponent("listen-to-flip", {
     this.flip = this.flip.bind(this);
     const flipGraphicsButton = document.querySelector("flip-graphics");
     flipGraphicsButton.addEventListener("flipGraphics", this.flip);
+
+    if (window.innerWidth <= 768) {
+      this.flip();
+    }
   },
 
   flip: function () {
