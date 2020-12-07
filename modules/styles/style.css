@@ -731,7 +731,7 @@ figure {
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 768px) {
   .activity-title {
     font-size: 0.75rem;
     margin-left: 0.5rem;
@@ -747,7 +747,7 @@ figure {
   transform: scale(-1, 1);
 }
 
-@media (min-width: 440px) {
+@media (min-width: 768px) {
   canvas {
     -moz-transform: scale(-1, 1);
     -webkit-transform: scale(-1, 1);
