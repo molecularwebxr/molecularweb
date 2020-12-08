@@ -46,15 +46,17 @@ function initialize() {
   });
 
   function onResize() {
-    arToolkitSource.onResize();
-    arToolkitSource.copySizeTo(renderer.domElement);
+    arToolkitSource.onResizeElement();
+    arToolkitSource.copyElementSizeTo(renderer.domElement);
     if (arToolkitContext.arController !== null) {
-      arToolkitSource.copySizeTo(arToolkitContext.arController.canvas);
+      arToolkitSource.copyElementSizeTo(arToolkitContext.arController.canvas);
     }
   }
 
   arToolkitSource.init(function onReady() {
-    onResize();
+    setTimeout(function () {
+      onResize();
+    }, 100);
   });
 
   // handle resize event
