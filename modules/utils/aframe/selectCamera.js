@@ -7,6 +7,8 @@ AFRAME.registerComponent("switch-camera", {
     this.devices = [];
     this.selectedCamera = "env";
 
+    this.element = this.el;
+
     navigator.mediaDevices
       .enumerateDevices()
       .then(this.getDevices)
@@ -76,6 +78,13 @@ AFRAME.registerComponent("switch-camera", {
         var event = new CustomEvent("camera-init", { stream: stream });
         window.dispatchEvent(event);
         console.log("Event dispatched. Changing camera.");
+
+        // Flipping video and dispatching change event
+        var video = document.getElementsByTagName("video")[0];
+        video.classList.toggle("flip");
+        canvas.classList.toggle("flip");
+        var changeEvent = new CustomEvent("camera-change");
+        window.dispatchEvent(changeEvent);
 
         document.body.addEventListener("click", function () {
           domElement.play();
