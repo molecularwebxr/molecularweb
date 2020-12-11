@@ -4,6 +4,8 @@ var arToolkitSource, arToolkitContext;
 
 var patternArray, markerRootArray, markerGroupArray;
 
+var markerRootArray2, markerGroupArray2, torus;
+
 var sceneGroup, stickGroup, spheresGroup;
 
 var pdb;
@@ -128,6 +130,51 @@ function initialize() {
   pointLight.position.set(0.5, 3, 2);
 
   scene.add(pointLight);
+
+  markerRootArray2 = [];
+  markerGroupArray2 = [];
+  patternArray2 = [
+    "letterN",
+    "letterJ",
+    "letterK",
+    "letterP",
+    "letterL",
+    "letterM",
+  ];
+
+  for (let i = 0; i < 6; i++) {
+    let markerRoot2 = new THREE.Group();
+    markerRootArray2.push(markerRoot2);
+    scene.add(markerRoot2);
+    let markerControls = new THREEx.ArMarkerControls(
+      arToolkitContext,
+      markerRoot2,
+      {
+        type: "pattern",
+        patternUrl: "data/" + patternArray2[i] + ".patt",
+      }
+    );
+
+    let markerGroup2 = new THREE.Group();
+    markerGroupArray2.push(markerGroup2);
+    markerGroup2.position.y = -1.25 / 2;
+    markerGroup2.rotation.setFromVector3(rotationArray[i]);
+
+    markerRoot2.add(markerGroup2);
+  }
+
+  // var torusRoot = new THREE.Group();
+  // scene.add(torusRoot)
+  // var markerControlBox = new THREEx.ArMarkerControls(arToolkitContext, torusRoot, {
+  //   type: "pattern",
+  //   patternUrl: "data/letterH.patt",
+  // });
+
+  var torusGeometry = new THREE.TorusKnotGeometry(0.3,0.1,64,16);
+  var torusMaterial = new THREE.MeshNormalMaterial();
+  torus = new THREE.Mesh(torusGeometry, torusMaterial);
+  torus.scale.multiplyScalar(1.5);
+  // torusRoot.add(torus);
 }
 
 function update() {
@@ -140,6 +187,14 @@ function update() {
     if (markerRootArray[i].visible) {
       markerGroupArray[i].add(sceneGroup);
       console.log("visible: " + patternArray[i]);
+      break;
+    }
+  }
+
+  for (let i = 0; i < 6; i++) {
+    if (markerRootArray2[i].visible) {
+      markerGroupArray2[i].add(torus);
+      console.log("visible: " + patternArray2[i]);
       break;
     }
   }
