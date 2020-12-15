@@ -6,8 +6,23 @@ var bondlength = [];
 var atoms = 0;
 var radiusfactor1 = 0.35;
 var radiusfactor2 = 1.4;
+var bonds = {}
 
 var sphereGeometry = new THREE.SphereGeometry(1, 32, 16);
+
+function checkNCO(elementA, elementB) {
+  return (
+    (elementA == 5 || elementA == 6 || elementA == 7) &&
+    (elementB == 5 || elementB == 6 || elementB == 7)
+  );
+}
+
+function radiiSum(elementA, elementB) {
+  return (
+    1.2 *
+    Math.pow(elementA + elementB, 2)
+  );
+}
 
 function cylindricalSegment(A, B, radius, material) {
   var vec = B.clone();
@@ -61,6 +76,7 @@ function setupPdb(rawPdb) {
           break;
         }
       }
+      bonds[`atom${i+1}`] = []
       pdb.atoms++;
     }
   }
@@ -75,6 +91,8 @@ function setupPdb(rawPdb) {
 
 function createSticks(pdb) {
   for (i = 0; i < pdb.atoms; i++) {
+    var currentAtomI = `atom${i+1}`;
+
     var distsqr;
     //create a vec3 representing atom i
     var point1 = new THREE.Vector3(
@@ -82,26 +100,26 @@ function createSticks(pdb) {
       pdb.yCoords[i] - pdb.yAvg,
       pdb.zCoords[i] - pdb.zAvg
     );
+    
+    var bondedAtoms = []
+    //iterate through all other atoms looking for bonded atoms
+    for (j = i + 1; j < pdb.atoms; j++) {
+      var currentAtomJ = `atom${j+1}`;
 
-    for (
-      j = i + 1;
-      j < pdb.atoms;
-      j++ //iterate through all other atoms looking for bonded atoms
-    ) {
       //get distance squared
       distsqr =
         Math.pow(pdb.xCoords[i] - pdb.xCoords[j], 2) +
         Math.pow(pdb.yCoords[i] - pdb.yCoords[j], 2) +
         Math.pow(pdb.zCoords[i] - pdb.zCoords[j], 2);
+
       //if distance squared is less than 1.2 x the sum of the radii squared, add a bond
-      if (
-        distsqr <
-        1.2 *
-          Math.pow(
-            elementradii[pdb.elements[i]] + elementradii[pdb.elements[j]],
-            2
-          )
-      ) {
+      var radSum = radiiSum(
+        elementradii[pdb.elements[i]],
+        elementradii[pdb.elements[j]]
+      );
+
+      if (distsqr < radSum) {
+        bondedAtoms.push(currentAtomJ);
         var point2 = new THREE.Vector3(
           -(pdb.xCoords[j] / 2 + pdb.xCoords[i] / 2 - pdb.xAvg),
           pdb.yCoords[j] / 2 + pdb.yCoords[i] / 2 - pdb.yAvg,
@@ -126,17 +144,11 @@ function createSticks(pdb) {
 
         //if both atoms are C, N or O then we have to check whether they are forming a double bond
         //to know this we check if they have at least one 120 degree angle around
-        if (
-          (pdb.elements[i] == 5 ||
-            pdb.elements[i] == 6 ||
-            pdb.elements[i] == 7) &&
-          (pdb.elements[j] == 5 || pdb.elements[j] == 6 || pdb.elements[j] == 7)
-        ) {
-          for (
-            k = 0;
-            k < pdb.atoms;
-            k++ //iterate through all other atoms looking for a second atom bonded to i or to j
-          ) {
+        var areNCO = checkNCO(pdb.elements[i], pdb.elements[j]);
+
+        if (areNCO) {
+          //iterate through all other atoms looking for a second atom bonded to i or to j
+          for (k = 0; k < pdb.atoms; k++) {
             if (k != i && k != j) {
               //get distance squared for pair i-k
               distsqr =
@@ -144,15 +156,12 @@ function createSticks(pdb) {
                 Math.pow(pdb.yCoords[i] - pdb.yCoords[k], 2) +
                 Math.pow(pdb.zCoords[i] - pdb.zCoords[k], 2);
               //if distance squared is less than 1.2 x the sum of the radii squared, add a bond
-              if (
-                distsqr <
-                1.2 *
-                  Math.pow(
-                    elementradii[pdb.elements[i]] +
-                      elementradii[pdb.elements[k]],
-                    2
-                  )
-              ) {
+              var radSum = radiiSum(
+                elementradii[pdb.elements[i]],
+                elementradii[pdb.elements[k]]
+              );
+
+              if (distsqr < radSum) {
                 var AB = Math.sqrt(
                   Math.pow(pdb.xCoords[i] - pdb.xCoords[j], 2) +
                     Math.pow(pdb.yCoords[i] - pdb.yCoords[j], 2) +
@@ -180,15 +189,12 @@ function createSticks(pdb) {
                 Math.pow(pdb.yCoords[j] - pdb.yCoords[k], 2) +
                 Math.pow(pdb.zCoords[j] - pdb.zCoords[k], 2);
               //if distance squared is less than 1.2 x the sum of the radii squared, add a bond
-              if (
-                distsqr <
-                1.2 *
-                  Math.pow(
-                    elementradii[pdb.elements[j]] +
-                      elementradii[pdb.elements[k]],
-                    2
-                  )
-              ) {
+              var radSum = radiiSum(
+                elementradii[pdb.elements[j]],
+                elementradii[pdb.elements[k]]
+              );
+
+              if (distsqr < radSum) {
                 var AB = Math.sqrt(
                   Math.pow(pdb.xCoords[j] - pdb.xCoords[i], 2) +
                     Math.pow(pdb.yCoords[j] - pdb.yCoords[i], 2) +
@@ -257,15 +263,23 @@ function createSticks(pdb) {
         bondfirstatom.push(j);
       }
     }
+    bonds[currentAtomI] = bondedAtoms;
   }
+  Object.keys(bonds).forEach(function(atom) {
+    bonds[atom].forEach(function (bondedAtom) {
+      if(!bonds[bondedAtom].includes(atom)) {
+        bonds[bondedAtom].push(atom);
+      }
+    })
+  })
+  console.log(bonds)
   sceneGroup.add(stickGroup);
 }
 
 function createSpheres(pdb) {
   //this loop will create the spheres to display the atoms at the defined radius
   //and the actual physical cannon spheres
-  var radiusFactor =
-    renderType.isActive ? radiusfactor1 : radiusfactor2;
+  var radiusFactor = renderType.isActive ? radiusfactor1 : radiusfactor2;
   for (i = 0; i < pdb.atoms; i++) {
     var sphereRadius = radiusFactor * elementradii[pdb.elements[i]];
     var sphereMesh = new THREE.Mesh(

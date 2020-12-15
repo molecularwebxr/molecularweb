@@ -58,7 +58,7 @@ function initialize() {
   arToolkitSource.init(function onReady() {
     setTimeout(function () {
       onResize();
-    }, 100);
+    }, 300);
   });
 
   // handle resize event
@@ -214,8 +214,8 @@ function animate() {
 }
 
 function loadPdb(rawPdb) {
+  bonds = {};
   pdb = setupPdb(rawPdb);
-
   atomsarray = [];
   bondsarray = [];
   spheresarray = [];
