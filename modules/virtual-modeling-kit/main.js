@@ -215,6 +215,7 @@ function animate() {
 
 function loadPdb(rawPdb) {
   bonds = {};
+  allBonds = {};
   pdb = setupPdb(rawPdb);
   atomsarray = [];
   bondsarray = [];

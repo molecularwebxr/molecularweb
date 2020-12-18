@@ -7,6 +7,7 @@ var atoms = 0;
 var radiusfactor1 = 0.35;
 var radiusfactor2 = 1.4;
 var bonds = {};
+var allBonds = {};
 
 var sphereGeometry = new THREE.SphereGeometry(1, 32, 16);
 
@@ -130,12 +131,25 @@ function createSticks(pdb) {
 
   var bondKeys = Object.keys(bonds);
 
-  bondKeys.forEach(function(atom, atomIndex) {
+  // Here we make a Deep clone of bonds object so we have
+  // all bonds for each atom, not only the ones we will draw
+  // otherwise we will draw the twice
+  allBonds = JSON.parse(JSON.stringify(bonds));
+
+  bondKeys.forEach(function (atom) {
+    allBonds[atom].forEach(function (bondedAtom) {
+      if (!allBonds[bondedAtom].includes(atom)) {
+        allBonds[bondedAtom].push(atom);
+      }
+    });
+  });
+
+  bondKeys.forEach(function (atom, atomIndex) {
     //point1 is the first atom (i), point3 is the second atom (j)
     //point2 is at the center in-between atoms i and j
     //then the first half of the bond is from sphere 1 to 2 and the
     //second half of the bond is from point2 to point3
-    
+
     var point1 = new THREE.Vector3(
       -(pdb.xCoords[atomIndex] - pdb.xAvg),
       pdb.yCoords[atomIndex] - pdb.yAvg,
@@ -146,8 +160,14 @@ function createSticks(pdb) {
       var bondedAtomIndex = bondKeys.indexOf(bondedAtom);
 
       var point2 = new THREE.Vector3(
-        -(pdb.xCoords[bondedAtomIndex] / 2 + pdb.xCoords[atomIndex] / 2 - pdb.xAvg),
-        pdb.yCoords[bondedAtomIndex] / 2 + pdb.yCoords[atomIndex] / 2 - pdb.yAvg,
+        -(
+          pdb.xCoords[bondedAtomIndex] / 2 +
+          pdb.xCoords[atomIndex] / 2 -
+          pdb.xAvg
+        ),
+        pdb.yCoords[bondedAtomIndex] / 2 +
+          pdb.yCoords[atomIndex] / 2 -
+          pdb.yAvg,
         pdb.zCoords[bondedAtomIndex] / 2 + pdb.zCoords[atomIndex] / 2 - pdb.zAvg
       );
 
@@ -158,6 +178,23 @@ function createSticks(pdb) {
       );
 
       var radius = 0.12;
+
+      if (pdb.elements[atomIndex] === 5 && pdb.elements[bondedAtomIndex] === 5) {
+        var atom1Bonds = allBonds[atom].length;
+        var atom2Bonds = allBonds[bondedAtom].length;
+
+        if (atom1Bonds === 4 && atom2Bonds === 4) {
+          radius = 0.12;
+        }
+
+        if (atom1Bonds === 3 && atom2Bonds === 3) {
+          radius = 0.25;
+        }
+
+        if (atom1Bonds === 2 && atom2Bonds === 2) {
+          radius = 0.35;
+        }
+      }
 
       var bond1 = cylindricalSegment(
         point2,
@@ -181,13 +218,8 @@ function createSticks(pdb) {
       bondsarray.push(bond2);
       bondfirstatom.push(atomIndex);
       bondfirstatom.push(bondedAtomIndex);
-      
-    })
-  })
-
-
-  
-  
+    });
+  });
 
   //if both atoms are C, N or O then we have to check whether they are forming a double bond
   // var areNCO = checkNCO(pdb.elements[i], pdb.elements[j]);
@@ -195,17 +227,7 @@ function createSticks(pdb) {
   // if (areNCO) {
   // }
 
-  //we last draw the bond, which is split in two parts each coloured as the closest atom
- 
-
-  // Object.keys(bonds).forEach(function(atom) {
-  //   bonds[atom].forEach(function (bondedAtom) {
-  //     if(!bonds[bondedAtom].includes(atom)) {
-  //       bonds[bondedAtom].push(atom);
-  //     }
-  //   })
-  // })
-  console.log(bonds);
+  // console.log(bonds);
   sceneGroup.add(stickGroup);
 }
 
