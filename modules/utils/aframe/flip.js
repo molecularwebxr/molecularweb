@@ -10,7 +10,7 @@ AFRAME.registerComponent("listen-to-flip", {
       this.flip();
     });
 
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth >= 768) {
       this.flip();
     }
   },
