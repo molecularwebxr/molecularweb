@@ -178,12 +178,14 @@ function createSticks(pdb) {
       );
 
       var radius = 0.12;
+      var atom1Bonds = allBonds[atom].length;
+      var atom2Bonds = allBonds[bondedAtom].length;
 
-      // Bond rules for C 
-      if (pdb.elements[atomIndex] === 5 && pdb.elements[bondedAtomIndex] === 5) {
-        var atom1Bonds = allBonds[atom].length;
-        var atom2Bonds = allBonds[bondedAtom].length;
-
+      // Bond rules for C
+      if (
+        pdb.elements[atomIndex] === 5 &&
+        pdb.elements[bondedAtomIndex] === 5
+      ) {
         if (atom1Bonds === 4 && atom2Bonds === 4) {
           radius = 0.12;
         }
@@ -197,18 +199,13 @@ function createSticks(pdb) {
         }
       }
 
-       // Bond rules for O
+      // Bond rules for O
       //  Si es O Y solo tiene un enlace!!!
-       if (pdb.elements[atomIndex] === 7) {
-        console.log("Oxigeno")
-        var atom1Bonds = allBonds[atom].length;
-        var atom2Bonds = allBonds[bondedAtom].length;
-
-        if (atom1Bonds === 1) {
-          radius = 0.25;
-        } else {
-          radius = 0.12;
-        }
+      if (
+        (pdb.elements[atomIndex] === 7 && atom1Bonds === 1) ||
+        (pdb.elements[bondedAtomIndex] === 7 && atom2Bonds === 1)
+      ) {
+        radius = 0.25;
       }
 
       var bond1 = cylindricalSegment(
