@@ -60,25 +60,11 @@ function setupConstraints(pdb) {
         //if both atoms are C, N or O then we have to check whether they are forming a double bond
         //and if yes then add 1-4 constraints that will keep the place fixed
         //to know this we check if they have at least one 120 degree angle around
-<<<<<<< HEAD
         var areNCO = checkNCO(pdb.elements[i], pdb.elements[j]);
 
         if (areNCO) {
           //iterate through all other atoms looking for a second atom bonded to i
           for (k = 0; k < pdb.atoms; k++) {
-=======
-        if (
-          (pdb.elements[i] == 5 ||
-            pdb.elements[i] == 6 ||
-            pdb.elements[i] == 7) &&
-          (pdb.elements[j] == 5 || pdb.elements[j] == 6 || pdb.elements[j] == 7)
-        ) {
-          for (
-            k = 0;
-            k < pdb.atoms;
-            k++ //iterate through all other atoms looking for a second atom bonded to i
-          ) {
->>>>>>> master
             var angle1 = 109;
             var angle2 = 109;
             if (k != i && k != j) {
