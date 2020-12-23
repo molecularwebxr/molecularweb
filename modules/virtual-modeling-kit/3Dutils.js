@@ -204,6 +204,7 @@ function createSticks(pdb) {
       }
 
       /******************  Bonde rules for O *************************/
+
       // One of both atoms is O and have 1 bonded atom (TERMINAL) => DOUBLE
       // Otherwise is simple
       if (
@@ -211,9 +212,7 @@ function createSticks(pdb) {
         (pdb.elements[bondedAtomIndex] === 7 && atom2Bonds === 1)
       ) {
         radius = DOUBLE;
-      } else {
-        radius = SIMPLE;
-      }
+      } 
 
       /******************  Bonde rules for N *************************/
 
@@ -258,6 +257,17 @@ function createSticks(pdb) {
         radius = DOUBLE;
       }
 
+      // One atom is N with 2 bonded atoms
+      // The other atom is C with 3 bonded atoms
+      if (
+        (pdb.elements[atomIndex] === 6 && atom1Bonds === 2) &&
+        (pdb.elements[bondedAtomIndex] === 5 && atom2Bonds === 3) ||
+        (pdb.elements[atomIndex] === 5 && atom1Bonds === 3) &&
+        (pdb.elements[bondedAtomIndex] === 6 && atom2Bonds === 2)
+      ) {
+        radius = DOUBLE;
+      }
+
       // One atom is N and have 1 bonded atom (TERMINAL) => TRIPLE
       if (
         (pdb.elements[atomIndex] === 6 && atom1Bonds === 1) ||
@@ -266,6 +276,7 @@ function createSticks(pdb) {
         radius = TRIPLE;
       }
 
+      // Both atoms are N with two bonded atoms
       if (
         (pdb.elements[atomIndex] === 6 && atom1Bonds === 2) &&
         (pdb.elements[bondedAtomIndex] === 6 && atom2Bonds === 2)
