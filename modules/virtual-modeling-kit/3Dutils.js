@@ -200,7 +200,6 @@ function createSticks(pdb) {
       }
 
       // Bond rules for O
-      //  Si es O Y solo tiene un enlace!!!
       if (
         (pdb.elements[atomIndex] === 7 && atom1Bonds === 1) ||
         (pdb.elements[bondedAtomIndex] === 7 && atom2Bonds === 1)
