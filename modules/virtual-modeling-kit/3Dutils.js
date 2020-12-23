@@ -9,6 +9,10 @@ var radiusfactor2 = 1.4;
 var bonds = {};
 var allBonds = {};
 
+var SIMPLE = 0.12;
+var DOUBLE = 0.25;
+var TRIPLE = 0.35;
+
 var sphereGeometry = new THREE.SphereGeometry(1, 32, 16);
 
 /******************  3D utils *************************/
@@ -177,35 +181,98 @@ function createSticks(pdb) {
         pdb.zCoords[bondedAtomIndex] - pdb.zAvg
       );
 
-      var radius = 0.12;
+      var radius = SIMPLE;
       var atom1Bonds = allBonds[atom].length;
       var atom2Bonds = allBonds[bondedAtom].length;
 
-      // Bond rules for C
+      /******************  Bonde rules for C *************************/
       if (
         pdb.elements[atomIndex] === 5 &&
         pdb.elements[bondedAtomIndex] === 5
       ) {
         if (atom1Bonds === 4 && atom2Bonds === 4) {
-          radius = 0.12;
+          radius = SIMPLE;
         }
 
         if (atom1Bonds === 3 && atom2Bonds === 3) {
-          radius = 0.25;
+          radius = DOUBLE;
         }
 
         if (atom1Bonds === 2 && atom2Bonds === 2) {
-          radius = 0.35;
+          radius = TRIPLE;
         }
       }
 
-      // Bond rules for O
+      /******************  Bonde rules for O *************************/
+      // One of both atoms is O and have 1 bonded atom (TERMINAL) => DOUBLE
+      // Otherwise is simple
       if (
         (pdb.elements[atomIndex] === 7 && atom1Bonds === 1) ||
         (pdb.elements[bondedAtomIndex] === 7 && atom2Bonds === 1)
       ) {
-        radius = 0.25;
+        radius = DOUBLE;
+      } else {
+        radius = SIMPLE;
       }
+
+      /******************  Bonde rules for N *************************/
+
+      // One atom is N and have 4 bonded atoms
+      if (
+        (pdb.elements[atomIndex] === 6 && atom1Bonds === 4) ||
+        (pdb.elements[bondedAtomIndex] === 6 && atom2Bonds === 4)
+      ) {
+        radius = SIMPLE;
+      }
+
+      // One atom is N with 3 bonded atoms
+      // The other atom is C with 4 bonded atoms
+      if (
+        (pdb.elements[atomIndex] === 6 && atom1Bonds === 3) &&
+        (pdb.elements[bondedAtomIndex] === 5 && atom2Bonds === 4) ||
+        (pdb.elements[atomIndex] === 5 && atom1Bonds === 4) &&
+        (pdb.elements[bondedAtomIndex] === 6 && atom2Bonds === 3)
+      ) {
+        radius = SIMPLE;
+      }
+
+      // One atom is N with 3 bonded atoms
+      // The other atom is O with 2 bonded atoms
+      if (
+        (pdb.elements[atomIndex] === 6 && atom1Bonds === 3) &&
+        (pdb.elements[bondedAtomIndex] === 7 && atom2Bonds === 2) ||
+        (pdb.elements[atomIndex] === 7 && atom1Bonds === 2) &&
+        (pdb.elements[bondedAtomIndex] === 6 && atom2Bonds === 3)
+      ) {
+        radius = SIMPLE;
+      }
+
+      // One atom is N with 3 bonded atoms
+      // The other atom is C with 3 bonded atoms
+      if (
+        (pdb.elements[atomIndex] === 6 && atom1Bonds === 3) &&
+        (pdb.elements[bondedAtomIndex] === 5 && atom2Bonds === 3) ||
+        (pdb.elements[atomIndex] === 5 && atom1Bonds === 3) &&
+        (pdb.elements[bondedAtomIndex] === 6 && atom2Bonds === 3)
+      ) {
+        radius = DOUBLE;
+      }
+
+      // One atom is N and have 1 bonded atom (TERMINAL) => TRIPLE
+      if (
+        (pdb.elements[atomIndex] === 6 && atom1Bonds === 1) ||
+        (pdb.elements[bondedAtomIndex] === 6 && atom2Bonds === 1)
+      ) {
+        radius = TRIPLE;
+      }
+
+      if (
+        (pdb.elements[atomIndex] === 6 && atom1Bonds === 2) &&
+        (pdb.elements[bondedAtomIndex] === 6 && atom2Bonds === 2)
+      ) {
+        radius = DOUBLE;
+      }
+
 
       var bond1 = cylindricalSegment(
         point2,
