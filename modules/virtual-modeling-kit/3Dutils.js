@@ -13,7 +13,7 @@ var SIMPLE = 0.12;
 var DOUBLE = 0.25;
 var TRIPLE = 0.35;
 
-var sphereGeometry = new THREE.SphereGeometry(1, 32, 16);
+var sphereGeometry = new THREE.SphereBufferGeometry(1, 32, 16);
 
 /******************  3D utils *************************/
 
@@ -39,7 +39,7 @@ function cylindricalSegment(A, B, radius, material) {
   vec.normalize();
   var quaternion = new THREE.Quaternion();
   quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), vec);
-  var geometry = new THREE.CylinderGeometry(radius, radius, h, 32);
+  var geometry = new THREE.CylinderBufferGeometry(radius, radius, h, 32);
   geometry.translate(0, h / 2, 0);
   var cylinder = new THREE.Mesh(geometry, material);
   cylinder.applyQuaternion(quaternion);
