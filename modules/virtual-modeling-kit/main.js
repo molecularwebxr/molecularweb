@@ -227,8 +227,9 @@ function loadPdb(rawPdb) {
   clearPhysics();
   clearGroup(stickGroup);
   clearGroup(spheresGroup);
-
+  // console.time("Sticks")
   createSticks(pdb);
+  // console.timeEnd("Sticks");
 
   createSpheres(pdb);
 
