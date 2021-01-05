@@ -10,8 +10,8 @@ var bonds = {};
 var allBonds = {};
 
 var SIMPLE = 0.12;
-var DOUBLE = 0.25;
-var TRIPLE = 0.35;
+var DOUBLE = 0.2;
+var TRIPLE = 0.25;
 
 var sphereGeometry = new THREE.SphereBufferGeometry(1, 32, 16);
 
