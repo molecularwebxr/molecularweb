@@ -3,6 +3,7 @@ var scaleDown = document.getElementById("scale-down");
 var tempControls = document.querySelectorAll("temp-control");
 var stopTemp = document.querySelector("stop-temp");
 var playTemp = document.querySelector("play-temp");
+var reset = document.querySelector("reset-activity");
 var tempMenu = document.querySelector("enable-temp-controls");
 var zoomMenu = document.querySelector("zoom-icon");
 var swapCam = document.querySelector("swap-camera");
@@ -203,6 +204,24 @@ function handleRenderType(e) {
   }
 }
 
+function handleReset(e) {
+  atomsarray = [];
+  bondsarray = [];
+  spheresarray = [];
+  bondfirstatom = [];
+  bondlength = [];
+  atoms = 0;
+  temperature = 0;
+
+  clearPhysics();
+  clearGroup(stickGroup);
+  clearGroup(spheresGroup);
+
+  sceneGroup.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
+
+  handleMenu()
+}
+
 scaleUp.addEventListener("scaleGraphics", handleScale);
 scaleDown.addEventListener("scaleGraphics", handleScale);
 stopTemp.addEventListener("stopTemp", handleStopTemp);
@@ -211,6 +230,7 @@ tempMenu.addEventListener("click", handleTempMenu);
 zoomMenu.addEventListener("click", handleZoomMenu);
 renderType.addEventListener("click", handleRenderType);
 flipGraphics.addEventListener("flipGraphics", handleFlip);
+reset.addEventListener("resetActivity", handleReset);
 
 tempControls.forEach(function (item) {
   item.addEventListener("updateTemp", handleTempControls);
