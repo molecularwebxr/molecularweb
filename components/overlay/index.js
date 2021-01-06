@@ -43,6 +43,10 @@ overlayTemplate.innerHTML = /* html */ `
       text-decoration: none;
       color: #FFFFFF;
     }
+
+    .underline {
+      text-decoration: underline;
+    }
     
     .hidden {
       display: none;
@@ -184,7 +188,7 @@ overlayTemplate.innerHTML = /* html */ `
     <a id="markers"
        target="_blank"
        rel="noopener noreferrer"
-       class="text"
+       class="text underline"
        href="/assets/markers/markers.pdf"
     >
       <intl-message key="app.markers"></intl-message>
