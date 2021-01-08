@@ -51,6 +51,7 @@
     <script src="/components/feedback-prompt/index.js"></script>
     <script src="/components/zoom-icon/index.js"></script>
     <script src="/components/swap-camera/index.js"></script>
+    <script src="/components/camera-icon/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="/modules/utils/aframe/gltf-material.js"></script>
@@ -94,6 +95,14 @@
 
     <!-- Feedback Modal -->
     <feedback-prompt></feedback-prompt>
+
+    <!-- camera controls -->
+    <div id="cam-container" class="camera-container small-menu hide column">
+      <div class="triangle-temp"></div>
+      <flip-video class="icon-margin"></flip-video>
+      <swap-camera class="hide icon-margin"></swap-camera>
+      <flip-graphics class="icon-margin"></flip-graphics>
+    </div>
 
     <!-- Zoom controls -->
     <div id="zoom-container" class="zoom-container small-menu hide column">

@@ -486,6 +486,13 @@ figure {
   padding: 0.75rem 0.5rem;
 }
 
+.camera-container.small-menu {
+  transform: translateY(-115%);
+}
+.camera-container.small-menu.multiple-cams-single {
+  transform: translateY(-97%);
+}
+
 .zoom-container {
   position: fixed;
   top: 50%;
@@ -498,12 +505,12 @@ figure {
 }
 
 .zoom-container.small-menu {
-  transform: translateY(-4%);
+  transform: translateY(-27%);
 }
 
-.zoom-container.small-menu.multiple-cams-single {
+/* .zoom-container.small-menu.multiple-cams-single {
   transform: translateY(21%);
-}
+} */
 
 .temperature-container {
   position: fixed;
