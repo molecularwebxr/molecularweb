@@ -73,6 +73,10 @@ function handleMenu(e) {
     zoomMenu.isActive = false;
     zoomMenuContainer.classList.add("hide");
   }
+  if (camMenu.isActive) {
+    camMenu.isActive = false;
+    camMenuContainer.classList.add("hide");
+  }
 }
 
 selectMenu.addEventListener("change", handleChange);

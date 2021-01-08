@@ -269,7 +269,7 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-50%);
+  transform: translateY(-62%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -277,9 +277,9 @@ figure {
   padding: 1.5rem 1rem;
 }
 
-.modeling-container.multiple-cams {
+/* .modeling-container.multiple-cams {
   transform: translateY(-45%);
-}
+} */
 
 .triangle-mk {
   position: absolute;
@@ -475,11 +475,22 @@ figure {
   background-position: top 0.5rem right 0.2rem;
 }
 
+.camera-container {
+  position: fixed;
+  top: 50%;
+  right: 76px;
+  transform: translateY(-180%);
+  z-index: 1;
+  background-color: var(--primarylight);
+  border-radius: 10px;
+  padding: 0.75rem 0.5rem;
+}
+
 .zoom-container {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(45%);
+  transform: translateY(-5%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -498,7 +509,7 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-68%);
+  transform: translateY(-86%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -631,27 +642,35 @@ figure {
     padding: 0.75rem 0.5rem;
   }
   .zoom-container,
+  .camera-container,
   .temperature-container,
   .modeling-container {
     right: 58px;
   }
   .temperature-container {
     padding: 0.5rem 0.5rem;
-    transform: translateY(-65%);
+    transform: translateY(-81%);
   }
-  .temperature-container.multiple-cams {
+  .modeling-container {
+    transform: translateY(-60%);
+  }
+  /* .temperature-container.multiple-cams {
     transform: translateY(-58%);
-  }
+  } */
   .temp-controls {
     margin: 0;
   }
   .zoom-container {
-    transform: translateY(40%);
+    transform: translateY(-3%);
     padding: 0.5rem 0.5rem;
   }
-  .zoom-container.multiple-cams {
-    transform: translateY(61%);
+  .camera-container {
+    transform: translateY(-141%);
+    padding: 0.5rem 0.5rem;
   }
+  /* .zoom-container.multiple-cams {
+    transform: translateY(61%);
+  } */
   .pdb-selector {
     width: 80px;
   }

@@ -6,9 +6,11 @@ var playTemp = document.querySelector("play-temp");
 var reset = document.querySelector("reset-activity");
 var tempMenu = document.querySelector("enable-temp-controls");
 var zoomMenu = document.querySelector("zoom-icon");
+var camMenu = document.querySelector("camera-icon");
 var swapCam = document.querySelector("swap-camera");
 var tempMenuContainer = document.getElementById("temp-container");
 var zoomMenuContainer = document.getElementById("zoom-container");
+var camMenuContainer = document.getElementById("cam-container");
 var renderType = document.querySelector("render-type-icon");
 var flipGraphics = document.querySelector("flip-graphics");
 
@@ -24,6 +26,7 @@ var selectedCamera = "env";
 tempMenu.isActive = false;
 renderType.isActive = true;
 zoomMenu.isActive = false;
+camMenu.isActive = false;
 
 function handleError(error) {
   console.log("Something went wrong: ", error.message, error.name);
@@ -169,6 +172,27 @@ function handleTempMenu(e) {
     zoomMenu.isActive = false;
     zoomMenuContainer.classList.add("hide");
   }
+  if (camMenu.isActive) {
+    camMenu.isActive = false;
+    camMenuContainer.classList.add("hide");
+  }
+}
+
+function handleCamMenu(e) {
+  camMenuContainer.classList.toggle("hide");
+  camMenu.isActive = !camMenu.isActive;
+  if (mkMenu.isActive) {
+    mkMenu.isActive = false;
+    menuContainer.classList.add("hide");
+  }
+  if (tempMenu.isActive) {
+    tempMenu.isActive = false;
+    tempMenuContainer.classList.add("hide");
+  }
+  if (zoomMenu.isActive) {
+    zoomMenu.isActive = false;
+    zoomMenuContainer.classList.add("hide");
+  }
 }
 
 function handleZoomMenu(e) {
@@ -181,6 +205,10 @@ function handleZoomMenu(e) {
   if (tempMenu.isActive) {
     tempMenu.isActive = false;
     tempMenuContainer.classList.add("hide");
+  }
+  if (camMenu.isActive) {
+    camMenu.isActive = false;
+    camMenuContainer.classList.add("hide");
   }
 }
 
@@ -228,6 +256,7 @@ stopTemp.addEventListener("stopTemp", handleStopTemp);
 playTemp.addEventListener("playTemp", handlePlayTemp);
 tempMenu.addEventListener("click", handleTempMenu);
 zoomMenu.addEventListener("click", handleZoomMenu);
+camMenu.addEventListener("click", handleCamMenu);
 renderType.addEventListener("click", handleRenderType);
 flipGraphics.addEventListener("flipGraphics", handleFlip);
 reset.addEventListener("resetActivity", handleReset);
