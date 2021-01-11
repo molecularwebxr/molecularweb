@@ -859,8 +859,9 @@ figure {
 
   .zoom-container,
   .temperature-container,
+  .camera-container,
   .modeling-container {
-    right: 58px;
+    right: 55px;
   }
 
   .temperature-container {
@@ -868,9 +869,14 @@ figure {
     transform: translateY(-64%);
   }
 
-  .temperature-container.multiple-cams {
-    transform: translateY(-57%);
+  .camera-container {
+    padding: 0.5rem 0.5rem;
+    transform: translateY(-64%);
   }
+
+  /* .temperature-container.multiple-cams {
+    transform: translateY(-57%);
+  } */
 
   .temp-controls {
     margin: 0;
@@ -881,13 +887,13 @@ figure {
     padding: 0.5rem 0.5rem;
   }
 
-  .zoom-container.multiple-cams {
+  /* .zoom-container.multiple-cams {
     transform: translateY(69%);
   }
 
   .zoom-container.multiple-cams-single {
     transform: translateY(21%);
-  }
+  } */
 
   .temperature-container .triangle-temp{
     transform: translateY(-72%);
