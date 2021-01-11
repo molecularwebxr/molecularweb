@@ -479,7 +479,7 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-180%);
+  transform: translateY(-141%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
