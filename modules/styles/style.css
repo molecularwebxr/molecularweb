@@ -277,10 +277,6 @@ figure {
   padding: 1.5rem 1rem;
 }
 
-/* .modeling-container.multiple-cams {
-  transform: translateY(-45%);
-} */
-
 .triangle-mk {
   position: absolute;
   top: 50%;
@@ -479,18 +475,22 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-141%);
+  transform: translateY(-188%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
   padding: 0.75rem 0.5rem;
 }
 
+/* .camera-container.multiple-cams {
+  transform: translateY(-62%);
+} */
+
 .camera-container.small-menu {
-  transform: translateY(-115%);
+  transform: translateY(-121%);
 }
 .camera-container.small-menu.multiple-cams-single {
-  transform: translateY(-97%);
+  transform: translateY(-103%);
 }
 
 .zoom-container {
