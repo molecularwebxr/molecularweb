@@ -13,6 +13,7 @@ var zoomMenuContainer = document.getElementById("zoom-container");
 var camMenuContainer = document.getElementById("cam-container");
 var renderType = document.querySelector("render-type-icon");
 var flipGraphics = document.querySelector("flip-graphics");
+var flipVideo = document.querySelector("flip-video");
 
 var high = 100;
 var medium = 50;
@@ -101,6 +102,14 @@ function switchCam(e) {
       var event = new CustomEvent("camera-init", { stream: stream });
       window.dispatchEvent(event);
       console.log("Event dispatched. Changing camera.");
+
+      // Flipping video and dispatching change event
+      var video = document.getElementsByTagName("video")[0];
+      var canvasEl = document.querySelector("canvas");
+      video.classList.toggle("flip");
+      canvasEl.classList.toggle("flip");
+      var changeEvent = new CustomEvent("camera-change");
+      window.dispatchEvent(changeEvent);
 
       document.body.addEventListener("click", function () {
         domElement.play();
@@ -257,7 +266,12 @@ zoomMenu.addEventListener("click", handleZoomMenu);
 camMenu.addEventListener("click", handleCamMenu);
 renderType.addEventListener("click", handleRenderType);
 flipGraphics.addEventListener("flipGraphics", handleFlip);
+flipVideo.addEventListener("flipCamera", handleFlip);
 reset.addEventListener("resetActivity", handleReset);
+
+window.addEventListener("camera-change", () => {
+  handleFlip();
+});
 
 tempControls.forEach(function (item) {
   item.addEventListener("updateTemp", handleTempControls);

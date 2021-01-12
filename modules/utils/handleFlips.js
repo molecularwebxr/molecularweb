@@ -2,6 +2,7 @@ var canvas = document.querySelector("canvas");
 var flipVideoButton = document.querySelector("flip-video");
 
 function handleCameraFlip() {
+  console.log("hey")
   var video = document.getElementsByTagName("video")[0];
   video.classList.toggle("flip");
   canvas.classList.toggle("flip");
