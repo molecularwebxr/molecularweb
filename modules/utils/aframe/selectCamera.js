@@ -97,9 +97,9 @@ AFRAME.registerComponent("switch-camera", {
   },
   createBtn: function () {
     var containerElement = document.querySelector("swap-camera");
-    var zoomControl = document.getElementById("zoom-container");
+    var camControl = document.getElementById("cam-container");
     containerElement.classList.remove("hide");
-    zoomControl.classList.add("multiple-cams-single");
+    camControl.classList.add("multiple-cams-single");
 
     containerElement.addEventListener("click", this.handleClick);
   },

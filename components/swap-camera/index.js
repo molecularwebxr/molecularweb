@@ -1,23 +1,44 @@
 const SwapCamContent = /* html */`
   <style>
     a {
-      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
     }
+
+    p {
+      font-family: "Roboto";
+      color: #ffffff;
+      font-size: 1rem;
+      text-align: left;
+      transition: 0.2s;
+      margin: 0 0 0 0.5rem;
+    }
+
     svg {
       transition: transform 0.2s;
       width: 40px;
       height: 41px;
     }
+
     #circle {
       fill: #FFFFFF;
       transition: 0.2s;
     }
+
     .camera-path {
       fill: var(--primarydark);
     }
+
     a:hover #circle{
       fill: var(--secondary);
     }
+
+    a:hover p {
+      color: var(--secondary);
+    }
+
     @media (max-width: 440px) {
       svg {
         width: 30px;
@@ -26,14 +47,25 @@ const SwapCamContent = /* html */`
       a:hover #circle{
         fill: #FFFFFF;
       }
+
+      p {
+        font-size: 0.8rem;
+      }
+
     }
+
     @media screen and (max-height: 450px) and (orientation: landscape) {
       svg {
         width: 28px;
         height: 28px;
       }
+
       a:hover #circle{
         fill: #FFFFFF;
+      }
+
+      p {
+        font-size: 0.75rem;
       }
     }
   </style>
@@ -58,6 +90,7 @@ const SwapCamContent = /* html */`
           <path class="camera-path" d="M208,493.668C203.309,493.668 198.656,491.617 195.5,487.672C189.973,480.762 191.082,470.711 197.996,465.188L235.711,435L197.996,404.813C191.105,399.289 189.996,389.238 195.5,382.328C201.004,375.438 211.051,374.309 217.984,379.832L271.316,422.5C275.113,425.551 277.332,430.137 277.332,435C277.332,439.863 275.113,444.449 271.34,447.48L218.004,490.148C215.039,492.516 211.52,493.668 208,493.668Z" />
       </g>
     </svg>
+    <p>Swap Camera</p>
   </a>`;
 
 
