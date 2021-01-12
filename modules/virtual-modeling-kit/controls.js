@@ -47,9 +47,7 @@ function getDevices(deviceInfos) {
     swapCam.classList.remove("hide");
     swapCam.addEventListener("click", switchCam);
     
-    menuContainer.classList.add("multiple-cams");
-    tempMenuContainer.classList.add("multiple-cams");
-    zoomMenuContainer.classList.add("multiple-cams");
+    camMenuContainer.classList.add("multiple-cams");
   }
 }
 

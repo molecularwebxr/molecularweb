@@ -47,6 +47,11 @@ const SwapCamContent = /* html */`
       a:hover #circle{
         fill: #FFFFFF;
       }
+
+      p {
+        font-size: 0.8rem;
+      }
+
     }
 
     @media screen and (max-height: 450px) and (orientation: landscape) {
@@ -54,8 +59,13 @@ const SwapCamContent = /* html */`
         width: 28px;
         height: 28px;
       }
+
       a:hover #circle{
         fill: #FFFFFF;
+      }
+
+      p {
+        font-size: 0.75rem;
       }
     }
   </style>

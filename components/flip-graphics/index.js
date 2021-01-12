@@ -45,12 +45,20 @@ const FlipGraphicsContent = /* html */ `
         width: 30px;
         height: 30px;
       }
+
+      p {
+        font-size: 0.8rem;
+      }
     }
 
     @media screen and (max-height: 450px) and (orientation: landscape) {
       svg {
         width: 28px;
         height: 28px;
+      }
+
+      p {
+        font-size: 0.75rem;
       }
     }
   </style>

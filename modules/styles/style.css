@@ -489,8 +489,13 @@ figure {
 .camera-container.small-menu {
   transform: translateY(-121%);
 }
+
 .camera-container.small-menu.multiple-cams-single {
   transform: translateY(-103%);
+}
+
+.camera-container.mk.multiple-cams {
+  transform: translateY(-152%);
 }
 
 .zoom-container {
@@ -672,7 +677,7 @@ figure {
     padding: 0.5rem 0.5rem;
   }
   .camera-container {
-    transform: translateY(-141%);
+    transform: translateY(-198%);
     padding: 0.5rem 0.5rem;
   }
   /* .zoom-container.multiple-cams {
@@ -875,16 +880,20 @@ figure {
   }
 
   .camera-container.mk {
-    transform: translateY(-114%);
+    transform: translateY(-174%);
   }
 
   .camera-container.mk .triangle-temp{
-    transform: translateY(-200%);
+    transform: translateY(-114%);
   }
 
-  /* .temperature-container.multiple-cams {
-    transform: translateY(-57%);
-  } */
+  .camera-container.mk.multiple-cams {
+    transform: translateY(-124%);
+  }
+
+  .camera-container.mk.multiple-cams .triangle-temp {
+    transform: translateY(-178%);
+  }
 
   .temp-controls {
     margin: 0;
