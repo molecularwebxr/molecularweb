@@ -276,7 +276,7 @@ function createSpheres(pdb) {
 
     sphereMesh.scale.setScalar(sphereRadius);
 
-    sphereMesh.position.x = -(pdb.xCoords[i] - pdb.xAvg);
+    sphereMesh.position.x = (pdb.xCoords[i] - pdb.xAvg);
     sphereMesh.position.y = pdb.yCoords[i] - pdb.yAvg;
     sphereMesh.position.z = pdb.zCoords[i] - pdb.zAvg;
     spheresGroup.add(sphereMesh); //added the sphere representation for atom i

@@ -175,6 +175,10 @@ function loadPdb(rawPdb) {
   createSpheres(pdb);
 
   setupConstraints(pdb);
+
+  if (window.innerWidth >= 768) {
+    handleFlip();
+  }
 }
 
 function handleClick(e) {
