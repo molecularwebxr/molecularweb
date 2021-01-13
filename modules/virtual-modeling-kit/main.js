@@ -30,7 +30,7 @@ function initialize() {
     logarithmicDepthBuffer: true,
   });
   renderer.setClearColor(new THREE.Color("lightgrey"), 0);
-  renderer.setSize(640, 480);
+  renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.domElement.style.position = "absolute";
   renderer.domElement.style.top = "0px";
   renderer.domElement.style.left = "0px";
