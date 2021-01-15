@@ -79,6 +79,20 @@ const InstructionsContent = /* html */ `
 
     .instructions-top {
       height: 430px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .step-content {
+      position: absolute;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -103,10 +117,19 @@ const InstructionsContent = /* html */ `
 
     .instructions-bottom {
       height: 130px;
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
+    }
+
+    .buttons { 
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+      width: 80%;
     }
 
     .btn {
@@ -152,21 +175,55 @@ const InstructionsContent = /* html */ `
       border: 1px solid var(--secondary);
       background-color: var(--secondary);
     }
+
+    .hide{
+      display: none;
+    }
+
+    .exit {
+      opacity: 0.01;
+      transform: scale(0.9) translateX(-50%);
+      transition: all 300ms ease-out;
+    }
+
+    .step-two {
+      opacity: 0.01;
+      transform: scale(0.9) translateX(50%);
+    }
+
+    .step-two-enter {
+      opacity: 1;
+      transform: scale(1) translateX(0%);
+      transition: all 300ms ease-out;
+    }
     
   </style>
   <div id="overlay" class="overlay active">
     <div id="modal" class="instructions-container">
       <div class="box"></div>
+
       <div class="instructions-top">
-        <h1 class="title">Welcome to MoleculARweb!</h1>
-        <p class="text">A website for chemistry and biology education through augmented reality</p>
+        <div id="step-one" class="step-content">
+          <h1 class="title">Welcome to MoleculARweb!</h1>
+          <p class="text">A website for chemistry and biology education through augmented reality</p>
+        </div>
+
+        <div id="step-two" class="step-content step-two">
+          <h1 class="title">Welcome to step 2!</h1>
+          <p class="text">Here will go some text and instructions</p>
+        </div>
       </div>
+
+      
       <div class="instructions-bottom">
         <div class="step-circles row">
           <div class="circle selected"></div>
           <div class="circle"></div>
         </div>
-        <button id="btn-next" class="btn">Next</button>
+        <div class="buttons">
+          <button id="btn-skip" class="btn">Skip</button>
+          <button id="btn-next" class="btn">Next</button>
+        </div>
       </div>
     </div>
   </div>`;
@@ -193,6 +250,7 @@ class Instructions extends HTMLElement {
     super();
 
     this.toggle = this.toggle.bind(this);
+    this.handleNext = this.handleNext.bind(this);
 
     let shadow = this.attachShadow({ mode: "open" });
     shadow.innerHTML = InstructionsContent;
@@ -200,8 +258,12 @@ class Instructions extends HTMLElement {
     this.overlay = this.shadowRoot.getElementById("overlay");
     this.modal = this.shadowRoot.getElementById("modal");
     this.btnNext = this.shadowRoot.getElementById("btn-next");
+    this.btnSkip = this.shadowRoot.getElementById("btn-skip");
+    this.stepOne = this.shadowRoot.getElementById("step-one");
+    this.stepTwo = this.shadowRoot.getElementById("step-two");
 
-    this.btnNext.addEventListener("click", this.toggle)
+    this.overlay.addEventListener("click", this.toggle)
+    this.btnNext.addEventListener("click", this.handleNext)
   }
 
   connectedCallback() {
@@ -210,9 +272,16 @@ class Instructions extends HTMLElement {
     }
   }
 
-  toggle() {
-    this.overlay.classList.toggle("active");
-    this.modal.classList.toggle("out");
+  toggle(e) {
+    if (e.target.id === "overlay" || e.target.id === "btn-skip") {
+      this.overlay.classList.toggle("active");
+      this.modal.classList.toggle("out");
+    }
+  }
+
+  handleNext() {
+    this.stepOne.classList.add("exit");
+    this.stepTwo.classList.add("step-two-enter");
   }
 
   attributeChangedCallback(attrName, oldValue, newValue) {
