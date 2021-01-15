@@ -29,7 +29,7 @@ headerTemplate.innerHTML = /* html */ `
     flex-direction: column;
   }
   .menu {
-    width: 23rem;
+    width: 27rem;
     align-items: center;
     justify-content: space-between;
   }
@@ -307,6 +307,15 @@ headerTemplate.innerHTML = /* html */ `
         <intl-message key="menu.feedback"></intl-message>
       </a>
 
+      <a
+        href="/assets/markers/allmarkers.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="menu-link"
+      >
+        <intl-message key="menu.markers"></intl-message>
+      </a>
+
       <div class="language">
         <a class="menu-link language">
           <intl-message key="menu.language"></intl-message>
@@ -355,6 +364,15 @@ headerTemplate.innerHTML = /* html */ `
           href="/pages/feedback.html"
         >
           <intl-message key="menu.feedback"></intl-message>
+        </a>
+
+        <a
+          href="/assets/markers/allmarkers.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mobile-menu-link"
+        >
+          <intl-message key="menu.markers"></intl-message>
         </a>
 
         <a class="mobile-menu-link" id="lang-option">
@@ -436,12 +454,11 @@ class AppHeader extends HTMLElement {
   }
 
   handleClick(event) {
-    if(this.langMenuActive) {
+    if (this.langMenuActive) {
       this.mobileMenuLang.classList.remove("active");
       this.langMenuActive = false;
       return;
     }
-
 
     this.hamburger.classList.toggle("active");
     this.mobileMenu.classList.toggle("active");
