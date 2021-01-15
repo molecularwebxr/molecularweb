@@ -89,8 +89,7 @@ const InstructionsContent = /* html */ `
 
     .step-content {
       position: absolute;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto;
       left: 0;
       right: 0;
       display: flex;
@@ -155,11 +154,10 @@ const InstructionsContent = /* html */ `
     }
 
     .step-circles{
-      width: 2rem;
+      width: 5rem;
       margin: 0 0 1.25rem 0;
       display: flex;
       align-items: center;
-      justify-content: center;
       justify-content: space-between;
     }
 
@@ -180,18 +178,18 @@ const InstructionsContent = /* html */ `
       display: none;
     }
 
-    .exit {
-      opacity: 0.01;
+    .step-exit {
+      opacity: 0.0;
       transform: scale(0.9) translateX(-50%);
       transition: all 300ms ease-out;
     }
 
-    .step-two {
-      opacity: 0.01;
+    .step-hidden {
+      opacity: 0.0;
       transform: scale(0.9) translateX(50%);
     }
 
-    .step-two-enter {
+    .step-enter {
       opacity: 1;
       transform: scale(1) translateX(0%);
       transition: all 300ms ease-out;
@@ -208,8 +206,18 @@ const InstructionsContent = /* html */ `
           <p class="text">A website for chemistry and biology education through augmented reality</p>
         </div>
 
-        <div id="step-two" class="step-content step-two">
+        <div id="step-two" class="step-content step-hidden">
           <h1 class="title">Welcome to step 2!</h1>
+          <p class="text">Here will go some text and instructions</p>
+        </div>
+
+        <div id="step-three" class="step-content step-hidden">
+          <h1 class="title">Welcome to step 3!</h1>
+          <p class="text">Here will go some text and instructions</p>
+        </div>
+
+        <div id="step-four" class="step-content step-hidden">
+          <h1 class="title">Welcome to step 4!</h1>
           <p class="text">Here will go some text and instructions</p>
         </div>
       </div>
@@ -217,8 +225,10 @@ const InstructionsContent = /* html */ `
       
       <div class="instructions-bottom">
         <div class="step-circles row">
-          <div class="circle selected"></div>
-          <div class="circle"></div>
+          <div id="circle-1" class="circle selected"></div>
+          <div id="circle-2" class="circle"></div>
+          <div id="circle-3" class="circle"></div>
+          <div id="circle-4" class="circle"></div>
         </div>
         <div class="buttons">
           <button id="btn-skip" class="btn">Skip</button>
@@ -252,6 +262,8 @@ class Instructions extends HTMLElement {
     this.toggle = this.toggle.bind(this);
     this.handleNext = this.handleNext.bind(this);
 
+    this.step = "ONE";
+
     let shadow = this.attachShadow({ mode: "open" });
     shadow.innerHTML = InstructionsContent;
 
@@ -259,8 +271,16 @@ class Instructions extends HTMLElement {
     this.modal = this.shadowRoot.getElementById("modal");
     this.btnNext = this.shadowRoot.getElementById("btn-next");
     this.btnSkip = this.shadowRoot.getElementById("btn-skip");
+
     this.stepOne = this.shadowRoot.getElementById("step-one");
     this.stepTwo = this.shadowRoot.getElementById("step-two");
+    this.stepThree = this.shadowRoot.getElementById("step-three");
+    this.stepFour = this.shadowRoot.getElementById("step-four");
+
+    this.circle1 = this.shadowRoot.getElementById("circle-1");
+    this.circle2 = this.shadowRoot.getElementById("circle-2");
+    this.circle3 = this.shadowRoot.getElementById("circle-3");
+    this.circle4 = this.shadowRoot.getElementById("circle-4");
 
     this.overlay.addEventListener("click", this.toggle)
     this.btnNext.addEventListener("click", this.handleNext)
@@ -280,8 +300,47 @@ class Instructions extends HTMLElement {
   }
 
   handleNext() {
-    this.stepOne.classList.add("exit");
-    this.stepTwo.classList.add("step-two-enter");
+    if (this.step === "ONE") {
+      this.stepOne.classList.add("step-exit");
+      this.stepTwo.classList.remove("step-hidden");
+      this.stepTwo.classList.add("step-enter");
+
+      this.circle1.classList.remove("selected");
+      this.circle2.classList.add("selected");
+
+      this.step = "TWO"
+      return;
+    }
+
+    if (this.step === "TWO") {
+      this.stepTwo.classList.remove("step-enter");
+      this.stepTwo.classList.add("step-exit");
+      this.stepThree.classList.remove("step-hidden");
+      this.stepThree.classList.add("step-enter");
+
+      this.circle2.classList.remove("selected");
+      this.circle3.classList.add("selected");
+
+      this.step = "THREE"
+      return;
+    }
+
+    if (this.step === "THREE") {
+      this.stepThree.classList.remove("step-enter");
+      this.stepThree.classList.add("step-exit");
+      this.stepFour.classList.remove("step-hidden");
+      this.stepFour.classList.add("step-enter");
+
+      this.circle3.classList.remove("selected");
+      this.circle4.classList.add("selected");
+
+      this.step === "FOUR"
+      return;
+    }
+
+    if (this.step === "FOUR") {
+      this.toggle();
+    }    
   }
 
   attributeChangedCallback(attrName, oldValue, newValue) {
