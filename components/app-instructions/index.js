@@ -245,11 +245,6 @@ class Instructions extends HTMLElement {
 
   set isActive(value) {
     this._isActive = value;
-    if (this._isActive) {
-      this.instructionsContainer.classList.add("active");
-    } else {
-      this.instructionsContainer.classList.remove("active");
-    }
   }
 
   get isActive() {
@@ -260,9 +255,12 @@ class Instructions extends HTMLElement {
     super();
 
     this.toggle = this.toggle.bind(this);
+    this.open = this.open.bind(this);
+    this.close = this.close.bind(this);
     this.handleNext = this.handleNext.bind(this);
 
     this.step = "ONE";
+    this.isActive = false;
 
     let shadow = this.attachShadow({ mode: "open" });
     shadow.innerHTML = InstructionsContent;
@@ -297,6 +295,16 @@ class Instructions extends HTMLElement {
       this.overlay.classList.toggle("active");
       this.modal.classList.toggle("out");
     }
+  }
+
+  close() {
+    this.overlay.classList.remove("active");
+    this.modal.classList.add("out");
+  }
+
+  open() {
+    this.overlay.classList.add("active");
+    // this.modal.classList.add("out");
   }
 
   handleNext() {
@@ -334,19 +342,24 @@ class Instructions extends HTMLElement {
       this.circle3.classList.remove("selected");
       this.circle4.classList.add("selected");
 
-      this.step === "FOUR"
+      this.step = "FOUR"
       return;
     }
 
     if (this.step === "FOUR") {
-      this.toggle();
+      this.close();
     }    
   }
 
   attributeChangedCallback(attrName, oldValue, newValue) {
     if (attrName === "isActive") {
       this.isActive = newValue;
-      this.toggle();
+
+      if (this.isActive) {
+        this.open();
+      } else {
+        this.close();
+      }
     }
   }
 }
