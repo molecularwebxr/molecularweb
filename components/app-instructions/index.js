@@ -26,7 +26,6 @@ const InstructionsContent = /* html */ `
       width: 650px;
       height: 600px;
       background-color: white;
-      animation: animationIn .5s forwards;
       position: relative;
       display: flex;
       align-items: center;
@@ -37,6 +36,10 @@ const InstructionsContent = /* html */ `
 
     .instructions-container.out {
       animation: animationOut .5s forwards;
+    }
+
+    .instructions-container.in {
+      animation: animationIn .5s forwards;
     }
 
     @keyframes animationIn {
@@ -196,7 +199,7 @@ const InstructionsContent = /* html */ `
     }
     
   </style>
-  <div id="overlay" class="overlay active">
+  <div id="overlay" class="overlay">
     <div id="modal" class="instructions-container">
       <div class="box"></div>
 
@@ -245,6 +248,15 @@ class Instructions extends HTMLElement {
 
   set isActive(value) {
     this._isActive = value;
+    if(this._isActive) {
+      this.overlay.classList.add("active");
+      this.modal.classList.remove("out");
+      this.modal.classList.add("in");
+    } else {
+      this.overlay.classList.remove("active");
+      this.modal.classList.remove("in");
+      this.modal.classList.add("out");
+    }
   }
 
   get isActive() {
@@ -260,7 +272,6 @@ class Instructions extends HTMLElement {
     this.handleNext = this.handleNext.bind(this);
 
     this.step = "ONE";
-    this.isActive = false;
 
     let shadow = this.attachShadow({ mode: "open" });
     shadow.innerHTML = InstructionsContent;
@@ -292,19 +303,21 @@ class Instructions extends HTMLElement {
 
   toggle(e) {
     if (e.target.id === "overlay" || e.target.id === "btn-skip") {
-      this.overlay.classList.toggle("active");
-      this.modal.classList.toggle("out");
+      this.close();
+      this.isActive = false;
     }
   }
 
   close() {
     this.overlay.classList.remove("active");
+    this.modal.classList.remove("in");
     this.modal.classList.add("out");
   }
 
   open() {
     this.overlay.classList.add("active");
-    // this.modal.classList.add("out");
+    this.modal.classList.remove("out");
+    this.modal.classList.add("in");
   }
 
   handleNext() {
@@ -354,7 +367,6 @@ class Instructions extends HTMLElement {
   attributeChangedCallback(attrName, oldValue, newValue) {
     if (attrName === "isActive") {
       this.isActive = newValue;
-
       if (this.isActive) {
         this.open();
       } else {
