@@ -199,11 +199,46 @@ const InstructionsContent = /* html */ `
       transform: scale(1) translateX(0%);
       transition: all 300ms ease-out;
     }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .bar-1 {
+      width: 20px;
+      height: 5px;
+      background: var(--secondary);
+      border-radius: 10px;
+      transform: rotate(45deg);
+    }
+
+    .bar-2 {
+      width: 20px;
+      height: 5px;
+      background: var(--secondary);
+      border-radius: 10px;
+      transform: translateY(-5px) rotate(-45deg);
+    }
     
   </style>
   <div id="overlay" class="overlay">
     <div id="modal" class="instructions-container">
       <div class="box"></div>
+
+      <div id="btn-close" class="close-btn">
+        <div id="bar-1" class="bar-1"></div>
+        <div id="bar-2" class="bar-2"></div>
+      </div>
 
       <div class="instructions-top">
         <div id="step-one" class="step-content">
@@ -244,7 +279,7 @@ class Instructions extends HTMLElement {
 
   set isActive(value) {
     this._isActive = value;
-    if(this._isActive) {
+    if (this._isActive) {
       this.reset();
       this.overlay.classList.add("active");
       this.modal.classList.remove("out");
@@ -278,6 +313,7 @@ class Instructions extends HTMLElement {
     this.modal = this.shadowRoot.getElementById("modal");
     this.btnNext = this.shadowRoot.getElementById("btn-next");
     this.btnSkip = this.shadowRoot.getElementById("btn-skip");
+    this.btnClose = this.shadowRoot.getElementById("btn-close");
 
     this.stepOne = this.shadowRoot.getElementById("step-one");
     this.stepTwo = this.shadowRoot.getElementById("step-two");
@@ -288,8 +324,9 @@ class Instructions extends HTMLElement {
     this.circle2 = this.shadowRoot.getElementById("circle-2");
     this.circle3 = this.shadowRoot.getElementById("circle-3");
 
-    this.overlay.addEventListener("click", this.toggle)
-    this.btnNext.addEventListener("click", this.handleNext)
+    this.overlay.addEventListener("click", this.toggle);
+    this.btnClose.addEventListener("click", this.toggle);
+    this.btnNext.addEventListener("click", this.handleNext);
   }
 
   connectedCallback() {
@@ -299,7 +336,13 @@ class Instructions extends HTMLElement {
   }
 
   toggle(e) {
-    if (e.target.id === "overlay" || e.target.id === "btn-skip") {
+    if (
+      e.target.id === "overlay" ||
+      e.target.id === "btn-skip" ||
+      e.target.id === "btn-close" ||
+      e.target.id === "bar-1" ||
+      e.target.id === "bar-2"
+    ) {
       this.close();
     }
   }
@@ -323,18 +366,18 @@ class Instructions extends HTMLElement {
     this.stepTwo.classList.remove("step-exit");
     this.stepTwo.classList.add("step-hidden");
     this.circle2.classList.remove("selected");
-    
+
     this.stepThree.classList.remove("step-enter");
     this.stepThree.classList.remove("step-exit");
     this.stepThree.classList.add("step-hidden");
     this.circle3.classList.remove("selected");
 
     this.btnSkip.classList.remove("hide");
-    this.btnNext.innerText = "Next"
+    this.btnNext.innerText = "Next";
 
     this.stepOne.classList.remove("step-exit");
     this.circle1.classList.add("selected");
-    this.step = "ONE"
+    this.step = "ONE";
   }
 
   handleNext() {
@@ -346,7 +389,7 @@ class Instructions extends HTMLElement {
       this.circle1.classList.remove("selected");
       this.circle2.classList.add("selected");
 
-      this.step = "TWO"
+      this.step = "TWO";
       return;
     }
 
@@ -359,10 +402,10 @@ class Instructions extends HTMLElement {
       this.circle2.classList.remove("selected");
       this.circle3.classList.add("selected");
 
-      this.step = "THREE"
+      this.step = "THREE";
 
       this.btnSkip.classList.add("hide");
-      this.btnNext.innerText = "Close"
+      this.btnNext.innerText = "Close";
 
       return;
     }
@@ -370,7 +413,6 @@ class Instructions extends HTMLElement {
     if (this.step === "THREE") {
       this.close();
     }
-
   }
 
   attributeChangedCallback(attrName, oldValue, newValue) {
