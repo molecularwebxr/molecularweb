@@ -327,6 +327,9 @@ class Instructions extends HTMLElement {
     this.stepThree.classList.add("step-hidden");
     this.circle3.classList.remove("selected");
 
+    this.btnSkip.classList.remove("hide");
+    this.btnNext.innerText = "Next"
+
     this.stepOne.classList.remove("step-exit");
     this.circle1.classList.add("selected");
     this.step = "ONE"
@@ -355,6 +358,10 @@ class Instructions extends HTMLElement {
       this.circle3.classList.add("selected");
 
       this.step = "THREE"
+
+      this.btnSkip.classList.add("hide");
+      this.btnNext.innerText = "Close"
+
       return;
     }
 
