@@ -218,11 +218,6 @@ const InstructionsContent = /* html */ `
           <h1 class="title">Welcome to step 3!</h1>
           <p class="text">Here will go some text and instructions</p>
         </div>
-
-        <div id="step-four" class="step-content step-hidden">
-          <h1 class="title">Welcome to step 4!</h1>
-          <p class="text">Here will go some text and instructions</p>
-        </div>
       </div>
 
       
@@ -231,7 +226,6 @@ const InstructionsContent = /* html */ `
           <div id="circle-1" class="circle selected"></div>
           <div id="circle-2" class="circle"></div>
           <div id="circle-3" class="circle"></div>
-          <div id="circle-4" class="circle"></div>
         </div>
         <div class="buttons">
           <button id="btn-skip" class="btn">Skip</button>
@@ -249,6 +243,7 @@ class Instructions extends HTMLElement {
   set isActive(value) {
     this._isActive = value;
     if(this._isActive) {
+      this.reset();
       this.overlay.classList.add("active");
       this.modal.classList.remove("out");
       this.modal.classList.add("in");
@@ -269,6 +264,7 @@ class Instructions extends HTMLElement {
     this.toggle = this.toggle.bind(this);
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
+    this.reset = this.reset.bind(this);
     this.handleNext = this.handleNext.bind(this);
 
     this.step = "ONE";
@@ -289,7 +285,6 @@ class Instructions extends HTMLElement {
     this.circle1 = this.shadowRoot.getElementById("circle-1");
     this.circle2 = this.shadowRoot.getElementById("circle-2");
     this.circle3 = this.shadowRoot.getElementById("circle-3");
-    this.circle4 = this.shadowRoot.getElementById("circle-4");
 
     this.overlay.addEventListener("click", this.toggle)
     this.btnNext.addEventListener("click", this.handleNext)
@@ -304,7 +299,6 @@ class Instructions extends HTMLElement {
   toggle(e) {
     if (e.target.id === "overlay" || e.target.id === "btn-skip") {
       this.close();
-      this.isActive = false;
     }
   }
 
@@ -312,12 +306,30 @@ class Instructions extends HTMLElement {
     this.overlay.classList.remove("active");
     this.modal.classList.remove("in");
     this.modal.classList.add("out");
+
+    this.isActive = false;
   }
 
   open() {
     this.overlay.classList.add("active");
     this.modal.classList.remove("out");
     this.modal.classList.add("in");
+  }
+
+  reset() {
+    this.stepTwo.classList.remove("step-enter");
+    this.stepTwo.classList.remove("step-exit");
+    this.stepTwo.classList.add("step-hidden");
+    this.circle2.classList.remove("selected");
+    
+    this.stepThree.classList.remove("step-enter");
+    this.stepThree.classList.remove("step-exit");
+    this.stepThree.classList.add("step-hidden");
+    this.circle3.classList.remove("selected");
+
+    this.stepOne.classList.remove("step-exit");
+    this.circle1.classList.add("selected");
+    this.step = "ONE"
   }
 
   handleNext() {
@@ -347,21 +359,9 @@ class Instructions extends HTMLElement {
     }
 
     if (this.step === "THREE") {
-      this.stepThree.classList.remove("step-enter");
-      this.stepThree.classList.add("step-exit");
-      this.stepFour.classList.remove("step-hidden");
-      this.stepFour.classList.add("step-enter");
-
-      this.circle3.classList.remove("selected");
-      this.circle4.classList.add("selected");
-
-      this.step = "FOUR"
-      return;
+      this.close();
     }
 
-    if (this.step === "FOUR") {
-      this.close();
-    }    
   }
 
   attributeChangedCallback(attrName, oldValue, newValue) {
