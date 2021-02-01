@@ -182,12 +182,14 @@ const InstructionsContent = /* html */ `
     }
 
     .step-exit {
+      visibility: hidden;
       opacity: 0.0;
       transform: scale(0.9) translateX(-50%);
       transition: all 300ms ease-out;
     }
 
     .step-hidden {
+      visibility: hidden;
       opacity: 0.0;
       transform: scale(0.9) translateX(50%);
     }
