@@ -229,6 +229,11 @@ const InstructionsContent = /* html */ `
       border-radius: 10px;
       transform: translateY(-5px) rotate(-45deg);
     }
+
+    video {
+      width: 480px;
+      margin: 2.5rem 0;
+    }
     
   </style>
   <div id="overlay" class="overlay">
@@ -247,13 +252,13 @@ const InstructionsContent = /* html */ `
         </div>
 
         <div id="step-two" class="step-content step-hidden">
-          <h1 class="title">Welcome to step 2!</h1>
-          <p class="text">Here will go some text and instructions</p>
+          <video id="video-2" src="/assets/videos/markers.mp4" muted loop></video>
+          <p class="text">Prepare your markers</p>
         </div>
 
         <div id="step-three" class="step-content step-hidden">
-          <h1 class="title">Welcome to step 3!</h1>
-          <p class="text">Here will go some text and instructions</p>
+          <video id="video-3" src="/assets/videos/activities.mp4" muted loop></video>
+          <p class="text">Select an activity and enjoy!</p>
         </div>
       </div>
 
@@ -323,6 +328,9 @@ class Instructions extends HTMLElement {
     this.circle1 = this.shadowRoot.getElementById("circle-1");
     this.circle2 = this.shadowRoot.getElementById("circle-2");
     this.circle3 = this.shadowRoot.getElementById("circle-3");
+    
+    this.video2 = this.shadowRoot.getElementById("video-2");
+    this.video3 = this.shadowRoot.getElementById("video-3");
 
     this.overlay.addEventListener("click", this.toggle);
     this.btnClose.addEventListener("click", this.toggle);
@@ -377,6 +385,13 @@ class Instructions extends HTMLElement {
 
     this.stepOne.classList.remove("step-exit");
     this.circle1.classList.add("selected");
+
+    this.video2.pause();
+    this.video2.currentTime = 0;
+
+    this.video3.pause();
+    this.video3.currentTime = 0;
+
     this.step = "ONE";
   }
 
@@ -388,6 +403,8 @@ class Instructions extends HTMLElement {
 
       this.circle1.classList.remove("selected");
       this.circle2.classList.add("selected");
+
+      this.video2.play();
 
       this.step = "TWO";
       return;
@@ -401,6 +418,10 @@ class Instructions extends HTMLElement {
 
       this.circle2.classList.remove("selected");
       this.circle3.classList.add("selected");
+
+      this.video2.pause();
+      this.video2.currentTime = 0;
+      this.video3.play();
 
       this.step = "THREE";
 
