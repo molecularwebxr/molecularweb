@@ -234,6 +234,180 @@ const InstructionsContent = /* html */ `
       width: 480px;
       margin: 2.5rem 0;
     }
+
+    @media screen and (max-width: 800px) {
+      .box{
+        width: 8px;
+        height: 35px;
+        position: absolute;
+        left: 0;
+        top: 20%;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+
+      .instructions-container {
+        width: 80vw;
+        height: 73.86vw;
+      }
+
+      .instructions-top {
+        height: 53.3vw;
+      }
+
+      .instructions-bottom {
+        height: 16vw;
+      }
+
+      video {
+        width: 60vw;
+      }
+
+      .title {
+        font-size: 2.75rem;
+        margin: 0 0 5.75rem 0;
+      }
+
+      .text {
+        font-size: 1.5rem;
+        width: 60vw;
+      }
+
+      .btn {
+        font-size: 20px;
+        padding: 1rem 2.5rem;
+      }
+    }
+
+    @media screen and (max-width: 720px) {
+      .title {
+        font-size: 2.5rem;
+        margin: 0 0 3.5rem 0;
+        width: 75vw;
+      }
+
+      .text {
+        font-size: 1.5rem;
+        margin: 0 0 1.25rem 0;
+      }
+
+      
+    }
+
+    @media screen and (max-width: 600px) {
+      .title {
+        font-size: 2rem;
+        margin: 0 0 2.5rem 0;
+      }
+
+      .text {
+        font-size: 1.25rem;
+        margin: 0 0 1rem 0;
+      }
+
+      .step-circles{
+        width: 4rem;
+        margin: 0 0 1rem 0;
+      }
+
+      .circle{
+        width: 10px;
+        height: 10px;
+      }
+
+      .btn {
+        font-size: 16px;
+        padding: 1rem 1.5rem;
+      }
+
+      video {
+        margin: 1rem 0;
+      }
+    }
+
+    @media screen and (max-width: 520px) {
+      .title {
+        font-size: 1.8rem;
+        margin: 0 0 2rem 0;
+      }
+
+      .text {
+        font-size: 1rem;
+        margin: 0 0 0.5rem 0;
+      }
+
+      .btn {
+        font-size: 16px;
+        padding: 0.75rem 1rem;
+      }
+      
+    }
+
+    @media screen and (max-width: 450px) {
+
+      .instructions-top {
+        height: 50vw;
+      }
+
+      .instructions-bottom {
+        height: 18vw;
+      }
+      .title {
+        font-size: 1.5rem;
+        margin: 0 0 2rem 0;
+      }
+
+      .text {
+        font-size: 1rem;
+        margin: 0 0 0.5rem 0;
+      }
+
+      .circle{
+        width: 8px;
+        height: 8px;
+      }
+
+      .step-circles{
+        width: 3rem;
+        margin: 0 0 0.75rem 0;
+      }
+
+      .bar-1 {
+        width: 15px;
+        height: 5px;
+      }
+
+      .bar-2 {
+        width: 15px;
+        height: 5px;
+      }
+      
+    }
+
+    @media screen and (max-width: 400px) {
+      video {
+        margin: 0.75rem 0;
+      }
+
+      .text {
+        font-size: 14px;
+        margin: 0 0 0.5rem 0;
+      }
+
+      .circle{
+        width: 8px;
+        height: 8px;
+      }
+
+      .step-circles{
+        width: 3rem;
+        margin: 0 0 0.75rem 0;
+      }
+    }
     
   </style>
   <div id="overlay" class="overlay">
