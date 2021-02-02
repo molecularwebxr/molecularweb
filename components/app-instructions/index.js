@@ -361,6 +361,8 @@ class Instructions extends HTMLElement {
     this.modal.classList.add("out");
 
     this.isActive = false;
+
+    this.dispatchEvent(new CustomEvent("closedInstructions"));
   }
 
   open() {
