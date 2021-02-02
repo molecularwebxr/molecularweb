@@ -28,8 +28,9 @@ headerTemplate.innerHTML = /* html */ `
     display: flex;
     flex-direction: column;
   }
+  
   .menu {
-    width: 27rem;
+    width: 35rem;
     align-items: center;
     justify-content: space-between;
   }
@@ -316,6 +317,13 @@ headerTemplate.innerHTML = /* html */ `
         <intl-message key="menu.markers"></intl-message>
       </a>
 
+      <a
+        class="menu-link"
+        id="instructions"
+      >
+        Instructions
+      </a>
+
       <div class="language">
         <a class="menu-link language">
           <intl-message key="menu.language"></intl-message>
@@ -373,6 +381,13 @@ headerTemplate.innerHTML = /* html */ `
           class="mobile-menu-link"
         >
           <intl-message key="menu.markers"></intl-message>
+        </a>
+
+        <a
+          id="instructions-mobile"
+          class="mobile-menu-link"
+        >
+          Instructions
         </a>
 
         <a class="mobile-menu-link" id="lang-option">
@@ -433,6 +448,7 @@ class AppHeader extends HTMLElement {
 
     this.handleClick = this.handleClick.bind(this);
     this.handleLangMenu = this.handleLangMenu.bind(this);
+    this.handleInstructions = this.handleInstructions.bind(this);
 
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(headerTemplate.content.cloneNode(true));
@@ -445,12 +461,16 @@ class AppHeader extends HTMLElement {
     this.mobileMenuLang = this.shadowRoot.querySelector("#mobile-menu-lang");
     this.langBtn = this.shadowRoot.querySelector("#lang-option");
     this.overlay = this.shadowRoot.querySelector("#overlay");
+    this.instructions = this.shadowRoot.querySelector("#instructions");
+    this.instructionsMobile = this.shadowRoot.querySelector("#instructions-mobile");
 
     this.menuActive = false;
     this.langMenuActive = false;
 
     this.hamburger.addEventListener("click", this.handleClick);
     this.langBtn.addEventListener("click", this.handleLangMenu);
+    this.instructions.addEventListener("click", this.handleInstructions);
+    this.instructionsMobile.addEventListener("click", this.handleInstructions);
   }
 
   handleClick(event) {
@@ -479,6 +499,10 @@ class AppHeader extends HTMLElement {
   handleLangMenu(event) {
     this.mobileMenuLang.classList.add("active");
     this.langMenuActive = true;
+  }
+
+  handleInstructions(event) {
+    this.dispatchEvent(new CustomEvent("displayInstructions"));
   }
 }
 
