@@ -383,6 +383,13 @@ headerTemplate.innerHTML = /* html */ `
           <intl-message key="menu.markers"></intl-message>
         </a>
 
+        <a
+          id="instructions-mobile"
+          class="mobile-menu-link"
+        >
+          Instructions
+        </a>
+
         <a class="mobile-menu-link" id="lang-option">
           <intl-message key="menu.language"></intl-message>
         </a>
@@ -455,6 +462,7 @@ class AppHeader extends HTMLElement {
     this.langBtn = this.shadowRoot.querySelector("#lang-option");
     this.overlay = this.shadowRoot.querySelector("#overlay");
     this.instructions = this.shadowRoot.querySelector("#instructions");
+    this.instructionsMobile = this.shadowRoot.querySelector("#instructions-mobile");
 
     this.menuActive = false;
     this.langMenuActive = false;
@@ -462,6 +470,7 @@ class AppHeader extends HTMLElement {
     this.hamburger.addEventListener("click", this.handleClick);
     this.langBtn.addEventListener("click", this.handleLangMenu);
     this.instructions.addEventListener("click", this.handleInstructions);
+    this.instructionsMobile.addEventListener("click", this.handleInstructions);
   }
 
   handleClick(event) {
