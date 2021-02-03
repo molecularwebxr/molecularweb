@@ -21,3 +21,5 @@ header.addEventListener("displayInstructions", function () {
 });
 
 instructionsModal.addEventListener("closedInstructions", handleClose);
+
+
