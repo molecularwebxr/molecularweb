@@ -387,7 +387,7 @@ headerTemplate.innerHTML = /* html */ `
           id="instructions-mobile"
           class="mobile-menu-link"
         >
-          Instructions
+          <intl-message key="menu.instructions"></intl-message>
         </a>
 
         <a class="mobile-menu-link" id="lang-option">
