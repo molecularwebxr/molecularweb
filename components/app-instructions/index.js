@@ -235,8 +235,9 @@ const InstructionsContent = /* html */ `
       transform: translateY(-5px) rotate(-45deg);
     }
 
-    video {
+    .video {
       width: 480px;
+      height: 270px;
       margin: 2.5rem 0;
     }
 
@@ -268,8 +269,9 @@ const InstructionsContent = /* html */ `
         height: 16vw;
       }
 
-      video {
+      .video {
         width: 60vw;
+        height: 33.75vw;
       }
 
       .title {
@@ -329,7 +331,7 @@ const InstructionsContent = /* html */ `
         padding: 1rem 1.5rem;
       }
 
-      video {
+      .video {
         margin: 1rem 0;
       }
     }
@@ -394,7 +396,7 @@ const InstructionsContent = /* html */ `
     }
 
     @media screen and (max-width: 400px) {
-      video {
+      .video {
         margin: 0.75rem 0;
       }
 
@@ -435,7 +437,7 @@ const InstructionsContent = /* html */ `
         </div>
 
         <div id="step-two" class="step-content step-hidden">
-          <video id="video-2" src="/assets/videos/markers.mp4" muted loop></video>
+          <iframe id="video-2" class="video" src="https://www.youtube.com/embed/Fo0WpTmUJ4s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <p class="text">
             <intl-message key="app.prepare"></intl-message>
             <span>
@@ -452,7 +454,7 @@ const InstructionsContent = /* html */ `
         </div>
 
         <div id="step-three" class="step-content step-hidden">
-          <video id="video-3" src="/assets/videos/activities.mp4" muted loop></video>
+          <iframe id="video-3" class="video" src="https://www.youtube.com/embed/GuYMqG8kce8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <p class="text">
             <intl-message key="app.selectActivity"></intl-message>
           </p>
@@ -590,11 +592,11 @@ class Instructions extends HTMLElement {
     this.stepOne.classList.remove("step-exit");
     this.circle1.classList.add("selected");
 
-    this.video2.pause();
-    this.video2.currentTime = 0;
+    // this.video2.pause();
+    // this.video2.currentTime = 0;
 
-    this.video3.pause();
-    this.video3.currentTime = 0;
+    // this.video3.pause();
+    // this.video3.currentTime = 0;
 
     this.step = "ONE";
   }
@@ -608,7 +610,7 @@ class Instructions extends HTMLElement {
       this.circle1.classList.remove("selected");
       this.circle2.classList.add("selected");
 
-      this.video2.play();
+      // this.video2.play();
 
       this.step = "TWO";
       return;
@@ -623,9 +625,9 @@ class Instructions extends HTMLElement {
       this.circle2.classList.remove("selected");
       this.circle3.classList.add("selected");
 
-      this.video2.pause();
-      this.video2.currentTime = 0;
-      this.video3.play();
+      // this.video2.pause();
+      // this.video2.currentTime = 0;
+      // this.video3.play();
 
       this.step = "THREE";
 
