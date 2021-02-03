@@ -117,6 +117,11 @@ const InstructionsContent = /* html */ `
       text-align: center;
     }
 
+    .link {
+      text-decoration: underline;
+      color: var(--primarylight);
+    }
+
     .instructions-bottom {
       height: 130px;
       width: 100%;
@@ -427,7 +432,18 @@ const InstructionsContent = /* html */ `
 
         <div id="step-two" class="step-content step-hidden">
           <video id="video-2" src="/assets/videos/markers.mp4" muted loop></video>
-          <p class="text">Prepare your markers</p>
+          <p class="text">Prepare your 
+            <span>
+            <a
+              href="/assets/markers/allmarkers.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text link"
+            >
+              markers
+            </a>
+            </span>
+          </p>
         </div>
 
         <div id="step-three" class="step-content step-hidden">
