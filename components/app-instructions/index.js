@@ -426,13 +426,18 @@ const InstructionsContent = /* html */ `
 
       <div class="instructions-top">
         <div id="step-one" class="step-content">
-          <h1 class="title">Welcome to MoleculARweb!</h1>
-          <p class="text">A website for chemistry and biology education through augmented reality</p>
+          <h1 class="title">
+            <intl-message key="app.welcome"></intl-message>
+          </h1>
+          <p class="text">
+            <intl-message key="app.welcomeMsg"></intl-message>
+          </p>
         </div>
 
         <div id="step-two" class="step-content step-hidden">
           <video id="video-2" src="/assets/videos/markers.mp4" muted loop></video>
-          <p class="text">Prepare your 
+          <p class="text">
+            <intl-message key="app.prepare"></intl-message>
             <span>
             <a
               href="/assets/markers/allmarkers.pdf"
@@ -440,7 +445,7 @@ const InstructionsContent = /* html */ `
               rel="noopener noreferrer"
               class="text link"
             >
-              markers
+              <intl-message key="app.markersWithLink"></intl-message>
             </a>
             </span>
           </p>
@@ -448,7 +453,9 @@ const InstructionsContent = /* html */ `
 
         <div id="step-three" class="step-content step-hidden">
           <video id="video-3" src="/assets/videos/activities.mp4" muted loop></video>
-          <p class="text">Select an activity and enjoy!</p>
+          <p class="text">
+            <intl-message key="app.selectActivity"></intl-message>
+          </p>
         </div>
       </div>
 
@@ -460,8 +467,15 @@ const InstructionsContent = /* html */ `
           <div id="circle-3" class="circle"></div>
         </div>
         <div class="buttons">
-          <button id="btn-skip" class="btn">Skip</button>
-          <button id="btn-next" class="btn">Next</button>
+          <button id="btn-skip" class="btn">
+            <intl-message key="app.skip"></intl-message>
+          </button>
+          <button id="btn-next" class="btn">
+            <intl-message key="app.next"></intl-message>
+          </button>
+          <button id="btn-close-big" class="btn hide">
+            <intl-message key="app.close"></intl-message>
+          </button>
         </div>
       </div>
     </div>
@@ -509,6 +523,7 @@ class Instructions extends HTMLElement {
     this.btnNext = this.shadowRoot.getElementById("btn-next");
     this.btnSkip = this.shadowRoot.getElementById("btn-skip");
     this.btnClose = this.shadowRoot.getElementById("btn-close");
+    this.btnClose2 = this.shadowRoot.getElementById("btn-close-big");
 
     this.stepOne = this.shadowRoot.getElementById("step-one");
     this.stepTwo = this.shadowRoot.getElementById("step-two");
@@ -518,13 +533,15 @@ class Instructions extends HTMLElement {
     this.circle1 = this.shadowRoot.getElementById("circle-1");
     this.circle2 = this.shadowRoot.getElementById("circle-2");
     this.circle3 = this.shadowRoot.getElementById("circle-3");
-    
+
     this.video2 = this.shadowRoot.getElementById("video-2");
     this.video3 = this.shadowRoot.getElementById("video-3");
 
     this.overlay.addEventListener("click", this.toggle);
-    this.btnClose.addEventListener("click", this.toggle);
+    this.btnClose.addEventListener("click", this.close);
     this.btnNext.addEventListener("click", this.handleNext);
+    this.btnClose2.addEventListener("click", this.handleNext);
+    this.btnSkip.addEventListener("click", this.close);
   }
 
   connectedCallback() {
@@ -534,13 +551,7 @@ class Instructions extends HTMLElement {
   }
 
   toggle(e) {
-    if (
-      e.target.id === "overlay" ||
-      e.target.id === "btn-skip" ||
-      e.target.id === "btn-close" ||
-      e.target.id === "bar-1" ||
-      e.target.id === "bar-2"
-    ) {
+    if (e.target.id === "overlay") {
       this.close();
     }
   }
@@ -573,7 +584,8 @@ class Instructions extends HTMLElement {
     this.circle3.classList.remove("selected");
 
     this.btnSkip.classList.remove("hide");
-    this.btnNext.innerText = "Next";
+    this.btnNext.classList.remove("hide");
+    this.btnClose2.classList.add("hide");
 
     this.stepOne.classList.remove("step-exit");
     this.circle1.classList.add("selected");
@@ -618,7 +630,8 @@ class Instructions extends HTMLElement {
       this.step = "THREE";
 
       this.btnSkip.classList.add("hide");
-      this.btnNext.innerText = "Close";
+      this.btnNext.classList.add("hide");
+      this.btnClose2.classList.remove("hide");
 
       return;
     }

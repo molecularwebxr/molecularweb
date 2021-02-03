@@ -321,7 +321,7 @@ headerTemplate.innerHTML = /* html */ `
         class="menu-link"
         id="instructions"
       >
-        Instructions
+        <intl-message key="menu.instructions"></intl-message>
       </a>
 
       <div class="language">

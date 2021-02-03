@@ -4,6 +4,7 @@
     "getInTouch": "Contact",
     "feedback": "Feedback",
     "language": "Language",
+    "instructions": "Instructions",
     "markers": "Markers"
   },
   "app": {
@@ -18,13 +19,21 @@
     "dismiss": "Maybe later",
     "rotate": "Rotate ",
     "submit": "Submit",
+    "skip": "Skip",
+    "next": "Next",
+    "close": "Close",
     "viewInYourSpace": "View in your space",
     "returnToAR": "Return to AR mode",
     "cartoon": "Cartoon",
     "sticks": "Sticks",
     "interactions": "Interactions",
     "markers": "Click here to find the AR markers with print and assemble instructions",
-    "preferredLang": "Select your preferred language"
+    "preferredLang": "Select your preferred language",
+    "welcome": "Welcome to MoleculARweb!",
+    "welcomeMsg": "A website for chemistry and biology education through augmented reality",
+    "prepare": "Prepare your ",
+    "markersWithLink": "markers",
+    "selectActivity": "Select an activity and enjoy!"
   },
   "orbitals": {
     "title": "Orbitals and molecular shapes",

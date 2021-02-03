@@ -4,11 +4,12 @@
     "getInTouch": "Contato",
     "feedback": "Pesquisa",
     "markers": "Marcadores",
+    "instructions": "Instruções",
     "language": "Língua"
   },
   "app": {
     "title": "MoleculARweb",
-    "description": " Site para estudar e ensinar química e biologia usando realidade aumentada em computadores, telefones e tablets",
+    "description": "Site para estudar e ensinar química e biologia usando realidade aumentada em computadores, telefones e tablets",
     "policy": "Copyright © 2020 Laboratory for biomolecular modeling, EPFL. All rights reserved.",
     "policyMsg": "Usamos cookies para melhorar a sua experiência no nosso site. Ao usar MoleculARweb concorda com a nossa política de privacidade.",
     "learnMore": "Ver mais",
@@ -18,13 +19,21 @@
     "dismiss": "Mais tarde",
     "rotate": "Girar ",
     "submit": "Mandar",
+    "skip": "Pular",
+    "next": "Próximo",
+    "close": "Perto",
     "viewInYourSpace": "Veja no seu espaço",
     "returnToAR": "Retornar ao modo RA",
     "cartoon": "Cartãos",
     "sticks": "Gravetos",
     "interactions": "Interações",
     "markers": "Clique aqui para imprimir os marcadores de realidade aumentada",
-    "preferredLang": "Selecione seu idioma preferido"
+    "preferredLang": "Selecione seu idioma preferido",
+    "welcome": "Bem-vindo a MoleculARweb!",
+    "welcomeMsg": "Site para estudar e ensinar química e biologia usando realidade aumentada",
+    "prepare": "Prepare seus ",
+    "markersWithLink": "marcadores",
+    "selectActivity": "Selecione uma atividade e divirta-se"
   },
   "orbitals": {
     "title": "Formas de orbitais e moléculas",

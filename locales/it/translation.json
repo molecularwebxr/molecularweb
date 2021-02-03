@@ -3,7 +3,8 @@
     "about": "Riguardo",
     "getInTouch": "Contatto",
     "feedback": "Sondaggio",
-    "markers": "Markers",
+    "markers": "Marcatori",
+    "instructions": "Istruzioni",
     "language": "Linguaggio"
   },
   "app": {
@@ -18,13 +19,21 @@
     "dismiss": "Più tarde",
     "rotate": "Ruotare ",
     "submit": "Invia",
+    "skip": "Salta",
+    "next": "Prossimo",
+    "close": "Vicino",
     "viewInYourSpace": "Guarda nel tuo spazio",
     "returnToAR": "Torna alla modalità RA",
     "cartoon": "Cartoni",
     "sticks": "Bacchette",
     "interactions": "Interazioni",
     "markers": "Clicca qui per stampare i marker di realtà aumentata",
-    "preferredLang": "Seleziona la tua lingua preferita"
+    "preferredLang": "Seleziona la tua lingua preferita",
+    "welcome": "Benvenuto a MoleculARweb!",
+    "welcomeMsg": "Sito web per studiare e insegnare chimica e biologia utilizzando la realtà aumentata",
+    "prepare": "Prepara il tuo",
+    "markersWithLink": "marcatori",
+    "selectActivity": "Seleziona un'attività e divertiti!"
   },
   "orbitals": {
     "title": "Forme di orbitali e molecole",
