@@ -1,10 +1,9 @@
 var instructionsModal = document.querySelector("app-instructions");
 var header = document.querySelector("app-header");
-var obExpiresIn = 60000;
-// var obExpiresIn = 2629800000; // One month
+// var obExpiresIn = 60000;
+var obExpiresIn = 2629800000; // One month
 
 function handleClose(e) {
-  console.log("Closed")
   var expire = new Date(Date.now() + obExpiresIn);
   document.cookie = "onboarding=displayed; expires=" + expire + ";";
 }
