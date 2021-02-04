@@ -3,11 +3,13 @@
     "about": "À propos de",
     "getInTouch": "Contact",
     "feedback": "Sondage",
+    "markers": "Marqueurs",
+    "instructions": "Instructions",
     "language": "Langage"
   },
   "app": {
     "title": "MoleculARweb",
-    "description": " Site web pour étudier et enseigner la chimie et la biologie en utilisant la réalité augmentée sur ordinateurs, téléphones et tablettes",
+    "description": "Site web pour étudier et enseigner la chimie et la biologie en utilisant la réalité augmentée sur ordinateurs, téléphones et tablettes",
     "policy": "Copyright © 2020 Laboratory for biomolecular modeling, EPFL. All rights reserved.",
     "policyMsg": "Nous utilisons des cookies pour améliorer votre expérience sur notre site. En utilisant MoleculARweb, vous acceptez notre politique de confidentialité.",
     "learnMore": "Voir plus",
@@ -17,13 +19,21 @@
     "dismiss": "Plus tard",
     "rotate": "Tourner ",
     "submit": "Envoyer",
+    "skip": "Sauter",
+    "next": "Suivant",
+    "close": "Fermer",
     "viewInYourSpace": "Voir dans votre espace",
     "returnToAR": "Revenir en mode RA",
     "cartoon": "Cartons",
     "sticks": "Bâtons",
     "interactions": "Interactions",
     "markers": "Cliquez ici pour imprimer les marqueurs de réalité augmentée",
-    "preferredLang": "Sélectionnez votre langue préférée"
+    "preferredLang": "Sélectionnez votre langue préférée",
+    "welcome": "Bienvenue à MoleculARweb!",
+    "welcomeMsg": "Site web pour étudier et enseigner la chimie et la biologie en utilisant la réalité augmentée",
+    "prepare": "Préparez votre ",
+    "markersWithLink": "marqueurs",
+    "selectActivity": "Sélectionnez une activité et amusez-vous!"
   },
   "orbitals": {
     "title": "Formes d'orbitales et de molécules",
@@ -162,7 +172,7 @@
       "suggestions": "Quelles autres molécules ou concepts aimeriez-vous que nous élaborions ?",
       "liveIn": "Habitez-vous à...",
       "age": "Quel âge avez-vous?",
-      "howManyStudents": "Si vous avez utilisé le site web avec des étudiants, combien d'étudiants par appareil aviez-vous ?",
+      "howManyStudents": "Si vous avez utilisé le site web avec des étudiants, combien d'étudiants aviez-vous?",
       "studentsInterest": "J'ai perçu l'intérêt des étudiants sur l'utilisation de l'outil",
       "studentsUnderstanding": "J'ai remarqué que l'utilisation de l'outil a aidé les élèves à mieux comprendre la structure moléculaireet d’autres concepts",
       "emailAddress": "Votre adresse e-mail, si vous souhaitez rester à jour sur les nouvelles versions"

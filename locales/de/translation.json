@@ -3,11 +3,13 @@
     "about": "Über",
     "getInTouch": "Kontakt",
     "feedback": "Umfrage",
+    "markers": "Markers",
+    "instructions": "Anleitung",
     "language": "Sprache"
   },
   "app": {
     "title": "MoleculARweb",
-    "description": " Website für die Ausbildung in Chemie und Biologie durch Augmented Reality, sofort verfügbar in Standardgeräten",
+    "description": "Website für die Ausbildung in Chemie und Biologie durch Augmented Reality, sofort verfügbar in Standardgeräten",
     "policy": "Copyright © 2020 Laboratory for biomolecular modeling, EPFL. All rights reserved.",
     "policyMsg": "Wir verwenden Cookies, um Ihre Erfahrung auf unserer Website zu verbessern. Durch die Nutzung von MoleculARweb stimmen Sie unseren Datenschutzbestimmungen zu.",
     "learnMore": "Mehr erfahren",
@@ -17,13 +19,21 @@
     "dismiss": "Vielleicht später",
     "rotate": "Drehen ",
     "submit": "einreichen",
+    "skip": "Überspringen",
+    "next": "Nächster",
+    "close": "Schließen",
     "viewInYourSpace": "Ansicht in Ihrem Raum",
     "returnToAR": "Kehren Sie zum AR-Modus zurück",
     "cartoon": "Karikatur",
     "sticks": "Sticks",
     "interactions": "Interaktionen",
     "markers": "Klicken Sie hier, um die AR-Markierungen mit Anweisungen zum Drucken und Zusammenbauen zu finden",
-    "preferredLang": "Wählen Sie Ihre bevorzugte Sprache"
+    "preferredLang": "Wählen Sie Ihre bevorzugte Sprache",
+    "welcome": "Willkommen bei  MoleculARweb!",
+    "welcomeMsg": "Website für die Ausbildung in Chemie und Biologie durch Augmented Reality",
+    "prepare": "Bereite deine vor ",
+    "markersWithLink": "markers",
+    "selectActivity": "Wählen Sie eine Aktivität und haben Sie Spaß!"
   },
   "orbitals": {
     "title": "Orbitale und Molekülformen",
@@ -162,7 +172,7 @@
       "suggestions": "Welche anderen Moleküle oder Inhalte möchten Sie, die wir vorbereiten?",
       "liveIn": "Lebst du in...",
       "age": "Wie alt bist du?",
-      "howManyStudents": "Wenn Sie die Website mit Schülern genutzt haben, wie viele Schüler pro Gerät hatten Sie?",
+      "howManyStudents": "Wenn Sie die Website mit Schülern genutzt haben, wie viele Schüler hatten Sie?",
       "studentsInterest": "Ich habe das Interesse der Schüler an der Verwendung des Tools wahrgenommen",
       "studentsUnderstanding": "Ich nahm wahr, dass die Verwendung des Tools den Schülern half, die Molekülstruktur und andere chemische Konzepte besser zu verstehen",
       "emailAddress": "Ihre E-Mail-Adresse, wenn Sie über neue Versionen auf dem Laufenden bleiben möchten. "

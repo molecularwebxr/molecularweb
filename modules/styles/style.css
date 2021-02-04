@@ -269,16 +269,12 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-50%);
-  z-index: 1;
+  transform: translateY(-62%);
+  /* z-index: 1; */
   background-color: var(--primarylight);
   border-radius: 10px;
   width: 433px;
   padding: 1.5rem 1rem;
-}
-
-.modeling-container.multiple-cams {
-  transform: translateY(-45%);
 }
 
 .triangle-mk {
@@ -475,31 +471,58 @@ figure {
   background-position: top 0.5rem right 0.2rem;
 }
 
+.camera-container {
+  position: fixed;
+  top: 50%;
+  right: 76px;
+  transform: translateY(-188%);
+  /* z-index: 1; */
+  background-color: var(--primarylight);
+  border-radius: 10px;
+  padding: 0.75rem 0.5rem;
+}
+
+/* .camera-container.multiple-cams {
+  transform: translateY(-62%);
+} */
+
+.camera-container.small-menu {
+  transform: translateY(-121%);
+}
+
+.camera-container.small-menu.multiple-cams-single {
+  transform: translateY(-103%);
+}
+
+.camera-container.mk.multiple-cams {
+  transform: translateY(-152%);
+}
+
 .zoom-container {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(45%);
-  z-index: 1;
+  transform: translateY(-5%);
+  /* z-index: 1; */
   background-color: var(--primarylight);
   border-radius: 10px;
   padding: 0.75rem 0.5rem;
 }
 
 .zoom-container.small-menu {
-  transform: translateY(-4%);
+  transform: translateY(-27%);
 }
 
-.zoom-container.small-menu.multiple-cams-single {
+/* .zoom-container.small-menu.multiple-cams-single {
   transform: translateY(21%);
-}
+} */
 
 .temperature-container {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-68%);
-  z-index: 1;
+  transform: translateY(-86%);
+  /* z-index: 1; */
   background-color: var(--primarylight);
   border-radius: 10px;
   padding: 0.75rem 0.5rem;
@@ -631,27 +654,35 @@ figure {
     padding: 0.75rem 0.5rem;
   }
   .zoom-container,
+  .camera-container,
   .temperature-container,
   .modeling-container {
     right: 58px;
   }
   .temperature-container {
     padding: 0.5rem 0.5rem;
-    transform: translateY(-65%);
+    transform: translateY(-81%);
   }
-  .temperature-container.multiple-cams {
+  .modeling-container {
+    transform: translateY(-60%);
+  }
+  /* .temperature-container.multiple-cams {
     transform: translateY(-58%);
-  }
+  } */
   .temp-controls {
     margin: 0;
   }
   .zoom-container {
-    transform: translateY(40%);
+    transform: translateY(-3%);
     padding: 0.5rem 0.5rem;
   }
-  .zoom-container.multiple-cams {
-    transform: translateY(61%);
+  .camera-container {
+    transform: translateY(-198%);
+    padding: 0.5rem 0.5rem;
   }
+  /* .zoom-container.multiple-cams {
+    transform: translateY(61%);
+  } */
   .pdb-selector {
     width: 80px;
   }
@@ -833,17 +864,35 @@ figure {
 
   .zoom-container,
   .temperature-container,
+  .camera-container,
   .modeling-container {
     right: 58px;
   }
 
   .temperature-container {
     padding: 0.5rem 0.5rem;
+    transform: translateY(-59%);
+  }
+
+  .camera-container {
+    padding: 0.5rem 0.5rem;
     transform: translateY(-64%);
   }
 
-  .temperature-container.multiple-cams {
-    transform: translateY(-57%);
+  .camera-container.mk {
+    transform: translateY(-174%);
+  }
+
+  .camera-container.mk .triangle-temp{
+    transform: translateY(-114%);
+  }
+
+  .camera-container.mk.multiple-cams {
+    transform: translateY(-124%);
+  }
+
+  .camera-container.mk.multiple-cams .triangle-temp {
+    transform: translateY(-178%);
   }
 
   .temp-controls {
@@ -855,16 +904,20 @@ figure {
     padding: 0.5rem 0.5rem;
   }
 
-  .zoom-container.multiple-cams {
+  .zoom-container.mk {
+    transform: translateY(0%);
+  }
+
+  /* .zoom-container.multiple-cams {
     transform: translateY(69%);
   }
 
   .zoom-container.multiple-cams-single {
     transform: translateY(21%);
-  }
+  } */
 
   .temperature-container .triangle-temp{
-    transform: translateY(-72%);
+    transform: translateY(-300%);
   }
 
   canvas {
@@ -901,6 +954,11 @@ figure {
     flex-direction: row;
     padding: 1rem;
     width: 440px;
+    transform: translateY(-55%);
+  }
+
+  .triangle-mk{
+    transform: translateY(-160%);
   }
 
   .mk-left {

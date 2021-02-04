@@ -58,6 +58,8 @@
     <script src="/components/render-type/index.js"></script>
     <script src="/components/zoom-icon/index.js"></script>
     <script src="/components/swap-camera/index.js"></script>
+    <script src="/components/reset-activity/index.js"></script>
+    <script src="/components/camera-icon/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="translate.js"></script>
@@ -90,13 +92,12 @@
 
     <!-- Side buttons -->
     <div class="side-menu column">
-      <flip-video class="icon-margin"></flip-video>
-      <swap-camera class="hide icon-margin"></swap-camera>
-      <flip-graphics class="icon-margin"></flip-graphics>
+      <camera-icon class="icon-margin"></camera-icon>
       <enable-temp-controls class="icon-margin"></enable-temp-controls>
       <enable-mk-menu class="icon-margin"></enable-mk-menu>
       <render-type-icon class="icon-margin"></render-type-icon>
       <zoom-icon class="icon-margin"></zoom-icon>
+      <reset-activity class="icon-margin"></reset-activity>
       <toggle-menu class="icon-margin"></toggle-menu>
     </div>
 
@@ -107,8 +108,16 @@
       </div>
     </div>
 
+     <!-- camera controls -->
+     <div id="cam-container" class="camera-container mk hide column">
+      <div class="triangle-temp"></div>
+      <flip-video class="icon-margin"></flip-video>
+      <swap-camera class="hide icon-margin"></swap-camera>
+      <flip-graphics class="icon-margin"></flip-graphics>
+    </div>
+
     <!-- Zoom controls -->
-    <div id="zoom-container" class="zoom-container hide column">
+    <div id="zoom-container" class="zoom-container mk hide column">
       <div class="triangle-temp"></div>
       <scale-graphics
         class="small-icon-margin"

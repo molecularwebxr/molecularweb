@@ -3,7 +3,9 @@
     "about": "About",
     "getInTouch": "Contact",
     "feedback": "Feedback",
-    "language": "Language"
+    "language": "Language",
+    "instructions": "Instructions",
+    "markers": "Markers"
   },
   "app": {
     "title": "MoleculARweb",
@@ -17,13 +19,21 @@
     "dismiss": "Maybe later",
     "rotate": "Rotate ",
     "submit": "Submit",
+    "skip": "Skip",
+    "next": "Next",
+    "close": "Close",
     "viewInYourSpace": "View in your space",
     "returnToAR": "Return to AR mode",
     "cartoon": "Cartoon",
     "sticks": "Sticks",
     "interactions": "Interactions",
     "markers": "Click here to find the AR markers with print and assemble instructions",
-    "preferredLang": "Select your preferred language"
+    "preferredLang": "Select your preferred language",
+    "welcome": "Welcome to MoleculARweb!",
+    "welcomeMsg": "A website for chemistry and biology education through augmented reality",
+    "prepare": "Prepare your ",
+    "markersWithLink": "markers",
+    "selectActivity": "Select an activity and enjoy!"
   },
   "orbitals": {
     "title": "Orbitals and molecular shapes",
@@ -194,7 +204,7 @@
       "suggestions": "What other molecules or content would you like that we prepare?",
       "liveIn": "Do you live in...",
       "age": "How old are you?",
-      "howManyStudents": "If you used the website with students, how many students per device did you have?",
+      "howManyStudents": "If you used the website with students, how many were they?",
       "studentsInterest": "I perceived interest of the students on the use of the tool",
       "studentsUnderstanding": "I perceived that using the tool helped the students to better understand molecular structure and other chemistry concepts",
       "emailAddress": "Your email address, if you want to stay updated about new releases."
