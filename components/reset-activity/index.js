@@ -10,7 +10,6 @@
     }
 
     svg {
-      transition: transform 0.2s;
       width: 40px;
       height: 41px;
     }
@@ -29,7 +28,8 @@
     }
 
     a:hover .tooltip {
-      display: block;
+      visibility: visible;
+      opacity: 1;
     }
 
     .tooltip {
@@ -38,9 +38,11 @@
       transform: translateY(-122%);
       position: absolute;
       background-color: var(--primarylight);
-      display: none;
+      visibility: hidden;
+      opacity: 0;
       padding: 0.5rem 0.75rem;
       border-radius: 0.5rem;
+      transition: 0.2s;
     }
 
     .tooltip p {
