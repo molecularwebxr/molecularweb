@@ -1,6 +1,6 @@
 <h1 align="center">MoleculARweb</h1>
 
-<p align="center"><img width="300" alt="gesture sample" src="https://user-images.githubusercontent.com/21111451/107048927-c835f980-67c9-11eb-80ce-acef34797ad5.png"></p>
+<p align="center"><img width="200" alt="gesture sample" src="https://user-images.githubusercontent.com/21111451/107048927-c835f980-67c9-11eb-80ce-acef34797ad5.png"></p>
 
 MoleculARweb is a website for chemistry and structural biology education through commodity, web-based augmented reality that you can use in your webcam-enabled computer, smartphone or tablet, just on your web browser.
 
@@ -12,7 +12,7 @@ This project is manintained by [Fabio Cortés](https://www.fjcr.pro/) and [Lucia
 
 Print the [markers](https://molecularweb.epfl.ch/assets/markers/allmarkers.pdf), select an activity and enjoy!
 
-<p align="center"><img width="250" alt="img sample" src="https://user-images.githubusercontent.com/21111451/107054022-e0107c00-67cf-11eb-89a8-e2488065a37d.png"></img><img width="250" style="margin-left: 40px" alt="img sample" src="https://user-images.githubusercontent.com/21111451/107054024-e141a900-67cf-11eb-8bad-f7465cd14e29.png"></img>
+<p align="center">><img width="250" alt="img sample" src="https://user-images.githubusercontent.com/21111451/107054024-e141a900-67cf-11eb-8bad-f7465cd14e29.png"></img>
 </p>
 
 
