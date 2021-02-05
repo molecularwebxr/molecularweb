@@ -15,7 +15,7 @@ overlayTemplate.innerHTML = /* html */ `
       justify-content: center;
       transition: .3s ease-in;
       opacity: 0;
-      z-index: 1;
+      z-index: 2;
       visibility: hidden;
       will-change: opacity;
       color: #FFFFFF;
