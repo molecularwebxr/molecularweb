@@ -46,15 +46,17 @@ function initialize() {
   });
 
   function onResize() {
-    arToolkitSource.onResize();
-    arToolkitSource.copySizeTo(renderer.domElement);
+    arToolkitSource.onResizeElement();
+    arToolkitSource.copyElementSizeTo(renderer.domElement);
     if (arToolkitContext.arController !== null) {
-      arToolkitSource.copySizeTo(arToolkitContext.arController.canvas);
+      arToolkitSource.copyElementSizeTo(arToolkitContext.arController.canvas);
     }
   }
 
   arToolkitSource.init(function onReady() {
-    onResize();
+    setTimeout(function () {
+      onResize();
+    }, 300);
   });
 
   // handle resize event
@@ -157,8 +159,9 @@ function animate() {
 }
 
 function loadPdb(rawPdb) {
+  bonds = {};
+  allBonds = {};
   pdb = setupPdb(rawPdb);
-
   atomsarray = [];
   bondsarray = [];
   spheresarray = [];
@@ -169,12 +172,17 @@ function loadPdb(rawPdb) {
   clearPhysics();
   clearGroup(stickGroup);
   clearGroup(spheresGroup);
-
+  console.time("Sticks");
   createSticks(pdb);
+  console.timeEnd("Sticks");
 
+  console.time("Spheres");
   createSpheres(pdb);
+  console.timeEnd("Spheres");
 
+  console.time("Physics");
   setupConstraints(pdb);
+  console.timeEnd("Physics");
 
   if (window.innerWidth >= 768) {
     handleFlip();
