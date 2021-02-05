@@ -284,6 +284,15 @@ function createSticks(pdb) {
         radius = DOUBLE;
       }
 
+      // One of both atoms is H and have 1 bonded atom (TERMINAL) => SIMPLE
+      // Otherwise is simple
+      if (
+        (pdb.elements[atomIndex] === 0 && atom1Bonds === 1) ||
+        (pdb.elements[bondedAtomIndex] === 0 && atom2Bonds === 1)
+      ) {
+        radius = SIMPLE;
+      } 
+
 
       var bond1 = cylindricalSegment(
         point2,
