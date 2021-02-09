@@ -56,7 +56,7 @@ function setupConstraints(pdb) {
             }
           }
         }
-        
+
         //if both atoms are C, N or O then we have to check whether they are forming a double bond
         //and if yes then add 1-4 constraints that will keep the place fixed
         //to know this we check if they have at least one 120 degree angle around
@@ -212,6 +212,7 @@ function updatePhysics() {
       spheresarray[i].velocity.y + 10 * Math.random(1) - 5;
     spheresarray[i].velocity.z =
       spheresarray[i].velocity.z + 10 * Math.random(1) - 5;
+
     velsum =
       velsum +
       Math.sqrt(
@@ -220,6 +221,7 @@ function updatePhysics() {
           Math.pow(spheresarray[i].velocity.z, 2)
       );
   }
+  
   for (i = 0; i < atomsarray.length; i++) {
     spheresarray[i].velocity.x =
       (spheresarray[i].velocity.x / velsum) * velsum_expected;
