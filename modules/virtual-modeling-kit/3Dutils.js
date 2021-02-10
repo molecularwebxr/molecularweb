@@ -3,10 +3,9 @@ var bondsarray = [];
 var spheresarray = [];
 var bondfirstatom = [];
 var atoms = 0;
+
 var radiusfactor1 = 0.35;
 var radiusfactor2 = 1.4;
-var bonds = {};
-var allBonds = {};
 
 var SIMPLE = 0.12;
 var DOUBLE = 0.2;
@@ -143,6 +142,9 @@ function getBonds(pdb) {
 
 function createSticks(pdb) {
   var bondKeys = Object.keys(pdb.bonds);
+  var sticks = new THREE.Group();
+  var bondsArr = [];
+  var bondsFirstAtom = [];
 
   bondKeys.forEach(function (atom) {
     pdb.allBonds[atom].forEach(function (bondedAtom) {
@@ -314,23 +316,16 @@ function createSticks(pdb) {
           color: elementColors[pdb.elements[bondedAtomIndex]],
         })
       );
-      stickGroup.add(bond1);
-      stickGroup.add(bond2);
-      bondsarray.push(bond1);
-      bondsarray.push(bond2);
-      bondfirstatom.push(atomIndex);
-      bondfirstatom.push(bondedAtomIndex);
+      sticks.add(bond1);
+      sticks.add(bond2);
+      bondsArr.push(bond1);
+      bondsArr.push(bond2);
+      bondsFirstAtom.push(atomIndex);
+      bondsFirstAtom.push(bondedAtomIndex);
     });
   });
 
-  //if both atoms are C, N or O then we have to check whether they are forming a double bond
-  // var areNCO = checkNCO(pdb.elements[i], pdb.elements[j]);
-
-  // if (areNCO) {
-  // }
-
-  // console.log(bonds);
-  sceneGroup.add(stickGroup);
+  return [sticks, bondsArr, bondsFirstAtom];
 }
 
 function createSpheres(pdb) {

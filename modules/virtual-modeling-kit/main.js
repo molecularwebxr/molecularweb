@@ -210,9 +210,7 @@ function animate() {
 
 function loadPdb(rawPdb) {
   atomsarray = [];
-  bondsarray = [];
   spheresarray = [];
-  bondfirstatom = [];
   
   pdb = setupPdb(rawPdb);
   atoms = pdb.atoms;
@@ -220,8 +218,10 @@ function loadPdb(rawPdb) {
   clearPhysics();
   clearGroup(stickGroup);
   clearGroup(spheresGroup);
+
   console.time("Sticks");
-  createSticks(pdb);
+  [stickGroup, bondsarray, bondfirstatom] = createSticks(pdb);
+  sceneGroup.add(stickGroup);
   console.timeEnd("Sticks");
 
   console.time("Spheres");
