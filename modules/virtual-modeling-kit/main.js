@@ -4,9 +4,11 @@ var arToolkitSource, arToolkitContext;
 
 var patternArray, markerRootArray, markerGroupArray;
 
-var markerRootArray2, markerGroupArray2, torus;
+var patternArray2, markerRootArray2, markerGroupArray2;
 
 var sceneGroup, stickGroup, spheresGroup;
+
+var sceneGroup2, stickGroup2, spheresGroup2;
 
 var pdb;
 
@@ -123,6 +125,7 @@ function initialize() {
   sceneGroup = new THREE.Group();
   stickGroup = new THREE.Group();
   spheresGroup = new THREE.Group();
+  
   // a 1x1x1 cube model with scale factor 1.25 fills up the physical cube
   sceneGroup.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
 
@@ -164,10 +167,9 @@ function initialize() {
 
   }
 
-  var torusGeometry = new THREE.TorusKnotGeometry(0.3,0.1,64,16);
-  var torusMaterial = new THREE.MeshNormalMaterial();
-  torus = new THREE.Mesh(torusGeometry, torusMaterial);
-  torus.scale.multiplyScalar(1.5);
+  sceneGroup2 = new THREE.Group();
+  stickGroup2 = new THREE.Group();
+  spheresGroup2 = new THREE.Group();
 }
 
 function update() {
@@ -186,7 +188,7 @@ function update() {
 
   for (let i = 0; i < 6; i++) {
     if (markerRootArray2[i].visible) {
-      markerGroupArray2[i].add(torus);
+      markerGroupArray2[i].add(sceneGroup2);
       console.log("visible: " + patternArray2[i]);
       break;
     }
@@ -207,14 +209,12 @@ function animate() {
 }
 
 function loadPdb(rawPdb) {
-  bonds = {};
-  allBonds = {};
-  pdb = setupPdb(rawPdb);
   atomsarray = [];
   bondsarray = [];
   spheresarray = [];
   bondfirstatom = [];
-  bondlength = [];
+  
+  pdb = setupPdb(rawPdb);
   atoms = pdb.atoms;
 
   clearPhysics();

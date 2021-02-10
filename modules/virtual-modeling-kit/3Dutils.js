@@ -2,7 +2,6 @@ var atomsarray = [];
 var bondsarray = [];
 var spheresarray = [];
 var bondfirstatom = [];
-var bondlength = [];
 var atoms = 0;
 var radiusfactor1 = 0.35;
 var radiusfactor2 = 1.4;
@@ -55,6 +54,8 @@ function setupPdb(rawPdb) {
     zCoords: [],
     resnos: [],
     elements: [],
+    bonds: {},
+    allBonds: {},
     atoms: 0,
     xAvg: 0,
     yAvg: 0,
@@ -92,6 +93,16 @@ function setupPdb(rawPdb) {
   pdb.xAvg = pdb.xAvg / pdb.atoms;
   pdb.yAvg = pdb.yAvg / pdb.atoms;
   pdb.zAvg = pdb.zAvg / pdb.atoms;
+
+  var bonds = getBonds(pdb);
+
+  // Here we make a Deep clone of bonds object so we have
+  // all bonds for each atom, not only the ones we will draw
+  // otherwise we will draw them twice
+  var allBonds = JSON.parse(JSON.stringify(bonds));
+
+  pdb.bonds = bonds;
+  pdb.allBonds = allBonds;
 
   return pdb;
 }
@@ -131,19 +142,12 @@ function getBonds(pdb) {
 }
 
 function createSticks(pdb) {
-  bonds = getBonds(pdb);
-
-  var bondKeys = Object.keys(bonds);
-
-  // Here we make a Deep clone of bonds object so we have
-  // all bonds for each atom, not only the ones we will draw
-  // otherwise we will draw the twice
-  allBonds = JSON.parse(JSON.stringify(bonds));
+  var bondKeys = Object.keys(pdb.bonds);
 
   bondKeys.forEach(function (atom) {
-    allBonds[atom].forEach(function (bondedAtom) {
-      if (!allBonds[bondedAtom].includes(atom)) {
-        allBonds[bondedAtom].push(atom);
+    pdb.allBonds[atom].forEach(function (bondedAtom) {
+      if (!pdb.allBonds[bondedAtom].includes(atom)) {
+        pdb.allBonds[bondedAtom].push(atom);
       }
     });
   });
@@ -160,7 +164,7 @@ function createSticks(pdb) {
       pdb.zCoords[atomIndex] - pdb.zAvg
     );
 
-    bonds[atom].forEach(function (bondedAtom) {
+    pdb.bonds[atom].forEach(function (bondedAtom) {
       var bondedAtomIndex = bondKeys.indexOf(bondedAtom);
 
       var point2 = new THREE.Vector3(
@@ -182,8 +186,8 @@ function createSticks(pdb) {
       );
 
       var radius = SIMPLE;
-      var atom1Bonds = allBonds[atom].length;
-      var atom2Bonds = allBonds[bondedAtom].length;
+      var atom1Bonds = pdb.allBonds[atom].length;
+      var atom2Bonds = pdb.allBonds[bondedAtom].length;
 
       /******************  Bonde rules for C *************************/
       if (
