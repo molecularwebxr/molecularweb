@@ -208,10 +208,7 @@ function animate() {
   render();
 }
 
-function loadPdb(rawPdb) {
-  atomsarray = [];
-  spheresarray = [];
-  
+function loadPdb(rawPdb) {  
   pdb = setupPdb(rawPdb);
   atoms = pdb.atoms;
 
@@ -225,7 +222,11 @@ function loadPdb(rawPdb) {
   console.timeEnd("Sticks");
 
   console.time("Spheres");
-  createSpheres(pdb);
+  [spheresGroup, atomsarray, spheresarray] = createSpheres(pdb, renderType.isActive);
+  spheresarray.forEach(function (sphere) {
+    world.add(sphere);
+  })
+  sceneGroup.add(spheresGroup);
   console.timeEnd("Spheres");
 
   console.time("Physics");

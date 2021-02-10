@@ -328,10 +328,15 @@ function createSticks(pdb) {
   return [sticks, bondsArr, bondsFirstAtom];
 }
 
-function createSpheres(pdb) {
+function createSpheres(pdb, renderType) {
   //this loop will create the spheres to display the atoms at the defined radius
   //and the actual physical cannon spheres
-  var radiusFactor = renderType.isActive ? radiusfactor1 : radiusfactor2;
+  var spheres = new THREE.Group();
+  var atomsArr = [];
+  var spheresArr = [];
+
+  var radiusFactor = renderType ? radiusfactor1 : radiusfactor2;
+
   for (i = 0; i < pdb.atoms; i++) {
     var sphereRadius = radiusFactor * elementradii[pdb.elements[i]];
     var sphereMesh = new THREE.Mesh(
@@ -344,26 +349,25 @@ function createSpheres(pdb) {
     sphereMesh.position.x = (pdb.xCoords[i] - pdb.xAvg);
     sphereMesh.position.y = pdb.yCoords[i] - pdb.yAvg;
     sphereMesh.position.z = pdb.zCoords[i] - pdb.zAvg;
-    spheresGroup.add(sphereMesh); //added the sphere representation for atom i
-    atomsarray.push(sphereMesh);
+    spheres.add(sphereMesh); 
+    atomsArr.push(sphereMesh);
 
-    var sphereShape = new CANNON.Sphere(0.5 * elementradii[pdb.elements[i]]); // Step 1
+    var sphereShape = new CANNON.Sphere(0.5 * elementradii[pdb.elements[i]]);
     var sphereBody = new CANNON.Body({
       mass: elementmasses[pdb.elements[i]],
       shape: sphereShape,
-    }); // Step 2
+    });
     sphereBody.position.set(
       sphereMesh.position.x,
       sphereMesh.position.y,
       sphereMesh.position.z
     );
-    sphereBody.velocity.x = 0; //10*Math.random(1)-5  //a small random number will give some initial velocity
-    sphereBody.velocity.y = 0; //10*Math.random(1)-5
-    sphereBody.velocity.z = 0; //10*Math.random(1)-5
-    spheresarray.push(sphereBody);
-    world.add(sphereBody); //added the sphere to the world
+    sphereBody.velocity.x = 0;
+    sphereBody.velocity.y = 0;
+    sphereBody.velocity.z = 0;
+    spheresArr.push(sphereBody);
   }
-  sceneGroup.add(spheresGroup);
+  return [spheres, atomsArr, spheresArr];
 }
 
 function clearGroup(group) {
