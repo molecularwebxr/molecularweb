@@ -4,6 +4,12 @@ var spheresarray = [];
 var bondfirstatom = [];
 var atoms = 0;
 
+var atomsarray2 = [];
+var bondsarray2 = [];
+var spheresarray2 = [];
+var bondfirstatom2 = [];
+var atoms2 = 0;
+
 var radiusfactor1 = 0.35;
 var radiusfactor2 = 1.4;
 
@@ -161,7 +167,7 @@ function createSticks(pdb) {
     //second half of the bond is from point2 to point3
 
     var point1 = new THREE.Vector3(
-      -(pdb.xCoords[atomIndex] - pdb.xAvg),
+      (pdb.xCoords[atomIndex] - pdb.xAvg),
       pdb.yCoords[atomIndex] - pdb.yAvg,
       pdb.zCoords[atomIndex] - pdb.zAvg
     );
@@ -170,7 +176,7 @@ function createSticks(pdb) {
       var bondedAtomIndex = bondKeys.indexOf(bondedAtom);
 
       var point2 = new THREE.Vector3(
-        -(
+        (
           pdb.xCoords[bondedAtomIndex] / 2 +
           pdb.xCoords[atomIndex] / 2 -
           pdb.xAvg
@@ -182,7 +188,7 @@ function createSticks(pdb) {
       );
 
       var point3 = new THREE.Vector3(
-        -(pdb.xCoords[bondedAtomIndex] - pdb.xAvg),
+        (pdb.xCoords[bondedAtomIndex] - pdb.xAvg),
         pdb.yCoords[bondedAtomIndex] - pdb.yAvg,
         pdb.zCoords[bondedAtomIndex] - pdb.zAvg
       );

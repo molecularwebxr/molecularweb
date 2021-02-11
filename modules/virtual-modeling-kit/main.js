@@ -219,18 +219,28 @@ function loadPdb(rawPdb) {
   console.time("Sticks");
   [stickGroup, bondsarray, bondfirstatom] = createSticks(pdb);
   sceneGroup.add(stickGroup);
+  [stickGroup2, bondsarray2, bondfirstatom2] = createSticks(pdb);
+  sceneGroup2.add(stickGroup2);
   console.timeEnd("Sticks");
 
   console.time("Spheres");
   [spheresGroup, atomsarray, spheresarray] = createSpheres(pdb, renderType.isActive);
+  [spheresGroup2, atomsarray2, spheresarray2] = createSpheres(pdb, renderType.isActive);
   spheresarray.forEach(function (sphere) {
     world.add(sphere);
-  })
+  });
+  spheresarray2.forEach(function (sphere) {
+    world.add(sphere);
+  });
   sceneGroup.add(spheresGroup);
+  sceneGroup2.add(spheresGroup2);
   console.timeEnd("Spheres");
 
   console.time("Physics");
-  setupConstraints(pdb);
+  var constraints = setupConstraints(pdb);
+  constraints.forEach(function (constraint) {
+    world.addConstraint(constraint);
+  });
   console.timeEnd("Physics");
 
   if (window.innerWidth >= 768) {

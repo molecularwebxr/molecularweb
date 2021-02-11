@@ -6,7 +6,8 @@ world.solver.iterations = 10;
 var temperature = 0;
 
 function setupConstraints(pdb) {
-  //this loop will search and build the cannon constraints
+  //this loop will search, build and return the cannon constraints
+  var constraints = [];
   for (i = 0; i < pdb.atoms; i++) {
     for (j = 0; j < pdb.atoms; j++) {
       if (i != j) {
@@ -28,7 +29,7 @@ function setupConstraints(pdb) {
             Math.sqrt(distsqr),
             1e3
           );
-          world.addConstraint(c);
+          constraints.push(c);
           for (k = 0; k < pdb.atoms; k++) {
             distsqr =
               Math.pow(pdb.xCoords[k] - pdb.xCoords[j], 2) +
@@ -52,7 +53,7 @@ function setupConstraints(pdb) {
                 Math.sqrt(distsqr_ik),
                 10
               );
-              world.addConstraint(c);
+              constraints.push(c);
             }
           }
         }
@@ -143,7 +144,6 @@ function setupConstraints(pdb) {
                           (BC * BC + AB * AB - AC * AC) / (2 * BC * AB)
                         );
                       if (Math.abs(angle2 - 120) < 4) {
-                        //alert(k + "   " + l)
                         distsqr_12 =
                           Math.pow(pdb.xCoords[k] - pdb.xCoords[l], 2) +
                           Math.pow(pdb.yCoords[k] - pdb.yCoords[l], 2) +
@@ -154,8 +154,7 @@ function setupConstraints(pdb) {
                           Math.sqrt(distsqr_12),
                           100
                         );
-                        world.addConstraint(c);
-                        //alert(Math.sqrt(distsqr_12))
+                        constraints.push(c);
                       }
                     }
                   }
@@ -167,6 +166,7 @@ function setupConstraints(pdb) {
       }
     }
   }
+  return constraints;
 }
 
 function updatePhysics() {
@@ -180,17 +180,17 @@ function updatePhysics() {
   var sumax = 0;
   var sumay = 0;
   var sumaz = 0;
-  var sumaxr = 0;
-  var sumayr = 0;
-  var sumazr = 0;
+  // var sumaxr = 0;
+  // var sumayr = 0;
+  // var sumazr = 0;
 
   for (i = 0; i < atomsarray.length; i++) {
     sumax = sumax + world.bodies[i].position.x;
     sumay = sumay + world.bodies[i].position.y;
     sumaz = sumaz + world.bodies[i].position.z;
-    sumaxr = sumaxr + world.bodies[i].quaternion.x;
-    sumayr = sumayr + world.bodies[i].quaternion.y;
-    sumazr = sumazr + world.bodies[i].quaternion.z;
+    // sumaxr = sumaxr + world.bodies[i].quaternion.x;
+    // sumayr = sumayr + world.bodies[i].quaternion.y;
+    // sumazr = sumazr + world.bodies[i].quaternion.z;
   }
 
   for (i = 0; i < atomsarray.length; i++) {
