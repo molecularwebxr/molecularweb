@@ -119,7 +119,7 @@ function switchCam(e) {
 }
 
 function handleFlip(e) {
-  for (i = 0; i < atomsarray.length; i++) {
+  for (i = 0; i < atomMeshes.length; i++) {
     world.bodies[i].position.x = -world.bodies[i].position.x;
     // world.bodies[i].position.y = - world.bodies[i].position.y;
     // world.bodies[i].position.z = - world.bodies[i].position.z;

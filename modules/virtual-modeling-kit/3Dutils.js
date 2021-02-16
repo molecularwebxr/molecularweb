@@ -1,21 +1,13 @@
-var atomsarray = [];
-var bondsarray = [];
-var spheresarray = [];
-var bondfirstatom = [];
-var atoms = 0;
-
-var atomsarray2 = [];
-var bondsarray2 = [];
-var spheresarray2 = [];
-var bondfirstatom2 = [];
-var atoms2 = 0;
-
 var radiusfactor1 = 0.35;
 var radiusfactor2 = 1.4;
 
 var SIMPLE = 0.12;
 var DOUBLE = 0.2;
 var TRIPLE = 0.25;
+
+var CONSTRAINT_1 = 1000;
+var CONSTRAINT_2 = 100;
+var CONSTRAINT_3 = 10;
 
 var sphereGeometry = new THREE.SphereBufferGeometry(1, 32, 16);
 
@@ -109,6 +101,16 @@ function setupPdb(rawPdb) {
   pdb.bonds = bonds;
   pdb.allBonds = allBonds;
 
+  var bondKeys = Object.keys(pdb.bonds);
+
+  bondKeys.forEach(function (atom) {
+    pdb.allBonds[atom].forEach(function (bondedAtom) {
+      if (!pdb.allBonds[bondedAtom].includes(atom)) {
+        pdb.allBonds[bondedAtom].push(atom);
+      }
+    });
+  });
+
   return pdb;
 }
 
@@ -146,19 +148,12 @@ function getBonds(pdb) {
   return bonds;
 }
 
-function createSticks(pdb) {
+function createSticks(pdb, bodies) {
   var bondKeys = Object.keys(pdb.bonds);
   var sticks = new THREE.Group();
-  var bondsArr = [];
-  var bondsFirstAtom = [];
-
-  bondKeys.forEach(function (atom) {
-    pdb.allBonds[atom].forEach(function (bondedAtom) {
-      if (!pdb.allBonds[bondedAtom].includes(atom)) {
-        pdb.allBonds[bondedAtom].push(atom);
-      }
-    });
-  });
+  var bonds = [];
+  var constraints = [];
+  var atomPairs = []
 
   bondKeys.forEach(function (atom, atomIndex) {
     //point1 is the first atom (i), point3 is the second atom (j)
@@ -167,7 +162,7 @@ function createSticks(pdb) {
     //second half of the bond is from point2 to point3
 
     var point1 = new THREE.Vector3(
-      (pdb.xCoords[atomIndex] - pdb.xAvg),
+      -(pdb.xCoords[atomIndex] - pdb.xAvg),
       pdb.yCoords[atomIndex] - pdb.yAvg,
       pdb.zCoords[atomIndex] - pdb.zAvg
     );
@@ -176,11 +171,9 @@ function createSticks(pdb) {
       var bondedAtomIndex = bondKeys.indexOf(bondedAtom);
 
       var point2 = new THREE.Vector3(
-        (
-          pdb.xCoords[bondedAtomIndex] / 2 +
+        -(pdb.xCoords[bondedAtomIndex] / 2 +
           pdb.xCoords[atomIndex] / 2 -
-          pdb.xAvg
-        ),
+          pdb.xAvg),
         pdb.yCoords[bondedAtomIndex] / 2 +
           pdb.yCoords[atomIndex] / 2 -
           pdb.yAvg,
@@ -188,7 +181,7 @@ function createSticks(pdb) {
       );
 
       var point3 = new THREE.Vector3(
-        (pdb.xCoords[bondedAtomIndex] - pdb.xAvg),
+        -(pdb.xCoords[bondedAtomIndex] - pdb.xAvg),
         pdb.yCoords[bondedAtomIndex] - pdb.yAvg,
         pdb.zCoords[bondedAtomIndex] - pdb.zAvg
       );
@@ -305,6 +298,32 @@ function createSticks(pdb) {
         radius = SIMPLE;
       } 
 
+      // This is the default contraint between bonded atoms
+      var c = new CANNON.DistanceConstraint(
+        atomBodies[atomIndex],
+        atomBodies[bondedAtomIndex],
+        undefined,
+        CONSTRAINT_1
+      );
+
+      constraints.push(c);
+
+      // Create default pairs of atoms for further constraint building
+      for (var i = 0; i < atom1Bonds; i++) {
+        if(pdb.allBonds[atom][i] !== bondedAtom) {
+          var myAtom = pdb.allBonds[atom][i];
+          var c = [bondKeys.indexOf(myAtom), bondedAtomIndex].sort();
+          atomPairs.push(c);
+        }
+      }
+
+      for (var i = 0; i < atom2Bonds; i++) {
+        if(pdb.allBonds[bondedAtom][i] !== atom) {
+          var myAtom = pdb.allBonds[bondedAtom][i];
+          var c = [bondKeys.indexOf(myAtom), atomIndex].sort();
+          atomPairs.push(c);
+        }
+      }
 
       var bond1 = cylindricalSegment(
         point2,
@@ -322,24 +341,45 @@ function createSticks(pdb) {
           color: elementColors[pdb.elements[bondedAtomIndex]],
         })
       );
+
       sticks.add(bond1);
       sticks.add(bond2);
-      bondsArr.push(bond1);
-      bondsArr.push(bond2);
-      bondsFirstAtom.push(atomIndex);
-      bondsFirstAtom.push(bondedAtomIndex);
+      
+      bonds.push({
+        atomA: atomIndex,
+        atomB: bondedAtomIndex,
+        sticks: [bond1, bond2]
+      });
+
     });
   });
 
-  return [sticks, bondsArr, bondsFirstAtom];
+  // Convert atom pairs to strings for easily removing duplicates
+  var stringArray = atomPairs.map(JSON.stringify);
+  var uniqueStringArray = new Set(stringArray);
+  var uniqueConstraints = Array.from(uniqueStringArray, JSON.parse);
+
+  var defaultConstraints = [];
+
+  uniqueConstraints.forEach(function (atomPair) {
+    var constraint = new CANNON.DistanceConstraint(
+      atomBodies[atomPair[0]],
+      atomBodies[atomPair[1]],
+      undefined,
+      CONSTRAINT_2
+    );
+    defaultConstraints.push(constraint)
+  })
+
+  return [sticks, bonds, [...constraints, ...defaultConstraints]];
 }
 
 function createSpheres(pdb, renderType) {
   //this loop will create the spheres to display the atoms at the defined radius
   //and the actual physical cannon spheres
   var spheres = new THREE.Group();
-  var atomsArr = [];
-  var spheresArr = [];
+  var meshes = [];
+  var bodies = [];
 
   var radiusFactor = renderType ? radiusfactor1 : radiusfactor2;
 
@@ -356,7 +396,7 @@ function createSpheres(pdb, renderType) {
     sphereMesh.position.y = pdb.yCoords[i] - pdb.yAvg;
     sphereMesh.position.z = pdb.zCoords[i] - pdb.zAvg;
     spheres.add(sphereMesh); 
-    atomsArr.push(sphereMesh);
+    meshes.push(sphereMesh);
 
     var sphereShape = new CANNON.Sphere(0.5 * elementradii[pdb.elements[i]]);
     var sphereBody = new CANNON.Body({
@@ -371,9 +411,9 @@ function createSpheres(pdb, renderType) {
     sphereBody.velocity.x = 0;
     sphereBody.velocity.y = 0;
     sphereBody.velocity.z = 0;
-    spheresArr.push(sphereBody);
+    bodies.push(sphereBody);
   }
-  return [spheres, atomsArr, spheresArr];
+  return [spheres, meshes, bodies];
 }
 
 function clearGroup(group) {

@@ -170,12 +170,10 @@ function setupConstraints(pdb) {
 }
 
 function updatePhysics() {
-  // Step the physics world
   world.step(1 / 600);
-  // Copy coordinates from Cannon.js to Three.js
-  // And update temperatures
+  
   var velsum_expected = Math.sqrt(temperature) * atoms;
-  //var velsum_expected = temperature;
+  
   var velsum = 0;
   var sumax = 0;
   var sumay = 0;
@@ -184,7 +182,7 @@ function updatePhysics() {
   // var sumayr = 0;
   // var sumazr = 0;
 
-  for (i = 0; i < atomsarray.length; i++) {
+  for (i = 0; i < atomMeshes.length; i++) {
     sumax = sumax + world.bodies[i].position.x;
     sumay = sumay + world.bodies[i].position.y;
     sumaz = sumaz + world.bodies[i].position.z;
@@ -193,95 +191,98 @@ function updatePhysics() {
     // sumazr = sumazr + world.bodies[i].quaternion.z;
   }
 
-  for (i = 0; i < atomsarray.length; i++) {
+  for (i = 0; i < atomMeshes.length; i++) {
     world.bodies[i].position.x =
-      world.bodies[i].position.x - sumax / atomsarray.length;
+      world.bodies[i].position.x - sumax / atomMeshes.length;
     world.bodies[i].position.y =
-      world.bodies[i].position.y - sumay / atomsarray.length;
+      world.bodies[i].position.y - sumay / atomMeshes.length;
     world.bodies[i].position.z =
-      world.bodies[i].position.z - sumaz / atomsarray.length;
+      world.bodies[i].position.z - sumaz / atomMeshes.length;
   }
 
-  for (i = 0; i < atomsarray.length; i++) {
-    atomsarray[i].position.copy(world.bodies[i].position);
-    atomsarray[i].quaternion.copy(world.bodies[i].quaternion);
+  for (i = 0; i < atomMeshes.length; i++) {
+    atomMeshes[i].position.copy(atomBodies[i].position);
+    atomMeshes[i].quaternion.copy(atomBodies[i].quaternion);
 
-    spheresarray[i].velocity.x =
-      spheresarray[i].velocity.x + 10 * Math.random(1) - 5;
-    spheresarray[i].velocity.y =
-      spheresarray[i].velocity.y + 10 * Math.random(1) - 5;
-    spheresarray[i].velocity.z =
-      spheresarray[i].velocity.z + 10 * Math.random(1) - 5;
+    atomBodies[i].velocity.x =
+      atomBodies[i].velocity.x + 10 * Math.random(1) - 5;
+    atomBodies[i].velocity.y =
+      atomBodies[i].velocity.y + 10 * Math.random(1) - 5;
+    atomBodies[i].velocity.z =
+      atomBodies[i].velocity.z + 10 * Math.random(1) - 5;
 
     velsum =
       velsum +
       Math.sqrt(
-        Math.pow(spheresarray[i].velocity.x, 2) +
-          Math.pow(spheresarray[i].velocity.y, 2) +
-          Math.pow(spheresarray[i].velocity.z, 2)
+        Math.pow(atomBodies[i].velocity.x, 2) +
+          Math.pow(atomBodies[i].velocity.y, 2) +
+          Math.pow(atomBodies[i].velocity.z, 2)
       );
   }
   
-  for (i = 0; i < atomsarray.length; i++) {
-    spheresarray[i].velocity.x =
-      (spheresarray[i].velocity.x / velsum) * velsum_expected;
-    spheresarray[i].velocity.y =
-      (spheresarray[i].velocity.y / velsum) * velsum_expected;
-    spheresarray[i].velocity.z =
-      (spheresarray[i].velocity.z / velsum) * velsum_expected;
+  for (i = 0; i < atomMeshes.length; i++) {
+    atomBodies[i].velocity.x =
+      (atomBodies[i].velocity.x / velsum) * velsum_expected;
+    atomBodies[i].velocity.y =
+      (atomBodies[i].velocity.y / velsum) * velsum_expected;
+    atomBodies[i].velocity.z =
+      (atomBodies[i].velocity.z / velsum) * velsum_expected;
   }
 
-  for (i = 0; i < bondsarray.length; i = i + 2) {
+  bonds.forEach(function (bond) {
     var B = new THREE.Vector3(
-      atomsarray[bondfirstatom[i]].position.x,
-      atomsarray[bondfirstatom[i]].position.y,
-      atomsarray[bondfirstatom[i]].position.z
+      atomMeshes[bond.atomA].position.x,
+      atomMeshes[bond.atomA].position.y,
+      atomMeshes[bond.atomA].position.z
     );
+
     var A = new THREE.Vector3(
-      atomsarray[bondfirstatom[i]].position.x / 2 +
-        atomsarray[bondfirstatom[i + 1]].position.x / 2,
-      atomsarray[bondfirstatom[i]].position.y / 2 +
-        atomsarray[bondfirstatom[i + 1]].position.y / 2,
-      atomsarray[bondfirstatom[i]].position.z / 2 +
-        atomsarray[bondfirstatom[i + 1]].position.z / 2
+      atomMeshes[bond.atomA].position.x / 2 +
+        atomMeshes[bond.atomB].position.x / 2,
+      atomMeshes[bond.atomA].position.y / 2 +
+        atomMeshes[bond.atomB].position.y / 2,
+      atomMeshes[bond.atomA].position.z / 2 +
+        atomMeshes[bond.atomB].position.z / 2
     );
+
+    var C = new THREE.Vector3(
+       atomMeshes[bond.atomA].position.x / 2 +
+        atomMeshes[bond.atomB].position.x / 2,
+       atomMeshes[bond.atomA].position.y / 2 +
+        atomMeshes[bond.atomB].position.y / 2,
+       atomMeshes[bond.atomA].position.z / 2 +
+        atomMeshes[bond.atomB].position.z / 2
+    );
+    var D = new THREE.Vector3(
+      atomMeshes[bond.atomB].position.x,
+      atomMeshes[bond.atomB].position.y,
+      atomMeshes[bond.atomB].position.z
+    );
+
     var vec = B.clone();
     vec.sub(A);
     var h = vec.length();
     vec.normalize();
     var quaternion = new THREE.Quaternion();
     quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), vec);
-    bondsarray[i].position.set(0, 0, 0);
-    bondsarray[i].rotation.set(0, 0, 0);
-    bondsarray[i].translateOnAxis(0, h / 2, 0);
-    bondsarray[i].applyQuaternion(quaternion);
-    bondsarray[i].position.set(A.x, A.y, A.z);
+    bond.sticks[0].position.set(0, 0, 0);
+    bond.sticks[0].rotation.set(0, 0, 0);
+    bond.sticks[0].translateOnAxis(0, h / 2, 0);
+    bond.sticks[0].applyQuaternion(quaternion);
+    bond.sticks[0].position.set(A.x, A.y, A.z);
 
-    var A = new THREE.Vector3(
-      atomsarray[bondfirstatom[i]].position.x / 2 +
-        atomsarray[bondfirstatom[i + 1]].position.x / 2,
-      atomsarray[bondfirstatom[i]].position.y / 2 +
-        atomsarray[bondfirstatom[i + 1]].position.y / 2,
-      atomsarray[bondfirstatom[i]].position.z / 2 +
-        atomsarray[bondfirstatom[i + 1]].position.z / 2
-    );
-    var B = new THREE.Vector3(
-      atomsarray[bondfirstatom[i + 1]].position.x,
-      atomsarray[bondfirstatom[i + 1]].position.y,
-      atomsarray[bondfirstatom[i + 1]].position.z
-    );
-    var vec = B.clone();
-    vec.sub(A);
-    var h = vec.length();
-    vec.normalize();
-    var quaternion = new THREE.Quaternion();
-    quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), vec);
-    bondsarray[i + 1].position.set(0, 0, 0);
-    bondsarray[i + 1].rotation.set(0, 0, 0);
-    bondsarray[i + 1].translateOnAxis(0, h / 2, 0);
-    bondsarray[i + 1].applyQuaternion(quaternion);
-    bondsarray[i + 1].position.set(A.x, A.y, A.z);
-  }
+    var vec2 = D.clone();
+    vec2.sub(C);
+    var h2 = vec.length();
+    vec2.normalize();
+    var quaternion2 = new THREE.Quaternion();
+    quaternion2.setFromUnitVectors(new THREE.Vector3(0, 1, 0), vec2);
+    bond.sticks[1].position.set(0, 0, 0);
+    bond.sticks[1].rotation.set(0, 0, 0);
+    bond.sticks[1].translateOnAxis(0, h2 / 2, 0);
+    bond.sticks[1].applyQuaternion(quaternion2);
+    bond.sticks[1].position.set(C.x, C.y, C.z);
+  });
 }
 
 function clearPhysics() {

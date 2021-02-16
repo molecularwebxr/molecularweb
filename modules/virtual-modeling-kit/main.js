@@ -12,6 +12,18 @@ var sceneGroup2, stickGroup2, spheresGroup2;
 
 var pdb;
 
+var atomMeshes = [];
+var atomBodies = [];
+var bonds = [];
+var constraints = [];
+var atoms = 0;
+
+var atomsarray2 = [];
+var bondsarray2 = [];
+var spheresarray2 = [];
+var bondfirstatom2 = [];
+var atoms2 = 0;
+
 var startAR = document.getElementById("start-ar");
 
 startAR.addEventListener("click", handleClick);
@@ -216,31 +228,30 @@ function loadPdb(rawPdb) {
   clearGroup(stickGroup);
   clearGroup(spheresGroup);
 
-  console.time("Sticks");
-  [stickGroup, bondsarray, bondfirstatom] = createSticks(pdb);
-  sceneGroup.add(stickGroup);
-  [stickGroup2, bondsarray2, bondfirstatom2] = createSticks(pdb);
-  sceneGroup2.add(stickGroup2);
-  console.timeEnd("Sticks");
-
   console.time("Spheres");
-  [spheresGroup, atomsarray, spheresarray] = createSpheres(pdb, renderType.isActive);
-  [spheresGroup2, atomsarray2, spheresarray2] = createSpheres(pdb, renderType.isActive);
-  spheresarray.forEach(function (sphere) {
+  [spheresGroup, atomMeshes, atomBodies] = createSpheres(pdb, renderType.isActive);
+  // [spheresGroup2, atomsarray2, spheresarray2] = createSpheres(pdb, renderType.isActive);
+  atomBodies.forEach(function (sphere) {
     world.add(sphere);
   });
-  spheresarray2.forEach(function (sphere) {
-    world.add(sphere);
-  });
+  // spheresarray2.forEach(function (sphere) {
+  //   world.add(sphere);
+  // });
   sceneGroup.add(spheresGroup);
-  sceneGroup2.add(spheresGroup2);
+  // sceneGroup2.add(spheresGroup2);
   console.timeEnd("Spheres");
 
-  console.time("Physics");
-  var constraints = setupConstraints(pdb);
+  console.time("Sticks");
+  [stickGroup, bonds, constraints] = createSticks(pdb, atomBodies);
+  sceneGroup.add(stickGroup);
   constraints.forEach(function (constraint) {
     world.addConstraint(constraint);
   });
+  console.timeEnd("Sticks");
+
+  console.time("Physics");
+  // var constraints = setupConstraints(pdb);
+  
   console.timeEnd("Physics");
 
   if (window.innerWidth >= 768) {
