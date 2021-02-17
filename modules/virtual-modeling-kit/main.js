@@ -12,6 +12,8 @@ var sceneGroup2, stickGroup2, spheresGroup2;
 
 var pdb;
 
+var temperature = 0;
+
 var atomMeshes = [];
 var atomBodies = [];
 var bonds = [];
@@ -27,6 +29,11 @@ var atoms2 = 0;
 var startAR = document.getElementById("start-ar");
 
 startAR.addEventListener("click", handleClick);
+
+var world = new CANNON.World();
+world.gravity.set(0, 0, 0);
+world.broadphase = new CANNON.NaiveBroadphase();
+world.solver.iterations = 10;
 
 initialize();
 animate();
@@ -215,6 +222,7 @@ function animate() {
   requestAnimationFrame(animate);
   deltaTime = clock.getDelta();
   totalTime += deltaTime;
+  world.step(1 / 600);
   updatePhysics();
   update();
   render();

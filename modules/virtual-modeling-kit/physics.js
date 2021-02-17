@@ -1,10 +1,3 @@
-var world = new CANNON.World();
-world.gravity.set(0, 0, 0);
-world.broadphase = new CANNON.NaiveBroadphase();
-world.solver.iterations = 10;
-
-var temperature = 0;
-
 function setupConstraints(pdb) {
   //this loop will search, build and return the cannon constraints
   var constraints = [];
@@ -173,7 +166,7 @@ function updatePhysics() {
   world.step(1 / 600);
   
   var velsum_expected = Math.sqrt(temperature) * atoms;
-  
+
   var velsum = 0;
   var sumax = 0;
   var sumay = 0;
