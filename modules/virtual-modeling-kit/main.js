@@ -9,19 +9,14 @@ import {
 } from "./3Dutils.js";
 
 var scene, camera, renderer, clock, deltaTime, totalTime;
-
 var arToolkitSource, arToolkitContext;
-
 var patternArray, markerRootArray, markerGroupArray;
-
 var patternArray2, markerRootArray2, markerGroupArray2;
-
 var sceneGroup, stickGroup, spheresGroup;
-
 var sceneGroup2, stickGroup2, spheresGroup2;
-
 var pdb;
 
+var startAR = document.getElementById("start-ar");
 var flipGraphics = document.querySelector("flip-graphics");
 var flipVideo = document.querySelector("flip-video");
 var scaleUp = document.getElementById("scale-up");
@@ -43,8 +38,6 @@ var atomBodies = [];
 var bonds = [];
 var constraints = [];
 var atoms = 0;
-
-var startAR = document.getElementById("start-ar");
 
 startAR.addEventListener("click", handleClick);
 flipGraphics.addEventListener("flipGraphics", handleFlip);
@@ -385,7 +378,7 @@ function loadPdb(rawPdb) {
   clearGroup(stickGroup);
   clearGroup(spheresGroup);
 
-  console.time("Spheres");
+  console.time("VMK");
   [spheresGroup, atomMeshes, atomBodies] = createSpheres(
     pdb,
     renderType.isActive
@@ -399,20 +392,13 @@ function loadPdb(rawPdb) {
   // });
   sceneGroup.add(spheresGroup);
   // sceneGroup2.add(spheresGroup2);
-  console.timeEnd("Spheres");
 
-  console.time("Sticks");
   [stickGroup, bonds, constraints] = createSticks(pdb, atomBodies);
   sceneGroup.add(stickGroup);
   constraints.forEach(function (constraint) {
     world.addConstraint(constraint);
   });
-  console.timeEnd("Sticks");
-
-  console.time("Physics");
-  // var constraints = setupConstraints(pdb);
-
-  console.timeEnd("Physics");
+  console.timeEnd("VMK");
 
   if (window.innerWidth >= 768) {
     handleFlip();
