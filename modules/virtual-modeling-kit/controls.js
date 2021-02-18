@@ -1,9 +1,3 @@
-var scaleUp = document.getElementById("scale-up");
-var scaleDown = document.getElementById("scale-down");
-var tempControls = document.querySelectorAll("temp-control");
-var stopTemp = document.querySelector("stop-temp");
-var playTemp = document.querySelector("play-temp");
-var reset = document.querySelector("reset-activity");
 var tempMenu = document.querySelector("enable-temp-controls");
 var zoomMenu = document.querySelector("zoom-icon");
 var camMenu = document.querySelector("camera-icon");
@@ -11,21 +5,11 @@ var swapCam = document.querySelector("swap-camera");
 var tempMenuContainer = document.getElementById("temp-container");
 var zoomMenuContainer = document.getElementById("zoom-container");
 var camMenuContainer = document.getElementById("cam-container");
-var renderType = document.querySelector("render-type-icon");
-var flipGraphics = document.querySelector("flip-graphics");
-var flipVideo = document.querySelector("flip-video");
-
-var high = 100;
-var medium = 50;
-var low = 10;
-
-var prevTemp = 0;
 
 var devices = [];
 var selectedCamera = "env";
 
 tempMenu.isActive = false;
-renderType.isActive = true;
 zoomMenu.isActive = false;
 camMenu.isActive = false;
 
@@ -118,56 +102,6 @@ function switchCam(e) {
     .catch(handleError);
 }
 
-function handleFlip(e) {
-  for (i = 0; i < atomMeshes.length; i++) {
-    world.bodies[i].position.x = -world.bodies[i].position.x;
-    // world.bodies[i].position.y = - world.bodies[i].position.y;
-    // world.bodies[i].position.z = - world.bodies[i].position.z;
-  }
-}
-
-function handleScale(e) {
-  if (e.detail === "up") {
-    sceneGroup.scale.multiplyScalar(1.5);
-  } else {
-    sceneGroup.scale.multiplyScalar(0.6667);
-  }
-}
-
-function handleTempControls(e) {
-  var type = e.detail.type;
-  var size = e.detail.size;
-
-  var tempOffset;
-
-  if (size === "big") {
-    tempOffset = high;
-  } else if (size === "medium") {
-    tempOffset = medium;
-  } else {
-    tempOffset = low;
-  }
-
-  if (type === "increase") {
-    temperature = temperature + tempOffset;
-  } else {
-    var newTemp = temperature - tempOffset;
-    temperature = newTemp < 0 ? 0 : newTemp;
-  }
-
-  prevTemp = temperature;
-}
-
-function handleStopTemp(e) {
-  prevTemp = temperature;
-  temperature = 0;
-}
-
-function handlePlayTemp(e) {
-  temperature = prevTemp === 0 ? 300 : prevTemp;
-  prevTemp = temperature;
-}
-
 function handleTempMenu(e) {
   tempMenuContainer.classList.toggle("hide");
   tempMenu.isActive = !tempMenu.isActive;
@@ -219,62 +153,8 @@ function handleZoomMenu(e) {
   }
 }
 
-function handleRenderType(e) {
-  renderType.isActive = !renderType.isActive;
-
-  if (!renderType.isActive) {
-    stickGroup.visible = false;
-
-    spheresGroup.children.forEach(function (atom, index) {
-      var scale = radiusfactor2 * elementradii[pdb.elements[index]];
-      atom.scale.setScalar(scale);
-    });
-  } else {
-    stickGroup.visible = true;
-
-    spheresGroup.children.forEach(function (atom, index) {
-      var scale = radiusfactor1 * elementradii[pdb.elements[index]];
-      atom.scale.setScalar(scale);
-    });
-  }
-}
-
-function handleReset(e) {
-  atomsarray = [];
-  bondsarray = [];
-  spheresarray = [];
-  bondfirstatom = [];
-  bondlength = [];
-  atoms = 0;
-  temperature = 0;
-
-  clearPhysics();
-  clearGroup(stickGroup);
-  clearGroup(spheresGroup);
-
-  sceneGroup.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
-
-  handleMenu()
-}
-
-scaleUp.addEventListener("scaleGraphics", handleScale);
-scaleDown.addEventListener("scaleGraphics", handleScale);
-stopTemp.addEventListener("stopTemp", handleStopTemp);
-playTemp.addEventListener("playTemp", handlePlayTemp);
 tempMenu.addEventListener("click", handleTempMenu);
 zoomMenu.addEventListener("click", handleZoomMenu);
 camMenu.addEventListener("click", handleCamMenu);
-renderType.addEventListener("click", handleRenderType);
-flipGraphics.addEventListener("flipGraphics", handleFlip);
-flipVideo.addEventListener("flipCamera", handleFlip);
-reset.addEventListener("resetActivity", handleReset);
-
-window.addEventListener("camera-change", () => {
-  handleFlip();
-});
-
-tempControls.forEach(function (item) {
-  item.addEventListener("updateTemp", handleTempControls);
-});
 
 navigator.mediaDevices.enumerateDevices().then(getDevices).catch(handleError);

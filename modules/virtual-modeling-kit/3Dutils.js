@@ -1,5 +1,4 @@
-var radiusfactor1 = 0.35;
-var radiusfactor2 = 1.4;
+import * as CANNON from "/lib/cannon-es.js";
 
 var SIMPLE = 0.12;
 var DOUBLE = 0.2;
@@ -8,6 +7,9 @@ var TRIPLE = 0.25;
 var CONSTRAINT_1 = 1000;
 var CONSTRAINT_2 = 100;
 var CONSTRAINT_3 = 10;
+
+var radiusfactor1 = 0.35;
+var radiusfactor2 = 1.4;
 
 var sphereGeometry = new THREE.SphereBufferGeometry(1, 32, 16);
 
@@ -63,7 +65,7 @@ function setupPdb(rawPdb) {
 
   // Read all lines, when a line starts with ATOM or HETATM
   // then it encodes an atom whose properties are read
-  for (i = 0; i < lines.length; i++) {
+  for (var i = 0; i < lines.length; i++) {
     if (
       lines[i].substring(0, 4) == "ATOM" ||
       lines[i].substring(0, 6) == "HETATM"
@@ -76,7 +78,7 @@ function setupPdb(rawPdb) {
       pdb.yAvg = pdb.yAvg + pdb.yCoords[pdb.atoms];
       pdb.zAvg = pdb.zAvg + pdb.zCoords[pdb.atoms];
       var element = lines[i].substring(76, 79).trim().toUpperCase();
-      for (j = 0; j < elementNames.length; j++) {
+      for (var j = 0; j < elementNames.length; j++) {
         if (element == elementNames[j]) {
           pdb.elements[pdb.atoms] = j;
           break;
@@ -118,13 +120,13 @@ function setupPdb(rawPdb) {
 // Returns only atoms to draw
 function getBonds(pdb) {
   var bonds = {};
-  for (i = 0; i < pdb.atoms; i++) {
+  for (var i = 0; i < pdb.atoms; i++) {
     var currentAtomI = `atom${i + 1}`;
 
     var distsqr;
     var bondedAtoms = [];
 
-    for (j = i + 1; j < pdb.atoms; j++) {
+    for (var j = i + 1; j < pdb.atoms; j++) {
       var currentAtomJ = `atom${j + 1}`;
 
       //get distance squared
@@ -153,7 +155,7 @@ function createSticks(pdb, bodies) {
   var sticks = new THREE.Group();
   var bonds = [];
   var constraints = [];
-  var atomPairs = []
+  var atomPairs = [];
 
   bondKeys.forEach(function (atom, atomIndex) {
     //point1 is the first atom (i), point3 is the second atom (j)
@@ -171,9 +173,11 @@ function createSticks(pdb, bodies) {
       var bondedAtomIndex = bondKeys.indexOf(bondedAtom);
 
       var point2 = new THREE.Vector3(
-        -(pdb.xCoords[bondedAtomIndex] / 2 +
+        -(
+          pdb.xCoords[bondedAtomIndex] / 2 +
           pdb.xCoords[atomIndex] / 2 -
-          pdb.xAvg),
+          pdb.xAvg
+        ),
         pdb.yCoords[bondedAtomIndex] / 2 +
           pdb.yCoords[atomIndex] / 2 -
           pdb.yAvg,
@@ -217,7 +221,7 @@ function createSticks(pdb, bodies) {
         (pdb.elements[bondedAtomIndex] === 7 && atom2Bonds === 1)
       ) {
         radius = DOUBLE;
-      } 
+      }
 
       /******************  Bonde rules for N *************************/
 
@@ -232,10 +236,14 @@ function createSticks(pdb, bodies) {
       // One atom is N with 3 bonded atoms
       // The other atom is C with 4 bonded atoms
       if (
-        (pdb.elements[atomIndex] === 6 && atom1Bonds === 3) &&
-        (pdb.elements[bondedAtomIndex] === 5 && atom2Bonds === 4) ||
-        (pdb.elements[atomIndex] === 5 && atom1Bonds === 4) &&
-        (pdb.elements[bondedAtomIndex] === 6 && atom2Bonds === 3)
+        (pdb.elements[atomIndex] === 6 &&
+          atom1Bonds === 3 &&
+          pdb.elements[bondedAtomIndex] === 5 &&
+          atom2Bonds === 4) ||
+        (pdb.elements[atomIndex] === 5 &&
+          atom1Bonds === 4 &&
+          pdb.elements[bondedAtomIndex] === 6 &&
+          atom2Bonds === 3)
       ) {
         radius = SIMPLE;
       }
@@ -243,10 +251,14 @@ function createSticks(pdb, bodies) {
       // One atom is N with 3 bonded atoms
       // The other atom is O with 2 bonded atoms
       if (
-        (pdb.elements[atomIndex] === 6 && atom1Bonds === 3) &&
-        (pdb.elements[bondedAtomIndex] === 7 && atom2Bonds === 2) ||
-        (pdb.elements[atomIndex] === 7 && atom1Bonds === 2) &&
-        (pdb.elements[bondedAtomIndex] === 6 && atom2Bonds === 3)
+        (pdb.elements[atomIndex] === 6 &&
+          atom1Bonds === 3 &&
+          pdb.elements[bondedAtomIndex] === 7 &&
+          atom2Bonds === 2) ||
+        (pdb.elements[atomIndex] === 7 &&
+          atom1Bonds === 2 &&
+          pdb.elements[bondedAtomIndex] === 6 &&
+          atom2Bonds === 3)
       ) {
         radius = SIMPLE;
       }
@@ -254,10 +266,14 @@ function createSticks(pdb, bodies) {
       // One atom is N with 3 bonded atoms
       // The other atom is C with 3 bonded atoms
       if (
-        (pdb.elements[atomIndex] === 6 && atom1Bonds === 3) &&
-        (pdb.elements[bondedAtomIndex] === 5 && atom2Bonds === 3) ||
-        (pdb.elements[atomIndex] === 5 && atom1Bonds === 3) &&
-        (pdb.elements[bondedAtomIndex] === 6 && atom2Bonds === 3)
+        (pdb.elements[atomIndex] === 6 &&
+          atom1Bonds === 3 &&
+          pdb.elements[bondedAtomIndex] === 5 &&
+          atom2Bonds === 3) ||
+        (pdb.elements[atomIndex] === 5 &&
+          atom1Bonds === 3 &&
+          pdb.elements[bondedAtomIndex] === 6 &&
+          atom2Bonds === 3)
       ) {
         radius = DOUBLE;
       }
@@ -265,10 +281,14 @@ function createSticks(pdb, bodies) {
       // One atom is N with 2 bonded atoms
       // The other atom is C with 3 bonded atoms
       if (
-        (pdb.elements[atomIndex] === 6 && atom1Bonds === 2) &&
-        (pdb.elements[bondedAtomIndex] === 5 && atom2Bonds === 3) ||
-        (pdb.elements[atomIndex] === 5 && atom1Bonds === 3) &&
-        (pdb.elements[bondedAtomIndex] === 6 && atom2Bonds === 2)
+        (pdb.elements[atomIndex] === 6 &&
+          atom1Bonds === 2 &&
+          pdb.elements[bondedAtomIndex] === 5 &&
+          atom2Bonds === 3) ||
+        (pdb.elements[atomIndex] === 5 &&
+          atom1Bonds === 3 &&
+          pdb.elements[bondedAtomIndex] === 6 &&
+          atom2Bonds === 2)
       ) {
         radius = DOUBLE;
       }
@@ -283,8 +303,10 @@ function createSticks(pdb, bodies) {
 
       // Both atoms are N with two bonded atoms
       if (
-        (pdb.elements[atomIndex] === 6 && atom1Bonds === 2) &&
-        (pdb.elements[bondedAtomIndex] === 6 && atom2Bonds === 2)
+        pdb.elements[atomIndex] === 6 &&
+        atom1Bonds === 2 &&
+        pdb.elements[bondedAtomIndex] === 6 &&
+        atom2Bonds === 2
       ) {
         radius = DOUBLE;
       }
@@ -296,12 +318,12 @@ function createSticks(pdb, bodies) {
         (pdb.elements[bondedAtomIndex] === 0 && atom2Bonds === 1)
       ) {
         radius = SIMPLE;
-      } 
+      }
 
       // This is the default contraint between bonded atoms
       var c = new CANNON.DistanceConstraint(
-        atomBodies[atomIndex],
-        atomBodies[bondedAtomIndex],
+        bodies[atomIndex],
+        bodies[bondedAtomIndex],
         undefined,
         CONSTRAINT_1
       );
@@ -310,7 +332,7 @@ function createSticks(pdb, bodies) {
 
       // Create default pairs of atoms for further constraint building
       for (var i = 0; i < atom1Bonds; i++) {
-        if(pdb.allBonds[atom][i] !== bondedAtom) {
+        if (pdb.allBonds[atom][i] !== bondedAtom) {
           var myAtom = pdb.allBonds[atom][i];
           var c = [bondKeys.indexOf(myAtom), bondedAtomIndex].sort();
           atomPairs.push(c);
@@ -318,7 +340,7 @@ function createSticks(pdb, bodies) {
       }
 
       for (var i = 0; i < atom2Bonds; i++) {
-        if(pdb.allBonds[bondedAtom][i] !== atom) {
+        if (pdb.allBonds[bondedAtom][i] !== atom) {
           var myAtom = pdb.allBonds[bondedAtom][i];
           var c = [bondKeys.indexOf(myAtom), atomIndex].sort();
           atomPairs.push(c);
@@ -344,13 +366,12 @@ function createSticks(pdb, bodies) {
 
       sticks.add(bond1);
       sticks.add(bond2);
-      
+
       bonds.push({
         atomA: atomIndex,
         atomB: bondedAtomIndex,
-        sticks: [bond1, bond2]
+        sticks: [bond1, bond2],
       });
-
     });
   });
 
@@ -363,13 +384,13 @@ function createSticks(pdb, bodies) {
 
   uniqueConstraints.forEach(function (atomPair) {
     var constraint = new CANNON.DistanceConstraint(
-      atomBodies[atomPair[0]],
-      atomBodies[atomPair[1]],
+      bodies[atomPair[0]],
+      bodies[atomPair[1]],
       undefined,
       CONSTRAINT_2
     );
-    defaultConstraints.push(constraint)
-  })
+    defaultConstraints.push(constraint);
+  });
 
   return [sticks, bonds, [...constraints, ...defaultConstraints]];
 }
@@ -383,7 +404,7 @@ function createSpheres(pdb, renderType) {
 
   var radiusFactor = renderType ? radiusfactor1 : radiusfactor2;
 
-  for (i = 0; i < pdb.atoms; i++) {
+  for (var i = 0; i < pdb.atoms; i++) {
     var sphereRadius = radiusFactor * elementradii[pdb.elements[i]];
     var sphereMesh = new THREE.Mesh(
       sphereGeometry,
@@ -392,10 +413,10 @@ function createSpheres(pdb, renderType) {
 
     sphereMesh.scale.setScalar(sphereRadius);
 
-    sphereMesh.position.x = (pdb.xCoords[i] - pdb.xAvg);
+    sphereMesh.position.x = pdb.xCoords[i] - pdb.xAvg;
     sphereMesh.position.y = pdb.yCoords[i] - pdb.yAvg;
     sphereMesh.position.z = pdb.zCoords[i] - pdb.zAvg;
-    spheres.add(sphereMesh); 
+    spheres.add(sphereMesh);
     meshes.push(sphereMesh);
 
     var sphereShape = new CANNON.Sphere(0.5 * elementradii[pdb.elements[i]]);
@@ -426,3 +447,13 @@ function clearGroup(group) {
     group.remove(group.children[i]);
   }
 }
+
+export {
+  clearGroup,
+  createSpheres,
+  createSticks,
+  setupPdb,
+  checkNCO,
+  radiusfactor1,
+  radiusfactor2,
+};
