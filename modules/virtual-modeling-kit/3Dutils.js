@@ -156,6 +156,7 @@ function createSticks(pdb, bodies) {
   var bonds = [];
   var constraints = [];
   var atomPairs = [];
+  var doubleBondAtomPairs = [];
 
   bondKeys.forEach(function (atom, atomIndex) {
     //point1 is the first atom (i), point3 is the second atom (j)
@@ -347,6 +348,21 @@ function createSticks(pdb, bodies) {
         }
       }
 
+      if (radius === DOUBLE && atom1Bonds > 1 && atom2Bonds > 1) {
+        for (var i = 0; i < atom1Bonds; i++) {
+          var currentAtomI = pdb.allBonds[atom][i];
+          if (currentAtomI !== bondedAtom) {
+            for (var j = 0; j < atom2Bonds; j++) {
+              var currentAtomJ = pdb.allBonds[bondedAtom][j];
+              if (currentAtomJ !== atom) {
+                var c = [bondKeys.indexOf(currentAtomI), bondKeys.indexOf(currentAtomJ)].sort();
+                doubleBondAtomPairs.push(c);
+              }
+            }
+          }
+        }
+      }
+
       var bond1 = cylindricalSegment(
         point2,
         point1,
@@ -392,7 +408,24 @@ function createSticks(pdb, bodies) {
     defaultConstraints.push(constraint);
   });
 
-  return [sticks, bonds, [...constraints, ...defaultConstraints]];
+  // Convert atom pairs from double bonds to strings for removing duplicates
+  var strings = doubleBondAtomPairs.map(JSON.stringify);
+  var uniqueStrings = new Set(strings);
+  var uniqueConsts = Array.from(uniqueStrings, JSON.parse);
+
+  var constraintsFromDoubleBonds = [];
+
+  uniqueConsts.forEach(function (atomPair) {
+    var constraint = new CANNON.DistanceConstraint(
+      bodies[atomPair[0]],
+      bodies[atomPair[1]],
+      undefined,
+      CONSTRAINT_3
+    );
+    constraintsFromDoubleBonds.push(constraint);
+  });
+
+  return [sticks, bonds, [...constraints, ...defaultConstraints, ...constraintsFromDoubleBonds]];
 }
 
 function createSpheres(pdb, renderType) {
