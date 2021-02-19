@@ -31,6 +31,7 @@ var temperature = 0;
 var high = 100;
 var medium = 50;
 var low = 10;
+var defaultTemp = 200;
 var prevTemp = 0;
 
 var atomMeshes = [];
@@ -493,7 +494,7 @@ function handleStopTemp(e) {
 }
 
 function handlePlayTemp(e) {
-  temperature = prevTemp === 0 ? 300 : prevTemp;
+  temperature = prevTemp === 0 ? defaultTemp : prevTemp;
   prevTemp = temperature;
 }
 

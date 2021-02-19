@@ -5,8 +5,8 @@ var DOUBLE = 0.2;
 var TRIPLE = 0.25;
 
 var CONSTRAINT_1 = 1000;
-var CONSTRAINT_2 = 100;
-var CONSTRAINT_3 = 10;
+var CONSTRAINT_2 = 10;
+var CONSTRAINT_3 = 100;
 
 var radiusfactor1 = 0.35;
 var radiusfactor2 = 1.4;
