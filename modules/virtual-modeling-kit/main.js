@@ -11,10 +11,9 @@ import {
 var scene, camera, renderer, clock, deltaTime, totalTime;
 var arToolkitSource, arToolkitContext;
 var patternArray, markerRootArray, markerGroupArray;
-var patternArray2, markerRootArray2, markerGroupArray2;
 var sceneGroup, stickGroup, spheresGroup;
-var sceneGroup2, stickGroup2, spheresGroup2;
-var pdb, pdb2;
+var sceneGroup2;
+var pdb;
 
 var startAR = document.getElementById("start-ar");
 var flipGraphics = document.querySelector("flip-graphics");
@@ -39,14 +38,6 @@ var atomBodies = [];
 var bonds = [];
 var constraints = [];
 var atoms = 0;
-
-var atomMeshes2 = [];
-var atomBodies2 = [];
-var bonds2 = [];
-var constraints2 = [];
-var atoms2 = 0;
-
-var selectedMarker = 1;
 
 startAR.addEventListener("click", handleClick);
 flipGraphics.addEventListener("flipGraphics", handleFlip);
@@ -188,42 +179,6 @@ function initialize() {
   pointLight.position.set(0.5, 3, 2);
 
   scene.add(pointLight);
-
-  markerRootArray2 = [];
-  markerGroupArray2 = [];
-  patternArray2 = [
-    "letterN",
-    "letterJ",
-    "letterK",
-    "letterP",
-    "letterL",
-    "letterM",
-  ];
-
-  for (let i = 0; i < 6; i++) {
-    let markerRoot2 = new THREE.Group();
-    markerRootArray2.push(markerRoot2);
-    scene.add(markerRoot2);
-    let markerControls = new THREEx.ArMarkerControls(
-      arToolkitContext,
-      markerRoot2,
-      {
-        type: "pattern",
-        patternUrl: "data/" + patternArray2[i] + ".patt",
-      }
-    );
-
-    let markerGroup2 = new THREE.Group();
-    markerGroupArray2.push(markerGroup2);
-    markerGroup2.position.y = -1.25 / 2;
-    markerGroup2.rotation.setFromVector3(rotationArray[i]);
-
-    markerRoot2.add(markerGroup2);
-  }
-
-  sceneGroup2 = new THREE.Group();
-  stickGroup2 = new THREE.Group();
-  spheresGroup2 = new THREE.Group();
 }
 
 function update() {
@@ -235,15 +190,6 @@ function update() {
   for (let i = 0; i < 6; i++) {
     if (markerRootArray[i].visible) {
       markerGroupArray[i].add(sceneGroup);
-      console.log("visible: " + patternArray[i]);
-      break;
-    }
-  }
-
-  for (let i = 0; i < 6; i++) {
-    if (markerRootArray2[i].visible) {
-      markerGroupArray2[i].add(sceneGroup2);
-      console.log("visible: " + patternArray2[i]);
       break;
     }
   }
@@ -404,7 +350,7 @@ function loadPdb(rawPdb) {
   constraints.forEach(function (constraint) {
     world.addConstraint(constraint);
   });
-  
+
   console.timeEnd("VMK");
 
   if (window.innerWidth >= 768) {
@@ -461,7 +407,7 @@ function handleReset(e) {
   atoms = 0;
   temperature = 0;
 
-  clearPhysics();
+  clearPhysics(atomBodies, constraints);
   clearGroup(stickGroup);
   clearGroup(spheresGroup);
 
