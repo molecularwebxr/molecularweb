@@ -5,6 +5,7 @@ var swapCam = document.querySelector("swap-camera");
 var tempMenuContainer = document.getElementById("temp-container");
 var zoomMenuContainer = document.getElementById("zoom-container");
 var camMenuContainer = document.getElementById("cam-container");
+var flipVideoButton = document.querySelector("flip-video");
 
 var devices = [];
 var selectedCamera = "env";
@@ -153,8 +154,16 @@ function handleZoomMenu(e) {
   }
 }
 
+function handleCameraFlip() {
+  var video = document.getElementsByTagName("video")[0];
+  var canvas = document.querySelector("canvas");
+  video.classList.toggle("flip");
+  canvas.classList.toggle("flip");
+}
+
 tempMenu.addEventListener("click", handleTempMenu);
 zoomMenu.addEventListener("click", handleZoomMenu);
 camMenu.addEventListener("click", handleCamMenu);
+flipVideoButton.addEventListener("flipCamera", handleCameraFlip);
 
 navigator.mediaDevices.enumerateDevices().then(getDevices).catch(handleError);
