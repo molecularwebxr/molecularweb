@@ -14,7 +14,7 @@ var patternArray, markerRootArray, markerGroupArray;
 var patternArray2, markerRootArray2, markerGroupArray2;
 var sceneGroup, stickGroup, spheresGroup;
 var sceneGroup2, stickGroup2, spheresGroup2;
-var pdb;
+var pdb, pdb2;
 
 var startAR = document.getElementById("start-ar");
 var flipGraphics = document.querySelector("flip-graphics");
@@ -39,6 +39,14 @@ var atomBodies = [];
 var bonds = [];
 var constraints = [];
 var atoms = 0;
+
+var atomMeshes2 = [];
+var atomBodies2 = [];
+var bonds2 = [];
+var constraints2 = [];
+var atoms2 = 0;
+
+var selectedMarker = 1;
 
 startAR.addEventListener("click", handleClick);
 flipGraphics.addEventListener("flipGraphics", handleFlip);
@@ -380,31 +388,28 @@ function loadPdb(rawPdb) {
   clearGroup(spheresGroup);
 
   console.time("VMK");
+
   [spheresGroup, atomMeshes, atomBodies] = createSpheres(
     pdb,
     renderType.isActive
   );
-  // [spheresGroup2, atomsarray2, spheresarray2] = createSpheres(pdb, renderType.isActive);
+
   atomBodies.forEach(function (sphere) {
     world.addBody(sphere);
   });
-  // spheresarray2.forEach(function (sphere) {
-  //   world.add(sphere);
-  // });
   sceneGroup.add(spheresGroup);
-  // sceneGroup2.add(spheresGroup2);
 
   [stickGroup, bonds, constraints] = createSticks(pdb, atomBodies);
   sceneGroup.add(stickGroup);
   constraints.forEach(function (constraint) {
     world.addConstraint(constraint);
   });
+  
   console.timeEnd("VMK");
 
   if (window.innerWidth >= 768) {
     handleFlip();
   }
-
 }
 
 function clearPhysics(bodies, constraints) {
