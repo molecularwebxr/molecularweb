@@ -375,7 +375,7 @@ function loadPdb(rawPdb) {
   pdb = setupPdb(rawPdb);
   atoms = pdb.atoms;
 
-  clearPhysics();
+  clearPhysics(atomBodies, constraints);
   clearGroup(stickGroup);
   clearGroup(spheresGroup);
 
@@ -404,18 +404,19 @@ function loadPdb(rawPdb) {
   if (window.innerWidth >= 768) {
     handleFlip();
   }
+
 }
 
-function clearPhysics() {
-  var bodies = world.bodies;
-  var cs = world.constraints;
+function clearPhysics(bodies, constraints) {
+  // var bodies = world.bodies;
+  // var cs = world.constraints;
 
   for (var i = bodies.length - 1; i >= 0; i--) {
     world.removeBody(bodies[i]);
   }
 
-  for (var i = cs.length - 1; i >= 0; i--) {
-    world.removeConstraint(cs[i]);
+  for (var i = constraints.length - 1; i >= 0; i--) {
+    world.removeConstraint(constraints[i]);
   }
 }
 
