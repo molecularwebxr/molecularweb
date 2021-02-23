@@ -375,35 +375,166 @@ function updatePhysics() {
     bond.sticks[1].applyQuaternion(quaternion2);
     bond.sticks[1].position.set(C.x, C.y, C.z);
   });
+
+  for (var i = 0; i < atomMeshes2.length; i++) {
+    sumax = sumax + atomBodies2[i].position.x;
+    sumay = sumay + atomBodies2[i].position.y;
+    sumaz = sumaz + atomBodies2[i].position.z;
+    // sumaxr = sumaxr + world.bodies[i].quaternion.x;
+    // sumayr = sumayr + world.bodies[i].quaternion.y;
+    // sumazr = sumazr + world.bodies[i].quaternion.z;
+  }
+
+  for (var i = 0; i < atomMeshes2.length; i++) {
+    atomBodies2[i].position.x =
+      atomBodies2[i].position.x - sumax / atomMeshes2.length;
+    atomBodies2[i].position.y =
+      atomBodies2[i].position.y - sumay / atomMeshes2.length;
+    atomBodies2[i].position.z =
+      atomBodies2[i].position.z - sumaz / atomMeshes2.length;
+  }
+
+  for (var i = 0; i < atomMeshes2.length; i++) {
+    atomMeshes2[i].position.copy(atomBodies2[i].position);
+    atomMeshes2[i].quaternion.copy(atomBodies2[i].quaternion);
+
+    atomBodies2[i].velocity.x =
+      atomBodies2[i].velocity.x + 10 * Math.random(1) - 5;
+    atomBodies2[i].velocity.y =
+      atomBodies2[i].velocity.y + 10 * Math.random(1) - 5;
+    atomBodies2[i].velocity.z =
+      atomBodies2[i].velocity.z + 10 * Math.random(1) - 5;
+
+    velsum =
+      velsum +
+      Math.sqrt(
+        Math.pow(atomBodies2[i].velocity.x, 2) +
+          Math.pow(atomBodies2[i].velocity.y, 2) +
+          Math.pow(atomBodies2[i].velocity.z, 2)
+      );
+  }
+
+  for (var i = 0; i < atomMeshes2.length; i++) {
+    atomBodies2[i].velocity.x =
+      (atomBodies2[i].velocity.x / velsum) * velsum_expected;
+    atomBodies2[i].velocity.y =
+      (atomBodies2[i].velocity.y / velsum) * velsum_expected;
+    atomBodies2[i].velocity.z =
+      (atomBodies2[i].velocity.z / velsum) * velsum_expected;
+  }
+
+  bonds2.forEach(function (bond) {
+    var B = new THREE.Vector3(
+      atomMeshes2[bond.atomA].position.x,
+      atomMeshes2[bond.atomA].position.y,
+      atomMeshes2[bond.atomA].position.z
+    );
+
+    var A = new THREE.Vector3(
+      atomMeshes2[bond.atomA].position.x / 2 +
+        atomMeshes2[bond.atomB].position.x / 2,
+      atomMeshes2[bond.atomA].position.y / 2 +
+        atomMeshes2[bond.atomB].position.y / 2,
+      atomMeshes2[bond.atomA].position.z / 2 +
+        atomMeshes2[bond.atomB].position.z / 2
+    );
+
+    var C = new THREE.Vector3(
+      atomMeshes2[bond.atomA].position.x / 2 +
+        atomMeshes2[bond.atomB].position.x / 2,
+      atomMeshes2[bond.atomA].position.y / 2 +
+        atomMeshes2[bond.atomB].position.y / 2,
+      atomMeshes2[bond.atomA].position.z / 2 +
+        atomMeshes2[bond.atomB].position.z / 2
+    );
+    var D = new THREE.Vector3(
+      atomMeshes2[bond.atomB].position.x,
+      atomMeshes2[bond.atomB].position.y,
+      atomMeshes2[bond.atomB].position.z
+    );
+
+    var vec3 = B.clone();
+    vec3.sub(A);
+    var h3 = vec3.length();
+    vec3.normalize();
+    var quaternion3 = new THREE.Quaternion();
+    quaternion3.setFromUnitVectors(new THREE.Vector3(0, 1, 0), vec3);
+    bond.sticks[0].position.set(0, 0, 0);
+    bond.sticks[0].rotation.set(0, 0, 0);
+    bond.sticks[0].translateOnAxis(0, h3 / 2, 0);
+    bond.sticks[0].applyQuaternion(quaternion3);
+    bond.sticks[0].position.set(A.x, A.y, A.z);
+
+    var vec4 = D.clone();
+    vec4.sub(C);
+    var h4 = vec3.length();
+    vec4.normalize();
+    var quaternion4 = new THREE.Quaternion();
+    quaternion4.setFromUnitVectors(new THREE.Vector3(0, 1, 0), vec4);
+    bond.sticks[1].position.set(0, 0, 0);
+    bond.sticks[1].rotation.set(0, 0, 0);
+    bond.sticks[1].translateOnAxis(0, h4 / 2, 0);
+    bond.sticks[1].applyQuaternion(quaternion4);
+    bond.sticks[1].position.set(C.x, C.y, C.z);
+  });
 }
 
 function loadPdb(rawPdb) {
-  pdb = setupPdb(rawPdb);
-  atoms = pdb.atoms;
+  if (selectedMarker === 1) {
+    pdb = setupPdb(rawPdb);
+    atoms = pdb.atoms;
 
-  clearPhysics(atomBodies, constraints);
-  clearGroup(stickGroup);
-  clearGroup(spheresGroup);
+    clearPhysics(atomBodies, constraints);
+    clearGroup(stickGroup);
+    clearGroup(spheresGroup);
 
-  console.time("VMK");
+    console.time("VMK");
 
-  [spheresGroup, atomMeshes, atomBodies] = createSpheres(
-    pdb,
-    renderType.isActive
-  );
+    [spheresGroup, atomMeshes, atomBodies] = createSpheres(
+      pdb,
+      renderType.isActive
+    );
 
-  atomBodies.forEach(function (sphere) {
-    world.addBody(sphere);
-  });
-  sceneGroup.add(spheresGroup);
+    atomBodies.forEach(function (sphere) {
+      world.addBody(sphere);
+    });
+    sceneGroup.add(spheresGroup);
 
-  [stickGroup, bonds, constraints] = createSticks(pdb, atomBodies);
-  sceneGroup.add(stickGroup);
-  constraints.forEach(function (constraint) {
-    world.addConstraint(constraint);
-  });
+    [stickGroup, bonds, constraints] = createSticks(pdb, atomBodies);
+    sceneGroup.add(stickGroup);
+    constraints.forEach(function (constraint) {
+      world.addConstraint(constraint);
+    });
 
-  console.timeEnd("VMK");
+    console.timeEnd("VMK");
+    selectedMarker = 2;
+  } else {
+    pdb2 = setupPdb(rawPdb);
+    atoms2 = pdb2.atoms;
+
+    clearPhysics(atomBodies2, constraints2);
+    clearGroup(stickGroup2);
+    clearGroup(spheresGroup2);
+
+    console.time("VMK");
+
+    [spheresGroup2, atomMeshes2, atomBodies2] = createSpheres(
+      pdb2,
+      renderType.isActive
+    );
+
+    atomBodies2.forEach(function (sphere) {
+      world.addBody(sphere);
+    });
+    sceneGroup2.add(spheresGroup2);
+
+    [stickGroup2, bonds2, constraints2] = createSticks(pdb2, atomBodies2);
+    sceneGroup2.add(stickGroup2);
+    constraints2.forEach(function (constraint) {
+      world.addConstraint(constraint);
+    });
+    console.timeEnd("VMK");
+  }
 
   if (window.innerWidth >= 768) {
     handleFlip();
