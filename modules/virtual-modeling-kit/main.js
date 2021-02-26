@@ -48,6 +48,13 @@ var atoms2 = 0;
 
 var selectedMarker = 1;
 
+var counter = 0;
+
+var cannonDebugRenderer;
+
+var lastCubeQuaternion = new THREE.Quaternion(0, 0, 0, 1);
+var lastCubeQuaternion2 = new THREE.Quaternion(0, 0, 0, 1);
+
 startAR.addEventListener("click", handleClick);
 flipGraphics.addEventListener("flipGraphics", handleFlip);
 flipVideo.addEventListener("flipCamera", handleFlip);
@@ -182,7 +189,7 @@ function initialize() {
   spheresGroup = new THREE.Group();
 
   // a 1x1x1 cube model with scale factor 1.25 fills up the physical cube
-  sceneGroup.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
+  // sceneGroup.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
 
   let pointLight = new THREE.PointLight(0xffffff, 1, 50);
   pointLight.position.set(0.5, 3, 2);
@@ -224,6 +231,10 @@ function initialize() {
   sceneGroup2 = new THREE.Group();
   stickGroup2 = new THREE.Group();
   spheresGroup2 = new THREE.Group();
+
+  // sceneGroup2.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
+
+  cannonDebugRenderer = new THREE.CannonDebugRenderer(scene, world);
 }
 
 function update() {
@@ -256,13 +267,14 @@ function animate() {
   deltaTime = clock.getDelta();
   totalTime += deltaTime;
   world.step(1 / 600);
+  cannonDebugRenderer.update();
   updatePhysics();
   update();
   render();
 }
 
 function updatePhysics() {
-  world.step(1 / 600);
+  counter++;
 
   var velsum_expected = Math.sqrt(temperature) * atoms;
 
@@ -270,31 +282,66 @@ function updatePhysics() {
   var sumax = 0;
   var sumay = 0;
   var sumaz = 0;
+
+  var mediax = 0;
+  var mediay = 0;
+  var mediaz = 0;
+
+  var mediax2 = 0;
+  var mediay2 = 0;
+  var mediaz2 = 0;
+
+  var sumax2 = 0;
+  var sumay2 = 0;
+  var sumaz2 = 0;
+
   // var sumaxr = 0;
   // var sumayr = 0;
   // var sumazr = 0;
 
-  for (var i = 0; i < atomMeshes.length; i++) {
-    sumax = sumax + atomBodies[i].position.x;
-    sumay = sumay + atomBodies[i].position.y;
-    sumaz = sumaz + atomBodies[i].position.z;
-    // sumaxr = sumaxr + world.bodies[i].quaternion.x;
-    // sumayr = sumayr + world.bodies[i].quaternion.y;
-    // sumazr = sumazr + world.bodies[i].quaternion.z;
-  }
+  // for (var i = 0; i < atomMeshes.length; i++) {
+  //   var atomPosition = new THREE.Vector3();
+  //   atomMeshes[i].getWorldPosition(atomPosition);
+  //   atomBodies[i].position.copy(atomPosition);
+  // }
 
-  for (var i = 0; i < atomMeshes.length; i++) {
-    atomBodies[i].position.x =
-      atomBodies[i].position.x - sumax / atomMeshes.length;
-    atomBodies[i].position.y =
-      atomBodies[i].position.y - sumay / atomMeshes.length;
-    atomBodies[i].position.z =
-      atomBodies[i].position.z - sumaz / atomMeshes.length;
-  }
+  // if (atomBodies.length > 0 && counter === 30) {
+  //   var atomPosition = new THREE.Vector3();
+  //   atomMeshes[1].getWorldPosition(atomPosition);
+  //   console.log("Body in world: " + atomBodies[1].position.x + " Mesh: " + atomPosition.x)
 
-  for (var i = 0; i < atomMeshes.length; i++) {
-    atomMeshes[i].position.copy(atomBodies[i].position);
-    atomMeshes[i].quaternion.copy(atomBodies[i].quaternion);
+  //   var posInLocalCoordinates = new THREE.Vector3();
+  //   var bodyPosition = new THREE.Vector3();
+  //   bodyPosition.x = atomBodies[1].position.x;
+  //   bodyPosition.y = atomBodies[1].position.y;
+  //   bodyPosition.z = atomBodies[1].position.z;
+
+  //   posInLocalCoordinates = atomMeshes[1].worldToLocal(bodyPosition);
+  //   console.log("Body in local: " + posInLocalCoordinates.x + " Mesh: " + atomMeshes[1].position.x);
+  //   counter = 0;
+  // }
+
+  // for (var i = 0; i < atomMeshes.length; i++) {
+  //   sumax = sumax + atomBodies[i].position.x;
+  //   sumay = sumay + atomBodies[i].position.y;
+  //   sumaz = sumaz + atomBodies[i].position.z;
+  //   // sumaxr = sumaxr + world.bodies[i].quaternion.x;
+  //   // sumayr = sumayr + world.bodies[i].quaternion.y;
+  //   // sumazr = sumazr + world.bodies[i].quaternion.z;
+  // }
+
+  // for (var i = 0; i < atomMeshes.length; i++) {
+  //   atomBodies[i].position.x =
+  //     atomBodies[i].position.x - sumax / atomMeshes.length;
+  //   atomBodies[i].position.y =
+  //     atomBodies[i].position.y - sumay / atomMeshes.length;
+  //   atomBodies[i].position.z =
+  //     atomBodies[i].position.z - sumaz / atomMeshes.length;
+  // }
+
+  for (var i = 0; i < atomBodies.length; i++) {
+    // atomMeshes[i].position.copy(atomBodies[i].position);
+    // atomMeshes[i].quaternion.copy(atomBodies[i].quaternion);
 
     atomBodies[i].velocity.x =
       atomBodies[i].velocity.x + 10 * Math.random(1) - 5;
@@ -312,13 +359,58 @@ function updatePhysics() {
       );
   }
 
-  for (var i = 0; i < atomMeshes.length; i++) {
+  for (var i = 0; i < atomBodies.length; i++) {
     atomBodies[i].velocity.x =
       (atomBodies[i].velocity.x / velsum) * velsum_expected;
     atomBodies[i].velocity.y =
       (atomBodies[i].velocity.y / velsum) * velsum_expected;
     atomBodies[i].velocity.z =
       (atomBodies[i].velocity.z / velsum) * velsum_expected;
+  }
+
+  for (var i = 0; i < atomBodies.length; i++) {
+    mediax = mediax + atomBodies[i].position.x;
+    mediay = mediay + atomBodies[i].position.y;
+    mediaz = mediaz + atomBodies[i].position.z;
+  }
+
+  mediax = mediax / atomBodies.length;
+  mediay = mediay / atomBodies.length;
+  mediaz = mediaz / atomBodies.length;
+
+  var cubePosition = new THREE.Vector3();
+  sceneGroup.getWorldPosition(cubePosition);
+
+  var cubeQuaternion = new THREE.Quaternion();
+  sceneGroup.getWorldQuaternion(cubeQuaternion);
+
+  for (var i = 0; i < atomBodies.length; i++) {
+    atomBodies[i].position.x =
+      atomBodies[i].position.x + cubePosition.x - mediax;
+    atomBodies[i].position.y =
+      atomBodies[i].position.y + cubePosition.y - mediay;
+    atomBodies[i].position.z =
+      atomBodies[i].position.z + cubePosition.z - mediaz;
+  }
+
+  const q = new THREE.Quaternion();
+  const inverse1 = new THREE.Quaternion();
+  inverse1.copy(lastCubeQuaternion).invert();
+
+  q.multiplyQuaternions(cubeQuaternion, inverse1);
+
+  rotateBodies(
+    atomBodies,
+    q,
+    new CANNON.Vec3(cubePosition.x, cubePosition.y, cubePosition.z)
+  );
+  
+  lastCubeQuaternion.copy(cubeQuaternion);
+
+  for (var i = 0; i < atomMeshes.length; i++) {
+    atomMeshes[i].position.x = atomBodies[i].position.x;
+    atomMeshes[i].position.y = atomBodies[i].position.y;
+    atomMeshes[i].position.z = atomBodies[i].position.z;
   }
 
   bonds.forEach(function (bond) {
@@ -376,27 +468,30 @@ function updatePhysics() {
     bond.sticks[1].position.set(C.x, C.y, C.z);
   });
 
-  for (var i = 0; i < atomMeshes2.length; i++) {
-    sumax = sumax + atomBodies2[i].position.x;
-    sumay = sumay + atomBodies2[i].position.y;
-    sumaz = sumaz + atomBodies2[i].position.z;
-    // sumaxr = sumaxr + world.bodies[i].quaternion.x;
-    // sumayr = sumayr + world.bodies[i].quaternion.y;
-    // sumazr = sumazr + world.bodies[i].quaternion.z;
-  }
+  // CUBE 2
+  velsum = 0;
+
+  // for (var i = 0; i < atomMeshes2.length; i++) {
+  //   sumax2 = sumax2 + atomBodies2[i].position.x;
+  //   sumay2 = sumay2 + atomBodies2[i].position.y;
+  //   sumaz2 = sumaz2 + atomBodies2[i].position.z;
+  //   // sumaxr = sumaxr + world.bodies[i].quaternion.x;
+  //   // sumayr = sumayr + world.bodies[i].quaternion.y;
+  //   // sumazr = sumazr + world.bodies[i].quaternion.z;
+  // }
+
+  // for (var i = 0; i < atomMeshes2.length; i++) {
+  //   atomBodies2[i].position.x =
+  //     atomBodies2[i].position.x - sumax2 / atomMeshes2.length;
+  //   atomBodies2[i].position.y =
+  //     atomBodies2[i].position.y - sumay2/ atomMeshes2.length;
+  //   atomBodies2[i].position.z =
+  //     atomBodies2[i].position.z - sumaz2 / atomMeshes2.length;
+  // }
 
   for (var i = 0; i < atomMeshes2.length; i++) {
-    atomBodies2[i].position.x =
-      atomBodies2[i].position.x - sumax / atomMeshes2.length;
-    atomBodies2[i].position.y =
-      atomBodies2[i].position.y - sumay / atomMeshes2.length;
-    atomBodies2[i].position.z =
-      atomBodies2[i].position.z - sumaz / atomMeshes2.length;
-  }
-
-  for (var i = 0; i < atomMeshes2.length; i++) {
-    atomMeshes2[i].position.copy(atomBodies2[i].position);
-    atomMeshes2[i].quaternion.copy(atomBodies2[i].quaternion);
+    // atomMeshes2[i].position.copy(atomBodies2[i].position);
+    // atomMeshes2[i].quaternion.copy(atomBodies2[i].quaternion);
 
     atomBodies2[i].velocity.x =
       atomBodies2[i].velocity.x + 10 * Math.random(1) - 5;
@@ -421,6 +516,51 @@ function updatePhysics() {
       (atomBodies2[i].velocity.y / velsum) * velsum_expected;
     atomBodies2[i].velocity.z =
       (atomBodies2[i].velocity.z / velsum) * velsum_expected;
+  }
+
+  for (var i = 0; i < atomMeshes2.length; i++) {
+    mediax2 = mediax2 + atomBodies2[i].position.x;
+    mediay2 = mediay2 + atomBodies2[i].position.y;
+    mediaz2 = mediaz2 + atomBodies2[i].position.z;
+  }
+
+  mediax2 = mediax2 / atomMeshes2.length;
+  mediay2 = mediay2 / atomMeshes2.length;
+  mediaz2 = mediaz2 / atomMeshes2.length;
+
+  var cubePosition2 = new THREE.Vector3();
+  sceneGroup2.getWorldPosition(cubePosition2);
+
+  var cubeQuaternion2 = new THREE.Quaternion();
+  sceneGroup2.getWorldQuaternion(cubeQuaternion2);
+
+  for (var i = 0; i < atomBodies2.length; i++) {
+    atomBodies2[i].position.x =
+      atomBodies2[i].position.x + cubePosition2.x - mediax2;
+    atomBodies2[i].position.y =
+      atomBodies2[i].position.y + cubePosition2.y - mediay2;
+    atomBodies2[i].position.z =
+      atomBodies2[i].position.z + cubePosition2.z - mediaz2;
+  }
+
+  const q2 = new THREE.Quaternion();
+  const inverse2 = new THREE.Quaternion();
+  inverse2.copy(lastCubeQuaternion2).invert();
+
+  q2.multiplyQuaternions(cubeQuaternion2, inverse2);
+
+  rotateBodies(
+    atomBodies2,
+    q2,
+    new CANNON.Vec3(cubePosition2.x, cubePosition2.y, cubePosition2.z)
+  );
+  
+  lastCubeQuaternion2.copy(cubeQuaternion2);
+
+  for (var i = 0; i < atomMeshes2.length; i++) {
+    atomMeshes2[i].position.x = atomBodies2[i].position.x;
+    atomMeshes2[i].position.y = atomBodies2[i].position.y;
+    atomMeshes2[i].position.z = atomBodies2[i].position.z;
   }
 
   bonds2.forEach(function (bond) {
@@ -495,13 +635,22 @@ function loadPdb(rawPdb) {
       renderType.isActive
     );
 
+    atomMeshes.forEach(function (sphere) {
+      scene.add(sphere);
+    });
+
     atomBodies.forEach(function (sphere) {
       world.addBody(sphere);
     });
-    sceneGroup.add(spheresGroup);
+    // sceneGroup.add(spheresGroup);
 
     [stickGroup, bonds, constraints] = createSticks(pdb, atomBodies);
-    sceneGroup.add(stickGroup);
+    // sceneGroup.add(stickGroup);
+    Object.keys(bonds).forEach(function (bond) {
+      scene.add(bonds[bond].sticks[0])
+      scene.add(bonds[bond].sticks[1])
+    });
+
     constraints.forEach(function (constraint) {
       world.addConstraint(constraint);
     });
@@ -523,18 +672,30 @@ function loadPdb(rawPdb) {
       renderType.isActive
     );
 
+    atomMeshes2.forEach(function (sphere) {
+      scene.add(sphere);
+    });
+
     atomBodies2.forEach(function (sphere) {
       world.addBody(sphere);
     });
-    sceneGroup2.add(spheresGroup2);
+    // sceneGroup2.add(spheresGroup2);
 
     [stickGroup2, bonds2, constraints2] = createSticks(pdb2, atomBodies2);
-    sceneGroup2.add(stickGroup2);
+    // sceneGroup2.add(stickGroup2);
+
+    Object.keys(bonds2).forEach(function (bond) {
+      scene.add(bonds2[bond].sticks[0])
+      scene.add(bonds2[bond].sticks[1])
+    });
+
     constraints2.forEach(function (constraint) {
       world.addConstraint(constraint);
     });
     console.timeEnd("VMK");
   }
+
+  counter = 0;
 
   if (window.innerWidth >= 768) {
     handleFlip();
@@ -651,4 +812,34 @@ function handleRenderType(e) {
       atom.scale.setScalar(scale);
     });
   }
+}
+
+function rotateBodies(bodies, angle, pivotPosition) {
+  var rotation = new CANNON.Quaternion();
+  rotation.x = angle.x;
+  rotation.y = angle.y;
+  rotation.z = angle.z;
+  rotation.w = angle.w;
+
+  var pivot = new CANNON.Vec3();
+  pivot.x = pivotPosition.x;
+  pivot.y = pivotPosition.y;
+  pivot.z = pivotPosition.z;
+  // pivot.copy(pivotPosition);
+
+  var rotVector = new CANNON.Vec3();
+
+  bodies.forEach(function (body) {
+    // rotate body orientation
+    body.quaternion = rotation.mult(body.quaternion);
+
+    // rotate body position in pivot frame and add pivotBody position
+    rotation.vmult(body.position.vsub(pivot), rotVector);
+
+    rotVector.vadd(pivot, body.position);
+
+    //reset velocities
+    // body.angularVelocity.set(0, 0, 0);
+    // body.velocity.set(0, 0, 0);
+  });
 }
