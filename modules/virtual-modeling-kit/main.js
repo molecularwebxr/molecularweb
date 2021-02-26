@@ -106,7 +106,7 @@ function initialize() {
   arToolkitSource.init(function onReady() {
     setTimeout(function () {
       onResize();
-    }, 300);
+    }, 1000);
   });
 
   // handle resize event
