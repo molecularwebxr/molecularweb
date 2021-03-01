@@ -48,8 +48,6 @@ var atoms2 = 0;
 
 var selectedMarker = 1;
 
-var counter = 0;
-
 var cannonDebugRenderer;
 
 var lastCubeQuaternion = new THREE.Quaternion(0, 0, 0, 1);
@@ -188,9 +186,6 @@ function initialize() {
   stickGroup = new THREE.Group();
   spheresGroup = new THREE.Group();
 
-  // a 1x1x1 cube model with scale factor 1.25 fills up the physical cube
-  // sceneGroup.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
-
   let pointLight = new THREE.PointLight(0xffffff, 1, 50);
   pointLight.position.set(0.5, 3, 2);
 
@@ -231,8 +226,6 @@ function initialize() {
   sceneGroup2 = new THREE.Group();
   stickGroup2 = new THREE.Group();
   spheresGroup2 = new THREE.Group();
-
-  // sceneGroup2.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
 
   cannonDebugRenderer = new THREE.CannonDebugRenderer(scene, world);
 }
@@ -279,9 +272,6 @@ function updatePhysics() {
   var velsum_expected = Math.sqrt(temperature) * atoms;
 
   var velsum = 0;
-  var sumax = 0;
-  var sumay = 0;
-  var sumaz = 0;
 
   var mediax = 0;
   var mediay = 0;
@@ -295,54 +285,7 @@ function updatePhysics() {
   var sumay2 = 0;
   var sumaz2 = 0;
 
-  // var sumaxr = 0;
-  // var sumayr = 0;
-  // var sumazr = 0;
-
-  // for (var i = 0; i < atomMeshes.length; i++) {
-  //   var atomPosition = new THREE.Vector3();
-  //   atomMeshes[i].getWorldPosition(atomPosition);
-  //   atomBodies[i].position.copy(atomPosition);
-  // }
-
-  // if (atomBodies.length > 0 && counter === 30) {
-  //   var atomPosition = new THREE.Vector3();
-  //   atomMeshes[1].getWorldPosition(atomPosition);
-  //   console.log("Body in world: " + atomBodies[1].position.x + " Mesh: " + atomPosition.x)
-
-  //   var posInLocalCoordinates = new THREE.Vector3();
-  //   var bodyPosition = new THREE.Vector3();
-  //   bodyPosition.x = atomBodies[1].position.x;
-  //   bodyPosition.y = atomBodies[1].position.y;
-  //   bodyPosition.z = atomBodies[1].position.z;
-
-  //   posInLocalCoordinates = atomMeshes[1].worldToLocal(bodyPosition);
-  //   console.log("Body in local: " + posInLocalCoordinates.x + " Mesh: " + atomMeshes[1].position.x);
-  //   counter = 0;
-  // }
-
-  // for (var i = 0; i < atomMeshes.length; i++) {
-  //   sumax = sumax + atomBodies[i].position.x;
-  //   sumay = sumay + atomBodies[i].position.y;
-  //   sumaz = sumaz + atomBodies[i].position.z;
-  //   // sumaxr = sumaxr + world.bodies[i].quaternion.x;
-  //   // sumayr = sumayr + world.bodies[i].quaternion.y;
-  //   // sumazr = sumazr + world.bodies[i].quaternion.z;
-  // }
-
-  // for (var i = 0; i < atomMeshes.length; i++) {
-  //   atomBodies[i].position.x =
-  //     atomBodies[i].position.x - sumax / atomMeshes.length;
-  //   atomBodies[i].position.y =
-  //     atomBodies[i].position.y - sumay / atomMeshes.length;
-  //   atomBodies[i].position.z =
-  //     atomBodies[i].position.z - sumaz / atomMeshes.length;
-  // }
-
   for (var i = 0; i < atomBodies.length; i++) {
-    // atomMeshes[i].position.copy(atomBodies[i].position);
-    // atomMeshes[i].quaternion.copy(atomBodies[i].quaternion);
-
     atomBodies[i].velocity.x =
       atomBodies[i].velocity.x + 10 * Math.random(1) - 5;
     atomBodies[i].velocity.y =
@@ -471,28 +414,7 @@ function updatePhysics() {
   // CUBE 2
   velsum = 0;
 
-  // for (var i = 0; i < atomMeshes2.length; i++) {
-  //   sumax2 = sumax2 + atomBodies2[i].position.x;
-  //   sumay2 = sumay2 + atomBodies2[i].position.y;
-  //   sumaz2 = sumaz2 + atomBodies2[i].position.z;
-  //   // sumaxr = sumaxr + world.bodies[i].quaternion.x;
-  //   // sumayr = sumayr + world.bodies[i].quaternion.y;
-  //   // sumazr = sumazr + world.bodies[i].quaternion.z;
-  // }
-
-  // for (var i = 0; i < atomMeshes2.length; i++) {
-  //   atomBodies2[i].position.x =
-  //     atomBodies2[i].position.x - sumax2 / atomMeshes2.length;
-  //   atomBodies2[i].position.y =
-  //     atomBodies2[i].position.y - sumay2/ atomMeshes2.length;
-  //   atomBodies2[i].position.z =
-  //     atomBodies2[i].position.z - sumaz2 / atomMeshes2.length;
-  // }
-
   for (var i = 0; i < atomMeshes2.length; i++) {
-    // atomMeshes2[i].position.copy(atomBodies2[i].position);
-    // atomMeshes2[i].quaternion.copy(atomBodies2[i].quaternion);
-
     atomBodies2[i].velocity.x =
       atomBodies2[i].velocity.x + 10 * Math.random(1) - 5;
     atomBodies2[i].velocity.y =
