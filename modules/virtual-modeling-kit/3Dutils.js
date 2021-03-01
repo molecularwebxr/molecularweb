@@ -431,7 +431,7 @@ function createSticks(pdb, bodies) {
 function createSpheres(pdb, renderType) {
   //this loop will create the spheres to display the atoms at the defined radius
   //and the actual physical cannon spheres
-  var spheres = new THREE.Group();
+  var shapes = [];
   var meshes = [];
   var bodies = [];
 
@@ -449,7 +449,6 @@ function createSpheres(pdb, renderType) {
     sphereMesh.position.x = pdb.xCoords[i] - pdb.xAvg;
     sphereMesh.position.y = pdb.yCoords[i] - pdb.yAvg;
     sphereMesh.position.z = pdb.zCoords[i] - pdb.zAvg;
-    spheres.add(sphereMesh);
     meshes.push(sphereMesh);
 
     var sphereShape = new CANNON.Sphere(0.5 * elementradii[pdb.elements[i]]);
@@ -466,8 +465,9 @@ function createSpheres(pdb, renderType) {
     sphereBody.velocity.y = 0;
     sphereBody.velocity.z = 0;
     bodies.push(sphereBody);
+    shapes.push(sphereShape);
   }
-  return [spheres, meshes, bodies];
+  return [shapes, meshes, bodies];
 }
 
 function clearGroup(group) {

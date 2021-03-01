@@ -12,8 +12,8 @@ var scene, camera, renderer, clock, deltaTime, totalTime;
 var arToolkitSource, arToolkitContext;
 var patternArray, markerRootArray, markerGroupArray;
 var patternArray2, markerRootArray2, markerGroupArray2;
-var sceneGroup, stickGroup, spheresGroup;
-var sceneGroup2, stickGroup2, spheresGroup2;
+var sceneGroup, stickGroup;
+var sceneGroup2, stickGroup2;
 var pdb, pdb2;
 
 var startAR = document.getElementById("start-ar");
@@ -36,12 +36,14 @@ var prevTemp = 0;
 
 var atomMeshes = [];
 var atomBodies = [];
+var atomShapes = [];
 var bonds = [];
 var constraints = [];
 var atoms = 0;
 
 var atomMeshes2 = [];
 var atomBodies2 = [];
+var atomShapes2 = [];
 var bonds2 = [];
 var constraints2 = [];
 var atoms2 = 0;
@@ -68,6 +70,9 @@ window.addEventListener("camera-change", () => {
 tempControls.forEach(function (item) {
   item.addEventListener("updateTemp", handleTempControls);
 });
+window.addEventListener("marker-found", function (e) {
+  console.log("Found!")
+})
 
 renderType.isActive = true;
 
@@ -184,7 +189,6 @@ function initialize() {
   // setup scene
   sceneGroup = new THREE.Group();
   stickGroup = new THREE.Group();
-  spheresGroup = new THREE.Group();
 
   let pointLight = new THREE.PointLight(0xffffff, 1, 50);
   pointLight.position.set(0.5, 3, 2);
@@ -225,7 +229,6 @@ function initialize() {
 
   sceneGroup2 = new THREE.Group();
   stickGroup2 = new THREE.Group();
-  spheresGroup2 = new THREE.Group();
 
   cannonDebugRenderer = new THREE.CannonDebugRenderer(scene, world);
 }
@@ -267,8 +270,6 @@ function animate() {
 }
 
 function updatePhysics() {
-  counter++;
-
   var velsum_expected = Math.sqrt(temperature) * atoms;
 
   var velsum = 0;
@@ -280,10 +281,6 @@ function updatePhysics() {
   var mediax2 = 0;
   var mediay2 = 0;
   var mediaz2 = 0;
-
-  var sumax2 = 0;
-  var sumay2 = 0;
-  var sumaz2 = 0;
 
   for (var i = 0; i < atomBodies.length; i++) {
     atomBodies[i].velocity.x =
@@ -548,11 +545,11 @@ function loadPdb(rawPdb) {
 
     clearPhysics(atomBodies, constraints);
     clearGroup(stickGroup);
-    clearGroup(spheresGroup);
+    // clearGroup(spheresGroup);
 
     console.time("VMK");
 
-    [spheresGroup, atomMeshes, atomBodies] = createSpheres(
+    [atomShapes, atomMeshes, atomBodies] = createSpheres(
       pdb,
       renderType.isActive
     );
@@ -585,11 +582,11 @@ function loadPdb(rawPdb) {
 
     clearPhysics(atomBodies2, constraints2);
     clearGroup(stickGroup2);
-    clearGroup(spheresGroup2);
+    // clearGroup(spheresGroup2);
 
     console.time("VMK");
 
-    [spheresGroup2, atomMeshes2, atomBodies2] = createSpheres(
+    [atomShapes2, atomMeshes2, atomBodies2] = createSpheres(
       pdb2,
       renderType.isActive
     );
@@ -616,8 +613,6 @@ function loadPdb(rawPdb) {
     });
     console.timeEnd("VMK");
   }
-
-  counter = 0;
 
   if (window.innerWidth >= 768) {
     handleFlip();
@@ -659,9 +654,9 @@ function handleFlip(e) {
 
 function handleScale(e) {
   if (e.detail === "up") {
-    sceneGroup.scale.multiplyScalar(1.5);
+    camera.position.z -= 0.8;
   } else {
-    sceneGroup.scale.multiplyScalar(0.6667);
+    camera.position.z += 0.8;
   }
 }
 
@@ -675,9 +670,7 @@ function handleReset(e) {
 
   clearPhysics(atomBodies, constraints);
   clearGroup(stickGroup);
-  clearGroup(spheresGroup);
-
-  sceneGroup.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
+  // clearGroup(spheresGroup);
 
   handleMenu();
 }
@@ -722,17 +715,17 @@ function handleRenderType(e) {
   if (!renderType.isActive) {
     stickGroup.visible = false;
 
-    spheresGroup.children.forEach(function (atom, index) {
-      var scale = radiusfactor2 * elementradii[pdb.elements[index]];
-      atom.scale.setScalar(scale);
-    });
+    // spheresGroup.children.forEach(function (atom, index) {
+    //   var scale = radiusfactor2 * elementradii[pdb.elements[index]];
+    //   atom.scale.setScalar(scale);
+    // });
   } else {
     stickGroup.visible = true;
 
-    spheresGroup.children.forEach(function (atom, index) {
-      var scale = radiusfactor1 * elementradii[pdb.elements[index]];
-      atom.scale.setScalar(scale);
-    });
+    // spheresGroup.children.forEach(function (atom, index) {
+    //   var scale = radiusfactor1 * elementradii[pdb.elements[index]];
+    //   atom.scale.setScalar(scale);
+    // });
   }
 }
 
@@ -759,9 +752,5 @@ function rotateBodies(bodies, angle, pivotPosition) {
     rotation.vmult(body.position.vsub(pivot), rotVector);
 
     rotVector.vadd(pivot, body.position);
-
-    //reset velocities
-    // body.angularVelocity.set(0, 0, 0);
-    // body.velocity.set(0, 0, 0);
   });
 }
