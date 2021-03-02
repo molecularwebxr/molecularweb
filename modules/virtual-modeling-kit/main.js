@@ -714,18 +714,73 @@ function handleRenderType(e) {
 
   if (!renderType.isActive) {
     stickGroup.visible = false;
+    
+    Object.keys(bonds).forEach(function (bond) {
+      bonds[bond].sticks[0].visible = false;
+      bonds[bond].sticks[1].visible = false;
+    });
 
-    // spheresGroup.children.forEach(function (atom, index) {
-    //   var scale = radiusfactor2 * elementradii[pdb.elements[index]];
-    //   atom.scale.setScalar(scale);
-    // });
+    Object.keys(bonds2).forEach(function (bond) {
+      bonds2[bond].sticks[0].visible = false;
+      bonds2[bond].sticks[1].visible = false;
+    });
+
+    atomBodies.forEach(function (body, index) {
+      body.removeShape(atomShapes[index]);
+      atomShapes[index].radius = 2 * elementradii[pdb.elements[index]];
+      // body.addShape(atomShapes[index]);
+    });
+
+    atomBodies2.forEach(function (body, index) {
+      body.removeShape(atomShapes2[index]);
+      atomShapes2[index].radius = 2 * elementradii[pdb2.elements[index]];
+      // body.addShape(atomShapes2[index]);
+    });
+
+    atomMeshes.forEach(function (atom, index) {
+      var scale = radiusfactor2 * elementradii[pdb.elements[index]];
+      atom.scale.setScalar(scale);
+    });
+
+    atomMeshes2.forEach(function (atom, index) {
+      var scale = radiusfactor2 * elementradii[pdb2.elements[index]];
+      atom.scale.setScalar(scale);
+    });
+
   } else {
     stickGroup.visible = true;
 
-    // spheresGroup.children.forEach(function (atom, index) {
-    //   var scale = radiusfactor1 * elementradii[pdb.elements[index]];
-    //   atom.scale.setScalar(scale);
-    // });
+    Object.keys(bonds).forEach(function (bond) {
+      bonds[bond].sticks[0].visible = true;
+      bonds[bond].sticks[1].visible = true;
+    });
+
+    Object.keys(bonds2).forEach(function (bond) {
+      bonds2[bond].sticks[0].visible = true;
+      bonds2[bond].sticks[1].visible = true;
+    });
+
+    atomBodies.forEach(function (body, index) {
+      body.removeShape(atomShapes[index]);
+      atomShapes[index].radius = 0.5 * elementradii[pdb.elements[index]];
+      body.addShape(atomShapes[index]);
+    });
+
+    atomBodies2.forEach(function (body, index) {
+      body.removeShape(atomShapes2[index]);
+      atomShapes2[index].radius = 0.5 * elementradii[pdb2.elements[index]];
+      body.addShape(atomShapes2[index]);
+    });
+
+    atomMeshes.forEach(function (atom, index) {
+      var scale = radiusfactor1 * elementradii[pdb.elements[index]];
+      atom.scale.setScalar(scale);
+    });
+
+    atomMeshes2.forEach(function (atom, index) {
+      var scale = radiusfactor1 * elementradii[pdb2.elements[index]];
+      atom.scale.setScalar(scale);
+    });
   }
 }
 
