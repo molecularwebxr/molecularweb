@@ -152,7 +152,7 @@ function getBonds(pdb) {
 
 function createSticks(pdb, bodies) {
   var bondKeys = Object.keys(pdb.bonds);
-  var sticks = new THREE.Group();
+  var sticks = [];
   var bonds = [];
   var constraints = [];
   var atomPairs = [];
@@ -380,8 +380,8 @@ function createSticks(pdb, bodies) {
         })
       );
 
-      sticks.add(bond1);
-      sticks.add(bond2);
+      sticks.push(bond1);
+      sticks.push(bond2);
 
       bonds.push({
         atomA: atomIndex,

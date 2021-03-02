@@ -12,8 +12,8 @@ var scene, camera, renderer, clock, deltaTime, totalTime;
 var arToolkitSource, arToolkitContext;
 var patternArray, markerRootArray, markerGroupArray;
 var patternArray2, markerRootArray2, markerGroupArray2;
-var sceneGroup, stickGroup;
-var sceneGroup2, stickGroup2;
+var sceneGroup;
+var sceneGroup2;
 var pdb, pdb2;
 
 var startAR = document.getElementById("start-ar");
@@ -38,6 +38,7 @@ var atomMeshes = [];
 var atomBodies = [];
 var atomShapes = [];
 var bonds = [];
+var sticks = [];
 var constraints = [];
 var atoms = 0;
 
@@ -45,6 +46,7 @@ var atomMeshes2 = [];
 var atomBodies2 = [];
 var atomShapes2 = [];
 var bonds2 = [];
+var sticks2 = [];
 var constraints2 = [];
 var atoms2 = 0;
 
@@ -71,8 +73,8 @@ tempControls.forEach(function (item) {
   item.addEventListener("updateTemp", handleTempControls);
 });
 window.addEventListener("marker-found", function (e) {
-  console.log("Found!")
-})
+  console.log("Found!");
+});
 
 renderType.isActive = true;
 
@@ -188,7 +190,6 @@ function initialize() {
 
   // setup scene
   sceneGroup = new THREE.Group();
-  stickGroup = new THREE.Group();
 
   let pointLight = new THREE.PointLight(0xffffff, 1, 50);
   pointLight.position.set(0.5, 3, 2);
@@ -228,7 +229,6 @@ function initialize() {
   }
 
   sceneGroup2 = new THREE.Group();
-  stickGroup2 = new THREE.Group();
 
   cannonDebugRenderer = new THREE.CannonDebugRenderer(scene, world);
 }
@@ -344,7 +344,7 @@ function updatePhysics() {
     q,
     new CANNON.Vec3(cubePosition.x, cubePosition.y, cubePosition.z)
   );
-  
+
   lastCubeQuaternion.copy(cubeQuaternion);
 
   for (var i = 0; i < atomMeshes.length; i++) {
@@ -473,7 +473,7 @@ function updatePhysics() {
     q2,
     new CANNON.Vec3(cubePosition2.x, cubePosition2.y, cubePosition2.z)
   );
-  
+
   lastCubeQuaternion2.copy(cubeQuaternion2);
 
   for (var i = 0; i < atomMeshes2.length; i++) {
@@ -544,8 +544,6 @@ function loadPdb(rawPdb) {
     atoms = pdb.atoms;
 
     clearPhysics(atomBodies, constraints);
-    clearGroup(stickGroup);
-    // clearGroup(spheresGroup);
 
     console.time("VMK");
 
@@ -561,13 +559,11 @@ function loadPdb(rawPdb) {
     atomBodies.forEach(function (sphere) {
       world.addBody(sphere);
     });
-    // sceneGroup.add(spheresGroup);
 
-    [stickGroup, bonds, constraints] = createSticks(pdb, atomBodies);
-    // sceneGroup.add(stickGroup);
-    Object.keys(bonds).forEach(function (bond) {
-      scene.add(bonds[bond].sticks[0])
-      scene.add(bonds[bond].sticks[1])
+    [sticks, bonds, constraints] = createSticks(pdb, atomBodies);
+
+    sticks.forEach(function (stick) {
+      scene.add(stick);
     });
 
     constraints.forEach(function (constraint) {
@@ -581,8 +577,6 @@ function loadPdb(rawPdb) {
     atoms2 = pdb2.atoms;
 
     clearPhysics(atomBodies2, constraints2);
-    clearGroup(stickGroup2);
-    // clearGroup(spheresGroup2);
 
     console.time("VMK");
 
@@ -598,14 +592,11 @@ function loadPdb(rawPdb) {
     atomBodies2.forEach(function (sphere) {
       world.addBody(sphere);
     });
-    // sceneGroup2.add(spheresGroup2);
 
-    [stickGroup2, bonds2, constraints2] = createSticks(pdb2, atomBodies2);
-    // sceneGroup2.add(stickGroup2);
+    [sticks2, bonds2, constraints2] = createSticks(pdb2, atomBodies2);
 
-    Object.keys(bonds2).forEach(function (bond) {
-      scene.add(bonds2[bond].sticks[0])
-      scene.add(bonds2[bond].sticks[1])
+    sticks2.forEach(function (stick) {
+      scene.add(stick);
     });
 
     constraints2.forEach(function (constraint) {
@@ -661,16 +652,53 @@ function handleScale(e) {
 }
 
 function handleReset(e) {
+  clearPhysics(atomBodies, constraints);
+  clearPhysics(atomBodies2, constraints2);
+
+  atomMeshes.forEach(function (mesh) {
+    scene.remove(mesh);
+    if (mesh.geometry) mesh.geometry.dispose();
+    if (mesh.material) mesh.material.dispose();
+    if (mesh.texture) mesh.texture.dispose();
+  });
+
+  atomMeshes2.forEach(function (mesh) {
+    scene.remove(mesh);
+    if (mesh.geometry) mesh.geometry.dispose();
+    if (mesh.material) mesh.material.dispose();
+    if (mesh.texture) mesh.texture.dispose();
+  });
+
+  sticks.forEach(function (mesh) {
+    scene.remove(mesh);
+    if (mesh.geometry) mesh.geometry.dispose();
+    if (mesh.material) mesh.material.dispose();
+    if (mesh.texture) mesh.texture.dispose();
+  });
+
+  sticks2.forEach(function (mesh) {
+    scene.remove(mesh);
+    if (mesh.geometry) mesh.geometry.dispose();
+    if (mesh.material) mesh.material.dispose();
+    if (mesh.texture) mesh.texture.dispose();
+  });
+
   atomMeshes = [];
   atomBodies = [];
-  constraints = [];
+  atomShapes = [];
   bonds = [];
+  constraints = [];
   atoms = 0;
-  temperature = 0;
 
-  clearPhysics(atomBodies, constraints);
-  clearGroup(stickGroup);
-  // clearGroup(spheresGroup);
+  atomMeshes2 = [];
+  atomBodies2 = [];
+  atomShapes2 = [];
+  bonds2 = [];
+  constraints2 = [];
+  atoms2 = 0;
+
+  temperature = 0;
+  selectedMarker = 1;
 
   handleMenu();
 }
@@ -713,16 +741,12 @@ function handleRenderType(e) {
   renderType.isActive = !renderType.isActive;
 
   if (!renderType.isActive) {
-    stickGroup.visible = false;
-    
-    Object.keys(bonds).forEach(function (bond) {
-      bonds[bond].sticks[0].visible = false;
-      bonds[bond].sticks[1].visible = false;
+    sticks.forEach(function (bond) {
+      bond.visible = false;
     });
 
-    Object.keys(bonds2).forEach(function (bond) {
-      bonds2[bond].sticks[0].visible = false;
-      bonds2[bond].sticks[1].visible = false;
+    sticks2.forEach(function (bond) {
+      bond.visible = false;
     });
 
     atomBodies.forEach(function (body, index) {
@@ -746,18 +770,13 @@ function handleRenderType(e) {
       var scale = radiusfactor2 * elementradii[pdb2.elements[index]];
       atom.scale.setScalar(scale);
     });
-
   } else {
-    stickGroup.visible = true;
-
-    Object.keys(bonds).forEach(function (bond) {
-      bonds[bond].sticks[0].visible = true;
-      bonds[bond].sticks[1].visible = true;
+    sticks.forEach(function (bond) {
+      bond.visible = true;
     });
 
-    Object.keys(bonds2).forEach(function (bond) {
-      bonds2[bond].sticks[0].visible = true;
-      bonds2[bond].sticks[1].visible = true;
+    sticks2.forEach(function (bond) {
+      bond.visible = true;
     });
 
     atomBodies.forEach(function (body, index) {
@@ -805,7 +824,6 @@ function rotateBodies(bodies, angle, pivotPosition) {
 
     // rotate body position in pivot frame and add pivotBody position
     rotation.vmult(body.position.vsub(pivot), rotVector);
-
     rotVector.vadd(pivot, body.position);
   });
 }
