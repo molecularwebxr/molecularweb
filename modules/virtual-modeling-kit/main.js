@@ -636,11 +636,13 @@ function handleClick(e) {
 }
 
 function handleFlip(e) {
-  for (var i = 0; i < atomMeshes.length; i++) {
-    atomBodies[i].position.x = -atomBodies[i].position.x;
-    // world.bodies[i].position.y = - world.bodies[i].position.y;
-    // world.bodies[i].position.z = - world.bodies[i].position.z;
-  }
+  atomBodies.forEach(function (body) {
+    body.position.x = -body.position.x;
+  });
+
+  atomBodies2.forEach(function (body) {
+    body.position.x = -body.position.x;
+  });
 }
 
 function handleScale(e) {
