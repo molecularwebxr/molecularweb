@@ -282,7 +282,7 @@ function updatePhysics() {
   var mediay2 = 0;
   var mediaz2 = 0;
 
-  for (var i = 0; i < atomBodies.length; i++) {
+  for (var i = 0; i < atoms; i++) {
     atomBodies[i].velocity.x =
       atomBodies[i].velocity.x + 10 * Math.random(1) - 5;
     atomBodies[i].velocity.y =
@@ -299,7 +299,7 @@ function updatePhysics() {
       );
   }
 
-  for (var i = 0; i < atomBodies.length; i++) {
+  for (var i = 0; i < atoms; i++) {
     atomBodies[i].velocity.x =
       (atomBodies[i].velocity.x / velsum) * velsum_expected;
     atomBodies[i].velocity.y =
@@ -308,15 +308,15 @@ function updatePhysics() {
       (atomBodies[i].velocity.z / velsum) * velsum_expected;
   }
 
-  for (var i = 0; i < atomBodies.length; i++) {
+  for (var i = 0; i < atoms; i++) {
     mediax = mediax + atomBodies[i].position.x;
     mediay = mediay + atomBodies[i].position.y;
     mediaz = mediaz + atomBodies[i].position.z;
   }
 
-  mediax = mediax / atomBodies.length;
-  mediay = mediay / atomBodies.length;
-  mediaz = mediaz / atomBodies.length;
+  mediax = mediax / atoms;
+  mediay = mediay / atoms;
+  mediaz = mediaz / atoms;
 
   var cubePosition = new THREE.Vector3();
   sceneGroup.getWorldPosition(cubePosition);
@@ -324,7 +324,7 @@ function updatePhysics() {
   var cubeQuaternion = new THREE.Quaternion();
   sceneGroup.getWorldQuaternion(cubeQuaternion);
 
-  for (var i = 0; i < atomBodies.length; i++) {
+  for (var i = 0; i < atoms; i++) {
     atomBodies[i].position.x =
       atomBodies[i].position.x + cubePosition.x - mediax;
     atomBodies[i].position.y =
@@ -347,7 +347,7 @@ function updatePhysics() {
 
   lastCubeQuaternion.copy(cubeQuaternion);
 
-  for (var i = 0; i < atomMeshes.length; i++) {
+  for (var i = 0; i < atoms; i++) {
     atomMeshes[i].position.x = atomBodies[i].position.x;
     atomMeshes[i].position.y = atomBodies[i].position.y;
     atomMeshes[i].position.z = atomBodies[i].position.z;
@@ -411,7 +411,7 @@ function updatePhysics() {
   // CUBE 2
   velsum = 0;
 
-  for (var i = 0; i < atomMeshes2.length; i++) {
+  for (var i = 0; i < atoms2; i++) {
     atomBodies2[i].velocity.x =
       atomBodies2[i].velocity.x + 10 * Math.random(1) - 5;
     atomBodies2[i].velocity.y =
@@ -428,7 +428,7 @@ function updatePhysics() {
       );
   }
 
-  for (var i = 0; i < atomMeshes2.length; i++) {
+  for (var i = 0; i < atoms2; i++) {
     atomBodies2[i].velocity.x =
       (atomBodies2[i].velocity.x / velsum) * velsum_expected;
     atomBodies2[i].velocity.y =
@@ -437,15 +437,15 @@ function updatePhysics() {
       (atomBodies2[i].velocity.z / velsum) * velsum_expected;
   }
 
-  for (var i = 0; i < atomMeshes2.length; i++) {
+  for (var i = 0; i < atoms2; i++) {
     mediax2 = mediax2 + atomBodies2[i].position.x;
     mediay2 = mediay2 + atomBodies2[i].position.y;
     mediaz2 = mediaz2 + atomBodies2[i].position.z;
   }
 
-  mediax2 = mediax2 / atomMeshes2.length;
-  mediay2 = mediay2 / atomMeshes2.length;
-  mediaz2 = mediaz2 / atomMeshes2.length;
+  mediax2 = mediax2 / atoms2;
+  mediay2 = mediay2 / atoms2;
+  mediaz2 = mediaz2 / atoms2;
 
   var cubePosition2 = new THREE.Vector3();
   sceneGroup2.getWorldPosition(cubePosition2);
@@ -453,7 +453,7 @@ function updatePhysics() {
   var cubeQuaternion2 = new THREE.Quaternion();
   sceneGroup2.getWorldQuaternion(cubeQuaternion2);
 
-  for (var i = 0; i < atomBodies2.length; i++) {
+  for (var i = 0; i < atoms2; i++) {
     atomBodies2[i].position.x =
       atomBodies2[i].position.x + cubePosition2.x - mediax2;
     atomBodies2[i].position.y =
@@ -476,7 +476,7 @@ function updatePhysics() {
 
   lastCubeQuaternion2.copy(cubeQuaternion2);
 
-  for (var i = 0; i < atomMeshes2.length; i++) {
+  for (var i = 0; i < atoms2; i++) {
     atomMeshes2[i].position.x = atomBodies2[i].position.x;
     atomMeshes2[i].position.y = atomBodies2[i].position.y;
     atomMeshes2[i].position.z = atomBodies2[i].position.z;
