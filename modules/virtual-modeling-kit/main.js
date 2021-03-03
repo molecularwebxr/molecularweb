@@ -571,6 +571,11 @@ function loadPdb(rawPdb) {
     });
 
     console.timeEnd("VMK");
+    if (window.innerWidth >= 768) {
+      atomBodies.forEach(function (body) {
+        body.position.x = -body.position.x;
+      });
+    }
     selectedMarker = 2;
   } else {
     pdb2 = setupPdb(rawPdb);
@@ -603,10 +608,11 @@ function loadPdb(rawPdb) {
       world.addConstraint(constraint);
     });
     console.timeEnd("VMK");
-  }
-
-  if (window.innerWidth >= 768) {
-    handleFlip();
+    if (window.innerWidth >= 768) {
+      atomBodies2.forEach(function (body) {
+        body.position.x = -body.position.x;
+      });
+    }
   }
 }
 
