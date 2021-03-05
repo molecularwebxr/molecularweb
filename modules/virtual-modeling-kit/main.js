@@ -52,6 +52,9 @@ var atoms2 = 0;
 
 var selectedMarker = 1;
 
+var isCube1Visible = false;
+var isCube2Visible = false;
+
 var cannonDebugRenderer;
 
 var lastCubeQuaternion = new THREE.Quaternion(0, 0, 0, 1);
@@ -72,8 +75,21 @@ window.addEventListener("camera-change", () => {
 tempControls.forEach(function (item) {
   item.addEventListener("updateTemp", handleTempControls);
 });
-window.addEventListener("marker-found", function (e) {
-  console.log("Found!");
+window.addEventListener("markerFound", function (e) {
+  if(e.detail.id < 6) {
+    isCube1Visible = true;
+  }
+  if(e.detail.id > 5) {
+    isCube2Visible = true;
+  }
+});
+window.addEventListener("markerLost", function (e) {
+  if(e.detail.id < 6) {
+    isCube1Visible = false;
+  }
+  if(e.detail.id > 5) {
+    isCube2Visible = false;
+  }
 });
 
 renderType.isActive = true;
@@ -252,6 +268,43 @@ function update() {
       break;
     }
   }
+
+  if (isCube1Visible) {
+    sticks.forEach(function (bond) {
+      bond.visible = true;
+    });
+
+    atomMeshes.forEach(function (atom) {
+      atom.visible = true;
+    });
+  } else {
+    sticks.forEach(function (bond) {
+      bond.visible = false;
+    });
+
+    atomMeshes.forEach(function (atom) {
+      atom.visible = false;
+    });
+  }
+
+  if (isCube2Visible) {
+    sticks2.forEach(function (bond) {
+      bond.visible = true;
+    });
+
+    atomMeshes2.forEach(function (atom) {
+      atom.visible = true;
+    });
+  } else {
+    sticks2.forEach(function (bond) {
+      bond.visible = false;
+    });
+
+    atomMeshes2.forEach(function (atom) {
+      atom.visible = false;
+    });
+  }
+  
 }
 
 function render() {
