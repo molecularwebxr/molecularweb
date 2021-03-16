@@ -33,6 +33,9 @@ var medium = 50;
 var low = 10;
 var defaultTemp = 200;
 var prevTemp = 0;
+var minDistance = 2;
+var distanceConstraint = 0.8;
+var constraintForce = 10;
 
 var atomMeshes = [];
 var atomBodies = [];
@@ -40,6 +43,10 @@ var atomShapes = [];
 var bonds = [];
 var sticks = [];
 var constraints = [];
+var hydrogens1 = [];
+var oxygens1 = [];
+var nitrogens1 = [];
+var interactions1 = [];
 var atoms = 0;
 
 var atomMeshes2 = [];
@@ -48,6 +55,10 @@ var atomShapes2 = [];
 var bonds2 = [];
 var sticks2 = [];
 var constraints2 = [];
+var hydrogens2 = [];
+var oxygens2 = [];
+var nitrogens2 = [];
+var interactions2 = [];
 var atoms2 = 0;
 
 var selectedMarker = 1;
@@ -76,18 +87,18 @@ tempControls.forEach(function (item) {
   item.addEventListener("updateTemp", handleTempControls);
 });
 window.addEventListener("markerFound", function (e) {
-  if(e.detail.id < 6) {
+  if (e.detail.id < 6) {
     isCube1Visible = true;
   }
-  if(e.detail.id > 5) {
+  if (e.detail.id > 5) {
     isCube2Visible = true;
   }
 });
 window.addEventListener("markerLost", function (e) {
-  if(e.detail.id < 6) {
+  if (e.detail.id < 6) {
     isCube1Visible = false;
   }
-  if(e.detail.id > 5) {
+  if (e.detail.id > 5) {
     isCube2Visible = false;
   }
 });
@@ -304,7 +315,6 @@ function update() {
       atom.visible = false;
     });
   }
-  
 }
 
 function render() {
@@ -323,6 +333,73 @@ function animate() {
 }
 
 function updatePhysics() {
+  hydrogens1.forEach(function (hydrogen) {
+    var hydrogenPosition = atomMeshes[hydrogen].position;
+
+    oxygens2.forEach(function (oxygen) {
+      var oxygenPosition = atomMeshes2[oxygen].position;
+      var interactionKey = `${hydrogen}-${oxygen}`;
+
+      var distance = Math.sqrt(
+        Math.pow(hydrogenPosition.x - oxygenPosition.x, 2) +
+          Math.pow(hydrogenPosition.y - oxygenPosition.y, 2) +
+          Math.pow(hydrogenPosition.z - oxygenPosition.z, 2)
+      );
+
+      // If the element exists returns index of the interaction
+      // If not, returns -1
+      var interactionIndex = interactions1.findIndex(function (interaction) {
+        return interaction.key === interactionKey;
+      });
+
+      if (distance < minDistance) {
+        if (interactionIndex === -1) {
+          console.log("add")
+          var constraint = new CANNON.DistanceConstraint(
+            atomBodies[hydrogen],
+            atomBodies2[oxygen],
+            distanceConstraint,
+            constraintForce
+          );
+          world.addConstraint(constraint);
+          interactions1.push({
+            key: interactionKey,
+            constraint,
+          });
+        }
+      } else {
+        if (interactionIndex !== -1) {
+          console.log("remove")
+          var thisInteraction = interactions1[interactionIndex]
+          world.removeConstraint(thisInteraction.constraint);
+          interactions1.splice(interactionIndex, 1);
+        }
+      }
+    });
+
+    // nitrogens2.forEach(function (nitrogen) {
+    //   var nitrogenPosition = atomMeshes2[nitrogen].position;
+    //   var distance = Math.sqrt(
+    //     Math.pow(hydrogenPosition.x - nitrogenPosition.x, 2) +
+    //       Math.pow(hydrogenPosition.y - nitrogenPosition.y, 2) +
+    //       Math.pow(hydrogenPosition.z - nitrogenPosition.z, 2)
+    //   );
+    //   if (distance < minDistance) {
+    //     var constraint = new CANNON.DistanceConstraint(
+    //       atomBodies[hydrogen],
+    //       atomBodies2[nitrogen],
+    //       distanceConstraint,
+    //       constraintForce
+    //     );
+    //     world.addConstraint(constraint);
+    //     interactions1.push({
+    //       atoms: [hydrogen, oxygen],
+    //       constraint,
+    //     });
+    //   }
+    // });
+  });
+
   var velsum_expected = Math.sqrt(temperature) * atoms;
 
   var velsum = 0;
@@ -613,7 +690,14 @@ function loadPdb(rawPdb) {
       world.addBody(sphere);
     });
 
-    [sticks, bonds, constraints] = createSticks(pdb, atomBodies);
+    [
+      sticks,
+      bonds,
+      oxygens1,
+      nitrogens1,
+      hydrogens1,
+      constraints,
+    ] = createSticks(pdb, atomBodies);
 
     sticks.forEach(function (stick) {
       scene.add(stick);
@@ -651,7 +735,14 @@ function loadPdb(rawPdb) {
       world.addBody(sphere);
     });
 
-    [sticks2, bonds2, constraints2] = createSticks(pdb2, atomBodies2);
+    [
+      sticks2,
+      bonds2,
+      oxygens2,
+      nitrogens2,
+      hydrogens2,
+      constraints2,
+    ] = createSticks(pdb2, atomBodies2);
 
     sticks2.forEach(function (stick) {
       scene.add(stick);
