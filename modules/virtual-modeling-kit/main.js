@@ -327,12 +327,13 @@ function animate() {
   totalTime += deltaTime;
   world.step(1 / 600);
   cannonDebugRenderer.update();
+  updateInteractions();
   updatePhysics();
   update();
   render();
 }
 
-function updatePhysics() {
+function updateInteractions() {
   hydrogens1.forEach(function (hydrogen) {
     var hydrogenPosition = atomMeshes[hydrogen].position;
 
@@ -354,7 +355,6 @@ function updatePhysics() {
 
       if (distance < minDistance) {
         if (interactionIndex === -1) {
-          console.log("add")
           var constraint = new CANNON.DistanceConstraint(
             atomBodies[hydrogen],
             atomBodies2[oxygen],
@@ -369,7 +369,6 @@ function updatePhysics() {
         }
       } else {
         if (interactionIndex !== -1) {
-          console.log("remove")
           var thisInteraction = interactions1[interactionIndex]
           world.removeConstraint(thisInteraction.constraint);
           interactions1.splice(interactionIndex, 1);
@@ -377,29 +376,130 @@ function updatePhysics() {
       }
     });
 
-    // nitrogens2.forEach(function (nitrogen) {
-    //   var nitrogenPosition = atomMeshes2[nitrogen].position;
-    //   var distance = Math.sqrt(
-    //     Math.pow(hydrogenPosition.x - nitrogenPosition.x, 2) +
-    //       Math.pow(hydrogenPosition.y - nitrogenPosition.y, 2) +
-    //       Math.pow(hydrogenPosition.z - nitrogenPosition.z, 2)
-    //   );
-    //   if (distance < minDistance) {
-    //     var constraint = new CANNON.DistanceConstraint(
-    //       atomBodies[hydrogen],
-    //       atomBodies2[nitrogen],
-    //       distanceConstraint,
-    //       constraintForce
-    //     );
-    //     world.addConstraint(constraint);
-    //     interactions1.push({
-    //       atoms: [hydrogen, oxygen],
-    //       constraint,
-    //     });
-    //   }
-    // });
+    nitrogens2.forEach(function (nitrogen) {
+      var nitrogenPosition = atomMeshes2[nitrogen].position;
+      var interactionKey = `${hydrogen}-${nitrogen}`;
+
+      var distance = Math.sqrt(
+        Math.pow(hydrogenPosition.x - nitrogenPosition.x, 2) +
+          Math.pow(hydrogenPosition.y - nitrogenPosition.y, 2) +
+          Math.pow(hydrogenPosition.z - nitrogenPosition.z, 2)
+      );
+
+      // If the element exists returns index of the interaction
+      // If not, returns -1
+      var interactionIndex = interactions1.findIndex(function (interaction) {
+        return interaction.key === interactionKey;
+      });
+
+      if (distance < minDistance) {
+        if (interactionIndex === -1) {
+          var constraint = new CANNON.DistanceConstraint(
+            atomBodies[hydrogen],
+            atomBodies2[nitrogen],
+            distanceConstraint,
+            constraintForce
+          );
+          world.addConstraint(constraint);
+          interactions1.push({
+            key: interactionKey,
+            constraint,
+          });
+        }
+      } else {
+        if (interactionIndex !== -1) {
+          var thisInteraction = interactions1[interactionIndex]
+          world.removeConstraint(thisInteraction.constraint);
+          interactions1.splice(interactionIndex, 1);
+        }
+      }
+    });
   });
 
+  hydrogens2.forEach(function (hydrogen) {
+    var hydrogenPosition = atomMeshes2[hydrogen].position;
+
+    oxygens1.forEach(function (oxygen) {
+      var oxygenPosition = atomMeshes[oxygen].position;
+      var interactionKey = `${hydrogen}-${oxygen}`;
+
+      var distance = Math.sqrt(
+        Math.pow(hydrogenPosition.x - oxygenPosition.x, 2) +
+          Math.pow(hydrogenPosition.y - oxygenPosition.y, 2) +
+          Math.pow(hydrogenPosition.z - oxygenPosition.z, 2)
+      );
+
+      // If the element exists returns index of the interaction
+      // If not, returns -1
+      var interactionIndex = interactions2.findIndex(function (interaction) {
+        return interaction.key === interactionKey;
+      });
+
+      if (distance < minDistance) {
+        if (interactionIndex === -1) {
+          var constraint = new CANNON.DistanceConstraint(
+            atomBodies2[hydrogen],
+            atomBodies[oxygen],
+            distanceConstraint,
+            constraintForce
+          );
+          world.addConstraint(constraint);
+          interactions2.push({
+            key: interactionKey,
+            constraint,
+          });
+        }
+      } else {
+        if (interactionIndex !== -1) {
+          var thisInteraction = interactions2[interactionIndex]
+          world.removeConstraint(thisInteraction.constraint);
+          interactions2.splice(interactionIndex, 1);
+        }
+      }
+    });
+
+    nitrogens1.forEach(function (nitrogen) {
+      var nitrogenPosition = atomMeshes[nitrogen].position;
+      var interactionKey = `${hydrogen}-${nitrogen}`;
+
+      var distance = Math.sqrt(
+        Math.pow(hydrogenPosition.x - nitrogenPosition.x, 2) +
+          Math.pow(hydrogenPosition.y - nitrogenPosition.y, 2) +
+          Math.pow(hydrogenPosition.z - nitrogenPosition.z, 2)
+      );
+
+      // If the element exists returns index of the interaction
+      // If not, returns -1
+      var interactionIndex = interactions2.findIndex(function (interaction) {
+        return interaction.key === interactionKey;
+      });
+
+      if (distance < minDistance) {
+        if (interactionIndex === -1) {
+          var constraint = new CANNON.DistanceConstraint(
+            atomBodies2[hydrogen],
+            atomBodies[nitrogen],
+            distanceConstraint,
+            constraintForce
+          );
+          world.addConstraint(constraint);
+          interactions2.push({
+            key: interactionKey,
+            constraint,
+          });
+        }
+      } else {
+        if (interactionIndex !== -1) {
+          var thisInteraction = interactions2[interactionIndex]
+          world.removeConstraint(thisInteraction.constraint);
+          interactions2.splice(interactionIndex, 1);
+        }
+      }
+    });
+  });
+}
+
+function updatePhysics() {
   var velsum_expected = Math.sqrt(temperature) * atoms;
 
   var velsum = 0;
