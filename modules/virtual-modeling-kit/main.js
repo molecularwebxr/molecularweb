@@ -501,16 +501,40 @@ function updateInteractions() {
             distanceConstraint,
             constraintForce
           );
+          var mesh = new THREE.InstancedMesh(sphereGeometry, sphereMaterial, 9);
+          mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage); // will be updated every frame
+          scene.add(mesh);
           world.addConstraint(constraint);
           interactions2.push({
             key: interactionKey,
             constraint,
+            connector: mesh,
           });
           console.log("add " + distance);
+        } else {
+          // Atoms are close and there's already a constraint
+          // We must update the connector
+          for (let index = 1; index < 10; index++) {
+            var thisInteraction = interactions2[interactionIndex];
+            var p0 = new THREE.Vector3();
+            var p1 = new THREE.Vector3();
+            var pf = new THREE.Vector3();
+
+            p0.setFromMatrixPosition(atomMeshes2[hydrogen].matrixWorld);
+            p1.setFromMatrixPosition(atomMeshes[oxygen].matrixWorld);
+            pf.lerpVectors(p0, p1, index / 10);
+
+            dummy.position.copy(pf);
+            dummy.updateMatrix();
+            thisInteraction.connector.setMatrixAt(index, dummy.matrix);
+          }
+          thisInteraction.connector.instanceMatrix.needsUpdate = true;
         }
       } else {
         if (interactionIndex !== -1) {
           var thisInteraction = interactions2[interactionIndex];
+          thisInteraction.connector.dispose();
+          scene.remove(thisInteraction.connector);
           world.removeConstraint(thisInteraction.constraint);
           interactions2.splice(interactionIndex, 1);
           console.log("remove " + distance);
@@ -542,16 +566,40 @@ function updateInteractions() {
             distanceConstraint,
             constraintForce
           );
+          var mesh = new THREE.InstancedMesh(sphereGeometry, sphereMaterial, 9);
+          mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage); // will be updated every frame
+          scene.add(mesh);
           world.addConstraint(constraint);
           interactions2.push({
             key: interactionKey,
             constraint,
+            connector: mesh
           });
           console.log("add " + distance);
+        } else {
+          // Atoms are close and there's already a constraint
+          // We must update the connector
+          for (let index = 1; index < 10; index++) {
+            var thisInteraction = interactions2[interactionIndex];
+            var p0 = new THREE.Vector3();
+            var p1 = new THREE.Vector3();
+            var pf = new THREE.Vector3();
+
+            p0.setFromMatrixPosition(atomMeshes2[hydrogen].matrixWorld);
+            p1.setFromMatrixPosition(atomMeshes[nitrogen].matrixWorld);
+            pf.lerpVectors(p0, p1, index / 10);
+
+            dummy.position.copy(pf);
+            dummy.updateMatrix();
+            thisInteraction.connector.setMatrixAt(index, dummy.matrix);
+          }
+          thisInteraction.connector.instanceMatrix.needsUpdate = true;
         }
       } else {
         if (interactionIndex !== -1) {
           var thisInteraction = interactions2[interactionIndex];
+          thisInteraction.connector.dispose();
+          scene.remove(thisInteraction.connector);
           world.removeConstraint(thisInteraction.constraint);
           interactions2.splice(interactionIndex, 1);
           console.log("remove " + distance);
