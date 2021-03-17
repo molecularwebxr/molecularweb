@@ -167,9 +167,15 @@ function createSticks(pdb, bodies) {
     //then the first half of the bond is from sphere 1 to 2 and the
     //second half of the bond is from point2 to point3
 
-    // Is it Hydrogen?
+     // Is it an Hydrogen with interactions?
+     // If is H, check in allBonds if it's bonded to N or O 
     if (pdb.elements[atomIndex] === 0) {
-      hydrogens.push(atomIndex);
+      pdb.allBonds[atom].forEach(function (bondedAtom) {
+        var bondedAtomIndex = bondKeys.indexOf(bondedAtom);
+        if(pdb.elements[bondedAtomIndex] === 6 || pdb.elements[bondedAtomIndex] === 7) {
+          hydrogens.push(atomIndex);
+        }
+      })
     }
 
     // Is it Oxygen?

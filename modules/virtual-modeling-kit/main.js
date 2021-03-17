@@ -33,8 +33,9 @@ var medium = 50;
 var low = 10;
 var defaultTemp = 200;
 var prevTemp = 0;
-var minDistance = 2;
-var distanceConstraint = 0.8;
+var minDistance = 3;
+var maxDistance = 2.5;
+var distanceConstraint = 0.1;
 var constraintForce = 10;
 
 var atomMeshes = [];
@@ -361,6 +362,7 @@ function updateInteractions() {
             distanceConstraint,
             constraintForce
           );
+          console.log("add " + distance)
           world.addConstraint(constraint);
           interactions1.push({
             key: interactionKey,
@@ -372,6 +374,7 @@ function updateInteractions() {
           var thisInteraction = interactions1[interactionIndex]
           world.removeConstraint(thisInteraction.constraint);
           interactions1.splice(interactionIndex, 1);
+          console.log("remove " + distance)
         }
       }
     });
@@ -400,6 +403,7 @@ function updateInteractions() {
             distanceConstraint,
             constraintForce
           );
+          console.log("add " + distance)
           world.addConstraint(constraint);
           interactions1.push({
             key: interactionKey,
@@ -411,6 +415,7 @@ function updateInteractions() {
           var thisInteraction = interactions1[interactionIndex]
           world.removeConstraint(thisInteraction.constraint);
           interactions1.splice(interactionIndex, 1);
+          console.log("remove " + distance)
         }
       }
     });
@@ -448,12 +453,14 @@ function updateInteractions() {
             key: interactionKey,
             constraint,
           });
+          console.log("add " + distance)
         }
       } else {
         if (interactionIndex !== -1) {
           var thisInteraction = interactions2[interactionIndex]
           world.removeConstraint(thisInteraction.constraint);
           interactions2.splice(interactionIndex, 1);
+          console.log("remove " + distance)
         }
       }
     });
@@ -487,12 +494,14 @@ function updateInteractions() {
             key: interactionKey,
             constraint,
           });
+          console.log("add " + distance)
         }
       } else {
         if (interactionIndex !== -1) {
           var thisInteraction = interactions2[interactionIndex]
           world.removeConstraint(thisInteraction.constraint);
           interactions2.splice(interactionIndex, 1);
+          console.log("remove " + distance)
         }
       }
     });
@@ -798,6 +807,7 @@ function loadPdb(rawPdb) {
       hydrogens1,
       constraints,
     ] = createSticks(pdb, atomBodies);
+    console.log(hydrogens1)
 
     sticks.forEach(function (stick) {
       scene.add(stick);
@@ -940,6 +950,10 @@ function handleReset(e) {
   atomShapes = [];
   bonds = [];
   constraints = [];
+  hydrogens1 = [];
+  oxygens1 = [];
+  nitrogens1 = [];
+  interactions1 = [];
   atoms = 0;
 
   atomMeshes2 = [];
@@ -947,6 +961,10 @@ function handleReset(e) {
   atomShapes2 = [];
   bonds2 = [];
   constraints2 = [];
+  hydrogens2 = [];
+  oxygens2 = [];
+  nitrogens2 = [];
+  interactions2 = [];
   atoms2 = 0;
 
   temperature = 0;
