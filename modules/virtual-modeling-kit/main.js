@@ -71,6 +71,9 @@ var cannonDebugRenderer;
 
 var lastCubeQuaternion = new THREE.Quaternion(0, 0, 0, 1);
 var lastCubeQuaternion2 = new THREE.Quaternion(0, 0, 0, 1);
+var sphereGeometry = new THREE.SphereBufferGeometry(0.05, 32, 16);
+var sphereMaterial = new THREE.MeshBasicMaterial({ color: 'yellow' });
+var dummy = new THREE.Object3D();
 
 startAR.addEventListener("click", handleClick);
 flipGraphics.addEventListener("flipGraphics", handleFlip);
@@ -355,6 +358,7 @@ function updateInteractions() {
       });
 
       if (distance < minDistance) {
+        // Atoms are close but there's no constraint nor connector
         if (interactionIndex === -1) {
           var constraint = new CANNON.DistanceConstraint(
             atomBodies[hydrogen],
@@ -362,19 +366,43 @@ function updateInteractions() {
             distanceConstraint,
             constraintForce
           );
-          console.log("add " + distance)
+          var mesh = new THREE.InstancedMesh(sphereGeometry, sphereMaterial, 9);
+          mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage); // will be updated every frame
+          scene.add(mesh);
           world.addConstraint(constraint);
           interactions1.push({
             key: interactionKey,
             constraint,
+            connector: mesh,
           });
+          console.log("add " + distance);
+        } else {
+          // Atoms are close and there's already a constraint
+          // We must update the connector
+          for (let index = 1; index < 10; index++) {
+            var thisInteraction = interactions1[interactionIndex];
+            var p0 = new THREE.Vector3();
+            var p1 = new THREE.Vector3();
+            var pf = new THREE.Vector3();
+
+            p0.setFromMatrixPosition(atomMeshes[hydrogen].matrixWorld);
+            p1.setFromMatrixPosition(atomMeshes2[oxygen].matrixWorld);
+            pf.lerpVectors(p0, p1, index / 10);
+
+            dummy.position.copy(pf);
+            dummy.updateMatrix();
+            thisInteraction.connector.setMatrixAt(index, dummy.matrix);
+          }
+          thisInteraction.connector.instanceMatrix.needsUpdate = true;
         }
       } else {
         if (interactionIndex !== -1) {
-          var thisInteraction = interactions1[interactionIndex]
+          var thisInteraction = interactions1[interactionIndex];
+          thisInteraction.connector.dispose();
+          scene.remove(thisInteraction.connector);
           world.removeConstraint(thisInteraction.constraint);
           interactions1.splice(interactionIndex, 1);
-          console.log("remove " + distance)
+          console.log("remove " + distance);
         }
       }
     });
@@ -396,6 +424,7 @@ function updateInteractions() {
       });
 
       if (distance < minDistance) {
+        // Atoms are close but there's no constraint nor connector
         if (interactionIndex === -1) {
           var constraint = new CANNON.DistanceConstraint(
             atomBodies[hydrogen],
@@ -403,19 +432,43 @@ function updateInteractions() {
             distanceConstraint,
             constraintForce
           );
-          console.log("add " + distance)
+          var mesh = new THREE.InstancedMesh(sphereGeometry, sphereMaterial, 9);
+          mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage); // will be updated every frame
+          scene.add(mesh);
           world.addConstraint(constraint);
           interactions1.push({
             key: interactionKey,
             constraint,
+            connector: mesh,
           });
+          console.log("add " + distance);
+        } else {
+          // Atoms are close and there's already a constraint
+          // We must update the connector
+          for (let index = 1; index < 10; index++) {
+            var thisInteraction = interactions1[interactionIndex];
+            var p0 = new THREE.Vector3();
+            var p1 = new THREE.Vector3();
+            var pf = new THREE.Vector3();
+
+            p0.setFromMatrixPosition(atomMeshes[hydrogen].matrixWorld);
+            p1.setFromMatrixPosition(atomMeshes2[nitrogen].matrixWorld);
+            pf.lerpVectors(p0, p1, index / 10);
+
+            dummy.position.copy(pf);
+            dummy.updateMatrix();
+            thisInteraction.connector.setMatrixAt(index, dummy.matrix);
+          }
+          thisInteraction.connector.instanceMatrix.needsUpdate = true;
         }
       } else {
         if (interactionIndex !== -1) {
-          var thisInteraction = interactions1[interactionIndex]
+          var thisInteraction = interactions1[interactionIndex];
+          thisInteraction.connector.dispose();
+          scene.remove(thisInteraction.connector);
           world.removeConstraint(thisInteraction.constraint);
           interactions1.splice(interactionIndex, 1);
-          console.log("remove " + distance)
+          console.log("remove " + distance);
         }
       }
     });
@@ -453,14 +506,14 @@ function updateInteractions() {
             key: interactionKey,
             constraint,
           });
-          console.log("add " + distance)
+          console.log("add " + distance);
         }
       } else {
         if (interactionIndex !== -1) {
-          var thisInteraction = interactions2[interactionIndex]
+          var thisInteraction = interactions2[interactionIndex];
           world.removeConstraint(thisInteraction.constraint);
           interactions2.splice(interactionIndex, 1);
-          console.log("remove " + distance)
+          console.log("remove " + distance);
         }
       }
     });
@@ -494,14 +547,14 @@ function updateInteractions() {
             key: interactionKey,
             constraint,
           });
-          console.log("add " + distance)
+          console.log("add " + distance);
         }
       } else {
         if (interactionIndex !== -1) {
-          var thisInteraction = interactions2[interactionIndex]
+          var thisInteraction = interactions2[interactionIndex];
           world.removeConstraint(thisInteraction.constraint);
           interactions2.splice(interactionIndex, 1);
-          console.log("remove " + distance)
+          console.log("remove " + distance);
         }
       }
     });
@@ -807,7 +860,7 @@ function loadPdb(rawPdb) {
       hydrogens1,
       constraints,
     ] = createSticks(pdb, atomBodies);
-    console.log(hydrogens1)
+    console.log(hydrogens1);
 
     sticks.forEach(function (stick) {
       scene.add(stick);
