@@ -167,15 +167,23 @@ function createSticks(pdb, bodies) {
     //then the first half of the bond is from sphere 1 to 2 and the
     //second half of the bond is from point2 to point3
 
-     // Is it an Hydrogen with interactions?
-     // If is H, check in allBonds if it's bonded to N or O 
+    // Is it an Hydrogen with interactions?
+    // If is H, check in allBonds if it's bonded to any element of interest
     if (pdb.elements[atomIndex] === 0) {
       pdb.allBonds[atom].forEach(function (bondedAtom) {
         var bondedAtomIndex = bondKeys.indexOf(bondedAtom);
-        if(pdb.elements[bondedAtomIndex] === 6 || pdb.elements[bondedAtomIndex] === 7) {
+        if (
+          pdb.elements[bondedAtomIndex] === 6 ||
+          pdb.elements[bondedAtomIndex] === 7 ||
+          pdb.elements[bondedAtomIndex] === 8 ||
+          pdb.elements[bondedAtomIndex] === 15 ||
+          pdb.elements[bondedAtomIndex] === 16 ||
+          pdb.elements[bondedAtomIndex] === 34 ||
+          pdb.elements[bondedAtomIndex] === 52
+        ) {
           hydrogens.push(atomIndex);
         }
-      })
+      });
     }
 
     // Is it Oxygen?
