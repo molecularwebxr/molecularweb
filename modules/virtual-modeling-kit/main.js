@@ -34,7 +34,7 @@ var low = 10;
 var defaultTemp = 200;
 var prevTemp = 0;
 var minDistance = 3;
-var maxDistance = 2.5;
+var bridgeDist = 2;
 var distanceConstraint = 0.1;
 var constraintForce = 10;
 
@@ -72,7 +72,7 @@ var cannonDebugRenderer;
 var lastCubeQuaternion = new THREE.Quaternion(0, 0, 0, 1);
 var lastCubeQuaternion2 = new THREE.Quaternion(0, 0, 0, 1);
 var sphereGeometry = new THREE.SphereBufferGeometry(0.05, 32, 16);
-var sphereMaterial = new THREE.MeshBasicMaterial({ color: 'yellow' });
+var sphereMaterial = new THREE.MeshBasicMaterial({ color: "yellow" });
 var dummy = new THREE.Object3D();
 
 startAR.addEventListener("click", handleClick);
@@ -358,7 +358,7 @@ function updateInteractions() {
       });
 
       if (distance < minDistance) {
-        // Atoms are close but there's no constraint nor connector
+        // Atoms are close but there's no constraint
         if (interactionIndex === -1) {
           var constraint = new CANNON.DistanceConstraint(
             atomBodies[hydrogen],
@@ -366,42 +366,73 @@ function updateInteractions() {
             distanceConstraint,
             constraintForce
           );
-          var mesh = new THREE.InstancedMesh(sphereGeometry, sphereMaterial, 9);
-          mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage); // will be updated every frame
-          scene.add(mesh);
           world.addConstraint(constraint);
           interactions1.push({
             key: interactionKey,
             constraint,
-            connector: mesh,
           });
           console.log("add " + distance);
-        } else {
-          // Atoms are close and there's already a constraint
-          // We must update the connector
-          for (let index = 1; index < 10; index++) {
+        }
+
+        // Atoms are close enough to display H Bridge
+        if (distance < bridgeDist) {
+          if (
+            interactionIndex !== -1 &&
+            "connector" in interactions1[interactionIndex]
+          ) {
+            // Atoms are close and there's already a connector
+            // We must update the connector
+            for (let index = 1; index < 10; index++) {
+              var thisInteraction = interactions1[interactionIndex];
+              var p0 = new THREE.Vector3();
+              var p1 = new THREE.Vector3();
+              var pf = new THREE.Vector3();
+
+              p0.setFromMatrixPosition(atomMeshes[hydrogen].matrixWorld);
+              p1.setFromMatrixPosition(atomMeshes2[oxygen].matrixWorld);
+              pf.lerpVectors(p0, p1, index / 10);
+
+              dummy.position.copy(pf);
+              dummy.updateMatrix();
+              thisInteraction.connector.setMatrixAt(index, dummy.matrix);
+            }
+            thisInteraction.connector.instanceMatrix.needsUpdate = true;
+          } else {
+            // Atoms are close but there's no connector
+            // We must create the connector
+            var mesh = new THREE.InstancedMesh(
+              sphereGeometry,
+              sphereMaterial,
+              9
+            );
+            mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage); // will be updated every frame
+            scene.add(mesh);
             var thisInteraction = interactions1[interactionIndex];
-            var p0 = new THREE.Vector3();
-            var p1 = new THREE.Vector3();
-            var pf = new THREE.Vector3();
-
-            p0.setFromMatrixPosition(atomMeshes[hydrogen].matrixWorld);
-            p1.setFromMatrixPosition(atomMeshes2[oxygen].matrixWorld);
-            pf.lerpVectors(p0, p1, index / 10);
-
-            dummy.position.copy(pf);
-            dummy.updateMatrix();
-            thisInteraction.connector.setMatrixAt(index, dummy.matrix);
+            thisInteraction.connector = mesh;
           }
-          thisInteraction.connector.instanceMatrix.needsUpdate = true;
+        } else if (
+          interactionIndex !== -1 &&
+          "connector" in interactions1[interactionIndex]
+        ) {
+          // Atoms are far, we should remove the connector if exists
+          var thisInteraction = interactions1[interactionIndex];
+          thisInteraction.connector.dispose();
+          scene.remove(thisInteraction.connector);
+          delete thisInteraction.connector;
         }
       } else {
         if (interactionIndex !== -1) {
           var thisInteraction = interactions1[interactionIndex];
-          thisInteraction.connector.dispose();
-          scene.remove(thisInteraction.connector);
           world.removeConstraint(thisInteraction.constraint);
+
+          // Atoms are far, we should remove the connector if exists
+          if ("connector" in interactions1[interactionIndex]) {
+            thisInteraction.connector.dispose();
+            scene.remove(thisInteraction.connector);
+          }
+
           interactions1.splice(interactionIndex, 1);
+
           console.log("remove " + distance);
         }
       }
@@ -417,14 +448,11 @@ function updateInteractions() {
           Math.pow(hydrogenPosition.z - nitrogenPosition.z, 2)
       );
 
-      // If the element exists returns index of the interaction
-      // If not, returns -1
       var interactionIndex = interactions1.findIndex(function (interaction) {
         return interaction.key === interactionKey;
       });
 
       if (distance < minDistance) {
-        // Atoms are close but there's no constraint nor connector
         if (interactionIndex === -1) {
           var constraint = new CANNON.DistanceConstraint(
             atomBodies[hydrogen],
@@ -432,42 +460,66 @@ function updateInteractions() {
             distanceConstraint,
             constraintForce
           );
-          var mesh = new THREE.InstancedMesh(sphereGeometry, sphereMaterial, 9);
-          mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage); // will be updated every frame
-          scene.add(mesh);
           world.addConstraint(constraint);
           interactions1.push({
             key: interactionKey,
             constraint,
-            connector: mesh,
           });
           console.log("add " + distance);
-        } else {
-          // Atoms are close and there's already a constraint
-          // We must update the connector
-          for (let index = 1; index < 10; index++) {
+        }
+
+        if (distance < bridgeDist) {
+          if (
+            interactionIndex !== -1 &&
+            "connector" in interactions1[interactionIndex]
+          ) {
+            for (let index = 1; index < 10; index++) {
+              var thisInteraction = interactions1[interactionIndex];
+              var p0 = new THREE.Vector3();
+              var p1 = new THREE.Vector3();
+              var pf = new THREE.Vector3();
+
+              p0.setFromMatrixPosition(atomMeshes[hydrogen].matrixWorld);
+              p1.setFromMatrixPosition(atomMeshes2[nitrogen].matrixWorld);
+              pf.lerpVectors(p0, p1, index / 10);
+
+              dummy.position.copy(pf);
+              dummy.updateMatrix();
+              thisInteraction.connector.setMatrixAt(index, dummy.matrix);
+            }
+            thisInteraction.connector.instanceMatrix.needsUpdate = true;
+          } else {
+            var mesh = new THREE.InstancedMesh(
+              sphereGeometry,
+              sphereMaterial,
+              9
+            );
+            mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+            scene.add(mesh);
             var thisInteraction = interactions1[interactionIndex];
-            var p0 = new THREE.Vector3();
-            var p1 = new THREE.Vector3();
-            var pf = new THREE.Vector3();
-
-            p0.setFromMatrixPosition(atomMeshes[hydrogen].matrixWorld);
-            p1.setFromMatrixPosition(atomMeshes2[nitrogen].matrixWorld);
-            pf.lerpVectors(p0, p1, index / 10);
-
-            dummy.position.copy(pf);
-            dummy.updateMatrix();
-            thisInteraction.connector.setMatrixAt(index, dummy.matrix);
+            thisInteraction.connector = mesh;
           }
-          thisInteraction.connector.instanceMatrix.needsUpdate = true;
+        } else if (
+          interactionIndex !== -1 &&
+          "connector" in interactions1[interactionIndex]
+        ) {
+          var thisInteraction = interactions1[interactionIndex];
+          thisInteraction.connector.dispose();
+          scene.remove(thisInteraction.connector);
+          delete thisInteraction.connector;
         }
       } else {
         if (interactionIndex !== -1) {
           var thisInteraction = interactions1[interactionIndex];
-          thisInteraction.connector.dispose();
-          scene.remove(thisInteraction.connector);
           world.removeConstraint(thisInteraction.constraint);
+
+          if ("connector" in interactions1[interactionIndex]) {
+            thisInteraction.connector.dispose();
+            scene.remove(thisInteraction.connector);
+          }
+
           interactions1.splice(interactionIndex, 1);
+
           console.log("remove " + distance);
         }
       }
@@ -494,6 +546,7 @@ function updateInteractions() {
       });
 
       if (distance < minDistance) {
+        // Atoms are close but there's no constraint
         if (interactionIndex === -1) {
           var constraint = new CANNON.DistanceConstraint(
             atomBodies2[hydrogen],
@@ -501,42 +554,73 @@ function updateInteractions() {
             distanceConstraint,
             constraintForce
           );
-          var mesh = new THREE.InstancedMesh(sphereGeometry, sphereMaterial, 9);
-          mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage); // will be updated every frame
-          scene.add(mesh);
           world.addConstraint(constraint);
           interactions2.push({
             key: interactionKey,
             constraint,
-            connector: mesh,
           });
           console.log("add " + distance);
-        } else {
-          // Atoms are close and there's already a constraint
-          // We must update the connector
-          for (let index = 1; index < 10; index++) {
+        }
+
+        // Atoms are close enough to display H Bridge
+        if (distance < bridgeDist) {
+          if (
+            interactionIndex !== -1 &&
+            "connector" in interactions2[interactionIndex]
+          ) {
+            // Atoms are close and there's already a connector
+            // We must update the connector
+            for (let index = 1; index < 10; index++) {
+              var thisInteraction = interactions2[interactionIndex];
+              var p0 = new THREE.Vector3();
+              var p1 = new THREE.Vector3();
+              var pf = new THREE.Vector3();
+
+              p0.setFromMatrixPosition(atomMeshes2[hydrogen].matrixWorld);
+              p1.setFromMatrixPosition(atomMeshes[oxygen].matrixWorld);
+              pf.lerpVectors(p0, p1, index / 10);
+
+              dummy.position.copy(pf);
+              dummy.updateMatrix();
+              thisInteraction.connector.setMatrixAt(index, dummy.matrix);
+            }
+            thisInteraction.connector.instanceMatrix.needsUpdate = true;
+          } else {
+            // Atoms are close but there's no connector
+            // We must create the connector
+            var mesh = new THREE.InstancedMesh(
+              sphereGeometry,
+              sphereMaterial,
+              9
+            );
+            mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage); // will be updated every frame
+            scene.add(mesh);
             var thisInteraction = interactions2[interactionIndex];
-            var p0 = new THREE.Vector3();
-            var p1 = new THREE.Vector3();
-            var pf = new THREE.Vector3();
-
-            p0.setFromMatrixPosition(atomMeshes2[hydrogen].matrixWorld);
-            p1.setFromMatrixPosition(atomMeshes[oxygen].matrixWorld);
-            pf.lerpVectors(p0, p1, index / 10);
-
-            dummy.position.copy(pf);
-            dummy.updateMatrix();
-            thisInteraction.connector.setMatrixAt(index, dummy.matrix);
+            thisInteraction.connector = mesh;
           }
-          thisInteraction.connector.instanceMatrix.needsUpdate = true;
+        } else if (
+          interactionIndex !== -1 &&
+          "connector" in interactions2[interactionIndex]
+        ) {
+          // Atoms are far, we should remove the connector if exists
+          var thisInteraction = interactions2[interactionIndex];
+          thisInteraction.connector.dispose();
+          scene.remove(thisInteraction.connector);
+          delete thisInteraction.connector;
         }
       } else {
         if (interactionIndex !== -1) {
           var thisInteraction = interactions2[interactionIndex];
-          thisInteraction.connector.dispose();
-          scene.remove(thisInteraction.connector);
           world.removeConstraint(thisInteraction.constraint);
+
+          // Atoms are far, we should remove the connector if exists
+          if ("connector" in interactions2[interactionIndex]) {
+            thisInteraction.connector.dispose();
+            scene.remove(thisInteraction.connector);
+          }
+
           interactions2.splice(interactionIndex, 1);
+
           console.log("remove " + distance);
         }
       }
@@ -552,8 +636,6 @@ function updateInteractions() {
           Math.pow(hydrogenPosition.z - nitrogenPosition.z, 2)
       );
 
-      // If the element exists returns index of the interaction
-      // If not, returns -1
       var interactionIndex = interactions2.findIndex(function (interaction) {
         return interaction.key === interactionKey;
       });
@@ -566,42 +648,66 @@ function updateInteractions() {
             distanceConstraint,
             constraintForce
           );
-          var mesh = new THREE.InstancedMesh(sphereGeometry, sphereMaterial, 9);
-          mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage); // will be updated every frame
-          scene.add(mesh);
           world.addConstraint(constraint);
           interactions2.push({
             key: interactionKey,
             constraint,
-            connector: mesh
           });
           console.log("add " + distance);
-        } else {
-          // Atoms are close and there's already a constraint
-          // We must update the connector
-          for (let index = 1; index < 10; index++) {
+        }
+
+        if (distance < bridgeDist) {
+          if (
+            interactionIndex !== -1 &&
+            "connector" in interactions2[interactionIndex]
+          ) {
+            for (let index = 1; index < 10; index++) {
+              var thisInteraction = interactions2[interactionIndex];
+              var p0 = new THREE.Vector3();
+              var p1 = new THREE.Vector3();
+              var pf = new THREE.Vector3();
+
+              p0.setFromMatrixPosition(atomMeshes2[hydrogen].matrixWorld);
+              p1.setFromMatrixPosition(atomMeshes[nitrogen].matrixWorld);
+              pf.lerpVectors(p0, p1, index / 10);
+
+              dummy.position.copy(pf);
+              dummy.updateMatrix();
+              thisInteraction.connector.setMatrixAt(index, dummy.matrix);
+            }
+            thisInteraction.connector.instanceMatrix.needsUpdate = true;
+          } else {
+            var mesh = new THREE.InstancedMesh(
+              sphereGeometry,
+              sphereMaterial,
+              9
+            );
+            mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+            scene.add(mesh);
             var thisInteraction = interactions2[interactionIndex];
-            var p0 = new THREE.Vector3();
-            var p1 = new THREE.Vector3();
-            var pf = new THREE.Vector3();
-
-            p0.setFromMatrixPosition(atomMeshes2[hydrogen].matrixWorld);
-            p1.setFromMatrixPosition(atomMeshes[nitrogen].matrixWorld);
-            pf.lerpVectors(p0, p1, index / 10);
-
-            dummy.position.copy(pf);
-            dummy.updateMatrix();
-            thisInteraction.connector.setMatrixAt(index, dummy.matrix);
+            thisInteraction.connector = mesh;
           }
-          thisInteraction.connector.instanceMatrix.needsUpdate = true;
+        } else if (
+          interactionIndex !== -1 &&
+          "connector" in interactions2[interactionIndex]
+        ) {
+          var thisInteraction = interactions2[interactionIndex];
+          thisInteraction.connector.dispose();
+          scene.remove(thisInteraction.connector);
+          delete thisInteraction.connector;
         }
       } else {
         if (interactionIndex !== -1) {
           var thisInteraction = interactions2[interactionIndex];
-          thisInteraction.connector.dispose();
-          scene.remove(thisInteraction.connector);
           world.removeConstraint(thisInteraction.constraint);
+
+          if ("connector" in interactions2[interactionIndex]) {
+            thisInteraction.connector.dispose();
+            scene.remove(thisInteraction.connector);
+          }
+
           interactions2.splice(interactionIndex, 1);
+
           console.log("remove " + distance);
         }
       }
