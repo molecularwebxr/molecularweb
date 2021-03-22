@@ -261,7 +261,7 @@ function initialize() {
 
   sceneGroup2 = new THREE.Group();
 
-  cannonDebugRenderer = new THREE.CannonDebugRenderer(scene, world);
+  // cannonDebugRenderer = new THREE.CannonDebugRenderer(scene, world);
 }
 
 function update() {
@@ -284,41 +284,41 @@ function update() {
     }
   }
 
-  if (isCube1Visible) {
-    sticks.forEach(function (bond) {
-      bond.visible = true;
-    });
+  // if (isCube1Visible) {
+  //   sticks.forEach(function (bond) {
+  //     bond.visible = true;
+  //   });
 
-    atomMeshes.forEach(function (atom) {
-      atom.visible = true;
-    });
-  } else {
-    sticks.forEach(function (bond) {
-      bond.visible = false;
-    });
+  //   atomMeshes.forEach(function (atom) {
+  //     atom.visible = true;
+  //   });
+  // } else {
+  //   sticks.forEach(function (bond) {
+  //     bond.visible = false;
+  //   });
 
-    atomMeshes.forEach(function (atom) {
-      atom.visible = false;
-    });
-  }
+  //   atomMeshes.forEach(function (atom) {
+  //     atom.visible = false;
+  //   });
+  // }
 
-  if (isCube2Visible) {
-    sticks2.forEach(function (bond) {
-      bond.visible = true;
-    });
+  // if (isCube2Visible) {
+  //   sticks2.forEach(function (bond) {
+  //     bond.visible = true;
+  //   });
 
-    atomMeshes2.forEach(function (atom) {
-      atom.visible = true;
-    });
-  } else {
-    sticks2.forEach(function (bond) {
-      bond.visible = false;
-    });
+  //   atomMeshes2.forEach(function (atom) {
+  //     atom.visible = true;
+  //   });
+  // } else {
+  //   sticks2.forEach(function (bond) {
+  //     bond.visible = false;
+  //   });
 
-    atomMeshes2.forEach(function (atom) {
-      atom.visible = false;
-    });
-  }
+  //   atomMeshes2.forEach(function (atom) {
+  //     atom.visible = false;
+  //   });
+  // }
 }
 
 function render() {
@@ -330,7 +330,7 @@ function animate() {
   deltaTime = clock.getDelta();
   totalTime += deltaTime;
   world.step(1 / 600);
-  cannonDebugRenderer.update();
+  // cannonDebugRenderer.update();
   updateInteractions();
   updatePhysics();
   update();
