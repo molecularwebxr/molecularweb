@@ -341,8 +341,7 @@ function updateInteractions() {
   hydrogens1.forEach(function (hydrogen) {
     var hydrogenPosition = atomMeshes[hydrogen].position;
 
-    oxygens2.forEach(function (oxygenArr) {
-      var oxygen = oxygenArr[0];
+    oxygens2.forEach(function (oxygen) {
       var oxygenPosition = atomMeshes2[oxygen].position;
       var interactionKey = `${hydrogen}-${oxygen}`;
 
@@ -361,7 +360,6 @@ function updateInteractions() {
       if (distance < minDistance) {
         // Atoms are close but there's no constraint
         if (interactionIndex === -1) {
-          var hConstraints = [];
           var constraint = new CANNON.DistanceConstraint(
             atomBodies[hydrogen],
             atomBodies2[oxygen],
@@ -371,23 +369,9 @@ function updateInteractions() {
 
           world.addConstraint(constraint);
 
-          if (oxygenArr.length > 1) {
-            for (let index = 1; index < oxygenArr.length; index++) {
-              var hConstraint = new CANNON.DistanceConstraint(
-                atomBodies[hydrogen],
-                atomBodies2[oxygenArr[index]],
-                1.8,
-                constraintForce
-              );
-              world.addConstraint(hConstraint);
-              hConstraints.push(hConstraint);
-            }
-          }
-
           interactions1.push({
             key: interactionKey,
             constraint,
-            hConstraints
           });
           console.log("add " + distance);
         }
@@ -442,10 +426,6 @@ function updateInteractions() {
         if (interactionIndex !== -1) {
           var thisInteraction = interactions1[interactionIndex];
           world.removeConstraint(thisInteraction.constraint);
-
-          thisInteraction.hConstraints.forEach(function (constraint) {
-            world.removeConstraint(constraint);
-          })
 
           // Atoms are far, we should remove the connector if exists
           if ("connector" in interactions1[interactionIndex]) {
@@ -551,8 +531,7 @@ function updateInteractions() {
   hydrogens2.forEach(function (hydrogen) {
     var hydrogenPosition = atomMeshes2[hydrogen].position;
 
-    oxygens1.forEach(function (oxygenArr) {
-      var oxygen = oxygenArr[0];
+    oxygens1.forEach(function (oxygen) {
       var oxygenPosition = atomMeshes[oxygen].position;
       var interactionKey = `${hydrogen}-${oxygen}`;
 
@@ -571,7 +550,6 @@ function updateInteractions() {
       if (distance < minDistance) {
         // Atoms are close but there's no constraint
         if (interactionIndex === -1) {
-          var hConstraints = [];
           var constraint = new CANNON.DistanceConstraint(
             atomBodies2[hydrogen],
             atomBodies[oxygen],
@@ -581,23 +559,9 @@ function updateInteractions() {
 
           world.addConstraint(constraint);
 
-          if (oxygenArr.length > 1) {
-            for (let index = 1; index < oxygenArr.length; index++) {
-              var hConstraint = new CANNON.DistanceConstraint(
-                atomBodies2[hydrogen],
-                atomBodies[oxygenArr[index]],
-                1.8,
-                constraintForce
-              );
-              world.addConstraint(hConstraint);
-              hConstraints.push(hConstraint);
-            }
-          }
-
           interactions2.push({
             key: interactionKey,
             constraint,
-            hConstraints
           });
           console.log("add " + distance);
         }
@@ -652,10 +616,6 @@ function updateInteractions() {
         if (interactionIndex !== -1) {
           var thisInteraction = interactions2[interactionIndex];
           world.removeConstraint(thisInteraction.constraint);
-
-          thisInteraction.hConstraints.forEach(function (constraint) {
-            world.removeConstraint(constraint);
-          })
 
           // Atoms are far, we should remove the connector if exists
           if ("connector" in interactions2[interactionIndex]) {
