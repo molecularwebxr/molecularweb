@@ -33,8 +33,8 @@ var medium = 50;
 var low = 10;
 var defaultTemp = 200;
 var prevTemp = 0;
-var minDistance = 3;
-var bridgeDist = 2;
+var minDistance = 2.5;
+var bridgeDist = 1.5;
 var distanceConstraint = 0.1;
 var constraintForce = 10;
 
@@ -72,7 +72,7 @@ var cannonDebugRenderer;
 var lastCubeQuaternion = new THREE.Quaternion(0, 0, 0, 1);
 var lastCubeQuaternion2 = new THREE.Quaternion(0, 0, 0, 1);
 var sphereGeometry = new THREE.SphereBufferGeometry(0.05, 32, 16);
-var sphereMaterial = new THREE.MeshBasicMaterial({ color: "yellow" });
+var sphereMaterial = new THREE.MeshLambertMaterial({ color: "yellow" });
 var dummy = new THREE.Object3D();
 
 startAR.addEventListener("click", handleClick);
@@ -341,7 +341,8 @@ function updateInteractions() {
   hydrogens1.forEach(function (hydrogen) {
     var hydrogenPosition = atomMeshes[hydrogen].position;
 
-    oxygens2.forEach(function (oxygen) {
+    oxygens2.forEach(function (oxygenArr) {
+      var oxygen = oxygenArr[0];
       var oxygenPosition = atomMeshes2[oxygen].position;
       var interactionKey = `${hydrogen}-${oxygen}`;
 
@@ -360,16 +361,33 @@ function updateInteractions() {
       if (distance < minDistance) {
         // Atoms are close but there's no constraint
         if (interactionIndex === -1) {
+          var hConstraints = [];
           var constraint = new CANNON.DistanceConstraint(
             atomBodies[hydrogen],
             atomBodies2[oxygen],
             distanceConstraint,
             constraintForce
           );
+
           world.addConstraint(constraint);
+
+          if (oxygenArr.length > 1) {
+            for (let index = 1; index < oxygenArr.length; index++) {
+              var hConstraint = new CANNON.DistanceConstraint(
+                atomBodies[hydrogen],
+                atomBodies2[oxygenArr[index]],
+                1.8,
+                constraintForce
+              );
+              world.addConstraint(hConstraint);
+              hConstraints.push(hConstraint);
+            }
+          }
+
           interactions1.push({
             key: interactionKey,
             constraint,
+            hConstraints
           });
           console.log("add " + distance);
         }
@@ -424,6 +442,10 @@ function updateInteractions() {
         if (interactionIndex !== -1) {
           var thisInteraction = interactions1[interactionIndex];
           world.removeConstraint(thisInteraction.constraint);
+
+          thisInteraction.hConstraints.forEach(function (constraint) {
+            world.removeConstraint(constraint);
+          })
 
           // Atoms are far, we should remove the connector if exists
           if ("connector" in interactions1[interactionIndex]) {
@@ -529,7 +551,8 @@ function updateInteractions() {
   hydrogens2.forEach(function (hydrogen) {
     var hydrogenPosition = atomMeshes2[hydrogen].position;
 
-    oxygens1.forEach(function (oxygen) {
+    oxygens1.forEach(function (oxygenArr) {
+      var oxygen = oxygenArr[0];
       var oxygenPosition = atomMeshes[oxygen].position;
       var interactionKey = `${hydrogen}-${oxygen}`;
 
@@ -548,16 +571,33 @@ function updateInteractions() {
       if (distance < minDistance) {
         // Atoms are close but there's no constraint
         if (interactionIndex === -1) {
+          var hConstraints = [];
           var constraint = new CANNON.DistanceConstraint(
             atomBodies2[hydrogen],
             atomBodies[oxygen],
             distanceConstraint,
             constraintForce
           );
+
           world.addConstraint(constraint);
+
+          if (oxygenArr.length > 1) {
+            for (let index = 1; index < oxygenArr.length; index++) {
+              var hConstraint = new CANNON.DistanceConstraint(
+                atomBodies2[hydrogen],
+                atomBodies[oxygenArr[index]],
+                1.8,
+                constraintForce
+              );
+              world.addConstraint(hConstraint);
+              hConstraints.push(hConstraint);
+            }
+          }
+
           interactions2.push({
             key: interactionKey,
             constraint,
+            hConstraints
           });
           console.log("add " + distance);
         }
@@ -612,6 +652,10 @@ function updateInteractions() {
         if (interactionIndex !== -1) {
           var thisInteraction = interactions2[interactionIndex];
           world.removeConstraint(thisInteraction.constraint);
+
+          thisInteraction.hConstraints.forEach(function (constraint) {
+            world.removeConstraint(constraint);
+          })
 
           // Atoms are far, we should remove the connector if exists
           if ("connector" in interactions2[interactionIndex]) {
@@ -1014,7 +1058,7 @@ function loadPdb(rawPdb) {
       hydrogens1,
       constraints,
     ] = createSticks(pdb, atomBodies);
-    console.log(hydrogens1);
+    console.log(oxygens1);
 
     sticks.forEach(function (stick) {
       scene.add(stick);

@@ -188,7 +188,14 @@ function createSticks(pdb, bodies) {
 
     // Is it Oxygen?
     if (pdb.elements[atomIndex] === 7) {
-      oxygens.push(atomIndex);
+      var bondedHydrogens = [];
+      pdb.allBonds[atom].forEach(function (bondedAtom) {
+        var bondedAtomIndex = bondKeys.indexOf(bondedAtom);
+        if (pdb.elements[bondedAtomIndex] === 0) {
+          bondedHydrogens.push(bondedAtomIndex);
+        }
+      });
+      oxygens.push([atomIndex, ...bondedHydrogens]);
     }
 
     // Is it Nitrogen?
