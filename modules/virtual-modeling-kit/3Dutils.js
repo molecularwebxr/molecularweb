@@ -500,7 +500,7 @@ function createSpheres(pdb, renderType) {
     sphereMesh.position.z = pdb.zCoords[i] - pdb.zAvg;
     meshes.push(sphereMesh);
 
-    var sphereShape = new CANNON.Sphere(0.5 * elementradii[pdb.elements[i]]);
+    var sphereShape = new CANNON.Sphere(0.8 * elementradii[pdb.elements[i]]);
     var sphereBody = new CANNON.Body({
       mass: elementmasses[pdb.elements[i]],
       shape: sphereShape,

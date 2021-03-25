@@ -668,33 +668,35 @@ function updatePhysics() {
       (atomBodies[i].velocity.z / velsum) * velsum_expected;
   }
 
-  for (var i = 0; i < atoms; i++) {
-    mediax = mediax + atomBodies[i].position.x;
-    mediay = mediay + atomBodies[i].position.y;
-    mediaz = mediaz + atomBodies[i].position.z;
-  }
-
-  mediax = mediax / atoms;
-  mediay = mediay / atoms;
-  mediaz = mediaz / atoms;
-
   var cubePosition = new THREE.Vector3();
   sceneGroup.getWorldPosition(cubePosition);
 
   var cubeQuaternion = new THREE.Quaternion();
   sceneGroup.getWorldQuaternion(cubeQuaternion);
 
-  for (var i = 0; i < atoms; i++) {
-    atomBodies[i].position.x =
-      atomBodies[i].position.x + cubePosition.x - mediax;
-    atomBodies[i].position.y =
-      atomBodies[i].position.y + cubePosition.y - mediay;
-    atomBodies[i].position.z =
-      atomBodies[i].position.z + cubePosition.z - mediaz;
+  if (isCube1Visible) {
+    for (var i = 0; i < atoms; i++) {
+      mediax = mediax + atomBodies[i].position.x;
+      mediay = mediay + atomBodies[i].position.y;
+      mediaz = mediaz + atomBodies[i].position.z;
+    }
+  
+    mediax = mediax / atoms;
+    mediay = mediay / atoms;
+    mediaz = mediaz / atoms;
+
+    for (var i = 0; i < atoms; i++) {
+      atomBodies[i].position.x =
+        atomBodies[i].position.x + cubePosition.x - mediax;
+      atomBodies[i].position.y =
+        atomBodies[i].position.y + cubePosition.y - mediay;
+      atomBodies[i].position.z =
+        atomBodies[i].position.z + cubePosition.z - mediaz;
+    }
   }
 
-  const q = new THREE.Quaternion();
-  const inverse1 = new THREE.Quaternion();
+  var q = new THREE.Quaternion();
+  var inverse1 = new THREE.Quaternion();
   inverse1.copy(lastCubeQuaternion).invert();
 
   q.multiplyQuaternions(cubeQuaternion, inverse1);
@@ -797,33 +799,35 @@ function updatePhysics() {
       (atomBodies2[i].velocity.z / velsum) * velsum_expected;
   }
 
-  for (var i = 0; i < atoms2; i++) {
-    mediax2 = mediax2 + atomBodies2[i].position.x;
-    mediay2 = mediay2 + atomBodies2[i].position.y;
-    mediaz2 = mediaz2 + atomBodies2[i].position.z;
-  }
-
-  mediax2 = mediax2 / atoms2;
-  mediay2 = mediay2 / atoms2;
-  mediaz2 = mediaz2 / atoms2;
-
   var cubePosition2 = new THREE.Vector3();
   sceneGroup2.getWorldPosition(cubePosition2);
 
   var cubeQuaternion2 = new THREE.Quaternion();
   sceneGroup2.getWorldQuaternion(cubeQuaternion2);
 
-  for (var i = 0; i < atoms2; i++) {
-    atomBodies2[i].position.x =
-      atomBodies2[i].position.x + cubePosition2.x - mediax2;
-    atomBodies2[i].position.y =
-      atomBodies2[i].position.y + cubePosition2.y - mediay2;
-    atomBodies2[i].position.z =
-      atomBodies2[i].position.z + cubePosition2.z - mediaz2;
+  if (isCube2Visible) {
+    for (var i = 0; i < atoms2; i++) {
+      mediax2 = mediax2 + atomBodies2[i].position.x;
+      mediay2 = mediay2 + atomBodies2[i].position.y;
+      mediaz2 = mediaz2 + atomBodies2[i].position.z;
+    }
+  
+    mediax2 = mediax2 / atoms2;
+    mediay2 = mediay2 / atoms2;
+    mediaz2 = mediaz2 / atoms2;
+  
+    for (var i = 0; i < atoms2; i++) {
+      atomBodies2[i].position.x =
+        atomBodies2[i].position.x + cubePosition2.x - mediax2;
+      atomBodies2[i].position.y =
+        atomBodies2[i].position.y + cubePosition2.y - mediay2;
+      atomBodies2[i].position.z =
+        atomBodies2[i].position.z + cubePosition2.z - mediaz2;
+    }
   }
 
-  const q2 = new THREE.Quaternion();
-  const inverse2 = new THREE.Quaternion();
+  var q2 = new THREE.Quaternion();
+  var inverse2 = new THREE.Quaternion();
   inverse2.copy(lastCubeQuaternion2).invert();
 
   q2.multiplyQuaternions(cubeQuaternion2, inverse2);
