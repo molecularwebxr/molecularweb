@@ -181,14 +181,21 @@ function createSticks(pdb, bodies) {
           pdb.elements[bondedAtomIndex] === 34 ||
           pdb.elements[bondedAtomIndex] === 52
         ) {
-          hydrogens.push(atomIndex);
+          hydrogens.push([atomIndex, bondedAtomIndex]);
         }
       });
     }
 
     // Is it Oxygen?
     if (pdb.elements[atomIndex] === 7) {
-      oxygens.push(atomIndex);
+      var bondedHydrogens = [];
+      pdb.allBonds[atom].forEach(function (bondedAtom) {
+        var bondedAtomIndex = bondKeys.indexOf(bondedAtom);
+        if (pdb.elements[bondedAtomIndex] === 0) {
+          bondedHydrogens.push(bondedAtomIndex);
+        }
+      });
+      oxygens.push([atomIndex, ...bondedHydrogens]);
     }
 
     // Is it Nitrogen?
