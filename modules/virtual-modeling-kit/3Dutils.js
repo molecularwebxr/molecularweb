@@ -9,7 +9,7 @@ var CONSTRAINT_2 = 10;
 var CONSTRAINT_3 = 100;
 
 var radiusfactor1 = 0.35;
-var radiusfactor2 = 1.4;
+var radiusfactor2 = 1.1;
 
 var sphereGeometry = new THREE.SphereBufferGeometry(1, 32, 16);
 
@@ -200,7 +200,14 @@ function createSticks(pdb, bodies) {
 
     // Is it Nitrogen?
     if (pdb.elements[atomIndex] === 6) {
-      nitrogens.push(atomIndex);
+      var bondedNitrogens = [];
+      pdb.allBonds[atom].forEach(function (bondedAtom) {
+        var bondedAtomIndex = bondKeys.indexOf(bondedAtom);
+        if (pdb.elements[bondedAtomIndex] === 0) {
+          bondedNitrogens.push(bondedAtomIndex);
+        }
+      });
+      nitrogens.push([atomIndex, ...bondedNitrogens]);
     }
 
     var point1 = new THREE.Vector3(
@@ -482,6 +489,7 @@ function createSpheres(pdb, renderType) {
   //and the actual physical cannon spheres
   var shapes = [];
   var meshes = [];
+  var meshes2 = [];
   var bodies = [];
 
   var radiusFactor = renderType ? radiusfactor1 : radiusfactor2;
@@ -500,6 +508,18 @@ function createSpheres(pdb, renderType) {
     sphereMesh.position.z = pdb.zCoords[i] - pdb.zAvg;
     meshes.push(sphereMesh);
 
+    var clashMesh = new THREE.Mesh(
+      sphereGeometry,
+      new THREE.MeshLambertMaterial({ 
+          color: elementColors[pdb.elements[i]],
+          transparent: true, 
+          opacity: 0.5
+        })
+    );
+    clashMesh.visible = false;
+    clashMesh.scale.setScalar(elementradii[pdb.elements[i]] * radiusfactor2 * 1.1);
+    meshes2.push(clashMesh);
+
     var sphereShape = new CANNON.Sphere(0.8 * elementradii[pdb.elements[i]]);
     var sphereBody = new CANNON.Body({
       mass: elementmasses[pdb.elements[i]],
@@ -516,7 +536,7 @@ function createSpheres(pdb, renderType) {
     bodies.push(sphereBody);
     shapes.push(sphereShape);
   }
-  return [shapes, meshes, bodies];
+  return [shapes, meshes, meshes2, bodies];
 }
 
 function clearGroup(group) {
