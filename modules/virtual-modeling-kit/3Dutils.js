@@ -513,11 +513,18 @@ function createSticks(pdb, bodies) {
   var defaultConstraints = [];
 
   uniqueConstraints.forEach(function (atomPair) {
+    
+    var forceFactor = 1;
+
+    if (pdb.elements[atomPair[0]] === 0 || pdb.elements[atomPair[1]] === 0) {
+      forceFactor = 100;
+    }
+
     var constraint = new CANNON.DistanceConstraint(
       bodies[atomPair[0]],
       bodies[atomPair[1]],
       undefined,
-      CONSTRAINT_2
+      CONSTRAINT_2 * forceFactor
     );
     defaultConstraints.push(constraint);
   });

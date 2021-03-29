@@ -927,18 +927,6 @@ function handleRenderType(e) {
       bond.visible = false;
     });
 
-    atomBodies.forEach(function (body, index) {
-      body.removeShape(atomShapes[index]);
-      atomShapes[index].radius = 2 * elementradii[pdb.elements[index]];
-      // body.addShape(atomShapes[index]);
-    });
-
-    atomBodies2.forEach(function (body, index) {
-      body.removeShape(atomShapes2[index]);
-      atomShapes2[index].radius = 2 * elementradii[pdb2.elements[index]];
-      // body.addShape(atomShapes2[index]);
-    });
-
     atomMeshes.forEach(function (atom, index) {
       var scale = radiusfactor2 * elementradii[pdb.elements[index]];
       atom.scale.setScalar(scale);
@@ -955,18 +943,6 @@ function handleRenderType(e) {
 
     sticks2.forEach(function (bond) {
       bond.visible = true;
-    });
-
-    atomBodies.forEach(function (body, index) {
-      body.removeShape(atomShapes[index]);
-      atomShapes[index].radius = 0.5 * elementradii[pdb.elements[index]];
-      body.addShape(atomShapes[index]);
-    });
-
-    atomBodies2.forEach(function (body, index) {
-      body.removeShape(atomShapes2[index]);
-      atomShapes2[index].radius = 0.5 * elementradii[pdb2.elements[index]];
-      body.addShape(atomShapes2[index]);
     });
 
     atomMeshes.forEach(function (atom, index) {
@@ -1084,7 +1060,6 @@ function updateClashes() {
     var isAtom1Clashing = false;
     for (let j = 0; j < atoms2; j++) {
       var atomPosition2 = atomMeshes2[j].position;
-      var isAtom2Clashing = false;
 
       var distance = Math.sqrt(
         Math.pow(atomPosition.x - atomPosition2.x, 2) +
@@ -1092,13 +1067,36 @@ function updateClashes() {
           Math.pow(atomPosition.z - atomPosition2.z, 2)
       );
 
-      if (distance < 2) {
+      var cutOff = elementradii[pdb.elements[i]] + elementradii[pdb.elements[j]];
+
+      if (distance < cutOff * 1.2) {
         var isAtom1Clashing = true;
-        var isAtom2Clashing = true;
+        break;
       }
-      clashMeshes2[j].visible = isAtom2Clashing;
     }
     clashMeshes[i].visible = isAtom1Clashing;
+  }
+
+  for (let i = 0; i < atoms; i++) {
+    var atomPosition = atomMeshes2[i].position;
+    var isAtom2Clashing = false;
+    for (let j = 0; j < atoms2; j++) {
+      var atomPosition2 = atomMeshes[j].position;
+
+      var distance = Math.sqrt(
+        Math.pow(atomPosition.x - atomPosition2.x, 2) +
+          Math.pow(atomPosition.y - atomPosition2.y, 2) +
+          Math.pow(atomPosition.z - atomPosition2.z, 2)
+      );
+
+      var cutOff = elementradii[pdb.elements[i]] + elementradii[pdb.elements[j]];
+
+      if (distance < cutOff * 1.2) {
+        var isAtom2Clashing = true;
+        break;
+      }
+    }
+    clashMeshes2[i].visible = isAtom2Clashing;
   }
 }
 
