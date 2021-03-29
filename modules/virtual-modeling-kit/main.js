@@ -47,9 +47,7 @@ var atomShapes = [];
 var bonds = [];
 var sticks = [];
 var constraints = [];
-var hydrogens1 = [];
-var oxygens1 = [];
-var nitrogens1 = [];
+var interactiveAtoms1;
 var interactions1 = [];
 var atoms = 0;
 
@@ -60,9 +58,7 @@ var atomShapes2 = [];
 var bonds2 = [];
 var sticks2 = [];
 var constraints2 = [];
-var hydrogens2 = [];
-var oxygens2 = [];
-var nitrogens2 = [];
+var interactiveAtoms2;
 var interactions2 = [];
 var atoms2 = 0;
 
@@ -335,206 +331,75 @@ function animate() {
   totalTime += deltaTime;
   world.step(1 / 600);
   // cannonDebugRenderer.update();
-  updateInteractions();
+  if (atoms > 0 && atoms2 > 0) {
+    updateInteractions();
+  }
   updatePhysics();
   update();
   render();
 }
 
 function updateInteractions() {
-  hydrogens1.forEach(function (hydrogensArr) {
-    var hydrogen = hydrogensArr[0];
-    var hydrogenPosition = atomMeshes[hydrogen].position;
+  interactiveAtoms1.hydrogen.forEach(function (hydrogensArr) {
 
-    oxygens2.forEach(function (oxygenArr) {
-      var oxygen = oxygenArr[0];
-      var oxygenPosition = atomMeshes2[oxygen].position;
-
-      var interactionKey = `${hydrogen}-${oxygen}`;
-
-      // If the element exists returns index of the interaction
-      // If not, returns -1
-      var interactionIndex = interactions1.findIndex(function (interaction) {
-        return interaction.key === interactionKey;
-      });
-      var interactionExists = interactionIndex !== -1;
-
-      var bridgeKey = [...hydrogensArr, ...oxygenArr].sort().join("");
-      var isThereABridge = bridges.includes(bridgeKey);
-      var connectorExists = connectors.some(function (connector) {
-        return connector.key === bridgeKey
-      });
-
-      var distance = Math.sqrt(
-        Math.pow(hydrogenPosition.x - oxygenPosition.x, 2) +
-          Math.pow(hydrogenPosition.y - oxygenPosition.y, 2) +
-          Math.pow(hydrogenPosition.z - oxygenPosition.z, 2)
-      );
-
-      if (distance < minDistance) {
-
-        // Atoms are close but there's no constraint
-        if (!interactionExists && !isThereABridge) {
-          createInteraction(1, interactionKey, bridgeKey, atomBodies[hydrogen], atomBodies2[oxygen]);
-          console.log("add " + distance);
-        }
-
-      } else if (interactionExists) {
-        removeInteraction(1, interactionIndex, bridgeKey);
-        console.log("remove " + distance);
-      }
-
-      // Should we add/remove the connector
-      if ((distance < bridgeDist) && !connectorExists && interactionExists) {
-        addConnector(atomMeshes[hydrogen], atomMeshes2[oxygen], bridgeKey);
-      }
-      if ((distance > bridgeDist) && connectorExists && interactionExists) {
-        removeConnector(bridgeKey);
-      }
+    interactiveAtoms2.oxygen.forEach(function (oxygenArr) {
+      handleInteraction(oxygenArr, 2, hydrogensArr);
     });
 
-    nitrogens2.forEach(function (nitrogenArr) {
-      var nitrogen = nitrogenArr[0];
-      var nitrogenPosition = atomMeshes2[nitrogen].position;
-
-      var interactionKey = `${hydrogen}-${nitrogen}`;
-
-      // If the element exists returns index of the interaction
-      // If not, returns -1
-      var interactionIndex = interactions1.findIndex(function (interaction) {
-        return interaction.key === interactionKey;
-      });
-      var interactionExists = interactionIndex !== -1;
-
-      var bridgeKey = [...hydrogensArr, ...nitrogenArr].sort().join("");
-      var isThereABridge = bridges.includes(bridgeKey);
-      var connectorExists = connectors.some(function (connector) {
-        return connector.key === bridgeKey
-      });
-
-      var distance = Math.sqrt(
-        Math.pow(hydrogenPosition.x - nitrogenPosition.x, 2) +
-          Math.pow(hydrogenPosition.y - nitrogenPosition.y, 2) +
-          Math.pow(hydrogenPosition.z - nitrogenPosition.z, 2)
-      );
-
-      if (distance < minDistance) {
-
-        // Atoms are close but there's no constraint
-        if (!interactionExists && !isThereABridge) {
-          createInteraction(1, interactionKey, bridgeKey, atomBodies[hydrogen], atomBodies2[nitrogen]);
-          console.log("add " + distance);
-        }
-
-      } else if (interactionExists) {
-        removeInteraction(1, interactionIndex, bridgeKey);
-        console.log("remove " + distance);
-      }
-
-      // Should we add/remove the connector
-      if ((distance < bridgeDist) && !connectorExists && interactionExists) {
-        addConnector(atomMeshes[hydrogen], atomMeshes2[nitrogen], bridgeKey);
-      }
-      if ((distance > bridgeDist) && connectorExists && interactionExists) {
-        removeConnector(bridgeKey);
-      }
+    interactiveAtoms2.nitrogen.forEach(function (nitrogenArr) {
+      handleInteraction(nitrogenArr, 2, hydrogensArr);
     });
+
+    interactiveAtoms2.fluor.forEach(function (fluorArr) {
+      handleInteraction(fluorArr, 2, hydrogensArr);
+    });
+
+    interactiveAtoms2.sulfur.forEach(function (sulfurArr) {
+      handleInteraction(sulfurArr, 2, hydrogensArr);
+    });
+
+    interactiveAtoms2.chlorine.forEach(function (chlorineArr) {
+      handleInteraction(chlorineArr, 2, hydrogensArr);
+    });
+
+    interactiveAtoms2.bromine.forEach(function (bromineArr) {
+      handleInteraction(bromineArr, 2, hydrogensArr);
+    });
+
+    interactiveAtoms2.iodine.forEach(function (iodineArr) {
+      handleInteraction(iodineArr, 2, hydrogensArr);
+    });
+
   });
 
-  hydrogens2.forEach(function (hydrogensArr) {
-    var hydrogen = hydrogensArr[0];
-    var hydrogenPosition = atomMeshes2[hydrogen].position;
+  interactiveAtoms2.hydrogen.forEach(function (hydrogensArr) {
 
-    oxygens1.forEach(function (oxygenArr) {
-      var oxygen = oxygenArr[0];
-      var oxygenPosition = atomMeshes[oxygen].position;
-      var interactionKey = `${hydrogen}-${oxygen}`;
-
-      // If the element exists returns index of the interaction
-      // If not, returns -1
-      var interactionIndex = interactions2.findIndex(function (interaction) {
-        return interaction.key === interactionKey;
-      });
-      var interactionExists = interactionIndex !== -1;
-
-      var bridgeKey = [...hydrogensArr, ...oxygenArr].sort().join("");
-      var isThereABridge = bridges.includes(bridgeKey);
-      var connectorExists = connectors.some(function (connector) {
-        return connector.key === bridgeKey
-      });
-
-      var distance = Math.sqrt(
-        Math.pow(hydrogenPosition.x - oxygenPosition.x, 2) +
-          Math.pow(hydrogenPosition.y - oxygenPosition.y, 2) +
-          Math.pow(hydrogenPosition.z - oxygenPosition.z, 2)
-      );
-
-      if (distance < minDistance) {
-
-        // Atoms are close but there's no constraint
-        if (!interactionExists && !isThereABridge) {
-          createInteraction(2, interactionKey, bridgeKey, atomBodies2[hydrogen], atomBodies[oxygen]);
-          console.log("add " + distance);
-        }
-
-      } else if (interactionExists) {
-        removeInteraction(2, interactionIndex, bridgeKey);
-        console.log("remove " + distance);
-      }
-
-      // Should we add/remove the connector
-      if ((distance < bridgeDist) && !connectorExists && interactionExists) {
-        addConnector(atomMeshes2[hydrogen], atomMeshes[oxygen], bridgeKey);
-      }
-      if ((distance > bridgeDist) && connectorExists && interactionExists) {
-        removeConnector(bridgeKey);
-      }
+    interactiveAtoms1.oxygen.forEach(function (oxygenArr) {
+      handleInteraction(oxygenArr, 1, hydrogensArr);
     });
 
-    nitrogens1.forEach(function (nitrogenArr) {
-      var nitrogen = nitrogenArr[0];
-      var nitrogenPosition = atomMeshes[nitrogen].position;
-      var interactionKey = `${hydrogen}-${nitrogen}`;
+    interactiveAtoms1.nitrogen.forEach(function (nitrogenArr) {
+      handleInteraction(nitrogenArr, 1, hydrogensArr);
+    });
 
-      // If the element exists returns index of the interaction
-      // If not, returns -1
-      var interactionIndex = interactions2.findIndex(function (interaction) {
-        return interaction.key === interactionKey;
-      });
-      var interactionExists = interactionIndex !== -1;
+    interactiveAtoms1.fluor.forEach(function (fluorArr) {
+      handleInteraction(fluorArr, 1, hydrogensArr);
+    });
 
-      var bridgeKey = [...hydrogensArr, ...nitrogenArr].sort().join("");
-      var isThereABridge = bridges.includes(bridgeKey);
-      var connectorExists = connectors.some(function (connector) {
-        return connector.key === bridgeKey
-      });
+    interactiveAtoms1.sulfur.forEach(function (sulfurArr) {
+      handleInteraction(sulfurArr, 1, hydrogensArr);
+    });
 
-      var distance = Math.sqrt(
-        Math.pow(hydrogenPosition.x - nitrogenPosition.x, 2) +
-          Math.pow(hydrogenPosition.y - nitrogenPosition.y, 2) +
-          Math.pow(hydrogenPosition.z - nitrogenPosition.z, 2)
-      );
+    interactiveAtoms1.chlorine.forEach(function (chlorineArr) {
+      handleInteraction(chlorineArr, 1, hydrogensArr);
+    });
 
-      if (distance < minDistance) {
+    interactiveAtoms1.bromine.forEach(function (bromineArr) {
+      handleInteraction(bromineArr, 1, hydrogensArr);
+    });
 
-        // Atoms are close but there's no constraint
-        if (!interactionExists && !isThereABridge) {
-          createInteraction(2, interactionKey, bridgeKey, atomBodies2[hydrogen], atomBodies[nitrogen]);
-          console.log("add " + distance);
-        }
-
-      } else if (interactionExists) {
-        removeInteraction(2, interactionIndex, bridgeKey);
-        console.log("remove " + distance);
-      }
-
-      // Should we add/remove the connector
-      if ((distance < bridgeDist) && !connectorExists && interactionExists) {
-        addConnector(atomMeshes2[hydrogen], atomMeshes[nitrogen], bridgeKey);
-      }
-      if ((distance > bridgeDist) && connectorExists && interactionExists) {
-        removeConnector(bridgeKey);
-      }
+    interactiveAtoms1.iodine.forEach(function (iodineArr) {
+      handleInteraction(iodineArr, 1, hydrogensArr);
     });
   });
 
@@ -849,12 +714,9 @@ function loadPdb(rawPdb) {
     [
       sticks,
       bonds,
-      oxygens1,
-      nitrogens1,
-      hydrogens1,
+      interactiveAtoms1,
       constraints,
     ] = createSticks(pdb, atomBodies);
-    console.log(hydrogens1);
 
     sticks.forEach(function (stick) {
       scene.add(stick);
@@ -896,9 +758,7 @@ function loadPdb(rawPdb) {
     [
       sticks2,
       bonds2,
-      oxygens2,
-      nitrogens2,
-      hydrogens2,
+      interactiveAtoms2,
       constraints2,
     ] = createSticks(pdb2, atomBodies2);
 
@@ -1240,4 +1100,69 @@ function updateClashes() {
     }
     clashMeshes[i].visible = isAtom1Clashing;
   }
+}
+
+// This function handle the interaction of an element with H
+// elementArr is the array of interacive atoms of a certain element
+// cubeNumber corresponds to the cube where elementArr belongs
+// otherCube, otherMoleculeMeshes and otherMoleculeBodies corresponds to the other cube
+function handleInteraction(elementArr, cubeNumber, hydrogensArr) {   
+    var element = elementArr[0];
+
+    var thisMoleculeMeshes = cubeNumber === 1 ? atomMeshes : atomMeshes2;
+    var otherMoleculeMeshes = cubeNumber === 2 ? atomMeshes : atomMeshes2;
+
+    var thisMoleculeBodies = cubeNumber === 1 ? atomBodies : atomBodies2;
+    var otherMoleculeBodies = cubeNumber === 2 ? atomBodies : atomBodies2;
+
+    var elementPosition = thisMoleculeMeshes[element].position;
+
+    var hydrogen = hydrogensArr[0];
+    var hydrogenPosition = otherMoleculeMeshes[hydrogen].position;
+
+    var interactions = cubeNumber === 1 ? interactions2 : interactions1;
+    var otherCube = cubeNumber === 1 ? 2 : 1;
+
+    var interactionKey = `${hydrogen}-${element}`;
+
+    // If the element exists returns index of the interaction
+    // If not, returns -1
+    var interactionIndex = interactions.findIndex(function (interaction) {
+      return interaction.key === interactionKey;
+    });
+    var interactionExists = interactionIndex !== -1;
+
+    var bridgeKey = [...hydrogensArr, ...elementArr].sort().join("");
+    var isThereABridge = bridges.includes(bridgeKey);
+    var connectorExists = connectors.some(function (connector) {
+      return connector.key === bridgeKey
+    });
+
+    var distance = Math.sqrt(
+      Math.pow(hydrogenPosition.x - elementPosition.x, 2) +
+        Math.pow(hydrogenPosition.y - elementPosition.y, 2) +
+        Math.pow(hydrogenPosition.z - elementPosition.z, 2)
+    );
+
+    if (distance < minDistance) {
+
+      // Atoms are close but there's no constraint
+      if (!interactionExists && !isThereABridge) {
+        createInteraction(otherCube, interactionKey, bridgeKey, otherMoleculeBodies[hydrogen], thisMoleculeBodies[element]);
+        console.log("add " + distance);
+      }
+
+    } else if (interactionExists) {
+      removeInteraction(otherCube, interactionIndex, bridgeKey);
+      console.log("remove " + distance);
+    }
+
+    // Should we add/remove the connector
+    if ((distance < bridgeDist) && !connectorExists && interactionExists) {
+      addConnector(otherMoleculeMeshes[hydrogen], thisMoleculeMeshes[element], bridgeKey);
+    }
+    if ((distance > bridgeDist) && connectorExists && interactionExists) {
+      removeConnector(bridgeKey);
+    }
+    
 }

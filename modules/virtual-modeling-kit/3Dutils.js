@@ -157,9 +157,14 @@ function createSticks(pdb, bodies) {
   var constraints = [];
   var atomPairs = [];
   var doubleBondAtomPairs = [];
-  var hydrogens = [];
-  var oxygens = [];
-  var nitrogens = [];
+  var hydrogen = [];
+  var oxygen = [];
+  var nitrogen = [];
+  var fluor = [];
+  var sulfur = [];
+  var chlorine = [];
+  var bromine = [];
+  var iodine = [];
 
   bondKeys.forEach(function (atom, atomIndex) {
     //point1 is the first atom (i), point3 is the second atom (j)
@@ -181,7 +186,7 @@ function createSticks(pdb, bodies) {
           pdb.elements[bondedAtomIndex] === 34 ||
           pdb.elements[bondedAtomIndex] === 52
         ) {
-          hydrogens.push([atomIndex, bondedAtomIndex]);
+          hydrogen.push([atomIndex, bondedAtomIndex]);
         }
       });
     }
@@ -195,7 +200,7 @@ function createSticks(pdb, bodies) {
           bondedHydrogens.push(bondedAtomIndex);
         }
       });
-      oxygens.push([atomIndex, ...bondedHydrogens]);
+      oxygen.push([atomIndex, ...bondedHydrogens]);
     }
 
     // Is it Nitrogen?
@@ -207,7 +212,67 @@ function createSticks(pdb, bodies) {
           bondedNitrogens.push(bondedAtomIndex);
         }
       });
-      nitrogens.push([atomIndex, ...bondedNitrogens]);
+      nitrogen.push([atomIndex, ...bondedNitrogens]);
+    }
+
+    // Is it Fluor?
+    if (pdb.elements[atomIndex] === 8) {
+      var bondedFluors = [];
+      pdb.allBonds[atom].forEach(function (bondedAtom) {
+        var bondedAtomIndex = bondKeys.indexOf(bondedAtom);
+        if (pdb.elements[bondedAtomIndex] === 0) {
+          bondedFluors.push(bondedAtomIndex);
+        }
+      });
+      fluor.push([atomIndex, ...bondedFluors]);
+    }
+
+    // Is it Sulfur?
+    if (pdb.elements[atomIndex] === 15) {
+      var bondedSulfurs = [];
+      pdb.allBonds[atom].forEach(function (bondedAtom) {
+        var bondedAtomIndex = bondKeys.indexOf(bondedAtom);
+        if (pdb.elements[bondedAtomIndex] === 0) {
+          bondedSulfurs.push(bondedAtomIndex);
+        }
+      });
+      sulfur.push([atomIndex, ...bondedSulfurs]);
+    }
+
+     // Is it Chlorine?
+     if (pdb.elements[atomIndex] === 16) {
+      var bondedChlorines = [];
+      pdb.allBonds[atom].forEach(function (bondedAtom) {
+        var bondedAtomIndex = bondKeys.indexOf(bondedAtom);
+        if (pdb.elements[bondedAtomIndex] === 0) {
+          bondedChlorines.push(bondedAtomIndex);
+        }
+      });
+      chlorine.push([atomIndex, ...bondedChlorines]);
+    }
+
+    // Is it Bromine?
+    if (pdb.elements[atomIndex] === 34) {
+      var bondedBromines = [];
+      pdb.allBonds[atom].forEach(function (bondedAtom) {
+        var bondedAtomIndex = bondKeys.indexOf(bondedAtom);
+        if (pdb.elements[bondedAtomIndex] === 0) {
+          bondedBromines.push(bondedAtomIndex);
+        }
+      });
+      bromine.push([atomIndex, ...bondedBromines]);
+    }
+
+    // Is it Iodine?
+    if (pdb.elements[atomIndex] === 52) {
+      var bondedIodine = [];
+      pdb.allBonds[atom].forEach(function (bondedAtom) {
+        var bondedAtomIndex = bondKeys.indexOf(bondedAtom);
+        if (pdb.elements[bondedAtomIndex] === 0) {
+          bondedIodine.push(bondedAtomIndex);
+        }
+      });
+      iodine.push([atomIndex, ...bondedIodine]);
     }
 
     var point1 = new THREE.Vector3(
@@ -474,12 +539,21 @@ function createSticks(pdb, bodies) {
     constraintsFromDoubleBonds.push(constraint);
   });
 
+  var interactiveAtoms = {
+    oxygen,
+    nitrogen,
+    hydrogen,
+    fluor,
+    sulfur,
+    chlorine,
+    bromine,
+    iodine
+  }
+
   return [
     sticks,
     bonds,
-    oxygens,
-    nitrogens,
-    hydrogens,
+    interactiveAtoms,
     [...constraints, ...defaultConstraints, ...constraintsFromDoubleBonds],
   ];
 }
