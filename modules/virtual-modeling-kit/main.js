@@ -71,6 +71,8 @@ var isCube1Visible = false;
 var isCube2Visible = false;
 
 var isClashingActive = false;
+var isInteractionActive = false;
+var isBridgeActive = false;
 
 var cannonDebugRenderer;
 
@@ -89,7 +91,9 @@ reset.addEventListener("resetActivity", handleReset);
 stopTemp.addEventListener("stopTemp", handleStopTemp);
 playTemp.addEventListener("playTemp", handlePlayTemp);
 renderType.addEventListener("click", handleRenderType);
-switchClashes.addEventListener("change", handleClashes);
+switchClashes.addEventListener("change", handleClashesChange);
+switchInteractions.addEventListener("change", handleInteractionsChange);
+switchBridge.addEventListener("change", handleBridgeChange);
 window.addEventListener("camera-change", () => {
   handleFlip();
 });
@@ -409,7 +413,7 @@ function updateInteractions() {
     });
   });
 
-  updateConnectors();
+  updateConnectors(isBridgeActive);
 
   updateClashes(isClashingActive);
 }
@@ -1042,7 +1046,16 @@ function removeConnector(bridgeKey) {
   connectors.splice(connectorIndex, 1);
 }
 
-function updateConnectors() {
+function updateConnectors(isBridgeActive) {
+  if (!isBridgeActive) {
+    connectors.forEach(function (connector) {
+      connector.mesh.dispose();
+      scene.remove(connector.mesh);
+    });
+    connectors = [];
+    return;
+  }
+
   connectors.forEach(function (connector) {
     for (let index = 1; index < 10; index++) {
       var p0 = new THREE.Vector3();
@@ -1184,6 +1197,14 @@ function handleInteraction(elementArr, cubeNumber, hydrogensArr) {
   }
 }
 
-function handleClashes(e) {
-  isClashingActive = switchClashes.checked
+function handleClashesChange(e) {
+  isClashingActive = switchClashes.checked;
+}
+
+function handleInteractionsChange(e) {
+  isInteractionActive = switchInteractions.checked;
+}
+
+function handleBridgeChange(e) {
+  isBridgeActive = switchBridge.checked;
 }
