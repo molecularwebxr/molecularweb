@@ -26,6 +26,9 @@ var tempControls = document.querySelectorAll("temp-control");
 var stopTemp = document.querySelector("stop-temp");
 var playTemp = document.querySelector("play-temp");
 var renderType = document.querySelector("render-type-icon");
+var switchInteractions = document.getElementById("switch-interactions");
+var switchBridge = document.getElementById("switch-bridge");
+var switchClashes = document.getElementById("switch-clashes");
 
 var temperature = 5;
 var high = 100;
@@ -67,6 +70,8 @@ var selectedMarker = 1;
 var isCube1Visible = false;
 var isCube2Visible = false;
 
+var isClashingActive = false;
+
 var cannonDebugRenderer;
 
 var lastCubeQuaternion = new THREE.Quaternion(0, 0, 0, 1);
@@ -84,6 +89,7 @@ reset.addEventListener("resetActivity", handleReset);
 stopTemp.addEventListener("stopTemp", handleStopTemp);
 playTemp.addEventListener("playTemp", handlePlayTemp);
 renderType.addEventListener("click", handleRenderType);
+switchClashes.addEventListener("change", handleClashes);
 window.addEventListener("camera-change", () => {
   handleFlip();
 });
@@ -404,7 +410,8 @@ function updateInteractions() {
   });
 
   updateConnectors();
-  updateClashes();
+
+  updateClashes(isClashingActive);
 }
 
 function updatePhysics() {
@@ -1054,7 +1061,20 @@ function updateConnectors() {
   });
 }
 
-function updateClashes() {
+function updateClashes(isClashingActive) {
+
+  if (!isClashingActive) {
+    clashMeshes.forEach(function (mesh) {
+      mesh.visible = false;
+    });
+
+    clashMeshes2.forEach(function (mesh) {
+      mesh.visible = false;
+    });
+
+    return;
+  }
+
   for (let i = 0; i < atoms; i++) {
     var atomPosition = atomMeshes[i].position;
     var isAtom1Clashing = false;
@@ -1105,62 +1125,65 @@ function updateClashes() {
 // cubeNumber corresponds to the cube where elementArr belongs
 // otherCube, otherMoleculeMeshes and otherMoleculeBodies corresponds to the other cube
 function handleInteraction(elementArr, cubeNumber, hydrogensArr) {   
-    var element = elementArr[0];
+  var element = elementArr[0];
 
-    var thisMoleculeMeshes = cubeNumber === 1 ? atomMeshes : atomMeshes2;
-    var otherMoleculeMeshes = cubeNumber === 2 ? atomMeshes : atomMeshes2;
+  var thisMoleculeMeshes = cubeNumber === 1 ? atomMeshes : atomMeshes2;
+  var otherMoleculeMeshes = cubeNumber === 2 ? atomMeshes : atomMeshes2;
 
-    var thisMoleculeBodies = cubeNumber === 1 ? atomBodies : atomBodies2;
-    var otherMoleculeBodies = cubeNumber === 2 ? atomBodies : atomBodies2;
+  var thisMoleculeBodies = cubeNumber === 1 ? atomBodies : atomBodies2;
+  var otherMoleculeBodies = cubeNumber === 2 ? atomBodies : atomBodies2;
 
-    var elementPosition = thisMoleculeMeshes[element].position;
+  var elementPosition = thisMoleculeMeshes[element].position;
 
-    var hydrogen = hydrogensArr[0];
-    var hydrogenPosition = otherMoleculeMeshes[hydrogen].position;
+  var hydrogen = hydrogensArr[0];
+  var hydrogenPosition = otherMoleculeMeshes[hydrogen].position;
 
-    var interactions = cubeNumber === 1 ? interactions2 : interactions1;
-    var otherCube = cubeNumber === 1 ? 2 : 1;
+  var interactions = cubeNumber === 1 ? interactions2 : interactions1;
+  var otherCube = cubeNumber === 1 ? 2 : 1;
 
-    var interactionKey = `${hydrogen}-${element}`;
+  var interactionKey = `${hydrogen}-${element}`;
 
-    // If the element exists returns index of the interaction
-    // If not, returns -1
-    var interactionIndex = interactions.findIndex(function (interaction) {
-      return interaction.key === interactionKey;
-    });
-    var interactionExists = interactionIndex !== -1;
+  // If the element exists returns index of the interaction
+  // If not, returns -1
+  var interactionIndex = interactions.findIndex(function (interaction) {
+    return interaction.key === interactionKey;
+  });
+  var interactionExists = interactionIndex !== -1;
 
-    var bridgeKey = [...hydrogensArr, ...elementArr].sort().join("");
-    var isThereABridge = bridges.includes(bridgeKey);
-    var connectorExists = connectors.some(function (connector) {
-      return connector.key === bridgeKey
-    });
+  var bridgeKey = [...hydrogensArr, ...elementArr].sort().join("");
+  var isThereABridge = bridges.includes(bridgeKey);
+  var connectorExists = connectors.some(function (connector) {
+    return connector.key === bridgeKey
+  });
 
-    var distance = Math.sqrt(
-      Math.pow(hydrogenPosition.x - elementPosition.x, 2) +
-        Math.pow(hydrogenPosition.y - elementPosition.y, 2) +
-        Math.pow(hydrogenPosition.z - elementPosition.z, 2)
-    );
+  var distance = Math.sqrt(
+    Math.pow(hydrogenPosition.x - elementPosition.x, 2) +
+      Math.pow(hydrogenPosition.y - elementPosition.y, 2) +
+      Math.pow(hydrogenPosition.z - elementPosition.z, 2)
+  );
 
-    if (distance < minDistance) {
+  if (distance < minDistance) {
 
-      // Atoms are close but there's no constraint
-      if (!interactionExists && !isThereABridge) {
-        createInteraction(otherCube, interactionKey, bridgeKey, otherMoleculeBodies[hydrogen], thisMoleculeBodies[element]);
-        console.log("add " + distance);
-      }
-
-    } else if (interactionExists) {
-      removeInteraction(otherCube, interactionIndex, bridgeKey);
-      console.log("remove " + distance);
+    // Atoms are close but there's no constraint
+    if (!interactionExists && !isThereABridge) {
+      createInteraction(otherCube, interactionKey, bridgeKey, otherMoleculeBodies[hydrogen], thisMoleculeBodies[element]);
+      console.log("add " + distance);
     }
 
-    // Should we add/remove the connector
-    if ((distance < bridgeDist) && !connectorExists && interactionExists) {
-      addConnector(otherMoleculeMeshes[hydrogen], thisMoleculeMeshes[element], bridgeKey);
-    }
-    if ((distance > bridgeDist) && connectorExists && interactionExists) {
-      removeConnector(bridgeKey);
-    }
-    
+  } else if (interactionExists) {
+    removeInteraction(otherCube, interactionIndex, bridgeKey);
+    console.log("remove " + distance);
+  }
+
+  // Should we add/remove the connector
+  if ((distance < bridgeDist) && !connectorExists && interactionExists) {
+    addConnector(otherMoleculeMeshes[hydrogen], thisMoleculeMeshes[element], bridgeKey);
+  }
+  if ((distance > bridgeDist) && connectorExists && interactionExists) {
+    removeConnector(bridgeKey);
+  }
+}
+
+function handleClashes(e) {
+  isClashingActive = switchClashes.checked
 }
