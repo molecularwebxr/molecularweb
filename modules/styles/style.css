@@ -525,7 +525,7 @@ figure {
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
-  padding: 0.75rem 0.5rem;
+  padding: 1.5rem 1rem;
 }
 
 .triangle-temp {
@@ -538,16 +538,41 @@ figure {
   transform: translateY(-50%);
 }
 
+.controls-info {
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  padding: 1rem 0.75rem;
+  width: 300px;
+  /* margin-top: 15px; */
+}
+
+.controls-instructions {
+  font-family: "Roboto";
+  color: #ffffff;
+  font-size: 1rem;
+  text-align: left;
+  margin: 0 0 0 0.75rem !important;
+}
+
+.interaction-bottom {
+  padding: 1rem 0.75rem 0 0.75rem;
+  justify-content: space-around;
+}
+
 .interaction-controls {
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
 }
 
 .interaction-control {
   width: 100%;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.interaction-control:last-of-type {
+  margin-bottom: 0;
 }
 
 .interaction-control p {
