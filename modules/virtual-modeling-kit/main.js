@@ -350,6 +350,7 @@ function animate() {
 }
 
 function updateInteractions() {
+  
   interactiveAtoms1.hydrogen.forEach(function (hydrogensArr) {
 
     interactiveAtoms2.oxygen.forEach(function (oxygenArr) {
@@ -413,9 +414,28 @@ function updateInteractions() {
     });
   });
 
-  updateConnectors(isBridgeActive);
+  if (!isInteractionActive) {
+    interactions1.forEach(function (interaction) {
+      interaction.constraint.disable();
+    });
 
-  updateClashes(isClashingActive);
+    interactions2.forEach(function (interaction) {
+      interaction.constraint.disable();
+    });
+
+  } else {
+    interactions1.forEach(function (interaction) {
+      interaction.constraint.enable();
+    });
+
+    interactions2.forEach(function (interaction) {
+      interaction.constraint.enable();
+    });
+  }
+  
+  updateConnectors();
+
+  updateClashes();
 }
 
 function updatePhysics() {
@@ -1046,7 +1066,7 @@ function removeConnector(bridgeKey) {
   connectors.splice(connectorIndex, 1);
 }
 
-function updateConnectors(isBridgeActive) {
+function updateConnectors() {
   if (!isBridgeActive) {
     connectors.forEach(function (connector) {
       connector.mesh.dispose();
@@ -1074,7 +1094,7 @@ function updateConnectors(isBridgeActive) {
   });
 }
 
-function updateClashes(isClashingActive) {
+function updateClashes() {
 
   if (!isClashingActive) {
     clashMeshes.forEach(function (mesh) {
@@ -1175,7 +1195,8 @@ function handleInteraction(elementArr, cubeNumber, hydrogensArr) {
       Math.pow(hydrogenPosition.z - elementPosition.z, 2)
   );
 
-  if (distance < minDistance) {
+  // Should we add/remove the interaction?
+  if ((distance < minDistance)) {
 
     // Atoms are close but there's no constraint
     if (!interactionExists && !isThereABridge) {
@@ -1195,6 +1216,7 @@ function handleInteraction(elementArr, cubeNumber, hydrogensArr) {
   if ((distance > bridgeDist) && connectorExists && interactionExists) {
     removeConnector(bridgeKey);
   }
+
 }
 
 function handleClashesChange(e) {
