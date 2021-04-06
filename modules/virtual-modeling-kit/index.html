@@ -212,6 +212,38 @@
               <label for="switch-clashes" class="switch-label">Switch</label>
             </div>
           </div>
+
+          <div class="interaction-control row">
+            <p>Spheres marker 1</p>
+            <div class="switch">
+              <input id="switch-spheres-1" type="checkbox" class="switch-input" />
+              <label for="switch-spheres-1" class="switch-label">Switch</label>
+            </div>
+          </div>
+
+          <div class="interaction-control row">
+            <p>Spheres marker 2</p>
+            <div class="switch">
+              <input id="switch-spheres-2" type="checkbox" class="switch-input" />
+              <label for="switch-spheres-2" class="switch-label">Switch</label>
+            </div>
+          </div>
+
+          <div class="interaction-control row">
+            <p>Flip marker 1</p>
+            <div class="switch">
+              <input id="switch-flip-1" type="checkbox" class="switch-input" />
+              <label for="switch-flip-1" class="switch-label">Switch</label>
+            </div>
+          </div>
+
+          <div class="interaction-control row">
+            <p>Flip marker2</p>
+            <div class="switch">
+              <input id="switch-flip-2" type="checkbox" class="switch-input" />
+              <label for="switch-flip-2" class="switch-label">Switch</label>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -223,6 +255,7 @@
         <div class="bar-1"></div>
         <div class="bar-2"></div>
       </div>
+
       <div class="mk-left">
         <div class="modeling-info row">
           <p>👉</p>
@@ -232,9 +265,9 @@
           ></p>
         </div>
 
-        <div class="modeling-options row">
+        <div class="marker-options-container row">
           <div class="modeling-marker-options column">
-            <p data-i18n="orbitals.modelingKit.marker"></p>
+            <p id="marker-1" class="selected" data-i18n="orbitals.modelingKit.marker"></p>
             <a
               href="/assets/markers/cube.pdf"
               target="_blank"
@@ -242,6 +275,19 @@
               data-i18n="orbitals.modelingKit.getMarker"
             ></a>
           </div>
+    
+          <div class="modeling-marker-options column">
+            <p id="marker-2" data-i18n="orbitals.modelingKit.marker"></p>
+            <a
+              href="/assets/markers/cube.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="orbitals.modelingKit.getMarker"
+            ></a>
+          </div>
+        </div>
+
+        <div class="modeling-options row">
           <div class="row">
             <div class="pdb-load">
               <p

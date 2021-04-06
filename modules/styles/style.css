@@ -312,6 +312,14 @@ figure {
   transform: rotate(-45deg);
 }
 
+.marker-options-container {
+  width: 40%;
+  justify-content: space-between;
+  padding: 0 0.75rem;
+  margin: 1.5rem 0;
+  border: 1px solid red;
+}
+
 .modeling-info {
   border: 2px solid #ffffff;
   border-radius: 10px;
@@ -338,10 +346,16 @@ figure {
 
 .modeling-marker-options p {
   font-family: "Roboto";
-  color: #ffffff;
+  color: var(--lightergray);
   font-size: 18px;
   font-weight: bold;
   margin: 0 0 0.25rem 0;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.modeling-marker-options p.selected {
+  color: #ffffff;
 }
 
 .modeling-marker-options a {
@@ -556,7 +570,7 @@ figure {
 
 .interaction-bottom {
   padding: 1rem 0.75rem 0 0.75rem;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .interaction-controls {
@@ -568,7 +582,7 @@ figure {
 .interaction-control {
   width: 100%;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .interaction-control:last-of-type {

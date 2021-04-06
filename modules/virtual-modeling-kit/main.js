@@ -29,6 +29,10 @@ var renderType = document.querySelector("render-type-icon");
 var switchInteractions = document.getElementById("switch-interactions");
 var switchBridge = document.getElementById("switch-bridge");
 var switchClashes = document.getElementById("switch-clashes");
+var marker1 = document.getElementById("marker-1");
+var marker2 = document.getElementById("marker-2");
+var switchSpheres1 = document.getElementById("switch-spheres-1");
+var switchSpheres2 = document.getElementById("switch-spheres-2");
 
 var temperature = 5;
 var high = 100;
@@ -94,6 +98,10 @@ renderType.addEventListener("click", handleRenderType);
 switchClashes.addEventListener("change", handleClashesChange);
 switchInteractions.addEventListener("change", handleInteractionsChange);
 switchBridge.addEventListener("change", handleBridgeChange);
+marker1.addEventListener("click", handleMarkerSelection);
+marker2.addEventListener("click", handleMarkerSelection);
+// switchSpheres1.addEventListener("change", );
+// switchSpheres2.addEventListener("change", );
 window.addEventListener("camera-change", () => {
   handleFlip();
 });
@@ -350,9 +358,7 @@ function animate() {
 }
 
 function updateInteractions() {
-  
   interactiveAtoms1.hydrogen.forEach(function (hydrogensArr) {
-
     interactiveAtoms2.oxygen.forEach(function (oxygenArr) {
       handleInteraction(oxygenArr, 2, hydrogensArr);
     });
@@ -380,11 +386,9 @@ function updateInteractions() {
     interactiveAtoms2.iodine.forEach(function (iodineArr) {
       handleInteraction(iodineArr, 2, hydrogensArr);
     });
-
   });
 
   interactiveAtoms2.hydrogen.forEach(function (hydrogensArr) {
-
     interactiveAtoms1.oxygen.forEach(function (oxygenArr) {
       handleInteraction(oxygenArr, 1, hydrogensArr);
     });
@@ -422,7 +426,6 @@ function updateInteractions() {
     interactions2.forEach(function (interaction) {
       interaction.constraint.disable();
     });
-
   } else {
     interactions1.forEach(function (interaction) {
       interaction.constraint.enable();
@@ -432,7 +435,7 @@ function updateInteractions() {
       interaction.constraint.enable();
     });
   }
-  
+
   updateConnectors();
 
   updateClashes();
@@ -489,7 +492,7 @@ function updatePhysics() {
       mediay = mediay + atomBodies[i].position.y;
       mediaz = mediaz + atomBodies[i].position.z;
     }
-  
+
     mediax = mediax / atoms;
     mediay = mediay / atoms;
     mediaz = mediaz / atoms;
@@ -624,11 +627,11 @@ function updatePhysics() {
       mediay2 = mediay2 + atomBodies2[i].position.y;
       mediaz2 = mediaz2 + atomBodies2[i].position.z;
     }
-  
+
     mediax2 = mediax2 / atoms2;
     mediay2 = mediay2 / atoms2;
     mediaz2 = mediaz2 / atoms2;
-  
+
     for (var i = 0; i < atoms2; i++) {
       atomBodies2[i].position.x =
         atomBodies2[i].position.x + cubePosition2.x - mediax2;
@@ -742,12 +745,10 @@ function loadPdb(rawPdb) {
       world.addBody(sphere);
     });
 
-    [
-      sticks,
-      bonds,
-      interactiveAtoms1,
-      constraints,
-    ] = createSticks(pdb, atomBodies);
+    [sticks, bonds, interactiveAtoms1, constraints] = createSticks(
+      pdb,
+      atomBodies
+    );
 
     sticks.forEach(function (stick) {
       scene.add(stick);
@@ -763,7 +764,6 @@ function loadPdb(rawPdb) {
         body.position.x = -body.position.x;
       });
     }
-    selectedMarker = 2;
   } else {
     pdb2 = setupPdb(rawPdb);
     atoms2 = pdb2.atoms;
@@ -786,12 +786,10 @@ function loadPdb(rawPdb) {
       world.addBody(sphere);
     });
 
-    [
-      sticks2,
-      bonds2,
-      interactiveAtoms2,
-      constraints2,
-    ] = createSticks(pdb2, atomBodies2);
+    [sticks2, bonds2, interactiveAtoms2, constraints2] = createSticks(
+      pdb2,
+      atomBodies2
+    );
 
     sticks2.forEach(function (stick) {
       scene.add(stick);
@@ -1046,14 +1044,10 @@ function removeInteraction(cubeIndex, interactionIndex, bridgeKey) {
 }
 
 function addConnector(meshA, meshB, bridgeKey) {
-  var mesh = new THREE.InstancedMesh(
-    sphereGeometry,
-    sphereMaterial,
-    9
-  );
+  var mesh = new THREE.InstancedMesh(sphereGeometry, sphereMaterial, 9);
   mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage); // will be updated every frame
   scene.add(mesh);
-  connectors.push({meshA, meshB, mesh, key: bridgeKey});
+  connectors.push({ meshA, meshB, mesh, key: bridgeKey });
 }
 
 function removeConnector(bridgeKey) {
@@ -1081,21 +1075,20 @@ function updateConnectors() {
       var p0 = new THREE.Vector3();
       var p1 = new THREE.Vector3();
       var pf = new THREE.Vector3();
-  
+
       p0.setFromMatrixPosition(connector.meshA.matrixWorld);
       p1.setFromMatrixPosition(connector.meshB.matrixWorld);
       pf.lerpVectors(p0, p1, index / 10);
-  
+
       dummy.position.copy(pf);
       dummy.updateMatrix();
       connector.mesh.setMatrixAt(index, dummy.matrix);
     }
-    connector.mesh.instanceMatrix.needsUpdate = true
+    connector.mesh.instanceMatrix.needsUpdate = true;
   });
 }
 
 function updateClashes() {
-
   if (!isClashingActive) {
     clashMeshes.forEach(function (mesh) {
       mesh.visible = false;
@@ -1120,7 +1113,8 @@ function updateClashes() {
           Math.pow(atomPosition.z - atomPosition2.z, 2)
       );
 
-      var cutOff = elementradii[pdb.elements[i]] + elementradii[pdb.elements[j]];
+      var cutOff =
+        elementradii[pdb.elements[i]] + elementradii[pdb.elements[j]];
 
       if (distance < cutOff * 1.2) {
         var isAtom1Clashing = true;
@@ -1142,7 +1136,8 @@ function updateClashes() {
           Math.pow(atomPosition.z - atomPosition2.z, 2)
       );
 
-      var cutOff = elementradii[pdb.elements[i]] + elementradii[pdb.elements[j]];
+      var cutOff =
+        elementradii[pdb.elements[i]] + elementradii[pdb.elements[j]];
 
       if (distance < cutOff * 1.2) {
         var isAtom2Clashing = true;
@@ -1157,7 +1152,7 @@ function updateClashes() {
 // elementArr is the array of interacive atoms of a certain element
 // cubeNumber corresponds to the cube where elementArr belongs
 // otherCube, otherMoleculeMeshes and otherMoleculeBodies corresponds to the other cube
-function handleInteraction(elementArr, cubeNumber, hydrogensArr) {   
+function handleInteraction(elementArr, cubeNumber, hydrogensArr) {
   var element = elementArr[0];
 
   var thisMoleculeMeshes = cubeNumber === 1 ? atomMeshes : atomMeshes2;
@@ -1186,7 +1181,7 @@ function handleInteraction(elementArr, cubeNumber, hydrogensArr) {
   var bridgeKey = [...hydrogensArr, ...elementArr].sort().join("");
   var isThereABridge = bridges.includes(bridgeKey);
   var connectorExists = connectors.some(function (connector) {
-    return connector.key === bridgeKey
+    return connector.key === bridgeKey;
   });
 
   var distance = Math.sqrt(
@@ -1196,27 +1191,34 @@ function handleInteraction(elementArr, cubeNumber, hydrogensArr) {
   );
 
   // Should we add/remove the interaction?
-  if ((distance < minDistance)) {
-
+  if (distance < minDistance) {
     // Atoms are close but there's no constraint
     if (!interactionExists && !isThereABridge) {
-      createInteraction(otherCube, interactionKey, bridgeKey, otherMoleculeBodies[hydrogen], thisMoleculeBodies[element]);
+      createInteraction(
+        otherCube,
+        interactionKey,
+        bridgeKey,
+        otherMoleculeBodies[hydrogen],
+        thisMoleculeBodies[element]
+      );
       console.log("add " + distance);
     }
-
   } else if (interactionExists) {
     removeInteraction(otherCube, interactionIndex, bridgeKey);
     console.log("remove " + distance);
   }
 
   // Should we add/remove the connector
-  if ((distance < bridgeDist) && !connectorExists && interactionExists) {
-    addConnector(otherMoleculeMeshes[hydrogen], thisMoleculeMeshes[element], bridgeKey);
+  if (distance < bridgeDist && !connectorExists && interactionExists) {
+    addConnector(
+      otherMoleculeMeshes[hydrogen],
+      thisMoleculeMeshes[element],
+      bridgeKey
+    );
   }
-  if ((distance > bridgeDist) && connectorExists && interactionExists) {
+  if (distance > bridgeDist && connectorExists && interactionExists) {
     removeConnector(bridgeKey);
   }
-
 }
 
 function handleClashesChange(e) {
@@ -1229,4 +1231,16 @@ function handleInteractionsChange(e) {
 
 function handleBridgeChange(e) {
   isBridgeActive = switchBridge.checked;
+}
+
+function handleMarkerSelection(e) {
+  if (e.target.id === "marker-1") {
+    selectedMarker = 1;
+    marker2.classList.remove("selected");
+    marker1.classList.add("selected");
+  } else {
+    selectedMarker = 2;
+    marker1.classList.remove("selected");
+    marker2.classList.add("selected");
+  }
 }
