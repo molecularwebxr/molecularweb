@@ -100,8 +100,8 @@ switchInteractions.addEventListener("change", handleInteractionsChange);
 switchBridge.addEventListener("change", handleBridgeChange);
 marker1.addEventListener("click", handleMarkerSelection);
 marker2.addEventListener("click", handleMarkerSelection);
-// switchSpheres1.addEventListener("change", );
-// switchSpheres2.addEventListener("change", );
+switchSpheres1.addEventListener("change", handleRenderType);
+switchSpheres2.addEventListener("change", handleRenderType);
 window.addEventListener("camera-change", () => {
   handleFlip();
 });
@@ -947,42 +947,51 @@ function handlePlayTemp(e) {
 function handleRenderType(e) {
   renderType.isActive = !renderType.isActive;
 
-  if (!renderType.isActive) {
-    sticks.forEach(function (bond) {
-      bond.visible = false;
-    });
-
-    sticks2.forEach(function (bond) {
-      bond.visible = false;
-    });
-
-    atomMeshes.forEach(function (atom, index) {
-      var scale = radiusfactor2 * elementradii[pdb.elements[index]];
-      atom.scale.setScalar(scale);
-    });
-
-    atomMeshes2.forEach(function (atom, index) {
-      var scale = radiusfactor2 * elementradii[pdb2.elements[index]];
-      atom.scale.setScalar(scale);
-    });
+  var markerSelected;
+  if (e.target.id === "switch-spheres-1") {
+    markerSelected = 1;
   } else {
-    sticks.forEach(function (bond) {
-      bond.visible = true;
-    });
+    markerSelected = 2;
+  }
 
-    sticks2.forEach(function (bond) {
-      bond.visible = true;
-    });
+  var isChecked = e.target.checked;
 
-    atomMeshes.forEach(function (atom, index) {
-      var scale = radiusfactor1 * elementradii[pdb.elements[index]];
-      atom.scale.setScalar(scale);
-    });
-
-    atomMeshes2.forEach(function (atom, index) {
-      var scale = radiusfactor1 * elementradii[pdb2.elements[index]];
-      atom.scale.setScalar(scale);
-    });
+  if (markerSelected === 1) {
+    if (isChecked) {
+      sticks.forEach(function (bond) {
+        bond.visible = false;
+      });
+      atomMeshes.forEach(function (atom, index) {
+        var scale = radiusfactor2 * elementradii[pdb.elements[index]];
+        atom.scale.setScalar(scale);
+      });
+    } else {
+      sticks.forEach(function (bond) {
+        bond.visible = true;
+      });
+      atomMeshes.forEach(function (atom, index) {
+        var scale = radiusfactor1 * elementradii[pdb.elements[index]];
+        atom.scale.setScalar(scale);
+      });
+    }
+  } else {
+    if (isChecked) {
+      sticks2.forEach(function (bond) {
+        bond.visible = false;
+      });
+      atomMeshes2.forEach(function (atom, index) {
+        var scale = radiusfactor2 * elementradii[pdb.elements[index]];
+        atom.scale.setScalar(scale);
+      });
+    } else {
+      sticks2.forEach(function (bond) {
+        bond.visible = true;
+      });
+      atomMeshes2.forEach(function (atom, index) {
+        var scale = radiusfactor1 * elementradii[pdb.elements[index]];
+        atom.scale.setScalar(scale);
+      });
+    }
   }
 }
 
