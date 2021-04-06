@@ -3,6 +3,7 @@ var zoomMenu = document.querySelector("zoom-icon");
 var camMenu = document.querySelector("camera-icon");
 var swapCam = document.querySelector("swap-camera");
 var tempMenuContainer = document.getElementById("temp-container");
+var interactionsContainer = document.getElementById("interaction-container");
 var zoomMenuContainer = document.getElementById("zoom-container");
 var camMenuContainer = document.getElementById("cam-container");
 var flipVideoButton = document.querySelector("flip-video");
@@ -105,6 +106,7 @@ function switchCam(e) {
 
 function handleTempMenu(e) {
   tempMenuContainer.classList.toggle("hide");
+  interactionsContainer.classList.toggle("hide");
   tempMenu.isActive = !tempMenu.isActive;
   if (mkMenu.isActive) {
     mkMenu.isActive = false;
@@ -130,6 +132,7 @@ function handleCamMenu(e) {
   if (tempMenu.isActive) {
     tempMenu.isActive = false;
     tempMenuContainer.classList.add("hide");
+    interactionsContainer.classList.add("hide");
   }
   if (zoomMenu.isActive) {
     zoomMenu.isActive = false;
@@ -147,6 +150,7 @@ function handleZoomMenu(e) {
   if (tempMenu.isActive) {
     tempMenu.isActive = false;
     tempMenuContainer.classList.add("hide");
+    interactionsContainer.classList.add("hide");
   }
   if (camMenu.isActive) {
     camMenu.isActive = false;

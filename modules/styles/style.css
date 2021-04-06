@@ -158,6 +158,11 @@ figure {
   margin: 14px auto;
 }
 
+.line.horizontal.long {
+  width: 100%;
+  margin: 12px 0;
+}
+
 .extra-info {
   display: flex;
   align-items: center;
@@ -534,12 +539,12 @@ figure {
 .temperature-container {
   position: fixed;
   top: 50%;
-  right: 76px;
+  right: 286px;
   transform: translateY(-86%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
-  padding: 1.5rem 1rem;
+  padding: 0.75rem 0.5rem;
 }
 
 .triangle-temp {
@@ -552,50 +557,45 @@ figure {
   transform: translateY(-50%);
 }
 
-.controls-info {
-  border: 2px solid #ffffff;
-  border-radius: 10px;
-  padding: 1rem 0.75rem;
-  width: 300px;
-  /* margin-top: 15px; */
-}
-
-.controls-instructions {
-  font-family: "Roboto";
-  color: #ffffff;
-  font-size: 1rem;
-  text-align: left;
-  margin: 0 0 0 0.75rem !important;
-}
-
-.interaction-bottom {
-  padding: 1rem 0.75rem 0 0.75rem;
-  justify-content: space-between;
-}
-
 .interaction-controls {
+  position: fixed;
+  top: 50%;
+  right: 76px;
+  transform: translateY(-86%);
+  z-index: 1;
+  background-color: var(--primarylight);
+  border-radius: 10px;
+  padding: 0.75rem 0.5rem;
   justify-content: center;
   align-items: center;
-  /* padding: 0.5rem; */
 }
 
 .interaction-control {
   width: 100%;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  align-items: center;
+  margin-bottom: 0.25rem;
 }
 
-.interaction-control:last-of-type {
+.interaction-control.no-margin {
   margin-bottom: 0;
+}
+.interaction-control-title  {
+  font-family: "Roboto";
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  margin: 0 0 0.5rem 0;
+  align-self: flex-start;
 }
 
 .interaction-control p {
   font-family: "Roboto";
   color: #ffffff;
-  font-size: 1rem;
+  font-size: 14px;
   text-align: left;
-  transition: 0.2s;
-  margin: 2px 0 0 0;
+  margin: 0 0 0 0;
 }
 
 .switch {
@@ -608,8 +608,8 @@ figure {
 }
 .switch-label {
   display: block;
-  width: 48px;
-  height: 24px;
+  width: 24px;
+  height: 14px;
   text-indent: -150%;
   clip: rect(0 0 0 0);
   color: transparent;
@@ -623,20 +623,20 @@ figure {
   cursor: pointer;
 }
 .switch-label::before {
-  width: 100%;
-  height: 100%;
+  width: 24px;
+  height: 14px;
   background-color: #dedede;
   border-radius: 9999em;
   -webkit-transition: background-color 0.1s ease;
   transition: background-color 0.1s ease;
 }
 .switch-label::after {
-  top: 0;
-  left: 0;
-  width: 24px;
-  height: 24px;
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: var(--primary);
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
   -webkit-transition: left 0.1s ease;
   transition: left 0.1s ease;
@@ -645,7 +645,8 @@ figure {
   background-color: var(--secondary);
 }
 .switch-input:checked + .switch-label::after {
-  left: 24px;
+  left: 12px;
+  
 }
 
 @media screen and (max-width: 768px) {
