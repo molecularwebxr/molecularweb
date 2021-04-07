@@ -17,7 +17,6 @@ var sceneGroup2;
 var pdb, pdb2;
 
 var startAR = document.getElementById("start-ar");
-var flipGraphics = document.querySelector("flip-graphics");
 var flipVideo = document.querySelector("flip-video");
 var scaleUp = document.getElementById("scale-up");
 var scaleDown = document.getElementById("scale-down");
@@ -25,7 +24,6 @@ var reset = document.querySelector("reset-activity");
 var tempControls = document.querySelectorAll("temp-control");
 var stopTemp = document.querySelector("stop-temp");
 var playTemp = document.querySelector("play-temp");
-var renderType = document.querySelector("render-type-icon");
 var switchInteractions = document.getElementById("switch-interactions");
 var switchBridge = document.getElementById("switch-bridge");
 var switchClashes = document.getElementById("switch-clashes");
@@ -33,6 +31,8 @@ var marker1 = document.getElementById("marker-1");
 var marker2 = document.getElementById("marker-2");
 var switchSpheres1 = document.getElementById("switch-spheres-1");
 var switchSpheres2 = document.getElementById("switch-spheres-2");
+var switchFlip1 = document.getElementById("switch-flip-1");
+var switchFlip2 = document.getElementById("switch-flip-2");
 
 var temperature = 5;
 var high = 100;
@@ -87,14 +87,12 @@ var sphereMaterial = new THREE.MeshLambertMaterial({ color: "yellow" });
 var dummy = new THREE.Object3D();
 
 startAR.addEventListener("click", handleClick);
-flipGraphics.addEventListener("flipGraphics", handleFlip);
 flipVideo.addEventListener("flipCamera", handleFlip);
 scaleUp.addEventListener("scaleGraphics", handleScale);
 scaleDown.addEventListener("scaleGraphics", handleScale);
 reset.addEventListener("resetActivity", handleReset);
 stopTemp.addEventListener("stopTemp", handleStopTemp);
 playTemp.addEventListener("playTemp", handlePlayTemp);
-renderType.addEventListener("click", handleRenderType);
 switchClashes.addEventListener("change", handleClashesChange);
 switchInteractions.addEventListener("change", handleInteractionsChange);
 switchBridge.addEventListener("change", handleBridgeChange);
@@ -102,6 +100,8 @@ marker1.addEventListener("click", handleMarkerSelection);
 marker2.addEventListener("click", handleMarkerSelection);
 switchSpheres1.addEventListener("change", handleRenderType);
 switchSpheres2.addEventListener("change", handleRenderType);
+switchFlip1.addEventListener("change", handleFlip);
+switchFlip2.addEventListener("change", handleFlip);
 window.addEventListener("camera-change", () => {
   handleFlip();
 });
@@ -124,8 +124,6 @@ window.addEventListener("markerLost", function (e) {
     isCube2Visible = false;
   }
 });
-
-renderType.isActive = true;
 
 var world = new CANNON.World();
 world.gravity.set(0, 0, 0);
@@ -733,7 +731,6 @@ function loadPdb(rawPdb) {
 
     [atomShapes, atomMeshes, clashMeshes, atomBodies] = createSpheres(
       pdb,
-      renderType.isActive
     );
 
     atomMeshes.forEach(function (sphere, index) {
@@ -774,7 +771,6 @@ function loadPdb(rawPdb) {
 
     [atomShapes2, atomMeshes2, clashMeshes2, atomBodies2] = createSpheres(
       pdb2,
-      renderType.isActive
     );
 
     atomMeshes2.forEach(function (sphere, index) {
@@ -833,6 +829,21 @@ function handleClick(e) {
 }
 
 function handleFlip(e) {
+  if (e.target.id === "switch-flip-1") {
+    atomBodies.forEach(function (body) {
+      body.position.x = -body.position.x;
+    });
+    return;
+  }
+
+  if (e.target.id === "switch-flip-2") {
+    atomBodies2.forEach(function (body) {
+      body.position.x = -body.position.x;
+    });
+    return;
+  }
+
+
   atomBodies.forEach(function (body) {
     body.position.x = -body.position.x;
   });
@@ -945,7 +956,6 @@ function handlePlayTemp(e) {
 }
 
 function handleRenderType(e) {
-  renderType.isActive = !renderType.isActive;
 
   var markerSelected;
   if (e.target.id === "switch-spheres-1") {

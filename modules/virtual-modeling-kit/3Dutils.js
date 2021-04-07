@@ -565,7 +565,7 @@ function createSticks(pdb, bodies) {
   ];
 }
 
-function createSpheres(pdb, renderType) {
+function createSpheres(pdb) {
   //this loop will create the spheres to display the atoms at the defined radius
   //and the actual physical cannon spheres
   var shapes = [];
@@ -573,7 +573,7 @@ function createSpheres(pdb, renderType) {
   var meshes2 = [];
   var bodies = [];
 
-  var radiusFactor = renderType ? radiusfactor1 : radiusfactor2;
+  var radiusFactor = radiusfactor1;
 
   for (var i = 0; i < pdb.atoms; i++) {
     var sphereRadius = radiusFactor * elementradii[pdb.elements[i]];
