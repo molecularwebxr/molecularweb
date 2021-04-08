@@ -722,10 +722,11 @@ function updatePhysics() {
 
 function loadPdb(rawPdb) {
   if (selectedMarker === 1) {
+    resetMarker1();
+    resetGeneral();
+
     pdb = setupPdb(rawPdb);
     atoms = pdb.atoms;
-
-    clearPhysics(atomBodies, constraints);
 
     console.time("VMK");
 
@@ -768,10 +769,11 @@ function loadPdb(rawPdb) {
     switchFlip1.disabled = false;
     switchSpheres1.disabled = false;
   } else {
+    resetMarker2();
+    resetGeneral();
+
     pdb2 = setupPdb(rawPdb);
     atoms2 = pdb2.atoms;
-
-    clearPhysics(atomBodies2, constraints2);
 
     console.time("VMK");
 
@@ -874,84 +876,10 @@ function handleScale(e) {
 }
 
 function handleReset(e) {
-  clearPhysics(atomBodies, constraints);
-  clearPhysics(atomBodies2, constraints2);
+  resetMarker1();
+  resetMarker2();
 
-  atomMeshes.forEach(function (mesh) {
-    scene.remove(mesh);
-    if (mesh.geometry) mesh.geometry.dispose();
-    if (mesh.material) mesh.material.dispose();
-    if (mesh.texture) mesh.texture.dispose();
-  });
-
-  clashMeshes.forEach(function (mesh) {
-    scene.remove(mesh);
-    if (mesh.geometry) mesh.geometry.dispose();
-    if (mesh.material) mesh.material.dispose();
-    if (mesh.texture) mesh.texture.dispose();
-  });
-
-  atomMeshes2.forEach(function (mesh) {
-    scene.remove(mesh);
-    if (mesh.geometry) mesh.geometry.dispose();
-    if (mesh.material) mesh.material.dispose();
-    if (mesh.texture) mesh.texture.dispose();
-  });
-
-  clashMeshes2.forEach(function (mesh) {
-    scene.remove(mesh);
-    if (mesh.geometry) mesh.geometry.dispose();
-    if (mesh.material) mesh.material.dispose();
-    if (mesh.texture) mesh.texture.dispose();
-  });
-
-  sticks.forEach(function (mesh) {
-    scene.remove(mesh);
-    if (mesh.geometry) mesh.geometry.dispose();
-    if (mesh.material) mesh.material.dispose();
-    if (mesh.texture) mesh.texture.dispose();
-  });
-
-  sticks2.forEach(function (mesh) {
-    scene.remove(mesh);
-    if (mesh.geometry) mesh.geometry.dispose();
-    if (mesh.material) mesh.material.dispose();
-    if (mesh.texture) mesh.texture.dispose();
-  });
-
-  connectors.forEach(function (connector) {
-    connector.mesh.dispose();
-    scene.remove(connector.mesh);
-  });
-  connectors = [];
-  bridges = [];
-
-  var cs = world.constraints;
-
-  for (var i = cs.length - 1; i >= 0; i--) {
-    world.removeConstraint(cs[i]);
-  }
-
-  atomMeshes = [];
-  atomBodies = [];
-  atomShapes = [];
-  bonds = [];
-  constraints = [];
-  interactiveAtoms1 = {};
-  interactions1 = [];
-  atoms = 0;
-
-  atomMeshes2 = [];
-  atomBodies2 = [];
-  atomShapes2 = [];
-  bonds2 = [];
-  constraints2 = [];
-  interactiveAtoms2 = {};
-  interactions2 = [];
-  atoms2 = 0;
-
-  temperature = 0;
-  selectedMarker = 1;
+  resetGeneral();
 
   handleMenu();
 }
@@ -1025,7 +953,7 @@ function handleRenderType(e) {
         bond.visible = false;
       });
       atomMeshes2.forEach(function (atom, index) {
-        var scale = radiusfactor2 * elementradii[pdb.elements[index]];
+        var scale = radiusfactor2 * elementradii[pdb2.elements[index]];
         atom.scale.setScalar(scale);
       });
     } else {
@@ -1033,7 +961,7 @@ function handleRenderType(e) {
         bond.visible = true;
       });
       atomMeshes2.forEach(function (atom, index) {
-        var scale = radiusfactor1 * elementradii[pdb.elements[index]];
+        var scale = radiusfactor1 * elementradii[pdb2.elements[index]];
         atom.scale.setScalar(scale);
       });
     }
@@ -1297,4 +1225,91 @@ function handleMarkerSelection(e) {
     marker1.classList.remove("selected");
     marker2.classList.add("selected");
   }
+}
+
+function resetMarker1() {
+  clearPhysics(atomBodies, constraints);
+
+  atomMeshes.forEach(function (mesh) {
+    scene.remove(mesh);
+    if (mesh.geometry) mesh.geometry.dispose();
+    if (mesh.material) mesh.material.dispose();
+    if (mesh.texture) mesh.texture.dispose();
+  });
+
+  clashMeshes.forEach(function (mesh) {
+    scene.remove(mesh);
+    if (mesh.geometry) mesh.geometry.dispose();
+    if (mesh.material) mesh.material.dispose();
+    if (mesh.texture) mesh.texture.dispose();
+  });
+
+  sticks.forEach(function (mesh) {
+    scene.remove(mesh);
+    if (mesh.geometry) mesh.geometry.dispose();
+    if (mesh.material) mesh.material.dispose();
+    if (mesh.texture) mesh.texture.dispose();
+  });
+
+  atomMeshes = [];
+  atomBodies = [];
+  atomShapes = [];
+  bonds = [];
+  constraints = [];
+  interactiveAtoms1 = {};
+  interactions1 = [];
+  atoms = 0;
+}
+
+
+function resetMarker2() {
+  clearPhysics(atomBodies2, constraints2);
+
+  atomMeshes2.forEach(function (mesh) {
+    scene.remove(mesh);
+    if (mesh.geometry) mesh.geometry.dispose();
+    if (mesh.material) mesh.material.dispose();
+    if (mesh.texture) mesh.texture.dispose();
+  });
+
+  clashMeshes2.forEach(function (mesh) {
+    scene.remove(mesh);
+    if (mesh.geometry) mesh.geometry.dispose();
+    if (mesh.material) mesh.material.dispose();
+    if (mesh.texture) mesh.texture.dispose();
+  });
+
+  sticks2.forEach(function (mesh) {
+    scene.remove(mesh);
+    if (mesh.geometry) mesh.geometry.dispose();
+    if (mesh.material) mesh.material.dispose();
+    if (mesh.texture) mesh.texture.dispose();
+  });
+
+  atomMeshes2 = [];
+  atomBodies2 = [];
+  atomShapes2 = [];
+  bonds2 = [];
+  constraints2 = [];
+  interactiveAtoms2 = {};
+  interactions2 = [];
+  atoms2 = 0;
+}
+
+function resetGeneral() {
+  connectors.forEach(function (connector) {
+    connector.mesh.dispose();
+    scene.remove(connector.mesh);
+  });
+  connectors = [];
+  bridges = [];
+
+  var cs = world.constraints;
+
+  for (var i = cs.length - 1; i >= 0; i--) {
+    world.removeConstraint(cs[i]);
+  }
+
+  temperature = 0;
+  selectedMarker = 1;
 }
