@@ -764,6 +764,9 @@ function loadPdb(rawPdb) {
     selectedMarker = 2;
     marker1.classList.remove("selected");
     marker2.classList.add("selected");
+
+    switchFlip1.disabled = false;
+    switchSpheres1.disabled = false;
   } else {
     pdb2 = setupPdb(rawPdb);
     atoms2 = pdb2.atoms;
@@ -806,6 +809,9 @@ function loadPdb(rawPdb) {
     selectedMarker = 1;
     marker2.classList.remove("selected");
     marker1.classList.add("selected");
+
+    switchFlip2.disabled = false;
+    switchSpheres2.disabled = false;
   }
 }
 
