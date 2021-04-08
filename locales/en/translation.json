@@ -64,7 +64,7 @@
       "temperature": "Temperature: ", 
       "sticks": "Sticks",
       "spheres": "Spheres",
-      "pdbInstructions": "Copy molecule in PDB format or load a preset example, then click “Start AR”",
+      "pdbInstructions": "Select a marker and copy molecule in PDB format or load a preset example, then click “Start AR”",
       "marker": "Marker",
       "getMarker": "Get marker",
       "loadFile": "Load your file",

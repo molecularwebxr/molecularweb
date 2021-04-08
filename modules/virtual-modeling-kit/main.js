@@ -761,6 +761,9 @@ function loadPdb(rawPdb) {
         body.position.x = -body.position.x;
       });
     }
+    selectedMarker = 2;
+    marker1.classList.remove("selected");
+    marker2.classList.add("selected");
   } else {
     pdb2 = setupPdb(rawPdb);
     atoms2 = pdb2.atoms;
@@ -800,6 +803,9 @@ function loadPdb(rawPdb) {
         body.position.x = -body.position.x;
       });
     }
+    selectedMarker = 1;
+    marker2.classList.remove("selected");
+    marker1.classList.add("selected");
   }
 }
 
@@ -872,7 +878,21 @@ function handleReset(e) {
     if (mesh.texture) mesh.texture.dispose();
   });
 
+  clashMeshes.forEach(function (mesh) {
+    scene.remove(mesh);
+    if (mesh.geometry) mesh.geometry.dispose();
+    if (mesh.material) mesh.material.dispose();
+    if (mesh.texture) mesh.texture.dispose();
+  });
+
   atomMeshes2.forEach(function (mesh) {
+    scene.remove(mesh);
+    if (mesh.geometry) mesh.geometry.dispose();
+    if (mesh.material) mesh.material.dispose();
+    if (mesh.texture) mesh.texture.dispose();
+  });
+
+  clashMeshes2.forEach(function (mesh) {
     scene.remove(mesh);
     if (mesh.geometry) mesh.geometry.dispose();
     if (mesh.material) mesh.material.dispose();
@@ -893,14 +913,25 @@ function handleReset(e) {
     if (mesh.texture) mesh.texture.dispose();
   });
 
+  connectors.forEach(function (connector) {
+    connector.mesh.dispose();
+    scene.remove(connector.mesh);
+  });
+  connectors = [];
+  bridges = [];
+
+  var cs = world.constraints;
+
+  for (var i = cs.length - 1; i >= 0; i--) {
+    world.removeConstraint(cs[i]);
+  }
+
   atomMeshes = [];
   atomBodies = [];
   atomShapes = [];
   bonds = [];
   constraints = [];
-  hydrogens1 = [];
-  oxygens1 = [];
-  nitrogens1 = [];
+  interactiveAtoms1 = {};
   interactions1 = [];
   atoms = 0;
 
@@ -909,9 +940,7 @@ function handleReset(e) {
   atomShapes2 = [];
   bonds2 = [];
   constraints2 = [];
-  hydrogens2 = [];
-  oxygens2 = [];
-  nitrogens2 = [];
+  interactiveAtoms2 = {};
   interactions2 = [];
   atoms2 = 0;
 
@@ -1133,7 +1162,7 @@ function updateClashes() {
       );
 
       var cutOff =
-        elementradii[pdb.elements[i]] + elementradii[pdb.elements[j]];
+        elementradii[pdb.elements[i]] + elementradii[pdb2.elements[j]];
 
       if (distance < cutOff * 1.2) {
         var isAtom1Clashing = true;
@@ -1143,10 +1172,10 @@ function updateClashes() {
     clashMeshes[i].visible = isAtom1Clashing;
   }
 
-  for (let i = 0; i < atoms; i++) {
+  for (let i = 0; i < atoms2; i++) {
     var atomPosition = atomMeshes2[i].position;
     var isAtom2Clashing = false;
-    for (let j = 0; j < atoms2; j++) {
+    for (let j = 0; j < atoms; j++) {
       var atomPosition2 = atomMeshes[j].position;
 
       var distance = Math.sqrt(
@@ -1156,7 +1185,7 @@ function updateClashes() {
       );
 
       var cutOff =
-        elementradii[pdb.elements[i]] + elementradii[pdb.elements[j]];
+        elementradii[pdb2.elements[i]] + elementradii[pdb.elements[j]];
 
       if (distance < cutOff * 1.2) {
         var isAtom2Clashing = true;
