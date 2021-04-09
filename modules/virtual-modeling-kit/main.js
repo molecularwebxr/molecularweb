@@ -835,8 +835,10 @@ function handleClick(e) {
 
   if (pdbInserted.length > 0) {
     loadPdb(pdbInserted);
-    handleMenu(e);
-    handleTempMenu(e);
+    if(atoms > 0 && atoms2 > 0) {
+      handleMenu(e);
+      handleTempMenu(e);
+    }
   } else {
     console.log("No pdb!");
   }
@@ -880,6 +882,14 @@ function handleReset(e) {
   resetMarker2();
 
   resetGeneral();
+
+  var cs = world.constraints;
+
+  for (var i = cs.length - 1; i >= 0; i--) {
+    world.removeConstraint(cs[i]);
+  }
+
+  selectedMarker = 1;
 
   handleMenu();
 }
@@ -1304,12 +1314,5 @@ function resetGeneral() {
   connectors = [];
   bridges = [];
 
-  var cs = world.constraints;
-
-  for (var i = cs.length - 1; i >= 0; i--) {
-    world.removeConstraint(cs[i]);
-  }
-
   temperature = 0;
-  selectedMarker = 1;
 }
