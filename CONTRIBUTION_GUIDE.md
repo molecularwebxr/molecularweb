@@ -7,6 +7,7 @@ If you are not sure how to do something with MoleculARweb, please let us know by
 You can reach out to us at:
 
 Luciano Abriata: luciano.abriata@epfl.ch
+
 Fabio Cortés: fabio.cortesrodriguez@epfl.ch
 
 ## File an issue
