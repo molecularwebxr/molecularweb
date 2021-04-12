@@ -1,4 +1,4 @@
-Interested in contributing? MoleculARweb is an open-source project with the goal of making chemistry and biology education available to anyone, anywhere, through augmented reality.
+Interested in contributing? MoleculARweb is an open-source project with the goal of making chemistry and biology education available to everyone, everywhere, through augmented reality.
 
 ## Get Help or Ask a Question
 
