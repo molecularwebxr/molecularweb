@@ -34,7 +34,7 @@ var switchSpheres2 = document.getElementById("switch-spheres-2");
 var switchFlip1 = document.getElementById("switch-flip-1");
 var switchFlip2 = document.getElementById("switch-flip-2");
 
-var temperature = 5;
+var temperature = 0;
 var high = 100;
 var medium = 50;
 var low = 10;
@@ -79,6 +79,8 @@ var isInteractionActive = false;
 var isBridgeActive = false;
 
 var cannonDebugRenderer;
+
+var counter = 0;
 
 var lastCubeQuaternion = new THREE.Quaternion(0, 0, 0, 1);
 var lastCubeQuaternion2 = new THREE.Quaternion(0, 0, 0, 1);
@@ -129,6 +131,31 @@ var world = new CANNON.World();
 world.gravity.set(0, 0, 0);
 world.broadphase = new CANNON.NaiveBroadphase();
 world.solver.iterations = 10;
+
+var ctx = document.getElementById('chart1').getContext('2d')
+var data = {
+  labels: [],
+  datasets: [{
+    data: [],
+    label: 'Energy',
+    // backgroundColor: '#F44436',
+    borderColor: '#F44436',
+    pointBackgroundColor: '#F44436'
+  }]
+}
+var optionsAnimations = {
+  animation: false,
+  legend: {
+    display: false
+  },
+  responsive: true
+}
+var chart1 = new Chart(ctx, {
+  type: 'line',
+  data: data,
+  options: optionsAnimations
+})
+
 
 initialize();
 animate();
@@ -347,9 +374,15 @@ function animate() {
   totalTime += deltaTime;
   world.step(1 / 600);
   // cannonDebugRenderer.update();
+
   if (atoms > 0 && atoms2 > 0) {
     updateInteractions();
   }
+
+  if (atoms > 0) {
+    updateEnergies();
+  }
+
   updatePhysics();
   update();
   render();
@@ -1315,4 +1348,64 @@ function resetGeneral() {
   bridges = [];
 
   temperature = 0;
+}
+
+function updateEnergies() {
+  counter += 1;
+
+  if(counter === 30) {
+    var coordinates2 = [];
+    var species2 = [];
+
+    var coordinates1 = atomBodies.map(function (atom) {
+      return [atom.position.x, atom.position.y, atom.position.z]
+    });
+
+    var species1 = pdb.elements.map(function (element) {
+      return element + 1;
+    });
+
+    if (atoms2 > 0) {
+      var coordinates2 = atomBodies2.map(function (atom) {
+        return [atom.position.x, atom.position.y, atom.position.z]
+      });
+      
+      var species2 = pdb2.elements.map(function (element) {
+        return element + 1;
+      });
+    }
+
+
+    var coordinates = [...coordinates1, ...coordinates2];
+    var species = [...species1, ...species2];
+
+    var data1 = {
+      coordinates: [coordinates],
+      species: [species],
+    };
+
+    fetch("http://127.0.0.1:5000/", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data1),
+    })
+      .then((response) => response.json())
+      .then((ani) => {
+        console.log(ani.energy)
+        var length = data.labels.length
+        if (length >= 30) {
+          data.datasets[0].data.shift()
+          data.labels.shift()
+        }
+
+        data.labels.push(temperature)
+        data.datasets[0].data.push(ani.energy * 627.509)
+
+        chart1.update()
+      });
+
+    counter = 0;
+  }
 }

@@ -36,6 +36,7 @@
     <script src="/lib/i18n/loc-i18next.min.js"></script>
     <script src="/lib/i18n/i18nextBrowserLanguageDetector.js"></script>
     <script src="/lib/i18n/i18nextHttpBackend.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js" integrity="sha512-BqNYFBAzGfZDnIWSAEGZSD/QFKeVxms2dIBPfw11gZubWwKUjEgmFUtUls8vZ6xTRZN/jaXGHD/ZaxD9+fDo0A==" crossorigin="anonymous"></script>
 
     <!-- Web Components -->
     <script src="/components/icons/atom/index.js"></script>
@@ -322,6 +323,10 @@
           data-i18n="orbitals.modelingKit.startAR"
         ></button>
       </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas class="chart flip" id="chart1"></canvas>
     </div>
 
     <!-- Overlays -->

@@ -648,6 +648,22 @@ figure {
   
 }
 
+.chart-container {
+  position: fixed;
+  bottom:0;
+  right: 0;
+  /* transform: translateY(-77%); */
+  z-index: 1;
+  width: 400px;
+  height: 240px;
+  background-color: azure;
+}
+
+.chart{
+  width: 400px;
+  height: 225px;
+}
+
 @media screen and (max-width: 768px) {
   .modeling-container {
     width: 50vw;
