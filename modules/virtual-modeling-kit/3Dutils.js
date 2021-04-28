@@ -77,7 +77,12 @@ function setupPdb(rawPdb) {
       pdb.xAvg = pdb.xAvg + pdb.xCoords[pdb.atoms];
       pdb.yAvg = pdb.yAvg + pdb.yCoords[pdb.atoms];
       pdb.zAvg = pdb.zAvg + pdb.zCoords[pdb.atoms];
-      var element = lines[i].substring(76, 79).trim().toUpperCase();
+      var element = lines[i]
+        .substring(75, 79)
+        .trim()
+        .replace("+", "")
+        .replace("-", "")
+        .toUpperCase();
       for (var j = 0; j < elementNames.length; j++) {
         if (element == elementNames[j]) {
           pdb.elements[pdb.atoms] = j;
@@ -239,8 +244,8 @@ function createSticks(pdb, bodies) {
       sulfur.push([atomIndex, ...bondedSulfurs]);
     }
 
-     // Is it Chlorine?
-     if (pdb.elements[atomIndex] === 16) {
+    // Is it Chlorine?
+    if (pdb.elements[atomIndex] === 16) {
       var bondedChlorines = [];
       pdb.allBonds[atom].forEach(function (bondedAtom) {
         var bondedAtomIndex = bondKeys.indexOf(bondedAtom);
@@ -513,7 +518,6 @@ function createSticks(pdb, bodies) {
   var defaultConstraints = [];
 
   uniqueConstraints.forEach(function (atomPair) {
-    
     var forceFactor = 1;
 
     if (pdb.elements[atomPair[0]] === 0 || pdb.elements[atomPair[1]] === 0) {
@@ -554,8 +558,8 @@ function createSticks(pdb, bodies) {
     sulfur,
     chlorine,
     bromine,
-    iodine
-  }
+    iodine,
+  };
 
   return [
     sticks,
@@ -591,14 +595,16 @@ function createSpheres(pdb) {
 
     var clashMesh = new THREE.Mesh(
       sphereGeometry,
-      new THREE.MeshLambertMaterial({ 
-          color: elementColors[pdb.elements[i]],
-          transparent: true, 
-          opacity: 0.5
-        })
+      new THREE.MeshLambertMaterial({
+        color: elementColors[pdb.elements[i]],
+        transparent: true,
+        opacity: 0.5,
+      })
     );
     clashMesh.visible = false;
-    clashMesh.scale.setScalar(elementradii[pdb.elements[i]] * radiusfactor2 * 1.1);
+    clashMesh.scale.setScalar(
+      elementradii[pdb.elements[i]] * radiusfactor2 * 1.1
+    );
     meshes2.push(clashMesh);
 
     var sphereShape = new CANNON.Sphere(0.008 * elementradii[pdb.elements[i]]);

@@ -379,7 +379,7 @@ figure {
   margin: 0 0 0.5rem 0;
 }
 
-.upload-pdb {
+.pdb-btn {
   background-color: #ffffff;
   color: var(--primary);
   padding: 3px 22px;
@@ -390,6 +390,11 @@ figure {
   line-height: 14px;
   text-align: center;
   cursor: pointer;
+}
+
+button.pdb-btn {
+  border: none;
+  outline: none;
 }
 
 .pdb-selector {
@@ -445,6 +450,10 @@ figure {
 
 .btn-primary:active {
   transform: scale(0.95);
+}
+
+.btn-primary.no-margin {
+  margin: 0
 }
 
 .temp-box {
@@ -649,6 +658,7 @@ figure {
 }
 
 .chart-container {
+  display: none;
   position: fixed;
   bottom:0;
   right: 0;
@@ -662,6 +672,150 @@ figure {
 .chart{
   width: 400px;
   height: 225px;
+}
+
+.overlay {
+  background-color: rgba(23, 58, 123, 0.6);
+  backdrop-filter: blur(14px);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: .5s ease-in;;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.jsme-container {
+  margin: 0 auto;
+  border-radius: 20px;
+  width: 650px;
+  height: 600px;
+  background-color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+}
+
+.jsme-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.jsme-bar-1 {
+  width: 20px;
+  height: 5px;
+  background: var(--secondary);
+  border-radius: 10px;
+  transform: rotate(45deg);
+}
+
+.jsme-bar-2 {
+  width: 20px;
+  height: 5px;
+  background: var(--secondary);
+  border-radius: 10px;
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+.jsme-container.out {
+  animation: animationOut .5s forwards;
+}
+
+.jsme-container.in {
+  animation: animationIn .5s forwards;
+}
+
+.jme-instructions {
+  font-family: "Roboto";
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.jme-search {
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.jme-input {
+  margin: 0 8px;
+  padding: 4px;
+  border: 3px solid var(--primary);
+  border-radius: 10px;
+  resize: none;
+  outline: none;
+  min-width: 80px;
+  max-width: 150px;
+  font-family: Roboto;
+  color: var(--primary);
+  font-size: 14px;
+}
+
+.jme-input::placeholder {
+  color: var(--primarylight);
+  font-size: 14px;
+  font-family: Roboto;
+}
+
+.jme-btns {
+  margin-top: 2rem;
+  width: 300px;
+  justify-content: space-between;
+}
+
+@keyframes animationIn {
+  0%{
+    transform: translateY(-3000px);
+  }
+  60%{
+    transform: translateY(25px);
+  }
+  75%{
+    transform: translateY(-10px);
+  }
+  90%{
+    transform: translateY(5px);
+  }
+}
+
+@keyframes animationOut {
+  0% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateY(5px);
+  }
+
+  100% {
+    transform: translateY(-3000px);
+  }
 }
 
 @media screen and (max-width: 768px) {

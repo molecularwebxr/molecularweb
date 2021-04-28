@@ -33,6 +33,10 @@ var switchSpheres1 = document.getElementById("switch-spheres-1");
 var switchSpheres2 = document.getElementById("switch-spheres-2");
 var switchFlip1 = document.getElementById("switch-flip-1");
 var switchFlip2 = document.getElementById("switch-flip-2");
+var jmeBtn = document.getElementById("jme-btn");
+var jmeBtnClose = document.getElementById("jsme-btn-close");
+var jmeModal = document.getElementById("jsme-container");
+var jmeOverlay = document.getElementById("jme-overlay");
 
 var temperature = 0;
 var high = 100;
@@ -104,6 +108,8 @@ switchSpheres1.addEventListener("change", handleRenderType);
 switchSpheres2.addEventListener("change", handleRenderType);
 switchFlip1.addEventListener("change", handleFlip);
 switchFlip2.addEventListener("change", handleFlip);
+jmeBtn.addEventListener("click", openJme);
+jmeBtnClose.addEventListener("click", closeJme);
 window.addEventListener("camera-change", () => {
   handleFlip();
 });
@@ -761,6 +767,8 @@ function loadPdb(rawPdb) {
     pdb = setupPdb(rawPdb);
     atoms = pdb.atoms;
 
+    console.log(pdb)
+
     console.time("VMK");
 
     [atomShapes, atomMeshes, clashMeshes, atomBodies] = createSpheres(
@@ -1384,7 +1392,7 @@ function updateEnergies() {
       species: [species],
     };
 
-    fetch("http://127.0.0.1:5000/", {
+    fetch(" https://molecularweb.epfl.ch/backend2", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
@@ -1408,4 +1416,16 @@ function updateEnergies() {
 
     counter = 0;
   }
+}
+
+function openJme(e) {
+  jmeModal.classList.remove("out");
+  jmeModal.classList.add("in");
+  jmeOverlay.classList.add("active");
+}
+
+function closeJme(e) {
+  jmeModal.classList.remove("in");
+  jmeOverlay.classList.remove("active");
+  jmeModal.classList.add("out");
 }

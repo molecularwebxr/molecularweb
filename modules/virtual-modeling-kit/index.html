@@ -30,13 +30,21 @@
     <script type="module" src="/lib/cannon-es.js"></script>
     <script src="/lib/ar.js"></script>
 
+    <!-- JSME -->
+    <script src="/lib/jsme/jsme.nocache.js"></script>
+    <script src="./jme.js"></script>
+
     <!-- Translation Libraries -->
     <script src="/lib/i18n/i18next.min.js"></script>
     <script src="/lib/i18n/i18next-wc.js"></script>
     <script src="/lib/i18n/loc-i18next.min.js"></script>
     <script src="/lib/i18n/i18nextBrowserLanguageDetector.js"></script>
     <script src="/lib/i18n/i18nextHttpBackend.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js" integrity="sha512-BqNYFBAzGfZDnIWSAEGZSD/QFKeVxms2dIBPfw11gZubWwKUjEgmFUtUls8vZ6xTRZN/jaXGHD/ZaxD9+fDo0A==" crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"
+      integrity="sha512-BqNYFBAzGfZDnIWSAEGZSD/QFKeVxms2dIBPfw11gZubWwKUjEgmFUtUls8vZ6xTRZN/jaXGHD/ZaxD9+fDo0A=="
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Web Components -->
     <script src="/components/icons/atom/index.js"></script>
@@ -137,7 +145,11 @@
       <div class="interaction-control row">
         <p>Attractive electrostatics</p>
         <div class="switch">
-          <input id="switch-interactions" type="checkbox" class="switch-input" />
+          <input
+            id="switch-interactions"
+            type="checkbox"
+            class="switch-input"
+          />
           <label for="switch-interactions" class="switch-label">Switch</label>
         </div>
       </div>
@@ -162,14 +174,24 @@
       <div class="interaction-control row">
         <p>Show spheres</p>
         <div class="switch">
-          <input id="switch-spheres-1" type="checkbox" disabled class="switch-input" />
+          <input
+            id="switch-spheres-1"
+            type="checkbox"
+            disabled
+            class="switch-input"
+          />
           <label for="switch-spheres-1" class="switch-label">Switch</label>
         </div>
       </div>
       <div class="interaction-control row no-margin">
         <p>Flip molecule</p>
         <div class="switch">
-          <input id="switch-flip-1" type="checkbox" disabled class="switch-input" />
+          <input
+            id="switch-flip-1"
+            type="checkbox"
+            disabled
+            class="switch-input"
+          />
           <label for="switch-flip-1" class="switch-label">Switch</label>
         </div>
       </div>
@@ -180,14 +202,24 @@
       <div class="interaction-control row">
         <p>Show spheres</p>
         <div class="switch">
-          <input id="switch-spheres-2" type="checkbox" disabled class="switch-input" />
+          <input
+            id="switch-spheres-2"
+            type="checkbox"
+            disabled
+            class="switch-input"
+          />
           <label for="switch-spheres-2" class="switch-label">Switch</label>
         </div>
       </div>
       <div class="interaction-control row no-margin">
         <p>Flip molecule</p>
         <div class="switch">
-          <input id="switch-flip-2" type="checkbox" disabled class="switch-input" />
+          <input
+            id="switch-flip-2"
+            type="checkbox"
+            disabled
+            class="switch-input"
+          />
           <label for="switch-flip-2" class="switch-label">Switch</label>
         </div>
       </div>
@@ -264,7 +296,7 @@
               data-i18n="orbitals.modelingKit.getMarker"
             ></a>
           </div>
-    
+
           <div class="modeling-marker-options column">
             <p id="marker-2">Marker 2</p>
             <a
@@ -284,13 +316,19 @@
                 data-i18n="orbitals.modelingKit.loadFile"
               ></p>
               <label
-                class="upload-pdb"
+                class="pdb-btn"
                 id="upload-label"
                 data-i18n="orbitals.modelingKit.load"
               >
                 <input id="pdb-input" name="pdb" type="file" hidden />
               </label>
             </div>
+
+            <div class="pdb-load">
+              <p class="pdb-option">JME title</p>
+              <button id="jme-btn" class="pdb-btn">JME</button>
+            </div>
+
             <div class="pdb-select">
               <p
                 class="pdb-option"
@@ -354,6 +392,32 @@
     <activity-overlay id="menu" default="hidden" type="menu">
       <span slot="title">MoleculARweb</span>
     </activity-overlay>
+
+    <div id="jme-overlay" class="overlay">
+      <div id="jsme-container" class="jsme-container out">
+        <div id="jsme-btn-close" class="jsme-close-btn">
+          <div id="bar-1" class="jsme-bar-1"></div>
+          <div id="bar-2" class="jsme-bar-2"></div>
+        </div>
+
+        <p class="jme-instructions">
+          Here we will present some instructions on how to use JSME and search
+        </p>
+
+        <div class="jme-search row">
+          <input id="string" class="jme-input" type="text" placeholder="butanol">
+          <button id="jme-search" class="btn-primary no-margin">Search from NCI</button>
+        </div>
+
+        <div id="appletContainer"></div>
+
+        <div class="jme-btns row">
+          <button class="btn-primary no-margin" id="jme-cancel">Cancel</button>
+          <button class="btn-primary no-margin" id="jme-continue">Continue</button>
+        </div>
+
+      </div>
+    </div>
 
     <script src="utils.js"></script>
     <script type="module" src="3Dutils.js"></script>
