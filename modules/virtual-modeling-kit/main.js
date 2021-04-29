@@ -37,6 +37,14 @@ var jmeBtn = document.getElementById("jme-btn");
 var jmeBtnClose = document.getElementById("jsme-btn-close");
 var jmeModal = document.getElementById("jsme-container");
 var jmeOverlay = document.getElementById("jme-overlay");
+var jmeInput = document.getElementById("jme-input");
+var jmeSearch = document.getElementById("jme-search");
+var jmeCancel = document.getElementById("jme-cancel");
+var jmeContinue = document.getElementById("jme-continue");
+
+var baseUrl = "https://cactus.nci.nih.gov/chemical/structure/";
+var pdbUrl = "/file?format=pdb&get3d=true";
+var jmeUrl = "/file?format=jme";
 
 var temperature = 0;
 var high = 100;
@@ -110,6 +118,9 @@ switchFlip1.addEventListener("change", handleFlip);
 switchFlip2.addEventListener("change", handleFlip);
 jmeBtn.addEventListener("click", openJme);
 jmeBtnClose.addEventListener("click", closeJme);
+jmeSearch.addEventListener("click", searchMol);
+jmeCancel.addEventListener("click", closeJme);
+jmeContinue.addEventListener("click", selectMol);
 window.addEventListener("camera-change", () => {
   handleFlip();
 });
@@ -138,30 +149,31 @@ world.gravity.set(0, 0, 0);
 world.broadphase = new CANNON.NaiveBroadphase();
 world.solver.iterations = 10;
 
-var ctx = document.getElementById('chart1').getContext('2d')
+var ctx = document.getElementById("chart1").getContext("2d");
 var data = {
   labels: [],
-  datasets: [{
-    data: [],
-    label: 'Energy',
-    // backgroundColor: '#F44436',
-    borderColor: '#F44436',
-    pointBackgroundColor: '#F44436'
-  }]
-}
+  datasets: [
+    {
+      data: [],
+      label: "Energy",
+      // backgroundColor: '#F44436',
+      borderColor: "#F44436",
+      pointBackgroundColor: "#F44436",
+    },
+  ],
+};
 var optionsAnimations = {
   animation: false,
   legend: {
-    display: false
+    display: false,
   },
-  responsive: true
-}
+  responsive: true,
+};
 var chart1 = new Chart(ctx, {
-  type: 'line',
+  type: "line",
   data: data,
-  options: optionsAnimations
-})
-
+  options: optionsAnimations,
+});
 
 initialize();
 animate();
@@ -767,13 +779,9 @@ function loadPdb(rawPdb) {
     pdb = setupPdb(rawPdb);
     atoms = pdb.atoms;
 
-    console.log(pdb)
-
     console.time("VMK");
 
-    [atomShapes, atomMeshes, clashMeshes, atomBodies] = createSpheres(
-      pdb,
-    );
+    [atomShapes, atomMeshes, clashMeshes, atomBodies] = createSpheres(pdb);
 
     atomMeshes.forEach(function (sphere, index) {
       scene.add(sphere);
@@ -818,9 +826,7 @@ function loadPdb(rawPdb) {
 
     console.time("VMK");
 
-    [atomShapes2, atomMeshes2, clashMeshes2, atomBodies2] = createSpheres(
-      pdb2,
-    );
+    [atomShapes2, atomMeshes2, clashMeshes2, atomBodies2] = createSpheres(pdb2);
 
     atomMeshes2.forEach(function (sphere, index) {
       scene.add(sphere);
@@ -876,7 +882,7 @@ function handleClick(e) {
 
   if (pdbInserted.length > 0) {
     loadPdb(pdbInserted);
-    if(atoms > 0 && atoms2 > 0) {
+    if (atoms > 0 && atoms2 > 0) {
       handleMenu(e);
       handleTempMenu(e);
     }
@@ -899,7 +905,6 @@ function handleFlip(e) {
     });
     return;
   }
-
 
   atomBodies.forEach(function (body) {
     body.position.x = -body.position.x;
@@ -970,7 +975,6 @@ function handlePlayTemp(e) {
 }
 
 function handleRenderType(e) {
-
   var markerSelected;
   if (e.target.id === "switch-spheres-1") {
     markerSelected = 1;
@@ -1312,7 +1316,6 @@ function resetMarker1() {
   atoms = 0;
 }
 
-
 function resetMarker2() {
   clearPhysics(atomBodies2, constraints2);
 
@@ -1361,12 +1364,12 @@ function resetGeneral() {
 function updateEnergies() {
   counter += 1;
 
-  if(counter === 30) {
+  if (counter === 30) {
     var coordinates2 = [];
     var species2 = [];
 
     var coordinates1 = atomBodies.map(function (atom) {
-      return [atom.position.x, atom.position.y, atom.position.z]
+      return [atom.position.x, atom.position.y, atom.position.z];
     });
 
     var species1 = pdb.elements.map(function (element) {
@@ -1375,14 +1378,13 @@ function updateEnergies() {
 
     if (atoms2 > 0) {
       var coordinates2 = atomBodies2.map(function (atom) {
-        return [atom.position.x, atom.position.y, atom.position.z]
+        return [atom.position.x, atom.position.y, atom.position.z];
       });
-      
+
       var species2 = pdb2.elements.map(function (element) {
         return element + 1;
       });
     }
-
 
     var coordinates = [...coordinates1, ...coordinates2];
     var species = [...species1, ...species2];
@@ -1401,17 +1403,17 @@ function updateEnergies() {
     })
       .then((response) => response.json())
       .then((ani) => {
-        console.log(ani.energy)
-        var length = data.labels.length
+        console.log(ani.energy);
+        var length = data.labels.length;
         if (length >= 30) {
-          data.datasets[0].data.shift()
-          data.labels.shift()
+          data.datasets[0].data.shift();
+          data.labels.shift();
         }
 
-        data.labels.push(temperature)
-        data.datasets[0].data.push(ani.energy * 627.509)
+        data.labels.push(temperature);
+        data.datasets[0].data.push(ani.energy * 627.509);
 
-        chart1.update()
+        chart1.update();
       });
 
     counter = 0;
@@ -1428,4 +1430,31 @@ function closeJme(e) {
   jmeModal.classList.remove("in");
   jmeOverlay.classList.remove("active");
   jmeModal.classList.add("out");
+}
+
+function searchMol(e) {
+  var string = jmeInput.value;
+
+  if (string.length > 3) {
+    jmeSearch.disabled = true;
+
+    fetch(baseUrl + string + jmeUrl)
+      .then((response) => response.text())
+      .then((data) => {
+        jsmeApplet.readMolecule(data);
+        jmeSearch.disabled = false;
+      });
+  }
+}
+
+function selectMol(e) {
+  var data = document.JME.smiles();
+  jmeContinue.disabled = true;
+  fetch(baseUrl + data + pdbUrl)
+    .then((response) => response.text())
+    .then((data) => {
+      jmeContinue.disabled = false;
+      pdbText.value = data;
+      closeJme();
+    });
 }
