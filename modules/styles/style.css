@@ -456,6 +456,11 @@ button.pdb-btn {
   margin: 0
 }
 
+.btn-primary.big {
+  font-size: 16px;
+  padding: 8px 24px;
+}
+
 .temp-box {
   color: #ffffff;
   font-family: "Roboto";
