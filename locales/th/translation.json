@@ -99,8 +99,8 @@
     "title": "โครงสร้างเชิงอะตอมของสารชีวะโมเลกุลขนาดใหญ่",
     "proteinDNA": {
       "title": "โครงสร้างของโปรตีนและดีเอ็นเอ",
-      "description": "Dock a domain of a transcription factor onto its cognate DNA; check the electrostatic interactions formed. This example comes from an experimental structure, PDB 1FJL.",
-      "instructions": "Drive each molecule with one AR marker, trying to find the correctly docked position."
+      "description": "นำโดเมนของ transcription factor ไปใกล้ๆ cognate DNA ของมัน; ดู electrostatic interactions ที่เกิดขึ้น. ตัวอย่างนี้มาจาก การทดลองโครงสร้าง, PDB 1FJL.",
+      "instructions": "ขยับโมเลกุลแต่ล่ะตัวด้วย AR marker, หาการเชื่อมกันที่ถูกต้อง."
     },
     "peptide": {
       "title": "Dock peptide on electron density",
@@ -109,11 +109,11 @@
     },
     "protein": {
       "title": "โครงสร้างทุติยภูมิของโปรตีน และ stabilizing interactions",
-      "description": "Inspect the detailed atomic structure, hydrogen bonds and salt bridges that stabilize protein secondary structures. You have an alpha helix on one AR marker and a beta sheet on the other.",
+      "description": "ตรวจสอบ the detailed atomic structure, พันธะไฮโดรเจน and สะพานไอออน that stabilize protein secondary structures. คุณมี alpha helix on one AR marker and a beta sheet on the other.",
       "instructions": "Click the buttons to toggle between the different representations."
     },
     "example": {
-      "title": "Compilation of atomistic structures of biomolecules",
+      "title": "รวมมิตร ของ โครงสร้างเชิงอะตอมของสารชีวะโมเลกุลขนาดใหญ่",
       "description": "Inspect a set of pre-made views of biological macromolecules.",
       "instructions": "Choose among the examples in the dropdown menus, to see one system on each marker.",
       "prot": {
