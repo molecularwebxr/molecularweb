@@ -69,7 +69,7 @@
       "getMarker": "Get marker",
       "loadFile": "Load your file",
       "load": "load",
-      "chooseExample": "Choose example",
+      "chooseExample": "เลือกตัวอย่าง",
       "examples": "--Examples--",
       "startAR": "Start AR",
       "placeholder": "Copy-paste molecule here"
@@ -84,14 +84,14 @@
     },
     "acidDeprotonation": {
       "title": "สมดุลการถ่ายโอนโปรตอนของกรดในน้ำ",
-      "description": "สำรวจวิธีที่โมเลกุลอะซิติกแอซิด จะสร้างพันธะไฮโดรเจนกับโมเลกุลของน้ำ และถ่ายโอนโปรตอนซึ่งทำให้ติดประจุลบ และน้ำกลายเป็นไฮโดรเนียมไอออน. อะตอมสีเทาคือ C, สีแดงคือ O, สีขาวคือ Hs. สมดุลไดานามิกเช่นนี้ทำให้เกิดค่าแตกตัวของกรดเรียก่า, Ka."
+      "description": "สำรวจวิธีที่โมเลกุลอะซิติกแอซิด จะสร้างพันธะไฮโดรเจนกับโมเลกุลของน้ำ และถ่ายโอนโปรตอนซึ่งทำให้ติดประจุลบ และน้ำกลายเป็นไฮโดรเนียมไอออน. อะตอมสีเทาคือ C, สีแดงคือ O, สีขาวคือ Hs. สมดุลไดานามิกเช่นนี้ทำให้เกิดค่าคงที่การแตกตัวของกรดเรียก่า, Ka."
     },
     "ammoniaProtonation": {
       "title": "สมดุลของ การได้รับโปรตอนของแอมโมเนีย ในน้ำ",
-      "description": "Explore how an ammonia molecule establishes hydrogen bonds with a water molecule and takes a proton becoming positively charged and forming a hydroxide anion. Grey atoms are C, red ones are O, white are Hs, blue is N. This dynamic equilibrium gives rise to the basic constant, Kb."
+      "description": "สำรวจว่า โมเลกุลแอมโมเนียสร้างพันธะไฮโดรเจนกับโมเลกุลน้ำได้อย่างไร และการได้รับโปรตอนทำให้แอมโมเนียมีประจุบวกและทำให้เกิด ไฮดรอกไซด์ไอออน. อะตอมสีเทาคือ C, สีแดงคือ O, สีขาวคือ Hs, สีน้ำเงินคือ N. สมดุลไดนามิกนี้ทำให้เกิดค่าคงที่การแตกตัวของเบสที่เรียกว่า, Kb."
     },
     "acidBase": {
-      "title": "Equilibrium between acidic and basic amino acid side chains",
+      "title": "สมดุลระหว่าง กรด และ เบส อะมิโนแอซิด side chains",
       "description": "Explore how the side chains of glutamate and lysine interconvert between charged and neutral species by exchanging protons. Grey atoms are C, red ones are O, white are Hs, blue is N. The yellow dots show the hydrogen bonds between H and O or N."
     }
   },
@@ -187,19 +187,19 @@
     "title": "Molecular modeling kit"
   },
   "surveys": {
-    "welcomeMsg": "สวัสดี, ขอบคุณสำหรับการใช้เว็บไซต์. We'd really appreciate that you take the time to share your experience with us",
-    "selectProfile": "Please, select if you are a student or teacher",
+    "welcomeMsg": "สวัสดี, ขอบคุณสำหรับการใช้เว็บไซต์. พวกเรารู้สึกขอบคุณมากๆ ที่คุณสละเวลาและแชร์ประสบการณ์กับพวกเรา",
+    "selectProfile": "กรุณาเลือก ถ้าคุณคือ นักเรียนหรือว่า อาจารย์",
     "educator": "อาจารย์",
     "student": "นักเรียน",
     "tellUs": "บอกพวกเราหน่อยสิ:",
     "textPlaceholder": "พิมคำตอบของคุณที่นี่",
     "contactUs": "คุณยังสามารถติดต่อพวกเราได้ที่ luciano.abriata@epfl.ch เพื่อที่จะเสนอไอเดียใหม่ๆ , ช่วยพวกเราเตรียมตัวอย่างใหม่ๆ, แชร์ประสบการณ์ของคุณให้เด็กๆ, และอื่นๆอีกมากมาย.",
     "questions": {
-      "usedARBefore": "I had used other augmented reality applications before using this website",
-      "easilyUse": "I could easily use this website to view molecules on the markers",
-      "understand": "Using augmented reality helped me to better understand the structures of molecules and chemistry concepts",
-      "interestInChemistry": "Using this website made me gain interest in chemistry",
-      "interestInTech": "Using this website made me gain interest in programming, augmented reality, etc",
+      "usedARBefore": "ฉันเคยใช้ augmented reality แอพพลิเคชั่น ก่อนที่จะเข้าเว็บนี้",
+      "easilyUse": "ฉันสามารถใช้เว็บไซต์นี้เพื่อที่จะแสดงโมเลกุลในแต่ล่ะมาร์เก้อ",
+      "understand": "การใช้ AR ช่วยทำให้ฉันเข้าใจโครงสร้างของโมเลกุลมากขึ้น และ เข้าใจในคอนเซ็ปของเคมี",
+      "interestInChemistry": "การใช้เว็บนี้ทำให้ฉันสนใจในเคมี",
+      "interestInTech": "การใช้เว็บนี้ทำให้ฉันสนใจในการเขียนโปรแกรม, augmented reality, และอื่นๆ",
       "place": "คุณเคยใช้เว็บไซต์นี้ที่โรงเรียน, บ้าน, หรือทั้ง2ที่?",
       "suggestions": "โมเลกุลหรือเนื้อหาอื่นๆที่คุณอยากจะให้เรา or content would you like that we prepare?",
       "liveIn": "คุณอาศัยอยู่ที่...",
@@ -210,7 +210,7 @@
       "emailAddress": "อีเมลล์ของคุณ, เพื่อที่จะได้รับข่าวสารใหม่ๆจากทางเว็บ."
     },
     "answers": {
-      "notAtAll": "Not at all",
+      "notAtAll": "ไม่สักนิดเดียว",
       "notReally": "Not really",
       "aLittle": "Yes, a little",
       "aLot": "Yes, a lot",
