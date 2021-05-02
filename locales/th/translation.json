@@ -255,8 +255,8 @@
     "privacyStart": "Here you can find the ",
     "privacyPolicy": "<u>privacy policy</u>.",
     "aboutAuthors": "เกี่ยวกับผู้เขียนหลัก: ",
-    "fabio": "Eng. Fabio Cortés Rodríguez เป็น วิศวกรรมซอฟแวร์ และ ผู้เชี่ยวชาญทางเทคโนโลยี, passionate about augmented and virtual reality and exploring the intersection between art and technology. Currently he is WebXR engineer at the Laboratory for Biomolecular Modeling at EPFL.",
-    "luciano": "Dr. Luciano A. Abriata is a biotechnologist with a PhD in chemistry and years of experience in biological nuclear magnetic resonance and in molecular modeling and simulations of biological systems, passionate about web programming and about modern human-computer technologies for improving work and education. He is currently the expert in NMR at EPFL’s Protein Biophysics group, and Senior Scientist at the Laboratory for Biomolecular Modeling at EPFL."
+    "fabio": "Eng. Fabio Cortés Rodríguez เป็น วิศวกรรมซอฟแวร์ และ ผู้เชี่ยวชาญทางเทคโนโลยี, มีความชอบเกี่ยวกับ augmented และ virtual reality และ สำรวจเส้นแบ่งระหว่าง ศิลปะและเทคโนโลยี. ตอนนี้ เขาเป็น วิศวะ WebXR ที่ห้องทดลอง สำหรับ Biomolecular Modeling ที่ EPFL.",
+    "luciano": "Dr. Luciano A. Abriata เป็น biotechnologist ด้วย ปริญญาเอก ใน เคมี และประสบการณ์หลายปีใน biological nuclear magnetic resonance และใน molecular modeling and simulations of biological systems, มีความชอบเกี่ยวกับ about การเขียนโปรแกรมบนเว็บไซต์ และเกี่ยวกับ modern human-computer technologies สำหรับการพัฒนา งาน และการศึกษา. ตอนนี้เขาเป็นผู้เชี่ยวชาญใน NMR ที่ EPFL’s Protein Biophysics group, และนักวิทยาศาสตร์อาวุโส ที่ Laboratory for Biomolecular Modeling ที่ EPFL."
   },
   "contact": {
     "firstPart": "หากจะร้องเรียนเรียนปัญหา, บัค หรือ เสนอข้อเสนอแนะ กรุณาติดต่อ  luciano.abriata@epfl.ch หรือ fabio.cortesrodriguez@epfl.ch",
