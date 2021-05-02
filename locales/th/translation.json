@@ -60,7 +60,7 @@
     "modelingKit": {
       "title": "Virtual modeling kit",
       "description": "แสดง โมเลกุล *ต่างๆ* จาก พิกัดของอะตอม, เพื่อที่จะสำรวจโครงสร้างและการเคลื่อนไหวของอะตอมใน ในรูปแบบAR",
-      "instructions": "Select a preset example or paste your own atomic coordinates, then launch AR experience. To see motions, raise temperature.",
+      "instructions": "เลือก ตัวอย่างที่มีไว้แล้วล่วงหน้า หรือวาง your own atomic coordinates, จากนั้นเปิด AR experience. เพื่อที่จะเห็นการเคลื่อนที่, เร่งอุณหภูมิ.",
       "temperature": "อุณหภูมิ: ", 
       "sticks": "แท่ง",
       "spheres": "ทรงกลม",
@@ -98,7 +98,7 @@
   "macromolecules": {
     "title": "โครงสร้างเชิงอะตอมของสารชีวะโมเลกุลขนาดใหญ่",
     "proteinDNA": {
-      "title": "Protein-DNA complex",
+      "title": "โครงสร้างของโปรตีนและดีเอ็นเอ",
       "description": "Dock a domain of a transcription factor onto its cognate DNA; check the electrostatic interactions formed. This example comes from an experimental structure, PDB 1FJL.",
       "instructions": "Drive each molecule with one AR marker, trying to find the correctly docked position."
     },
@@ -108,7 +108,7 @@
       "instructions": "Use the marker to dock the first group of atoms and once it’s docked you’ll have the chance to dock the second set. At the end you can inspect the full molecule fit inside its electron density."
     },
     "protein": {
-      "title": "Protein secondary structures and stabilizing interactions",
+      "title": "โครงสร้างทุติยภูมิของโปรตีน และ stabilizing interactions",
       "description": "Inspect the detailed atomic structure, hydrogen bonds and salt bridges that stabilize protein secondary structures. You have an alpha helix on one AR marker and a beta sheet on the other.",
       "instructions": "Click the buttons to toggle between the different representations."
     },
@@ -121,11 +121,11 @@
         "description": "A protein that binds DNA shown as cartoons, with the residues involved in DNA binding shown as sticks"
       },
       "dna": {
-        "title": "Piece of double-strand DNA",
+        "title": "ชิ้นส่วนของ ดีเอ็นเอสายคู่ ",
         "description": "A piece of double-strand DNA in B conformation"
       },
       "prot-dna": {
-        "title": "โปรตีน-ดีเอ็นเอ คอมเพล็กซ์",
+        "title": "โครงสร้างของโปรตีนและดีเอ็นเอ",
         "description": "A protein bound to its cognate DNA, where residues at the interface are shown as sticks"
       },
       "3hyd": {
@@ -153,23 +153,23 @@
   "biological": {
     "title": "Large biological assemblies",
     "nuclear": {
-      "title": "Nuclear pore complex",
+      "title": "นิวเคลียร์พอร์",
       "description": "Electron microscopy map of the human nuclear pore complex obtained in situ (EMDB-3103)",
       "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "ribosome": {
-      "title": "Ribosome loaded with mRNA and tRNAs",
+      "title": "ไรโบโซมที่ประกอบด้วย เอ็มอาร์เอ็นเอmRNA และ ทีอาร์เอ็นเอtRNAs",
       "description": "Cryo-electron microscopy structure of a mammal ribosome with a tRNA in the A/P position paired to a stretch of mRNA and another tRNA in the P/E position (PDB 6HCJ).",
       "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "bacteriophage": {
-      "title": "Bacteriophage on bacterial wall",
+      "title": "แบคทีรีโอฟาช Bacteriophage บน ผนังของเซลล์แบคทีเรียbacterial wall",
       "description": "Cryo-electron microscopy of a bacteriophage that has punched its needle through the two bacterial membranes (EMD-9010).",
       "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "sarscov2": {
-      "title": "SARS-Cov-2 spike – human ACE2 complex",
-      "description": "Integrative model of the SARS-Cov-2 spike protein bound to the human ACE2 (PDB IDs 6VYB, 6M17 and 6M0J), each embedded in a membrane patch.",
+      "title": "SARS-Cov-2 สไปค์ – human ACE2 complex",
+      "description": "Integrative model of the SARS-Cov-2 สไปค์ protein bound to the human ACE2 (PDB IDs 6VYB, 6M17 and 6M0J), each embedded in a membrane patch.",
       "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "bacterial": {
