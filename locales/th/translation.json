@@ -92,14 +92,14 @@
     },
     "acidBase": {
       "title": "สมดุลระหว่าง กรด และ เบส อะมิโนแอซิด side chains",
-      "description": "Explore how the side chains of glutamate and lysine interconvert between charged and neutral species by exchanging protons. Grey atoms are C, red ones are O, white are Hs, blue is N. The yellow dots show the hydrogen bonds between H and O or N."
+      "description": "สำรวจว่าแขนงข้าง (side chains) ของ กลูตาเมท และ ไลซีน สลับสับเปลี่ยนกัน ระหว่างประจุ และ สปีชี่ที่เป็นกลาง โดยการแลกเปลี่ยน โปรตอน. อะตอมสีเทาคือ C, สีแดงคือ O, สีขาวคือ Hs, สีน้ำเงินคือ N. จุดสีเหลืองแสดงพันธะไฮโดรเจน ระหว่าง H และ O หรือ N."
     }
   },
   "macromolecules": {
     "title": "โครงสร้างเชิงอะตอมของสารชีวะโมเลกุลขนาดใหญ่",
     "proteinDNA": {
       "title": "Protein-DNA complex",
-      "description": "Dock a do1main of a transcription factor onto its cognate DNA; check the electrostatic interactions formed. This example comes from an experimental structure, PDB 1FJL.",
+      "description": "Dock a domain of a transcription factor onto its cognate DNA; check the electrostatic interactions formed. This example comes from an experimental structure, PDB 1FJL.",
       "instructions": "Drive each molecule with one AR marker, trying to find the correctly docked position."
     },
     "peptide": {
@@ -138,15 +138,15 @@
       },
       "a-dna": {
         "title": "A-DNA",
-        "description": "ชิ้นส่วนของ double-stranded DNA in A conformation"
+        "description": "ชิ้นส่วนของ ดีเอ็นเอสายคู่ ใน โครงสร้าง A"
       },
       "b-dna": {
         "title": "B-DNA",
-        "description": "Piece of double-stranded DNA in B conformation"
+        "description": "ชิ้นส่วนของ ดีเอ็นเอสายคู่ ใน โครงสร้าง B"
       },
       "z-dna": {
         "title": "C-DNA",
-        "description": "Piece of double-stranded DNA in Z conformation"
+        "description": "ชิ้นส่วนของ ดีเอ็นเอสายคู่  ใน โครงสร้าง Z"
       }
     }
   },
@@ -178,8 +178,8 @@
       "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "nucleosome": {
-      "title": "Nucleosome",
-      "description": "X-ray structure of a nucleosome including the 4 histones and 2 rounds of ssDNA wrapped (PDB ID 1AOI).",
+      "title": "นิวคลีโอโซม",
+      "description": "โครงสร้าง X-Ray ของ นิวคลีโอโซม ประกอบไปด้วย 4 ฮิสโตน และ 2 rounds of ssDNA wrapped (PDB ID 1AOI).",
       "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     }
   },
