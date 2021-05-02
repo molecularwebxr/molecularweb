@@ -67,12 +67,12 @@
       "pdbInstructions": "Copy molecule in PDB format or load a preset example, then click “Start AR”",
       "marker": "Marker",
       "getMarker": "Get marker",
-      "loadFile": "Load your file",
-      "load": "load",
+      "loadFile": "โหลดไฟล์ของคุณ",
+      "load": "โหลด",
       "chooseExample": "เลือกตัวอย่าง",
-      "examples": "--Examples--",
-      "startAR": "Start AR",
-      "placeholder": "Copy-paste molecule here"
+      "examples": "--ตัวอย่าง--",
+      "startAR": "เริ่ม AR",
+      "placeholder": "คัดลอก-วาง โมเลกุล ที่นี่"
     }
   },
   "bonds": {
@@ -96,7 +96,7 @@
     }
   },
   "macromolecules": {
-    "title": "Atomistic structure of biological macromolecules",
+    "title": "โครงสร้างเชิงอะตอมของสารชีวะโมเลกุลขนาดใหญ่",
     "proteinDNA": {
       "title": "Protein-DNA complex",
       "description": "Dock a do1main of a transcription factor onto its cognate DNA; check the electrostatic interactions formed. This example comes from an experimental structure, PDB 1FJL.",
@@ -125,7 +125,7 @@
         "description": "A piece of double-strand DNA in B conformation"
       },
       "prot-dna": {
-        "title": "Protein-DNA complex",
+        "title": "โปรตีน-ดีเอ็นเอ คอมเพล็กซ์",
         "description": "A protein bound to its cognate DNA, where residues at the interface are shown as sticks"
       },
       "3hyd": {
@@ -138,7 +138,7 @@
       },
       "a-dna": {
         "title": "A-DNA",
-        "description": "Piece of double-stranded DNA in A conformation"
+        "description": "ชิ้นส่วนของ double-stranded DNA in A conformation"
       },
       "b-dna": {
         "title": "B-DNA",
@@ -211,29 +211,29 @@
     },
     "answers": {
       "notAtAll": "ไม่สักนิดเดียว",
-      "notReally": "Not really",
-      "aLittle": "Yes, a little",
-      "aLot": "Yes, a lot",
-      "perhaps": "Only 1, 2, perhaps 3 times",
-      "severalTimes": "Several times",
-      "didntWork": "No, I couldn’t make it work",
-      "hardToWork": "It was hard to make it work, but eventually succeeded",
-      "someEffort": "It took some effort the first time, but then was easy to use multiple times",
-      "easyToWork": "It was quite easy to use the website right from my first attempt",
-      "school": "At school only",
-      "home": "At home only",
-      "both": "Both at school and home",
-      "africa": "Africa",
-      "asia": "Asia",
-      "northAmerica": "North America",
-      "latam": "Latin America",
-      "europe": "Europe",
-      "middleEast": "Middle East",
-      "oceania": "Oceania"
+      "notReally": "ไม่ขนาดนั้น",
+      "aLittle": "ใช่, นิดเดียว",
+      "aLot": "ใช่, อย่างมาก",
+      "perhaps": "เฉพาะ 1, 2, บางที 3 ครั้ง",
+      "severalTimes": "หลายครั้ง",
+      "didntWork": "ไม่, ฉันไม่สามารถทำให้มันทำงานได้",
+      "hardToWork": "มันยากที่จะทำให้มันทำงานได้, แต่ท้ายที่สุดก็สำเร็จ",
+      "someEffort": "มันใช้ความพยายามในครั้งแรก, แต่หลังจากใช้งานไปหลายๆครั้งก็รู้สึกว่าทำง่ายขึ้น",
+      "easyToWork": "มันง่ายที่จะใช้เว็บไซต์นี้ถึงแม้ว่านี่จะเป็นการเข้าครั้งแรกของฉัน",
+      "school": "ที่โรงเรียนเท่านั้น",
+      "home": "ที่บ้านเท่านั้น",
+      "both": "ทั้งที่โรงเรียนและบ้าน",
+      "africa": "แอฟริกา",
+      "asia": "เอเชีย",
+      "northAmerica": "อเมริกา เหนือ",
+      "latam": "ลาติน อเมริกา",
+      "europe": "ยุโรป",
+      "middleEast": "ตะวันออกกลาง",
+      "oceania": "โอเชียเนีย"
     }
   },
   "about": {
-    "firstPart": "MoleculARweb is a website for chemistry and structural biology education through commodity, web-based augmented reality that you can use in your webcam-enabled computer, smartphone or tablet, just on your web browser. It was designed and programmed mainly by Fabio Cortés Rodríguez and Luciano A. Abriata from the  ",
+    "firstPart": "MoleculARweb คือเว็บไซต์สำหรับ เคมี และ structural biology education through commodity, web-based augmented reality that you can use in your webcam-enabled computer, smartphone or tablet, just on your web browser. It was designed and programmed mainly by Fabio Cortés Rodríguez and Luciano A. Abriata from the  ",
     "lbm_html": "<u>Laboratory of Biomolecular Modeling</u>",
     "epfl_html": "at <u>École Polytechnique Fédérale de Lausanne</u>",
     "secondPart": " (EPFL) in Switzerland, with help from several collaborators from the group as well as researchers and educators from other institutions. The project is funded by Spark grant CRSK-1_190376 from the ",
@@ -254,12 +254,12 @@
     "openSource": "This is an open source project, you can find the repository at GitHub: ",
     "privacyStart": "Here you can find the ",
     "privacyPolicy": "<u>privacy policy</u>.",
-    "aboutAuthors": "About the main authors: ",
-    "fabio": "Eng. Fabio Cortés Rodríguez  is a software engineer and technologist, passionate about augmented and virtual reality and exploring the intersection between art and technology. Currently he is WebXR engineer at the Laboratory for Biomolecular Modeling at EPFL.",
+    "aboutAuthors": "เกี่ยวกับผู้เขียนหลัก: ",
+    "fabio": "Eng. Fabio Cortés Rodríguez เป็น วิศวกรรมซอฟแวร์ และ ผู้เชี่ยวชาญทางเทคโนโลยี, passionate about augmented and virtual reality and exploring the intersection between art and technology. Currently he is WebXR engineer at the Laboratory for Biomolecular Modeling at EPFL.",
     "luciano": "Dr. Luciano A. Abriata is a biotechnologist with a PhD in chemistry and years of experience in biological nuclear magnetic resonance and in molecular modeling and simulations of biological systems, passionate about web programming and about modern human-computer technologies for improving work and education. He is currently the expert in NMR at EPFL’s Protein Biophysics group, and Senior Scientist at the Laboratory for Biomolecular Modeling at EPFL."
   },
   "contact": {
-    "firstPart": "To report problems, bugs or suggestions don’t hesitate to write us at luciano.abriata@epfl.ch or fabio.cortesrodriguez@epfl.ch",
+    "firstPart": "หากจะร้องเรียนเรียนปัญหา, บัค หรือ เสนอข้อเสนอแนะ กรุณาติดต่อ  luciano.abriata@epfl.ch หรือ fabio.cortesrodriguez@epfl.ch",
     "thirdPart": "และกรุณาทำแบบสอบถามที่ปรากฏใน ",
     "link": "เว็บ.",
     "fourthPart": "สำหรับข้อมูลเพิ่มเติมสำหรับเว็บไซต์, โปรเจ็กต์, และผู้เขียน, ไป ",
