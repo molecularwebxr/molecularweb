@@ -80,14 +80,14 @@
     "instructions": "ขยับ AR มาร์เก้อ เพื่อที่จะเห็น พันธะไฮโดรเจน และ การแลกเปลี่ยนโปรตอน โดย ให้โมเลกุล2ตัวเข้าหากันคนล่ะด้าน",
     "waterProtonation": {
       "title": "สมดุลการรับโปรตอนในน้ำ",
-      "description": "สังเกต น้ำ2โมเลกุล ทำพันธะไฮโดรเจนและการแลกเปลี่ยนโปรตอนไปมาระหว่างไฮโดรเนียมไอออน,น้ำ, ไฮดรอกไซด์ไอออน. The equilibrium is dynamic and gives rise to the water dissociation constant Kw."
+      "description": "สังเกต น้ำ2โมเลกุล ทำพันธะไฮโดรเจนและการแลกเปลี่ยนโปรตอนไปมาระหว่างไฮโดรเนียมไอออน,น้ำ, ไฮดรอกไซด์ไอออน. ปฏิกิริยาเป็น สมดุลไดนามิก และทำให้เกิดค่าการแตกตัวของน้ำ Kw."
     },
     "acidDeprotonation": {
-      "title": "Equilibria of acid deprotonation in water",
-      "description": "Explore how an acetic acid molecule establishes hydrogen bonds with a water molecule and transfers a proton becoming negatively charged and forming a hydronium cation. Grey atoms are C, red ones are O, white are Hs. This dynamic equilibrium gives rise to the acidic constant, Ka."
+      "title": "สมดุลการถ่ายโอนโปรตอนของกรดในน้ำ",
+      "description": "สำรวจวิธีที่โมเลกุลอะซิติกแอซิด จะสร้างพันธะไฮโดรเจนกับโมเลกุลของน้ำ และถ่ายโอนโปรตอนซึ่งทำให้ติดประจุลบ และน้ำกลายเป็นไฮโดรเนียมไอออน. อะตอมสีเทาคือ C, สีแดงคือ O, สีขาวคือ Hs. สมดุลไดานามิกเช่นนี้ทำให้เกิดค่าแตกตัวของกรดเรียก่า, Ka."
     },
     "ammoniaProtonation": {
-      "title": "Equilibria of ammonia protonation in water",
+      "title": "สมดุลของ การได้รับโปรตอนของแอมโมเนีย ในน้ำ",
       "description": "Explore how an ammonia molecule establishes hydrogen bonds with a water molecule and takes a proton becoming positively charged and forming a hydroxide anion. Grey atoms are C, red ones are O, white are Hs, blue is N. This dynamic equilibrium gives rise to the basic constant, Kb."
     },
     "acidBase": {
