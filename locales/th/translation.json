@@ -129,7 +129,7 @@
         "description": "A protein bound to its cognate DNA, where residues at the interface are shown as sticks"
       },
       "3hyd": {
-        "title": "Short peptide with all atoms",
+        "title": "เป็บไทน์ขนาดสั้น with all atoms",
         "description": "A short peptide shown as sticks at fully atomic detail, including hydrogens"
       },
       "1vyq": {
