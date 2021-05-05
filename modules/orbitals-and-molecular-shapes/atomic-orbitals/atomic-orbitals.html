@@ -55,6 +55,7 @@
 
     <!-- Utils & A-Frame Components -->
     <script src="/modules/utils/aframe/modelOpacity.js"></script>
+    <script src="/modules/utils/aframe/change-material.js"></script>
     <script src="/modules/utils/aframe/flip.js"></script>
     <script src="/modules/utils/aframe/scale.js"></script>
     <script src="/modules/utils/aframe/gesture-detector.js"></script>
@@ -75,7 +76,7 @@
           height="1%"
       /></a>
     </p>
-    
+
     <!-- Header -->
     <header id="header">
       <div class="row">
@@ -174,6 +175,11 @@
               <option>5g</option>
             </optgroup>
             <optgroup label="Hybridized Orbitals">
+              <option>sp</option>
+              <option>sp2</option>
+              <option>sp3</option>
+              <option>sp3d</option>
+              <option>sp3d2</option>
               <option>2sp (1)</option>
               <option>2sp (2)</option>
               <option>2sp2 (1)</option>
@@ -248,6 +254,11 @@
               <option>5g</option>
             </optgroup>
             <optgroup label="Hybridized Orbitals">
+              <option>sp</option>
+              <option>sp2</option>
+              <option>sp3</option>
+              <option>sp3d</option>
+              <option>sp3d2</option>
               <option>2sp (1)</option>
               <option>2sp (2)</option>
               <option>2sp2 (1)</option>
@@ -352,92 +363,98 @@
         <a-asset-item id="orb24" src="./models/OA_5G_1.gltf"></a-asset-item>
         <a-asset-item id="orb25" src="./models/OA_5G_0.gltf"></a-asset-item>
 
-        <a-asset-item id="orb27" src="./models/HO_2sp_1.gltf"></a-asset-item>
-        <a-asset-item id="orb28" src="./models/HO_2sp_2.gltf"></a-asset-item>
-        <a-asset-item id="orb29" src="./models/HO_2sp2_1.gltf"></a-asset-item>
-        <a-asset-item id="orb30" src="./models/HO_2sp2_2.gltf"></a-asset-item>
-        <a-asset-item id="orb31" src="./models/HO_2sp2_3.gltf"></a-asset-item>
-        <a-asset-item id="orb32" src="./models/HO_2sp3_1.gltf"></a-asset-item>
-        <a-asset-item id="orb33" src="./models/HO_2sp3_2.gltf"></a-asset-item>
-        <a-asset-item id="orb34" src="./models/HO_2sp3_3.gltf"></a-asset-item>
-        <a-asset-item id="orb35" src="./models/HO_2sp3_4.gltf"></a-asset-item>
+        <a-asset-item id="orb27" src="./models/2sp.gltf"></a-asset-item>
+        <a-asset-item id="orb28" src="./models/3sp2.gltf"></a-asset-item>
+        <a-asset-item id="orb29" src="./models/4sp3.gltf"></a-asset-item>
+        <a-asset-item id="orb30" src="./models/5sp3d.gltf"></a-asset-item>
+        <a-asset-item id="orb31" src="./models/6sp3d2.gltf"></a-asset-item>
+
+        <a-asset-item id="orb32" src="./models/HO_2sp_1.gltf"></a-asset-item>
+        <a-asset-item id="orb33" src="./models/HO_2sp_2.gltf"></a-asset-item>
+        <a-asset-item id="orb34" src="./models/HO_2sp2_1.gltf"></a-asset-item>
+        <a-asset-item id="orb35" src="./models/HO_2sp2_2.gltf"></a-asset-item>
+        <a-asset-item id="orb36" src="./models/HO_2sp2_3.gltf"></a-asset-item>
+        <a-asset-item id="orb37" src="./models/HO_2sp3_1.gltf"></a-asset-item>
+        <a-asset-item id="orb38" src="./models/HO_2sp3_2.gltf"></a-asset-item>
+        <a-asset-item id="orb39" src="./models/HO_2sp3_3.gltf"></a-asset-item>
+        <a-asset-item id="orb40" src="./models/HO_2sp3_4.gltf"></a-asset-item>
         <a-asset-item
-          id="orb36"
+          id="orb41"
           src="./models/HO_3sp3d_1x-1.gltf"
         ></a-asset-item>
         <a-asset-item
-          id="orb37"
+          id="orb42"
           src="./models/HO_3sp3d_2x-1.gltf"
         ></a-asset-item>
         <a-asset-item
-          id="orb38"
+          id="orb43"
           src="./models/HO_3sp3d_3x-1.gltf"
         ></a-asset-item>
-        <a-asset-item id="orb39" src="./models/HO_3sp3d_4.gltf"></a-asset-item>
-        <a-asset-item id="orb40" src="./models/HO_3sp3d_5.gltf"></a-asset-item>
+        <a-asset-item id="orb44" src="./models/HO_3sp3d_4.gltf"></a-asset-item>
+        <a-asset-item id="orb45" src="./models/HO_3sp3d_5.gltf"></a-asset-item>
         <a-asset-item
-          id="orb41"
+          id="orb46"
           src="./models/HO_3sp3d2_1x-1.gltf"
         ></a-asset-item>
         <a-asset-item
-          id="orb42"
+          id="orb47"
           src="./models/HO_3sp3d2_2x-1.gltf"
         ></a-asset-item>
         <a-asset-item
-          id="orb43"
+          id="orb48"
           src="./models/HO_3sp3d2_3x-1.gltf"
         ></a-asset-item>
         <a-asset-item
-          id="orb44"
+          id="orb49"
           src="./models/HO_3sp3d2_4x-1.gltf"
         ></a-asset-item>
         <a-asset-item
-          id="orb45"
+          id="orb50"
           src="./models/HO_3sp3d2_5x-1.gltf"
         ></a-asset-item>
         <a-asset-item
-          id="orb46"
+          id="orb51"
           src="./models/HO_3sp3d2_6x-1.gltf"
         ></a-asset-item>
 
         <a-asset-item
-          id="orb48obj"
+          id="orb53obj"
           src="./models/trpev_linear.obj"
         ></a-asset-item>
         <a-asset-item
-          id="orb48mtl"
+          id="orb53mtl"
           src="./models/trpev_linear.mtl"
         ></a-asset-item>
         <a-asset-item
-          id="orb49obj"
+          id="orb54obj"
           src="./models/trpev_trigplanar.obj"
         ></a-asset-item>
         <a-asset-item
-          id="orb49mtl"
+          id="orb54mtl"
           src="./models/trpev_trigplanar.mtl"
         ></a-asset-item>
         <a-asset-item
-          id="orb50obj"
+          id="orb55obj"
           src="./models/trpev_tetra.obj"
         ></a-asset-item>
         <a-asset-item
-          id="orb50mtl"
+          id="orb55mtl"
           src="./models/trpev_tetra.mtl"
         ></a-asset-item>
         <a-asset-item
-          id="orb51obj"
+          id="orb56obj"
           src="./models/trpev_trigbipyr.obj"
         ></a-asset-item>
         <a-asset-item
-          id="orb51mtl"
+          id="orb56mtl"
           src="./models/trpev_trigbipyr.mtl"
         ></a-asset-item>
         <a-asset-item
-          id="orb52obj"
+          id="orb57obj"
           src="./models/trpev_octa.obj"
         ></a-asset-item>
         <a-asset-item
-          id="orb52mtl"
+          id="orb57mtl"
           src="./models/trpev_octa.mtl"
         ></a-asset-item>
       </a-assets>
@@ -465,6 +482,15 @@
             visible="true"
             model-opacity="0.5"
           ></a-entity>
+          <a-entity
+            id="marker-1A-orb"
+            gltf-model="#orb27"
+            scale="1 1 1"
+            rotation="45 45 0"
+            position="0 0 0"
+            visible="false"
+            change-material
+          ></a-entity>
         </a-entity>
       </a-marker>
 
@@ -490,6 +516,15 @@
             position="0 0 0"
             visible="true"
             model-opacity="0.5"
+          ></a-entity>
+          <a-entity
+            id="marker-1B-orb"
+            gltf-model="#orb27"
+            scale="1 1 1"
+            rotation="45 45 0"
+            position="0 0 0"
+            visible="false"
+            change-material
           ></a-entity>
         </a-entity>
       </a-marker>
@@ -517,6 +552,15 @@
             visible="true"
             model-opacity="0.5"
           ></a-entity>
+          <a-entity
+            id="marker-2A-orb"
+            gltf-model="#orb27"
+            scale="1 1 1"
+            rotation="45 45 0"
+            position="0 0 0"
+            visible="false"
+            change-material
+          ></a-entity>
         </a-entity>
       </a-marker>
 
@@ -542,6 +586,15 @@
             position="0 0 0"
             visible="true"
             model-opacity="0.5"
+          ></a-entity>
+          <a-entity
+            id="marker-2B-orb"
+            gltf-model="#orb27"
+            scale="1 1 1"
+            rotation="45 45 0"
+            position="0 0 0"
+            visible="false"
+            change-material
           ></a-entity>
         </a-entity>
       </a-marker>
