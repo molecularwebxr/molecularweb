@@ -129,8 +129,6 @@ function handleSelection(e) {
       "obj:#orb" + assetIndex + "obj; mtl: #orb" + assetIndex + "mtl"
     );
     modelsSelected[1].setAttribute("model-opacity", 1);
-    modelsSelected[0].setAttribute("scale", { x: 0.2, y: 0.2, z: 0.2 });
-    modelsSelected[1].setAttribute("scale", { x: 0.2, y: 0.2, z: 0.2 });
   }
 }
 
