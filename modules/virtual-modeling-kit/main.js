@@ -397,9 +397,9 @@ function animate() {
     updateInteractions();
   }
 
-  if (atoms > 0) {
-    updateEnergies();
-  }
+  // if (atoms > 0) {
+  //   updateEnergies();
+  // }
 
   updatePhysics();
   update();
