@@ -1369,7 +1369,7 @@ function updateEnergies() {
     var species2 = [];
 
     var coordinates1 = atomBodies.map(function (atom) {
-      return [atom.position.x, atom.position.y, atom.position.z];
+      return [Math.round(atom.position.x*100)/100, Math.round(atom.position.y*100)/100, Math.round(atom.position.z*100)/100];
     });
 
     var species1 = pdb.elements.map(function (element) {
@@ -1378,7 +1378,7 @@ function updateEnergies() {
 
     if (atoms2 > 0) {
       var coordinates2 = atomBodies2.map(function (atom) {
-        return [atom.position.x, atom.position.y, atom.position.z];
+        return [Math.round(atom.position.x*100)/100, Math.round(atom.position.y*100)/100, Math.round(atom.position.z*100)/100];
       });
 
       var species2 = pdb2.elements.map(function (element) {
@@ -1411,7 +1411,7 @@ function updateEnergies() {
         }
 
         data.labels.push(temperature);
-        data.datasets[0].data.push(ani.energy * 627.509);
+        data.datasets[0].data.push(Math.round(ani.energy * 627.509 * 10) / 10);
 
         chart1.update();
       });

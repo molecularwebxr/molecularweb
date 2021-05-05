@@ -607,7 +607,7 @@ function createSpheres(pdb) {
     );
     meshes2.push(clashMesh);
 
-    var sphereShape = new CANNON.Sphere(0.008 * elementradii[pdb.elements[i]]);
+    var sphereShape = new CANNON.Sphere(0.8 * elementradii[pdb.elements[i]]);
     var sphereBody = new CANNON.Body({
       mass: elementmasses[pdb.elements[i]],
       shape: sphereShape,
