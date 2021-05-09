@@ -158,13 +158,13 @@
       "instructions": "สังเกต รูป3มิติ จาก AR marker หรือ directly standing on a flat horizontal surface such as the floor or a table"
     },
     "ribosome": {
-      "title": "ไรโบโซมที่ประกอบด้วย เอ็มอาร์เอ็นเอmRNA และ ทีอาร์เอ็นเอtRNAs",
-      "description": " กล้องจุลทรรศน์อิเล็กตรอนแบบแช่แข็ง structure of a mammal ribosome with a tRNA in the A/P position paired to a stretch of mRNA and another tRNA in the P/E position (PDB 6HCJ).",
-      "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
+      "title": "ไรโบโซมที่ประกอบด้วย เอ็มอาร์เอ็นเอmRNA และ ทีอาร์เอ็นเอ",
+      "description": " โครงสร้างไรโบโซมของสัตว์เลี้ยงลูกด้วยนม แสดงทีอาร์เอ็นเอ ในตำแหน่ง A/P เข้าคู่กับ เอ็มอาร์อ็นเอที่ถูกยืด และทีอาร์เอ็นเออีกตัว ในตำแหน่ง P/E (PDB 6HCJ) ส่องผ่านกล้องจุลทรรศน์อิเล็กตรอนแบบแช่แข็ง",
+      "instructions": "สังเกต รูป3มิติ จาก AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "bacteriophage": {
       "title": "แบคทีรีโอฟาช บน ผนังเซลล์ของแบคทีเรีย",
-      "description": "Cryo-electron microscopy of a bacteriophage that has punched its needle through the two bacterial membranes (EMD-9010).",
+      "description": "แบคเทอริโอเฟจที่ใช้เข็มของมันทิ่มทะลุเยื่อหุ้มเซลล์ 2ชั้น ของแบคทีเรีย (EMD-9010) ส่องผ่านกล้องจุลทรรศน์อิเล็กตรอนแบบแช่แข็ง ",
       "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "sarscov2": {
@@ -236,27 +236,27 @@
     "firstPart": "MoleculARweb คือเว็บไซต์สำหรับ การเรียนเคมี และชีววิทยาโครงสร้างผ่านเครื่องมือเทคโนโลยีความจริงเสริมหรือ AR บนเว็บไซต์ที่สามารถใช้ได้กับกล้องบนคอมพิวเตอร์, มือถือ และแท็บแล็ต โดยเว็บไซต์นี้ได้ถูกสร้างและออกแบบโดย Fabio Cortés Rodríguez และ Luciano A. Abriata จาก  ",
     "lbm_html": "<u>ห้องปฏิบัติการการจำลองโมเลกุลทางชีวภาพ</u>",
     "epfl_html": "at <u>École Polytechnique Fédérale de Lausanne</u>",
-    "secondPart": " (EPFL) in Switzerland, with help from several collaborators from the group as well as researchers and educators from other institutions. The project is funded by Spark grant CRSK-1_190376 from the ",
+    "secondPart": " (EPFL) ใน สวิตเซอร์แลนด์ พร้อมทั้งความช่วยเหลือจากผู้ประสานงานหลายท่านทั้งจากในกลุ่มและนักวิจัยรวมไปถึงนักการศึกษาจากสถาบันอื่นๆ โครงการนี้ได้รับทุนจากโดย Spark grant CRSK-1_190376 จาก ",
     "snf_html": "<u>Swiss National Science Foundation</u> ",
     "toLAB": "to Luciano A. Abriata.",
     "snfDB_html": " โครงการนี้ is described <u>here at the SNF project database</u>.",
-    "thirdPart": "The website is based on client-side web programming (see",
+    "thirdPart": "เว็บไซต์นี้อ้างอิงจาก การเขียนโปรแกรมจากด้านไคลเอนต์ (ดู",
     "this_html": "<u>this</u>",
     "and": " and ",
-    "fourthPart": ") ซึ่งหมายความว่า the activities run entirely locally inside your browser, in your computer. The kind of technologies used to program moleculARweb are described in ",
-    "article_html": "this open-access peer-reviewed <u>article at PeerJ Comp Sci</u>, ",
-    "fifthPart": "while the exact activities provided in moleculARweb are described in ",
-    "preprint_html": "<u>this preprint at ChemRxiv</u>, ",
-    "sixthPart": "which also lists all contributing authors and other acknowledgements.",
-    "seventhPart": "MoleculARweb is powered by ",
-    "eighthPart": "The icons used in the website were downloaded from ",
-    "madeBy": "made by Pixel Perfect, Smashicons, Freebies, Diacanvas Studio and Dario Ferrando. The website’s logo was composed from free, open icons taken from the same authors at ",
-    "openSource": "This is an open source project, you can find the repository at GitHub: ",
-    "privacyStart": "Here you can find the ",
-    "privacyPolicy": "<u>privacy policy</u>.",
+    "fourthPart": ") ซึ่งหมายความว่า กิจกรรมต่างๆ ทำงานทั้งหมดเฉพาะใน บราวเซอร์ของคุณ ในคอมพิวเตอร์ของคุณ เทคโนโลยีที่ใช้ในการเขียนโปรแกรม moleculARweb ถูกอธิบายไว้ใน ",
+    "article_html": "วารสารออนไลน์ตัวเต็มที่อยู่ในขั้นตอนการตรวจสอบ <u>บทความที่ PeerJ Comp Sci</u>, ",
+    "fifthPart": "ในขณะที่จำนวนกิจกรรมอย่างแน่นอนซึ่งบริการใน moleculARweb ได้อธิบายไว้ในนี้ ",
+    "preprint_html": "<u>ตีพิมพ์ล่วงหน้าที่ChemRxiv</u>, ",
+    "sixthPart": "ซึ่งจะแจกแจงรายชื่อผู้ร่วมเขียน และ กิตติกรรมประกาศ อื่นๆ.",
+    "seventhPart": "MoleculARweb สนับสนุนโดย ",
+    "eighthPart": "ตราสัญลักษณ์ที่ใช้ในเว็บไซต์นี้นำมาจาก ",
+    "madeBy": "ทำขึ้นโดย Pixel Perfect, Smashicons, Freebies, Diacanvas Studio และ Dario Ferrando ตราสัญลักษณ์ของเว็บไซต์ประกอบจาก สัญลักษ์ที่ไม่แสวงหาผลกำไรและสามารถนำไปใช้ได้ซึ่งนำมาจากผู้เขียนเดียวกันที่ ",
+    "openSource": "โครงการนี้เป็นโอเพนซอร์ซ คุณสามารถหา repository ได้ใน GitHub: ",
+    "privacyStart": "ที่นี่คุณสามารถอ่าน",
+    "privacyPolicy": "<u>นโยบายความเป็นส่วนตัว</u>.",
     "aboutAuthors": "เกี่ยวกับผู้เขียนหลัก: ",
     "fabio": "Eng. Fabio Cortés Rodríguez เป็น วิศวกรรมซอฟแวร์ และ ผู้เชี่ยวชาญทางเทคโนโลยี, มีความชอบเกี่ยวกับ augmented และ virtual reality และ สำรวจเส้นแบ่งระหว่าง ศิลปะและเทคโนโลยี. ตอนนี้ เขาเป็น วิศวะ WebXR ที่ห้องทดลอง สำหรับ Biomolecular Modeling ที่ EPFL.",
-    "luciano": "Dr. Luciano A. Abriata เป็น biotechnologist ด้วย ปริญญาเอก ใน เคมี และประสบการณ์หลายปีใน biological nuclear magnetic resonance และใน molecular modeling and simulations of biological systems, มีความชอบเกี่ยวกับ about การเขียนโปรแกรมบนเว็บไซต์ และเกี่ยวกับ modern human-computer technologies สำหรับการพัฒนา งาน และการศึกษา. ตอนนี้เขาเป็นผู้เชี่ยวชาญใน NMR ที่ EPFL’s Protein Biophysics group, และนักวิทยาศาสตร์อาวุโส ที่ Laboratory for Biomolecular Modeling ที่ EPFL."
+    "luciano": "Dr. Luciano A. Abriata เป็น นักเทคโนโลยีชีวภาพ ด้วย ปริญญาเอก ใน เคมี และประสบการณ์หลายปีใน biological nuclear magnetic resonance และใน molecular modeling and simulations of biological systems, มีความชอบเกี่ยวกับ การเขียนโปรแกรมบนเว็บไซต์ และเกี่ยวกับ modern human-computer technologies สำหรับการพัฒนา งาน และการศึกษา. ตอนนี้เขาเป็นผู้เชี่ยวชาญใน NMR ที่ EPFL’s Protein Biophysics group, และนักวิทยาศาสตร์อาวุโส ที่ Laboratory for Biomolecular Modeling ที่ EPFL."
   },
   "contact": {
     "firstPart": "หากจะร้องเรียนเรียนปัญหา, บัค หรือ เสนอข้อเสนอแนะ กรุณาติดต่อ  luciano.abriata@epfl.ch หรือ fabio.cortesrodriguez@epfl.ch",
