@@ -20,7 +20,7 @@
     "rotate": "หมุน ",
     "submit": "ส่ง",
     "skip": "ข้าม",
-    "next": "อันถัดไป",
+    "next": "ถัดไป",
     "close": "ปิด",
     "viewInYourSpace": "ดูภาพในพื้นที่ของคุณ",
     "returnToAR": "ย้อนกลับไปที่ โหมด AR",
@@ -53,7 +53,7 @@
       "instructions": "เลือกตัวอย่างจากเมนู เพื่อที่จะเห็นรูปทรงโมกุลต่างๆที่แตกต่างกันออกไปตามที่อธิบายใน ทฤษฎี VSPER"
     },
     "webRemake": {
-      "title": "พัฒนาโดยอ้างอิงจากงานของ Martinez-Hung และคณะ ในปี 2017",
+      "title": "พัฒนาโดยอ้างอิงจากงานของ Martinez-Hung และ คณะ ในปี 2017",
       "description": "ตัวอย่างของ โครงสร้างผลึก รูปร่าง TRPEV และคอมเพล็กซ์ของน้ำ จากงานเขียนของ Martinez-Hung และคณะ Revista Cubana de Quimica ในปี 2017 เพื่อใช้ใน AR",
       "instructions": "เลือกตัวอย่างจากเมนู โดยสามารถอ่านข้อมูลเพิ่มเติมได้ในงานเขียนต้นฉบับ "
     },
@@ -133,8 +133,8 @@
         "description": "เปปไทด์ขนาดสั้นจะแสดงเป็นแท่งโดยที่ทุกอะตอมรวมถึงไฮโดรเจนจะถูกแสดงออกมา"
       },
       "1vyq": {
-        "title": "Trimeric protein with ligands",
-        "description": "A trimeric protein with 3 ligands bound, same as in Berry et al Biochem Mol Biol Ed 2014"
+        "title": "Trimeric protein พร้อม ลิแกนด์",
+        "description": "A trimeric protein พร้อม 3 ligands bound, เช่นเดียวกับใน Berry และ คณะ Biochem Mol Biol Ed 2014"
       },
       "a-dna": {
         "title": "A-DNA",
@@ -165,26 +165,26 @@
     "bacteriophage": {
       "title": "แบคทีรีโอฟาช บน ผนังเซลล์ของแบคทีเรีย",
       "description": "แบคเทอริโอเฟจที่ใช้เข็มของมันทิ่มทะลุเยื่อหุ้มเซลล์ 2ชั้น ของแบคทีเรีย (EMD-9010) ส่องผ่านกล้องจุลทรรศน์อิเล็กตรอนแบบแช่แข็ง ",
-      "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
+      "instructions": "สังเกต รูป3มิติ จาก AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "sarscov2": {
       "title": "หนามของ ไวรัสซาร์ส-โควี-2 ในACE2 คอมเพล็กซ์ของมนุษย์ ",
       "description": "โมเดลการรวมตัวของ โปรตีนตรงส่วนหนามของ ไวรัสซาร์ส-โควี-2 ที่ ยึดกับ ACE2 ในมนุษย์ (PDB IDs 6VYB, 6M17 and 6M0J), each embedded in a membrane patch.",
-      "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
+      "instructions": "สังเกต รูป3มิติ จาก AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "bacterial": {
       "title": "Bacterial pilus base",
       "description": "Baseplate of a bacterial pilus solved by cryo-electron microscopy including portions of the two cell membranes and peptidoglycan (PDB 3JC8 + EMD-3247).",
-      "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
+      "instructions": "สังเกต รูป3มิติ จาก AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "nucleosome": {
       "title": "นิวคลีโอโซม",
       "description": "โครงสร้าง X-Ray ของ นิวคลีโอโซม ประกอบไปด้วย 4 ฮิสโตน และ 2 rounds of ssDNA wrapped (PDB ID 1AOI).",
-      "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
+      "instructions": "สังเกต รูป3มิติ จาก AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     }
   },
   "modelingKit": {
-    "title": "Molecular modeling kit"
+    "title": "ชุดโมเดลโมเลกุล"
   },
   "surveys": {
     "welcomeMsg": "สวัสดี, ขอบคุณสำหรับการใช้เว็บไซต์. พวกเรารู้สึกขอบคุณมากๆ ที่คุณสละเวลาและแชร์ประสบการณ์กับพวกเรา",
@@ -238,8 +238,8 @@
     "epfl_html": "at <u>École Polytechnique Fédérale de Lausanne</u>",
     "secondPart": " (EPFL) ใน สวิตเซอร์แลนด์ พร้อมทั้งความช่วยเหลือจากผู้ประสานงานหลายท่านทั้งจากในกลุ่มและนักวิจัยรวมไปถึงนักการศึกษาจากสถาบันอื่นๆ โครงการนี้ได้รับทุนจากโดย Spark grant CRSK-1_190376 จาก ",
     "snf_html": "<u>Swiss National Science Foundation</u> ",
-    "toLAB": "to Luciano A. Abriata.",
-    "snfDB_html": " โครงการนี้ is described <u>here at the SNF project database</u>.",
+    "toLAB": "แด่ Luciano A. Abriata.",
+    "snfDB_html": " โครงการนี้ ถูกอธิบายไว้ใน <u>นี้ที่โครงการ SNF ฐานข้อมูล</u>.",
     "thirdPart": "เว็บไซต์นี้อ้างอิงจาก การเขียนโปรแกรมจากด้านไคลเอนต์ (ดู",
     "this_html": "<u>this</u>",
     "and": " and ",
@@ -251,12 +251,12 @@
     "seventhPart": "MoleculARweb สนับสนุนโดย ",
     "eighthPart": "ตราสัญลักษณ์ที่ใช้ในเว็บไซต์นี้นำมาจาก ",
     "madeBy": "ทำขึ้นโดย Pixel Perfect, Smashicons, Freebies, Diacanvas Studio และ Dario Ferrando ตราสัญลักษณ์ของเว็บไซต์ประกอบจาก สัญลักษ์ที่ไม่แสวงหาผลกำไรและสามารถนำไปใช้ได้ซึ่งนำมาจากผู้เขียนเดียวกันที่ ",
-    "openSource": "โครงการนี้เป็นโอเพนซอร์ซ คุณสามารถหา repository ได้ใน GitHub: ",
+    "openSource": "โครงการนี้เป็นโอเพนซอร์ซ คุณสามารถหา ฐานข้อมูล ได้ใน GitHub: ",
     "privacyStart": "ที่นี่คุณสามารถอ่าน",
     "privacyPolicy": "<u>นโยบายความเป็นส่วนตัว</u>.",
     "aboutAuthors": "เกี่ยวกับผู้เขียนหลัก: ",
     "fabio": "Eng. Fabio Cortés Rodríguez เป็น วิศวกรรมซอฟแวร์ และ ผู้เชี่ยวชาญทางเทคโนโลยี, มีความชอบเกี่ยวกับ augmented และ virtual reality และ สำรวจเส้นแบ่งระหว่าง ศิลปะและเทคโนโลยี. ตอนนี้ เขาเป็น วิศวะ WebXR ที่ห้องทดลอง สำหรับ Biomolecular Modeling ที่ EPFL.",
-    "luciano": "Dr. Luciano A. Abriata เป็น นักเทคโนโลยีชีวภาพ ด้วย ปริญญาเอก ใน เคมี และประสบการณ์หลายปีใน biological nuclear magnetic resonance และใน molecular modeling and simulations of biological systems, มีความชอบเกี่ยวกับ การเขียนโปรแกรมบนเว็บไซต์ และเกี่ยวกับ modern human-computer technologies สำหรับการพัฒนา งาน และการศึกษา. ตอนนี้เขาเป็นผู้เชี่ยวชาญใน NMR ที่ EPFL’s Protein Biophysics group, และนักวิทยาศาสตร์อาวุโส ที่ Laboratory for Biomolecular Modeling ที่ EPFL."
+    "luciano": "Dr. Luciano A. Abriata เป็น นักเทคโนโลยีชีวภาพ ด้วย ปริญญาเอก ใน เคมี และประสบการณ์หลายปีใน นิวเคลียร์แมกเนติกเรโซแนนซ์ทางชีวภาพ และใน โมเดลโมเลกุล และ การจำลองระบบของสิ่งมีชีวิต, มีความชอบเกี่ยวกับ การเขียนโปรแกรมบนเว็บไซต์ และเกี่ยวกับ เทคโนโลยีปฏิสัมพันธ์ระหว่างคนกับคอมพิวเตอร์สมัยใหม่ สำหรับการพัฒนา งาน และการศึกษา. ตอนนี้เขาเป็นผู้เชี่ยวชาญใน NMR ที่ EPFL’s Protein Biophysics group, และนักวิทยาศาสตร์อาวุโส ที่ Laboratory for Biomolecular Modeling ที่ EPFL."
   },
   "contact": {
     "firstPart": "หากจะร้องเรียนเรียนปัญหา, บัค หรือ เสนอข้อเสนอแนะ กรุณาติดต่อ  luciano.abriata@epfl.ch หรือ fabio.cortesrodriguez@epfl.ch",
