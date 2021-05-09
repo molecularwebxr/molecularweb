@@ -9,8 +9,8 @@
   },
   "app": {
     "title": "MoleculARweb",
-    "description": "เว็บไซต์สำหรับการศึกษาวิชาเคมี และ ชีวะ ผ่านเทคโนโลยีความจริงเสริม หรือ AR, available out of the box in commodity devices",
-    "policy": "Copyright © 2020 Laboratory for biomolecular modeling, EPFL. All rights reserved.",
+    "description": "เว็บไซต์สำหรับการศึกษาวิชาเคมี และ ชีวะวิทยา ผ่านเทคโนโลยีความจริงเสริม หรือ AR, available out of the box in commodity devices",
+    "policy": " © 2020 ลิขสิทธิ์ของ Laboratory for biomolecular modeling, EPFL สงวนลิขสิทธิ์",
     "policyMsg": "เราใช้ คุ้กกี้ เพื่อปรับปรุงสิ่งที่คุณจะได้รับในเว็บไซต์ของเรา ในการใช้ MoleculARweb คุณยินยอมต่อนโยบายความเป็นส่วนตัวของทางเว็บ",
     "learnMore": "เพิ่มเติม",
     "contactUs": "ติดต่อพวกเรา",
