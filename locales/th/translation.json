@@ -1,15 +1,15 @@
 {
   "menu": {
     "about": "เกี่ยวกับ",
-    "getInTouch": "ช่องทางการติดต่อ",
-    "feedback": "ข้อเสนอแนะ",
+    "getInTouch": "ติดต่อ",
+    "feedback": "เสนอแนะ",
     "language": "ภาษา",
-    "instructions": "วิธีการใช้",
-    "markers": "markers "
+    "instructions": "วิธีใช้",
+    "markers": "มาร์คเกอร์ "
   },
   "app": {
     "title": "MoleculARweb",
-    "description": "เว็บไซต์สำหรับการศึกษาวิชาเคมี และ ชีวะวิทยา ผ่านเทคโนโลยีความจริงเสริม หรือ AR, available out of the box in commodity devices",
+    "description": "เว็บไซต์สำหรับการศึกษาวิชาเคมี และ ชีวะวิทยา ผ่านเทคโนโลยีความจริงเสริม หรือ AR, เปิดให้เล่นแล้วทั้งในโทรศัพท์และคอมพิวเตอร์",
     "policy": " © 2020 ลิขสิทธิ์ของ Laboratory for biomolecular modeling, EPFL สงวนลิขสิทธิ์",
     "policyMsg": "เราใช้ คุ้กกี้ เพื่อปรับปรุงสิ่งที่คุณจะได้รับในเว็บไซต์ของเรา ในการใช้ MoleculARweb คุณยินยอมต่อนโยบายความเป็นส่วนตัวของทางเว็บ",
     "learnMore": "เพิ่มเติม",
@@ -32,7 +32,7 @@
     "welcome": "ยินดีต้อนรับเข้าสู่ MoleculARweb!",
     "welcomeMsg": "เว็บไซต์สำหรับการศึกษาวิชาเคมี และ ชีวะ ผ่าน AR",
     "prepare": "เตรียม ",
-    "markersWithLink": "markers",
+    "markersWithLink": "มาร์คเกอร์",
     "selectActivity": "เลือกกิจกรรม และ ขอให้สนุก!"
   },
   "orbitals": {
@@ -40,12 +40,12 @@
     "atomicOrbitals": {
       "title": "ออร์บิทัลเชิงอะตอม และ ทฤษฎี VSEPR",
       "description": " แสดงภาพ และ เปรียบเทียบออร์บิทัลบริสุทธิ์และออร์บิทัลไฮบริดที่พบได้บ่อยๆ และรูปร่างโมเลกุลพื้นฐานตามทฤษฏี VSEPR. ",
-      "instructions": "เลือกออร์บิทัล หรือ โมเลกุล เพื่อที่จะถูกแสดง ในแต่ล่ะ AR marker โดยคุณสามารถที่จะใช้ 1 นิ้วเพื่อหมุนและ 2 นิ้วเพื่อขยายภาพให้ใหญ่ขึ้น"
+      "instructions": "เลือกออร์บิทัล หรือ โมเลกุล เพื่อที่จะถูกแสดง ในแต่ล่ะ AR มาร์คเกอร์ โดยคุณสามารถที่จะใช้ 1 นิ้วเพื่อหมุนและ 2 นิ้วเพื่อขยายภาพให้ใหญ่ขึ้น"
     },
     "molecularOrbitals": {
       "title": "ออร์บิทัลเชิงโมเลกุล และ รูปทรง",
       "description": "แสดงภาพ และ เปรียบเทียบ ออร์บิทัลเชิงโมเลกุล ที่ได้คำนวณไว้แล้วในโมเลกุลตัวอย่าง",
-      "instructions": "เลือก โมเลกุล เพื่อที่จะถูกแสดง ในแต่ล่ะ AR marker โดยคุณสามารถที่จะใช้ 1 นิ้วเพื่อหมุนและ 2 นิ้วเพื่อขยายภาพให้ใหญ่ขึ้น"
+      "instructions": "เลือก โมเลกุล เพื่อที่จะถูกแสดง ในแต่ล่ะ AR มาร์คเกอร์ โดยคุณสามารถที่จะใช้ 1 นิ้วเพื่อหมุนและ 2 นิ้วเพื่อขยายภาพให้ใหญ่ขึ้น"
     },
     "molecularShapes": {
       "title": "รูปร่างโมเลกุล โดย VSEPR",
@@ -53,8 +53,8 @@
       "instructions": "เลือกตัวอย่างจากเมนู เพื่อที่จะเห็นรูปทรงโมกุลต่างๆที่แตกต่างกันออกไปตามที่อธิบายใน ทฤษฎี VSPER"
     },
     "webRemake": {
-      "title": "พัฒนาโดยอ้างอิงจากงานของ Martinez-Hung et al ในปี 2017",
-      "description": "ตัวอย่างของ โครงสร้างผลึก รูปร่าง TRPEV และคอมเพล็กซ์ของน้ำ จากงานเขียนของ Martinez-Hung et al Revista Cubana de Quimica ในปี 2017 เพื่อใช้ใน AR",
+      "title": "พัฒนาโดยอ้างอิงจากงานของ Martinez-Hung และคณะ ในปี 2017",
+      "description": "ตัวอย่างของ โครงสร้างผลึก รูปร่าง TRPEV และคอมเพล็กซ์ของน้ำ จากงานเขียนของ Martinez-Hung และคณะ Revista Cubana de Quimica ในปี 2017 เพื่อใช้ใน AR",
       "instructions": "เลือกตัวอย่างจากเมนู โดยสามารถอ่านข้อมูลเพิ่มเติมได้ในงานเขียนต้นฉบับ "
     },
     "modelingKit": {
@@ -65,8 +65,8 @@
       "sticks": "แท่ง",
       "spheres": "ทรงกลม",
       "pdbInstructions": "ใช้ไฟล์โมเลกุลที่เป็นสกุล PDB หรือกดเลือกโมเลกุลตัวอย่าง จากนั้นกด “เริ่ม AR”",
-      "marker": "Marker",
-      "getMarker": "ไฟล์ marker",
+      "marker": "มาร์คเกอร์",
+      "getMarker": "ไฟล์ มาร์คเกอร์",
       "loadFile": "โหลดไฟล์ของคุณ",
       "load": "โหลด",
       "chooseExample": "เลือกตัวอย่าง",
@@ -77,7 +77,7 @@
   },
   "bonds": {
     "title": "พันธะไฮโดรเจน, กรดและเบส",
-    "instructions": "ขยับ AR markers เพื่อที่จะเห็น พันธะไฮโดรเจน และ การแลกเปลี่ยนโปรตอน โดยการสังเกตุโมโลกุลในทิศทางที่แตกต่างกัน",
+    "instructions": "ขยับ AR มาร์คเกอร์ เพื่อที่จะเห็น พันธะไฮโดรเจน และ การแลกเปลี่ยนโปรตอน โดยการสังเกตุโมโลกุลในทิศทางที่แตกต่างกัน",
     "waterProtonation": {
       "title": "สมดุลการรับโปรตอนในน้ำ",
       "description": "สังเกต น้ำ2โมเลกุล ทำพันธะไฮโดรเจนและการแลกเปลี่ยนโปรตอนไปมาระหว่างไฮโดรเนียมไอออน, น้ำ, และไฮดรอกไซด์ไอออน ปฏิกิริยาเป็นสมดุลไดนามิก และทำให้เกิดค่าการแตกตัวของน้ำ Kw"
@@ -99,17 +99,17 @@
     "title": "โครงสร้างเชิงอะตอมของสารชีวะโมเลกุลขนาดใหญ่",
     "proteinDNA": {
       "title": "โครงสร้างของโปรตีนและดีเอ็นเอ",
-      "description": "นำโดเมนของ transcription factor ไปใกล้ๆลำดับ  DNA ที่เกี่ยวข้องกัน ; ดูแรงดึงดูดทางไฟฟ้าที่เกิดขึ้น โดยตัวอย่างนี้ได้นำมาจาก การทดลองโครงสร้าง, PDB 1FJL.",
-      "instructions": "ขยับโมเลกุลแต่ล่ะตัวด้วย 1 AR marker เพื่อหาการเชื่อมกันที่ถูกต้อง"
+      "description": "นำโดเมนของ ทรานสคริบชันแฟกเตอร์ ไปใกล้ๆลำดับ  DNA ที่เกี่ยวข้องกัน ; ดูแรงดึงดูดทางไฟฟ้าที่เกิดขึ้น โดยตัวอย่างนี้ได้นำมาจาก การทดลองโครงสร้าง, PDB 1FJL.",
+      "instructions": "ขยับโมเลกุลแต่ล่ะตัวด้วย 1 AR มาร์คเกอร์ เพื่อหาการเชื่อมกันที่ถูกต้อง"
     },
     "peptide": {
       "title": "การเชื่อมต่อของโปรตีนตามความหนาแน่นของอิเล็กตรอน",
       "description": "เชื่อมโปรตืนสองส่วนเข้าด้วยกันบนตารางความหนาแน่นของอิเล็กตรอนที่คำนวณโดยการใช้การการเลี้ยวเบนของรังสีเอ็กซเรย์ โดยตัวอย่างนี้จะทำให้ได้รับรู้ว่าจะสามารถหาโครงสร้างจากการทำการทดลองได้อย่างไร โดยตัวอย่างนี้นำมาจากโครงสร้างของการทดลองไฟล์, PDB 3HYD.7",
-      "instructions": "ใช้ marker เพื่อเชื่อมต่ออะตอมในกลุ่มแรกเข้าด้วยกัน โดยหลังจากต่ออะตอมกลุ่มแรกได้แล้ว คุณจะสามารถต่ออะตอมกลุ่มที่สองได้ และท้ายที่สุดก็จะสามารถดูทั้งโมโลกุลที่อยู่ในตารางความหนาแน่นของอิเล็กตรอนได้"
+      "instructions": "ใช้ มาร์คเกอร์ เพื่อเชื่อมต่ออะตอมในกลุ่มแรกเข้าด้วยกัน โดยหลังจากต่ออะตอมกลุ่มแรกได้แล้ว คุณจะสามารถต่ออะตอมกลุ่มที่สองได้ และท้ายที่สุดก็จะสามารถดูทั้งโมโลกุลที่อยู่ในตารางความหนาแน่นของอิเล็กตรอนได้"
     },
     "protein": {
       "title": "โครงสร้างทุติยภูมิของโปรตีน และ พันธะที่ช่วยให้โปรตีนเสถียร",
-      "description": "ตรวจสอบรายละเอียดของโครงสร้างทางอะตอม, พันธะไฮโดรเจน และ สะพานไอออนที่ช่วยให้โครงสร้างทุติยภูมิของโปรตีนเสถียร โดยคุณจะมี แบบเกลียวแอลฟาบน 1 AR marker และ แผ่นพลีทบีต้าบนอีก AR marker",
+      "description": "ตรวจสอบรายละเอียดของโครงสร้างทางอะตอม, พันธะไฮโดรเจน และ สะพานไอออนที่ช่วยให้โครงสร้างทุติยภูมิของโปรตีนเสถียร โดยคุณจะมี แบบเกลียวแอลฟาบน 1 AR มาร์คเกอร์ และ แผ่นพลีทบีต้าบนอีก AR มาร์คเกอร์",
       "instructions": "กดปุ่มเพื่อเปลี่ยนการแสดงตัวอย่าง"
     },
     "example": {
@@ -151,11 +151,11 @@
     }
   },
   "biological": {
-    "title": "Large biological assemblies",
+    "title": "การรวมตัวของสารชีวะโมเลกุลขนาดใหญ่",
     "nuclear": {
       "title": "นิวเคลียร์พอร์",
-      "description": "Electron microscopy map of the human nuclear pore complex obtained in situ (EMDB-3103)",
-      "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
+      "description": "แผนที่ของ โปรตีนสามชั้นที่เยื่อหุ้มนิวเคลียสของมนุษย์ อ้างอิงจาก situ (EMDB-3103) โดยการส่องผ่านกล้องจุลทรรศน์อิเล็กตรอน",
+      "instructions": "สังเกต รูป3มิติ จาก AR marker หรือ directly standing on a flat horizontal surface such as the floor or a table"
     },
     "ribosome": {
       "title": "ไรโบโซมที่ประกอบด้วย เอ็มอาร์เอ็นเอmRNA และ ทีอาร์เอ็นเอtRNAs",
@@ -163,13 +163,13 @@
       "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "bacteriophage": {
-      "title": "แบคทีรีโอฟาช Bacteriophage บน ผนังของเซลล์แบคทีเรียbacterial wall",
+      "title": "แบคทีรีโอฟาช บน ผนังเซลล์ของแบคทีเรีย",
       "description": "Cryo-electron microscopy of a bacteriophage that has punched its needle through the two bacterial membranes (EMD-9010).",
       "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "sarscov2": {
-      "title": "SARS-Cov-2 สไปค์ – human ACE2 complex",
-      "description": "Integrative model of the SARS-Cov-2 สไปค์ protein bound to the human ACE2 (PDB IDs 6VYB, 6M17 and 6M0J), each embedded in a membrane patch.",
+      "title": "หนามของ ไวรัสซาร์ส-โควี-2 ในACE2 คอมเพล็กซ์ของมนุษย์ ",
+      "description": "โมเดลการรวมตัวของ โปรตีนตรงส่วนหนามของ ไวรัสซาร์ส-โควี-2 ที่ ยึดกับ ACE2 ในมนุษย์ (PDB IDs 6VYB, 6M17 and 6M0J), each embedded in a membrane patch.",
       "instructions": "Inspect in 3D on the AR marker or directly standing on a flat horizontal surface such as the floor or a table"
     },
     "bacterial": {
@@ -239,11 +239,11 @@
     "secondPart": " (EPFL) in Switzerland, with help from several collaborators from the group as well as researchers and educators from other institutions. The project is funded by Spark grant CRSK-1_190376 from the ",
     "snf_html": "<u>Swiss National Science Foundation</u> ",
     "toLAB": "to Luciano A. Abriata.",
-    "snfDB_html": " This project is described <u>here at the SNF project database</u>.",
+    "snfDB_html": " โครงการนี้ is described <u>here at the SNF project database</u>.",
     "thirdPart": "The website is based on client-side web programming (see",
     "this_html": "<u>this</u>",
     "and": " and ",
-    "fourthPart": ") which means that the activities run entirely locally inside your browser, in your computer. The kind of technologies used to program moleculARweb are described in ",
+    "fourthPart": ") ซึ่งหมายความว่า the activities run entirely locally inside your browser, in your computer. The kind of technologies used to program moleculARweb are described in ",
     "article_html": "this open-access peer-reviewed <u>article at PeerJ Comp Sci</u>, ",
     "fifthPart": "while the exact activities provided in moleculARweb are described in ",
     "preprint_html": "<u>this preprint at ChemRxiv</u>, ",
