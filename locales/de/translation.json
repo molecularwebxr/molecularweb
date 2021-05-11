@@ -33,7 +33,15 @@
     "welcomeMsg": "Website für die Ausbildung in Chemie und Biologie durch Augmented Reality",
     "prepare": "Bereite deine vor ",
     "markersWithLink": "markers",
-    "selectActivity": "Wählen Sie eine Aktivität und haben Sie Spaß!"
+    "selectActivity": "Wählen Sie eine Aktivität und haben Sie Spaß!",
+    "reset": "Zurücksetzen",
+    "zoom": "Zoom",
+    "pdbOptions": "Moleküle in Markern",
+    "cameraOptions": "Kamera- und Ansichtsoptionen",
+    "controls": "Temperatur- und Mechanikeinstellungen",
+    "flipMolecule": "Molekül invertieren",
+    "mirrorVideo": "Video spiegeln",
+    "tempOptions": "Temperatur- und Mechanikeinstellungen"
   },
   "orbitals": {
     "title": "Orbitale und Molekülformen",
@@ -64,15 +72,26 @@
       "temperature": "Temperatur: ", 
       "sticks": "Sticks",
       "spheres": "Kugeln",
-      "pdbInstructions": "Kopieren Sie das Molekül im PDB-Format oder laden Sie ein voreingestelltes Beispiel und klicken Sie dann auf. “Starten AR”",
-      "marker": "Marker",
+      "pdbInstructions": "Bereiten Sie für jeden Marker ein Molekül mit einer der folgenden Optionen, und klicken Sie auf 'AR starten'",
+      "marker": "Marker ",
       "getMarker": "Holen sich Marker",
       "loadFile": "Laden Ihre Datei",
       "load": "Belastung",
-      "chooseExample": "Wählen ein Beispiel",
+      "chooseExample": "Einige vordefinierte Beispiele",
       "examples": "Beispiele",
       "startAR": "Starten AR",
-      "placeholder": "Einfügen Molekül hier"
+      "placeholder": "Einfügen Molekül hier",
+      "yourMolecule": "Dein eigenes Molekül",
+      "searchBuild": "Suchen/bauen",
+      "jmeInstructions": "Hier können Sie Moleküle erstellen, suchen und bearbeiten. Wenn das Molekül fertig ist, klicken Sie auf Weiter, um die PDB-Datei zu laden.",
+      "search": "Datenbank durchsuchen",
+      "cancel": "Zurück",
+      "continue": "Fortfahren",
+      "mechanics": "Mechanik",
+      "electrostatics": "Elektrostatische Anziehungen",
+      "hBonds": "Wasserstoffbrückenbindungen",
+      "clashes": "Zeigen Sie überlappungen",
+      "showSpheres": "Atome als Kugeln"
     }
   },
   "bonds": {

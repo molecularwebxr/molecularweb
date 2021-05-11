@@ -1395,7 +1395,7 @@ function updateEnergies() {
     };
 
     fetch(" https://molecularweb.epfl.ch/backend2", {
-      method: "POST", // or 'PUT'
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },

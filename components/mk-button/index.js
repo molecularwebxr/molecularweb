@@ -36,7 +36,7 @@ const MkIconContent = /* html */ `
     }
 
     .tooltip {
-      left: -333%;
+      right: calc(100% + 22px);
       top: 50%;
       transform: translateY(-50%);
       position: absolute;
@@ -46,6 +46,7 @@ const MkIconContent = /* html */ `
       padding: 0.5rem 0.75rem;
       border-radius: 0.5rem;
       transition: 0.2s;
+      white-space: nowrap;
     }
 
     .tooltip p {
@@ -102,7 +103,7 @@ const MkIconContent = /* html */ `
       </g>
       </svg>
       <div id="tooltip" class="tooltip">
-        <p>PDB options</p>
+        <p><intl-message key="app.pdbOptions"></p>
         <div class="triangle"></div>
       </div>
     </a>

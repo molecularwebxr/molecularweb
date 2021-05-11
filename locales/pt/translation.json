@@ -33,7 +33,15 @@
     "welcomeMsg": "Site para estudar e ensinar química e biologia usando realidade aumentada",
     "prepare": "Prepare seus ",
     "markersWithLink": "marcadores",
-    "selectActivity": "Selecione uma atividade e divirta-se"
+    "selectActivity": "Selecione uma atividade e divirta-se",
+    "reset": "Reset",
+    "zoom": "Zoom",
+    "pdbOptions": "Moléculas em marcadores",
+    "cameraOptions": "Opções de câmera e visualização",
+    "controls": "Controles de temperatura e de la mecanica",
+    "flipMolecule": "Inverter molécula",
+    "mirrorVideo": "Inverter vídeo",
+    "tempOptions": "Controles de temperatura e de la mecanica"
   },
   "orbitals": {
     "title": "Formas de orbitais e moléculas",
@@ -64,15 +72,26 @@
       "temperature": "Temperatura: ", 
       "sticks": "Gravetos",
       "spheres": "Esferas",
-      "pdbInstructions": "Copie e cole a molécula no formato PDB ou carregue um exemplo e pressione “Começar”",
-      "marker": "Marcador",
+      "pdbInstructions": "Prepare uma molécula para cada marcador com uma das opções abaixo e clique em “Iniciar AR”",
+      "marker": "Marcador ",
       "getMarker": "Obter marcador",
       "loadFile": "Subir arquivo",
       "load": "Carga",
-      "chooseExample": "Escolha um exemplo",
+      "chooseExample": "Alguns exemplos predefinidos",
       "examples": "--Exemplos--",
-      "startAR": "Começar",
-      "placeholder": "Cole a molécula aqui"
+      "startAR": "Iniciar AR",
+      "placeholder": "Cole a molécula aqui",
+      "yourMolecule": "Sua própria molécula",
+      "searchBuild": "Pesquisar/construir",
+      "jmeInstructions": "Aqui você pode construir, pesquisar e editar moléculas. Quando a molécula estiver pronta, clique em continuar para carregar o PDB.",
+      "search": "Pesquisa banco de dados",
+      "cancel": "Cancelar",
+      "continue": "Prosseguir",
+      "mechanics": "Mecânica",
+      "electrostatics": "Atração Eletrostática",
+      "hBonds": "Mostrar ligações de hidrogênio",
+      "clashes": "Mostrar choques",
+      "showSpheres": "Átomos como esferas"
     }
   },
   "bonds": {

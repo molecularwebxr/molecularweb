@@ -320,7 +320,7 @@ figure {
 .marker-options-container {
   width: 40%;
   justify-content: space-between;
-  padding: 0 0.75rem;
+  padding: 0;
   margin: 1.5rem 0;
 }
 
@@ -550,10 +550,10 @@ button.pdb-btn {
 } */
 
 .temperature-container {
-  position: fixed;
+  position: absolute;
   top: 50%;
-  right: 286px;
-  transform: translateY(-77%);
+  right: calc(100% + 8px);
+  transform: translateY(-50%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -825,14 +825,32 @@ button.pdb-btn {
 
 @media screen and (max-width: 768px) {
   .modeling-container {
-    width: 50vw;
+    width: 55vw;
+  }
+
+  .marker-options-container {
+    width: 45%;
+  }
+
+  .pdb-btn {
+    padding: 3px 16px;
+  }
+
+  .pdb-load {
+    margin-right: 20px;
   }
 }
 
 @media screen and (max-width: 680px) {
+
+  .marker-options-container {
+    width: 40%;
+  }
+
   .modeling-info p {
     font-size: 0.8rem;
   }
+
   .modeling-marker-options p {
     font-size: 1rem;
     margin: 0 0 0.25rem 0;
@@ -853,22 +871,30 @@ button.pdb-btn {
 
   .pdb-text {
     height: 120px;
+    font-size: 10px;
   }
-}
 
-@media screen and (max-width: 680px) {
   .modeling-container {
     width: 60vw;
   }
+
   .modeling-info {
     padding: 0.75rem 0.5rem;
     margin-top: 10px;
   }
+
   .modeling-options {
     margin: 1rem 0;;
   }
+
   .btn-primary {
     margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .orbital-selector {
+    width: 90px;
   }
 }
 
@@ -876,21 +902,17 @@ button.pdb-btn {
   .pdb-selector {
     width: 90px;
   }
+
   .pdb-load {
     margin-right: 15px;
   }
+
   .modeling-marker-options p {
     font-size: 12px;
   }
 
   .modeling-marker-options a {
     font-size: 10px;
-  }
-}
-
-@media screen and (max-width: 630px) {
-  .orbital-selector {
-    width: 90px;
   }
 }
 
@@ -935,19 +957,23 @@ button.pdb-btn {
   .marker-sample.left-margin {
     margin-left: 0.25rem;
   }
+
   .side-menu {
     padding: 0.75rem 0.5rem;
   }
+
   .zoom-container,
   .camera-container,
   .temperature-container,
   .modeling-container {
     right: 58px;
   }
+
   .temperature-container {
     padding: 0.5rem 0.5rem;
     transform: translateY(-81%);
   }
+
   .modeling-container {
     transform: translateY(-60%);
   }
@@ -957,23 +983,28 @@ button.pdb-btn {
   .temp-controls {
     margin: 0;
   }
+
   .zoom-container {
     transform: translateY(-3%);
     padding: 0.5rem 0.5rem;
   }
+
   .camera-container {
     transform: translateY(-198%);
     padding: 0.5rem 0.5rem;
   }
+
   /* .zoom-container.multiple-cams {
     transform: translateY(61%);
   } */
   .pdb-selector {
     width: 80px;
   }
+
   .upload-pdb {
     padding: 3px 15px;
   }
+
   .pdb-load {
     margin-right: 10px;
   }
@@ -984,6 +1015,7 @@ button.pdb-btn {
     /* width: 45px; */
     height: 25px;
   }
+
   .extra-info-icon {
     margin-left: 0.2rem;
   }
@@ -1004,16 +1036,19 @@ button.pdb-btn {
     width: 60px;
     font-size: 0.5rem;
   }
+
   .upload-pdb {
     padding: 3px 12px;
     font-size: 0.5rem;
   }
+
   .pdb-load {
     margin-right: 8px;
   }
   .modeling-marker-options {
     margin-right: 10px;
   }
+
   .modeling-marker-options p {
     font-size: 10px;
     margin-bottom: 10px;
@@ -1041,6 +1076,7 @@ button.pdb-btn {
     font-size: 1rem;
     margin-left: 0.5rem;
   }
+
   header {
     padding: 0.5rem;
     height: 60px;
@@ -1071,6 +1107,7 @@ button.pdb-btn {
     -ms-transform: scale(-1, 1);
     transform: scale(-1, 1);
   }
+
   video {
     -moz-transform: scale(-1, 1);
     -webkit-transform: scale(-1, 1);
@@ -1078,6 +1115,7 @@ button.pdb-btn {
     -ms-transform: scale(-1, 1);
     transform: scale(-1, 1);
   }
+
   .flip {
     -moz-transform: scale(1, 1);
     -webkit-transform: scale(1, 1);
@@ -1093,6 +1131,7 @@ button.pdb-btn {
     font-size: 0.75rem;
     margin-left: 0.5rem;
   }
+
   header {
     padding: 0.5rem;
     height: 50px;
@@ -1212,6 +1251,7 @@ button.pdb-btn {
     -ms-transform: scale(1, 1);
     transform: scale(1, 1);
   }
+
   video {
     -moz-transform: scale(1, 1);
     -webkit-transform: scale(1, 1);

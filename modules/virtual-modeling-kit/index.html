@@ -141,9 +141,9 @@
     <div id="interaction-container" class="interaction-controls hide column">
       <div class="triangle-temp"></div>
 
-      <p class="interaction-control-title">Scene controls</p>
+      <p class="interaction-control-title" data-i18n="orbitals.modelingKit.mechanics"></p>
       <div class="interaction-control row">
-        <p>Attractive electrostatics</p>
+        <p data-i18n="orbitals.modelingKit.electrostatics"></p>
         <div class="switch">
           <input
             id="switch-interactions"
@@ -154,14 +154,14 @@
         </div>
       </div>
       <div class="interaction-control row">
-        <p>Show H Bonds</p>
+        <p data-i18n="orbitals.modelingKit.hBonds"></p>
         <div class="switch">
           <input id="switch-bridge" type="checkbox" class="switch-input" />
           <label for="switch-bridge" class="switch-label">Switch</label>
         </div>
       </div>
       <div class="interaction-control row no-margin">
-        <p>Show clashes</p>
+        <p data-i18n="orbitals.modelingKit.clashes"></p>
         <div class="switch">
           <input id="switch-clashes" type="checkbox" class="switch-input" />
           <label for="switch-clashes" class="switch-label">Switch</label>
@@ -170,9 +170,9 @@
 
       <div class="line horizontal long"></div>
 
-      <p class="interaction-control-title">Marker 1</p>
+      <p class="interaction-control-title" data-i18n="[prepend]orbitals.modelingKit.marker"><span>1</span></p>
       <div class="interaction-control row">
-        <p>Show spheres</p>
+        <p data-i18n="orbitals.modelingKit.showSpheres"></p>
         <div class="switch">
           <input
             id="switch-spheres-1"
@@ -184,7 +184,7 @@
         </div>
       </div>
       <div class="interaction-control row no-margin">
-        <p>Flip molecule</p>
+        <p data-i18n="app.flipMolecule"></p>
         <div class="switch">
           <input
             id="switch-flip-1"
@@ -198,9 +198,9 @@
 
       <div class="line horizontal long"></div>
 
-      <p class="interaction-control-title">Marker 2</p>
+      <p class="interaction-control-title" data-i18n="[prepend]orbitals.modelingKit.marker"><span>2</span></p>
       <div class="interaction-control row">
-        <p>Show spheres</p>
+        <p data-i18n="orbitals.modelingKit.showSpheres"></p>
         <div class="switch">
           <input
             id="switch-spheres-2"
@@ -212,7 +212,7 @@
         </div>
       </div>
       <div class="interaction-control row no-margin">
-        <p>Flip molecule</p>
+        <p data-i18n="app.flipMolecule"></p>
         <div class="switch">
           <input
             id="switch-flip-2"
@@ -223,9 +223,8 @@
           <label for="switch-flip-2" class="switch-label">Switch</label>
         </div>
       </div>
-    </div>
 
-    <!-- Temperature controls -->
+       <!-- Temperature controls -->
     <div id="temp-container" class="temperature-container hide column">
       <temp-control
         class="small-icon-margin small-icon-margin-bottom"
@@ -268,6 +267,9 @@
         <play-temp></play-temp>
       </div>
     </div>
+    </div>
+
+   
 
     <!-- Menu for loading PDBs -->
     <div class="modeling-container" id="mk-menu">
@@ -288,7 +290,7 @@
 
         <div class="marker-options-container row">
           <div class="modeling-marker-options column">
-            <p id="marker-1" class="selected">Marker 1</p>
+            <p id="marker-1" class="selected" data-i18n="[prepend]orbitals.modelingKit.marker"><span>1</span></p>
             <a
               href="/assets/markers/cube.pdf"
               target="_blank"
@@ -298,7 +300,7 @@
           </div>
 
           <div class="modeling-marker-options column">
-            <p id="marker-2">Marker 2</p>
+            <p id="marker-2" data-i18n="[prepend]orbitals.modelingKit.marker"><span>2</span></p>
             <a
               href="/assets/markers/cube.pdf"
               target="_blank"
@@ -325,8 +327,8 @@
             </div>
 
             <div class="pdb-load">
-              <p class="pdb-option">Your own molecule</p>
-              <button id="jme-btn" class="pdb-btn">Search/Build...</button>
+              <p class="pdb-option" data-i18n="orbitals.modelingKit.yourMolecule"></p>
+              <button id="jme-btn" class="pdb-btn" data-i18n="orbitals.modelingKit.searchBuild"></button>
             </div>
 
             <div class="pdb-select">
@@ -400,9 +402,7 @@
           <div id="bar-2" class="jsme-bar-2"></div>
         </div>
 
-        <p class="jme-instructions">
-          Here you can build or search and edit molecules. When you're ready,
-          click continue to load the the PDB.
+        <p class="jme-instructions" data-i18n="orbitals.modelingKit.jmeInstructions">
         </p>
 
         <div class="jme-search row">
@@ -412,19 +412,16 @@
             type="text"
             placeholder="butanol"
           />
-          <button id="jme-search" class="btn-primary no-margin">
-            Search from NCI
+          <button id="jme-search" class="btn-primary no-margin" data-i18n="orbitals.modelingKit.search">
           </button>
         </div>
 
         <div id="appletContainer"></div>
 
         <div class="jme-btns row">
-          <button class="btn-primary big no-margin" id="jme-cancel">
-            Cancel
+          <button class="btn-primary big no-margin" id="jme-cancel" data-i18n="orbitals.modelingKit.cancel">
           </button>
-          <button class="btn-primary big no-margin" id="jme-continue">
-            Continue
+          <button class="btn-primary big no-margin" id="jme-continue" data-i18n="orbitals.modelingKit.continue"></button>
           </button>
         </div>
       </div>

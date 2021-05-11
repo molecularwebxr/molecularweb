@@ -73,7 +73,9 @@ const FlipGraphicsContent = /* html */ `
         </g>
       </g>
     </svg>
-    <p>Flip Graphics</p>
+    <p>
+      <intl-message key="app.flipMolecule">
+    </p>
   </a>`;
 
 class FlipGraphics extends HTMLElement {

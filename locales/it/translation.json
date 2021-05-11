@@ -33,7 +33,15 @@
     "welcomeMsg": "Sito web per studiare e insegnare chimica e biologia utilizzando la realtà aumentata",
     "prepare": "Prepara il tuo",
     "markersWithLink": "marcatori",
-    "selectActivity": "Seleziona un'attività e divertiti!"
+    "selectActivity": "Seleziona un'attività e divertiti!",
+    "reset": "Reset",
+    "zoom": "Zoom",
+    "pdbOptions": "Molecole in marcatori",
+    "cameraOptions": "Opzioni di camera e visualizzazione",
+    "controls": "Controlli di temperatura e della mecanica",
+    "flipMolecule": "Invertire la molecola",
+    "mirrorVideo": "Invertire il video",
+    "tempOptions": "Controlli di temperatura e della mecanica"
   },
   "orbitals": {
     "title": "Forme di orbitali e molecole",
@@ -64,15 +72,26 @@
       "temperature": "Temperatura: ", 
       "sticks": "Bacchette",
       "spheres": "Sfere",
-      "pdbInstructions": "Copia e incolla la molecola in formato PDB o carica un esempio e premi “Inizio”",
-      "marker": "Marcatore",
+      "pdbInstructions": "Prepara una molecola per ogni marcatore con una delle opzioni seguenti e fai clic su “Avvia AR”",
+      "marker": "Marcatore ",
       "getMarker": "Ottieni marcatore",
       "loadFile": "Caricare file",
       "load": "Caricare",
-      "chooseExample": "Scegli un esempio",
+      "chooseExample": "Alcuni esempi predefiniti",
       "examples": "--Esempi--",
-      "startAR": "Inizio",
-      "placeholder": "Incolla qui la molecola"
+      "startAR": "Avvia AR",
+      "placeholder": "Incolla qui la molecola",
+      "yourMolecule": "La tua molecola",
+      "searchBuild": "Cerca/costruisci",
+      "jmeInstructions": "Qui puoi costruire, cercare e modificare le molecole. Quando la molecola sia pronta, fare clic su Continua per caricare il PDB.",
+      "search": "Ricerca nel database",
+      "cancel": "Anulla",
+      "continue": "Continua",
+      "mechanics": "Mecanica",
+      "electrostatics": "Attrazione elettrostatica",
+      "hBonds": "Mostra legami idrogeno",
+      "clashes": "Mostra scontri",
+      "showSpheres": "Atomi come sfere"
     }
   },
   "bonds": {

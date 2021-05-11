@@ -33,7 +33,15 @@
     "welcomeMsg": "A website for chemistry and biology education through augmented reality",
     "prepare": "Prepare your ",
     "markersWithLink": "markers",
-    "selectActivity": "Select an activity and enjoy!"
+    "selectActivity": "Select an activity and enjoy!",
+    "reset": "Reset",
+    "zoom": "Zoom",
+    "pdbOptions": "Molecules in markers",
+    "cameraOptions": "Camera and view options",
+    "controls": "Temperature and mechanics controls",
+    "flipMolecule": "Flip Molecule",
+    "mirrorVideo": "Mirror video",
+    "tempOptions": "Temperature and mechanics controls"
   },
   "orbitals": {
     "title": "Orbitals and molecular shapes",
@@ -64,15 +72,26 @@
       "temperature": "Temperature: ", 
       "sticks": "Sticks",
       "spheres": "Spheres",
-      "pdbInstructions": "Select a marker and copy molecule in PDB format, load a preset example or search and edit your own molecule, then click “Start AR”",
-      "marker": "Marker",
+      "pdbInstructions": " Prepare a molecule for each marker with one of the options below, and click “Start AR”",
+      "marker": "Marker ",
       "getMarker": "Get marker",
-      "loadFile": "Load your file",
+      "loadFile": "Load file",
       "load": "Load",
-      "chooseExample": "Quick examples",
+      "chooseExample": "Quick predefined examples",
       "examples": "--Examples--",
       "startAR": "Start AR",
-      "placeholder": "Copy-paste molecule here"
+      "placeholder": "Copy-paste molecule here",
+      "yourMolecule": "Your own molecule",
+      "searchBuild": "Search/Build",
+      "jmeInstructions": "Here you can build, search and edit molecules. When the molecule is ready, click continue to load the the PDB.",
+      "search": "Search database",
+      "cancel": "Cancel",
+      "continue": "Continue",
+      "mechanics": "Mechanics",
+      "electrostatics": "Attractive electrostatics",
+      "hBonds": "Show hydrogen bonds",
+      "clashes": "Show Clashes",
+      "showSpheres": "Atoms as spheres"
     }
   },
   "bonds": {
