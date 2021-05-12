@@ -346,10 +346,6 @@ figure {
   margin: 1.5rem 0;
 }
 
-.modeling-options-btns {
-  flex-wrap: wrap;
-  /* justify-content: space-between; */
-}
 
 .modeling-marker-options:first-of-type {
   margin-right: 1.5rem;
@@ -572,7 +568,7 @@ button.pdb-btn {
 .temperature-container {
   position: absolute;
   top: 50%;
-  right: calc(100% + 8px);
+  right: calc(100% + 6px);
   transform: translateY(-50%);
   z-index: 1;
   background-color: var(--primarylight);
@@ -983,16 +979,20 @@ button.pdb-btn {
     padding: 0.75rem 0.5rem;
   }
 
+  .modeling-container {
+    width: 65vw;
+  }
+
   .zoom-container,
   .camera-container,
-  .temperature-container,
-  .modeling-container {
+  .modeling-container,
+  .interaction-controls {
     right: 58px;
   }
 
   .temperature-container {
     padding: 0.5rem 0.5rem;
-    transform: translateY(-81%);
+    transform: translateY(-52%);;
   }
 
   .modeling-container {
@@ -1006,7 +1006,7 @@ button.pdb-btn {
   }
 
   .zoom-container {
-    transform: translateY(-3%);
+    transform: translateY(-27%);
     padding: 0.5rem 0.5rem;
   }
 
@@ -1015,9 +1015,10 @@ button.pdb-btn {
     padding: 0.5rem 0.5rem;
   }
 
-  /* .zoom-container.multiple-cams {
-    transform: translateY(61%);
-  } */
+  .modeling-options-btns {
+    flex-wrap: wrap;
+  }
+
   .pdb-selector {
     width: 100%;
   }
@@ -1031,11 +1032,13 @@ button.pdb-btn {
   }
 
   .pdb-text {
+    margin-top: 8px;
     height: 80px;
   }
 
   .pdb-load:first-of-type {
-    margin-right: 16px;
+    margin-right: 12px;
+    margin-bottom: 8px;
   }
 
   .pdb-select {
@@ -1045,6 +1048,25 @@ button.pdb-btn {
   .marker-options-container,
   .modeling-options {
     margin: 0.75rem 0;
+  }
+
+  .interaction-controls {
+    transform: translateY(-73%);
+    padding: 0.5rem 0.5rem;
+  }
+
+  .interaction-control {
+    margin-bottom: 0.75rem;
+  }
+
+  .interaction-control-title {
+    font-size: 12px;
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .interaction-control p {
+    font-size: 12px;
+    margin: 0 0 0 0;
   }
 }
 
@@ -1082,6 +1104,7 @@ button.pdb-btn {
   .pdb-load {
     margin-right: 8px;
   }
+
   .modeling-marker-options {
     margin-right: 10px;
   }
@@ -1093,6 +1116,10 @@ button.pdb-btn {
 
   .modeling-marker-options a {
     font-size: 10px;
+  }
+  
+  .pdb-text {
+    display: none;
   }
 }
 
