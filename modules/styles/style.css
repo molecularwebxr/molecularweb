@@ -296,7 +296,7 @@ figure {
   position: relative;
   top: -5px;
   right: -97%;
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 .bar-1 {
@@ -318,8 +318,7 @@ figure {
 }
 
 .marker-options-container {
-  width: 40%;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 0;
   margin: 1.5rem 0;
 }
@@ -344,8 +343,16 @@ figure {
 }
 
 .modeling-options {
-  justify-content: space-between;
   margin: 1.5rem 0;
+}
+
+.modeling-options-btns {
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+}
+
+.modeling-marker-options:first-of-type {
+  margin-right: 1.5rem;
 }
 
 .modeling-marker-options p {
@@ -366,6 +373,17 @@ figure {
   font-family: "Roboto";
   color: var(--secondary);
   font-size: 12px;
+  white-space: nowrap;
+}
+
+.pdb-subtitle {
+  font-family: "Roboto";
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  margin: 0 0 0.5rem 0;
+  align-self: flex-start;
 }
 
 .pdb-load {
@@ -377,6 +395,7 @@ figure {
   color: #ffffff;
   font-size: 12px;
   margin: 0 0 0.5rem 0;
+  white-space: nowrap;
 }
 
 .pdb-btn {
@@ -431,6 +450,7 @@ button.pdb-btn {
   resize: none;
   font-family: "Roboto";
   font-size: 12px;
+  border-radius: 6px;
 }
 
 .btn-primary {
@@ -453,7 +473,7 @@ button.pdb-btn {
 }
 
 .btn-primary.no-margin {
-  margin: 0
+  margin: 0;
 }
 
 .btn-primary.big {
@@ -534,7 +554,7 @@ button.pdb-btn {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-5%);
+  transform: translateY(-27%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -593,7 +613,8 @@ button.pdb-btn {
 .interaction-control.no-margin {
   margin-bottom: 0;
 }
-.interaction-control-title  {
+
+.interaction-control-title {
   font-family: "Roboto";
   color: #ffffff;
   font-size: 14px;
@@ -659,13 +680,12 @@ button.pdb-btn {
 }
 .switch-input:checked + .switch-label::after {
   left: 12px;
-  
 }
 
 .chart-container {
   display: none;
   position: fixed;
-  bottom:0;
+  bottom: 0;
   right: 0;
   /* transform: translateY(-77%); */
   z-index: 1;
@@ -674,7 +694,7 @@ button.pdb-btn {
   background-color: azure;
 }
 
-.chart{
+.chart {
   width: 400px;
   height: 225px;
 }
@@ -689,7 +709,7 @@ button.pdb-btn {
   bottom: 0;
   opacity: 0;
   visibility: hidden;
-  transition: .5s ease-in;;
+  transition: 0.5s ease-in;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -704,7 +724,7 @@ button.pdb-btn {
 .jsme-container {
   margin: 0 auto;
   border-radius: 20px;
-  width: 650px;
+  width: 600px;
   height: 600px;
   background-color: white;
   position: relative;
@@ -746,11 +766,11 @@ button.pdb-btn {
 }
 
 .jsme-container.out {
-  animation: animationOut .5s forwards;
+  animation: animationOut 0.5s forwards;
 }
 
 .jsme-container.in {
-  animation: animationIn .5s forwards;
+  animation: animationIn 0.5s forwards;
 }
 
 .jme-instructions {
@@ -760,6 +780,7 @@ button.pdb-btn {
   font-weight: bold;
   text-align: center;
   margin-bottom: 2rem;
+  width: 500px;
 }
 
 .jme-search {
@@ -795,16 +816,16 @@ button.pdb-btn {
 }
 
 @keyframes animationIn {
-  0%{
+  0% {
     transform: translateY(-3000px);
   }
-  60%{
+  60% {
     transform: translateY(25px);
   }
-  75%{
+  75% {
     transform: translateY(-10px);
   }
-  90%{
+  90% {
     transform: translateY(5px);
   }
 }
@@ -828,10 +849,6 @@ button.pdb-btn {
     width: 55vw;
   }
 
-  .marker-options-container {
-    width: 45%;
-  }
-
   .pdb-btn {
     padding: 3px 16px;
   }
@@ -842,11 +859,6 @@ button.pdb-btn {
 }
 
 @media screen and (max-width: 680px) {
-
-  .marker-options-container {
-    width: 40%;
-  }
-
   .modeling-info p {
     font-size: 0.8rem;
   }
@@ -884,7 +896,7 @@ button.pdb-btn {
   }
 
   .modeling-options {
-    margin: 1rem 0;;
+    margin: 1rem 0;
   }
 
   .btn-primary {
@@ -913,6 +925,15 @@ button.pdb-btn {
 
   .modeling-marker-options a {
     font-size: 10px;
+  }
+
+  .pdb-subtitle {
+    font-size: 12px;
+  }
+
+  .pdb-btn {
+    padding: 3px 14px;
+    font-size: 12px;
   }
 }
 
@@ -975,7 +996,7 @@ button.pdb-btn {
   }
 
   .modeling-container {
-    transform: translateY(-60%);
+    transform: translateY(-54%);
   }
   /* .temperature-container.multiple-cams {
     transform: translateY(-58%);
@@ -998,7 +1019,7 @@ button.pdb-btn {
     transform: translateY(61%);
   } */
   .pdb-selector {
-    width: 80px;
+    width: 100%;
   }
 
   .upload-pdb {
@@ -1007,6 +1028,23 @@ button.pdb-btn {
 
   .pdb-load {
     margin-right: 10px;
+  }
+
+  .pdb-text {
+    height: 80px;
+  }
+
+  .pdb-load:first-of-type {
+    margin-right: 16px;
+  }
+
+  .pdb-select {
+    margin-top: 8px;
+  }
+
+  .marker-options-container,
+  .modeling-options {
+    margin: 0.75rem 0;
   }
 }
 
@@ -1033,7 +1071,6 @@ button.pdb-btn {
   }
 
   .pdb-selector {
-    width: 60px;
     font-size: 0.5rem;
   }
 
@@ -1207,7 +1244,7 @@ button.pdb-btn {
     transform: translateY(-174%);
   }
 
-  .camera-container.mk .triangle-temp{
+  .camera-container.mk .triangle-temp {
     transform: translateY(-114%);
   }
 
@@ -1240,7 +1277,7 @@ button.pdb-btn {
     transform: translateY(21%);
   } */
 
-  .temperature-container .triangle-temp{
+  .temperature-container .triangle-temp {
     transform: translateY(-300%);
   }
 
@@ -1282,7 +1319,7 @@ button.pdb-btn {
     transform: translateY(-55%);
   }
 
-  .triangle-mk{
+  .triangle-mk {
     transform: translateY(-160%);
   }
 
@@ -1302,7 +1339,7 @@ button.pdb-btn {
 
   .modeling-marker-options {
     flex-direction: row;
-    margin: 0.5rem 0
+    margin: 0.5rem 0;
   }
 
   .modeling-marker-options a {

@@ -1271,7 +1271,7 @@ function handleBridgeChange(e) {
 }
 
 function handleMarkerSelection(e) {
-  if (e.target.id === "marker-1") {
+  if (e.target.parentElement.id === "marker-1") {
     selectedMarker = 1;
     marker2.classList.remove("selected");
     marker1.classList.add("selected");
