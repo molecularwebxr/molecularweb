@@ -785,6 +785,10 @@ button.pdb-btn {
   margin-bottom: 2rem;
 }
 
+.jme-search .btn-primary{
+  white-space: nowrap;
+}
+
 .jme-input {
   margin: 0 8px;
   padding: 4px;
@@ -809,6 +813,11 @@ button.pdb-btn {
   margin-top: 2rem;
   width: 300px;
   justify-content: space-between;
+}
+
+.jme-editor {
+  width: 500px;
+  height: 300px;
 }
 
 @keyframes animationIn {
@@ -852,6 +861,7 @@ button.pdb-btn {
   .pdb-load {
     margin-right: 20px;
   }
+
 }
 
 @media screen and (max-width: 680px) {
@@ -898,11 +908,76 @@ button.pdb-btn {
   .btn-primary {
     margin-top: 1rem;
   }
+
+  .jsme-container {
+    width: 80vw;
+    height: 80vw;
+    padding: 1rem;
+  }
+
+  .jme-instructions {
+    width: 80%;
+  }
+
+  .jme-editor {
+    width: 95%;
+    height: 100%;
+  }
 }
 
 @media screen and (max-width: 630px) {
   .orbital-selector {
     width: 90px;
+  }
+
+  .jme-instructions {
+    font-size: 14px;
+  }
+
+  .jme-input {
+    width: 100px;
+  }
+
+  .jme-search .btn-primary {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .btn-primary.big {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .jme-editor {
+    width: 100%;
+    height: 300px;
+  }
+
+  .jsme-container {
+    width: 80vw;
+    height: 464px;
+    padding: 1rem;
+  }
+
+  .jme-search,
+  .jme-btns {
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .jme-input {
+    margin: 0;
+  }
+
+  .jme-instructions,
+  .jme-search {
+    margin-bottom: 1rem;
+  }
+
+  .jme-btns {
+    margin-top: 1rem;
   }
 }
 
@@ -1067,6 +1142,17 @@ button.pdb-btn {
   .interaction-control p {
     font-size: 12px;
     margin: 0 0 0 0;
+  }
+
+  .jme-editor {
+    width: 100%;
+    height: 300px;
+  }
+
+  .jsme-container {
+    width: 95vw;
+    height: 464px;
+    padding: 1rem 0.25rem;
   }
 }
 
