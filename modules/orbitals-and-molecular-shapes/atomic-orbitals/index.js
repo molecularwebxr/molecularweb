@@ -14,7 +14,13 @@ var marker2BModel = document.getElementById("marker-2B-mol");
 var marker2AOrb = document.getElementById("marker-2A-orb");
 var marker2BOrb = document.getElementById("marker-2B-orb");
 
+var btnMarker1 = document.getElementById("btn-1");
+var btnMarker2 = document.getElementById("btn-2");
+
 var resetActivityButton = document.querySelector("reset-activity");
+
+var marker1Opacity = true;
+var marker2Opacity = true;
 
 var modelsMarker1 = [marker1AModel, marker1BModel];
 var modelsMarker2 = [marker2AModel, marker2BModel];
@@ -25,6 +31,10 @@ marker2Select.selectedIndex = 0;
 function handleReset(e) {
   marker1Select.selectedIndex = 0;
   marker2Select.selectedIndex = 0;
+  btnMarker1.classList.add("active");
+  btnMarker2.classList.add("active");
+  marker1Opacity = true;
+  marker2Opacity = true;
 
   marker1AModel.removeAttribute("gltf-model");
   marker1BModel.removeAttribute("gltf-model");
@@ -61,6 +71,10 @@ function handleReset(e) {
   marker1BModel.setAttribute("model-opacity", 0.5);
   marker2AModel.setAttribute("model-opacity", 0.5);
   marker2BModel.setAttribute("model-opacity", 0.5);
+  marker1AOrb.setAttribute("model-opacity", 0.8);
+  marker1BOrb.setAttribute("model-opacity", 0.8);
+  marker2AOrb.setAttribute("model-opacity", 0.8);
+  marker2BOrb.setAttribute("model-opacity", 0.8);
 }
 
 function handleSelection(e) {
@@ -85,9 +99,7 @@ function handleSelection(e) {
   modelsSelected[0].removeAttribute("obj-model");
   modelsSelected[1].removeAttribute("gltf-model");
   modelsSelected[1].removeAttribute("obj-model");
-  
- 
-  
+
   if (index < 50) {
     if (index > 24 && index < 30) {
       modelsSelected[0].setAttribute("visible", false);
@@ -128,8 +140,32 @@ function handleSelection(e) {
       modelsSelected[1].setAttribute("visible", true);
       modelsSelected[0].setAttribute("gltf-model", "#orb" + assetIndex);
       modelsSelected[1].setAttribute("gltf-model", "#orb" + assetIndex);
-      modelsSelected[0].setAttribute("model-opacity", 0.5);
-      modelsSelected[1].setAttribute("model-opacity", 0.5);
+
+      if (e.target.id === "select-marker-1") {
+        if (marker1Opacity) {
+          marker1AModel.setAttribute("model-opacity", 0.5);
+          marker1BModel.setAttribute("model-opacity", 0.5);
+          marker1AOrb.setAttribute("model-opacity", 0.8);
+          marker1BOrb.setAttribute("model-opacity", 0.8);
+        } else {
+          marker1AModel.setAttribute("model-opacity", 1);
+          marker1BModel.setAttribute("model-opacity", 1);
+          marker1AOrb.setAttribute("model-opacity", 1);
+          marker1BOrb.setAttribute("model-opacity", 1);
+        }
+      } else {
+        if (marker2Opacity) {
+          marker2AModel.setAttribute("model-opacity", 0.5);
+          marker2BModel.setAttribute("model-opacity", 0.5);
+          marker2AOrb.setAttribute("model-opacity", 0.8);
+          marker2BOrb.setAttribute("model-opacity", 0.8);
+        } else {
+          marker2AModel.setAttribute("model-opacity", 1);
+          marker2BModel.setAttribute("model-opacity", 1);
+          marker2AOrb.setAttribute("model-opacity", 1);
+          marker2BOrb.setAttribute("model-opacity", 1);
+        }
+      }
     }
   } else {
     modelsSelected[0].setAttribute("visible", true);
@@ -147,6 +183,42 @@ function handleSelection(e) {
   }
 }
 
+function handleTransparency(e) {
+  if (e.target.id === "btn-1") {
+    btnMarker1.classList.toggle("active");
+    marker1Opacity = !marker1Opacity;
+
+    if (marker1Opacity) {
+      marker1AModel.setAttribute("model-opacity", 0.5);
+      marker1BModel.setAttribute("model-opacity", 0.5);
+      marker1AOrb.setAttribute("model-opacity", 0.8);
+      marker1BOrb.setAttribute("model-opacity", 0.8);
+    } else {
+      marker1AModel.setAttribute("model-opacity", 1);
+      marker1BModel.setAttribute("model-opacity", 1);
+      marker1AOrb.setAttribute("model-opacity", 1);
+      marker1BOrb.setAttribute("model-opacity", 1);
+    }
+  } else {
+    btnMarker2.classList.toggle("active");
+    marker2Opacity = !marker2Opacity;
+
+    if (marker2Opacity) {
+      marker2AModel.setAttribute("model-opacity", 0.5);
+      marker2BModel.setAttribute("model-opacity", 0.5);
+      marker2AOrb.setAttribute("model-opacity", 0.8);
+      marker2BOrb.setAttribute("model-opacity", 0.8);
+    } else {
+      marker2AModel.setAttribute("model-opacity", 1);
+      marker2BModel.setAttribute("model-opacity", 1);
+      marker2AOrb.setAttribute("model-opacity", 1);
+      marker2BOrb.setAttribute("model-opacity", 1);
+    }
+  }
+}
+
 marker1Select.addEventListener("change", handleSelection);
 marker2Select.addEventListener("change", handleSelection);
+btnMarker1.addEventListener("click", handleTransparency);
+btnMarker2.addEventListener("click", handleTransparency);
 resetActivityButton.addEventListener("resetActivity", handleReset);

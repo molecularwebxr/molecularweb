@@ -261,6 +261,11 @@ figure {
   background-color: var(--secondary);
 }
 
+.toggle-btn.align-left {
+  align-self: flex-start;
+  margin-left: 0.5rem;
+}
+
 .hide {
   display: none;
 }
