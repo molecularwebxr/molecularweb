@@ -42,6 +42,16 @@ function handleReset(e) {
   marker1BOrb.removeAttribute("gltf-model");
   marker2BOrb.removeAttribute("gltf-model");
 
+  marker1AOrb.setAttribute("visible", false);
+  marker1BOrb.setAttribute("visible", false);
+  marker2AOrb.setAttribute("visible", false);
+  marker2BOrb.setAttribute("visible", false);
+
+  marker1AModel.setAttribute("visible", true);
+  marker1BModel.setAttribute("visible", true);
+  marker2AModel.setAttribute("visible", true);
+  marker2BModel.setAttribute("visible", true);
+
   marker1AModel.setAttribute("gltf-model", "#orb1");
   marker1BModel.setAttribute("gltf-model", "#orb1");
   marker2AModel.setAttribute("gltf-model", "#orb1");
@@ -75,10 +85,8 @@ function handleSelection(e) {
   modelsSelected[0].removeAttribute("obj-model");
   modelsSelected[1].removeAttribute("gltf-model");
   modelsSelected[1].removeAttribute("obj-model");
-  marker1AOrb.removeAttribute("gltf-model");
-  marker2AOrb.removeAttribute("gltf-model");
-  marker1BOrb.removeAttribute("gltf-model");
-  marker2BOrb.removeAttribute("gltf-model");
+  
+ 
   
   if (index < 50) {
     if (index > 24 && index < 30) {
@@ -86,29 +94,36 @@ function handleSelection(e) {
       modelsSelected[1].setAttribute("visible", false);
 
       if (e.target.id === "select-marker-1") {
+        marker1AOrb.removeAttribute("gltf-model");
+        marker1BOrb.removeAttribute("gltf-model");
         marker1AOrb.setAttribute("visible", true);
         marker1BOrb.setAttribute("visible", true);
 
-        marker2AOrb.setAttribute("visible", false);
-        marker2BOrb.setAttribute("visible", false);
+        // marker2AOrb.setAttribute("visible", false);
+        // marker2BOrb.setAttribute("visible", false);
 
         marker1AOrb.setAttribute("gltf-model", "#orb" + assetIndex);
         marker1BOrb.setAttribute("gltf-model", "#orb" + assetIndex);
       } else {
         marker2AOrb.setAttribute("visible", true);
         marker2BOrb.setAttribute("visible", true);
+        marker2AOrb.removeAttribute("gltf-model");
+        marker2BOrb.removeAttribute("gltf-model");
 
-        marker1AOrb.setAttribute("visible", false);
-        marker1BOrb.setAttribute("visible", false);
+        // marker1AOrb.setAttribute("visible", false);
+        // marker1BOrb.setAttribute("visible", false);
 
         marker2AOrb.setAttribute("gltf-model", "#orb" + assetIndex);
         marker2BOrb.setAttribute("gltf-model", "#orb" + assetIndex);
       }
     } else {
-      marker1AOrb.setAttribute("visible", false);
-      marker1BOrb.setAttribute("visible", false);
-      marker2AOrb.setAttribute("visible", false);
-      marker2BOrb.setAttribute("visible", false);
+      if (e.target.id === "select-marker-1") {
+        marker1AOrb.setAttribute("visible", false);
+        marker1BOrb.setAttribute("visible", false);
+      } else {
+        marker2AOrb.setAttribute("visible", false);
+        marker2BOrb.setAttribute("visible", false);
+      }
       modelsSelected[0].setAttribute("visible", true);
       modelsSelected[1].setAttribute("visible", true);
       modelsSelected[0].setAttribute("gltf-model", "#orb" + assetIndex);
