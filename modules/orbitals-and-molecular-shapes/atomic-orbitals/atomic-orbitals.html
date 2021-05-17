@@ -136,7 +136,7 @@
     </div>
 
     <!-- Selection Menu -->
-    <div class="selection-menu">
+    <div id="selection-menu" class="selection-menu">
       <div class="marker">
         <img
           class="marker-sample"
@@ -153,11 +153,11 @@
                 <option>2px</option>
                 <option>2py</option>
                 <option>2pz</option>
-                <option>3dz<sup>2</sup></option>
+                <option>3dz&sup2;</option>
                 <option>3dxz</option>
                 <option>3dyz</option>
                 <option>3dxy</option>
-                <option>3dx2-y2</option>
+                <option>3dx&sup2;-y&sup2;</option>
                 <option>4f</option>
                 <option>4f</option>
                 <option>4f</option>
@@ -177,10 +177,10 @@
               </optgroup>
               <optgroup label="Hybridized Orbitals">
                 <option>sp</option>
-                <option>sp2</option>
-                <option>sp3</option>
-                <option>sp3d</option>
-                <option>sp3d2</option>
+                <option>sp&sup2;</option>
+                <option>sp&sup3;</option>
+                <option>sp&sup3;d</option>
+                <option>sp&sup3;d&sup2;</option>
                 <option>2sp (1)</option>
                 <option>2sp (2)</option>
                 <option>2sp2 (1)</option>
@@ -210,7 +210,7 @@
                 <option>Octahedral</option>
               </optgroup>
             </select>
-            <button class="toggle-btn active align-left" id="btn-1">Transparency</button>
+            <button class="toggle-btn align-left" id="btn-1" data-i18n="app.transparency"></button>
           </div>
           <enable-gestures
             class="gesture-icon left-margin"
@@ -235,11 +235,11 @@
                 <option>2px</option>
                 <option>2py</option>
                 <option>2pz</option>
-                <option>3dz<sup>2</sup></option>
+                <option>3dz&sup2;</option>
                 <option>3dxz</option>
                 <option>3dyz</option>
                 <option>3dxy</option>
-                <option>3dx2-y2</option>
+                <option>3dx&sup2;-y&sup2;</option>
                 <option>4f</option>
                 <option>4f</option>
                 <option>4f</option>
@@ -259,10 +259,10 @@
               </optgroup>
               <optgroup label="Hybridized Orbitals">
                 <option>sp</option>
-                <option>sp2</option>
-                <option>sp3</option>
-                <option>sp3d</option>
-                <option>sp3d2</option>
+                <option>sp&sup2;</option>
+                <option>sp&sup3;</option>
+                <option>sp&sup3;d</option>
+                <option>sp&sup3;d&sup2;</option>
                 <option>2sp (1)</option>
                 <option>2sp (2)</option>
                 <option>2sp2 (1)</option>
@@ -292,7 +292,7 @@
                 <option>Octahedral</option>
               </optgroup>
             </select>
-            <button class="toggle-btn active align-left" id="btn-2">Transparency</button>
+            <button class="toggle-btn align-left" id="btn-2" data-i18n="app.transparency"></button>
           </div>
           <enable-gestures
             class="gesture-icon left-margin"
@@ -486,7 +486,7 @@
             rotation="45 45 0"
             position="0 0 0"
             visible="true"
-            model-opacity="0.5"
+            model-opacity="1"
           ></a-entity>
           <a-entity
             id="marker-1A-orb"
@@ -496,7 +496,7 @@
             position="0 0 0"
             visible="false"
             change-material
-            model-opacity="0.8"
+            model-opacity="1"
           ></a-entity>
         </a-entity>
       </a-marker>
@@ -522,7 +522,7 @@
             rotation="45 45 0"
             position="0 0 0"
             visible="true"
-            model-opacity="0.5"
+            model-opacity="1"
           ></a-entity>
           <a-entity
             id="marker-1B-orb"
@@ -532,7 +532,7 @@
             position="0 0 0"
             visible="false"
             change-material
-            model-opacity="0.8"
+            model-opacity="1"
           ></a-entity>
         </a-entity>
       </a-marker>
@@ -558,7 +558,7 @@
             rotation="45 45 0"
             position="0 0 0"
             visible="true"
-            model-opacity="0.5"
+            model-opacity="1"
           ></a-entity>
           <a-entity
             id="marker-2A-orb"
@@ -568,7 +568,7 @@
             position="0 0 0"
             visible="false"
             change-material
-            model-opacity="0.8"
+            model-opacity="1"
           ></a-entity>
         </a-entity>
       </a-marker>
@@ -594,7 +594,7 @@
             rotation="45 45 0"
             position="0 0 0"
             visible="true"
-            model-opacity="0.5"
+            model-opacity="1"
           ></a-entity>
           <a-entity
             id="marker-2B-orb"
@@ -604,7 +604,7 @@
             position="0 0 0"
             visible="false"
             change-material
-            model-opacity="0.8"
+            model-opacity="1"
           ></a-entity>
         </a-entity>
       </a-marker>
