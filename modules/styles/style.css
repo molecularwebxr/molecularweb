@@ -1384,11 +1384,11 @@ button.pdb-btn {
   }
 
   .camera-container.mk.multiple-cams {
-    transform: translateY(-124%);
+    transform: translateY(-147%);
   }
 
   .camera-container.mk.multiple-cams .triangle-temp {
-    transform: translateY(-178%);
+    transform: translateY(-114%);
   }
 
   .temp-controls {
@@ -1401,7 +1401,7 @@ button.pdb-btn {
   }
 
   .zoom-container.mk {
-    transform: translateY(0%);
+    transform: translateY(-25%);
   }
 
   .temperature-container .triangle-temp {
