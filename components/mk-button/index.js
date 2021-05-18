@@ -86,7 +86,7 @@ const MkIconContent = /* html */ `
     @media screen and (max-height: 450px) and (orientation: landscape) {
       svg {
         width: 28px;
-        height: 28px;
+        height: 27px;
       }
     }
   </style>

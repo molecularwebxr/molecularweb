@@ -1336,15 +1336,38 @@ button.pdb-btn {
   }
 
   .zoom-container,
-  .temperature-container,
   .camera-container,
+  .interaction-controls,
   .modeling-container {
     right: 56px;
   }
 
+  .interaction-controls {
+    transform: translateY(-50%);
+    padding: 0.5rem 0.5rem;
+  }
+
+  .interaction-controls .triangle-temp {
+    transform: translateY(-310%);
+  }
+
+  .interaction-control {
+    margin-bottom: 0.5rem;
+  }
+
+  .interaction-control-title {
+    font-size: 12px;
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .interaction-control p {
+    font-size: 12px;
+    margin: 0 0 0 0;
+  }
+
   .temperature-container {
     padding: 0.5rem 0.5rem;
-    transform: translateY(-59%);
+    transform: translateY(-60%);
   }
 
   .camera-container {
