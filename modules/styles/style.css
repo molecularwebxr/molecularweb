@@ -402,7 +402,6 @@ figure {
   font-family: "Roboto";
   font-weight: bold;
   font-size: 12px;
-  line-height: 14px;
   text-align: center;
   cursor: pointer;
 }
@@ -1340,7 +1339,7 @@ button.pdb-btn {
   .temperature-container,
   .camera-container,
   .modeling-container {
-    right: 58px;
+    right: 56px;
   }
 
   .temperature-container {
@@ -1382,14 +1381,6 @@ button.pdb-btn {
     transform: translateY(0%);
   }
 
-  /* .zoom-container.multiple-cams {
-    transform: translateY(69%);
-  }
-
-  .zoom-container.multiple-cams-single {
-    transform: translateY(21%);
-  } */
-
   .temperature-container .triangle-temp {
     transform: translateY(-300%);
   }
@@ -1426,42 +1417,56 @@ button.pdb-btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
-    padding: 1rem;
+    flex-direction: column;
+    padding: 0.5rem 0.75rem;
     width: 440px;
-    transform: translateY(-55%);
+    transform: translateY(-48%);
+  }
+
+  .pdb-subtitle {
+    font-size: 12px;
+  }
+
+  .pdb-option {
+    font-size: 10px;
+    margin-bottom: 0.25rem;
+  }
+
+  .pdb-btn {
+    padding: 3px 14px;
+    font-size: 10px;
+  }
+
+  .modeling-info p {
+    font-size: 0.8rem;
   }
 
   .triangle-mk {
     transform: translateY(-160%);
   }
 
-  .mk-left {
-    margin-right: 1rem;
-    min-width: 230px;
-  }
-
   .modeling-info {
-    margin: 0;
+    padding: 0.75rem 0.5rem;
+    margin-top: 0px;
   }
 
+  .marker-options-container,
   .modeling-options {
-    flex-direction: column;
-    margin: 0;
+    margin: 0.75rem 0;
   }
 
-  .modeling-marker-options {
-    flex-direction: row;
-    margin: 0.5rem 0;
+  .modeling-marker-options p {
+    font-size: 14px;
+    margin: 0 0 0.25rem 0;
   }
 
   .modeling-marker-options a {
     padding-top: 4px;
-    margin-left: 1rem;
+    font-size: 10px;
   }
 
   .pdb-text {
-    width: 10rem;
+    display: none;
   }
 
   .close-menu {
@@ -1470,5 +1475,11 @@ button.pdb-btn {
 
   .hide {
     display: none;
+  }
+
+  .btn-primary {
+    margin: 0.25rem auto 0 auto;
+    padding: 5px 12px;
+    font-size: 12px;
   }
 }
