@@ -33,7 +33,7 @@
     }
 
     .tooltip {
-      left: -212%;
+      right: calc(100% + 22px);
       top: 50%;
       transform: translateY(-50%);
       position: absolute;
@@ -43,6 +43,7 @@
       padding: 0.5rem 0.75rem;
       border-radius: 0.5rem;
       transition: 0.2s;
+      white-space: nowrap;
     }
 
     .tooltip p {
@@ -97,7 +98,7 @@
         </g>
       </svg>
       <div class="tooltip">
-        <p>Reset</p>
+        <p><intl-message key="app.reset"></p>
         <div class="triangle"></div>
       </div>
     </a>

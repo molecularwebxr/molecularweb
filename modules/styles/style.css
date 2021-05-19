@@ -158,6 +158,11 @@ figure {
   margin: 14px auto;
 }
 
+.line.horizontal.long {
+  width: 100%;
+  margin: 12px 0;
+}
+
 .extra-info {
   display: flex;
   align-items: center;
@@ -261,6 +266,11 @@ figure {
   background-color: var(--secondary);
 }
 
+.toggle-btn.align-left {
+  align-self: flex-start;
+  margin-left: 0.5rem;
+}
+
 .hide {
   display: none;
 }
@@ -269,7 +279,7 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-62%);
+  transform: translateY(-55%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -291,7 +301,7 @@ figure {
   position: relative;
   top: -5px;
   right: -97%;
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 .bar-1 {
@@ -310,6 +320,12 @@ figure {
   background: #ffffff;
   border-radius: 16px;
   transform: rotate(-45deg);
+}
+
+.marker-options-container {
+  justify-content: flex-start;
+  padding: 0;
+  margin: 1.5rem 0;
 }
 
 .modeling-info {
@@ -332,22 +348,43 @@ figure {
 }
 
 .modeling-options {
-  justify-content: space-between;
   margin: 1.5rem 0;
+}
+
+
+.modeling-marker-options:first-of-type {
+  margin-right: 1.5rem;
 }
 
 .modeling-marker-options p {
   font-family: "Roboto";
-  color: #ffffff;
+  color: var(--lightergray);
   font-size: 18px;
   font-weight: bold;
   margin: 0 0 0.25rem 0;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.modeling-marker-options p.selected {
+  color: #ffffff;
 }
 
 .modeling-marker-options a {
   font-family: "Roboto";
   color: var(--secondary);
   font-size: 12px;
+  white-space: nowrap;
+}
+
+.pdb-subtitle {
+  font-family: "Roboto";
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  margin: 0 0 0.5rem 0;
+  align-self: flex-start;
 }
 
 .pdb-load {
@@ -359,9 +396,10 @@ figure {
   color: #ffffff;
   font-size: 12px;
   margin: 0 0 0.5rem 0;
+  white-space: nowrap;
 }
 
-.upload-pdb {
+.pdb-btn {
   background-color: #ffffff;
   color: var(--primary);
   padding: 3px 22px;
@@ -369,9 +407,13 @@ figure {
   font-family: "Roboto";
   font-weight: bold;
   font-size: 12px;
-  line-height: 14px;
   text-align: center;
   cursor: pointer;
+}
+
+button.pdb-btn {
+  border: none;
+  outline: none;
 }
 
 .pdb-selector {
@@ -408,6 +450,7 @@ figure {
   resize: none;
   font-family: "Roboto";
   font-size: 12px;
+  border-radius: 6px;
 }
 
 .btn-primary {
@@ -427,6 +470,15 @@ figure {
 
 .btn-primary:active {
   transform: scale(0.95);
+}
+
+.btn-primary.no-margin {
+  margin: 0;
+}
+
+.btn-primary.big {
+  font-size: 16px;
+  padding: 8px 24px;
 }
 
 .temp-box {
@@ -495,14 +547,14 @@ figure {
 }
 
 .camera-container.mk.multiple-cams {
-  transform: translateY(-152%);
+  transform: translateY(-164%);
 }
 
 .zoom-container {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-5%);
+  transform: translateY(-27%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -518,10 +570,10 @@ figure {
 } */
 
 .temperature-container {
-  position: fixed;
+  position: absolute;
   top: 50%;
-  right: 76px;
-  transform: translateY(-86%);
+  right: calc(100% + 6px);
+  transform: translateY(-50%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -538,16 +590,289 @@ figure {
   transform: translateY(-50%);
 }
 
+.interaction-controls {
+  position: fixed;
+  top: 50%;
+  right: 76px;
+  transform: translateY(-77%);
+  z-index: 1;
+  background-color: var(--primarylight);
+  border-radius: 10px;
+  padding: 0.75rem 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.interaction-control {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.interaction-control.no-margin {
+  margin-bottom: 0;
+}
+
+.interaction-control-title {
+  font-family: "Roboto";
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  margin: 0 0 0.5rem 0;
+  align-self: flex-start;
+}
+
+.interaction-control p {
+  font-family: "Roboto";
+  color: #ffffff;
+  font-size: 14px;
+  text-align: left;
+  margin: 0 0 0 0;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.8rem;
+}
+.switch-input {
+  display: none;
+}
+.switch-label {
+  display: block;
+  width: 24px;
+  height: 14px;
+  text-indent: -150%;
+  clip: rect(0 0 0 0);
+  color: transparent;
+  user-select: none;
+}
+.switch-label::before,
+.switch-label::after {
+  content: "";
+  display: block;
+  position: absolute;
+  cursor: pointer;
+}
+.switch-label::before {
+  width: 24px;
+  height: 14px;
+  background-color: #dedede;
+  border-radius: 9999em;
+  -webkit-transition: background-color 0.1s ease;
+  transition: background-color 0.1s ease;
+}
+.switch-label::after {
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
+  -webkit-transition: left 0.1s ease;
+  transition: left 0.1s ease;
+}
+.switch-input:checked + .switch-label::before {
+  background-color: var(--secondary);
+}
+.switch-input:checked + .switch-label::after {
+  left: 12px;
+}
+
+.chart-container {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  /* transform: translateY(-77%); */
+  z-index: 1;
+  width: 400px;
+  height: 240px;
+  background-color: azure;
+}
+
+.chart {
+  width: 400px;
+  height: 225px;
+}
+
+.overlay {
+  background-color: rgba(23, 58, 123, 0.6);
+  backdrop-filter: blur(14px);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s ease-in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.jsme-container {
+  margin: 0 auto;
+  border-radius: 20px;
+  width: 600px;
+  height: 600px;
+  background-color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+}
+
+.jsme-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.jsme-bar-1 {
+  width: 20px;
+  height: 5px;
+  background: var(--secondary);
+  border-radius: 10px;
+  transform: rotate(45deg);
+}
+
+.jsme-bar-2 {
+  width: 20px;
+  height: 5px;
+  background: var(--secondary);
+  border-radius: 10px;
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+.jsme-container.out {
+  animation: animationOut 0.5s forwards;
+}
+
+.jsme-container.in {
+  animation: animationIn 0.5s forwards;
+}
+
+.jme-instructions {
+  font-family: "Roboto";
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+  width: 500px;
+}
+
+.jme-search {
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.jme-search .btn-primary{
+  white-space: nowrap;
+}
+
+.jme-input {
+  margin: 0 8px;
+  padding: 4px;
+  border: 3px solid var(--primary);
+  border-radius: 10px;
+  resize: none;
+  outline: none;
+  min-width: 80px;
+  max-width: 150px;
+  font-family: Roboto;
+  color: var(--primary);
+  font-size: 14px;
+}
+
+.jme-input::placeholder {
+  color: var(--primarylight);
+  font-size: 14px;
+  font-family: Roboto;
+}
+
+.jme-btns {
+  margin-top: 2rem;
+  width: 300px;
+  justify-content: space-between;
+}
+
+.jme-editor {
+  width: 500px;
+  height: 300px;
+}
+
+@keyframes animationIn {
+  0% {
+    transform: translateY(-3000px);
+  }
+  60% {
+    transform: translateY(25px);
+  }
+  75% {
+    transform: translateY(-10px);
+  }
+  90% {
+    transform: translateY(5px);
+  }
+}
+
+@keyframes animationOut {
+  0% {
+    transform: translateY(0);
+  }
+
+  30% {
+    transform: translateY(5px);
+  }
+
+  100% {
+    transform: translateY(-3000px);
+  }
+}
+
 @media screen and (max-width: 768px) {
   .modeling-container {
-    width: 50vw;
+    width: 55vw;
   }
+
+  .pdb-btn {
+    padding: 3px 16px;
+  }
+
+  .pdb-load {
+    margin-right: 20px;
+  }
+
 }
 
 @media screen and (max-width: 680px) {
   .modeling-info p {
     font-size: 0.8rem;
   }
+
   .modeling-marker-options p {
     font-size: 1rem;
     margin: 0 0 0.25rem 0;
@@ -568,21 +893,94 @@ figure {
 
   .pdb-text {
     height: 120px;
+    font-size: 10px;
   }
-}
 
-@media screen and (max-width: 680px) {
   .modeling-container {
     width: 60vw;
   }
+
   .modeling-info {
     padding: 0.75rem 0.5rem;
     margin-top: 10px;
   }
+
   .modeling-options {
-    margin: 1rem 0;;
+    margin: 1rem 0;
   }
+
   .btn-primary {
+    margin-top: 1rem;
+  }
+
+  .jsme-container {
+    width: 80vw;
+    height: 80vw;
+    padding: 1rem;
+  }
+
+  .jme-instructions {
+    width: 80%;
+  }
+
+  .jme-editor {
+    width: 95%;
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .orbital-selector {
+    width: 90px;
+  }
+
+  .jme-instructions {
+    font-size: 14px;
+  }
+
+  .jme-input {
+    width: 100px;
+  }
+
+  .jme-search .btn-primary {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .btn-primary.big {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .jme-editor {
+    width: 100%;
+    height: 300px;
+  }
+
+  .jsme-container {
+    width: 80vw;
+    height: 464px;
+    padding: 1rem;
+  }
+
+  .jme-search,
+  .jme-btns {
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .jme-input {
+    margin: 0;
+  }
+
+  .jme-instructions,
+  .jme-search {
+    margin-bottom: 1rem;
+  }
+
+  .jme-btns {
     margin-top: 1rem;
   }
 }
@@ -591,9 +989,11 @@ figure {
   .pdb-selector {
     width: 90px;
   }
+
   .pdb-load {
     margin-right: 15px;
   }
+
   .modeling-marker-options p {
     font-size: 12px;
   }
@@ -601,11 +1001,14 @@ figure {
   .modeling-marker-options a {
     font-size: 10px;
   }
-}
 
-@media screen and (max-width: 630px) {
-  .orbital-selector {
-    width: 90px;
+  .pdb-subtitle {
+    font-size: 12px;
+  }
+
+  .pdb-btn {
+    padding: 3px 14px;
+    font-size: 12px;
   }
 }
 
@@ -614,6 +1017,10 @@ figure {
     padding: 0.5rem;
     bottom: 5px;
     transform: translateX(-50%);
+  }
+
+  .camera-container.mk.multiple-cams {
+    transform: translateY(-171%);
   }
 
   .marker-sample.left-margin {
@@ -650,21 +1057,29 @@ figure {
   .marker-sample.left-margin {
     margin-left: 0.25rem;
   }
+
   .side-menu {
     padding: 0.75rem 0.5rem;
   }
+
+  .modeling-container {
+    width: 65vw;
+  }
+
   .zoom-container,
   .camera-container,
-  .temperature-container,
-  .modeling-container {
+  .modeling-container,
+  .interaction-controls {
     right: 58px;
   }
+
   .temperature-container {
     padding: 0.5rem 0.5rem;
-    transform: translateY(-81%);
+    transform: translateY(-52%);;
   }
+
   .modeling-container {
-    transform: translateY(-60%);
+    transform: translateY(-54%);
   }
   /* .temperature-container.multiple-cams {
     transform: translateY(-58%);
@@ -672,25 +1087,80 @@ figure {
   .temp-controls {
     margin: 0;
   }
+
   .zoom-container {
-    transform: translateY(-3%);
+    transform: translateY(-27%);
     padding: 0.5rem 0.5rem;
   }
+
   .camera-container {
     transform: translateY(-198%);
     padding: 0.5rem 0.5rem;
   }
-  /* .zoom-container.multiple-cams {
-    transform: translateY(61%);
-  } */
-  .pdb-selector {
-    width: 80px;
+
+  .modeling-options-btns {
+    flex-wrap: wrap;
   }
+
+  .pdb-selector {
+    width: 100%;
+  }
+
   .upload-pdb {
     padding: 3px 15px;
   }
+
   .pdb-load {
     margin-right: 10px;
+  }
+
+  .pdb-text {
+    margin-top: 8px;
+    height: 80px;
+  }
+
+  .pdb-load:first-of-type {
+    margin-right: 12px;
+    margin-bottom: 8px;
+  }
+
+  .pdb-select {
+    margin-top: 8px;
+  }
+
+  .marker-options-container,
+  .modeling-options {
+    margin: 0.75rem 0;
+  }
+
+  .interaction-controls {
+    transform: translateY(-73%);
+    padding: 0.5rem 0.5rem;
+  }
+
+  .interaction-control {
+    margin-bottom: 0.75rem;
+  }
+
+  .interaction-control-title {
+    font-size: 12px;
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .interaction-control p {
+    font-size: 12px;
+    margin: 0 0 0 0;
+  }
+
+  .jme-editor {
+    width: 100%;
+    height: 300px;
+  }
+
+  .jsme-container {
+    width: 95vw;
+    height: 464px;
+    padding: 1rem 0.25rem;
   }
 }
 
@@ -699,6 +1169,7 @@ figure {
     /* width: 45px; */
     height: 25px;
   }
+
   .extra-info-icon {
     margin-left: 0.2rem;
   }
@@ -716,19 +1187,22 @@ figure {
   }
 
   .pdb-selector {
-    width: 60px;
     font-size: 0.5rem;
   }
+
   .upload-pdb {
     padding: 3px 12px;
     font-size: 0.5rem;
   }
+
   .pdb-load {
     margin-right: 8px;
   }
+
   .modeling-marker-options {
     margin-right: 10px;
   }
+
   .modeling-marker-options p {
     font-size: 10px;
     margin-bottom: 10px;
@@ -736,6 +1210,10 @@ figure {
 
   .modeling-marker-options a {
     font-size: 10px;
+  }
+  
+  .pdb-text {
+    display: none;
   }
 }
 
@@ -756,6 +1234,7 @@ figure {
     font-size: 1rem;
     margin-left: 0.5rem;
   }
+
   header {
     padding: 0.5rem;
     height: 60px;
@@ -786,6 +1265,7 @@ figure {
     -ms-transform: scale(-1, 1);
     transform: scale(-1, 1);
   }
+
   video {
     -moz-transform: scale(-1, 1);
     -webkit-transform: scale(-1, 1);
@@ -793,6 +1273,7 @@ figure {
     -ms-transform: scale(-1, 1);
     transform: scale(-1, 1);
   }
+
   .flip {
     -moz-transform: scale(1, 1);
     -webkit-transform: scale(1, 1);
@@ -808,6 +1289,7 @@ figure {
     font-size: 0.75rem;
     margin-left: 0.5rem;
   }
+
   header {
     padding: 0.5rem;
     height: 50px;
@@ -863,15 +1345,38 @@ figure {
   }
 
   .zoom-container,
-  .temperature-container,
   .camera-container,
+  .interaction-controls,
   .modeling-container {
-    right: 58px;
+    right: 56px;
+  }
+
+  .interaction-controls {
+    transform: translateY(-50%);
+    padding: 0.5rem 0.5rem;
+  }
+
+  .interaction-controls .triangle-temp {
+    transform: translateY(-310%);
+  }
+
+  .interaction-control {
+    margin-bottom: 0.5rem;
+  }
+
+  .interaction-control-title {
+    font-size: 12px;
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .interaction-control p {
+    font-size: 12px;
+    margin: 0 0 0 0;
   }
 
   .temperature-container {
     padding: 0.5rem 0.5rem;
-    transform: translateY(-59%);
+    transform: translateY(-60%);
   }
 
   .camera-container {
@@ -883,16 +1388,16 @@ figure {
     transform: translateY(-174%);
   }
 
-  .camera-container.mk .triangle-temp{
+  .camera-container.mk .triangle-temp {
     transform: translateY(-114%);
   }
 
   .camera-container.mk.multiple-cams {
-    transform: translateY(-124%);
+    transform: translateY(-147%);
   }
 
   .camera-container.mk.multiple-cams .triangle-temp {
-    transform: translateY(-178%);
+    transform: translateY(-114%);
   }
 
   .temp-controls {
@@ -905,18 +1410,10 @@ figure {
   }
 
   .zoom-container.mk {
-    transform: translateY(0%);
+    transform: translateY(-25%);
   }
 
-  /* .zoom-container.multiple-cams {
-    transform: translateY(69%);
-  }
-
-  .zoom-container.multiple-cams-single {
-    transform: translateY(21%);
-  } */
-
-  .temperature-container .triangle-temp{
+  .temperature-container .triangle-temp {
     transform: translateY(-300%);
   }
 
@@ -927,6 +1424,7 @@ figure {
     -ms-transform: scale(1, 1);
     transform: scale(1, 1);
   }
+
   video {
     -moz-transform: scale(1, 1);
     -webkit-transform: scale(1, 1);
@@ -951,42 +1449,56 @@ figure {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
-    padding: 1rem;
+    flex-direction: column;
+    padding: 0.5rem 0.75rem;
     width: 440px;
-    transform: translateY(-55%);
+    transform: translateY(-48%);
   }
 
-  .triangle-mk{
+  .pdb-subtitle {
+    font-size: 12px;
+  }
+
+  .pdb-option {
+    font-size: 10px;
+    margin-bottom: 0.25rem;
+  }
+
+  .pdb-btn {
+    padding: 3px 14px;
+    font-size: 10px;
+  }
+
+  .modeling-info p {
+    font-size: 0.8rem;
+  }
+
+  .triangle-mk {
     transform: translateY(-160%);
   }
 
-  .mk-left {
-    margin-right: 1rem;
-    min-width: 230px;
-  }
-
   .modeling-info {
-    margin: 0;
+    padding: 0.75rem 0.5rem;
+    margin-top: 0px;
   }
 
+  .marker-options-container,
   .modeling-options {
-    flex-direction: column;
-    margin: 0;
+    margin: 0.75rem 0;
   }
 
-  .modeling-marker-options {
-    flex-direction: row;
-    margin: 0.5rem 0
+  .modeling-marker-options p {
+    font-size: 14px;
+    margin: 0 0 0.25rem 0;
   }
 
   .modeling-marker-options a {
     padding-top: 4px;
-    margin-left: 1rem;
+    font-size: 10px;
   }
 
   .pdb-text {
-    width: 10rem;
+    display: none;
   }
 
   .close-menu {
@@ -995,5 +1507,45 @@ figure {
 
   .hide {
     display: none;
+  }
+
+  .btn-primary {
+    margin: 0.25rem auto 0 auto;
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+
+  .jsme-container {
+    width: 95vw;
+    height: 80vh;
+    padding: 0.5rem 0.25rem;
+  }
+
+  .jme-instructions,
+  .jme-search {
+    margin-bottom: 0.75rem;
+  }
+
+  .jme-btns {
+    margin-top: 0.5rem;
+  }
+
+  .jme-instructions {
+    font-size: 12px;
+    margin-top: 0;
+  }
+
+  .jme-editor {
+    /* width: 100%; */
+    height: 180px;
+  }
+
+  .jme-input {
+    font-size: 12px;
+  }
+
+  .btn-primary.big {
+    font-size: 12px;
+    padding: 8px 14px;
   }
 }

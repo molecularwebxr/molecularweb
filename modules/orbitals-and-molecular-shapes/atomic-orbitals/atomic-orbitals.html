@@ -130,13 +130,13 @@
     </div>
 
     <!-- Rotation controls -->
-    <div class="rotation-controls">
+    <div class="rotation-controls multiple-select">
       <rotation-controls id="rotation-marker-1" marker="1"></rotation-controls>
       <rotation-controls id="rotation-marker-2" marker="2"></rotation-controls>
     </div>
 
     <!-- Selection Menu -->
-    <div class="selection-menu">
+    <div id="selection-menu" class="selection-menu">
       <div class="marker">
         <img
           class="marker-sample"
@@ -146,69 +146,72 @@
         />
         <div class="options" id="marker-options-1">
           <div class="triangle"></div>
-          <select id="select-marker-1" class="orbital-selector">
-            <optgroup label="Atomic Orbitals">
-              <option>2s</option>
-              <option>2px</option>
-              <option>2py</option>
-              <option>2pz</option>
-              <option>3dz<sup>2</sup></option>
-              <option>3dxz</option>
-              <option>3dyz</option>
-              <option>3dxy</option>
-              <option>3dx2-y2</option>
-              <option>4f</option>
-              <option>4f</option>
-              <option>4f</option>
-              <option>4f</option>
-              <option>4f</option>
-              <option>4f</option>
-              <option>4f</option>
-              <option>5g</option>
-              <option>5g</option>
-              <option>5g</option>
-              <option>5g</option>
-              <option>5g</option>
-              <option>5g</option>
-              <option>5g</option>
-              <option>5g</option>
-              <option>5g</option>
-            </optgroup>
-            <optgroup label="Hybridized Orbitals">
-              <option>sp</option>
-              <option>sp2</option>
-              <option>sp3</option>
-              <option>sp3d</option>
-              <option>sp3d2</option>
-              <option>2sp (1)</option>
-              <option>2sp (2)</option>
-              <option>2sp2 (1)</option>
-              <option>2sp2 (2)</option>
-              <option>2sp2 (3)</option>
-              <option>2sp3 (1)</option>
-              <option>2sp3 (2)</option>
-              <option>2sp3 (3)</option>
-              <option>2sp3 (4)</option>
-              <option>3sp3d (1)</option>
-              <option>3sp3d (2)</option>
-              <option>3sp3d (3)</option>
-              <option>3sp3d (4)</option>
-              <option>3sp3d (5)</option>
-              <option>3sp3d2 (1)</option>
-              <option>3sp3d2 (2)</option>
-              <option>3sp3d2 (3)</option>
-              <option>3sp3d2 (4)</option>
-              <option>3sp3d2 (5)</option>
-              <option>3sp3d2 (6)</option>
-            </optgroup>
-            <optgroup label="Ideal TRPEV geometries">
-              <option>Linear</option>
-              <option>Trigonal planar</option>
-              <option>Tetrahedral</option>
-              <option>Trigonal bipyramidal</option>
-              <option>Octahedral</option>
-            </optgroup>
-          </select>
+          <div id="select-container-2" class="select-container">
+            <select id="select-marker-1" class="orbital-selector bottom-margin">
+              <optgroup label="Atomic Orbitals">
+                <option>2s</option>
+                <option>2px</option>
+                <option>2py</option>
+                <option>2pz</option>
+                <option>3dz&sup2;</option>
+                <option>3dxz</option>
+                <option>3dyz</option>
+                <option>3dxy</option>
+                <option>3dx&sup2;-y&sup2;</option>
+                <option>4f</option>
+                <option>4f</option>
+                <option>4f</option>
+                <option>4f</option>
+                <option>4f</option>
+                <option>4f</option>
+                <option>4f</option>
+                <option>5g</option>
+                <option>5g</option>
+                <option>5g</option>
+                <option>5g</option>
+                <option>5g</option>
+                <option>5g</option>
+                <option>5g</option>
+                <option>5g</option>
+                <option>5g</option>
+              </optgroup>
+              <optgroup label="Hybridized Orbitals">
+                <option>sp</option>
+                <option>sp&sup2;</option>
+                <option>sp&sup3;</option>
+                <option>sp&sup3;d</option>
+                <option>sp&sup3;d&sup2;</option>
+                <option>2sp (1)</option>
+                <option>2sp (2)</option>
+                <option>2sp2 (1)</option>
+                <option>2sp2 (2)</option>
+                <option>2sp2 (3)</option>
+                <option>2sp3 (1)</option>
+                <option>2sp3 (2)</option>
+                <option>2sp3 (3)</option>
+                <option>2sp3 (4)</option>
+                <option>3sp3d (1)</option>
+                <option>3sp3d (2)</option>
+                <option>3sp3d (3)</option>
+                <option>3sp3d (4)</option>
+                <option>3sp3d (5)</option>
+                <option>3sp3d2 (1)</option>
+                <option>3sp3d2 (2)</option>
+                <option>3sp3d2 (3)</option>
+                <option>3sp3d2 (4)</option>
+                <option>3sp3d2 (5)</option>
+                <option>3sp3d2 (6)</option>
+              </optgroup>
+              <optgroup label="Ideal TRPEV geometries">
+                <option>Linear</option>
+                <option>Trigonal planar</option>
+                <option>Tetrahedral</option>
+                <option>Trigonal bipyramidal</option>
+                <option>Octahedral</option>
+              </optgroup>
+            </select>
+            <button class="toggle-btn align-left" id="btn-1" data-i18n="app.transparency"></button>
+          </div>
           <enable-gestures
             class="gesture-icon left-margin"
             id="marker1"
@@ -225,69 +228,72 @@
         />
         <div class="options" id="marker-options-2">
           <div class="triangle"></div>
-          <select id="select-marker-2" class="orbital-selector">
-            <optgroup label="Atomic Orbitals">
-              <option>2s</option>
-              <option>2px</option>
-              <option>2py</option>
-              <option>2pz</option>
-              <option>3dz<sup>2</sup></option>
-              <option>3dxz</option>
-              <option>3dyz</option>
-              <option>3dxy</option>
-              <option>3dx2-y2</option>
-              <option>4f</option>
-              <option>4f</option>
-              <option>4f</option>
-              <option>4f</option>
-              <option>4f</option>
-              <option>4f</option>
-              <option>4f</option>
-              <option>5g</option>
-              <option>5g</option>
-              <option>5g</option>
-              <option>5g</option>
-              <option>5g</option>
-              <option>5g</option>
-              <option>5g</option>
-              <option>5g</option>
-              <option>5g</option>
-            </optgroup>
-            <optgroup label="Hybridized Orbitals">
-              <option>sp</option>
-              <option>sp2</option>
-              <option>sp3</option>
-              <option>sp3d</option>
-              <option>sp3d2</option>
-              <option>2sp (1)</option>
-              <option>2sp (2)</option>
-              <option>2sp2 (1)</option>
-              <option>2sp2 (2)</option>
-              <option>2sp2 (3)</option>
-              <option>2sp3 (1)</option>
-              <option>2sp3 (2)</option>
-              <option>2sp3 (3)</option>
-              <option>2sp3 (4)</option>
-              <option>3sp3d (1)</option>
-              <option>3sp3d (2)</option>
-              <option>3sp3d (3)</option>
-              <option>3sp3d (4)</option>
-              <option>3sp3d (5)</option>
-              <option>3sp3d2 (1)</option>
-              <option>3sp3d2 (2)</option>
-              <option>3sp3d2 (3)</option>
-              <option>3sp3d2 (4)</option>
-              <option>3sp3d2 (5)</option>
-              <option>3sp3d2 (6)</option>
-            </optgroup>
-            <optgroup label="Ideal TRPEV geometries">
-              <option>Linear</option>
-              <option>Trigonal planar</option>
-              <option>Tetrahedral</option>
-              <option>Trigonal bipyramidal</option>
-              <option>Octahedral</option>
-            </optgroup>
-          </select>
+          <div id="select-container-2" class="select-container">
+            <select id="select-marker-2" class="orbital-selector bottom-margin">
+              <optgroup label="Atomic Orbitals">
+                <option>2s</option>
+                <option>2px</option>
+                <option>2py</option>
+                <option>2pz</option>
+                <option>3dz&sup2;</option>
+                <option>3dxz</option>
+                <option>3dyz</option>
+                <option>3dxy</option>
+                <option>3dx&sup2;-y&sup2;</option>
+                <option>4f</option>
+                <option>4f</option>
+                <option>4f</option>
+                <option>4f</option>
+                <option>4f</option>
+                <option>4f</option>
+                <option>4f</option>
+                <option>5g</option>
+                <option>5g</option>
+                <option>5g</option>
+                <option>5g</option>
+                <option>5g</option>
+                <option>5g</option>
+                <option>5g</option>
+                <option>5g</option>
+                <option>5g</option>
+              </optgroup>
+              <optgroup label="Hybridized Orbitals">
+                <option>sp</option>
+                <option>sp&sup2;</option>
+                <option>sp&sup3;</option>
+                <option>sp&sup3;d</option>
+                <option>sp&sup3;d&sup2;</option>
+                <option>2sp (1)</option>
+                <option>2sp (2)</option>
+                <option>2sp2 (1)</option>
+                <option>2sp2 (2)</option>
+                <option>2sp2 (3)</option>
+                <option>2sp3 (1)</option>
+                <option>2sp3 (2)</option>
+                <option>2sp3 (3)</option>
+                <option>2sp3 (4)</option>
+                <option>3sp3d (1)</option>
+                <option>3sp3d (2)</option>
+                <option>3sp3d (3)</option>
+                <option>3sp3d (4)</option>
+                <option>3sp3d (5)</option>
+                <option>3sp3d2 (1)</option>
+                <option>3sp3d2 (2)</option>
+                <option>3sp3d2 (3)</option>
+                <option>3sp3d2 (4)</option>
+                <option>3sp3d2 (5)</option>
+                <option>3sp3d2 (6)</option>
+              </optgroup>
+              <optgroup label="Ideal TRPEV geometries">
+                <option>Linear</option>
+                <option>Trigonal planar</option>
+                <option>Tetrahedral</option>
+                <option>Trigonal bipyramidal</option>
+                <option>Octahedral</option>
+              </optgroup>
+            </select>
+            <button class="toggle-btn align-left" id="btn-2" data-i18n="app.transparency"></button>
+          </div>
           <enable-gestures
             class="gesture-icon left-margin"
             id="marker2"
@@ -365,7 +371,7 @@
 
         <a-asset-item id="orb27" src="./models/2sp.gltf"></a-asset-item>
         <a-asset-item id="orb28" src="./models/3sp2.gltf"></a-asset-item>
-        <a-asset-item id="orb29" src="./models/4sp3.gltf"></a-asset-item>
+        <a-asset-item id="orb29" src="./models/sp3.gltf"></a-asset-item>
         <a-asset-item id="orb30" src="./models/5sp3d.gltf"></a-asset-item>
         <a-asset-item id="orb31" src="./models/6sp3d2.gltf"></a-asset-item>
 
@@ -471,7 +477,7 @@
             id="atom1A"
             position="0.000   0.000   0.000"
             color="grey"
-            radius="0.4"
+            radius="0.35"
           ></a-sphere>
           <a-entity
             id="marker-1A-mol"
@@ -480,16 +486,17 @@
             rotation="45 45 0"
             position="0 0 0"
             visible="true"
-            model-opacity="0.5"
+            model-opacity="1"
           ></a-entity>
           <a-entity
             id="marker-1A-orb"
             gltf-model="#orb27"
-            scale="1 1 1"
+            scale="2 2 2"
             rotation="45 45 0"
             position="0 0 0"
             visible="false"
             change-material
+            model-opacity="1"
           ></a-entity>
         </a-entity>
       </a-marker>
@@ -506,7 +513,7 @@
             id="atom1B"
             position="0.000   0.000   0.000"
             color="grey"
-            radius="0.4"
+            radius="0.35"
           ></a-sphere>
           <a-entity
             id="marker-1B-mol"
@@ -515,16 +522,17 @@
             rotation="45 45 0"
             position="0 0 0"
             visible="true"
-            model-opacity="0.5"
+            model-opacity="1"
           ></a-entity>
           <a-entity
             id="marker-1B-orb"
             gltf-model="#orb27"
-            scale="1 1 1"
+            scale="2 2 2"
             rotation="45 45 0"
             position="0 0 0"
             visible="false"
             change-material
+            model-opacity="1"
           ></a-entity>
         </a-entity>
       </a-marker>
@@ -541,7 +549,7 @@
             id="atom2A"
             position="0.000   0.000   0.000"
             color="grey"
-            radius="0.4"
+            radius="0.35"
           ></a-sphere>
           <a-entity
             id="marker-2A-mol"
@@ -550,16 +558,17 @@
             rotation="45 45 0"
             position="0 0 0"
             visible="true"
-            model-opacity="0.5"
+            model-opacity="1"
           ></a-entity>
           <a-entity
             id="marker-2A-orb"
             gltf-model="#orb27"
-            scale="1 1 1"
+            scale="2 2 2"
             rotation="45 45 0"
             position="0 0 0"
             visible="false"
             change-material
+            model-opacity="1"
           ></a-entity>
         </a-entity>
       </a-marker>
@@ -576,7 +585,7 @@
             id="atom2B"
             position="0.000   0.000   0.000"
             color="grey"
-            radius="0.4"
+            radius="0.35"
           ></a-sphere>
           <a-entity
             id="marker-2B-mol"
@@ -585,16 +594,17 @@
             rotation="45 45 0"
             position="0 0 0"
             visible="true"
-            model-opacity="0.5"
+            model-opacity="1"
           ></a-entity>
           <a-entity
             id="marker-2B-orb"
             gltf-model="#orb27"
-            scale="1 1 1"
+            scale="2 2 2"
             rotation="45 45 0"
             position="0 0 0"
             visible="false"
             change-material
+            model-opacity="1"
           ></a-entity>
         </a-entity>
       </a-marker>

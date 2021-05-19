@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-91563073-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-91563073-2");
+    </script>
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <title id="title" data-i18n="orbitals.modelingKit.title"></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/modules/styles/style.css" />
+
+    <!-- 3D Libraries -->
+    <script src="/lib/three.js"></script>
+    <script type="module" src="/lib/cannon-es.js"></script>
+    <script src="/lib/ar.js"></script>
+
+    <!-- JSME -->
+    <script src="/lib/jsme/jsme.nocache.js"></script>
+    <script src="./jme.js"></script>
+
+    <!-- Translation Libraries -->
+    <script src="/lib/i18n/i18next.min.js"></script>
+    <script src="/lib/i18n/i18next-wc.js"></script>
+    <script src="/lib/i18n/loc-i18next.min.js"></script>
+    <script src="/lib/i18n/i18nextBrowserLanguageDetector.js"></script>
+    <script src="/lib/i18n/i18nextHttpBackend.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"
+      integrity="sha512-BqNYFBAzGfZDnIWSAEGZSD/QFKeVxms2dIBPfw11gZubWwKUjEgmFUtUls8vZ6xTRZN/jaXGHD/ZaxD9+fDo0A=="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Web Components -->
+    <script src="/components/icons/atom/index.js"></script>
+    <script src="/components/icons/molecule/index.js"></script>
+    <script src="/components/loader/index.js"></script>
+    <script src="/components/back-anchor/index.js"></script>
+    <script src="/components/feedback-prompt/index.js"></script>
+    <script src="/components/flip-video/index.js"></script>
+    <script src="/components/scale-graphics/index.js"></script>
+    <script src="/components/mk-button/index.js"></script>
+    <script src="/components/toggle-instructions/index.js"></script>
+    <script src="/components/toggle-description/index.js"></script>
+    <script src="/components/toggle-menu/index.js"></script>
+    <script src="/components/overlay/index.js"></script>
+    <script src="/components/stop-temp/index.js"></script>
+    <script src="/components/play-temp/index.js"></script>
+    <script src="/components/temp-control/index.js"></script>
+    <script src="/components/temp-button/index.js"></script>
+    <script src="/components/zoom-icon/index.js"></script>
+    <script src="/components/swap-camera/index.js"></script>
+    <script src="/components/reset-activity/index.js"></script>
+    <script src="/components/camera-icon/index.js"></script>
+
+    <!-- Utils & A-Frame Components -->
+    <script src="translate.js"></script>
+  </head>
+
+  <body style="margin: 0px; overflow: hidden">
+    <p style="display: none">
+      <a href="https://clustrmaps.com/site/1ar2f" title="Visit tracker"
+        ><img
+          src="//www.clustrmaps.com/map_v2.png?d=b_oWfSB8TUOlxHdLX1ftmUWKcboQmBFu1xmiYd_PbS4&cl=ffffff"
+          alt=""
+          width="1%"
+          height="1%"
+      /></a>
+    </p>
+    <!-- Header -->
+    <header id="header">
+      <div class="row">
+        <figure>
+          <atom-icon></atom-icon>
+        </figure>
+        <h1 class="activity-title" data-i18n="orbitals.modelingKit.title2"></h1>
+      </div>
+    </header>
+
+    <!-- UI Components -->
+    <back-anchor></back-anchor>
+    <!-- Feedback Modal -->
+    <feedback-prompt></feedback-prompt>
+
+    <!-- Side buttons -->
+    <div class="side-menu column">
+      <camera-icon class="icon-margin"></camera-icon>
+      <enable-temp-controls class="icon-margin"></enable-temp-controls>
+      <enable-mk-menu class="icon-margin"></enable-mk-menu>
+      <zoom-icon class="icon-margin"></zoom-icon>
+      <reset-activity class="icon-margin"></reset-activity>
+      <toggle-menu class="icon-margin"></toggle-menu>
+    </div>
+
+    <div id="selection-menu" class="selection-menu">
+      <div class="extra-info">
+        <toggle-instructions></toggle-instructions>
+        <toggle-description class="extra-info-icon"></toggle-description>
+      </div>
+    </div>
+
+    <!-- camera controls -->
+    <div id="cam-container" class="camera-container mk hide column">
+      <div class="triangle-temp"></div>
+      <flip-video class="icon-margin"></flip-video>
+      <swap-camera class="hide icon-margin"></swap-camera>
+    </div>
+
+    <!-- Zoom controls -->
+    <div id="zoom-container" class="zoom-container mk hide column">
+      <div class="triangle-temp"></div>
+      <scale-graphics
+        class="small-icon-margin"
+        id="scale-up"
+        type="up"
+      ></scale-graphics>
+      <div class="line horizontal"></div>
+      <scale-graphics
+        class="small-icon-margin"
+        id="scale-down"
+        type="down"
+      ></scale-graphics>
+    </div>
+
+    <!-- Interaction controls -->
+    <div id="interaction-container" class="interaction-controls hide column">
+      <div class="triangle-temp"></div>
+
+      <p class="interaction-control-title" data-i18n="orbitals.modelingKit.mechanics"></p>
+      <div class="interaction-control row">
+        <p data-i18n="orbitals.modelingKit.electrostatics"></p>
+        <div class="switch">
+          <input
+            id="switch-interactions"
+            type="checkbox"
+            class="switch-input"
+          />
+          <label for="switch-interactions" class="switch-label">Switch</label>
+        </div>
+      </div>
+      <div class="interaction-control row">
+        <p data-i18n="orbitals.modelingKit.hBonds"></p>
+        <div class="switch">
+          <input id="switch-bridge" type="checkbox" class="switch-input" />
+          <label for="switch-bridge" class="switch-label">Switch</label>
+        </div>
+      </div>
+      <div class="interaction-control row no-margin">
+        <p data-i18n="orbitals.modelingKit.clashes"></p>
+        <div class="switch">
+          <input id="switch-clashes" type="checkbox" class="switch-input" />
+          <label for="switch-clashes" class="switch-label">Switch</label>
+        </div>
+      </div>
+
+      <div class="line horizontal long"></div>
+
+      <p class="interaction-control-title" data-i18n="[prepend]orbitals.modelingKit.marker"><span>1</span></p>
+      <div class="interaction-control row">
+        <p data-i18n="orbitals.modelingKit.showSpheres"></p>
+        <div class="switch">
+          <input
+            id="switch-spheres-1"
+            type="checkbox"
+            disabled
+            class="switch-input"
+          />
+          <label for="switch-spheres-1" class="switch-label">Switch</label>
+        </div>
+      </div>
+      <div class="interaction-control row no-margin">
+        <p data-i18n="app.flipMolecule"></p>
+        <div class="switch">
+          <input
+            id="switch-flip-1"
+            type="checkbox"
+            disabled
+            class="switch-input"
+          />
+          <label for="switch-flip-1" class="switch-label">Switch</label>
+        </div>
+      </div>
+
+      <div class="line horizontal long"></div>
+
+      <p class="interaction-control-title" data-i18n="[prepend]orbitals.modelingKit.marker"><span>2</span></p>
+      <div class="interaction-control row">
+        <p data-i18n="orbitals.modelingKit.showSpheres"></p>
+        <div class="switch">
+          <input
+            id="switch-spheres-2"
+            type="checkbox"
+            disabled
+            class="switch-input"
+          />
+          <label for="switch-spheres-2" class="switch-label">Switch</label>
+        </div>
+      </div>
+      <div class="interaction-control row no-margin">
+        <p data-i18n="app.flipMolecule"></p>
+        <div class="switch">
+          <input
+            id="switch-flip-2"
+            type="checkbox"
+            disabled
+            class="switch-input"
+          />
+          <label for="switch-flip-2" class="switch-label">Switch</label>
+        </div>
+      </div>
+
+       <!-- Temperature controls -->
+    <div id="temp-container" class="temperature-container hide column">
+      <temp-control
+        class="small-icon-margin small-icon-margin-bottom"
+        size="big"
+        type="increase"
+      ></temp-control>
+      <temp-control
+        class="small-icon-margin small-icon-margin-bottom"
+        size="medium"
+        type="increase"
+      ></temp-control>
+      <temp-control
+        size="small"
+        type="increase"
+        class="small-icon-margin"
+      ></temp-control>
+
+      <div class="line horizontal"></div>
+
+      <temp-control
+        class="small-icon-margin small-icon-margin-bottom"
+        size="small"
+        type="decrease"
+      ></temp-control>
+      <temp-control
+        class="small-icon-margin small-icon-margin-bottom"
+        size="medium"
+        type="decrease"
+      ></temp-control>
+      <temp-control
+        size="big"
+        type="decrease"
+        class="small-icon-margin"
+      ></temp-control>
+
+      <div class="line horizontal"></div>
+
+      <div class="temp-controls row">
+        <stop-temp class="right-margin"></stop-temp>
+        <play-temp></play-temp>
+      </div>
+    </div>
+    </div>
+
+   
+
+    <!-- Menu for loading PDBs -->
+    <div class="modeling-container" id="mk-menu">
+      <div class="triangle-mk"></div>
+      <div id="close-menu" class="close-menu">
+        <div class="bar-1"></div>
+        <div class="bar-2"></div>
+      </div>
+
+      <div class="mk-left">
+        <div class="modeling-info row">
+          <p>👉</p>
+          <p
+            class="modeling-instructions"
+            data-i18n="orbitals.modelingKit.pdbInstructions"
+          ></p>
+        </div>
+
+        <div class="marker-options-container colum">
+          <p class="pdb-subtitle">1. Select a marker</p>
+
+          <div class="row">
+            <div class="modeling-marker-options column">
+              <p id="marker-1" class="selected" data-i18n="[prepend]orbitals.modelingKit.marker"><span>1</span></p>
+              <a
+                href="/assets/markers/cube.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-i18n="orbitals.modelingKit.getMarker"
+              ></a>
+            </div>
+  
+            <div class="modeling-marker-options column">
+              <p id="marker-2" data-i18n="[prepend]orbitals.modelingKit.marker"><span>2</span></p>
+              <a
+                href="/assets/markers/cube.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-i18n="orbitals.modelingKit.getMarker"
+              ></a>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="modeling-options column">
+          <p class="pdb-subtitle">2. Prepare your molecule</p>
+          <div class="row modeling-options-btns">
+            <div class="pdb-load">
+              <p
+                class="pdb-option"
+                data-i18n="orbitals.modelingKit.loadFile"
+              ></p>
+              <label
+                class="pdb-btn"
+                id="upload-label"
+                data-i18n="orbitals.modelingKit.load"
+              >
+                <input id="pdb-input" name="pdb" type="file" hidden />
+              </label>
+            </div>
+
+            <div class="pdb-load">
+              <p class="pdb-option" data-i18n="orbitals.modelingKit.yourMolecule"></p>
+              <button id="jme-btn" class="pdb-btn" data-i18n="orbitals.modelingKit.searchBuild"></button>
+            </div>
+
+            <div class="pdb-select">
+              <p
+                class="pdb-option"
+                data-i18n="orbitals.modelingKit.chooseExample"
+              ></p>
+              <select id="select-pdb" class="pdb-selector">
+                <option
+                  value=""
+                  data-i18n="orbitals.modelingKit.examples"
+                ></option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <textarea
+          class="pdb-text"
+          id="pdb-text"
+          name="textarea"
+          rows="7"
+          cols="50"
+          data-i18n="[placeholder]orbitals.modelingKit.placeholder"
+        ></textarea>
+
+        <button
+          id="start-ar"
+          class="btn-primary"
+          data-i18n="orbitals.modelingKit.startAR"
+        ></button>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas class="chart flip" id="chart1"></canvas>
+    </div>
+
+    <!-- Overlays -->
+    <activity-overlay
+      id="instructions"
+      default="open"
+      type="instructions"
+      marker="cube"
+    >
+      <span slot="title" data-i18n="orbitals.modelingKit.title2"></span>
+      <span
+        slot="instructions"
+        data-i18n="orbitals.modelingKit.instructions"
+      ></span>
+    </activity-overlay>
+
+    <activity-overlay id="description" default="hidden" type="description">
+      <span slot="title" data-i18n="orbitals.modelingKit.title2"></span>
+      <span
+        slot="description"
+        data-i18n="orbitals.modelingKit.description2"
+      ></span>
+    </activity-overlay>
+
+    <activity-overlay id="menu" default="hidden" type="menu">
+      <span slot="title">MoleculARweb</span>
+    </activity-overlay>
+
+    <div id="jme-overlay" class="overlay">
+      <div id="jsme-container" class="jsme-container out">
+        <div id="jsme-btn-close" class="jsme-close-btn">
+          <div id="bar-1" class="jsme-bar-1"></div>
+          <div id="bar-2" class="jsme-bar-2"></div>
+        </div>
+
+        <p class="jme-instructions" data-i18n="orbitals.modelingKit.jmeInstructions">
+        </p>
+
+        <div class="jme-search row">
+          <input
+            id="jme-input"
+            class="jme-input"
+            type="text"
+            placeholder="butanol"
+          />
+          <button id="jme-search" class="btn-primary no-margin" data-i18n="orbitals.modelingKit.search">
+          </button>
+        </div>
+
+        <div id="appletContainer" class="jme-editor"></div>
+
+        <div class="jme-btns row">
+          <button class="btn-primary big no-margin" id="jme-cancel" data-i18n="orbitals.modelingKit.cancel">
+          </button>
+          <button class="btn-primary big no-margin" id="jme-continue" data-i18n="orbitals.modelingKit.continue"></button>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="utils.js"></script>
+    <script type="module" src="3Dutils.js"></script>
+    <script src="handlePdbs.js"></script>
+    <script src="physics.js"></script>
+    <script type="module" src="main.js"></script>
+    <script src="controls.js"></script>
+    <script src="/modules/utils/handleOverlays.js"></script>
+    <script src="/js/handleSession.js"></script>
+  </body>
+</html>

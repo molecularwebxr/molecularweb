@@ -11,8 +11,6 @@ AFRAME.registerComponent('change-material', {
       if (node.isMesh) {
         var newMaterial = new THREE.MeshStandardMaterial({
           color: 0xff85ce,
-          transparent: true,
-          opacity: 0.8
         })
         node.material = newMaterial;
         node.material.needsUpdate = true;
