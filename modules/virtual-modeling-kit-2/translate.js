@@ -37,4 +37,6 @@ function updateContent() {
   localize("#title");
   localize("#selection-menu");
   localize("#mk-menu");
+  localize("#jme-overlay");
+  localize("#interaction-container");
 }

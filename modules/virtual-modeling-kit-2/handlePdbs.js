@@ -68,6 +68,7 @@ function handleMenu(e) {
   if (tempMenu.isActive) {
     tempMenu.isActive = false;
     tempMenuContainer.classList.add("hide");
+    interactionsContainer.classList.toggle("hide");
   }
   if (zoomMenu.isActive) {
     zoomMenu.isActive = false;
