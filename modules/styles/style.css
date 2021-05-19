@@ -547,7 +547,7 @@ button.pdb-btn {
 }
 
 .camera-container.mk.multiple-cams {
-  transform: translateY(-152%);
+  transform: translateY(-164%);
 }
 
 .zoom-container {
@@ -1017,6 +1017,10 @@ button.pdb-btn {
     padding: 0.5rem;
     bottom: 5px;
     transform: translateX(-50%);
+  }
+
+  .camera-container.mk.multiple-cams {
+    transform: translateY(-171%);
   }
 
   .marker-sample.left-margin {
