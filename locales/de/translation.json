@@ -33,7 +33,6 @@
     "welcomeMsg": "Website für die Ausbildung in Chemie und Biologie durch Augmented Reality",
     "prepare": "Bereite deine vor ",
     "markersWithLink": "markers",
-    "selectActivity": "Wählen Sie eine Aktivität und haben Sie Spaß!",
     "reset": "Zurücksetzen",
     "zoom": "Zoom",
     "pdbOptions": "Moleküle in Markern",
@@ -41,7 +40,9 @@
     "controls": "Temperatur- und Mechanikeinstellungen",
     "flipMolecule": "Molekül invertieren",
     "mirrorVideo": "Video spiegeln",
-    "tempOptions": "Temperatur- und Mechanikeinstellungen"
+    "tempOptions": "Temperatur- und Mechanikeinstellungen",
+    "transparency": "Transparenz",
+    "selectActivity": "Wählen Sie eine Aktivität und haben Sie Spaß!"
   },
   "orbitals": {
     "title": "Orbitale und Molekülformen",

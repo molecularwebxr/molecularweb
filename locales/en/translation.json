@@ -33,7 +33,6 @@
     "welcomeMsg": "A website for chemistry and biology education through augmented reality",
     "prepare": "Prepare your ",
     "markersWithLink": "markers",
-    "selectActivity": "Select an activity and enjoy!",
     "reset": "Reset",
     "zoom": "Zoom",
     "pdbOptions": "Molecules in markers",
@@ -41,7 +40,9 @@
     "controls": "Temperature and mechanics controls",
     "flipMolecule": "Flip Molecule",
     "mirrorVideo": "Mirror video",
-    "tempOptions": "Temperature and mechanics controls"
+    "tempOptions": "Temperature and mechanics controls",
+    "transparency": "Transparency",
+    "selectActivity": "Select an activity and enjoy!"
   },
   "orbitals": {
     "title": "Orbitals and molecular shapes",

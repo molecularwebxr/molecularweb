@@ -33,7 +33,6 @@
     "welcomeMsg": "Site web pour étudier et enseigner la chimie et la biologie en utilisant la réalité augmentée",
     "prepare": "Préparez votre ",
     "markersWithLink": "marqueurs",
-    "selectActivity": "Sélectionnez une activité et amusez-vous!",
     "reset": "Reset",
     "zoom": "Zoom",
     "pdbOptions": "Molécules dans les marqueurs",
@@ -41,7 +40,9 @@
     "controls": "Contrôles de température et mécanique",
     "flipMolecule": "Inverser la molécule",
     "mirrorVideo": "Refléter la vidéo",
-    "tempOptions": "Contrôles de température et mécanique"
+    "tempOptions": "Contrôles de température et mécanique",
+    "transparency": "Transparence",
+    "selectActivity": "Sélectionnez une activité et amusez-vous!"
   },
   "orbitals": {
     "title": "Formes d'orbitales et de molécules",
