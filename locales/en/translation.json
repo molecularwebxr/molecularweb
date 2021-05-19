@@ -68,7 +68,9 @@
     },
     "modelingKit": {
       "title": "Virtual modeling kit",
+      "title2": "Virtual modeling kit 2.0",
       "description": "Display *any* molecule from its atomic coordinates, to explore its structure and its motions in AR.",
+      "description2": " Display any molecule to explore its structure and dynamics. Now with two markers, the option to draw your own molecules and a forcefield to see molecular motions and interactions",
       "instructions": "Select a preset example or paste your own atomic coordinates, then launch AR experience. To see motions, raise temperature.",
       "temperature": "Temperature: ", 
       "sticks": "Sticks",

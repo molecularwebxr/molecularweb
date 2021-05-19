@@ -68,7 +68,9 @@
     },
     "modelingKit": {
       "title": "Virtual modeling kit",
+      "title2": "Virtual modeling kit 2.0",
       "description": "Erforschen Sie die Struktur und Dynamik jedes interessierenden Moleküls",
+      "description2": "Zeigen Sie ein beliebiges Molekül an, um seine Struktur und Dynamik zu untersuchen. Jetzt mit zwei Markern, der Option, eigene Moleküle zu zeichnen, und einem forcefield um molekulare Bewegungen und Wechselwirkungen zu sehen.",
       "instructions": "Wählen Sie ein Beispiel aus der Liste aus oder fügen Sie die Koordinaten Ihres eigenen Moleküls ein und starten Sie dann die AR-Erfahrung. Um Bewegungen zu sehen, erhöhen Sie die Temperatur.",
       "temperature": "Temperatur: ", 
       "sticks": "Sticks",

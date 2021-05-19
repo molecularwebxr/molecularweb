@@ -68,7 +68,9 @@
     },
     "modelingKit": {
       "title": "Kit di modellazione molecolare virtuale",
+      "title2": "Kit di modellazione molecolare virtuale 2.0",
       "description": "Esplora la struttura e la dinamica di qualsiasi molecola di interesse",
+      "description2": " Esplora la struttura e la dinamica delle molecole. Ora con due marcatori, l'opzione per disegnare le tue molecole e un forcefield per vedere la meccanica e le interazioni tra le molecole.",
       "instructions": "Seleziona un esempio dall'elenco o incolla le coordinate della tua molecola, quindi avvia l'esperienza AR. Per vedere i movimenti aumentare la temperatura.",
       "temperature": "Temperatura: ", 
       "sticks": "Bacchette",
