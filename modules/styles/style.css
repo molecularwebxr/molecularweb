@@ -1510,4 +1510,38 @@ button.pdb-btn {
     padding: 5px 12px;
     font-size: 12px;
   }
+
+  .jsme-container {
+    width: 95vw;
+    height: 80vh;
+    padding: 0.5rem 0.25rem;
+  }
+
+  .jme-instructions,
+  .jme-search {
+    margin-bottom: 0.75rem;
+  }
+
+  .jme-btns {
+    margin-top: 0.5rem;
+  }
+
+  .jme-instructions {
+    font-size: 12px;
+    margin-top: 0;
+  }
+
+  .jme-editor {
+    /* width: 100%; */
+    height: 180px;
+  }
+
+  .jme-input {
+    font-size: 12px;
+  }
+
+  .btn-primary.big {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
 }
