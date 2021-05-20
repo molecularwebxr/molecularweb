@@ -1238,11 +1238,9 @@ function handleInteraction(elementArr, cubeNumber, hydrogensArr) {
         otherMoleculeBodies[hydrogen],
         thisMoleculeBodies[element]
       );
-      console.log("add " + distance);
     }
   } else if (interactionExists) {
     removeInteraction(otherCube, interactionIndex, bridgeKey);
-    console.log("remove " + distance);
   }
 
   // Should we add/remove the connector
