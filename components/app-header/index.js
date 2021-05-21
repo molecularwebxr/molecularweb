@@ -336,6 +336,7 @@ headerTemplate.innerHTML = /* html */ `
           <li id="it">Italiano</li>
           <li id="es">Español</li>
           <li id="pt">Português</li>
+          <li id="th">ไทย</li>
         </ul>
       </div>
     </div>
@@ -431,6 +432,10 @@ headerTemplate.innerHTML = /* html */ `
 
         <a class="mobile-menu-link" id="de_">
           Deutsche
+        </a>
+
+        <a class="mobile-menu-link" id="th_">
+          ไทย
         </a>
       </div>
     </div>
