@@ -36,7 +36,7 @@ menuIconTemplate.innerHTML = /* html */ `
     }
 
     .tooltip {
-      left: -288%;
+      right: calc(100% + 22px);
       top: 50%;
       transform: translateY(-50%);
       position: absolute;
@@ -46,6 +46,7 @@ menuIconTemplate.innerHTML = /* html */ `
       padding: 0.5rem 0.75rem;
       border-radius: 0.5rem;
       transition: 0.2s;
+      white-space: nowrap;
     }
 
     .tooltip p {
@@ -125,7 +126,7 @@ menuIconTemplate.innerHTML = /* html */ `
         </g>
       </svg>
       <div class="tooltip">
-        <p>Language</p>
+        <p><intl-message key="menu.language"></p>
         <div class="triangle"></div>
       </div>
     </a>

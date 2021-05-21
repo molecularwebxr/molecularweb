@@ -36,7 +36,7 @@ const ZoomIconContent = /* html */ `
     }
 
     .tooltip {
-      left: -218%;
+      right: calc(100% + 22px);
       top: 50%;
       transform: translateY(-50%);
       position: absolute;
@@ -46,6 +46,7 @@ const ZoomIconContent = /* html */ `
       padding: 0.5rem 0.75rem;
       border-radius: 0.5rem;
       transition: 0.2s;
+      white-space: nowrap;
     }
 
     .tooltip p {
@@ -103,7 +104,7 @@ const ZoomIconContent = /* html */ `
         </g>
       </svg>
       <div id="tooltip" class="tooltip">
-        <p>Zoom</p>
+        <p><intl-message key="app.zoom"></p>
         <div class="triangle"></div>
       </div>
     </a>

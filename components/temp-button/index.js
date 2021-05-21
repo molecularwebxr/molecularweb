@@ -37,7 +37,7 @@ const TempIconContent = /* html */ `
     }
 
     .tooltip {
-      left: -491%;
+      right: calc(100% + 22px);
       top: 50%;
       transform: translateY(-50%);
       position: absolute;
@@ -47,6 +47,7 @@ const TempIconContent = /* html */ `
       padding: 0.5rem 0.75rem;
       border-radius: 0.5rem;
       transition: 0.2s;
+      white-space: nowrap;
     }
 
     .tooltip p {
@@ -86,7 +87,7 @@ const TempIconContent = /* html */ `
     @media screen and (max-height: 450px) and (orientation: landscape) {
       svg {
         width: 28px;
-        height: 28px;
+        height: 26px;
       }
     }
   </style>
@@ -99,7 +100,7 @@ const TempIconContent = /* html */ `
         <path class="path" d="M18.5 26.25C20.0188 26.25 21.25 25.0188 21.25 23.5C21.25 21.9812 20.0188 20.75 18.5 20.75C16.9812 20.75 15.75 21.9812 15.75 23.5C15.75 25.0188 16.9812 26.25 18.5 26.25Z"/>
       </svg>
       <div id="tooltip" class="tooltip">
-        <p>Temperature controls</p>
+        <p><intl-message key="app.tempOptions"></p>
         <div class="triangle"></div>
       </div>
     </a>

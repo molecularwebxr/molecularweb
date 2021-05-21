@@ -17,7 +17,6 @@ overlayTemplate.innerHTML = /* html */ `
       opacity: 0;
       z-index: 2;
       visibility: hidden;
-      will-change: opacity;
       color: #FFFFFF;
       font-family: "Montserrat", sans-serif;
     }

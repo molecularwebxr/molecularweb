@@ -74,7 +74,9 @@ const FlipVideoContent = /* html */ `
           </g>
       </g>
     </svg>
-    <p>Mirror Video</p>
+    <p>
+      <intl-message key="app.mirrorVideo">
+    </p>
   </a>`;
 
 class FlipVideo extends HTMLElement {
