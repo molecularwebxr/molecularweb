@@ -1,0 +1,104 @@
+.margin-top {
+  margin-top: 1.5rem;
+}
+
+.margin-right {
+  margin-right: 1.5rem;
+}
+
+.margin-bottom {
+  margin-bottom: 1.5rem;
+}
+
+.pdb2ar-container {
+  justify-content: center;
+  align-items: center;
+}
+
+.pdb2ar-container .hi-container {
+  margin: 0 0 1.5rem 0;
+}
+
+.pdb-btn {
+  background-color: var(--secondary);
+  color: var(--primary);
+  padding: 6px 22px;
+  border-radius: 6px;
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.pdb-btn {
+  border: none;
+  outline: none;
+}
+
+.switch-container {
+  align-items: center;
+  justify-content: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.8rem;
+}
+
+.switch-input {
+  display: none;
+}
+
+.switch-label {
+  display: block;
+  width: 36px;
+  height: 20px;
+  text-indent: -150%;
+  clip: rect(0 0 0 0);
+  color: transparent;
+  user-select: none;
+}
+
+.switch-label::before,
+.switch-label::after {
+  content: "";
+  display: block;
+  position: absolute;
+  cursor: pointer;
+}
+
+.switch-label::before {
+  width: 36px;
+  height: 20px;
+  background-color: #dedede;
+  border-radius: 9999em;
+  -webkit-transition: background-color 0.1s ease;
+  transition: background-color 0.1s ease;
+}
+
+.switch-label::after {
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
+  -webkit-transition: left 0.1s ease;
+  transition: left 0.1s ease;
+}
+
+.switch-input:checked + .switch-label::before {
+  background-color: var(--secondary);
+}
+
+.switch-input:checked + .switch-label::after {
+  left: 18px;
+}
+
+.switch-text {
+  color: var(--primary);
+  margin: 0 0 0 0;
+}

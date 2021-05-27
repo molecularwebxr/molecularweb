@@ -41,6 +41,17 @@ textarea::placeholder,
   font-family: Roboto;
 }
 
+textarea.pdb-text {
+  width: 100%;
+  color: black;
+  margin: 0 0 1.5rem 0;
+}
+
+textarea.pdb-text:focus,
+.text-input:focus {
+  box-shadow: 0px 0px 6px 1px var(--primary);
+}
+
 .hi-container {
   margin-top: 2rem;
 }

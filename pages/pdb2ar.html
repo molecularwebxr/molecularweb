@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/js/support.js"></script>
+    <title id="title">PDB2AR</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/feedback.css" />
+    <link rel="stylesheet" href="/styles/pdb2ar.css" />
+
+    <!-- Translation Libraries -->
+    <script src="/lib/i18n/i18next.min.js"></script>
+    <script src="/lib/i18n/i18next-wc.js"></script>
+    <script src="/lib/i18n/loc-i18next.min.js"></script>
+    <script src="/lib/i18n/i18nextBrowserLanguageDetector.js"></script>
+    <script src="/lib/i18n/i18nextHttpBackend.min.js"></script>
+    <script src="/lib/sweetalert.min.js"></script>
+
+    <!-- Web Components -->
+    <script src="/components/footer/index.js"></script>
+    <script src="/components/app-header/index.js"></script>
+    <script src="/components/icons/molecule/index.js"></script>
+    <script src="/components/app-instructions/index.js"></script>
+  </head>
+  <body>
+    <div class="content">
+      <app-header></app-header>
+      <app-instructions></app-instructions>
+
+      <div class="container column pdb2ar-container">
+        <div class="module-header row margin-top">
+          <figure>
+            <molecule-icon></molecule-icon>
+          </figure>
+          <h2 class="module-title">PDB to AR</h2>
+        </div>
+        <div class="hi-container">
+          <span>👋 </span
+          ><span class="normal-text"
+            >Here we should add a brief text describing the tool and probably
+            some instructions.</span
+          >
+        </div>
+        <textarea
+          class="pdb-text"
+          name="pdb"
+          id=""
+          cols="30"
+          rows="10"
+          placeholder="Copy-Paste molecule here"
+        ></textarea>
+        <div class="margin-bottom row">
+          <button class="pdb-btn margin-right">Detect molecules</button>
+          <div class="row switch-container">
+            <p class="switch-text">Merge water together</p>
+            <div class="switch">
+              <input
+                id="switch-interactions"
+                type="checkbox"
+                class="switch-input"
+              />
+              <label for="switch-interactions" class="switch-label">Switch</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <app-footer></app-footer>
+    </footer>
+    <script src="/js/translate.js"></script>
+    <script src="/js/handleSession.js"></script>
+    <script src="/js/handleInstructions.js"></script>
+  </body>
+</html>
