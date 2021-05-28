@@ -33,7 +33,8 @@
       <app-header></app-header>
       <app-instructions></app-instructions>
 
-      <div class="container column pdb2ar-container">
+      <!-- Top section -->
+      <div class="column pdb2ar-container">
         <div class="module-header row margin-top">
           <figure>
             <molecule-icon></molecule-icon>
@@ -65,10 +66,177 @@
                 type="checkbox"
                 class="switch-input"
               />
-              <label for="switch-interactions" class="switch-label">Switch</label>
+              <label for="switch-interactions" class="switch-label">
+                Switch
+              </label>
             </div>
           </div>
         </div>
+
+        <!-- Protein and nucleic acids -->
+        <h3 class="pdb-section-title">Protein and nucleic acids</h3>
+        <div class="protein-grid">
+          <!-- Grid header -->
+          <div class="grid-header">
+            <p class="grid-title">Chain</p>
+          </div>
+          <div class="grid-header">
+            <p class="grid-title">Type</p>
+          </div>
+          <div class="grid-header">
+            <p class="grid-title">Include</p>
+          </div>
+          <div class="grid-header">
+            <p class="grid-title">Color</p>
+          </div>
+          <!-- Grid row -->
+          <div class="grid-element">
+            <p class="grid-text">E</p>
+          </div>
+          <div class="grid-element">
+            <p class="grid-text">Nucleic</p>
+          </div>
+          <div class="grid-element">
+            <select class="selector">
+              <option value="">No</option>
+              <option value="licorice">Licorice</option>
+            </select>
+          </div>
+          <div class="grid-element">
+            <select class="selector">
+              <option value="">Red</option>
+              <option value="licorice">Blue</option>
+            </select>
+          </div>
+          <!-- Grid row -->
+          <div class="grid-element">
+            <p class="grid-text">D</p>
+          </div>
+          <div class="grid-element">
+            <p class="grid-text">Protein</p>
+          </div>
+          <div class="grid-element">
+            <select class="selector">
+              <option value="">No</option>
+              <option value="licorice">Licorice</option>
+            </select>
+          </div>
+          <div class="grid-element">
+            <select class="selector">
+              <option value="">Red</option>
+              <option value="licorice">Blue</option>
+            </select>
+          </div>
+          <!-- Grid row -->
+          <div class="grid-element">
+            <p class="grid-text">F</p>
+          </div>
+          <div class="grid-element">
+            <p class="grid-text">Other</p>
+          </div>
+          <div class="grid-element">
+            <select class="selector">
+              <option value="">No</option>
+              <option value="licorice">Licorice</option>
+            </select>
+          </div>
+          <div class="grid-element">
+            <select class="selector">
+              <option value="">Red</option>
+              <option value="licorice">Blue</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Ligands -->
+        <h3 class="pdb-section-title">Ligands</h3>
+        <div class="ligands-grid">
+          <!-- Grid header -->
+          <div class="grid-header">
+            <p class="grid-title">Chain</p>
+          </div>
+          <div class="grid-header">
+            <p class="grid-title">Molecule</p>
+          </div>
+          <div class="grid-header">
+            <p class="grid-title">Residue number</p>
+          </div>
+          <div class="grid-header">
+            <p class="grid-title">Include</p>
+          </div>
+          <div class="grid-header">
+            <p class="grid-title">Color</p>
+          </div>
+          <!-- Grid row -->
+          <div class="grid-element">
+            <p class="grid-text">E</p>
+          </div>
+          <div class="grid-element">
+            <p class="grid-text">BLA</p>
+          </div>
+          <div class="grid-element">
+            <p class="grid-text">74</p>
+          </div>
+          <div class="grid-element">
+            <select class="selector">
+              <option value="">No</option>
+              <option value="licorice">Licorice</option>
+            </select>
+          </div>
+          <div class="grid-element">
+            <select class="selector">
+              <option value="">Red</option>
+              <option value="licorice">Blue</option>
+            </select>
+          </div>
+          <!-- Grid row -->
+          <div class="grid-element">
+            <p class="grid-text">D</p>
+          </div>
+          <div class="grid-element">
+            <p class="grid-text">GOL</p>
+          </div>
+          <div class="grid-element">
+            <p class="grid-text">76</p>
+          </div>
+          <div class="grid-element">
+            <select class="selector">
+              <option value="">No</option>
+              <option value="licorice">Licorice</option>
+            </select>
+          </div>
+          <div class="grid-element">
+            <select class="selector">
+              <option value="">Red</option>
+              <option value="licorice">Blue</option>
+            </select>
+          </div>
+          <!-- Grid row -->
+          <div class="grid-element">
+            <p class="grid-text"></p>
+          </div>
+          <div class="grid-element">
+            <p class="grid-text">HOH</p>
+          </div>
+          <div class="grid-element">
+            <p class="grid-text"></p>
+          </div>
+          <div class="grid-element">
+            <select class="selector">
+              <option value="">No</option>
+              <option value="licorice">Licorice</option>
+            </select>
+          </div>
+          <div class="grid-element">
+            <select class="selector">
+              <option value="">Red</option>
+              <option value="licorice">Blue</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="pdb-btn margin-bottom">Build VMD script</button>
+
       </div>
     </div>
 

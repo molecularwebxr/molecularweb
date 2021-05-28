@@ -13,6 +13,8 @@
 .pdb2ar-container {
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
+  width: 638px;
 }
 
 .pdb2ar-container .hi-container {
@@ -102,3 +104,81 @@
   color: var(--primary);
   margin: 0 0 0 0;
 }
+
+.pdb-section-title {
+  color: var(--primary);
+  font-family: "Montserrat";
+  font-weight: bold;
+  text-align: left;
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem 0;
+  align-self: flex-start;
+}
+
+.protein-grid {
+  align-self: flex-start;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 2fr;
+  margin-bottom: 1.5rem;
+}
+
+.ligands-grid {
+  align-self: flex-start;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 2fr 2.2fr 2.2fr;
+  margin-bottom: 1.5rem;
+}
+
+.grid-element {
+  padding: 0.5rem;
+}
+
+.grid-header {
+  padding: 0.5rem;
+  background-color: var(--secondary);
+}
+
+.grid-title {
+  margin: 0;
+  color: var(--primary);
+  font-family: "Roboto";
+  font-weight: bold;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.grid-text {
+  margin: 0;
+  color: var(--primary);
+  font-family: "Roboto";
+}
+
+.selector {
+  width: 70%;
+  height: 26px;
+  margin: 0;
+  font-family: "Roboto";
+  font-size: 0.8rem;
+  border-radius: 0.25rem;
+  border: 2px solid var(--primarydark);
+  outline: none;
+  padding: 0.25rem;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: var(--lightergray);
+  background-image: url("/assets/img/arrow-select.png");
+  background-repeat: no-repeat;
+  background-position: top 0.52rem right 0.4rem;
+  color: var(--primary);
+}
+
+.selector option {
+  font-family: "Roboto";
+  font-style: normal;
+  font-size: 0.8rem;
+  color: var(--primary);
+}
+
