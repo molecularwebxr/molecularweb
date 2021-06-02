@@ -31,11 +31,12 @@
   font-size: 14px;
   text-align: center;
   cursor: pointer;
-}
-
-.pdb-btn {
   border: none;
   outline: none;
+}
+
+.pdb-btn:active {
+  transform: scale(0.9);
 }
 
 .switch-container {

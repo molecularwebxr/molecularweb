@@ -49,6 +49,7 @@
           >
         </div>
         <textarea
+          id="pdb-text"
           class="pdb-text"
           name="pdb"
           id=""
@@ -57,16 +58,17 @@
           placeholder="Copy-Paste molecule here"
         ></textarea>
         <div class="margin-bottom row">
-          <button class="pdb-btn margin-right">Detect molecules</button>
+          <button id="detect-btn" class="pdb-btn margin-right">Detect molecules</button>
           <div class="row switch-container">
             <p class="switch-text">Merge water together</p>
             <div class="switch">
               <input
-                id="switch-interactions"
+                id="switch-water"
                 type="checkbox"
                 class="switch-input"
+                checked
               />
-              <label for="switch-interactions" class="switch-label">
+              <label for="switch-water" class="switch-label">
                 Switch
               </label>
             </div>
@@ -246,5 +248,6 @@
     <script src="/js/translate.js"></script>
     <script src="/js/handleSession.js"></script>
     <script src="/js/handleInstructions.js"></script>
+    <script src="/js/pdb2ar.js"></script>
   </body>
 </html>
