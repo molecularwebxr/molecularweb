@@ -132,6 +132,11 @@
   margin-bottom: 1.5rem;
 }
 
+.ligands-grid.hidden,
+.protein-grid.hidden {
+  display: none;
+}
+
 .grid-element {
   padding: 0.5rem;
 }

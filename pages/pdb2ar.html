@@ -76,8 +76,8 @@
         </div>
 
         <!-- Protein and nucleic acids -->
-        <h3 class="pdb-section-title">Protein and nucleic acids</h3>
-        <div class="protein-grid">
+        <h3 id="protein-title" class="pdb-section-title hidden">Protein and nucleic acids</h3>
+        <div id="protein-grid" class="protein-grid hidden">
           <!-- Grid header -->
           <div class="grid-header">
             <p class="grid-title">Chain</p>
@@ -86,73 +86,16 @@
             <p class="grid-title">Type</p>
           </div>
           <div class="grid-header">
-            <p class="grid-title">Include</p>
+            <p class="grid-title">Include?</p>
           </div>
           <div class="grid-header">
             <p class="grid-title">Color</p>
           </div>
-          <!-- Grid row -->
-          <div class="grid-element">
-            <p class="grid-text">E</p>
-          </div>
-          <div class="grid-element">
-            <p class="grid-text">Nucleic</p>
-          </div>
-          <div class="grid-element">
-            <select class="selector">
-              <option value="">No</option>
-              <option value="licorice">Licorice</option>
-            </select>
-          </div>
-          <div class="grid-element">
-            <select class="selector">
-              <option value="">Red</option>
-              <option value="licorice">Blue</option>
-            </select>
-          </div>
-          <!-- Grid row -->
-          <div class="grid-element">
-            <p class="grid-text">D</p>
-          </div>
-          <div class="grid-element">
-            <p class="grid-text">Protein</p>
-          </div>
-          <div class="grid-element">
-            <select class="selector">
-              <option value="">No</option>
-              <option value="licorice">Licorice</option>
-            </select>
-          </div>
-          <div class="grid-element">
-            <select class="selector">
-              <option value="">Red</option>
-              <option value="licorice">Blue</option>
-            </select>
-          </div>
-          <!-- Grid row -->
-          <div class="grid-element">
-            <p class="grid-text">F</p>
-          </div>
-          <div class="grid-element">
-            <p class="grid-text">Other</p>
-          </div>
-          <div class="grid-element">
-            <select class="selector">
-              <option value="">No</option>
-              <option value="licorice">Licorice</option>
-            </select>
-          </div>
-          <div class="grid-element">
-            <select class="selector">
-              <option value="">Red</option>
-              <option value="licorice">Blue</option>
-            </select>
-          </div>
         </div>
 
         <!-- Ligands -->
-        <h3 class="pdb-section-title">Ligands</h3>
-        <div class="ligands-grid">
+        <h3 id="ligand-title" class="pdb-section-title hidden">Ligands</h3>
+        <div id="ligand-grid" class="ligands-grid hidden">
           <!-- Grid header -->
           <div class="grid-header">
             <p class="grid-title">Chain</p>
@@ -169,75 +112,9 @@
           <div class="grid-header">
             <p class="grid-title">Color</p>
           </div>
-          <!-- Grid row -->
-          <div class="grid-element">
-            <p class="grid-text">E</p>
-          </div>
-          <div class="grid-element">
-            <p class="grid-text">BLA</p>
-          </div>
-          <div class="grid-element">
-            <p class="grid-text">74</p>
-          </div>
-          <div class="grid-element">
-            <select class="selector">
-              <option value="">No</option>
-              <option value="licorice">Licorice</option>
-            </select>
-          </div>
-          <div class="grid-element">
-            <select class="selector">
-              <option value="">Red</option>
-              <option value="licorice">Blue</option>
-            </select>
-          </div>
-          <!-- Grid row -->
-          <div class="grid-element">
-            <p class="grid-text">D</p>
-          </div>
-          <div class="grid-element">
-            <p class="grid-text">GOL</p>
-          </div>
-          <div class="grid-element">
-            <p class="grid-text">76</p>
-          </div>
-          <div class="grid-element">
-            <select class="selector">
-              <option value="">No</option>
-              <option value="licorice">Licorice</option>
-            </select>
-          </div>
-          <div class="grid-element">
-            <select class="selector">
-              <option value="">Red</option>
-              <option value="licorice">Blue</option>
-            </select>
-          </div>
-          <!-- Grid row -->
-          <div class="grid-element">
-            <p class="grid-text"></p>
-          </div>
-          <div class="grid-element">
-            <p class="grid-text">HOH</p>
-          </div>
-          <div class="grid-element">
-            <p class="grid-text"></p>
-          </div>
-          <div class="grid-element">
-            <select class="selector">
-              <option value="">No</option>
-              <option value="licorice">Licorice</option>
-            </select>
-          </div>
-          <div class="grid-element">
-            <select class="selector">
-              <option value="">Red</option>
-              <option value="licorice">Blue</option>
-            </select>
-          </div>
         </div>
 
-        <button class="pdb-btn margin-bottom">Build VMD script</button>
+        <button id="vmd-btn" class="pdb-btn margin-bottom hidden">Build VMD script</button>
 
       </div>
     </div>
@@ -249,5 +126,6 @@
     <script src="/js/handleSession.js"></script>
     <script src="/js/handleInstructions.js"></script>
     <script src="/js/pdb2ar.js"></script>
+    <script src="/js/pdb2arUtils.js"></script>
   </body>
 </html>

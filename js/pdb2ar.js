@@ -1,6 +1,11 @@
 var detectBtn = document.getElementById("detect-btn");
 var pdbText = document.getElementById("pdb-text");
 var switchWater = document.getElementById("switch-water");
+var proteinTitle = document.getElementById("protein-title");
+var proteinGrid = document.getElementById("protein-grid");
+var ligandTitle = document.getElementById("ligand-title");
+var ligandGrid = document.getElementById("ligand-grid");
+var vdmBtn = document.getElementById("vmd-btn");
 
 var chains = [];
 var chainstrings = [];
@@ -10,10 +15,16 @@ var ligandchains = [];
 var ligandresnames = [];
 var ligandresnos = [];
 
+var tclString = "";
+
 var isWaterChecked = true;
 
 function readPdb(e) {
   var pdbString = pdbText.value;
+
+  if (pdbString.length === 0) {
+    return;
+  }
 
   var lines = pdbString.split("\n");
 
@@ -96,18 +107,109 @@ function readPdb(e) {
     ligandresnos.push(" ");
   }
 
-  console.log(chains);
-  console.log(chaintypes);
-  console.log(chainstrings);
+  ligandGrid.classList.remove("hidden");
+  ligandTitle.classList.remove("hidden");
+  proteinTitle.classList.remove("hidden");
+  proteinGrid.classList.remove("hidden");
+  vdmBtn.classList.remove("hidden");
 
-  console.log(ligandchains);
-  console.log(ligandresnames);
-  console.log(ligandresnos);
+  chains.forEach(function (chain, index) {
+    var rowString = /* html */ `
+    <!-- Grid row -->
+    <div class="grid-element">
+      <p class="grid-text">${chain}</p>
+    </div>
+    <div class="grid-element">
+      <p class="grid-text">${chaintypes[index]}</p>
+    </div>
+    <div class="grid-element">
+      <select id="proteinRow-${index}" class="selector">
+        ${includeOptions1}
+      </select>
+    </div>
+    <div class="grid-element">
+      <select id="proteinRowColor-${index}" class="selector">
+        ${colorOptions}
+      </select>
+    </div>
+    `;
+    proteinGrid.insertAdjacentHTML("beforeend", rowString);
+  });
+
+  ligandchains.forEach(function (ligandChain, index) {
+    var rowString = /* html */ `
+    <!-- Grid row -->
+    <div class="grid-element">
+      <p class="grid-text">${ligandChain}</p>
+    </div>
+    <div class="grid-element">
+      <p class="grid-text">${ligandresnames[index]}</p>
+    </div>
+    <div class="grid-element">
+      <p class="grid-text">${ligandresnos[index]}</p>
+    </div>
+    <div class="grid-element">
+      <select id="ligandRow-${index}" class="selector">
+        ${includeOptions2}
+      </select>
+    </div>
+    <div class="grid-element">
+      <select id="ligandRowColor-${index}" class="selector">
+        ${colorOptions}
+      </select>
+    </div>
+    `;
+    ligandGrid.insertAdjacentHTML("beforeend", rowString);
+  });
 }
 
 function handleWaterCheck(e) {
   isWaterChecked = switchWater.checked;
 }
 
+function buildVmd(e) {
+  tclString = baseTcl;
+  var nout = 0;
+
+  chains.forEach(function(chain, index) {
+    var value = document.getElementById("proteinRow-"+index).value;
+    var color = document.getElementById("proteinRowColor-"+index).value;
+
+    if (value === "NewCartoon (cartoons)") {
+      tclString += "mol modselect " + nout + " 0 chain " + chain + "\n"
+      tclString += "mol modstyle " + nout + " 0 NewCartoon 0.300000 10.000000 4.100000 0\n"
+      tclString += "mol modcolor " + nout + " 0 " + color + "\n"
+      tclString += "\nmol addrep 0\n"
+      nout++
+    }
+
+    if (value === "Licorice (sticks)") {
+        tclString += "mol modselect " + nout + " 0 chain " + chain + "\n"
+        tclString += "mol modstyle " + nout + " 0 Licorice 0.300000 12.000000 12.000000\n"
+        tclString += "mol modcolor " + nout + " 0 " + color + "\n"
+        tclString += "\nmol addrep 0\n"
+        nout++
+      }
+
+    if (value === "VDW (spheres)") {
+        tclString += "mol modselect " + nout + " 0 chain " + chain + "\n"
+        tclString += "mol modstyle " + nout + " 0 VDW 1.000000 12.000000\n"
+        tclString += "mol modcolor " + nout + " 0 " + color + "\n"
+        tclString += "\nmol addrep 0\n"
+        nout++
+      }
+
+    if (value === "Surf (surface)") {
+        tclString += "mol modselect " + nout + " 0 chain " + chain + " and resname \n"
+        tclString += "mol modstyle " + nout + " 0 Surf 1.400000 0.000000\n"
+        tclString += "mol modcolor " + nout + " 0 " + color + "\n"
+        tclString += "\nmol addrep 0\n"
+        nout++
+      }
+    });
+  console.log(tclString)
+}
+
 detectBtn.addEventListener("click", readPdb);
 switchWater.addEventListener("change", handleWaterCheck);
+vdmBtn.addEventListener("click", buildVmd);
