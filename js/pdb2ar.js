@@ -171,43 +171,71 @@ function buildVmd(e) {
   tclString = baseTcl;
   var nout = 0;
 
-  chains.forEach(function(chain, index) {
-    var value = document.getElementById("proteinRow-"+index).value;
-    var color = document.getElementById("proteinRowColor-"+index).value;
+  chains.forEach(function (chain, index) {
+    var value = document.getElementById("proteinRow-" + index).value;
+    var color = document.getElementById("proteinRowColor-" + index).value;
 
     if (value === "NewCartoon (cartoons)") {
-      tclString += "mol modselect " + nout + " 0 chain " + chain + "\n"
-      tclString += "mol modstyle " + nout + " 0 NewCartoon 0.300000 10.000000 4.100000 0\n"
+      tclString += "mol modselect " + nout + " 0 chain " + chain + "\n";
+      tclString += "mol modstyle " + nout + " 0 NewCartoon 0.300000 10.000000 4.100000 0\n";
+      tclString += "mol modcolor " + nout + " 0 " + color + "\n";
+      tclString += "\nmol addrep 0\n";
+      nout++;
+    }
+
+    if (value === "Licorice (sticks)") {
+      tclString += "mol modselect " + nout + " 0 chain " + chain + "\n";
+      tclString += "mol modstyle " + nout + " 0 Licorice 0.300000 12.000000 12.000000\n";
+      tclString += "mol modcolor " + nout + " 0 " + color + "\n";
+      tclString += "\nmol addrep 0\n";
+      nout++;
+    }
+
+    if (value === "VDW (spheres)") {
+      tclString += "mol modselect " + nout + " 0 chain " + chain + "\n";
+      tclString += "mol modstyle " + nout + " 0 VDW 1.000000 12.000000\n";
+      tclString += "mol modcolor " + nout + " 0 " + color + "\n";
+      tclString += "\nmol addrep 0\n";
+      nout++;
+    }
+
+    if (value === "Surf (surface)") {
+      tclString += "mol modselect " + nout + " 0 chain " + chain + " and resname \n";
+      tclString += "mol modstyle " + nout + " 0 Surf 1.400000 0.000000\n";
+      tclString += "mol modcolor " + nout + " 0 " + color + "\n";
+      tclString += "\nmol addrep 0\n";
+      nout++;
+    }
+  });
+
+  ligandchains.forEach(function (ligandChain, index) {
+    var value = document.getElementById("ligandRow-" + index).value;
+    var color = document.getElementById("ligandRowColor-" + index).value;
+
+    if (value == "Licorice (sticks)") {
+      tclString += "mol modselect " + nout + " 0 chain " + ligandChain + " and resname " + ligandresnames[index] + " and resid " + ligandresnos[index] + "\n"
+      tclString += "mol modstyle " + nout + " 0 Licorice 0.300000 12.000000 12.000000\n"
       tclString += "mol modcolor " + nout + " 0 " + color + "\n"
       tclString += "\nmol addrep 0\n"
       nout++
     }
+	if (value == "VDW (spheres)") {
+      tclString += "mol modselect " + nout + " 0 chain " + ligandChain + " and resname " + ligandresnames[index] + " and resid " + ligandresnos[index] + "\n"
+      tclString += "mol modstyle " + nout + " 0 VDW 1.000000 12.000000\n"
+      tclString += "mol modcolor " + nout + " 0 " + color + "\n"
+      tclString += "\nmol addrep 0\n"
+      nout++
+    }
+	if (value == "Surf (surface)") {
+      tclString += "mol modselect " + nout + " 0 chain " + ligandChain + " and resname " + ligandresnames[index] + " and resid " + ligandresnos[index] + "\n"
+      tclString += "mol modstyle " + nout + " 0 Surf 1.400000 0.000000\n"
+      tclString += "mol modcolor " + nout + " 0 " + color + "\n"
+      tclString += "\nmol addrep 0\n"
+      nout++
+    }
+  });
 
-    if (value === "Licorice (sticks)") {
-        tclString += "mol modselect " + nout + " 0 chain " + chain + "\n"
-        tclString += "mol modstyle " + nout + " 0 Licorice 0.300000 12.000000 12.000000\n"
-        tclString += "mol modcolor " + nout + " 0 " + color + "\n"
-        tclString += "\nmol addrep 0\n"
-        nout++
-      }
-
-    if (value === "VDW (spheres)") {
-        tclString += "mol modselect " + nout + " 0 chain " + chain + "\n"
-        tclString += "mol modstyle " + nout + " 0 VDW 1.000000 12.000000\n"
-        tclString += "mol modcolor " + nout + " 0 " + color + "\n"
-        tclString += "\nmol addrep 0\n"
-        nout++
-      }
-
-    if (value === "Surf (surface)") {
-        tclString += "mol modselect " + nout + " 0 chain " + chain + " and resname \n"
-        tclString += "mol modstyle " + nout + " 0 Surf 1.400000 0.000000\n"
-        tclString += "mol modcolor " + nout + " 0 " + color + "\n"
-        tclString += "\nmol addrep 0\n"
-        nout++
-      }
-    });
-  console.log(tclString)
+  console.log(tclString);
 }
 
 detectBtn.addEventListener("click", readPdb);
