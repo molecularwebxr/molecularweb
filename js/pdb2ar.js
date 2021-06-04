@@ -235,6 +235,8 @@ function buildVmd(e) {
     }
   });
 
+  tclString += endTcl;
+
   console.log(tclString);
 }
 

@@ -34,4 +34,5 @@ var colorOptions = /* html */ `
   <option>ColorID 15</option>
   <option>ColorID 16</option>
 `
-var baseTcl = "display projection Orthographic\naxes location Off\ndisplay resetview\nmol new {C:\Users\abriata\Desktop\1gd2.pdb} type {pdb} first 0 last -1 step 1 waitfor 1\n\n\n"
+var baseTcl = "display projection Orthographic\naxes location Off\ndisplay resetview\nmol new {**location**} type {pdb} first 0 last -1 step 1 waitfor 1\n\n\n";
+var endTcl = "render Wavefront {**3dmodel**} true\nexit"
