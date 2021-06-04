@@ -42,6 +42,7 @@ textarea::placeholder,
 }
 
 textarea.pdb-text {
+  padding: 8px;
   width: 100%;
   color: black;
   margin: 0 0 1.5rem 0;

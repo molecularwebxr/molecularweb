@@ -52,13 +52,14 @@
           id="pdb-text"
           class="pdb-text"
           name="pdb"
-          id=""
           cols="30"
           rows="10"
           placeholder="Copy-Paste molecule here"
         ></textarea>
         <div class="margin-bottom row">
-          <button id="detect-btn" class="pdb-btn margin-right">Detect molecules</button>
+          <button id="detect-btn" class="pdb-btn margin-right">
+            Detect molecules
+          </button>
           <div class="row switch-container">
             <p class="switch-text">Merge water together</p>
             <div class="switch">
@@ -68,15 +69,15 @@
                 class="switch-input"
                 checked
               />
-              <label for="switch-water" class="switch-label">
-                Switch
-              </label>
+              <label for="switch-water" class="switch-label"> Switch </label>
             </div>
           </div>
         </div>
 
         <!-- Protein and nucleic acids -->
-        <h3 id="protein-title" class="pdb-section-title hidden">Protein and nucleic acids</h3>
+        <h3 id="protein-title" class="pdb-section-title hidden">
+          Protein and nucleic acids
+        </h3>
         <div id="protein-grid" class="protein-grid hidden">
           <!-- Grid header -->
           <div class="grid-header">
@@ -114,7 +115,37 @@
           </div>
         </div>
 
-        <button id="vmd-btn" class="pdb-btn margin-bottom hidden">Build VMD script</button>
+        <button id="vmd-btn" class="pdb-btn margin-bottom hidden">
+          Build VMD script
+        </button>
+
+        <textarea
+          id="tcl-text"
+          class="pdb-text hidden"
+          name="tcl"
+          cols="30"
+          rows="10"
+          placeholder="Here's the TCL script for VMD"
+        ></textarea>
+
+        <div id="submit-section" class="row submit-section margin-bottom hidden">
+          <label
+            for="title"
+            class="normal-text"
+          >Please name your AR Experience and click submit</label>
+          <input
+            name="title"
+            id="pdb-title"
+            type="text"
+            class="title-input"
+            placeholder="My AR experience"
+          />
+
+        </div>
+
+        <button id="submit-btn" class="pdb-btn hidden margin-bottom">
+          Submit
+        </button>
 
       </div>
     </div>

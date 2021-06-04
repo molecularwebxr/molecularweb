@@ -188,3 +188,22 @@
   color: var(--primary);
 }
 
+.submit-section{
+  justify-content: center;
+  align-items: center;
+  padding: 0 8px;
+}
+
+.title-input {
+  margin: 0 16px;
+  padding: 8px 4px;
+  border: 3px solid var(--primary);
+  border-radius: 10px;
+  resize: none;
+  outline: none;
+  min-width: 150px;
+  max-width: 200px;
+  font-family: Roboto;
+  color: var(--primary);
+  font-size: 14px;
+}

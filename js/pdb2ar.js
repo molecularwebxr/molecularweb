@@ -6,6 +6,10 @@ var proteinGrid = document.getElementById("protein-grid");
 var ligandTitle = document.getElementById("ligand-title");
 var ligandGrid = document.getElementById("ligand-grid");
 var vdmBtn = document.getElementById("vmd-btn");
+var submitSection = document.getElementById("submit-section");
+var tclText = document.getElementById("tcl-text");
+var submitBtn = document.getElementById("submit-btn");
+var titleInput = document.getElementById("pdb-title");
 
 var chains = [];
 var chainstrings = [];
@@ -237,9 +241,30 @@ function buildVmd(e) {
 
   tclString += endTcl;
 
-  console.log(tclString);
+  tclText.classList.remove("hidden");
+  submitSection .classList.remove("hidden");
+  submitBtn .classList.remove("hidden");
+
+  tclText.value = tclString;
+}
+
+function handleSubmit(e) {
+  var title = titleInput.value;
+
+  if (title.length <= 0) {
+    return;
+  }
+
+  var data = {
+    pdb: pdbText.value,
+    tcl: tclString,
+    title,
+  }
+
+  console.log(data);
 }
 
 detectBtn.addEventListener("click", readPdb);
 switchWater.addEventListener("change", handleWaterCheck);
 vdmBtn.addEventListener("click", buildVmd);
+submitBtn.addEventListener("click", handleSubmit);
