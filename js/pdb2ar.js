@@ -181,7 +181,10 @@ function buildVmd(e) {
 
     if (value === "NewCartoon (cartoons)") {
       tclString += "mol modselect " + nout + " 0 chain " + chain + "\n";
-      tclString += "mol modstyle " + nout + " 0 NewCartoon 0.300000 10.000000 4.100000 0\n";
+      tclString +=
+        "mol modstyle " +
+        nout +
+        " 0 NewCartoon 0.300000 10.000000 4.100000 0\n";
       tclString += "mol modcolor " + nout + " 0 " + color + "\n";
       tclString += "\nmol addrep 0\n";
       nout++;
@@ -189,13 +192,14 @@ function buildVmd(e) {
 
     if (value === "Licorice (sticks)") {
       tclString += "mol modselect " + nout + " 0 chain " + chain + "\n";
-      tclString += "mol modstyle " + nout + " 0 Licorice 0.300000 12.000000 12.000000\n";
+      tclString +=
+        "mol modstyle " + nout + " 0 Licorice 0.300000 12.000000 12.000000\n";
       tclString += "mol modcolor " + nout + " 0 " + color + "\n";
       tclString += "\nmol addrep 0\n";
       nout++;
     }
 
-    if (value === "VDW (spheres)") {
+    if (value === "VDW (spheres)" || value === "Surf (surface)") {
       tclString += "mol modselect " + nout + " 0 chain " + chain + "\n";
       tclString += "mol modstyle " + nout + " 0 VDW 1.000000 12.000000\n";
       tclString += "mol modcolor " + nout + " 0 " + color + "\n";
@@ -203,13 +207,13 @@ function buildVmd(e) {
       nout++;
     }
 
-    if (value === "Surf (surface)") {
-      tclString += "mol modselect " + nout + " 0 chain " + chain + " and resname \n";
-      tclString += "mol modstyle " + nout + " 0 Surf 1.400000 0.000000\n";
-      tclString += "mol modcolor " + nout + " 0 " + color + "\n";
-      tclString += "\nmol addrep 0\n";
-      nout++;
-    }
+    // if (value === "Surf (surface)") {
+    //   tclString += "mol modselect " + nout + " 0 chain " + chain + " and resname \n";
+    //   tclString += "mol modstyle " + nout + " 0 Surf 1.400000 0.000000\n";
+    //   tclString += "mol modcolor " + nout + " 0 " + color + "\n";
+    //   tclString += "\nmol addrep 0\n";
+    //   nout++;
+    // }
   });
 
   ligandchains.forEach(function (ligandChain, index) {
@@ -217,33 +221,52 @@ function buildVmd(e) {
     var color = document.getElementById("ligandRowColor-" + index).value;
 
     if (value == "Licorice (sticks)") {
-      tclString += "mol modselect " + nout + " 0 chain " + ligandChain + " and resname " + ligandresnames[index] + " and resid " + ligandresnos[index] + "\n"
-      tclString += "mol modstyle " + nout + " 0 Licorice 0.300000 12.000000 12.000000\n"
-      tclString += "mol modcolor " + nout + " 0 " + color + "\n"
-      tclString += "\nmol addrep 0\n"
-      nout++
+      tclString +=
+        "mol modselect " +
+        nout +
+        " 0 chain " +
+        ligandChain +
+        " and resname " +
+        ligandresnames[index] +
+        " and resid " +
+        ligandresnos[index] +
+        "\n";
+      tclString +=
+        "mol modstyle " + nout + " 0 Licorice 0.300000 12.000000 12.000000\n";
+      tclString += "mol modcolor " + nout + " 0 " + color + "\n";
+      tclString += "\nmol addrep 0\n";
+      nout++;
     }
-	if (value == "VDW (spheres)") {
-      tclString += "mol modselect " + nout + " 0 chain " + ligandChain + " and resname " + ligandresnames[index] + " and resid " + ligandresnos[index] + "\n"
-      tclString += "mol modstyle " + nout + " 0 VDW 1.000000 12.000000\n"
-      tclString += "mol modcolor " + nout + " 0 " + color + "\n"
-      tclString += "\nmol addrep 0\n"
-      nout++
+    if (value == "VDW (spheres)" || value === "Surf (surface)") {
+      tclString +=
+        "mol modselect " +
+        nout +
+        " 0 chain " +
+        ligandChain +
+        " and resname " +
+        ligandresnames[index] +
+        " and resid " +
+        ligandresnos[index] +
+        "\n";
+      tclString += "mol modstyle " + nout + " 0 VDW 1.000000 12.000000\n";
+      tclString += "mol modcolor " + nout + " 0 " + color + "\n";
+      tclString += "\nmol addrep 0\n";
+      nout++;
     }
-	if (value == "Surf (surface)") {
-      tclString += "mol modselect " + nout + " 0 chain " + ligandChain + " and resname " + ligandresnames[index] + " and resid " + ligandresnos[index] + "\n"
-      tclString += "mol modstyle " + nout + " 0 Surf 1.400000 0.000000\n"
-      tclString += "mol modcolor " + nout + " 0 " + color + "\n"
-      tclString += "\nmol addrep 0\n"
-      nout++
-    }
+    // if (value == "Surf (surface)") {
+    //     tclString += "mol modselect " + nout + " 0 chain " + ligandChain + " and resname " + ligandresnames[index] + " and resid " + ligandresnos[index] + "\n"
+    //     tclString += "mol modstyle " + nout + " 0 Surf 1.400000 0.000000\n"
+    //     tclString += "mol modcolor " + nout + " 0 " + color + "\n"
+    //     tclString += "\nmol addrep 0\n"
+    //     nout++
+    //   }
   });
 
   tclString += endTcl;
 
   tclText.classList.remove("hidden");
-  submitSection .classList.remove("hidden");
-  submitBtn .classList.remove("hidden");
+  submitSection.classList.remove("hidden");
+  submitBtn.classList.remove("hidden");
 
   tclText.value = tclString;
 }
@@ -259,7 +282,7 @@ function handleSubmit(e) {
     pdb: pdbText.value,
     tcl: tclString,
     title,
-  }
+  };
 
   fetch("https://molecularweb.epfl.ch/backend/api/pdb2ar/pdb", {
     method: "POST",
@@ -277,8 +300,6 @@ function handleSubmit(e) {
     .catch(function (error) {
       console.log("Error: ", error);
     });
-
-  console.log(data);
 }
 
 detectBtn.addEventListener("click", readPdb);

@@ -89,6 +89,10 @@ figure {
   transform: scale(0.9);
 }
 
+.back-btn.margin-bottom {
+  margin-bottom: 2rem;
+}
+
 /* Model Viewer styles */
 model-viewer {
   width: 500px;
