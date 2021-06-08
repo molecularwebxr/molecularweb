@@ -261,6 +261,23 @@ function handleSubmit(e) {
     title,
   }
 
+  fetch("https://molecularweb.epfl.ch/backend/api/pdb2ar/pdb", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (myJson) {
+      console.log(myJson);
+    })
+    .catch(function (error) {
+      console.log("Error: ", error);
+    });
+
   console.log(data);
 }
 
