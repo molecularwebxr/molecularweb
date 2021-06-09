@@ -128,11 +128,20 @@
           placeholder="Here's the TCL script for VMD"
         ></textarea>
 
-        <div id="submit-section" class="row submit-section margin-bottom hidden">
-          <label
-            for="title"
-            class="normal-text"
-          >Please name your AR Experience and click submit</label>
+        <p id="instructions" class="normal-text instructions hidden">
+          Please add a title for your project and an email address. We
+          will send you the link of the AR experience once it's ready.
+          <br><br> 
+          We will not
+          store your email address and it will only be used to send you the link
+          of your project.
+        </p>
+
+        <div
+          id="submit-section"
+          class="row submit-section margin-bottom hidden"
+        >
+          <label for="title" class="normal-text">Title</label>
           <input
             name="title"
             id="pdb-title"
@@ -141,12 +150,19 @@
             placeholder="My AR experience"
           />
 
+          <label for="email" class="normal-text">Email</label>
+          <input
+            name="email"
+            id="pdb-email"
+            type="email"
+            class="title-input"
+            placeholder="hello@mail.com"
+          />
         </div>
 
         <button id="submit-btn" class="pdb-btn hidden margin-bottom">
           Submit
         </button>
-
       </div>
     </div>
 
@@ -156,7 +172,7 @@
     <script src="/js/translate.js"></script>
     <script src="/js/handleSession.js"></script>
     <script src="/js/handleInstructions.js"></script>
-    <script src="/js/pdb2ar.js"></script>
     <script src="/js/pdb2arUtils.js"></script>
+    <script src="/js/pdb2ar.js"></script>
   </body>
 </html>

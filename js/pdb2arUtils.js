@@ -1,4 +1,4 @@
-var includeOptions1 = /* html */`
+var includeOptions1 = /* html */ `
   <option>No</option>
   <option>Licorice (sticks)</option>
   <option>NewCartoon (cartoons)</option>
@@ -6,7 +6,7 @@ var includeOptions1 = /* html */`
   <option>Surf (surface)</option>
   `;
 
-var includeOptions2 = /* html */`
+var includeOptions2 = /* html */ `
   <option>No</option>
   <option>Licorice (sticks)</option>
   <option>VDW (spheres)</option>
@@ -33,6 +33,14 @@ var colorOptions = /* html */ `
   <option>ColorID 14</option>
   <option>ColorID 15</option>
   <option>ColorID 16</option>
-`
+`;
 var baseTcl = "display projection Orthographic\naxes location Off\ndisplay resetview\nmol new {**location**} type {pdb} first 0 last -1 step 1 waitfor 1\n\n";
-var endTcl = "render Wavefront {**3dmodel**} true\nexit"
+var endTcl = "render Wavefront {**3dmodel**} true\nexit";
+
+function isEmailValid(email) {
+  if (/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+    .test(email)) {
+    return true;
+  }
+  return false;
+}

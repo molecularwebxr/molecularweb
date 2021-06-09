@@ -39,6 +39,10 @@
   transform: scale(0.9);
 }
 
+.pdb-btn:disabled {
+  transform: scale(1);
+}
+
 .switch-container {
   align-items: center;
   justify-content: center;
@@ -206,4 +210,8 @@
   font-family: Roboto;
   color: var(--primary);
   font-size: 14px;
+}
+
+.instructions {
+  margin-top: 0;
 }

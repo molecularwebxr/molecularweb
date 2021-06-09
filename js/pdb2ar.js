@@ -10,6 +10,8 @@ var submitSection = document.getElementById("submit-section");
 var tclText = document.getElementById("tcl-text");
 var submitBtn = document.getElementById("submit-btn");
 var titleInput = document.getElementById("pdb-title");
+var emailInput = document.getElementById("pdb-email");
+var instructionsText = document.getElementById("instructions");
 
 var chains = [];
 var chainstrings = [];
@@ -267,14 +269,20 @@ function buildVmd(e) {
   tclText.classList.remove("hidden");
   submitSection.classList.remove("hidden");
   submitBtn.classList.remove("hidden");
+  instructionsText.classList.remove("hidden");
 
   tclText.value = tclString;
 }
 
 function handleSubmit(e) {
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Loading..."
   var title = titleInput.value;
+  var email = emailInput.value;
 
-  if (title.length <= 0) {
+  const isEmailFine = isEmailValid(email);
+
+  if (title.length <= 0 || !isEmailFine) {
     return;
   }
 
@@ -282,6 +290,7 @@ function handleSubmit(e) {
     pdb: pdbText.value,
     tcl: tclString,
     title,
+    email,
   };
 
   fetch("https://molecularweb.epfl.ch/backend/api/pdb2ar/pdb", {
@@ -295,10 +304,22 @@ function handleSubmit(e) {
       return response.json();
     })
     .then(function (myJson) {
-      console.log(myJson);
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit"
+      console.log(myJson.url);
+      swal({
+        title: "Perfect!",
+        text: `Your project Has been created: ${myJson.url}`,
+        icon: "success",
+        button: {
+          text: "Ok",
+        },
+      });
     })
     .catch(function (error) {
-      console.log("Error: ", error);
+      swal("Something went wrong", "Please, try again", "error");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit"
     });
 }
 
