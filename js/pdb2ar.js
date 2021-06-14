@@ -35,67 +35,49 @@ function readPdb(e) {
   var lines = pdbString.split("\n");
 
   for (i = 0; i < lines.length; i++) {
-    if (
-      lines[i].substring(0, 4) == "ATOM" ||
-      lines[i].substring(0, 6) == "HETATM"
-    ) {
-      var thischain = lines[i].substring(21, 22).trim().toUpperCase();
-      var chainisthere = -1;
+    if ( lines[i].substring(0, 4) === "ATOM" || lines[i].substring(0, 6) === "HETATM") {
+      var thisChain = lines[i].substring(21, 22).trim().toUpperCase();
+      var chainIsThere = -1;
+      var thisRes = lines[i].substring(17, 20).trim().toUpperCase();
+      var thisResNo = parseInt(lines[i].substring(23, 26).trim().toUpperCase());
+
       for (j = 0; j < chains.length; j++) {
-        if (thischain === chains[j]) {
-          chainisthere = j;
+        if (thisChain === chains[j]) {
+          chainIsThere = j;
           break;
         }
       }
-      if (chainisthere > -1) {
-        chainstrings[chainisthere] =
-          chainstrings[chainisthere] + "\n" + lines[i];
+      if (chainIsThere > -1) {
+        chainstrings[chainIsThere] = chainstrings[chainIsThere] + "\n" + lines[i];
       } else {
-        chains.push(thischain);
+        chains.push(thisChain);
         chainstrings.push(lines[i]);
-        if (
-          "ALA|CYS|ASP|GLU|PHE|GLY|HIS|ILE|LYS|LEU|MET|ASN|PRO|GLN|ARG|SER|THR|VAL|TRP|TYR".match(
-            lines[i].substring(17, 20).trim().toUpperCase()
-          )
-        ) {
+        if ("ALA|CYS|ASP|GLU|PHE|GLY|HIS|ILE|LYS|LEU|MET|ASN|PRO|GLN|ARG|SER|THR|VAL|TRP|TYR|MSE|HSE|HSD|HID|HIE".match(thisRes)) {
           chaintypes.push("protein");
-        } else if (
-          "DA|DC|DG|DT|A|C|G|U".match(
-            lines[i].substring(17, 20).trim().toUpperCase()
-          )
-        ) {
+        } else if ("DA|DC|DG|DT|A|C|G|U".match(thisRes)) {
           chaintypes.push("nucleic");
         } else {
           chaintypes.push("other");
         }
       }
 
-      if (
-        !"ALA|CYS|ASP|GLU|PHE|GLY|HIS|ILE|LYS|LEU|MET|ASN|PRO|GLN|ARG|SER|THR|VAL|TRP|TYR|DA|DC|DG|DT|A|C|G|U|HSE|HSD|HID|HIE".match(
-          lines[i].substring(17, 20).trim().toUpperCase()
-        )
-      ) {
-        if (
-          lines[i].substring(17, 20).trim().toUpperCase() == "WAT" ||
-          lines[i].substring(17, 20).trim().toUpperCase() == "HOH" ||
-          lines[i].substring(17, 20).trim().toUpperCase() == "TIP"
-        ) {
+      if (!"ALA|CYS|ASP|GLU|PHE|GLY|HIS|ILE|LYS|LEU|MET|ASN|PRO|GLN|ARG|SER|THR|VAL|TRP|TYR|MSE|HSE|HSD|HID|HIE|DA|DC|DG|DT|A|C|G|U|".match( thisRes)){
+        if (thisRes === "WAT" || thisRes === "HOH" || thisRes === "TIP") {
           if (!isWaterChecked) {
-            ligandchains.push(thischain);
-            ligandresnames.push(
-              lines[i].substring(17, 20).trim().toUpperCase()
-            );
-            ligandresnos.push(
-              parseInt(lines[i].substring(23, 26).trim().toUpperCase())
-            );
+            ligandchains.push(thisChain);
+            ligandresnames.push(thisRes);
+            ligandresnos.push(thisResNo);
           }
         } else {
-          //modificar esto para que si la chain y el resno ya estan, no se agreguen de nuevo!
-          ligandchains.push(thischain);
-          ligandresnames.push(lines[i].substring(17, 20).trim().toUpperCase());
-          ligandresnos.push(
-            parseInt(lines[i].substring(23, 26).trim().toUpperCase())
-          );
+          var isChainAdded = ligandchains.includes(thisChain);
+          var isResAdded = ligandresnames.includes(thisRes);
+          var isResNoAdded = ligandresnos.includes(thisResNo);
+
+          if (!(isChainAdded && isResAdded && isResNoAdded)) {
+            ligandchains.push(thisChain);
+            ligandresnames.push(thisRes);
+            ligandresnos.push(thisResNo);
+          }
         }
       }
     }
@@ -276,7 +258,7 @@ function buildVmd(e) {
 
 function handleSubmit(e) {
   submitBtn.disabled = true;
-  submitBtn.textContent = "Loading..."
+  submitBtn.textContent = "Loading...";
   var title = titleInput.value;
   var email = emailInput.value;
 
@@ -305,11 +287,10 @@ function handleSubmit(e) {
     })
     .then(function (myJson) {
       submitBtn.disabled = false;
-      submitBtn.textContent = "Submit"
-      console.log(myJson.url);
+      submitBtn.textContent = "Submit";
       swal({
         title: "Perfect!",
-        text: `Your project Has been created: ${myJson.url}`,
+        text: "We have received your data. Your project is being created, once it's done we'll send you an email :)",
         icon: "success",
         button: {
           text: "Ok",
@@ -319,7 +300,7 @@ function handleSubmit(e) {
     .catch(function (error) {
       swal("Something went wrong", "Please, try again", "error");
       submitBtn.disabled = false;
-      submitBtn.textContent = "Submit"
+      submitBtn.textContent = "Submit";
     });
 }
 
