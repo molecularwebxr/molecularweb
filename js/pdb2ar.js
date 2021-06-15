@@ -20,6 +20,7 @@ var chaintypes = [];
 var ligandchains = [];
 var ligandresnames = [];
 var ligandresnos = [];
+var ligandComments = [];
 
 var tclString = "";
 
@@ -40,6 +41,8 @@ function readPdb(e) {
       var chainIsThere = -1;
       var thisRes = lines[i].substring(17, 20).trim().toUpperCase();
       var thisResNo = parseInt(lines[i].substring(23, 26).trim().toUpperCase());
+      var thisEl = lines[i].substring(76, 78).trim().toUpperCase();
+      var thisElNum = lines[i].substring(7, 11).trim();
 
       for (j = 0; j < chains.length; j++) {
         if (thisChain === chains[j]) {
@@ -61,12 +64,13 @@ function readPdb(e) {
         }
       }
 
-      if (!"ALA|CYS|ASP|GLU|PHE|GLY|HIS|ILE|LYS|LEU|MET|ASN|PRO|GLN|ARG|SER|THR|VAL|TRP|TYR|MSE|HSE|HSD|HID|HIE|DA|DC|DG|DT|A|C|G|U|".match( thisRes)){
+      if (!"ALA|CYS|ASP|GLU|PHE|GLY|HIS|ILE|LYS|LEU|MET|ASN|PRO|GLN|ARG|SER|THR|VAL|TRP|TYR|MSE|HSE|HSD|HID|HIE|DA|DC|DG|DT|A|C|G|U|".match(thisRes)){
         if (thisRes === "WAT" || thisRes === "HOH" || thisRes === "TIP") {
           if (!isWaterChecked) {
             ligandchains.push(thisChain);
             ligandresnames.push(thisRes);
             ligandresnos.push(thisResNo);
+            ligandComments.push(" ");
           }
         } else {
           var isChainAdded = ligandchains.includes(thisChain);
@@ -77,9 +81,18 @@ function readPdb(e) {
             ligandchains.push(thisChain);
             ligandresnames.push(thisRes);
             ligandresnos.push(thisResNo);
+            ligandComments.push(" ");
           }
         }
       }
+
+      if (thisEl !== "C" && thisEl !== "H" && thisEl !== "O" && thisEl !== "N" && thisEl !== "S" && thisEl !== "P") {
+        ligandchains.push(thisChain);
+        ligandresnames.push(thisRes);
+        ligandresnos.push(thisResNo);
+        ligandComments.push(thisEl + " atom " + thisElNum);
+      }
+
     }
   }
 
@@ -87,12 +100,15 @@ function readPdb(e) {
     ligandchains.push(" ");
     ligandresnames.push("HOH");
     ligandresnos.push(" ");
+    ligandComments.push(" ");
     ligandchains.push(" ");
     ligandresnames.push("WAT");
     ligandresnos.push(" ");
+    ligandComments.push(" ");
     ligandchains.push(" ");
     ligandresnames.push("TIP");
     ligandresnos.push(" ");
+    ligandComments.push(" ");
   }
 
   ligandGrid.classList.remove("hidden");
@@ -146,6 +162,9 @@ function readPdb(e) {
         ${colorOptions}
       </select>
     </div>
+    <div class="grid-element">
+      <p class="grid-text">${ligandComments[index]}</p>
+    </div>
     `;
     ligandGrid.insertAdjacentHTML("beforeend", rowString);
   });
@@ -165,10 +184,7 @@ function buildVmd(e) {
 
     if (value === "NewCartoon (cartoons)") {
       tclString += "mol modselect " + nout + " 0 chain " + chain + "\n";
-      tclString +=
-        "mol modstyle " +
-        nout +
-        " 0 NewCartoon 0.300000 10.000000 4.100000 0\n";
+      tclString += "mol modstyle " + nout + " 0 NewCartoon 0.300000 10.000000 4.100000 0\n";
       tclString += "mol modcolor " + nout + " 0 " + color + "\n";
       tclString += "\nmol addrep 0\n";
       nout++;
@@ -176,8 +192,7 @@ function buildVmd(e) {
 
     if (value === "Licorice (sticks)") {
       tclString += "mol modselect " + nout + " 0 chain " + chain + "\n";
-      tclString +=
-        "mol modstyle " + nout + " 0 Licorice 0.300000 12.000000 12.000000\n";
+      tclString += "mol modstyle " + nout + " 0 Licorice 0.300000 12.000000 12.000000\n";
       tclString += "mol modcolor " + nout + " 0 " + color + "\n";
       tclString += "\nmol addrep 0\n";
       nout++;
@@ -190,6 +205,23 @@ function buildVmd(e) {
       tclString += "\nmol addrep 0\n";
       nout++;
     }
+
+    if (value === "Tube") {
+      tclString += "mol modselect " + nout + " 0 chain " + chain + "\n";
+      tclString += "mol modstyle " + nout + " 0 Tube 0.300000 12.000000\n";
+      tclString += "mol modcolor " + nout + " 0 " + color + "\n";
+      tclString += "\nmol addrep 0\n";
+      nout++;
+    }
+
+    if (value === "CPK") {
+      tclString += "mol modselect " + nout + " 0 chain " + chain + "\n";
+      tclString += "mol modstyle " + nout + " 0 CPK 1.000000 0.300000 12.000000 12.000000\n";
+      tclString += "mol modcolor " + nout + " 0 " + color + "\n";
+      tclString += "\nmol addrep 0\n";
+      nout++;
+    }
+
 
     // if (value === "Surf (surface)") {
     //   tclString += "mol modselect " + nout + " 0 chain " + chain + " and resname \n";
@@ -205,38 +237,29 @@ function buildVmd(e) {
     var color = document.getElementById("ligandRowColor-" + index).value;
 
     if (value == "Licorice (sticks)") {
-      tclString +=
-        "mol modselect " +
-        nout +
-        " 0 chain " +
-        ligandChain +
-        " and resname " +
-        ligandresnames[index] +
-        " and resid " +
-        ligandresnos[index] +
-        "\n";
-      tclString +=
-        "mol modstyle " + nout + " 0 Licorice 0.300000 12.000000 12.000000\n";
+      tclString += "mol modselect " + nout + " 0 chain " + ligandChain + " and resname " + ligandresnames[index] + " and resid " + ligandresnos[index] + "\n";
+      tclString += "mol modstyle " + nout + " 0 Licorice 0.300000 12.000000 12.000000\n";
       tclString += "mol modcolor " + nout + " 0 " + color + "\n";
       tclString += "\nmol addrep 0\n";
       nout++;
     }
+
     if (value == "VDW (spheres)" || value === "Surf (surface)") {
-      tclString +=
-        "mol modselect " +
-        nout +
-        " 0 chain " +
-        ligandChain +
-        " and resname " +
-        ligandresnames[index] +
-        " and resid " +
-        ligandresnos[index] +
-        "\n";
+      tclString += "mol modselect " + nout + " 0 chain " + ligandChain + " and resname " + ligandresnames[index] + " and resid " + ligandresnos[index] + "\n";
       tclString += "mol modstyle " + nout + " 0 VDW 1.000000 12.000000\n";
       tclString += "mol modcolor " + nout + " 0 " + color + "\n";
       tclString += "\nmol addrep 0\n";
       nout++;
     }
+
+    if (value == "CPK") {
+      tclString += "mol modselect " + nout + " 0 chain " + ligandChain + " and resname " + ligandresnames[index] + " and resid " + ligandresnos[index] + "\n";
+      tclString += "mol modstyle " + nout + " 0 CPK 1.000000 0.300000 12.000000 12.000000\n";
+      tclString += "mol modcolor " + nout + " 0 " + color + "\n";
+      tclString += "\nmol addrep 0\n";
+      nout++;
+    }
+
     // if (value == "Surf (surface)") {
     //     tclString += "mol modselect " + nout + " 0 chain " + ligandChain + " and resname " + ligandresnames[index] + " and resid " + ligandresnos[index] + "\n"
     //     tclString += "mol modstyle " + nout + " 0 Surf 1.400000 0.000000\n"
