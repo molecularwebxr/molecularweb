@@ -293,10 +293,12 @@ function handleSubmit(e) {
 
   var data = {
     pdb: pdbText.value,
-    tcl: tclString,
+    tcl: tclText.value,
     title,
     email,
   };
+
+  console.log(data.pdb)
 
   fetch("https://molecularweb.epfl.ch/backend/api/pdb2ar/pdb", {
     method: "POST",
