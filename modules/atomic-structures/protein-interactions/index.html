@@ -53,78 +53,108 @@
       <div class="big-container">
         <!-- Model 1 -->
         <div class="model-container">
-          <h1 class="activity-title" id="title-1">Protein-protein and protein-DNA interactions in a B-zip transcription factor</h1>
+          <h1 class="activity-title" id="title-1">
+            Protein-protein and protein-DNA interactions in a B-zip
+            transcription factor
+          </h1>
           <model-viewer
-      ar
-      src="https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fall-cpk.glb"
-      poster="https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fall-cpk.png?v=1618319858966"
-      auto-rotate
-      camera-controls
-      alt="PDB ID 1GD2"
-      shadow-intensity="1"
-    >
-      <button slot="ar-button" id="ar-button">
-        View in your space
-      </button>
-      <div class="slider">
-        <div class="slides">
-          <button
-            class="slide selected"
-            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fall-cpk.png?v=1618319858966');"
-          >All atoms</button>
+            ar
+            src="./assets/models/all-cpk.glb"
+            poster="./assets/posters/all-cpk.png"
+            auto-rotate
+            camera-controls
+            alt="PDB ID 1GD2"
+            shadow-intensity="1"
+          >
+            <button slot="ar-button" id="ar-button">View in your space</button>
+            <div class="slider">
+              <div class="slides">
+                <button
+                  class="slide selected"
+                  style="background-image: url('./assets/posters/all-cpk.png')"
+                >
+                  All atoms
+                </button>
 
-          <button
-            class="slide"
-            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fall-cpk--color-by-restype.png?v=1618319898923');"
-          >All atoms by residue type</button>
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'all-cpk--color-by-restype')"
+                  style="background-image: url('./assets/posters/all-cpk--color-by-restype.png')"
+                >
+                  All atoms by residue type
+                </button>
 
-          <button
-            class="slide"
-            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fall-surfaces.png');"
-          >Surface</button>
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'all-surfaces')"
+                  style="background-image: url('./assets/posters/all-surfaces.png')"
+                >
+                  Surface
+                </button>
 
-          <button
-            class="slide"
-            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fall-surfaces-water.png');"
-          >Surface + water</button>
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'all-surfaces-water')"
+                  style="background-image: url('./assets/posters/all-surfaces-water.png')"
+                >
+                  Surface + water
+                </button>
 
-          <button
-            class="slide"
-            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fdna-surfaces--protein-cartoons.png');"
-          >DNA surface, protein cartoons</button>
-          
-          <button
-            class="slide"
-            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fdna-tubes-licorice--protein-surfaces.png');"
-          >DNA atoms + protein surface</button>
-          
-          <button
-            class="slide"
-            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fdna-tube-cpk--protein-cartoon-cpk1.png');"
-          >DNA atoms + protein cartoons</button>
-          
-          <button
-            class="slide"
-            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fdna-tube-cpk--protein-cartoon-cpk-LEU1.png');"
-          >Highlight LEU</button>
-          
-          <button
-            class="slide"
-            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fdna-tube-cpk--protein-cartoon-cpk-ARG-LYS1.png');"
-          >Highlight ARG + LYS</button>
-          
-          <button
-            class="slide"
-            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fdna-tube-cpk--protein-cartoon-cpk-PHE1.png');"
-          >Highlight PHE</button>
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'dna-surfaces--protein-cartoons')"
+                  style="background-image: url('./assets/posters/dna-surfaces--protein-cartoons.png');"
+                >
+                  DNA surface, protein cartoons
+                </button>
 
-        </div>
-      </div>
-    </model-viewer>
-          <p
-            class="activity-description mv"
-            id="description-1"
-          >Inspect in detail all the interactions that stabilize the dimeric leucine-zip-based transcription factor, and how it interacts with its target DNA</p>
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'dna-tubes-licorice--protein-surfaces')"
+                  style="background-image: url('./assets/posters/dna-tubes-licorice--protein-surfaces.png');"
+                >
+                  DNA atoms + protein surface
+                </button>
+
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'dna-tube-cpk--protein-cartoon-cpk1')"
+                  style="background-image: url('./assets/posters/dna-tube-cpk--protein-cartoon-cpk1.png');"
+                >
+                  DNA atoms + protein cartoons
+                </button>
+
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'dna-tube-cpk--protein-cartoon-cpk-LEU1')"
+                  style="background-image: url('./assets/posters/dna-tube-cpk--protein-cartoon-cpk-LEU1.png');"
+                >
+                  Highlight LEU
+                </button>
+
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'dna-tube-cpk--protein-cartoon-cpk-ARG-LYS1')"
+                  style="background-image: url('./assets/posters/dna-tube-cpk--protein-cartoon-cpk-ARG-LYS1.png');"
+                >
+                  Highlight ARG + LYS
+                </button>
+
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'dna-tube-cpk--protein-cartoon-cpk-PHE1')"
+                  style="background-image: url('./assets/posters/dna-tube-cpk--protein-cartoon-cpk-PHE1.png');"
+                >
+                  Highlight PHE
+                </button>
+              </div>
+            </div>
+          </model-viewer>
+          <p class="activity-description mv" id="description-1">
+            Inspect in detail all the interactions that stabilize the dimeric
+            leucine-zip-based transcription factor, and how it interacts with
+            its target DNA
+          </p>
         </div>
       </div>
     </div>
@@ -133,5 +163,6 @@
     </footer>
     <script src="/js/translate.js"></script>
     <script src="/js/handleSession.js"></script>
+    <script src="./index.js"></script>
   </body>
 </html>

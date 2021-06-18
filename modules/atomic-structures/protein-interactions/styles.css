@@ -82,7 +82,7 @@ model-viewer > #ar-prompt > img {
 
 .slider {
   text-align: center;
-  /* overflow: hidden; */
+  overflow: hidden;
   position: absolute;
   bottom: 16px;
   left: 50%;
