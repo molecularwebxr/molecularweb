@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/js/support.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-91563073-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-91563073-2");
+    </script>
+    <title id="title" data-i18n="macromolecules.example.title"></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/modules/styles/3d.css" />
+    <link rel="stylesheet" href="./styles.css" />
+
+    <!-- Translation Libraries -->
+    <script src="/lib/i18n/i18next.min.js"></script>
+    <script src="/lib/i18n/i18next-wc.js"></script>
+    <script src="/lib/i18n/loc-i18next.min.js"></script>
+    <script src="/lib/i18n/i18nextBrowserLanguageDetector.js"></script>
+    <script src="/lib/i18n/i18nextHttpBackend.min.js"></script>
+
+    <!-- Web Components -->
+    <script src="/components/footer/index.js"></script>
+    <script src="/components/icons/tubes/index.js"></script>
+    <script src="/components/icons/molecule/index.js"></script>
+    <script src="/components/app-header/index.js"></script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"
+    ></script>
+  </head>
+  <body>
+    <div class="content">
+      <!-- Header -->
+      <app-header></app-header>
+
+      <div class="big-container">
+        <!-- Model 1 -->
+        <div class="model-container">
+          <h1 class="activity-title" id="title-1">Protein-protein and protein-DNA interactions in a B-zip transcription factor</h1>
+          <model-viewer
+      ar
+      src="https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fall-cpk.glb"
+      poster="https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fall-cpk.png?v=1618319858966"
+      auto-rotate
+      camera-controls
+      alt="PDB ID 1GD2"
+      shadow-intensity="1"
+    >
+      <button slot="ar-button" id="ar-button">
+        View in your space
+      </button>
+      <div class="slider">
+        <div class="slides">
+          <button
+            class="slide selected"
+            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fall-cpk.png?v=1618319858966');"
+          >All atoms</button>
+
+          <button
+            class="slide"
+            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fall-cpk--color-by-restype.png?v=1618319898923');"
+          >All atoms by residue type</button>
+
+          <button
+            class="slide"
+            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fall-surfaces.png');"
+          >Surface</button>
+
+          <button
+            class="slide"
+            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fall-surfaces-water.png');"
+          >Surface + water</button>
+
+          <button
+            class="slide"
+            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fdna-surfaces--protein-cartoons.png');"
+          >DNA surface, protein cartoons</button>
+          
+          <button
+            class="slide"
+            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fdna-tubes-licorice--protein-surfaces.png');"
+          >DNA atoms + protein surface</button>
+          
+          <button
+            class="slide"
+            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fdna-tube-cpk--protein-cartoon-cpk1.png');"
+          >DNA atoms + protein cartoons</button>
+          
+          <button
+            class="slide"
+            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fdna-tube-cpk--protein-cartoon-cpk-LEU1.png');"
+          >Highlight LEU</button>
+          
+          <button
+            class="slide"
+            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fdna-tube-cpk--protein-cartoon-cpk-ARG-LYS1.png');"
+          >Highlight ARG + LYS</button>
+          
+          <button
+            class="slide"
+            style="background-image: url('https://cdn.glitch.com/ed10daf3-5ee0-4610-afa2-15e5b210e615%2Fdna-tube-cpk--protein-cartoon-cpk-PHE1.png');"
+          >Highlight PHE</button>
+
+        </div>
+      </div>
+    </model-viewer>
+          <p
+            class="activity-description mv"
+            id="description-1"
+          >Inspect in detail all the interactions that stabilize the dimeric leucine-zip-based transcription factor, and how it interacts with its target DNA</p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <app-footer />
+    </footer>
+    <script src="/js/translate.js"></script>
+    <script src="/js/handleSession.js"></script>
+  </body>
+</html>

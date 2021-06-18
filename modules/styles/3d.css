@@ -68,6 +68,10 @@ figure {
   width: 400px;
 }
 
+.activity-description.mv {
+  width: 70%;
+}
+
 .back-btn {
   text-decoration: none;
   text-align: center;
