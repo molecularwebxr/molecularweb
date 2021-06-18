@@ -205,7 +205,7 @@
       switch-camera
     >
       <a-assets>
-        <a-asset-item id="virus" src="./models/npc.gltf"></a-asset-item>
+        <a-asset-item id="virus" src="./models/npc.glb"></a-asset-item>
       </a-assets>
 
       <a-marker type="barcode" value="0" id="watA">
@@ -219,7 +219,7 @@
           <a-entity
             id="obj1"
             gltf-model="#virus"
-            scale="2 2 -2"
+            scale="2 2 2"
             rotation="0 0 90"
             visible="true"
           ></a-entity>
@@ -235,9 +235,9 @@
           gesture-handler="linkedMarker: #marker1A"
         >
           <a-entity
-            id="obj1"
+            id="obj2"
             gltf-model="#virus"
-            scale="2 2 -2"
+            scale="2 2 2"
             rotation="0 0 90"
             visible="true"
           ></a-entity>
