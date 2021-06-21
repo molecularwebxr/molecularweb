@@ -131,7 +131,7 @@ model-viewer > #ar-prompt > img {
   outline: 1px solid var(--primary);
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1500px) {
   .slider {
     width: 100%;
   }
