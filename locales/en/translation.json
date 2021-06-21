@@ -170,6 +170,10 @@
         "title": "C-DNA",
         "description": "Piece of double-stranded DNA in Z conformation"
       }
+    },
+    "proteinInteractions": {
+      "title": "Protein-protein and protein-DNA interactions in a B-zip transcription factor",
+      "description": "Inspect in detail all the interactions that stabilize the dimeric leucine-zip-based transcription factor, and how it interacts with its target DNA"
     }
   },
   "biological": {

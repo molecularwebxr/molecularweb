@@ -138,6 +138,10 @@
       "title": "Compilado de estructuras atomísticas de biomoléculas ",
       "description": "Inspecciona vistas 3D preparadas para distintas macromoléculas biológicas.",
       "instructions": "Elige entre los ejemplos de las listas, para ver un sistema en cada marcador."
+    },
+    "proteinInteractions": {
+      "title": "Interacciones proteina-proteina y proteina-ADN en factores de transcripción con cremallera de leucina",
+      "description": "Inspecciona en detalle las interacciones que estabilizan la forma dimérica de los factores de transcripción con cremallera de leucina, y cómo este se una al ADN"
     }
   },
   "biological": {
