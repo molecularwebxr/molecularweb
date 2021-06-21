@@ -138,6 +138,10 @@
       "title": "Compilation des structures atomistiques des biomolécules",
       "description": "Inspectez des vues 3D préparées pour différentes macromolécules biologiques.",
       "instructions": "Choisissez parmi les exemples dans les listes, pour voir un système dans chaque marqueur."
+    },
+    "proteinInteractions": {
+      "title": "Interactions protéine-protéine et protéine-ADN dans un facteur de transcription B-zip",
+      "description": "Examiner en détail toutes les interactions qui stabilisent le facteur de transcription dimérique à base en zip de leucines, ainsi que la manière dont il interagit avec son ADN"
     }
   },
   "biological": {

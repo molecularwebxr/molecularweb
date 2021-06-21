@@ -138,6 +138,10 @@
       "title": "Zusammenstellung atomistischer Strukturen von Biomolekülen",
       "description": "Überprüfen Sie eine Reihe von vorgefertigten Ansichten von biologischen Makromolekülen.",
       "instructions": "Wählen Sie eines der Beispiele in den Dropdown-Menüs aus, um ein System auf jeder Markierung anzuzeigen."
+    },
+    "proteinInteractions": {
+      "title": "Protein-Protein- und Protein-DNA-Wechselwirkungen in einem B-Zip-Transkriptionsfaktor",
+      "description": "Untersuchen Sie im Detail alle Wechselwirkungen, die den dimeren Leucin-Zip-basierten Transkriptionsfaktor stabilisieren, und wie er mit seiner Ziel-DNA interagiert"
     }
   },
   "biological": {

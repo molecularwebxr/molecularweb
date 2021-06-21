@@ -138,6 +138,10 @@
       "title": "Compilazione di strutture atomistiche di biomolecole",
       "description": "Guarda le viste 3D preparate per diverse macromolecole biologiche.",
       "instructions": "Scegli dagli esempi negli elenchi, per vedere un sistema in ciascun marker."
+    },
+    "proteinInteractions": {
+      "title": "Interazioni proteina-proteina e proteina-DNA in un fattore di trascrizione B-zip",
+      "description": "Ispeziona in dettaglio tutte le interazioni che stabilizzano il fattore di trascrizione dimerico a base di leucina-zip, e come interagisce con il suo DNA"
     }
   },
   "biological": {
