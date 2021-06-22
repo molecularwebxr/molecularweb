@@ -1,0 +1,154 @@
+.big-container {
+  width: 85vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+model-viewer {
+  width: 70vw;
+  height: 600px;
+  overflow-x: hidden;
+}
+
+#ar-button {
+  background-image: url(/assets/img/icon-ar2.png);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: 12px 50%;
+  background-color: var(--secondary);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 87px;
+  padding: 0px 16px 0px 40px;
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary);
+  height: 36px;
+  width: 190px;
+  line-height: 36px;
+  border-radius: 5px;
+  box-shadow: inset 0 -0.2em rgba(0, 0, 0, 0.2);
+  outline: 0;
+}
+
+#ar-button:active {
+  background-color: #E8EAED;
+}
+
+#ar-button:focus {
+  outline: none;
+}
+
+#ar-button:focus-visible {
+  outline: 1px solid var(--primary);
+}
+
+@keyframes circle {
+  from {
+    transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg);
+  }
+}
+
+@keyframes elongate {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(-100px);
+  }
+}
+
+model-viewer > #ar-prompt {
+  position: absolute;
+  left: 50%;
+  bottom: 175px;
+  animation: elongate 2s infinite ease-in-out alternate;
+  display: none;
+}
+
+model-viewer[ar-status="session-started"] > #ar-prompt {
+  display: block;
+}
+
+model-viewer > #ar-prompt > img {
+  animation: circle 4s linear infinite;
+}
+
+.slider {
+  text-align: center;
+  overflow: hidden;
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.slides {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.slide {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  margin-right: 10px;
+  border-radius: 10px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000;
+}
+
+.slide.selected {
+  border: 2px solid var(--primary);
+}
+
+.slide:focus {
+  outline: none;
+}
+
+.slide:focus-visible {
+  outline: 1px solid var(--primary);
+}
+
+@media screen and (max-width: 1500px) {
+  .slider {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  model-viewer {
+    height: 500px;
+    width: 80vw;
+  }
+
+  .slider {
+    bottom: 0;
+  }
+
+  .slide {
+    width: 75px;
+    height: 75px;
+  }
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/js/support.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-91563073-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-91563073-2");
+    </script>
+    <title id="title" data-i18n="macromolecules.example.title"></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/modules/styles/3d.css" />
+    <link rel="stylesheet" href="./styles.css" />
+
+    <!-- Translation Libraries -->
+    <script src="/lib/i18n/i18next.min.js"></script>
+    <script src="/lib/i18n/i18next-wc.js"></script>
+    <script src="/lib/i18n/loc-i18next.min.js"></script>
+    <script src="/lib/i18n/i18nextBrowserLanguageDetector.js"></script>
+    <script src="/lib/i18n/i18nextHttpBackend.min.js"></script>
+
+    <!-- Web Components -->
+    <script src="/components/footer/index.js"></script>
+    <script src="/components/icons/tubes/index.js"></script>
+    <script src="/components/icons/molecule/index.js"></script>
+    <script src="/components/app-header/index.js"></script>
+
+    <script
+      type="module"
+      src="/lib/model-viewer.min.js"
+    ></script>
+  </head>
+  <body>
+    <div class="content">
+      <!-- Header -->
+      <app-header></app-header>
+
+      <div class="big-container">
+        <!-- Model 1 -->
+        <div class="model-container">
+          <h1
+            class="activity-title"
+            data-i18n="macromolecules.proteinInteractions.title"
+            id="title-1">
+          </h1>
+          <model-viewer
+            ar
+            ar-modes="webxr scene-viewer quick-look fallback"
+            src="./assets/models/all-cpk.glb"
+            poster="./assets/posters/all-cpk.png"
+            auto-rotate
+            camera-controls
+            alt="PDB ID 1GD2"
+            shadow-intensity="1"
+          >
+            <button slot="ar-button" id="ar-button">View in your space</button>
+            <div class="slider">
+              <div class="slides">
+                <button
+                  class="slide selected"
+                  onclick="switchSrc(this, 'all-cpk')"
+                  style="background-image: url('./assets/posters/all-cpk.png')"
+                >
+                  All atoms
+                </button>
+
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'all-cpk--color-by-restype')"
+                  style="background-image: url('./assets/posters/all-cpk--color-by-restype.png')"
+                >
+                  All atoms by residue type
+                </button>
+
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'all-surfaces')"
+                  style="background-image: url('./assets/posters/all-surfaces.png')"
+                >
+                  Surface
+                </button>
+
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'all-surfaces-water')"
+                  style="background-image: url('./assets/posters/all-surfaces-water.png')"
+                >
+                  Surface + water
+                </button>
+
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'dna-surfaces--protein-cartoons')"
+                  style="background-image: url('./assets/posters/dna-surfaces--protein-cartoons.png');"
+                >
+                  DNA surface, protein cartoons
+                </button>
+
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'dna-tubes-licorice--protein-surfaces')"
+                  style="background-image: url('./assets/posters/dna-tubes-licorice--protein-surfaces.png');"
+                >
+                  DNA atoms + protein surface
+                </button>
+
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'dna-tube-cpk--protein-cartoon-cpk1')"
+                  style="background-image: url('./assets/posters/dna-tube-cpk--protein-cartoon-cpk1.png');"
+                >
+                  DNA atoms + protein cartoons
+                </button>
+
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'dna-tube-cpk--protein-cartoon-cpk-LEU1')"
+                  style="background-image: url('./assets/posters/dna-tube-cpk--protein-cartoon-cpk-LEU1.png');"
+                >
+                  Highlight LEU
+                </button>
+
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'dna-tube-cpk--protein-cartoon-cpk-ARG-LYS1')"
+                  style="background-image: url('./assets/posters/dna-tube-cpk--protein-cartoon-cpk-ARG-LYS1.png');"
+                >
+                  Highlight ARG + LYS
+                </button>
+
+                <button
+                  class="slide"
+                  onclick="switchSrc(this, 'dna-tube-cpk--protein-cartoon-cpk-PHE1')"
+                  style="background-image: url('./assets/posters/dna-tube-cpk--protein-cartoon-cpk-PHE1.png');"
+                >
+                  Highlight PHE
+                </button>
+              </div>
+            </div>
+          </model-viewer>
+          <p class="activity-description mv"
+             data-i18n="macromolecules.proteinInteractions.description"
+             id="description-1"></p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <app-footer />
+    </footer>
+    <script src="/js/translate.js"></script>
+    <script src="/js/handleSession.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
