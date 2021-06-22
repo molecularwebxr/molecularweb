@@ -286,8 +286,6 @@ function buildVmd(e) {
 }
 
 function handleSubmit(e) {
-  submitBtn.disabled = true;
-  submitBtn.textContent = "Loading...";
   var title = titleInput.value;
   var email = emailInput.value;
 
@@ -296,6 +294,9 @@ function handleSubmit(e) {
   if (title.length <= 0 || !isEmailFine) {
     return;
   }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Loading...";
 
   var data = {
     pdb: pdbText.value,
