@@ -1,4 +1,6 @@
-// import { GLTFLoader } from './utils/GLTFLoader.js';
+import * as THREE from "/lib/three.module.js";
+import { GLTFLoader } from "./utils/GLTFLoader.js";
+import { DRACOLoader } from "./utils/DRACOLoader.js";
 
 var scene, camera, renderer;
 var arToolkitSource, arToolkitContext;
@@ -10,7 +12,6 @@ var flipVideo = document.querySelector("flip-video");
 var scaleUp = document.getElementById("scale-up");
 var scaleDown = document.getElementById("scale-down");
 var reset = document.querySelector("reset-activity");
-
 
 flipGraphics.addEventListener("flipGraphics", handleFlip);
 flipVideo.addEventListener("flipCamera", handleCameraFlip);
@@ -26,10 +27,6 @@ animate();
 
 function initialize() {
   scene = new THREE.Scene();
-
-  var loader = new GLTFLoader();
-
-  console.log(loader)
 
   var ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
   scene.add(ambientLight);
@@ -114,7 +111,8 @@ function initialize() {
       markerRoot,
       {
         type: "pattern",
-        patternUrl: "/modules/virtual-modeling-kit/data/" + patternArray[i] + ".patt",
+        patternUrl:
+          "/modules/virtual-modeling-kit/data/" + patternArray[i] + ".patt",
       }
     );
 
@@ -132,11 +130,15 @@ function initialize() {
   // a 1x1x1 cube model with scale factor 1.25 fills up the physical cube
   sceneGroup.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
 
-  var torusGeometry = new THREE.TorusKnotGeometry(0.3,0.1,64,16);
-  var torusMaterial = new THREE.MeshNormalMaterial();
-  var torus = new THREE.Mesh(torusGeometry, torusMaterial);
-  torus.scale.multiplyScalar(1.5);
-  sceneGroup.add(torus);
+  var loader = new GLTFLoader().setPath("./");
+  var dracoLoader = new DRACOLoader();
+  dracoLoader.setDecoderPath("/lib/draco/");
+  loader.setDRACOLoader(dracoLoader);
+
+  loader.load("modelDraco.glb", function (glb) {
+    sceneGroup.add(glb.scene);
+    render();
+  });
 
   let pointLight = new THREE.PointLight(0xffffff, 1, 50);
   pointLight.position.set(0.5, 3, 2);
