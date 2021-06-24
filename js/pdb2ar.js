@@ -12,6 +12,8 @@ var submitBtn = document.getElementById("submit-btn");
 var titleInput = document.getElementById("pdb-title");
 var emailInput = document.getElementById("pdb-email");
 var instructionsText = document.getElementById("instructions");
+var searchInput = document.getElementById("pdb-search");
+var searchBtn = document.getElementById("search-btn");
 
 var chains = [];
 var chainstrings = [];
@@ -334,7 +336,38 @@ function handleSubmit(e) {
     });
 }
 
+function handleSearch(e) {
+  var value = searchInput.value;
+
+  if (value.length !== 4) {
+    return;
+  }
+
+  searchBtn.disabled = true;
+  searchBtn.textContent = "Searching...";
+  
+  fetch(`https://files.rcsb.org/view/${value}.pdb`)
+    .then((response) => {
+      if (response.status === 404) {
+        throw new Error('error');
+      } else {
+        return response.text();
+      }
+    })
+    .then(function (data) {
+      pdbText.value = data;
+      searchBtn.disabled = false;
+      searchBtn.textContent = "Search";
+    })
+    .catch(function (error) {
+      swal("Something went wrong", "Please, try again", "error");
+      searchBtn.disabled = false;
+      searchBtn.textContent = "Search";
+    });
+}
+
 detectBtn.addEventListener("click", readPdb);
 switchWater.addEventListener("change", handleWaterCheck);
 vdmBtn.addEventListener("click", buildVmd);
 submitBtn.addEventListener("click", handleSubmit);
+searchBtn.addEventListener("click", handleSearch);

@@ -43,6 +43,10 @@
   transform: scale(1);
 }
 
+.pdb-btn.big{
+  width: 120px;
+}
+
 .switch-container {
   align-items: center;
   justify-content: center;
