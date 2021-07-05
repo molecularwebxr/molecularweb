@@ -66,15 +66,62 @@
         </div>
 
 
+        <div id="pdb-options" class="pdb-options row">
+          <div id="build-pdb" class="pdb-card margin-right">
+            <h1 class="pdb-card-title">Build from PDB</h1>
+            <p class="pdb-card-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              mauris leo, aliquet eget ipsum non, vulputate pharetra libero. Sed
+              ut quam quis justo fringilla euismod id ut leo.
+            </p>
+            <svg
+                class="arrow-anchor"
+                width="36"
+                height="35"
+                viewBox="0 0 40 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect class="circle" width="40" height="40" rx="20" />
+                <path
+                  class="arrow-path"
+                  d="M25.3709 19.3206L18.3927 11.7842C17.9997 11.3598 17.3297 11.3563 16.9323 11.7765L16.6429 12.0826C16.2811 12.4652 16.278 13.0627 16.6357 13.4491L22.0723 19.3206C22.4273 19.704 22.4273 20.296 22.0723 20.6794L16.6571 26.5277C16.3049 26.9081 16.3018 27.4947 16.65 27.8788L16.9335 28.1914C17.3276 28.6261 18.0095 28.6297 18.4081 28.1992L25.3709 20.6794C25.7259 20.296 25.7259 19.704 25.3709 19.3206Z"
+                />
+              </svg>
+          </div>
+          <div id="build-obj" class="pdb-card">
+            <h1 class="pdb-card-title">Build from 3D object</h1>
+            <p class="pdb-card-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              mauris leo, aliquet eget ipsum non, vulputate pharetra libero. Sed
+              ut quam quis justo fringilla euismod id ut leo.
+            </p>
+            <svg
+                class="arrow-anchor"
+                width="36"
+                height="35"
+                viewBox="0 0 40 40"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect class="circle" width="40" height="40" rx="20" />
+                <path
+                  class="arrow-path"
+                  d="M25.3709 19.3206L18.3927 11.7842C17.9997 11.3598 17.3297 11.3563 16.9323 11.7765L16.6429 12.0826C16.2811 12.4652 16.278 13.0627 16.6357 13.4491L22.0723 19.3206C22.4273 19.704 22.4273 20.296 22.0723 20.6794L16.6571 26.5277C16.3049 26.9081 16.3018 27.4947 16.65 27.8788L16.9335 28.1914C17.3276 28.6261 18.0095 28.6297 18.4081 28.1992L25.3709 20.6794C25.7259 20.296 25.7259 19.704 25.3709 19.3206Z"
+                />
+              </svg>
+          </div>
+        </div>
+
         <textarea
           id="pdb-text"
-          class="pdb-text"
+          class="pdb-text hidden"
           name="pdb"
           cols="30"
           rows="10"
           placeholder="Copy-Paste molecule here"
         ></textarea>
-        <div class="margin-bottom row">
+        <div id="detect-section" class="margin-bottom row hidden">
           <button id="detect-btn" class="pdb-btn margin-right">
             Detect molecules
           </button>
@@ -150,12 +197,11 @@
         ></textarea>
 
         <p id="instructions" class="normal-text instructions hidden">
-          Please add a title for your project and an email address. We
-          will send you the link of the AR experience once it's ready.
-          <br><br> 
-          We will not
-          store your email address and it will only be used to send you the link
-          of your project.
+          Please add a title for your project and an email address. We will send
+          you the link of the AR experience once it's ready.
+          <br /><br />
+          We will not store your email address and it will only be used to send
+          you the link of your project.
         </p>
 
         <div

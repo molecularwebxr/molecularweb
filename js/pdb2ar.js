@@ -14,6 +14,10 @@ var emailInput = document.getElementById("pdb-email");
 var instructionsText = document.getElementById("instructions");
 var searchInput = document.getElementById("pdb-search");
 var searchBtn = document.getElementById("search-btn");
+var buildFromPdb = document.getElementById("build-pdb");
+var buildFromObj = document.getElementById("build-obj");
+var pdbOptions = document.getElementById("pdb-options");
+var detectSection = document.getElementById("detect-section");
 
 var chains = [];
 var chainstrings = [];
@@ -366,8 +370,20 @@ function handleSearch(e) {
     });
 }
 
+function handlePdbSelection(e) {
+  pdbOptions.classList.add("hidden");
+  pdbText.classList.remove("hidden");
+  detectSection.classList.remove("hidden")
+}
+
+function handleObjSelection(e) {
+  pdbOptions.classList.add("hidden");
+}
+
 detectBtn.addEventListener("click", readPdb);
 switchWater.addEventListener("change", handleWaterCheck);
 vdmBtn.addEventListener("click", buildVmd);
 submitBtn.addEventListener("click", handleSubmit);
 searchBtn.addEventListener("click", handleSearch);
+buildFromObj.addEventListener("click", handleObjSelection);
+buildFromPdb.addEventListener("click", handlePdbSelection);
