@@ -332,7 +332,7 @@ headerTemplate.innerHTML = /* html */ `
         <ul class="language-menu">
           <li id="en">English</li>
           <li id="fr">Français</li>
-          <li id="de">Deutsche</li>
+          <li id="de">Deutsch</li>
           <li id="it">Italiano</li>
           <li id="es">Español</li>
           <li id="pt">Português</li>
@@ -431,7 +431,7 @@ headerTemplate.innerHTML = /* html */ `
         </a>
 
         <a class="mobile-menu-link" id="de_">
-          Deutsche
+          Deutsch
         </a>
 
         <a class="mobile-menu-link" id="th_">
