@@ -21,6 +21,71 @@
   margin: 0 0 1.5rem 0;
 }
 
+.pdb-card {
+  height: 12rem;
+  position: relative;
+  background-color: #FFFFFF;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.pdb-options {
+}
+
+.pdb-card-title {
+  color: var(--primary);
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin: 0;
+  height: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.pdb-card-text {
+  color: var(--lightgray);
+  font-family: "Roboto";
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.arrow-anchor {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 2rem;
+  transition: transform 0.2s;
+}
+
+.arrow-path {
+  transition: 0.2s;
+  fill: var(--primary);
+}
+.circle {
+  transition: 0.2s;
+  fill: var(--secondary);
+}
+.pdb-card:hover .arrow-path{
+  fill: #FFFFFF;
+}
+.pdb-card:hover .circle{
+  fill: var(--primary);
+}
+.pdb-card:hover .arrow-anchor {
+  transform: translateX(6px);
+}
+
+@media screen and (max-width: 450px) {
+  .arrow-anchor {
+    width: 25px;
+    height: 25px;
+  }
+}
+
 .pdb-btn {
   background-color: var(--secondary);
   color: var(--primary);
