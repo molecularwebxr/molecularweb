@@ -284,3 +284,12 @@
 .instructions {
   margin-top: 0;
 }
+
+.file-details{
+  align-items: flex-start;
+}
+
+.file-detail {
+  margin: 0.5rem 0;
+  font-weight: bold;
+}

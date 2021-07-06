@@ -33,7 +33,7 @@
       <app-header></app-header>
       <app-instructions></app-instructions>
 
-      <!-- Top section -->
+      <!-- Initial state -->
       <div class="column pdb2ar-container">
         <div class="module-header row margin-top">
           <figure>
@@ -41,30 +41,13 @@
           </figure>
           <h2 class="module-title">PDB to AR</h2>
         </div>
-        <div class="hi-container">
+        <div id="welcome" class="hi-container">
           <span>👋 </span
           ><span class="normal-text"
             >Here we should add a brief text describing the tool and probably
             some instructions.</span
           >
         </div>
-
-        <div
-          id="search-section"
-          class="row margin-bottom"
-        >
-          <input
-            name="search"
-            id="pdb-search"
-            type="text"
-            class="title-input"
-            placeholder="2CUA"
-          />
-          <button id="search-btn" class="pdb-btn big">
-            Search
-          </button>
-        </div>
-
 
         <div id="pdb-options" class="pdb-options row">
           <div id="build-pdb" class="pdb-card margin-right">
@@ -75,19 +58,19 @@
               ut quam quis justo fringilla euismod id ut leo.
             </p>
             <svg
-                class="arrow-anchor"
-                width="36"
-                height="35"
-                viewBox="0 0 40 40"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect class="circle" width="40" height="40" rx="20" />
-                <path
-                  class="arrow-path"
-                  d="M25.3709 19.3206L18.3927 11.7842C17.9997 11.3598 17.3297 11.3563 16.9323 11.7765L16.6429 12.0826C16.2811 12.4652 16.278 13.0627 16.6357 13.4491L22.0723 19.3206C22.4273 19.704 22.4273 20.296 22.0723 20.6794L16.6571 26.5277C16.3049 26.9081 16.3018 27.4947 16.65 27.8788L16.9335 28.1914C17.3276 28.6261 18.0095 28.6297 18.4081 28.1992L25.3709 20.6794C25.7259 20.296 25.7259 19.704 25.3709 19.3206Z"
-                />
-              </svg>
+              class="arrow-anchor"
+              width="36"
+              height="35"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect class="circle" width="40" height="40" rx="20" />
+              <path
+                class="arrow-path"
+                d="M25.3709 19.3206L18.3927 11.7842C17.9997 11.3598 17.3297 11.3563 16.9323 11.7765L16.6429 12.0826C16.2811 12.4652 16.278 13.0627 16.6357 13.4491L22.0723 19.3206C22.4273 19.704 22.4273 20.296 22.0723 20.6794L16.6571 26.5277C16.3049 26.9081 16.3018 27.4947 16.65 27.8788L16.9335 28.1914C17.3276 28.6261 18.0095 28.6297 18.4081 28.1992L25.3709 20.6794C25.7259 20.296 25.7259 19.704 25.3709 19.3206Z"
+              />
+            </svg>
           </div>
           <div id="build-obj" class="pdb-card">
             <h1 class="pdb-card-title">Build from 3D object</h1>
@@ -97,20 +80,63 @@
               ut quam quis justo fringilla euismod id ut leo.
             </p>
             <svg
-                class="arrow-anchor"
-                width="36"
-                height="35"
-                viewBox="0 0 40 40"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect class="circle" width="40" height="40" rx="20" />
-                <path
-                  class="arrow-path"
-                  d="M25.3709 19.3206L18.3927 11.7842C17.9997 11.3598 17.3297 11.3563 16.9323 11.7765L16.6429 12.0826C16.2811 12.4652 16.278 13.0627 16.6357 13.4491L22.0723 19.3206C22.4273 19.704 22.4273 20.296 22.0723 20.6794L16.6571 26.5277C16.3049 26.9081 16.3018 27.4947 16.65 27.8788L16.9335 28.1914C17.3276 28.6261 18.0095 28.6297 18.4081 28.1992L25.3709 20.6794C25.7259 20.296 25.7259 19.704 25.3709 19.3206Z"
-                />
-              </svg>
+              class="arrow-anchor"
+              width="36"
+              height="35"
+              viewBox="0 0 40 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect class="circle" width="40" height="40" rx="20" />
+              <path
+                class="arrow-path"
+                d="M25.3709 19.3206L18.3927 11.7842C17.9997 11.3598 17.3297 11.3563 16.9323 11.7765L16.6429 12.0826C16.2811 12.4652 16.278 13.0627 16.6357 13.4491L22.0723 19.3206C22.4273 19.704 22.4273 20.296 22.0723 20.6794L16.6571 26.5277C16.3049 26.9081 16.3018 27.4947 16.65 27.8788L16.9335 28.1914C17.3276 28.6261 18.0095 28.6297 18.4081 28.1992L25.3709 20.6794C25.7259 20.296 25.7259 19.704 25.3709 19.3206Z"
+              />
+            </svg>
           </div>
+        </div>
+
+        <!-- Build from OBJ -->
+        <div id="obj-instructions" class="hi-container hidden">
+          <span class="normal-text">
+            Here we should add OBJ mode and upload instructions.
+          </span>
+        </div>
+
+        <label class="pdb-btn hidden" id="upload-btn">
+          Load files
+          <input
+            id="pdb-input"
+            name="pdb"
+            type="file"
+            accept=".obj, .mtl"
+            multiple
+            hidden
+          />
+        </label>
+
+        <p id="error" class="normal-text hidden">Please upload OBJ and MTL</p>
+
+        <div id="file-details" class="file-details column hidden">
+          <p class="normal-text">You just loaded the following files:</p>
+        </div>
+
+        <!-- Build from PDB -->
+        <div id="pdb-instructions" class="hi-container hidden">
+          <span class="normal-text">
+            Here we should add PDB mode instructions.
+          </span>
+        </div>
+
+        <div id="search-section" class="row margin-bottom hidden">
+          <input
+            name="search"
+            id="pdb-search"
+            type="text"
+            class="title-input"
+            placeholder="2CUA"
+          />
+          <button id="search-btn" class="pdb-btn big">Search</button>
         </div>
 
         <textarea

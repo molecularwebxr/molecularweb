@@ -17,7 +17,15 @@ var searchBtn = document.getElementById("search-btn");
 var buildFromPdb = document.getElementById("build-pdb");
 var buildFromObj = document.getElementById("build-obj");
 var pdbOptions = document.getElementById("pdb-options");
+var pdbInstructions = document.getElementById("pdb-instructions");
+var objInstructions = document.getElementById("obj-instructions");
 var detectSection = document.getElementById("detect-section");
+var searchSection = document.getElementById("search-section");
+var welcomeSection = document.getElementById("welcome");
+var uploadBtn = document.getElementById("upload-btn");
+var pdbInput = document.getElementById("pdb-input");
+var fileDetails = document.getElementById("file-details");
+var errorMsg = document.getElementById("error");
 
 var chains = [];
 var chainstrings = [];
@@ -42,7 +50,7 @@ function readPdb(e) {
   var lines = pdbString.split("\n");
 
   var atoms = lines.filter(function (line, index) {
-    return line.substring(0, 4) === "ATOM" || line.substring(0, 6) === "HETATM"
+    return line.substring(0, 4) === "ATOM" || line.substring(0, 6) === "HETATM";
   });
 
   atoms.forEach(function (atom, index) {
@@ -65,7 +73,11 @@ function readPdb(e) {
     } else {
       chains.push(thisChain);
       chainstrings.push(atom);
-      if ("ALA|CYS|ASP|GLU|PHE|GLY|HIS|ILE|LYS|LEU|MET|ASN|PRO|GLN|ARG|SER|THR|VAL|TRP|TYR|MSE|HSE|HSD|HID|HIE".match(thisRes)) {
+      if (
+        "ALA|CYS|ASP|GLU|PHE|GLY|HIS|ILE|LYS|LEU|MET|ASN|PRO|GLN|ARG|SER|THR|VAL|TRP|TYR|MSE|HSE|HSD|HID|HIE".match(
+          thisRes
+        )
+      ) {
         chaintypes.push("protein");
       } else if ("DA|DC|DG|DT|A|C|G|U".match(thisRes)) {
         chaintypes.push("nucleic");
@@ -74,7 +86,11 @@ function readPdb(e) {
       }
     }
 
-    if (!"ALA|CYS|ASP|GLU|PHE|GLY|HIS|ILE|LYS|LEU|MET|ASN|PRO|GLN|ARG|SER|THR|VAL|TRP|TYR|MSE|HSE|HSD|HID|HIE|DA|DC|DG|DT|A|C|G|U|".match(thisRes)){
+    if (
+      !"ALA|CYS|ASP|GLU|PHE|GLY|HIS|ILE|LYS|LEU|MET|ASN|PRO|GLN|ARG|SER|THR|VAL|TRP|TYR|MSE|HSE|HSD|HID|HIE|DA|DC|DG|DT|A|C|G|U|".match(
+        thisRes
+      )
+    ) {
       if (thisRes === "WAT" || thisRes === "HOH" || thisRes === "TIP") {
         if (!isWaterChecked) {
           ligandchains.push(thisChain);
@@ -95,13 +111,20 @@ function readPdb(e) {
             display: false,
             element: "",
             number: "",
-            index: ""
+            index: "",
           });
         }
       }
     }
 
-    if (thisEl !== "C" && thisEl !== "H" && thisEl !== "O" && thisEl !== "N" && thisEl !== "S" && thisEl !== "P") {
+    if (
+      thisEl !== "C" &&
+      thisEl !== "H" &&
+      thisEl !== "O" &&
+      thisEl !== "N" &&
+      thisEl !== "S" &&
+      thisEl !== "P"
+    ) {
       ligandchains.push(thisChain);
       ligandresnames.push(thisRes);
       ligandresnos.push(thisResNo);
@@ -109,11 +132,10 @@ function readPdb(e) {
         display: true,
         element: thisEl,
         number: thisElNum,
-        index: pdbIndex
+        index: pdbIndex,
       });
     }
-  })
-
+  });
 
   if (isWaterChecked) {
     ligandchains.push(" ");
@@ -123,7 +145,7 @@ function readPdb(e) {
       display: false,
       element: "",
       number: "",
-      index: ""
+      index: "",
     });
 
     ligandchains.push(" ");
@@ -133,7 +155,7 @@ function readPdb(e) {
       display: false,
       element: "",
       number: "",
-      index: ""
+      index: "",
     });
 
     ligandchains.push(" ");
@@ -143,7 +165,7 @@ function readPdb(e) {
       display: false,
       element: "",
       number: "",
-      index: ""
+      index: "",
     });
   }
 
@@ -177,7 +199,7 @@ function readPdb(e) {
   });
 
   ligandchains.forEach(function (ligandChain, index) {
-    var commentString = `${ligandComments[index].element} atom ${ligandComments[index].number}`
+    var commentString = `${ligandComments[index].element} atom ${ligandComments[index].number}`;
     var rowString = /* html */ `
     <!-- Grid row -->
     <div class="grid-element">
@@ -200,7 +222,9 @@ function readPdb(e) {
       </select>
     </div>
     <div class="grid-element">
-      <p class="grid-text">${ligandComments[index].display ? commentString : " "}</p>
+      <p class="grid-text">${
+        ligandComments[index].display ? commentString : " "
+      }</p>
     </div>
     `;
     ligandGrid.insertAdjacentHTML("beforeend", rowString);
@@ -226,11 +250,15 @@ function buildVmd(e) {
     tclString += "mol modselect " + nout + " 0 chain " + chain + "\n";
 
     if (value === "NewCartoon (cartoons)") {
-      tclString += "mol modstyle " + nout + " 0 NewCartoon 0.300000 10.000000 4.100000 0\n";
+      tclString +=
+        "mol modstyle " +
+        nout +
+        " 0 NewCartoon 0.300000 10.000000 4.100000 0\n";
     }
 
     if (value === "Licorice (sticks)") {
-      tclString += "mol modstyle " + nout + " 0 Licorice 0.300000 12.000000 12.000000\n";
+      tclString +=
+        "mol modstyle " + nout + " 0 Licorice 0.300000 12.000000 12.000000\n";
     }
 
     if (value === "VDW (spheres)" || value === "Surf (surface)") {
@@ -242,7 +270,10 @@ function buildVmd(e) {
     }
 
     if (value === "CPK") {
-      tclString += "mol modstyle " + nout + " 0 CPK 1.000000 0.300000 12.000000 12.000000\n";
+      tclString +=
+        "mol modstyle " +
+        nout +
+        " 0 CPK 1.000000 0.300000 12.000000 12.000000\n";
     }
     tclString += "mol modcolor " + nout + " 0 " + color + "\n";
     tclString += "\nmol addrep 0\n";
@@ -258,13 +289,30 @@ function buildVmd(e) {
     }
 
     if (ligandComments[index].display) {
-      tclString += "mol modselect " + nout + " 0 chain " + ligandChain + " and index " + ligandComments[index].index + "\n";
+      tclString +=
+        "mol modselect " +
+        nout +
+        " 0 chain " +
+        ligandChain +
+        " and index " +
+        ligandComments[index].index +
+        "\n";
     } else {
-      tclString += "mol modselect " + nout + " 0 chain " + ligandChain + " and resname " + ligandresnames[index] + " and resid " + ligandresnos[index] + "\n";
+      tclString +=
+        "mol modselect " +
+        nout +
+        " 0 chain " +
+        ligandChain +
+        " and resname " +
+        ligandresnames[index] +
+        " and resid " +
+        ligandresnos[index] +
+        "\n";
     }
 
     if (value === "Licorice (sticks)") {
-      tclString += "mol modstyle " + nout + " 0 Licorice 0.300000 12.000000 12.000000\n";
+      tclString +=
+        "mol modstyle " + nout + " 0 Licorice 0.300000 12.000000 12.000000\n";
     }
 
     if (value === "VDW (spheres)" || value === "Surf (surface)") {
@@ -272,13 +320,15 @@ function buildVmd(e) {
     }
 
     if (value === "CPK") {
-      tclString += "mol modstyle " + nout + " 0 CPK 1.000000 0.300000 12.000000 12.000000\n";
+      tclString +=
+        "mol modstyle " +
+        nout +
+        " 0 CPK 1.000000 0.300000 12.000000 12.000000\n";
     }
 
     tclString += "mol modcolor " + nout + " 0 " + color + "\n";
     tclString += "\nmol addrep 0\n";
     nout++;
-
   });
 
   tclString += endTcl;
@@ -349,11 +399,11 @@ function handleSearch(e) {
 
   searchBtn.disabled = true;
   searchBtn.textContent = "Searching...";
-  
+
   fetch(`https://files.rcsb.org/view/${value}.pdb`)
     .then((response) => {
       if (response.status === 404) {
-        throw new Error('error');
+        throw new Error("error");
       } else {
         return response.text();
       }
@@ -372,12 +422,39 @@ function handleSearch(e) {
 
 function handlePdbSelection(e) {
   pdbOptions.classList.add("hidden");
+  welcomeSection.classList.add("hidden");
   pdbText.classList.remove("hidden");
-  detectSection.classList.remove("hidden")
+  detectSection.classList.remove("hidden");
+  searchSection.classList.remove("hidden");
+  pdbInstructions.classList.remove("hidden");
 }
 
 function handleObjSelection(e) {
   pdbOptions.classList.add("hidden");
+  welcomeSection.classList.add("hidden");
+  objInstructions.classList.remove("hidden");
+  uploadBtn.classList.remove("hidden");
+}
+
+function handleUpload(e) {
+  var input = e.target;
+  if (input.files.length === 2) {
+    fileDetails.classList.remove("hidden");
+    errorMsg.classList.add("hidden");
+    var textString1 = /* html */ `
+    <p class="normal-text file-detail"> - ${input.files[0].name}</p>
+    `;
+    var textString2 = /* html */ `
+    <p class="normal-text file-detail"> - ${input.files[1].name}</p>
+    `;
+    fileDetails.insertAdjacentHTML("beforeend", textString1);
+    fileDetails.insertAdjacentHTML("beforeend", textString2);
+    submitSection.classList.remove("hidden");
+    submitBtn.classList.remove("hidden");
+    instructionsText.classList.remove("hidden");
+  } else {
+    errorMsg.classList.remove("hidden");
+  }
 }
 
 detectBtn.addEventListener("click", readPdb);
@@ -387,3 +464,4 @@ submitBtn.addEventListener("click", handleSubmit);
 searchBtn.addEventListener("click", handleSearch);
 buildFromObj.addEventListener("click", handleObjSelection);
 buildFromPdb.addEventListener("click", handlePdbSelection);
+pdbInput.addEventListener("change", handleUpload);
