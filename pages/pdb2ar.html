@@ -39,13 +39,13 @@
           <figure>
             <molecule-icon></molecule-icon>
           </figure>
-          <h2 class="module-title">PDB to AR</h2>
+          <h2 class="module-title">Build your own webAR views</h2>
         </div>
         <div id="welcome" class="hi-container">
           <span>👋 </span
           ><span class="normal-text"
-            >Here we should add a brief text describing the tool and probably
-            some instructions.</span
+            >Build your own webAR views from raw PDB files or PDB entries, or by
+            uploading your own VMD-made virtual scenes.</span
           >
         </div>
 
@@ -53,9 +53,10 @@
           <div id="build-pdb" class="pdb-card margin-right">
             <h1 class="pdb-card-title">Build from PDB</h1>
             <p class="pdb-card-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              mauris leo, aliquet eget ipsum non, vulputate pharetra libero. Sed
-              ut quam quis justo fringilla euismod id ut leo.
+              Provide a PDB structure and choose how to represent its proteins,
+              nucleic acids, and small molecules, getting back webAR sessions
+              ready to use with a cube marker or in your space without markers.
+              Useful to quickly build AR views from atomic coordinates.
             </p>
             <svg
               class="arrow-anchor"
@@ -75,9 +76,11 @@
           <div id="build-obj" class="pdb-card">
             <h1 class="pdb-card-title">Build from 3D object</h1>
             <p class="pdb-card-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              mauris leo, aliquet eget ipsum non, vulputate pharetra libero. Sed
-              ut quam quis justo fringilla euismod id ut leo.
+              Upload your own 3D objects created in VMD and receive webAR
+              sessions ready to use with a cube marker or in your space without
+              markers. Useful to see in AR scenes that include isosurfaces from
+              cryoEM maps or orbital calculations as well as any other complex
+              representations not handled by "Build from PDB"
             </p>
             <svg
               class="arrow-anchor"
@@ -99,7 +102,11 @@
         <!-- Build from OBJ -->
         <div id="obj-instructions" class="hi-container hidden">
           <span class="normal-text">
-            Here we should add OBJ mode and upload instructions.
+            Upload 3D objects created in VMD and receive webAR sessions ready to
+            use with a cube marker or in your space without markers. This tool
+            is especially useful for very complex views that our "Build from
+            PDB" cannot produce, for example scenes that include isosurfaces
+            from cryoEM maps or orbital calculations.
           </span>
         </div>
 
@@ -115,7 +122,13 @@
           />
         </label>
 
-        <p id="error" class="normal-text hidden">Please upload OBJ and MTL</p>
+        <p id="error" class="normal-text hidden">
+          Copy-paste or fetch a PDB structure; then choose how to represent its
+          proteins, nucleic acids, and small molecules. This will automatically
+          create a VMD script (that you can edit if confident enough) that our
+          server will process to give you back webAR sessions ready to use with
+          a cube marker or in your space without markers.
+        </p>
 
         <div id="file-details" class="file-details column hidden">
           <p class="normal-text">You just loaded the following files:</p>
@@ -253,8 +266,10 @@
           />
         </div>
 
-        <button id="submit-btn" class="pdb-btn hidden margin-bottom">
-          Submit
+        <button id="submit-btn" class="pdb-btn hidden">Submit</button>
+
+        <button id="back-btn" class="pdb-btn hidden margin-top margin-bottom">
+          ← Back to main menu
         </button>
       </div>
     </div>

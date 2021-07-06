@@ -23,6 +23,7 @@ var detectSection = document.getElementById("detect-section");
 var searchSection = document.getElementById("search-section");
 var welcomeSection = document.getElementById("welcome");
 var uploadBtn = document.getElementById("upload-btn");
+var backBtn = document.getElementById("back-btn");
 var pdbInput = document.getElementById("pdb-input");
 var fileDetails = document.getElementById("file-details");
 var errorMsg = document.getElementById("error");
@@ -427,6 +428,7 @@ function handlePdbSelection(e) {
   detectSection.classList.remove("hidden");
   searchSection.classList.remove("hidden");
   pdbInstructions.classList.remove("hidden");
+  backBtn.classList.remove("hidden");
 }
 
 function handleObjSelection(e) {
@@ -434,6 +436,22 @@ function handleObjSelection(e) {
   welcomeSection.classList.add("hidden");
   objInstructions.classList.remove("hidden");
   uploadBtn.classList.remove("hidden");
+  backBtn.classList.remove("hidden");
+}
+
+function handleBack(e) {
+  pdbOptions.classList.remove("hidden");
+  welcomeSection.classList.remove("hidden");
+
+  objInstructions.classList.add("hidden");
+  uploadBtn.classList.add("hidden");
+  backBtn.classList.add("hidden");
+
+  pdbText.classList.add("hidden");
+  detectSection.classList.add("hidden");
+  searchSection.classList.add("hidden");
+  pdbInstructions.classList.add("hidden");
+  backBtn.classList.add("hidden");
 }
 
 function handleUpload(e) {
@@ -465,3 +483,4 @@ searchBtn.addEventListener("click", handleSearch);
 buildFromObj.addEventListener("click", handleObjSelection);
 buildFromPdb.addEventListener("click", handlePdbSelection);
 pdbInput.addEventListener("change", handleUpload);
+backBtn.addEventListener("click", handleBack);

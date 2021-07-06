@@ -14,15 +14,17 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  width: 800px;
+  width: 900px;
 }
 
 .pdb2ar-container .hi-container {
   margin: 0 0 1.5rem 0;
+  text-align: center;
 }
 
 .pdb-card {
-  height: 12rem;
+  height: 15rem;
+  width: 20rem;
   position: relative;
   background-color: #FFFFFF;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
