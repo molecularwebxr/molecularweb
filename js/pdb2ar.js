@@ -41,6 +41,8 @@ var tclString = "";
 
 var isWaterChecked = true;
 
+var mode = "";
+
 function readPdb(e) {
   var pdbString = pdbText.value;
 
@@ -355,40 +357,71 @@ function handleSubmit(e) {
   submitBtn.disabled = true;
   submitBtn.textContent = "Loading...";
 
-  var data = {
-    pdb: pdbText.value,
-    tcl: tclText.value,
-    title,
-    email,
-  };
+  if (mode === "PDB") {
+    var data = {
+      pdb: pdbText.value,
+      tcl: tclText.value,
+      title,
+      email,
+    };
 
-  fetch("https://molecularweb.epfl.ch/backend/api/pdb2ar/pdb", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then(function (response) {
-      return response.json();
+    fetch("https://molecularweb.epfl.ch/backend/api/pdb2ar/pdb", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
-    .then(function (myJson) {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Submit";
-      swal({
-        title: "Perfect!",
-        text: "We have received your data. Your project is being created, once it's done we'll send you an email :)",
-        icon: "success",
-        button: {
-          text: "Ok",
-        },
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (myJson) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit";
+        swal({
+          title: "Perfect!",
+          text: "We have received your data. Your project is being created, once it's done we'll send you an email :)",
+          icon: "success",
+          button: {
+            text: "Ok",
+          },
+        });
+      })
+      .catch(function (error) {
+        swal("Something went wrong", "Please, try again", "error");
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit";
       });
+  } else if (mode === "OBJ") {
+    var data = new FormData();
+    data.append("models", pdbInput.files[0]);
+    data.append("models", pdbInput.files[1]);
+
+    fetch("https://molecularweb.epfl.ch/backend/api/pdb2ar/obj", {
+      method: "POST",
+      body: data,
     })
-    .catch(function (error) {
-      swal("Something went wrong", "Please, try again", "error");
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Submit";
-    });
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (myJson) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit";
+        swal({
+          title: "Perfect!",
+          text: "We have received your data. Your project is being created, once it's done we'll send you an email :)",
+          icon: "success",
+          button: {
+            text: "Ok",
+          },
+        });
+      })
+      .catch(function (error) {
+        swal("Something went wrong", "Please, try again", "error");
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit";
+      });
+  }
 }
 
 function handleSearch(e) {
@@ -422,6 +455,7 @@ function handleSearch(e) {
 }
 
 function handlePdbSelection(e) {
+  mode = "PDB";
   pdbOptions.classList.add("hidden");
   welcomeSection.classList.add("hidden");
   pdbText.classList.remove("hidden");
@@ -432,6 +466,7 @@ function handlePdbSelection(e) {
 }
 
 function handleObjSelection(e) {
+  mode = "OBJ";
   pdbOptions.classList.add("hidden");
   welcomeSection.classList.add("hidden");
   objInstructions.classList.remove("hidden");
@@ -440,12 +475,21 @@ function handleObjSelection(e) {
 }
 
 function handleBack(e) {
+  mode = "";
   pdbOptions.classList.remove("hidden");
   welcomeSection.classList.remove("hidden");
 
   objInstructions.classList.add("hidden");
   uploadBtn.classList.add("hidden");
   backBtn.classList.add("hidden");
+  submitSection.classList.add("hidden");
+  submitBtn.classList.add("hidden");
+  instructionsText.classList.add("hidden");
+  fileDetails.classList.add("hidden");
+  errorMsg.classList.add("hidden");
+  pdbInput.value = "";
+  document.getElementById("file-1").remove();
+  document.getElementById("file-2").remove();
 
   pdbText.classList.add("hidden");
   detectSection.classList.add("hidden");
@@ -460,10 +504,10 @@ function handleUpload(e) {
     fileDetails.classList.remove("hidden");
     errorMsg.classList.add("hidden");
     var textString1 = /* html */ `
-    <p class="normal-text file-detail"> - ${input.files[0].name}</p>
+    <p id="file-1" class="normal-text file-detail"> - ${input.files[0].name}</p>
     `;
     var textString2 = /* html */ `
-    <p class="normal-text file-detail"> - ${input.files[1].name}</p>
+    <p id="file-2" class="normal-text file-detail"> - ${input.files[1].name}</p>
     `;
     fileDetails.insertAdjacentHTML("beforeend", textString1);
     fileDetails.insertAdjacentHTML("beforeend", textString2);

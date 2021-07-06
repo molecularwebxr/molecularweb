@@ -33,9 +33,6 @@
   cursor: pointer;
 }
 
-.pdb-options {
-}
-
 .pdb-card-title {
   color: var(--primary);
   font-family: "Roboto";
