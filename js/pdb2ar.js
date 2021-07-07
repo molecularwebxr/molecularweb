@@ -396,6 +396,8 @@ function handleSubmit(e) {
     var data = new FormData();
     data.append("models", pdbInput.files[0]);
     data.append("models", pdbInput.files[1]);
+    data.append("title", title);
+    data.append("email", email);
 
     fetch("https://molecularweb.epfl.ch/backend/api/pdb2ar/obj", {
       method: "POST",
@@ -498,9 +500,37 @@ function handleBack(e) {
   backBtn.classList.add("hidden");
 }
 
+function checkFiles(input) {
+  // 2 files
+  if (!(input.files.length === 2)) {
+    return false;
+  }
+
+  // .obj and .mtl
+  var extension1 = input.files[0].name.slice(-4).toLowerCase();
+  var extension2 = input.files[1].name.slice(-4).toLowerCase();
+  var extensions = [extension1, extension2];
+
+  if (!(extensions.includes(".mtl") && extensions.includes(".obj"))) {
+    return false;
+  }
+
+  // Names must be the same
+  var name1 = input.files[0].name.slice(0, -4);
+  var name2 = input.files[1].name.slice(0, -4);
+
+  if (name1 !== name2) {
+    return false;
+  }
+
+  return true;
+  
+}
+
 function handleUpload(e) {
   var input = e.target;
-  if (input.files.length === 2) {
+  var areFilesValid = checkFiles(input);
+  if (areFilesValid) {
     fileDetails.classList.remove("hidden");
     errorMsg.classList.add("hidden");
     var textString1 = /* html */ `
