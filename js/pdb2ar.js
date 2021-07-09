@@ -490,8 +490,17 @@ function handleBack(e) {
   fileDetails.classList.add("hidden");
   errorMsg.classList.add("hidden");
   pdbInput.value = "";
-  document.getElementById("file-1").remove();
-  document.getElementById("file-2").remove();
+
+  var label1 = document.getElementById("file-1");
+  var label2 = document.getElementById("file-2");
+
+  if (label1) {
+    label1.remove();
+  }
+
+  if (label2) {
+    label2.remove();
+  }
 
   pdbText.classList.add("hidden");
   detectSection.classList.add("hidden");
