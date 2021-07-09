@@ -50,6 +50,21 @@ function readPdb(e) {
     return;
   }
 
+  chains = [];
+  chainstrings = [];
+  chaintypes = [];
+
+  ligandchains = [];
+  ligandresnames = [];
+  ligandresnos = [];
+  ligandComments = [];
+
+  const gridEls = document.querySelectorAll("div.grid-element");
+
+  [...gridEls].forEach(function (element) {
+    element.remove();
+  });
+
   var lines = pdbString.split("\n");
 
   var atoms = lines.filter(function (line, index) {
@@ -75,6 +90,8 @@ function readPdb(e) {
       chainstrings[chainIsThere] = chainstrings[chainIsThere] + "\n" + atom;
     } else {
       chains.push(thisChain);
+      chains.push(thisChain);
+      chainstrings.push(atom);
       chainstrings.push(atom);
       if (
         "ALA|CYS|ASP|GLU|PHE|GLY|HIS|ILE|LYS|LEU|MET|ASN|PRO|GLN|ARG|SER|THR|VAL|TRP|TYR|MSE|HSE|HSD|HID|HIE".match(
@@ -82,9 +99,12 @@ function readPdb(e) {
         )
       ) {
         chaintypes.push("protein");
+        chaintypes.push("protein");
       } else if ("DA|DC|DG|DT|A|C|G|U".match(thisRes)) {
         chaintypes.push("nucleic");
+        chaintypes.push("nucleic");
       } else {
+        chaintypes.push("other");
         chaintypes.push("other");
       }
     }
@@ -507,6 +527,29 @@ function handleBack(e) {
   searchSection.classList.add("hidden");
   pdbInstructions.classList.add("hidden");
   backBtn.classList.add("hidden");
+
+  chains = [];
+  chainstrings = [];
+  chaintypes = [];
+
+  ligandchains = [];
+  ligandresnames = [];
+  ligandresnos = [];
+  ligandComments = [];
+
+  const gridEls = document.querySelectorAll("div.grid-element");
+
+  [...gridEls].forEach(function (element) {
+    element.remove();
+  });
+
+  ligandGrid.classList.add("hidden");
+  ligandTitle.classList.add("hidden");
+  proteinTitle.classList.add("hidden");
+  proteinGrid.classList.add("hidden");
+  vdmBtn.classList.add("hidden");
+  tclText.classList.add("hidden");
+
 }
 
 function checkFiles(input) {
@@ -533,7 +576,6 @@ function checkFiles(input) {
   }
 
   return true;
-  
 }
 
 function handleUpload(e) {
