@@ -509,15 +509,18 @@ function handleBack(e) {
   backBtn.classList.add("hidden");
 }
 
-function checkFiles(input) {
+async function checkFiles(input) {
   // 2 files
   if (!(input.files.length === 2)) {
     return false;
   }
 
+  var file1 = input.files[0];
+  var file2 = input.files[1];
+
   // .obj and .mtl
-  var extension1 = input.files[0].name.slice(-4).toLowerCase();
-  var extension2 = input.files[1].name.slice(-4).toLowerCase();
+  var extension1 = file1.name.slice(-4).toLowerCase();
+  var extension2 = file2.name.slice(-4).toLowerCase();
   var extensions = [extension1, extension2];
 
   if (!(extensions.includes(".mtl") && extensions.includes(".obj"))) {
@@ -525,37 +528,59 @@ function checkFiles(input) {
   }
 
   // Names must be the same
-  var name1 = input.files[0].name.slice(0, -4);
-  var name2 = input.files[1].name.slice(0, -4);
+  var name1 = file1.name.slice(0, -4);
+  var name2 = file2.name.slice(0, -4);
 
   if (name1 !== name2) {
     return false;
   }
 
+  // Files size < 350mb
+  var size1 = file1.size;
+  var size2 = file2.size;
+
+  if (size1 + size2 >= 350000000) {
+    return false;
+  }
+
   return true;
-  
 }
 
 function handleUpload(e) {
   var input = e.target;
   var areFilesValid = checkFiles(input);
-  if (areFilesValid) {
-    fileDetails.classList.remove("hidden");
-    errorMsg.classList.add("hidden");
-    var textString1 = /* html */ `
-    <p id="file-1" class="normal-text file-detail"> - ${input.files[0].name}</p>
-    `;
-    var textString2 = /* html */ `
-    <p id="file-2" class="normal-text file-detail"> - ${input.files[1].name}</p>
-    `;
-    fileDetails.insertAdjacentHTML("beforeend", textString1);
-    fileDetails.insertAdjacentHTML("beforeend", textString2);
-    submitSection.classList.remove("hidden");
-    submitBtn.classList.remove("hidden");
-    instructionsText.classList.remove("hidden");
+  
+  var reader = new FileReader();
+
+  if(areFilesValid) {
+    reader.readAsText(input.files[0]);
   } else {
     errorMsg.classList.remove("hidden");
   }
+  
+  // Is this file from VMD?
+  reader.onload = function () {
+    var rawFile = reader.result;
+    var isFromVMD = rawFile.includes("export by VMD");
+
+    if (isFromVMD) {
+      fileDetails.classList.remove("hidden");
+      errorMsg.classList.add("hidden");
+      var textString1 = /* html */ `
+      <p id="file-1" class="normal-text file-detail"> - ${input.files[0].name}</p>
+      `;
+      var textString2 = /* html */ `
+      <p id="file-2" class="normal-text file-detail"> - ${input.files[1].name}</p>
+      `;
+      fileDetails.insertAdjacentHTML("beforeend", textString1);
+      fileDetails.insertAdjacentHTML("beforeend", textString2);
+      submitSection.classList.remove("hidden");
+      submitBtn.classList.remove("hidden");
+      instructionsText.classList.remove("hidden");
+    } else {
+      errorMsg.classList.remove("hidden");
+    }
+  };
 }
 
 detectBtn.addEventListener("click", readPdb);
