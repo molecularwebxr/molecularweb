@@ -292,3 +292,91 @@
   margin: 0.5rem 0;
   font-weight: bold;
 }
+
+@media screen and (max-width: 1080px) {
+  .pdb2ar-container {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .pdb-options {
+    flex-direction: column;
+  }
+
+  .pdb-card {
+    margin: 1.5rem 0;
+    height: 10rem;
+  }
+
+  .pdb-card-title {
+    font-size: 1rem;
+    height: auto;
+  }
+
+  .pdb-card-text {
+    font-size: 0.8rem;
+  }
+
+  .pdb2ar-container .hi-container {
+    margin: 1.5rem 0 0 0;
+  }
+
+  .search-section {
+    margin: 1.5rem 0;
+  }
+
+  #obj-instructions {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .detect-section {
+    flex-direction: column-reverse;
+  }
+
+  .detect-section .pdb-btn {
+    margin: 1.5rem 0 0 0;
+  }
+
+  .pdb2ar-container .normal-text {
+    font-size: 14px;
+  }
+
+  .grid-title {
+    font-size: 12px;
+  }
+
+  .grid-text {
+    font-size: 10px;
+  }
+
+  .selector {
+    font-size: 10px;
+  }
+
+  .pdb2ar-container {
+    width: 90vw;
+  }
+
+  .submit-section {
+    flex-direction: column;
+  }
+
+  .submit-title-container {
+    margin-bottom: 1.5rem;
+  }
+
+  .submit-title-container .normal-text {
+    margin-right: 2px;
+  }
+
+  .title-input {
+    width: 185px;
+  }
+
+  .file-details {
+    margin-bottom: 1.5rem;
+  }
+}

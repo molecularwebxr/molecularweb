@@ -141,7 +141,7 @@
           </span>
         </div>
 
-        <div id="search-section" class="row margin-bottom hidden">
+        <div id="search-section" class="search-section row margin-bottom hidden">
           <input
             name="search"
             id="pdb-search"
@@ -160,7 +160,7 @@
           rows="10"
           placeholder="Copy-Paste molecule here"
         ></textarea>
-        <div id="detect-section" class="margin-bottom row hidden">
+        <div id="detect-section" class="detect-section margin-bottom row hidden">
           <button id="detect-btn" class="pdb-btn margin-right">
             Detect molecules
           </button>
@@ -247,23 +247,27 @@
           id="submit-section"
           class="row submit-section margin-bottom hidden"
         >
-          <label for="title" class="normal-text">Title</label>
-          <input
-            name="title"
-            id="pdb-title"
-            type="text"
-            class="title-input"
-            placeholder="My AR experience"
-          />
+          <div class="submit-title-container">
+            <label for="title" class="normal-text">Title</label>
+            <input
+              name="title"
+              id="pdb-title"
+              type="text"
+              class="title-input"
+              placeholder="My AR experience"
+            />
+          </div>
 
-          <label for="email" class="normal-text">Email</label>
-          <input
-            name="email"
-            id="pdb-email"
-            type="email"
-            class="title-input"
-            placeholder="hello@mail.com"
-          />
+          <div>
+            <label for="email" class="normal-text">Email</label>
+            <input
+              name="email"
+              id="pdb-email"
+              type="email"
+              class="title-input"
+              placeholder="hello@mail.com"
+            />
+          </div>
         </div>
 
         <button id="submit-btn" class="pdb-btn hidden">Submit</button>

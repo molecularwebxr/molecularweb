@@ -222,7 +222,7 @@ function readPdb(e) {
   });
 
   ligandchains.forEach(function (ligandChain, index) {
-    var commentString = `${ligandComments[index].element} atom ${ligandComments[index].number}`;
+    var commentString = `${ligandComments[index].element} #${ligandComments[index].number}`;
     var rowString = /* html */ `
     <!-- Grid row -->
     <div class="grid-element">
@@ -552,7 +552,7 @@ function handleBack(e) {
 
 }
 
-async function checkFiles(input) {
+function checkFiles(input) {
   // 2 files
   if (!(input.files.length === 2)) {
     return false;
