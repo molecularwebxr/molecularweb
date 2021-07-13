@@ -285,7 +285,7 @@ function buildVmd(e) {
     }
 
     if (value === "VDW (spheres)" || value === "Surf (surface)") {
-      tclString += "mol modstyle " + nout + " 0 VDW 0.700000 12.000000\n";
+      tclString += "mol modstyle " + nout + " 0 VDW 0.800000 12.000000\n";
     }
 
     if (value === "Tube") {
@@ -339,7 +339,7 @@ function buildVmd(e) {
     }
 
     if (value === "VDW (spheres)" || value === "Surf (surface)") {
-      tclString += "mol modstyle " + nout + " 0 VDW 0.700000 12.000000\n";
+      tclString += "mol modstyle " + nout + " 0 VDW 0.800000 12.000000\n";
     }
 
     if (value === "CPK") {
