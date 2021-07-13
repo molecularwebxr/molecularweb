@@ -270,7 +270,7 @@ function buildVmd(e) {
       return;
     }
 
-    tclString += "mol modselect " + nout + " 0 chain " + chain + "\n";
+    tclString += "mol modselect " + nout + " 0 chain " + chain + " and not water" + "\n";
 
     if (value === "NewCartoon (cartoons)") {
       tclString +=
@@ -285,7 +285,7 @@ function buildVmd(e) {
     }
 
     if (value === "VDW (spheres)" || value === "Surf (surface)") {
-      tclString += "mol modstyle " + nout + " 0 VDW 1.000000 12.000000\n";
+      tclString += "mol modstyle " + nout + " 0 VDW 0.700000 12.000000\n";
     }
 
     if (value === "Tube") {
@@ -339,7 +339,7 @@ function buildVmd(e) {
     }
 
     if (value === "VDW (spheres)" || value === "Surf (surface)") {
-      tclString += "mol modstyle " + nout + " 0 VDW 1.000000 12.000000\n";
+      tclString += "mol modstyle " + nout + " 0 VDW 0.700000 12.000000\n";
     }
 
     if (value === "CPK") {
