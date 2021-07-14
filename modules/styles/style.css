@@ -1105,6 +1105,7 @@ button.pdb-btn {
   .pdb-text {
     margin-top: 8px;
     height: 80px;
+    width: 100%;
   }
 
   .pdb-load:first-of-type {
