@@ -1,0 +1,378 @@
+.margin-top {
+  margin-top: 1.5rem;
+}
+
+.margin-right {
+  margin-right: 1.5rem;
+}
+
+.margin-bottom {
+  margin-bottom: 1.5rem;
+}
+
+.pdb2ar-container {
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 900px;
+}
+
+.pdb2ar-container .hi-container {
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+.pdb-card {
+  height: 15rem;
+  width: 20rem;
+  position: relative;
+  background-color: #FFFFFF;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.pdb-card-title {
+  color: var(--primary);
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin: 0;
+  height: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.pdb-card-text {
+  color: var(--lightgray);
+  font-family: "Roboto";
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.arrow-anchor {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 2rem;
+  transition: transform 0.2s;
+}
+
+.arrow-path {
+  transition: 0.2s;
+  fill: var(--primary);
+}
+.circle {
+  transition: 0.2s;
+  fill: var(--secondary);
+}
+.pdb-card:hover .arrow-path{
+  fill: #FFFFFF;
+}
+.pdb-card:hover .circle{
+  fill: var(--primary);
+}
+.pdb-card:hover .arrow-anchor {
+  transform: translateX(6px);
+}
+
+@media screen and (max-width: 450px) {
+  .arrow-anchor {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.pdb-btn {
+  background-color: var(--secondary);
+  color: var(--primary);
+  padding: 6px 22px;
+  border-radius: 6px;
+  font-family: "Roboto";
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.pdb-btn:active {
+  transform: scale(0.9);
+}
+
+.pdb-btn:disabled {
+  transform: scale(1);
+}
+
+.pdb-btn.big{
+  width: 120px;
+}
+
+.switch-container {
+  align-items: center;
+  justify-content: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.8rem;
+}
+
+.switch-input {
+  display: none;
+}
+
+.switch-label {
+  display: block;
+  width: 36px;
+  height: 20px;
+  text-indent: -150%;
+  clip: rect(0 0 0 0);
+  color: transparent;
+  user-select: none;
+}
+
+.switch-label::before,
+.switch-label::after {
+  content: "";
+  display: block;
+  position: absolute;
+  cursor: pointer;
+}
+
+.switch-label::before {
+  width: 36px;
+  height: 20px;
+  background-color: #dedede;
+  border-radius: 9999em;
+  -webkit-transition: background-color 0.1s ease;
+  transition: background-color 0.1s ease;
+}
+
+.switch-label::after {
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.45);
+  -webkit-transition: left 0.1s ease;
+  transition: left 0.1s ease;
+}
+
+.switch-input:checked + .switch-label::before {
+  background-color: var(--secondary);
+}
+
+.switch-input:checked + .switch-label::after {
+  left: 18px;
+}
+
+.switch-text {
+  color: var(--primary);
+  margin: 0 0 0 0;
+}
+
+.pdb-section-title {
+  color: var(--primary);
+  font-family: "Montserrat";
+  font-weight: bold;
+  text-align: left;
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem 0;
+  align-self: flex-start;
+}
+
+.protein-grid {
+  align-self: flex-start;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 2fr;
+  margin-bottom: 1.5rem;
+}
+
+.ligands-grid {
+  align-self: flex-start;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 2fr 2.2fr 2.2fr 2.2fr;
+  margin-bottom: 1.5rem;
+}
+
+.ligands-grid.hidden,
+.protein-grid.hidden {
+  display: none;
+}
+
+.grid-element {
+  padding: 0.5rem;
+}
+
+.grid-header {
+  padding: 0.5rem;
+  background-color: var(--secondary);
+}
+
+.grid-title {
+  margin: 0;
+  color: var(--primary);
+  font-family: "Roboto";
+  font-weight: bold;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.grid-text {
+  margin: 0;
+  color: var(--primary);
+  font-family: "Roboto";
+}
+
+.selector {
+  width: 70%;
+  height: 26px;
+  margin: 0;
+  font-family: "Roboto";
+  font-size: 0.8rem;
+  border-radius: 0.25rem;
+  border: 2px solid var(--primarydark);
+  outline: none;
+  padding: 0.25rem;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: var(--lightergray);
+  background-image: url("/assets/img/arrow-select.png");
+  background-repeat: no-repeat;
+  background-position: top 0.52rem right 0.4rem;
+  color: var(--primary);
+}
+
+.selector option {
+  font-family: "Roboto";
+  font-style: normal;
+  font-size: 0.8rem;
+  color: var(--primary);
+}
+
+.submit-section{
+  justify-content: center;
+  align-items: center;
+  padding: 0 8px;
+}
+
+.title-input {
+  margin: 0 16px;
+  padding: 8px 4px;
+  border: 3px solid var(--primary);
+  border-radius: 10px;
+  resize: none;
+  outline: none;
+  min-width: 150px;
+  max-width: 200px;
+  font-family: Roboto;
+  color: var(--primary);
+  font-size: 14px;
+}
+
+.file-details{
+  align-items: flex-start;
+}
+
+.file-detail {
+  margin: 0.5rem 0;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 1080px) {
+  .pdb2ar-container {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .pdb-options {
+    flex-direction: column;
+  }
+
+  .pdb-card {
+    margin: 1.5rem 0;
+    height: 10rem;
+  }
+
+  .pdb-card-title {
+    font-size: 1rem;
+    height: auto;
+  }
+
+  .pdb-card-text {
+    font-size: 0.8rem;
+  }
+
+  .pdb2ar-container .hi-container {
+    margin: 1.5rem 0 0 0;
+  }
+
+  .search-section {
+    margin: 1.5rem 0;
+  }
+
+  #obj-instructions {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .detect-section {
+    flex-direction: column-reverse;
+  }
+
+  .detect-section .pdb-btn {
+    margin: 1.5rem 0 0 0;
+  }
+
+  .pdb2ar-container .normal-text {
+    font-size: 14px;
+  }
+
+  .grid-title {
+    font-size: 12px;
+  }
+
+  .grid-text {
+    font-size: 10px;
+  }
+
+  .selector {
+    font-size: 10px;
+  }
+
+  .pdb2ar-container {
+    width: 90vw;
+  }
+
+  .submit-section {
+    flex-direction: column;
+  }
+
+  .submit-title-container {
+    margin-bottom: 1.5rem;
+  }
+
+  .submit-title-container .normal-text {
+    margin-right: 2px;
+  }
+
+  .title-input {
+    width: 185px;
+  }
+
+  .file-details {
+    margin-bottom: 1.5rem;
+  }
+}

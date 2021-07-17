@@ -441,18 +441,6 @@ button.pdb-btn {
   font-size: 0.6rem;
 }
 
-.pdb-text {
-  width: 100%;
-  border: none;
-  outline: none;
-  padding: 0.25rem;
-  box-sizing: border-box;
-  resize: none;
-  font-family: "Roboto";
-  font-size: 12px;
-  border-radius: 6px;
-}
-
 .btn-primary {
   margin: 1.5rem auto 0 auto;
   display: block;
@@ -1117,6 +1105,7 @@ button.pdb-btn {
   .pdb-text {
     margin-top: 8px;
     height: 80px;
+    width: 100%;
   }
 
   .pdb-load:first-of-type {
