@@ -16,7 +16,9 @@ var sceneGroup;
 var sceneGroup2;
 var pdb, pdb2;
 
-var startAR = document.getElementById("start-ar");
+var pdbs = [];
+
+var addMolecule = document.getElementById("add-molecule");
 var flipVideo = document.querySelector("flip-video");
 var scaleUp = document.getElementById("scale-up");
 var scaleDown = document.getElementById("scale-down");
@@ -27,8 +29,6 @@ var playTemp = document.querySelector("play-temp");
 var switchInteractions = document.getElementById("switch-interactions");
 var switchBridge = document.getElementById("switch-bridge");
 var switchClashes = document.getElementById("switch-clashes");
-var marker1 = document.getElementById("marker-1");
-var marker2 = document.getElementById("marker-2");
 var switchSpheres1 = document.getElementById("switch-spheres-1");
 var switchSpheres2 = document.getElementById("switch-spheres-2");
 var switchFlip1 = document.getElementById("switch-flip-1");
@@ -100,7 +100,7 @@ var sphereGeometry = new THREE.SphereBufferGeometry(0.05, 32, 16);
 var sphereMaterial = new THREE.MeshLambertMaterial({ color: "yellow" });
 var dummy = new THREE.Object3D();
 
-startAR.addEventListener("click", handleClick);
+addMolecule.addEventListener("click", handleClick);
 flipVideo.addEventListener("flipCamera", handleFlip);
 scaleUp.addEventListener("scaleGraphics", handleScale);
 scaleDown.addEventListener("scaleGraphics", handleScale);
@@ -110,8 +110,6 @@ playTemp.addEventListener("playTemp", handlePlayTemp);
 switchClashes.addEventListener("change", handleClashesChange);
 switchInteractions.addEventListener("change", handleInteractionsChange);
 switchBridge.addEventListener("change", handleBridgeChange);
-marker1.addEventListener("click", handleMarkerSelection);
-marker2.addEventListener("click", handleMarkerSelection);
 switchSpheres1.addEventListener("change", handleRenderType);
 switchSpheres2.addEventListener("change", handleRenderType);
 switchFlip1.addEventListener("change", handleFlip);
@@ -394,9 +392,9 @@ function animate() {
   world.step(1 / 600);
   // cannonDebugRenderer.update();
 
-  if (atoms > 0 && atoms2 > 0) {
-    updateInteractions();
-  }
+  // if (atoms > 0 && atoms2 > 0) {
+  //   updateInteractions();
+  // }
 
   // if (atoms > 0) {
   //   updateEnergies();
@@ -492,377 +490,207 @@ function updateInteractions() {
 }
 
 function updatePhysics() {
-  var velsum_expected = Math.sqrt(temperature) * atoms;
+  pdbs.forEach(function (pdb) {
+    var velsum = 0;
+    var mediax = 0;
+    var mediay = 0;
+    var mediaz = 0;
+    var velsum_expected = Math.sqrt(temperature) * pdb.atoms;
 
-  var velsum = 0;
+    for (var i = 0; i < pdb.atoms; i++) {
+      pdb.atomBodies[i].velocity.x =
+        pdb.atomBodies[i].velocity.x + 10 * Math.random(1) - 5;
+      pdb.atomBodies[i].velocity.y =
+        pdb.atomBodies[i].velocity.y + 10 * Math.random(1) - 5;
+      pdb.atomBodies[i].velocity.z =
+        pdb.atomBodies[i].velocity.z + 10 * Math.random(1) - 5;
 
-  var mediax = 0;
-  var mediay = 0;
-  var mediaz = 0;
+      velsum =
+        velsum +
+        Math.sqrt(
+          Math.pow(pdb.atomBodies[i].velocity.x, 2) +
+            Math.pow(pdb.atomBodies[i].velocity.y, 2) +
+            Math.pow(pdb.atomBodies[i].velocity.z, 2)
+        );
+    }
 
-  var mediax2 = 0;
-  var mediay2 = 0;
-  var mediaz2 = 0;
+    for (var i = 0; i < pdb.atoms; i++) {
+      pdb.atomBodies[i].velocity.x =
+        (pdb.atomBodies[i].velocity.x / velsum) * velsum_expected;
+      pdb.atomBodies[i].velocity.y =
+        (pdb.atomBodies[i].velocity.y / velsum) * velsum_expected;
+      pdb.atomBodies[i].velocity.z =
+        (pdb.atomBodies[i].velocity.z / velsum) * velsum_expected;
+    }
 
-  for (var i = 0; i < atoms; i++) {
-    atomBodies[i].velocity.x =
-      atomBodies[i].velocity.x + 10 * Math.random(1) - 5;
-    atomBodies[i].velocity.y =
-      atomBodies[i].velocity.y + 10 * Math.random(1) - 5;
-    atomBodies[i].velocity.z =
-      atomBodies[i].velocity.z + 10 * Math.random(1) - 5;
+    // for (var i = 0; i < pdb.atoms; i++) {
+    //   mediax = mediax + pdb.atomBodies[i].position.x;
+    //   mediay = mediay + pdb.atomBodies[i].position.y;
+    //   mediaz = mediaz + pdb.atomBodies[i].position.z;
+    // }
 
-    velsum =
-      velsum +
-      Math.sqrt(
-        Math.pow(atomBodies[i].velocity.x, 2) +
-          Math.pow(atomBodies[i].velocity.y, 2) +
-          Math.pow(atomBodies[i].velocity.z, 2)
+    // mediax = mediax / pdb.atoms;
+    // mediay = mediay / pdb.atoms;
+    // mediaz = mediaz / pdb.atoms;
+
+    // for (var i = 0; i < pdb.atoms; i++) {
+    //   pdb.atomBodies[i].position.x = pdb.atomBodies[i].position.x - mediax;
+    //   pdb.atomBodies[i].position.y = pdb.atomBodies[i].position.y - mediay;
+    //   pdb.atomBodies[i].position.z = pdb.atomBodies[i].position.z - mediaz;
+    // }
+
+    for (var i = 0; i < pdb.atoms; i++) {
+      pdb.atomMeshes[i].position.x = pdb.atomBodies[i].position.x;
+      pdb.atomMeshes[i].position.y = pdb.atomBodies[i].position.y;
+      pdb.atomMeshes[i].position.z = pdb.atomBodies[i].position.z;
+
+      pdb.clashMeshes[i].position.x = pdb.atomBodies[i].position.x;
+      pdb.clashMeshes[i].position.y = pdb.atomBodies[i].position.y;
+      pdb.clashMeshes[i].position.z = pdb.atomBodies[i].position.z;
+    }
+
+    pdb.bonds.forEach(function (bond) {
+      var B = new THREE.Vector3(
+        pdb.atomMeshes[bond.atomA].position.x,
+        pdb.atomMeshes[bond.atomA].position.y,
+        pdb.atomMeshes[bond.atomA].position.z
       );
-  }
 
-  for (var i = 0; i < atoms; i++) {
-    atomBodies[i].velocity.x =
-      (atomBodies[i].velocity.x / velsum) * velsum_expected;
-    atomBodies[i].velocity.y =
-      (atomBodies[i].velocity.y / velsum) * velsum_expected;
-    atomBodies[i].velocity.z =
-      (atomBodies[i].velocity.z / velsum) * velsum_expected;
-  }
+      var A = new THREE.Vector3(
+        pdb.atomMeshes[bond.atomA].position.x / 2 +
+          pdb.atomMeshes[bond.atomB].position.x / 2,
+        pdb.atomMeshes[bond.atomA].position.y / 2 +
+          pdb.atomMeshes[bond.atomB].position.y / 2,
+        pdb.atomMeshes[bond.atomA].position.z / 2 +
+          pdb.atomMeshes[bond.atomB].position.z / 2
+      );
 
-  var cubePosition = new THREE.Vector3();
-  sceneGroup.getWorldPosition(cubePosition);
+      var C = new THREE.Vector3(
+        pdb.atomMeshes[bond.atomA].position.x / 2 +
+          pdb.atomMeshes[bond.atomB].position.x / 2,
+        pdb.atomMeshes[bond.atomA].position.y / 2 +
+          pdb.atomMeshes[bond.atomB].position.y / 2,
+        pdb.atomMeshes[bond.atomA].position.z / 2 +
+          pdb.atomMeshes[bond.atomB].position.z / 2
+      );
+      var D = new THREE.Vector3(
+        pdb.atomMeshes[bond.atomB].position.x,
+        pdb.atomMeshes[bond.atomB].position.y,
+        pdb.atomMeshes[bond.atomB].position.z
+      );
 
-  var cubeQuaternion = new THREE.Quaternion();
-  sceneGroup.getWorldQuaternion(cubeQuaternion);
+      var vec = B.clone();
+      vec.sub(A);
+      var h = vec.length();
+      vec.normalize();
+      var quaternion = new THREE.Quaternion();
+      quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), vec);
+      bond.sticks[0].position.set(0, 0, 0);
+      bond.sticks[0].rotation.set(0, 0, 0);
+      bond.sticks[0].translateOnAxis(0, h / 2, 0);
+      bond.sticks[0].applyQuaternion(quaternion);
+      bond.sticks[0].position.set(A.x, A.y, A.z);
 
-  if (isCube1Visible) {
-    for (var i = 0; i < atoms; i++) {
-      mediax = mediax + atomBodies[i].position.x;
-      mediay = mediay + atomBodies[i].position.y;
-      mediaz = mediaz + atomBodies[i].position.z;
-    }
-
-    mediax = mediax / atoms;
-    mediay = mediay / atoms;
-    mediaz = mediaz / atoms;
-
-    for (var i = 0; i < atoms; i++) {
-      atomBodies[i].position.x =
-        atomBodies[i].position.x + cubePosition.x - mediax;
-      atomBodies[i].position.y =
-        atomBodies[i].position.y + cubePosition.y - mediay;
-      atomBodies[i].position.z =
-        atomBodies[i].position.z + cubePosition.z - mediaz;
-    }
-  }
-
-  var q = new THREE.Quaternion();
-  var inverse1 = new THREE.Quaternion();
-  inverse1.copy(lastCubeQuaternion).invert();
-
-  q.multiplyQuaternions(cubeQuaternion, inverse1);
-
-  rotateBodies(
-    atomBodies,
-    q,
-    new CANNON.Vec3(cubePosition.x, cubePosition.y, cubePosition.z)
-  );
-
-  lastCubeQuaternion.copy(cubeQuaternion);
-
-  for (var i = 0; i < atoms; i++) {
-    atomMeshes[i].position.x = atomBodies[i].position.x;
-    atomMeshes[i].position.y = atomBodies[i].position.y;
-    atomMeshes[i].position.z = atomBodies[i].position.z;
-
-    clashMeshes[i].position.x = atomBodies[i].position.x;
-    clashMeshes[i].position.y = atomBodies[i].position.y;
-    clashMeshes[i].position.z = atomBodies[i].position.z;
-  }
-
-  bonds.forEach(function (bond) {
-    var B = new THREE.Vector3(
-      atomMeshes[bond.atomA].position.x,
-      atomMeshes[bond.atomA].position.y,
-      atomMeshes[bond.atomA].position.z
-    );
-
-    var A = new THREE.Vector3(
-      atomMeshes[bond.atomA].position.x / 2 +
-        atomMeshes[bond.atomB].position.x / 2,
-      atomMeshes[bond.atomA].position.y / 2 +
-        atomMeshes[bond.atomB].position.y / 2,
-      atomMeshes[bond.atomA].position.z / 2 +
-        atomMeshes[bond.atomB].position.z / 2
-    );
-
-    var C = new THREE.Vector3(
-      atomMeshes[bond.atomA].position.x / 2 +
-        atomMeshes[bond.atomB].position.x / 2,
-      atomMeshes[bond.atomA].position.y / 2 +
-        atomMeshes[bond.atomB].position.y / 2,
-      atomMeshes[bond.atomA].position.z / 2 +
-        atomMeshes[bond.atomB].position.z / 2
-    );
-    var D = new THREE.Vector3(
-      atomMeshes[bond.atomB].position.x,
-      atomMeshes[bond.atomB].position.y,
-      atomMeshes[bond.atomB].position.z
-    );
-
-    var vec = B.clone();
-    vec.sub(A);
-    var h = vec.length();
-    vec.normalize();
-    var quaternion = new THREE.Quaternion();
-    quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), vec);
-    bond.sticks[0].position.set(0, 0, 0);
-    bond.sticks[0].rotation.set(0, 0, 0);
-    bond.sticks[0].translateOnAxis(0, h / 2, 0);
-    bond.sticks[0].applyQuaternion(quaternion);
-    bond.sticks[0].position.set(A.x, A.y, A.z);
-
-    var vec2 = D.clone();
-    vec2.sub(C);
-    var h2 = vec.length();
-    vec2.normalize();
-    var quaternion2 = new THREE.Quaternion();
-    quaternion2.setFromUnitVectors(new THREE.Vector3(0, 1, 0), vec2);
-    bond.sticks[1].position.set(0, 0, 0);
-    bond.sticks[1].rotation.set(0, 0, 0);
-    bond.sticks[1].translateOnAxis(0, h2 / 2, 0);
-    bond.sticks[1].applyQuaternion(quaternion2);
-    bond.sticks[1].position.set(C.x, C.y, C.z);
+      var vec2 = D.clone();
+      vec2.sub(C);
+      var h2 = vec.length();
+      vec2.normalize();
+      var quaternion2 = new THREE.Quaternion();
+      quaternion2.setFromUnitVectors(new THREE.Vector3(0, 1, 0), vec2);
+      bond.sticks[1].position.set(0, 0, 0);
+      bond.sticks[1].rotation.set(0, 0, 0);
+      bond.sticks[1].translateOnAxis(0, h2 / 2, 0);
+      bond.sticks[1].applyQuaternion(quaternion2);
+      bond.sticks[1].position.set(C.x, C.y, C.z);
+    });
   });
 
-  // CUBE 2
-  velsum = 0;
+  // var cubePosition = new THREE.Vector3();
+  // sceneGroup.getWorldPosition(cubePosition);
 
-  for (var i = 0; i < atoms2; i++) {
-    atomBodies2[i].velocity.x =
-      atomBodies2[i].velocity.x + 10 * Math.random(1) - 5;
-    atomBodies2[i].velocity.y =
-      atomBodies2[i].velocity.y + 10 * Math.random(1) - 5;
-    atomBodies2[i].velocity.z =
-      atomBodies2[i].velocity.z + 10 * Math.random(1) - 5;
+  // var cubeQuaternion = new THREE.Quaternion();
+  // sceneGroup.getWorldQuaternion(cubeQuaternion);
 
-    velsum =
-      velsum +
-      Math.sqrt(
-        Math.pow(atomBodies2[i].velocity.x, 2) +
-          Math.pow(atomBodies2[i].velocity.y, 2) +
-          Math.pow(atomBodies2[i].velocity.z, 2)
-      );
-  }
+  // if (isCube1Visible) {
+  //   for (var i = 0; i < atoms; i++) {
+  //     mediax = mediax + atomBodies[i].position.x;
+  //     mediay = mediay + atomBodies[i].position.y;
+  //     mediaz = mediaz + atomBodies[i].position.z;
+  //   }
 
-  for (var i = 0; i < atoms2; i++) {
-    atomBodies2[i].velocity.x =
-      (atomBodies2[i].velocity.x / velsum) * velsum_expected;
-    atomBodies2[i].velocity.y =
-      (atomBodies2[i].velocity.y / velsum) * velsum_expected;
-    atomBodies2[i].velocity.z =
-      (atomBodies2[i].velocity.z / velsum) * velsum_expected;
-  }
+  //   mediax = mediax / atoms;
+  //   mediay = mediay / atoms;
+  //   mediaz = mediaz / atoms;
 
-  var cubePosition2 = new THREE.Vector3();
-  sceneGroup2.getWorldPosition(cubePosition2);
+  //   for (var i = 0; i < atoms; i++) {
+  //     atomBodies[i].position.x =
+  //       atomBodies[i].position.x + cubePosition.x - mediax;
+  //     atomBodies[i].position.y =
+  //       atomBodies[i].position.y + cubePosition.y - mediay;
+  //     atomBodies[i].position.z =
+  //       atomBodies[i].position.z + cubePosition.z - mediaz;
+  //   }
+  // }
 
-  var cubeQuaternion2 = new THREE.Quaternion();
-  sceneGroup2.getWorldQuaternion(cubeQuaternion2);
+  // var q = new THREE.Quaternion();
+  // var inverse1 = new THREE.Quaternion();
+  // inverse1.copy(lastCubeQuaternion).invert();
 
-  if (isCube2Visible) {
-    for (var i = 0; i < atoms2; i++) {
-      mediax2 = mediax2 + atomBodies2[i].position.x;
-      mediay2 = mediay2 + atomBodies2[i].position.y;
-      mediaz2 = mediaz2 + atomBodies2[i].position.z;
-    }
+  // q.multiplyQuaternions(cubeQuaternion, inverse1);
 
-    mediax2 = mediax2 / atoms2;
-    mediay2 = mediay2 / atoms2;
-    mediaz2 = mediaz2 / atoms2;
+  // rotateBodies(
+  //   atomBodies,
+  //   q,
+  //   new CANNON.Vec3(cubePosition.x, cubePosition.y, cubePosition.z)
+  // );
 
-    for (var i = 0; i < atoms2; i++) {
-      atomBodies2[i].position.x =
-        atomBodies2[i].position.x + cubePosition2.x - mediax2;
-      atomBodies2[i].position.y =
-        atomBodies2[i].position.y + cubePosition2.y - mediay2;
-      atomBodies2[i].position.z =
-        atomBodies2[i].position.z + cubePosition2.z - mediaz2;
-    }
-  }
-
-  var q2 = new THREE.Quaternion();
-  var inverse2 = new THREE.Quaternion();
-  inverse2.copy(lastCubeQuaternion2).invert();
-
-  q2.multiplyQuaternions(cubeQuaternion2, inverse2);
-
-  rotateBodies(
-    atomBodies2,
-    q2,
-    new CANNON.Vec3(cubePosition2.x, cubePosition2.y, cubePosition2.z)
-  );
-
-  lastCubeQuaternion2.copy(cubeQuaternion2);
-
-  for (var i = 0; i < atoms2; i++) {
-    atomMeshes2[i].position.x = atomBodies2[i].position.x;
-    atomMeshes2[i].position.y = atomBodies2[i].position.y;
-    atomMeshes2[i].position.z = atomBodies2[i].position.z;
-
-    clashMeshes2[i].position.x = atomBodies2[i].position.x;
-    clashMeshes2[i].position.y = atomBodies2[i].position.y;
-    clashMeshes2[i].position.z = atomBodies2[i].position.z;
-  }
-
-  bonds2.forEach(function (bond) {
-    var B = new THREE.Vector3(
-      atomMeshes2[bond.atomA].position.x,
-      atomMeshes2[bond.atomA].position.y,
-      atomMeshes2[bond.atomA].position.z
-    );
-
-    var A = new THREE.Vector3(
-      atomMeshes2[bond.atomA].position.x / 2 +
-        atomMeshes2[bond.atomB].position.x / 2,
-      atomMeshes2[bond.atomA].position.y / 2 +
-        atomMeshes2[bond.atomB].position.y / 2,
-      atomMeshes2[bond.atomA].position.z / 2 +
-        atomMeshes2[bond.atomB].position.z / 2
-    );
-
-    var C = new THREE.Vector3(
-      atomMeshes2[bond.atomA].position.x / 2 +
-        atomMeshes2[bond.atomB].position.x / 2,
-      atomMeshes2[bond.atomA].position.y / 2 +
-        atomMeshes2[bond.atomB].position.y / 2,
-      atomMeshes2[bond.atomA].position.z / 2 +
-        atomMeshes2[bond.atomB].position.z / 2
-    );
-    var D = new THREE.Vector3(
-      atomMeshes2[bond.atomB].position.x,
-      atomMeshes2[bond.atomB].position.y,
-      atomMeshes2[bond.atomB].position.z
-    );
-
-    var vec3 = B.clone();
-    vec3.sub(A);
-    var h3 = vec3.length();
-    vec3.normalize();
-    var quaternion3 = new THREE.Quaternion();
-    quaternion3.setFromUnitVectors(new THREE.Vector3(0, 1, 0), vec3);
-    bond.sticks[0].position.set(0, 0, 0);
-    bond.sticks[0].rotation.set(0, 0, 0);
-    bond.sticks[0].translateOnAxis(0, h3 / 2, 0);
-    bond.sticks[0].applyQuaternion(quaternion3);
-    bond.sticks[0].position.set(A.x, A.y, A.z);
-
-    var vec4 = D.clone();
-    vec4.sub(C);
-    var h4 = vec3.length();
-    vec4.normalize();
-    var quaternion4 = new THREE.Quaternion();
-    quaternion4.setFromUnitVectors(new THREE.Vector3(0, 1, 0), vec4);
-    bond.sticks[1].position.set(0, 0, 0);
-    bond.sticks[1].rotation.set(0, 0, 0);
-    bond.sticks[1].translateOnAxis(0, h4 / 2, 0);
-    bond.sticks[1].applyQuaternion(quaternion4);
-    bond.sticks[1].position.set(C.x, C.y, C.z);
-  });
+  // lastCubeQuaternion.copy(cubeQuaternion);
 }
 
 function loadPdb(rawPdb) {
-  if (selectedMarker === 1) {
-    resetMarker1();
-    resetGeneral();
+  var newPdb = setupPdb(rawPdb);
 
-    pdb = setupPdb(rawPdb);
-    atoms = pdb.atoms;
+  console.time("VMK");
 
-    console.time("VMK");
+  [
+    newPdb.atomShapes,
+    newPdb.atomMeshes,
+    newPdb.clashMeshes,
+    newPdb.atomBodies,
+  ] = createSpheres(newPdb);
 
-    [atomShapes, atomMeshes, clashMeshes, atomBodies] = createSpheres(pdb);
+  newPdb.atomMeshes.forEach(function (sphere, index) {
+    scene.add(sphere);
+    scene.add(newPdb.clashMeshes[index]);
+  });
 
-    atomMeshes.forEach(function (sphere, index) {
-      scene.add(sphere);
-      scene.add(clashMeshes[index]);
+  newPdb.atomBodies.forEach(function (sphere) {
+    world.addBody(sphere);
+  });
+
+  [newPdb.sticks, newPdb.bonds, newPdb.interactiveAtoms, newPdb.constraints] =
+    createSticks(newPdb, newPdb.atomBodies);
+
+  newPdb.sticks.forEach(function (stick) {
+    scene.add(stick);
+  });
+
+  newPdb.constraints.forEach(function (constraint) {
+    world.addConstraint(constraint);
+  });
+
+  console.timeEnd("VMK");
+  if (window.innerWidth >= 768) {
+    newPdb.atomBodies.forEach(function (body) {
+      body.position.x = -body.position.x;
     });
-
-    atomBodies.forEach(function (sphere) {
-      world.addBody(sphere);
-    });
-
-    [sticks, bonds, interactiveAtoms1, constraints] = createSticks(
-      pdb,
-      atomBodies
-    );
-
-    sticks.forEach(function (stick) {
-      scene.add(stick);
-    });
-
-    constraints.forEach(function (constraint) {
-      world.addConstraint(constraint);
-    });
-
-    console.timeEnd("VMK");
-    if (window.innerWidth >= 768) {
-      atomBodies.forEach(function (body) {
-        body.position.x = -body.position.x;
-      });
-    }
-    selectedMarker = 2;
-    marker1.classList.remove("selected");
-    marker2.classList.add("selected");
-
-    switchFlip1.disabled = false;
-    switchSpheres1.disabled = false;
-  } else {
-    resetMarker2();
-    resetGeneral();
-
-    pdb2 = setupPdb(rawPdb);
-    atoms2 = pdb2.atoms;
-
-    console.time("VMK");
-
-    [atomShapes2, atomMeshes2, clashMeshes2, atomBodies2] = createSpheres(pdb2);
-
-    atomMeshes2.forEach(function (sphere, index) {
-      scene.add(sphere);
-      scene.add(clashMeshes2[index]);
-    });
-
-    atomBodies2.forEach(function (sphere) {
-      world.addBody(sphere);
-    });
-
-    [sticks2, bonds2, interactiveAtoms2, constraints2] = createSticks(
-      pdb2,
-      atomBodies2
-    );
-
-    sticks2.forEach(function (stick) {
-      scene.add(stick);
-    });
-
-    constraints2.forEach(function (constraint) {
-      world.addConstraint(constraint);
-    });
-    console.timeEnd("VMK");
-    if (window.innerWidth >= 768) {
-      atomBodies2.forEach(function (body) {
-        body.position.x = -body.position.x;
-      });
-    }
-    selectedMarker = 1;
-    marker2.classList.remove("selected");
-    marker1.classList.add("selected");
-
-    switchFlip2.disabled = false;
-    switchSpheres2.disabled = false;
   }
+
+  pdbs.push(newPdb);
+  console.log(pdbs);
+
+  switchFlip1.disabled = false;
+  switchSpheres1.disabled = false;
 }
 
 function clearPhysics(bodies, constraints) {
@@ -1269,18 +1097,6 @@ function handleBridgeChange(e) {
   isBridgeActive = switchBridge.checked;
 }
 
-function handleMarkerSelection(e) {
-  if (e.target.parentElement.id === "marker-1") {
-    selectedMarker = 1;
-    marker2.classList.remove("selected");
-    marker1.classList.add("selected");
-  } else {
-    selectedMarker = 2;
-    marker1.classList.remove("selected");
-    marker2.classList.add("selected");
-  }
-}
-
 function resetMarker1() {
   clearPhysics(atomBodies, constraints);
 
@@ -1368,7 +1184,11 @@ function updateEnergies() {
     var species2 = [];
 
     var coordinates1 = atomBodies.map(function (atom) {
-      return [Math.round(atom.position.x*100)/100, Math.round(atom.position.y*100)/100, Math.round(atom.position.z*100)/100];
+      return [
+        Math.round(atom.position.x * 100) / 100,
+        Math.round(atom.position.y * 100) / 100,
+        Math.round(atom.position.z * 100) / 100,
+      ];
     });
 
     var species1 = pdb.elements.map(function (element) {
@@ -1377,7 +1197,11 @@ function updateEnergies() {
 
     if (atoms2 > 0) {
       var coordinates2 = atomBodies2.map(function (atom) {
-        return [Math.round(atom.position.x*100)/100, Math.round(atom.position.y*100)/100, Math.round(atom.position.z*100)/100];
+        return [
+          Math.round(atom.position.x * 100) / 100,
+          Math.round(atom.position.y * 100) / 100,
+          Math.round(atom.position.z * 100) / 100,
+        ];
       });
 
       var species2 = pdb2.elements.map(function (element) {

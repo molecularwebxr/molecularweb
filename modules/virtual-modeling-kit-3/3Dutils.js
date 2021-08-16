@@ -15,6 +15,19 @@ var sphereGeometry = new THREE.SphereBufferGeometry(1, 32, 16);
 
 /******************  3D utils *************************/
 
+function getRandomNumber(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+// This function returns a random Vector 3
+function getRandomVec3() {
+  var randomX = getRandomNumber(-1, 1);
+  var randomY = getRandomNumber(0.5, 0.75);
+  var randomZ = getRandomNumber(-4, -10);
+
+  return new THREE.Vector3(randomX, randomY, randomZ);
+}
+
 // This function checks if one two elements are N, C or O
 function checkNCO(elementA, elementB) {
   return (
@@ -576,6 +589,8 @@ function createSpheres(pdb) {
   var meshes = [];
   var meshes2 = [];
   var bodies = [];
+  
+  var translation = getRandomVec3();
 
   var radiusFactor = radiusfactor1;
 
@@ -591,6 +606,7 @@ function createSpheres(pdb) {
     sphereMesh.position.x = pdb.xCoords[i] - pdb.xAvg;
     sphereMesh.position.y = pdb.yCoords[i] - pdb.yAvg;
     sphereMesh.position.z = pdb.zCoords[i] - pdb.zAvg;
+    sphereMesh.position.add(translation);
     meshes.push(sphereMesh);
 
     var clashMesh = new THREE.Mesh(
