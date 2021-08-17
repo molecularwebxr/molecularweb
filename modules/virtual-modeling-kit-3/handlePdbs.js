@@ -6,7 +6,7 @@ var menuContainer = document.getElementById("mk-menu");
 var closeMenu = document.getElementById("close-menu");
 var uploadLabel = document.getElementById("upload-label");
 
-var requestURL = "/modules/virtual-modeling-kit-2/PDB.json";
+var requestURL = "/modules/virtual-modeling-kit-3/PDB.json";
 var request = new XMLHttpRequest();
 var pdbs;
 
