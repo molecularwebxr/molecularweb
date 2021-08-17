@@ -7,6 +7,7 @@ import {
   radiusfactor1,
   radiusfactor2,
 } from "./3Dutils.js";
+import { OrbitControls } from "/lib/utils/OrbitControls.js";
 
 var scene, camera, renderer, clock, deltaTime, totalTime;
 var arToolkitSource, arToolkitContext;
@@ -15,6 +16,7 @@ var patternArray2, markerRootArray2, markerGroupArray2;
 var sceneGroup;
 var sceneGroup2;
 var pdb, pdb2;
+var controls;
 
 var pdbs = [];
 
@@ -197,6 +199,11 @@ function initialize() {
   renderer.domElement.style.top = "0px";
   renderer.domElement.style.left = "0px";
   document.body.appendChild(renderer.domElement);
+  // controls = new OrbitControls(camera, renderer.domElement);
+  // controls.target.set(0, 0.75, -7);
+  // controls.update();
+
+  console.log(camera.position)
 
   clock = new THREE.Clock();
   deltaTime = 0;
@@ -321,7 +328,7 @@ function initialize() {
 
   sceneGroup2 = new THREE.Group();
 
-  // cannonDebugRenderer = new THREE.CannonDebugRenderer(scene, world);
+  cannonDebugRenderer = new THREE.CannonDebugRenderer(scene, world);
 }
 
 function update() {
@@ -344,41 +351,46 @@ function update() {
     }
   }
 
-  // if (isCube1Visible) {
-  //   sticks.forEach(function (bond) {
-  //     bond.visible = true;
-  //   });
+  // Plane -x
+  var planeShapeXmin = new CANNON.Plane();
+  var planeXmin = new CANNON.Body({ mass: 0 });
+  planeXmin.addShape(planeShapeXmin);
+  planeXmin.quaternion.setFromEuler(0, Math.PI / 2, 0);
+  planeXmin.position.set(-2, 0, 0);
+  world.addBody(planeXmin);
 
-  //   atomMeshes.forEach(function (atom) {
-  //     atom.visible = true;
-  //   });
-  // } else {
-  //   sticks.forEach(function (bond) {
-  //     bond.visible = false;
-  //   });
+  // Plane +x
+  var planeShapeXmax = new CANNON.Plane();
+  var planeXmax = new CANNON.Body({ mass: 0 });
+  planeXmax.addShape(planeShapeXmax);
+  planeXmax.quaternion.setFromEuler(0, -Math.PI / 2, 0);
+  planeXmax.position.set(2, 0, 0);
+  world.addBody(planeXmax);
 
-  //   atomMeshes.forEach(function (atom) {
-  //     atom.visible = false;
-  //   });
-  // }
+  // Plane -z
+  var planeShapeZmin = new CANNON.Plane();
+  var planeZmin = new CANNON.Body({ mass: 0 });
+  planeZmin.addShape(planeShapeZmin);
+  planeZmin.quaternion.setFromEuler(0, 0, 0);
+  planeZmin.position.set(0, 0, -4);
+  // world.addBody(planeZmin);
 
-  // if (isCube2Visible) {
-  //   sticks2.forEach(function (bond) {
-  //     bond.visible = true;
-  //   });
+  // Plane +z
+  var planeShapeZmax = new CANNON.Plane();
+  var planeZmax = new CANNON.Body({ mass: 0 });
+  planeZmax.addShape(planeShapeZmax);
+  planeZmax.quaternion.setFromEuler(0, Math.PI, 0);
+  planeZmax.position.set(0, 0, -10);
+  // world.addBody(planeZmax);
 
-  //   atomMeshes2.forEach(function (atom) {
-  //     atom.visible = true;
-  //   });
-  // } else {
-  //   sticks2.forEach(function (bond) {
-  //     bond.visible = false;
-  //   });
 
-  //   atomMeshes2.forEach(function (atom) {
-  //     atom.visible = false;
-  //   });
-  // }
+
+  // Floor
+  const floorGeometry = new THREE.PlaneGeometry(4, 4);
+  const floorMaterial = new THREE.MeshStandardMaterial({ color: 0x156289, side: THREE.DoubleSide });
+  const floor = new THREE.Mesh(floorGeometry, floorMaterial);
+  floor.rotation.x = -Math.PI / 2;
+  scene.add(floor);
 }
 
 function render() {
@@ -390,7 +402,7 @@ function animate() {
   deltaTime = clock.getDelta();
   totalTime += deltaTime;
   world.step(1 / 600);
-  // cannonDebugRenderer.update();
+  cannonDebugRenderer.update();
 
   // if (atoms > 0 && atoms2 > 0) {
   //   updateInteractions();
