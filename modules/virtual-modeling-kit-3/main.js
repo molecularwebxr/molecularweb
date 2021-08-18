@@ -9,7 +9,7 @@ import {
 } from "./3Dutils.js";
 import { OrbitControls } from "/lib/utils/OrbitControls.js";
 
-var scene, camera, renderer, clock, deltaTime, totalTime;
+var scene, camera, renderer;
 var arToolkitSource, arToolkitContext;
 var patternArray, markerRootArray, markerGroupArray;
 var patternArray2, markerRootArray2, markerGroupArray2;
@@ -199,15 +199,9 @@ function initialize() {
   renderer.domElement.style.top = "0px";
   renderer.domElement.style.left = "0px";
   document.body.appendChild(renderer.domElement);
-  // controls = new OrbitControls(camera, renderer.domElement);
-  // controls.target.set(0, 0.75, -7);
-  // controls.update();
-
-  console.log(camera.position)
-
-  clock = new THREE.Clock();
-  deltaTime = 0;
-  totalTime = 0;
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.target.set(0, 0.75, -7);
+  controls.update();
 
   // setup arToolkitSource
   arToolkitSource = new THREEx.ArToolkitSource({
@@ -329,6 +323,54 @@ function initialize() {
   sceneGroup2 = new THREE.Group();
 
   cannonDebugRenderer = new THREE.CannonDebugRenderer(scene, world);
+
+  // Plane -x
+  var planeShapeXmin = new CANNON.Plane();
+  var planeXmin = new CANNON.Body({ mass: 0 });
+  planeXmin.addShape(planeShapeXmin);
+  planeXmin.quaternion.setFromEuler(0, Math.PI / 2, 0);
+  planeXmin.position.set(-5, 0, -9);
+  world.addBody(planeXmin);
+
+  // Plane +x
+  var planeShapeXmax = new CANNON.Plane();
+  var planeXmax = new CANNON.Body({ mass: 0 });
+  planeXmax.addShape(planeShapeXmax);
+  planeXmax.quaternion.setFromEuler(0, -Math.PI / 2, 0);
+  planeXmax.position.set(5, 0, -9);
+  world.addBody(planeXmax);
+
+  // Plane -z
+  var planeShapeZmin = new CANNON.Plane();
+  var planeZmin = new CANNON.Body({ mass: 0 });
+  planeZmin.addShape(planeShapeZmin);
+  planeZmin.quaternion.setFromEuler(0, -Math.PI, 0);
+  planeZmin.position.set(0, 0, -4);
+  world.addBody(planeZmin);
+
+  // Plane +z
+  var planeShapeZmax = new CANNON.Plane();
+  var planeZmax = new CANNON.Body({ mass: 0 });
+  planeZmax.addShape(planeShapeZmax);
+  planeZmax.quaternion.setFromEuler(0, 0, 0);
+  planeZmax.position.set(0, 0, -14);
+  world.addBody(planeZmax);
+
+  // Plane -y
+  var planeShapeYmin = new CANNON.Plane();
+  var planeYmin = new CANNON.Body({ mass: 0 });
+  planeYmin.addShape(planeShapeYmin);
+  planeYmin.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
+  planeYmin.position.set(0, -5, -9);
+  world.addBody(planeYmin);
+
+  // Plane +y
+  var planeShapeYmax = new CANNON.Plane();
+  var planeYmax = new CANNON.Body({ mass: 0 });
+  planeYmax.addShape(planeShapeYmax);
+  planeYmax.quaternion.setFromEuler(Math.PI / 2, 0, 0);
+  planeYmax.position.set(0, 5, -9);
+  world.addBody(planeYmax);
 }
 
 function update() {
@@ -350,47 +392,6 @@ function update() {
       break;
     }
   }
-
-  // Plane -x
-  var planeShapeXmin = new CANNON.Plane();
-  var planeXmin = new CANNON.Body({ mass: 0 });
-  planeXmin.addShape(planeShapeXmin);
-  planeXmin.quaternion.setFromEuler(0, Math.PI / 2, 0);
-  planeXmin.position.set(-2, 0, 0);
-  world.addBody(planeXmin);
-
-  // Plane +x
-  var planeShapeXmax = new CANNON.Plane();
-  var planeXmax = new CANNON.Body({ mass: 0 });
-  planeXmax.addShape(planeShapeXmax);
-  planeXmax.quaternion.setFromEuler(0, -Math.PI / 2, 0);
-  planeXmax.position.set(2, 0, 0);
-  world.addBody(planeXmax);
-
-  // Plane -z
-  var planeShapeZmin = new CANNON.Plane();
-  var planeZmin = new CANNON.Body({ mass: 0 });
-  planeZmin.addShape(planeShapeZmin);
-  planeZmin.quaternion.setFromEuler(0, 0, 0);
-  planeZmin.position.set(0, 0, -4);
-  // world.addBody(planeZmin);
-
-  // Plane +z
-  var planeShapeZmax = new CANNON.Plane();
-  var planeZmax = new CANNON.Body({ mass: 0 });
-  planeZmax.addShape(planeShapeZmax);
-  planeZmax.quaternion.setFromEuler(0, Math.PI, 0);
-  planeZmax.position.set(0, 0, -10);
-  // world.addBody(planeZmax);
-
-
-
-  // Floor
-  const floorGeometry = new THREE.PlaneGeometry(4, 4);
-  const floorMaterial = new THREE.MeshStandardMaterial({ color: 0x156289, side: THREE.DoubleSide });
-  const floor = new THREE.Mesh(floorGeometry, floorMaterial);
-  floor.rotation.x = -Math.PI / 2;
-  scene.add(floor);
 }
 
 function render() {
@@ -399,17 +400,11 @@ function render() {
 
 function animate() {
   requestAnimationFrame(animate);
-  deltaTime = clock.getDelta();
-  totalTime += deltaTime;
   world.step(1 / 600);
   cannonDebugRenderer.update();
 
   // if (atoms > 0 && atoms2 > 0) {
   //   updateInteractions();
-  // }
-
-  // if (atoms > 0) {
-  //   updateEnergies();
   // }
 
   updatePhysics();
@@ -535,22 +530,6 @@ function updatePhysics() {
         (pdb.atomBodies[i].velocity.z / velsum) * velsum_expected;
     }
 
-    // for (var i = 0; i < pdb.atoms; i++) {
-    //   mediax = mediax + pdb.atomBodies[i].position.x;
-    //   mediay = mediay + pdb.atomBodies[i].position.y;
-    //   mediaz = mediaz + pdb.atomBodies[i].position.z;
-    // }
-
-    // mediax = mediax / pdb.atoms;
-    // mediay = mediay / pdb.atoms;
-    // mediaz = mediaz / pdb.atoms;
-
-    // for (var i = 0; i < pdb.atoms; i++) {
-    //   pdb.atomBodies[i].position.x = pdb.atomBodies[i].position.x - mediax;
-    //   pdb.atomBodies[i].position.y = pdb.atomBodies[i].position.y - mediay;
-    //   pdb.atomBodies[i].position.z = pdb.atomBodies[i].position.z - mediaz;
-    // }
-
     for (var i = 0; i < pdb.atoms; i++) {
       pdb.atomMeshes[i].position.x = pdb.atomBodies[i].position.x;
       pdb.atomMeshes[i].position.y = pdb.atomBodies[i].position.y;
@@ -616,47 +595,6 @@ function updatePhysics() {
       bond.sticks[1].position.set(C.x, C.y, C.z);
     });
   });
-
-  // var cubePosition = new THREE.Vector3();
-  // sceneGroup.getWorldPosition(cubePosition);
-
-  // var cubeQuaternion = new THREE.Quaternion();
-  // sceneGroup.getWorldQuaternion(cubeQuaternion);
-
-  // if (isCube1Visible) {
-  //   for (var i = 0; i < atoms; i++) {
-  //     mediax = mediax + atomBodies[i].position.x;
-  //     mediay = mediay + atomBodies[i].position.y;
-  //     mediaz = mediaz + atomBodies[i].position.z;
-  //   }
-
-  //   mediax = mediax / atoms;
-  //   mediay = mediay / atoms;
-  //   mediaz = mediaz / atoms;
-
-  //   for (var i = 0; i < atoms; i++) {
-  //     atomBodies[i].position.x =
-  //       atomBodies[i].position.x + cubePosition.x - mediax;
-  //     atomBodies[i].position.y =
-  //       atomBodies[i].position.y + cubePosition.y - mediay;
-  //     atomBodies[i].position.z =
-  //       atomBodies[i].position.z + cubePosition.z - mediaz;
-  //   }
-  // }
-
-  // var q = new THREE.Quaternion();
-  // var inverse1 = new THREE.Quaternion();
-  // inverse1.copy(lastCubeQuaternion).invert();
-
-  // q.multiplyQuaternions(cubeQuaternion, inverse1);
-
-  // rotateBodies(
-  //   atomBodies,
-  //   q,
-  //   new CANNON.Vec3(cubePosition.x, cubePosition.y, cubePosition.z)
-  // );
-
-  // lastCubeQuaternion.copy(cubeQuaternion);
 }
 
 function loadPdb(rawPdb) {
@@ -1186,73 +1124,6 @@ function resetGeneral() {
   bridges = [];
 
   temperature = 0;
-}
-
-function updateEnergies() {
-  counter += 1;
-
-  if (counter === 30) {
-    var coordinates2 = [];
-    var species2 = [];
-
-    var coordinates1 = atomBodies.map(function (atom) {
-      return [
-        Math.round(atom.position.x * 100) / 100,
-        Math.round(atom.position.y * 100) / 100,
-        Math.round(atom.position.z * 100) / 100,
-      ];
-    });
-
-    var species1 = pdb.elements.map(function (element) {
-      return element + 1;
-    });
-
-    if (atoms2 > 0) {
-      var coordinates2 = atomBodies2.map(function (atom) {
-        return [
-          Math.round(atom.position.x * 100) / 100,
-          Math.round(atom.position.y * 100) / 100,
-          Math.round(atom.position.z * 100) / 100,
-        ];
-      });
-
-      var species2 = pdb2.elements.map(function (element) {
-        return element + 1;
-      });
-    }
-
-    var coordinates = [...coordinates1, ...coordinates2];
-    var species = [...species1, ...species2];
-
-    var data1 = {
-      coordinates: [coordinates],
-      species: [species],
-    };
-
-    fetch(" https://molecularweb.epfl.ch/backend2", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data1),
-    })
-      .then((response) => response.json())
-      .then((ani) => {
-        console.log(ani.energy);
-        var length = data.labels.length;
-        if (length >= 30) {
-          data.datasets[0].data.shift();
-          data.labels.shift();
-        }
-
-        data.labels.push(temperature);
-        data.datasets[0].data.push(Math.round(ani.energy * 627.509 * 10) / 10);
-
-        chart1.update();
-      });
-
-    counter = 0;
-  }
 }
 
 function openJme(e) {
