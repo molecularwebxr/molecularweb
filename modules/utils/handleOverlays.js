@@ -49,7 +49,7 @@ instructionsButton.addEventListener("toggleInstructions", hideInstructionsOverla
 descriptionButton.addEventListener("toggleDescription", hideDescriptionOverlay);
 menuButton.addEventListener("toggleMenu", hideMenuOverlay);
 
-if(window.location.pathname !== "/modules/virtual-modeling-kit/" && window.location.pathname !== "/modules/virtual-modeling-kit-2/") {
+if(window.location.pathname !== "/modules/virtual-modeling-kit/" && window.location.pathname !== "/modules/virtual-modeling-kit-2/" && window.location.pathname !== "/modules/virtual-modeling-kit-3/") {
   zoomMenu.addEventListener("click", handleZoomMenu);
   camMenu.addEventListener("click", handleCamMenu);
 }
