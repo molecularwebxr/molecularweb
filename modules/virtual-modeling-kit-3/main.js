@@ -94,7 +94,8 @@ var isBridgeActive = false;
 
 var cannonDebugRenderer;
 
-var counter = 0;
+var shouldDisplay = true;
+var interactionKeys = [ "oxygen", "nitrogen", "fluor", "sulfur", "chlorine", "bromine", "iodine" ];
 
 var lastCubeQuaternion = new THREE.Quaternion(0, 0, 0, 1);
 var lastCubeQuaternion2 = new THREE.Quaternion(0, 0, 0, 1);
@@ -403,9 +404,10 @@ function animate() {
   world.step(1 / 600);
   cannonDebugRenderer.update();
 
-  // if (atoms > 0 && atoms2 > 0) {
-  //   updateInteractions();
-  // }
+  if (shouldDisplay && pdbs.length === 1) {
+    updateInteractions();
+    shouldDisplay = false;
+  }
 
   updatePhysics();
   update();
@@ -413,87 +415,78 @@ function animate() {
 }
 
 function updateInteractions() {
-  interactiveAtoms1.hydrogen.forEach(function (hydrogensArr) {
-    interactiveAtoms2.oxygen.forEach(function (oxygenArr) {
-      handleInteraction(oxygenArr, 2, hydrogensArr);
-    });
 
-    interactiveAtoms2.nitrogen.forEach(function (nitrogenArr) {
-      handleInteraction(nitrogenArr, 2, hydrogensArr);
-    });
+  pdbs.forEach(function (pdb, index1, pdbsArray) {
+    pdb.interactiveAtoms.hydrogen.forEach(function (hydrogensArr) {
+      
+      pdbsArray.forEach(function (otherPdb, index2) {
+        if (index1 === index2) {
+          return;
+        }
 
-    interactiveAtoms2.fluor.forEach(function (fluorArr) {
-      handleInteraction(fluorArr, 2, hydrogensArr);
-    });
+        otherPdb.interactiveAtoms.oxygen.forEach(function(oxygenArr) {
+          handleInteraction(oxygenArr, index2, hydrogensArr);
+        });
 
-    interactiveAtoms2.sulfur.forEach(function (sulfurArr) {
-      handleInteraction(sulfurArr, 2, hydrogensArr);
-    });
+        otherPdb.interactiveAtoms.nitrogen.forEach(function(nitrogenArr) {
+          handleInteraction(nitrogenArr, index2, hydrogensArr);
+        });
+      });
 
-    interactiveAtoms2.chlorine.forEach(function (chlorineArr) {
-      handleInteraction(chlorineArr, 2, hydrogensArr);
-    });
-
-    interactiveAtoms2.bromine.forEach(function (bromineArr) {
-      handleInteraction(bromineArr, 2, hydrogensArr);
-    });
-
-    interactiveAtoms2.iodine.forEach(function (iodineArr) {
-      handleInteraction(iodineArr, 2, hydrogensArr);
     });
   });
 
-  interactiveAtoms2.hydrogen.forEach(function (hydrogensArr) {
-    interactiveAtoms1.oxygen.forEach(function (oxygenArr) {
-      handleInteraction(oxygenArr, 1, hydrogensArr);
-    });
+  // interactiveAtoms1.hydrogen.forEach(function (hydrogensArr) {
+  //   interactiveAtoms2.oxygen.forEach(function (oxygenArr) {
+  //     handleInteraction(oxygenArr, 2, hydrogensArr);
+  //   });
 
-    interactiveAtoms1.nitrogen.forEach(function (nitrogenArr) {
-      handleInteraction(nitrogenArr, 1, hydrogensArr);
-    });
+  //   interactiveAtoms2.nitrogen.forEach(function (nitrogenArr) {
+  //     handleInteraction(nitrogenArr, 2, hydrogensArr);
+  //   });
 
-    interactiveAtoms1.fluor.forEach(function (fluorArr) {
-      handleInteraction(fluorArr, 1, hydrogensArr);
-    });
+  //   interactiveAtoms2.fluor.forEach(function (fluorArr) {
+  //     handleInteraction(fluorArr, 2, hydrogensArr);
+  //   });
 
-    interactiveAtoms1.sulfur.forEach(function (sulfurArr) {
-      handleInteraction(sulfurArr, 1, hydrogensArr);
-    });
+  //   interactiveAtoms2.sulfur.forEach(function (sulfurArr) {
+  //     handleInteraction(sulfurArr, 2, hydrogensArr);
+  //   });
 
-    interactiveAtoms1.chlorine.forEach(function (chlorineArr) {
-      handleInteraction(chlorineArr, 1, hydrogensArr);
-    });
+  //   interactiveAtoms2.chlorine.forEach(function (chlorineArr) {
+  //     handleInteraction(chlorineArr, 2, hydrogensArr);
+  //   });
 
-    interactiveAtoms1.bromine.forEach(function (bromineArr) {
-      handleInteraction(bromineArr, 1, hydrogensArr);
-    });
+  //   interactiveAtoms2.bromine.forEach(function (bromineArr) {
+  //     handleInteraction(bromineArr, 2, hydrogensArr);
+  //   });
 
-    interactiveAtoms1.iodine.forEach(function (iodineArr) {
-      handleInteraction(iodineArr, 1, hydrogensArr);
-    });
-  });
+  //   interactiveAtoms2.iodine.forEach(function (iodineArr) {
+  //     handleInteraction(iodineArr, 2, hydrogensArr);
+  //   });
+  // });
 
-  if (!isInteractionActive) {
-    interactions1.forEach(function (interaction) {
-      interaction.constraint.disable();
-    });
+  // if (!isInteractionActive) {
+  //   interactions1.forEach(function (interaction) {
+  //     interaction.constraint.disable();
+  //   });
 
-    interactions2.forEach(function (interaction) {
-      interaction.constraint.disable();
-    });
-  } else {
-    interactions1.forEach(function (interaction) {
-      interaction.constraint.enable();
-    });
+  //   interactions2.forEach(function (interaction) {
+  //     interaction.constraint.disable();
+  //   });
+  // } else {
+  //   interactions1.forEach(function (interaction) {
+  //     interaction.constraint.enable();
+  //   });
 
-    interactions2.forEach(function (interaction) {
-      interaction.constraint.enable();
-    });
-  }
+  //   interactions2.forEach(function (interaction) {
+  //     interaction.constraint.enable();
+  //   });
+  // }
 
-  updateConnectors();
+  // updateConnectors();
 
-  updateClashes();
+  // updateClashes();
 }
 
 function updatePhysics() {
@@ -969,70 +962,70 @@ function updateClashes() {
 // cubeNumber corresponds to the cube where elementArr belongs
 // otherCube, otherMoleculeMeshes and otherMoleculeBodies corresponds to the other cube
 function handleInteraction(elementArr, cubeNumber, hydrogensArr) {
-  var element = elementArr[0];
+  // var element = elementArr[0];
 
-  var thisMoleculeMeshes = cubeNumber === 1 ? atomMeshes : atomMeshes2;
-  var otherMoleculeMeshes = cubeNumber === 2 ? atomMeshes : atomMeshes2;
+  // var thisMoleculeMeshes = cubeNumber === 1 ? atomMeshes : atomMeshes2;
+  // var otherMoleculeMeshes = cubeNumber === 2 ? atomMeshes : atomMeshes2;
 
-  var thisMoleculeBodies = cubeNumber === 1 ? atomBodies : atomBodies2;
-  var otherMoleculeBodies = cubeNumber === 2 ? atomBodies : atomBodies2;
+  // var thisMoleculeBodies = cubeNumber === 1 ? atomBodies : atomBodies2;
+  // var otherMoleculeBodies = cubeNumber === 2 ? atomBodies : atomBodies2;
 
-  var elementPosition = thisMoleculeMeshes[element].position;
+  // var elementPosition = thisMoleculeMeshes[element].position;
 
-  var hydrogen = hydrogensArr[0];
-  var hydrogenPosition = otherMoleculeMeshes[hydrogen].position;
+  // var hydrogen = hydrogensArr[0];
+  // var hydrogenPosition = otherMoleculeMeshes[hydrogen].position;
 
-  var interactions = cubeNumber === 1 ? interactions2 : interactions1;
-  var otherCube = cubeNumber === 1 ? 2 : 1;
+  // var interactions = cubeNumber === 1 ? interactions2 : interactions1;
+  // var otherCube = cubeNumber === 1 ? 2 : 1;
 
-  var interactionKey = `${hydrogen}-${element}`;
+  // var interactionKey = `${hydrogen}-${element}`;
 
-  // If the element exists returns index of the interaction
-  // If not, returns -1
-  var interactionIndex = interactions.findIndex(function (interaction) {
-    return interaction.key === interactionKey;
-  });
-  var interactionExists = interactionIndex !== -1;
+  // // If the element exists returns index of the interaction
+  // // If not, returns -1
+  // var interactionIndex = interactions.findIndex(function (interaction) {
+  //   return interaction.key === interactionKey;
+  // });
+  // var interactionExists = interactionIndex !== -1;
 
-  var bridgeKey = [...hydrogensArr, ...elementArr].sort().join("");
-  var isThereABridge = bridges.includes(bridgeKey);
-  var connectorExists = connectors.some(function (connector) {
-    return connector.key === bridgeKey;
-  });
+  // var bridgeKey = [...hydrogensArr, ...elementArr].sort().join("");
+  // var isThereABridge = bridges.includes(bridgeKey);
+  // var connectorExists = connectors.some(function (connector) {
+  //   return connector.key === bridgeKey;
+  // });
 
-  var distance = Math.sqrt(
-    Math.pow(hydrogenPosition.x - elementPosition.x, 2) +
-      Math.pow(hydrogenPosition.y - elementPosition.y, 2) +
-      Math.pow(hydrogenPosition.z - elementPosition.z, 2)
-  );
+  // var distance = Math.sqrt(
+  //   Math.pow(hydrogenPosition.x - elementPosition.x, 2) +
+  //     Math.pow(hydrogenPosition.y - elementPosition.y, 2) +
+  //     Math.pow(hydrogenPosition.z - elementPosition.z, 2)
+  // );
 
-  // Should we add/remove the interaction?
-  if (distance < minDistance) {
-    // Atoms are close but there's no constraint
-    if (!interactionExists && !isThereABridge) {
-      createInteraction(
-        otherCube,
-        interactionKey,
-        bridgeKey,
-        otherMoleculeBodies[hydrogen],
-        thisMoleculeBodies[element]
-      );
-    }
-  } else if (interactionExists) {
-    removeInteraction(otherCube, interactionIndex, bridgeKey);
-  }
+  // // Should we add/remove the interaction?
+  // if (distance < minDistance) {
+  //   // Atoms are close but there's no constraint
+  //   if (!interactionExists && !isThereABridge) {
+  //     createInteraction(
+  //       otherCube,
+  //       interactionKey,
+  //       bridgeKey,
+  //       otherMoleculeBodies[hydrogen],
+  //       thisMoleculeBodies[element]
+  //     );
+  //   }
+  // } else if (interactionExists) {
+  //   removeInteraction(otherCube, interactionIndex, bridgeKey);
+  // }
 
-  // Should we add/remove the connector
-  if (distance < bridgeDist && !connectorExists && interactionExists) {
-    addConnector(
-      otherMoleculeMeshes[hydrogen],
-      thisMoleculeMeshes[element],
-      bridgeKey
-    );
-  }
-  if (distance > bridgeDist && connectorExists && interactionExists) {
-    removeConnector(bridgeKey);
-  }
+  // // Should we add/remove the connector
+  // if (distance < bridgeDist && !connectorExists && interactionExists) {
+  //   addConnector(
+  //     otherMoleculeMeshes[hydrogen],
+  //     thisMoleculeMeshes[element],
+  //     bridgeKey
+  //   );
+  // }
+  // if (distance > bridgeDist && connectorExists && interactionExists) {
+  //   removeConnector(bridgeKey);
+  // }
 }
 
 function handleClashesChange(e) {
