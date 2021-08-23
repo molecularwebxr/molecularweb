@@ -331,7 +331,7 @@ function initialize() {
 
   sceneGroup2 = new THREE.Group();
 
-  cannonDebugRenderer = new THREE.CannonDebugRenderer(scene, world);
+  // cannonDebugRenderer = new THREE.CannonDebugRenderer(scene, world);
 
   // Plane -x
   var planeShapeXmin = new CANNON.Plane();
@@ -410,7 +410,7 @@ function render() {
 function animate() {
   requestAnimationFrame(animate);
   world.step(1 / 600);
-  cannonDebugRenderer.update();
+  // cannonDebugRenderer.update();
 
   updateInteractions();
 
@@ -468,23 +468,21 @@ function updateInteractions() {
   //   });
   // });
 
-  // if (!isInteractionActive) {
-  //   interactions1.forEach(function (interaction) {
-  //     interaction.constraint.disable();
-  //   });
+  if (!isInteractionActive) {
+    pdbs.forEach(function (pdb) {
+      pdb.interactions.forEach(function (interaction) {
+        interaction.constraint.disable();
+      });
+    });
+  } else {
+    pdbs.forEach(function (pdb) {
+      pdb.interactions.forEach(function (interaction) {
+        interaction.constraint.enable();
+      });
+    });
+  }
 
-  //   interactions2.forEach(function (interaction) {
-  //     interaction.constraint.disable();
-  //   });
-  // } else {
-  //   interactions1.forEach(function (interaction) {
-  //     interaction.constraint.enable();
-  //   });
-
-  //   interactions2.forEach(function (interaction) {
-  //     interaction.constraint.enable();
-  //   });
-  // }
+ 
 
   updateConnectors();
 
@@ -833,7 +831,7 @@ function createInteraction(hIndex, interactionKey, bridgeKey, bodyA, bodyB) {
 
   world.addConstraint(constraint);
 
-  console.log(constraint)
+  console.log(constraint);
 
   interactionsArr.push({
     key: interactionKey,
