@@ -66,6 +66,7 @@ function setupPdb(rawPdb) {
     zCoords: [],
     resnos: [],
     elements: [],
+    interactions: [],
     bonds: {},
     allBonds: {},
     atoms: 0,

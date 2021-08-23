@@ -95,7 +95,15 @@ var isBridgeActive = false;
 var cannonDebugRenderer;
 
 var shouldDisplay = true;
-var interactionKeys = [ "oxygen", "nitrogen", "fluor", "sulfur", "chlorine", "bromine", "iodine" ];
+var interactionKeys = [
+  "oxygen",
+  "nitrogen",
+  "fluor",
+  "sulfur",
+  "chlorine",
+  "bromine",
+  "iodine",
+];
 
 var lastCubeQuaternion = new THREE.Quaternion(0, 0, 0, 1);
 var lastCubeQuaternion2 = new THREE.Quaternion(0, 0, 0, 1);
@@ -415,24 +423,21 @@ function animate() {
 }
 
 function updateInteractions() {
-
   pdbs.forEach(function (pdb, index1, pdbsArray) {
     pdb.interactiveAtoms.hydrogen.forEach(function (hydrogensArr) {
-      
       pdbsArray.forEach(function (otherPdb, index2) {
         if (index1 === index2) {
           return;
         }
 
-        otherPdb.interactiveAtoms.oxygen.forEach(function(oxygenArr) {
-          handleInteraction(oxygenArr, index2, hydrogensArr);
+        otherPdb.interactiveAtoms.oxygen.forEach(function (oxygenArr) {
+          handleInteraction(oxygenArr, hydrogensArr);
         });
 
-        otherPdb.interactiveAtoms.nitrogen.forEach(function(nitrogenArr) {
-          handleInteraction(nitrogenArr, index2, hydrogensArr);
+        otherPdb.interactiveAtoms.nitrogen.forEach(function (nitrogenArr) {
+          handleInteraction(nitrogenArr, hydrogensArr, index2, index1);
         });
       });
-
     });
   });
 
@@ -959,39 +964,41 @@ function updateClashes() {
 
 // This function handle the interaction of an element with H
 // elementArr is the array of interacive atoms of a certain element
-// cubeNumber corresponds to the cube where elementArr belongs
-// otherCube, otherMoleculeMeshes and otherMoleculeBodies corresponds to the other cube
-function handleInteraction(elementArr, cubeNumber, hydrogensArr) {
-  // var element = elementArr[0];
+// elementIndex is the index of the molecule where this element belog in PDBS array
+// hydrogenIndex is the index of the molecule where H belongs in PDBS array
+function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
+  var element = elementArr[0];
 
-  // var thisMoleculeMeshes = cubeNumber === 1 ? atomMeshes : atomMeshes2;
-  // var otherMoleculeMeshes = cubeNumber === 2 ? atomMeshes : atomMeshes2;
+  var thisMoleculeMeshes = pdb[elementIndex].atomMeshes;
+  var otherMoleculeMeshes = pdb[hIndex].atomMeshes;
 
-  // var thisMoleculeBodies = cubeNumber === 1 ? atomBodies : atomBodies2;
-  // var otherMoleculeBodies = cubeNumber === 2 ? atomBodies : atomBodies2;
+  var thisMoleculeBodies = pdb[elementIndex].atomBodies;
+  var otherMoleculeBodies = pdb[hIndex].atomBodies;
 
-  // var elementPosition = thisMoleculeMeshes[element].position;
+  var elementPosition = thisMoleculeMeshes[element].position;
 
-  // var hydrogen = hydrogensArr[0];
-  // var hydrogenPosition = otherMoleculeMeshes[hydrogen].position;
+  var hydrogen = hydrogensArr[0];
+  var hydrogenPosition = otherMoleculeMeshes[hydrogen].position;
+
+  var interactions = pdb[hIndex].interactions;
 
   // var interactions = cubeNumber === 1 ? interactions2 : interactions1;
   // var otherCube = cubeNumber === 1 ? 2 : 1;
 
-  // var interactionKey = `${hydrogen}-${element}`;
+  var interactionKey = `${hydrogen}-${element}`;
 
   // // If the element exists returns index of the interaction
   // // If not, returns -1
-  // var interactionIndex = interactions.findIndex(function (interaction) {
-  //   return interaction.key === interactionKey;
-  // });
-  // var interactionExists = interactionIndex !== -1;
+  var interactionIndex = interactions.findIndex(function (interaction) {
+    return interaction.key === interactionKey;
+  });
+  var interactionExists = interactionIndex !== -1;
 
-  // var bridgeKey = [...hydrogensArr, ...elementArr].sort().join("");
-  // var isThereABridge = bridges.includes(bridgeKey);
-  // var connectorExists = connectors.some(function (connector) {
-  //   return connector.key === bridgeKey;
-  // });
+  var bridgeKey = [...hydrogensArr, ...elementArr].sort().join("");
+  var isThereABridge = bridges.includes(bridgeKey);
+  var connectorExists = connectors.some(function (connector) {
+    return connector.key === bridgeKey;
+  });
 
   // var distance = Math.sqrt(
   //   Math.pow(hydrogenPosition.x - elementPosition.x, 2) +
