@@ -412,7 +412,7 @@ function animate() {
   world.step(1 / 600);
   cannonDebugRenderer.update();
 
-  if (shouldDisplay && pdbs.length === 1) {
+  if (shouldDisplay && pdbs.length === 2) {
     updateInteractions();
     shouldDisplay = false;
   }
@@ -431,7 +431,7 @@ function updateInteractions() {
         }
 
         otherPdb.interactiveAtoms.oxygen.forEach(function (oxygenArr) {
-          handleInteraction(oxygenArr, hydrogensArr);
+          handleInteraction(oxygenArr, hydrogensArr, index2, index1);
         });
 
         otherPdb.interactiveAtoms.nitrogen.forEach(function (nitrogenArr) {
@@ -825,8 +825,8 @@ function rotateBodies(bodies, angle, pivotPosition) {
   });
 }
 
-function createInteraction(cubeIndex, interactionKey, bridgeKey, bodyA, bodyB) {
-  var interactionsArr = cubeIndex === 1 ? interactions1 : interactions2;
+function createInteraction(hIndex, interactionKey, bridgeKey, bodyA, bodyB) {
+  var interactionsArr = pdbs[hIndex].interactions;
   var constraint = new CANNON.DistanceConstraint(
     bodyA,
     bodyB,
@@ -836,6 +836,8 @@ function createInteraction(cubeIndex, interactionKey, bridgeKey, bodyA, bodyB) {
 
   world.addConstraint(constraint);
 
+  console.log(constraint)
+
   interactionsArr.push({
     key: interactionKey,
     constraint,
@@ -843,8 +845,8 @@ function createInteraction(cubeIndex, interactionKey, bridgeKey, bodyA, bodyB) {
   bridges.push(bridgeKey);
 }
 
-function removeInteraction(cubeIndex, interactionIndex, bridgeKey) {
-  var interactionsArr = cubeIndex === 1 ? interactions1 : interactions2;
+function removeInteraction(hIndex, interactionIndex, bridgeKey) {
+  var interactionsArr = pdbs[hIndex].interactions;
   var thisInteraction = interactionsArr[interactionIndex];
 
   world.removeConstraint(thisInteraction.constraint);
@@ -969,18 +971,18 @@ function updateClashes() {
 function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
   var element = elementArr[0];
 
-  var thisMoleculeMeshes = pdb[elementIndex].atomMeshes;
-  var otherMoleculeMeshes = pdb[hIndex].atomMeshes;
+  var thisMoleculeMeshes = pdbs[elementIndex].atomMeshes;
+  var otherMoleculeMeshes = pdbs[hIndex].atomMeshes;
 
-  var thisMoleculeBodies = pdb[elementIndex].atomBodies;
-  var otherMoleculeBodies = pdb[hIndex].atomBodies;
+  var thisMoleculeBodies = pdbs[elementIndex].atomBodies;
+  var otherMoleculeBodies = pdbs[hIndex].atomBodies;
 
   var elementPosition = thisMoleculeMeshes[element].position;
 
   var hydrogen = hydrogensArr[0];
   var hydrogenPosition = otherMoleculeMeshes[hydrogen].position;
 
-  var interactions = pdb[hIndex].interactions;
+  var interactions = pdbs[hIndex].interactions;
 
   // var interactions = cubeNumber === 1 ? interactions2 : interactions1;
   // var otherCube = cubeNumber === 1 ? 2 : 1;
@@ -1000,27 +1002,29 @@ function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
     return connector.key === bridgeKey;
   });
 
-  // var distance = Math.sqrt(
-  //   Math.pow(hydrogenPosition.x - elementPosition.x, 2) +
-  //     Math.pow(hydrogenPosition.y - elementPosition.y, 2) +
-  //     Math.pow(hydrogenPosition.z - elementPosition.z, 2)
-  // );
+  var distance = Math.sqrt(
+    Math.pow(hydrogenPosition.x - elementPosition.x, 2) +
+      Math.pow(hydrogenPosition.y - elementPosition.y, 2) +
+      Math.pow(hydrogenPosition.z - elementPosition.z, 2)
+  );
 
-  // // Should we add/remove the interaction?
-  // if (distance < minDistance) {
-  //   // Atoms are close but there's no constraint
-  //   if (!interactionExists && !isThereABridge) {
-  //     createInteraction(
-  //       otherCube,
-  //       interactionKey,
-  //       bridgeKey,
-  //       otherMoleculeBodies[hydrogen],
-  //       thisMoleculeBodies[element]
-  //     );
-  //   }
-  // } else if (interactionExists) {
-  //   removeInteraction(otherCube, interactionIndex, bridgeKey);
-  // }
+  console.log(distance)
+
+  // Should we add/remove the interaction?
+  if (distance < minDistance) {
+    // Atoms are close but there's no constraint
+    if (!interactionExists && !isThereABridge) {
+      createInteraction(
+        hIndex,
+        interactionKey,
+        bridgeKey,
+        otherMoleculeBodies[hydrogen],
+        thisMoleculeBodies[element]
+      );
+    }
+  } else if (interactionExists) {
+    removeInteraction(hIndex, interactionIndex, bridgeKey);
+  }
 
   // // Should we add/remove the connector
   // if (distance < bridgeDist && !connectorExists && interactionExists) {
