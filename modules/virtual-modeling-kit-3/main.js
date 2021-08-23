@@ -90,7 +90,7 @@ var isCube2Visible = false;
 
 var isClashingActive = false;
 var isInteractionActive = false;
-var isBridgeActive = false;
+var isBridgeActive = true;
 
 var cannonDebugRenderer;
 
@@ -412,10 +412,7 @@ function animate() {
   world.step(1 / 600);
   cannonDebugRenderer.update();
 
-  if (shouldDisplay && pdbs.length === 2) {
-    updateInteractions();
-    shouldDisplay = false;
-  }
+  updateInteractions();
 
   updatePhysics();
   update();
@@ -489,7 +486,7 @@ function updateInteractions() {
   //   });
   // }
 
-  // updateConnectors();
+  updateConnectors();
 
   // updateClashes();
 }
@@ -1008,8 +1005,6 @@ function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
       Math.pow(hydrogenPosition.z - elementPosition.z, 2)
   );
 
-  console.log(distance)
-
   // Should we add/remove the interaction?
   if (distance < minDistance) {
     // Atoms are close but there's no constraint
@@ -1026,17 +1021,17 @@ function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
     removeInteraction(hIndex, interactionIndex, bridgeKey);
   }
 
-  // // Should we add/remove the connector
-  // if (distance < bridgeDist && !connectorExists && interactionExists) {
-  //   addConnector(
-  //     otherMoleculeMeshes[hydrogen],
-  //     thisMoleculeMeshes[element],
-  //     bridgeKey
-  //   );
-  // }
-  // if (distance > bridgeDist && connectorExists && interactionExists) {
-  //   removeConnector(bridgeKey);
-  // }
+  // Should we add/remove the connector
+  if (distance < bridgeDist && !connectorExists && interactionExists) {
+    addConnector(
+      otherMoleculeMeshes[hydrogen],
+      thisMoleculeMeshes[element],
+      bridgeKey
+    );
+  }
+  if (distance > bridgeDist && connectorExists && interactionExists) {
+    removeConnector(bridgeKey);
+  }
 }
 
 function handleClashesChange(e) {
