@@ -83,30 +83,15 @@ var interactiveAtoms2;
 var interactions2 = [];
 var atoms2 = 0;
 
-var selectedMarker = 1;
-
 var isCube1Visible = false;
 var isCube2Visible = false;
 
 var isClashingActive = false;
 var isInteractionActive = false;
-var isBridgeActive = true;
+var isBridgeActive = false;
 
 var cannonDebugRenderer;
 
-var shouldDisplay = true;
-var interactionKeys = [
-  "oxygen",
-  "nitrogen",
-  "fluor",
-  "sulfur",
-  "chlorine",
-  "bromine",
-  "iodine",
-];
-
-var lastCubeQuaternion = new THREE.Quaternion(0, 0, 0, 1);
-var lastCubeQuaternion2 = new THREE.Quaternion(0, 0, 0, 1);
 var sphereGeometry = new THREE.SphereBufferGeometry(0.05, 32, 16);
 var sphereMaterial = new THREE.MeshLambertMaterial({ color: "yellow" });
 var dummy = new THREE.Object3D();
