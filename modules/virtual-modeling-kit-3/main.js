@@ -609,7 +609,6 @@ function loadPdb(rawPdb) {
   pdbs.push(newPdb);
   console.log(pdbs);
 
-  switchFlip1.disabled = false;
   switchSpheres1.disabled = false;
 }
 
@@ -724,51 +723,28 @@ function handlePlayTemp(e) {
 }
 
 function handleRenderType(e) {
-  var markerSelected;
-  if (e.target.id === "switch-spheres-1") {
-    markerSelected = 1;
-  } else {
-    markerSelected = 2;
-  }
-
   var isChecked = e.target.checked;
 
-  if (markerSelected === 1) {
-    if (isChecked) {
-      sticks.forEach(function (bond) {
+  if (isChecked) {
+    pdbs.forEach(function (pdb) {
+      pdb.sticks.forEach(function (bond) {
         bond.visible = false;
       });
-      atomMeshes.forEach(function (atom, index) {
+      pdb.atomMeshes.forEach(function (atom, index) {
         var scale = radiusfactor2 * elementradii[pdb.elements[index]];
         atom.scale.setScalar(scale);
       });
-    } else {
-      sticks.forEach(function (bond) {
+    });
+  } else {
+    pdbs.forEach(function (pdb) {
+      pdb.sticks.forEach(function (bond) {
         bond.visible = true;
       });
-      atomMeshes.forEach(function (atom, index) {
+      pdb.atomMeshes.forEach(function (atom, index) {
         var scale = radiusfactor1 * elementradii[pdb.elements[index]];
         atom.scale.setScalar(scale);
       });
-    }
-  } else {
-    if (isChecked) {
-      sticks2.forEach(function (bond) {
-        bond.visible = false;
-      });
-      atomMeshes2.forEach(function (atom, index) {
-        var scale = radiusfactor2 * elementradii[pdb2.elements[index]];
-        atom.scale.setScalar(scale);
-      });
-    } else {
-      sticks2.forEach(function (bond) {
-        bond.visible = true;
-      });
-      atomMeshes2.forEach(function (atom, index) {
-        var scale = radiusfactor1 * elementradii[pdb2.elements[index]];
-        atom.scale.setScalar(scale);
-      });
-    }
+    });
   }
 }
 
