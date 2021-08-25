@@ -463,7 +463,7 @@ function updateInteractions() {
 
   updateConnectors();
 
-  // updateClashes();
+  updateClashes();
 }
 
 function updatePhysics() {
@@ -607,7 +607,6 @@ function loadPdb(rawPdb) {
   }
 
   pdbs.push(newPdb);
-  console.log(pdbs);
 
   switchSpheres1.disabled = false;
 }
@@ -784,8 +783,6 @@ function createInteraction(hIndex, interactionKey, bridgeKey, bodyA, bodyB) {
 
   world.addConstraint(constraint);
 
-  console.log(constraint);
-
   interactionsArr.push({
     key: interactionKey,
     constraint,
@@ -854,62 +851,43 @@ function updateConnectors() {
 
 function updateClashes() {
   if (!isClashingActive) {
-    clashMeshes.forEach(function (mesh) {
-      mesh.visible = false;
+    pdbs.forEach(function (pdb) {
+      pdb.clashMeshes.forEach(function (mesh) {
+        mesh.visible = false;
+      });
     });
-
-    clashMeshes2.forEach(function (mesh) {
-      mesh.visible = false;
-    });
-
     return;
   }
 
-  for (let i = 0; i < atoms; i++) {
-    var atomPosition = atomMeshes[i].position;
-    var isAtom1Clashing = false;
-    for (let j = 0; j < atoms2; j++) {
-      var atomPosition2 = atomMeshes2[j].position;
+  pdbs.forEach(function (pdb, pdbIndex) {
+    pdb.atomMeshes.forEach(function (atomMesh, index1) {
+      var atomPosition = atomMesh.position;
+      var element1 = pdb.elements[index1];
+      var isAtomClashing = false;
+      pdbs.forEach(function (otherPdb, otherPdbIndex) {
+        otherPdb.atomMeshes.forEach(function (otherMesh, index2) {
+          if (pdbIndex === otherPdbIndex) {
+            return;
+          }
+          var atomPosition2 = otherMesh.position;
+          var element2 = otherPdb.elements[index2];
 
-      var distance = Math.sqrt(
-        Math.pow(atomPosition.x - atomPosition2.x, 2) +
-          Math.pow(atomPosition.y - atomPosition2.y, 2) +
-          Math.pow(atomPosition.z - atomPosition2.z, 2)
-      );
+          var distance = Math.sqrt(
+            Math.pow(atomPosition.x - atomPosition2.x, 2) +
+              Math.pow(atomPosition.y - atomPosition2.y, 2) +
+              Math.pow(atomPosition.z - atomPosition2.z, 2)
+          );
+          var cutOff = elementradii[element1] + elementradii[element2];
 
-      var cutOff =
-        elementradii[pdb.elements[i]] + elementradii[pdb2.elements[j]];
-
-      if (distance < cutOff * 1.2) {
-        var isAtom1Clashing = true;
-        break;
-      }
-    }
-    clashMeshes[i].visible = isAtom1Clashing;
-  }
-
-  for (let i = 0; i < atoms2; i++) {
-    var atomPosition = atomMeshes2[i].position;
-    var isAtom2Clashing = false;
-    for (let j = 0; j < atoms; j++) {
-      var atomPosition2 = atomMeshes[j].position;
-
-      var distance = Math.sqrt(
-        Math.pow(atomPosition.x - atomPosition2.x, 2) +
-          Math.pow(atomPosition.y - atomPosition2.y, 2) +
-          Math.pow(atomPosition.z - atomPosition2.z, 2)
-      );
-
-      var cutOff =
-        elementradii[pdb2.elements[i]] + elementradii[pdb.elements[j]];
-
-      if (distance < cutOff * 1.2) {
-        var isAtom2Clashing = true;
-        break;
-      }
-    }
-    clashMeshes2[i].visible = isAtom2Clashing;
-  }
+          if (distance < cutOff * 1.2) {
+            isAtomClashing = true;
+            return;
+          }
+        });
+      });
+      pdb.clashMeshes[index1].visible = isAtomClashing;
+    });
+  });
 }
 
 // This function handle the interaction of an element with H
