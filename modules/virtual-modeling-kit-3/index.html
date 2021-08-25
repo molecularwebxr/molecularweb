@@ -140,7 +140,6 @@
     <!-- Interaction controls -->
     <div id="interaction-container" class="interaction-controls hide column">
       <div class="triangle-temp"></div>
-
       <p class="interaction-control-title" data-i18n="orbitals.modelingKit.mechanics"></p>
       <div class="interaction-control row">
         <p data-i18n="orbitals.modelingKit.electrostatics"></p>
@@ -160,18 +159,14 @@
           <label for="switch-bridge" class="switch-label">Switch</label>
         </div>
       </div>
-      <div class="interaction-control row no-margin">
+      <div class="interaction-control row">
         <p data-i18n="orbitals.modelingKit.clashes"></p>
         <div class="switch">
           <input id="switch-clashes" type="checkbox" class="switch-input" />
           <label for="switch-clashes" class="switch-label">Switch</label>
         </div>
       </div>
-
-      <div class="line horizontal long"></div>
-
-      <p class="interaction-control-title" data-i18n="[prepend]orbitals.modelingKit.marker"><span>1</span></p>
-      <div class="interaction-control row">
+      <div class="interaction-control row no-margin">
         <p data-i18n="orbitals.modelingKit.showSpheres"></p>
         <div class="switch">
           <input
@@ -183,93 +178,51 @@
           <label for="switch-spheres-1" class="switch-label">Switch</label>
         </div>
       </div>
-      <div class="interaction-control row no-margin">
-        <p data-i18n="app.flipMolecule"></p>
-        <div class="switch">
-          <input
-            id="switch-flip-1"
-            type="checkbox"
-            disabled
-            class="switch-input"
-          />
-          <label for="switch-flip-1" class="switch-label">Switch</label>
-        </div>
-      </div>
-
-      <div class="line horizontal long"></div>
-
-      <p class="interaction-control-title" data-i18n="[prepend]orbitals.modelingKit.marker"><span>2</span></p>
-      <div class="interaction-control row">
-        <p data-i18n="orbitals.modelingKit.showSpheres"></p>
-        <div class="switch">
-          <input
-            id="switch-spheres-2"
-            type="checkbox"
-            disabled
-            class="switch-input"
-          />
-          <label for="switch-spheres-2" class="switch-label">Switch</label>
-        </div>
-      </div>
-      <div class="interaction-control row no-margin">
-        <p data-i18n="app.flipMolecule"></p>
-        <div class="switch">
-          <input
-            id="switch-flip-2"
-            type="checkbox"
-            disabled
-            class="switch-input"
-          />
-          <label for="switch-flip-2" class="switch-label">Switch</label>
-        </div>
-      </div>
 
        <!-- Temperature controls -->
-    <div id="temp-container" class="temperature-container hide column">
-      <temp-control
-        class="small-icon-margin small-icon-margin-bottom"
-        size="big"
-        type="increase"
-      ></temp-control>
-      <temp-control
-        class="small-icon-margin small-icon-margin-bottom"
-        size="medium"
-        type="increase"
-      ></temp-control>
-      <temp-control
-        size="small"
-        type="increase"
-        class="small-icon-margin"
-      ></temp-control>
+      <div id="temp-container" class="temperature-container hide column">
+        <temp-control
+          class="small-icon-margin small-icon-margin-bottom"
+          size="big"
+          type="increase"
+        ></temp-control>
+        <temp-control
+          class="small-icon-margin small-icon-margin-bottom"
+          size="medium"
+          type="increase"
+        ></temp-control>
+        <temp-control
+          size="small"
+          type="increase"
+          class="small-icon-margin"
+        ></temp-control>
 
-      <div class="line horizontal"></div>
+        <div class="line horizontal"></div>
 
-      <temp-control
-        class="small-icon-margin small-icon-margin-bottom"
-        size="small"
-        type="decrease"
-      ></temp-control>
-      <temp-control
-        class="small-icon-margin small-icon-margin-bottom"
-        size="medium"
-        type="decrease"
-      ></temp-control>
-      <temp-control
-        size="big"
-        type="decrease"
-        class="small-icon-margin"
-      ></temp-control>
+        <temp-control
+          class="small-icon-margin small-icon-margin-bottom"
+          size="small"
+          type="decrease"
+        ></temp-control>
+        <temp-control
+          class="small-icon-margin small-icon-margin-bottom"
+          size="medium"
+          type="decrease"
+        ></temp-control>
+        <temp-control
+          size="big"
+          type="decrease"
+          class="small-icon-margin"
+        ></temp-control>
 
-      <div class="line horizontal"></div>
+        <div class="line horizontal"></div>
 
-      <div class="temp-controls row">
-        <stop-temp class="right-margin"></stop-temp>
-        <play-temp></play-temp>
+        <div class="temp-controls row">
+          <stop-temp class="right-margin"></stop-temp>
+          <play-temp></play-temp>
+        </div>
       </div>
     </div>
-    </div>
-
-   
 
     <!-- Menu for loading PDBs -->
     <div class="modeling-container" id="mk-menu">

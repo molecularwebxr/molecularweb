@@ -32,9 +32,6 @@ var switchInteractions = document.getElementById("switch-interactions");
 var switchBridge = document.getElementById("switch-bridge");
 var switchClashes = document.getElementById("switch-clashes");
 var switchSpheres1 = document.getElementById("switch-spheres-1");
-var switchSpheres2 = document.getElementById("switch-spheres-2");
-var switchFlip1 = document.getElementById("switch-flip-1");
-var switchFlip2 = document.getElementById("switch-flip-2");
 var jmeBtn = document.getElementById("jme-btn");
 var jmeBtnClose = document.getElementById("jsme-btn-close");
 var jmeModal = document.getElementById("jsme-container");
@@ -107,9 +104,6 @@ switchClashes.addEventListener("change", handleClashesChange);
 switchInteractions.addEventListener("change", handleInteractionsChange);
 switchBridge.addEventListener("change", handleBridgeChange);
 switchSpheres1.addEventListener("change", handleRenderType);
-switchSpheres2.addEventListener("change", handleRenderType);
-switchFlip1.addEventListener("change", handleFlip);
-switchFlip2.addEventListener("change", handleFlip);
 jmeBtn.addEventListener("click", openJme);
 jmeBtnClose.addEventListener("click", closeJme);
 jmeSearch.addEventListener("click", searchMol);
@@ -466,8 +460,6 @@ function updateInteractions() {
       });
     });
   }
-
- 
 
   updateConnectors();
 
