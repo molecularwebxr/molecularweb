@@ -7,7 +7,7 @@ import {
   radiusfactor1,
   radiusfactor2,
 } from "./3Dutils.js";
-import { OrbitControls } from "/lib/utils/OrbitControls.js";
+// import { OrbitControls } from "/lib/utils/OrbitControls.js";
 
 var scene, camera, renderer;
 var arToolkitSource, arToolkitContext;
@@ -92,6 +92,8 @@ var cannonDebugRenderer;
 var sphereGeometry = new THREE.SphereBufferGeometry(0.05, 32, 16);
 var sphereMaterial = new THREE.MeshLambertMaterial({ color: "yellow" });
 var dummy = new THREE.Object3D();
+
+var sphere, sphereBody;
 
 addMolecule.addEventListener("click", handleClick);
 flipVideo.addEventListener("flipCamera", handleFlip);
@@ -187,9 +189,9 @@ function initialize() {
   renderer.domElement.style.top = "0px";
   renderer.domElement.style.left = "0px";
   document.body.appendChild(renderer.domElement);
-  controls = new OrbitControls(camera, renderer.domElement);
-  controls.target.set(0, 0.75, -7);
-  controls.update();
+  // controls = new OrbitControls(camera, renderer.domElement);
+  // controls.target.set(0, 0.75, -7);
+  // controls.update();
 
   // setup arToolkitSource
   arToolkitSource = new THREEx.ArToolkitSource({
@@ -270,6 +272,20 @@ function initialize() {
 
   // setup scene
   sceneGroup = new THREE.Group();
+  sceneGroup.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
+
+  var sphereGeometry = new THREE.SphereBufferGeometry(1, 32, 16);
+  var sphereMaterial = new THREE.MeshNormalMaterial();
+  sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+  sceneGroup.add(sphere);
+
+  var sphereShape = new CANNON.Sphere(0.5);
+  sphereBody = new CANNON.Body({
+    mass: 0,
+    shape: sphereShape,
+  });
+  sphereBody.position.copy(sphere.position);
+  world.addBody(sphereBody);
 
   let pointLight = new THREE.PointLight(0xffffff, 1, 50);
   pointLight.position.set(0.5, 3, 2);
@@ -467,6 +483,11 @@ function updateInteractions() {
 }
 
 function updatePhysics() {
+
+  var spherePos = new THREE.Vector3();
+  sphere.getWorldPosition(spherePos);
+  sphereBody.position.copy(spherePos);
+
   pdbs.forEach(function (pdb) {
     var velsum = 0;
     var mediax = 0;
