@@ -274,12 +274,12 @@ function initialize() {
   sceneGroup = new THREE.Group();
   sceneGroup.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
 
-  var sphereGeometry = new THREE.SphereBufferGeometry(1, 32, 16);
+  var sphereGeometry = new THREE.SphereBufferGeometry(0.5, 32, 16);
   var sphereMaterial = new THREE.MeshNormalMaterial();
   sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
   sceneGroup.add(sphere);
 
-  var sphereShape = new CANNON.Sphere(0.5);
+  var sphereShape = new CANNON.Sphere(0.25);
   sphereBody = new CANNON.Body({
     mass: 0,
     shape: sphereShape,
@@ -480,13 +480,40 @@ function updateInteractions() {
   updateConnectors();
 
   updateClashes();
+
+  updateCubeControls();
 }
 
-function updatePhysics() {
+var constraintExists = false
 
+function updateCubeControls() {
   var spherePos = new THREE.Vector3();
   sphere.getWorldPosition(spherePos);
   sphereBody.position.copy(spherePos);
+
+  pdbs.forEach(function (pdb, pdbIndex) {
+    pdb.atomMeshes.forEach(function (atom, atomIndex) {
+      var distance = Math.sqrt(
+        Math.pow(spherePos.x - atom.position.x, 2) +
+          Math.pow(spherePos.y - atom.position.y, 2) +
+          Math.pow(spherePos.z - atom.position.z, 2)
+      );
+      if (distance < 0.8 && !constraintExists) {
+        var constraint = new CANNON.DistanceConstraint(
+          pdb.atomBodies[atomIndex],
+          sphereBody,
+          undefined,
+          10000
+        );
+        world.addConstraint(constraint);
+        constraintExists = true;
+        console.log(`${pdbIndex}-${atomIndex}`)
+      }
+    });
+  });
+}
+
+function updatePhysics() {
 
   pdbs.forEach(function (pdb) {
     var velsum = 0;
