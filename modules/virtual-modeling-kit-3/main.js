@@ -91,6 +91,7 @@ var cannonDebugRenderer;
 
 var sphereGeometry = new THREE.SphereBufferGeometry(0.05, 32, 16);
 var sphereMaterial = new THREE.MeshLambertMaterial({ color: "yellow" });
+var sphereMaterial2 = new THREE.MeshLambertMaterial({ color: "green" });
 var dummy = new THREE.Object3D();
 
 var sphere, sphereBody;
@@ -138,32 +139,6 @@ var world = new CANNON.World();
 world.gravity.set(0, 0, 0);
 world.broadphase = new CANNON.NaiveBroadphase();
 world.solver.iterations = 10;
-
-var ctx = document.getElementById("chart1").getContext("2d");
-var data = {
-  labels: [],
-  datasets: [
-    {
-      data: [],
-      label: "Energy",
-      // backgroundColor: '#F44436',
-      borderColor: "#F44436",
-      pointBackgroundColor: "#F44436",
-    },
-  ],
-};
-var optionsAnimations = {
-  animation: false,
-  legend: {
-    display: false,
-  },
-  responsive: true,
-};
-var chart1 = new Chart(ctx, {
-  type: "line",
-  data: data,
-  options: optionsAnimations,
-});
 
 initialize();
 animate();
@@ -275,8 +250,8 @@ function initialize() {
   sceneGroup.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
 
   var sphereGeometry = new THREE.SphereBufferGeometry(0.5, 32, 16);
-  var sphereMaterial = new THREE.MeshNormalMaterial();
-  sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+  var sphereNormalMaterial = new THREE.MeshNormalMaterial();
+  sphere = new THREE.Mesh(sphereGeometry, sphereNormalMaterial);
   sceneGroup.add(sphere);
 
   var sphereShape = new CANNON.Sphere(0.25);
@@ -498,21 +473,47 @@ function updateCubeControls() {
           Math.pow(spherePos.y - atom.position.y, 2) +
           Math.pow(spherePos.z - atom.position.z, 2)
       );
+      
       if (distance < 0.8 && !constraintExists) {
+        var mesh = new THREE.InstancedMesh(sphereGeometry, sphereMaterial2, 9);
+        mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage); // will be updated every frame     
+
         var constraint = new CANNON.DistanceConstraint(
           pdb.atomBodies[atomIndex],
           sphereBody,
           undefined,
           10000
         );
+
+        scene.add(mesh);
         world.addConstraint(constraint);
         constraintExists = true;
         constraints.push({
+          meshA: sphere,
+          meshB: atom,
+          mesh,
           constraint,
           key: `${pdbIndex}-${atomIndex}`
-        })
+        });
       }
     });
+  });
+
+  constraints.forEach(function (constraint) {
+    for (let index = 1; index < 10; index++) {
+      var p0 = new THREE.Vector3();
+      var p1 = new THREE.Vector3();
+      var pf = new THREE.Vector3();
+
+      p0.setFromMatrixPosition(constraint.meshA.matrixWorld);
+      p1.setFromMatrixPosition(constraint.meshB.matrixWorld);
+      pf.lerpVectors(p0, p1, index / 10);
+
+      dummy.position.copy(pf);
+      dummy.updateMatrix();
+      constraint.mesh.setMatrixAt(index, dummy.matrix);
+    }
+    constraint.mesh.instanceMatrix.needsUpdate = true;
   });
 }
 
@@ -796,31 +797,6 @@ function handleRenderType(e) {
       });
     });
   }
-}
-
-function rotateBodies(bodies, angle, pivotPosition) {
-  var rotation = new CANNON.Quaternion();
-  rotation.x = angle.x;
-  rotation.y = angle.y;
-  rotation.z = angle.z;
-  rotation.w = angle.w;
-
-  var pivot = new CANNON.Vec3();
-  pivot.x = pivotPosition.x;
-  pivot.y = pivotPosition.y;
-  pivot.z = pivotPosition.z;
-  // pivot.copy(pivotPosition);
-
-  var rotVector = new CANNON.Vec3();
-
-  bodies.forEach(function (body) {
-    // rotate body orientation
-    body.quaternion = rotation.mult(body.quaternion);
-
-    // rotate body position in pivot frame and add pivotBody position
-    rotation.vmult(body.position.vsub(pivot), rotVector);
-    rotVector.vadd(pivot, body.position);
-  });
 }
 
 function createInteraction(hIndex, interactionKey, bridgeKey, bodyA, bodyB) {
