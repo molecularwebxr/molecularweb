@@ -507,7 +507,10 @@ function updateCubeControls() {
         );
         world.addConstraint(constraint);
         constraintExists = true;
-        console.log(`${pdbIndex}-${atomIndex}`)
+        constraints.push({
+          constraint,
+          key: `${pdbIndex}-${atomIndex}`
+        })
       }
     });
   });
