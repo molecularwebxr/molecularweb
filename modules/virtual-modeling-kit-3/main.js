@@ -129,29 +129,30 @@ window.addEventListener("markerFound", function (e) {
 });
 window.addEventListener("markerLost", function (e) {
   if (e.detail.id < 6) {
-    console.log("1 lost")
     isCube1Visible = false;
     spheres.forEach(function (sphere, index) {
       if (index <= 1) {
-        if(sphere.constraint !== null) {
+        if (sphere.constraint !== null) {
           world.removeConstraint(sphere.constraint.cannonConstraint);
           sphere.constraint.mesh.dispose();
           scene.remove(sphere.constraint.mesh);
           sphere.constraint = null;
         }
       }
-    })
+    });
   }
   if (e.detail.id > 5) {
     isCube2Visible = false;
-    if (index > 1) {
-      if(sphere.constraint !== null) {
-        world.removeConstraint(sphere.constraint.cannonConstraint);
-        sphere.constraint.mesh.dispose();
-        scene.remove(sphere.constraint.mesh);
-        sphere.constraint = null;
+    spheres.forEach(function (sphere, index) {
+      if (index > 1) {
+        if (sphere.constraint !== null) {
+          world.removeConstraint(sphere.constraint.cannonConstraint);
+          sphere.constraint.mesh.dispose();
+          scene.remove(sphere.constraint.mesh);
+          sphere.constraint = null;
+        }
       }
-    }
+    });
   }
 });
 
@@ -268,6 +269,8 @@ function initialize() {
   // setup scene
   sceneGroup = new THREE.Group();
   sceneGroup.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
+  sceneGroup2 = new THREE.Group();
+  sceneGroup2.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
 
   var sphereGeometry = new THREE.SphereBufferGeometry(0.5, 32, 16);
   var sphereNormalMaterial = new THREE.MeshNormalMaterial();
@@ -302,6 +305,38 @@ function initialize() {
   spheres.push({
     mesh: sphere2,
     body: sphereBody2,
+    constraint: null,
+  });
+
+  var sphere3 = new THREE.Mesh(sphereGeometry, sphereNormalMaterial);
+  sphere3.position.set(-0.7, 0, 0);
+  var sphereBody3 = new CANNON.Body({
+    mass: 0,
+    shape: sphereShape,
+  });
+
+  sceneGroup2.add(sphere3);
+  sphereBody3.position.copy(sphere3.position);
+  world.addBody(sphereBody3);
+  spheres.push({
+    mesh: sphere3,
+    body: sphereBody3,
+    constraint: null,
+  });
+
+  var sphere4 = new THREE.Mesh(sphereGeometry, sphereNormalMaterial);
+  sphere4.position.set(0.7, 0, 0);
+  var sphereBody4 = new CANNON.Body({
+    mass: 0,
+    shape: sphereShape,
+  });
+
+  sceneGroup2.add(sphere4);
+  sphereBody4.position.copy(sphere4.position);
+  world.addBody(sphereBody4);
+  spheres.push({
+    mesh: sphere4,
+    body: sphereBody4,
     constraint: null,
   });
 
@@ -341,8 +376,6 @@ function initialize() {
 
     markerRoot2.add(markerGroup2);
   }
-
-  sceneGroup2 = new THREE.Group();
 
   // cannonDebugRenderer = new THREE.CannonDebugRenderer(scene, world);
 
@@ -505,14 +538,13 @@ function updateInteractions() {
 function updateCubeControls() {
   var spherePos = new THREE.Vector3();
 
-  if(!isCube1Visible && ! isCube2Visible) {
+  if (!isCube1Visible && !isCube2Visible) {
     return;
   }
 
   spheres.forEach(function (sphere, sphereIndex) {
-
-    if(!isCube1Visible && sphereIndex <= 1) return; 
-    if(!isCube2Visible && sphereIndex > 1) return; 
+    if (!isCube1Visible && sphereIndex <= 1) return;
+    if (!isCube2Visible && sphereIndex > 1) return;
 
     sphere.mesh.getWorldPosition(spherePos);
     sphere.body.position.copy(spherePos);
@@ -539,18 +571,17 @@ function updateCubeControls() {
           var p0 = new THREE.Vector3();
           var p1 = new THREE.Vector3();
           var pf = new THREE.Vector3();
-  
+
           p0.setFromMatrixPosition(sphere.constraint.meshA.matrixWorld);
           p1.setFromMatrixPosition(sphere.constraint.meshB.matrixWorld);
           pf.lerpVectors(p0, p1, index / 10);
-  
+
           dummy.position.copy(pf);
           dummy.updateMatrix();
           sphere.constraint.mesh.setMatrixAt(index, dummy.matrix);
         }
         sphere.constraint.mesh.instanceMatrix.needsUpdate = true;
       }
-
     } else {
       pdbs.forEach(function (pdb, pdbIndex) {
         pdb.atomMeshes.forEach(function (atom, atomIndex) {
