@@ -95,7 +95,7 @@ var sphereMaterial2 = new THREE.MeshLambertMaterial({ color: "green" });
 var dummy = new THREE.Object3D();
 
 var spheres = [];
-var sphereBodies = [];
+var constraintKeys = [];
 
 addMolecule.addEventListener("click", handleClick);
 flipVideo.addEventListener("flipCamera", handleFlip);
@@ -136,6 +136,10 @@ window.addEventListener("markerLost", function (e) {
           world.removeConstraint(sphere.constraint.cannonConstraint);
           sphere.constraint.mesh.dispose();
           scene.remove(sphere.constraint.mesh);
+          var keyIndex = constraintKeys.findIndex(function (key) {
+            return key === sphere.constraint.key;
+          });
+          constraintKeys.splice(keyIndex, 1);
           sphere.constraint = null;
         }
       }
@@ -149,6 +153,10 @@ window.addEventListener("markerLost", function (e) {
           world.removeConstraint(sphere.constraint.cannonConstraint);
           sphere.constraint.mesh.dispose();
           scene.remove(sphere.constraint.mesh);
+          var keyIndex = constraintKeys.findIndex(function (key) {
+            return key === sphere.constraint.key;
+          });
+          constraintKeys.splice(keyIndex, 1);
           sphere.constraint = null;
         }
       }
@@ -565,6 +573,10 @@ function updateCubeControls() {
         world.removeConstraint(sphere.constraint.cannonConstraint);
         sphere.constraint.mesh.dispose();
         scene.remove(sphere.constraint.mesh);
+        var keyIndex = constraintKeys.findIndex(function (key) {
+          return key === sphere.constraint.key;
+        });
+        constraintKeys.splice(keyIndex, 1);
         sphere.constraint = null;
       } else {
         for (let index = 1; index < 10; index++) {
@@ -585,6 +597,13 @@ function updateCubeControls() {
     } else {
       pdbs.forEach(function (pdb, pdbIndex) {
         pdb.atomMeshes.forEach(function (atom, atomIndex) {
+          var constraintKey = `${pdbIndex}-${atomIndex}`
+          var keyExists = constraintKeys.includes(constraintKey);
+
+          if (keyExists) {
+            return;
+          }
+          
           var distance = Math.sqrt(
             Math.pow(spherePos.x - atom.position.x, 2) +
               Math.pow(spherePos.y - atom.position.y, 2) +
@@ -608,35 +627,19 @@ function updateCubeControls() {
 
             scene.add(mesh);
             world.addConstraint(constraint);
+            constraintKeys.push(constraintKey);
             sphere.constraint = {
               meshA: sphere.mesh,
               meshB: atom,
               mesh,
               cannonConstraint: constraint,
-              key: `${pdbIndex}-${atomIndex}`,
+              key: constraintKey,
             };
           }
         });
       });
     }
   });
-
-  // constraints.forEach(function (constraint) {
-  //   for (let index = 1; index < 10; index++) {
-  //     var p0 = new THREE.Vector3();
-  //     var p1 = new THREE.Vector3();
-  //     var pf = new THREE.Vector3();
-
-  //     p0.setFromMatrixPosition(constraint.meshA.matrixWorld);
-  //     p1.setFromMatrixPosition(constraint.meshB.matrixWorld);
-  //     pf.lerpVectors(p0, p1, index / 10);
-
-  //     dummy.position.copy(pf);
-  //     dummy.updateMatrix();
-  //     constraint.mesh.setMatrixAt(index, dummy.matrix);
-  //   }
-  //   constraint.mesh.instanceMatrix.needsUpdate = true;
-  // });
 }
 
 function updatePhysics() {
