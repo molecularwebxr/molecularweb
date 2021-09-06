@@ -569,7 +569,7 @@ function updateCubeControls() {
           Math.pow(spherePos.z - pdbs[pdb].atomMeshes[atom].position.z, 2)
       );
 
-      if (distance > 2 || distance < 0.4) {
+      if (distance > 3 || distance < 0) {
         world.removeConstraint(sphere.constraint.cannonConstraint);
         sphere.constraint.mesh.dispose();
         scene.remove(sphere.constraint.mesh);
@@ -610,7 +610,7 @@ function updateCubeControls() {
               Math.pow(spherePos.z - atom.position.z, 2)
           );
 
-          if (distance < 1 && distance > 0.4) {
+          if (distance < 2 && distance > 0) {
             var mesh = new THREE.InstancedMesh(
               sphereGeometry,
               sphereMaterial2,
