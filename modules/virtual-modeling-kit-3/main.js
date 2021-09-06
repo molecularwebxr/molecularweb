@@ -128,6 +128,8 @@ window.addEventListener("markerFound", function (e) {
   }
 });
 window.addEventListener("markerLost", function (e) {
+  console.log(constraintKeys)
+  console.log("ID: ", e.detail.id)
   if (e.detail.id < 6) {
     isCube1Visible = false;
     spheres.forEach(function (sphere, index) {
@@ -139,6 +141,7 @@ window.addEventListener("markerLost", function (e) {
           var keyIndex = constraintKeys.findIndex(function (key) {
             return key === sphere.constraint.key;
           });
+          console.log(keyIndex)
           constraintKeys.splice(keyIndex, 1);
           sphere.constraint = null;
         }
@@ -162,6 +165,7 @@ window.addEventListener("markerLost", function (e) {
       }
     });
   }
+  console.log(constraintKeys)
 });
 
 var world = new CANNON.World();
@@ -569,7 +573,7 @@ function updateCubeControls() {
           Math.pow(spherePos.z - pdbs[pdb].atomMeshes[atom].position.z, 2)
       );
 
-      if (distance > 3 || distance < 0) {
+      if (distance > 2 || distance < 0) {
         world.removeConstraint(sphere.constraint.cannonConstraint);
         sphere.constraint.mesh.dispose();
         scene.remove(sphere.constraint.mesh);
@@ -610,7 +614,7 @@ function updateCubeControls() {
               Math.pow(spherePos.z - atom.position.z, 2)
           );
 
-          if (distance < 2 && distance > 0) {
+          if (distance < 1.5 && distance > 0 && sphere.constraint == null) {
             var mesh = new THREE.InstancedMesh(
               sphereGeometry,
               sphereMaterial2,
