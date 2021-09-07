@@ -7,7 +7,7 @@ import {
   radiusfactor1,
   radiusfactor2,
 } from "./3Dutils.js";
-// import { OrbitControls } from "/lib/utils/OrbitControls.js";
+import { OrbitControls } from "/lib/utils/OrbitControls.js";
 
 var scene, camera, renderer;
 var arToolkitSource, arToolkitContext;
@@ -179,9 +179,6 @@ animate();
 function initialize() {
   scene = new THREE.Scene();
 
-  let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
-  scene.add(ambientLight);
-
   camera = new THREE.PerspectiveCamera();
   scene.add(camera);
 
@@ -197,9 +194,9 @@ function initialize() {
   renderer.domElement.style.top = "0px";
   renderer.domElement.style.left = "0px";
   document.body.appendChild(renderer.domElement);
-  // controls = new OrbitControls(camera, renderer.domElement);
-  // controls.target.set(0, 0.75, -7);
-  // controls.update();
+  controls = new OrbitControls(camera, renderer.domElement);
+  controls.target.set(0, 0.75, -7);
+  controls.enableDamping = true
 
   // setup arToolkitSource
   arToolkitSource = new THREEx.ArToolkitSource({
@@ -352,10 +349,20 @@ function initialize() {
     constraint: null,
   });
 
-  let pointLight = new THREE.PointLight(0xffffff, 1, 50);
-  pointLight.position.set(0.5, 3, 2);
+  // Lights
 
-  scene.add(pointLight);
+  let pointLight1 = new THREE.PointLight(0xffffff, 1, 50);
+  pointLight1.position.set(0.5, 3, 2);
+  let pointLight2 = new THREE.PointLight(0xffffff, 1, 50);
+  pointLight2.position.set(0.5, 3, -18);
+  scene.add(pointLight1, pointLight2);
+
+  const pointLightHelper1 = new THREE.PointLightHelper(pointLight1, 0.2);
+  const pointLightHelper2 = new THREE.PointLightHelper(pointLight2, 0.2);
+  scene.add(pointLightHelper1, pointLightHelper2);
+
+  let ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+  scene.add(ambientLight);
 
   markerRootArray2 = [];
   markerGroupArray2 = [];
@@ -466,6 +473,7 @@ function render() {
 }
 
 function animate() {
+  controls.update()
   requestAnimationFrame(animate);
   world.step(1 / 600);
   // cannonDebugRenderer.update();
