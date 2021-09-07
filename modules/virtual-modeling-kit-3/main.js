@@ -351,17 +351,13 @@ function initialize() {
 
   // Lights
 
-  let pointLight1 = new THREE.PointLight(0xffffff, 1, 50);
+  var pointLight1 = new THREE.PointLight(0xffffff, 1, 50);
   pointLight1.position.set(0.5, 3, 2);
-  let pointLight2 = new THREE.PointLight(0xffffff, 1, 50);
+  var pointLight2 = new THREE.PointLight(0xffffff, 1, 50);
   pointLight2.position.set(0.5, 3, -18);
   scene.add(pointLight1, pointLight2);
 
-  const pointLightHelper1 = new THREE.PointLightHelper(pointLight1, 0.2);
-  const pointLightHelper2 = new THREE.PointLightHelper(pointLight2, 0.2);
-  scene.add(pointLightHelper1, pointLightHelper2);
-
-  let ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+  var ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
   scene.add(ambientLight);
 
   markerRootArray2 = [];
