@@ -23,7 +23,7 @@ function getRandomNumber(min, max) {
 function getRandomVec3() {
   var randomX = getRandomNumber(-0.3, 0.3);
   var randomY = getRandomNumber(0.3, 0.75);
-  var randomZ = getRandomNumber(-7, -9);
+  var randomZ = getRandomNumber(-12, -14);
 
   return new THREE.Vector3(randomX, randomY, randomZ);
 }

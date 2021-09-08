@@ -168,10 +168,10 @@ window.addEventListener("markerLost", function (e) {
   console.log(constraintKeys);
 });
 
-var world = new CANNON.World();
-world.gravity.set(0, 0, 0);
-world.broadphase = new CANNON.NaiveBroadphase();
-world.solver.iterations = 10;
+var world = new CANNON.World({
+  gravity: new CANNON.Vec3(0, 0, 0)
+});
+
 
 initialize();
 animate();
@@ -392,14 +392,14 @@ function initialize() {
     markerRoot2.add(markerGroup2);
   }
 
-  // cannonDebugRenderer = new THREE.CannonDebugRenderer(scene, world);
+  cannonDebugRenderer = new THREE.CannonDebugRenderer(scene, world);
 
   // Plane -x
   var planeShapeXmin = new CANNON.Plane();
   var planeXmin = new CANNON.Body({ mass: 0 });
   planeXmin.addShape(planeShapeXmin);
   planeXmin.quaternion.setFromEuler(0, Math.PI / 2, 0);
-  planeXmin.position.set(-5, 0, -9);
+  planeXmin.position.set(-10, 0, -9);
   world.addBody(planeXmin);
 
   // Plane +x
@@ -407,7 +407,7 @@ function initialize() {
   var planeXmax = new CANNON.Body({ mass: 0 });
   planeXmax.addShape(planeShapeXmax);
   planeXmax.quaternion.setFromEuler(0, -Math.PI / 2, 0);
-  planeXmax.position.set(5, 0, -9);
+  planeXmax.position.set(10, 0, -9);
   world.addBody(planeXmax);
 
   // Plane -z
@@ -415,7 +415,7 @@ function initialize() {
   var planeZmin = new CANNON.Body({ mass: 0 });
   planeZmin.addShape(planeShapeZmin);
   planeZmin.quaternion.setFromEuler(0, -Math.PI, 0);
-  planeZmin.position.set(0, 0, -4);
+  planeZmin.position.set(0, 0, 0);
   world.addBody(planeZmin);
 
   // Plane +z
@@ -423,7 +423,7 @@ function initialize() {
   var planeZmax = new CANNON.Body({ mass: 0 });
   planeZmax.addShape(planeShapeZmax);
   planeZmax.quaternion.setFromEuler(0, 0, 0);
-  planeZmax.position.set(0, 0, -14);
+  planeZmax.position.set(0, 0, -24);
   world.addBody(planeZmax);
 
   // Plane -y
@@ -431,7 +431,7 @@ function initialize() {
   var planeYmin = new CANNON.Body({ mass: 0 });
   planeYmin.addShape(planeShapeYmin);
   planeYmin.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
-  planeYmin.position.set(0, -5, -9);
+  planeYmin.position.set(0, -20, -9);
   world.addBody(planeYmin);
 
   // Plane +y
@@ -439,7 +439,7 @@ function initialize() {
   var planeYmax = new CANNON.Body({ mass: 0 });
   planeYmax.addShape(planeShapeYmax);
   planeYmax.quaternion.setFromEuler(Math.PI / 2, 0, 0);
-  planeYmax.position.set(0, 5, -9);
+  planeYmax.position.set(0, 20, -9);
   world.addBody(planeYmax);
 }
 
@@ -472,7 +472,7 @@ function animate() {
   controls.update();
   requestAnimationFrame(animate);
   world.step(1 / 600);
-  // cannonDebugRenderer.update();
+  cannonDebugRenderer.update();
 
   updateInteractions();
 
