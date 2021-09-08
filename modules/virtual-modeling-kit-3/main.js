@@ -128,44 +128,44 @@ window.addEventListener("markerFound", function (e) {
   }
 });
 window.addEventListener("markerLost", function (e) {
-  console.log(constraintKeys)
-  console.log("ID: ", e.detail.id)
+  console.log(constraintKeys);
+  console.log("ID: ", e.detail.id);
   if (e.detail.id < 6) {
     isCube1Visible = false;
-    spheres.forEach(function (sphere, index) {
-      if (index <= 1) {
-        if (sphere.constraint !== null) {
-          world.removeConstraint(sphere.constraint.cannonConstraint);
-          sphere.constraint.mesh.dispose();
-          scene.remove(sphere.constraint.mesh);
-          var keyIndex = constraintKeys.findIndex(function (key) {
-            return key === sphere.constraint.key;
-          });
-          console.log(keyIndex)
-          constraintKeys.splice(keyIndex, 1);
-          sphere.constraint = null;
-        }
-      }
-    });
+    // spheres.forEach(function (sphere, index) {
+    //   if (index <= 1) {
+    //     if (sphere.constraint !== null) {
+    //       world.removeConstraint(sphere.constraint.cannonConstraint);
+    //       sphere.constraint.mesh.dispose();
+    //       scene.remove(sphere.constraint.mesh);
+    //       var keyIndex = constraintKeys.findIndex(function (key) {
+    //         return key === sphere.constraint.key;
+    //       });
+    //       console.log(keyIndex)
+    //       constraintKeys.splice(keyIndex, 1);
+    //       sphere.constraint = null;
+    //     }
+    //   }
+    // });
   }
   if (e.detail.id > 5) {
     isCube2Visible = false;
     spheres.forEach(function (sphere, index) {
-      if (index > 1) {
-        if (sphere.constraint !== null) {
-          world.removeConstraint(sphere.constraint.cannonConstraint);
-          sphere.constraint.mesh.dispose();
-          scene.remove(sphere.constraint.mesh);
-          var keyIndex = constraintKeys.findIndex(function (key) {
-            return key === sphere.constraint.key;
-          });
-          constraintKeys.splice(keyIndex, 1);
-          sphere.constraint = null;
-        }
-      }
+      // if (index > 1) {
+      //   if (sphere.constraint !== null) {
+      //     world.removeConstraint(sphere.constraint.cannonConstraint);
+      //     sphere.constraint.mesh.dispose();
+      //     scene.remove(sphere.constraint.mesh);
+      //     var keyIndex = constraintKeys.findIndex(function (key) {
+      //       return key === sphere.constraint.key;
+      //     });
+      //     constraintKeys.splice(keyIndex, 1);
+      //     sphere.constraint = null;
+      //   }
+      // }
     });
   }
-  console.log(constraintKeys)
+  console.log(constraintKeys);
 });
 
 var world = new CANNON.World();
@@ -196,7 +196,7 @@ function initialize() {
   document.body.appendChild(renderer.domElement);
   controls = new OrbitControls(camera, renderer.domElement);
   controls.target.set(0, 0.75, -7);
-  controls.enableDamping = true
+  controls.enableDamping = true;
 
   // setup arToolkitSource
   arToolkitSource = new THREEx.ArToolkitSource({
@@ -469,7 +469,7 @@ function render() {
 }
 
 function animate() {
-  controls.update()
+  controls.update();
   requestAnimationFrame(animate);
   world.step(1 / 600);
   // cannonDebugRenderer.update();
@@ -568,50 +568,47 @@ function updateCubeControls() {
     var constraintExists = sphere.constraint !== null;
 
     if (constraintExists) {
-      var keys = sphere.constraint.key.split("-");
-      var pdb = keys[0];
-      var atom = keys[1];
-      var distance = Math.sqrt(
-        Math.pow(spherePos.x - pdbs[pdb].atomMeshes[atom].position.x, 2) +
-          Math.pow(spherePos.y - pdbs[pdb].atomMeshes[atom].position.y, 2) +
-          Math.pow(spherePos.z - pdbs[pdb].atomMeshes[atom].position.z, 2)
-      );
-
-      if (distance > 2 || distance < 0) {
-        world.removeConstraint(sphere.constraint.cannonConstraint);
-        sphere.constraint.mesh.dispose();
-        scene.remove(sphere.constraint.mesh);
-        var keyIndex = constraintKeys.findIndex(function (key) {
-          return key === sphere.constraint.key;
-        });
-        constraintKeys.splice(keyIndex, 1);
-        sphere.constraint = null;
-      } else {
+      // var keys = sphere.constraint.key.split("-");
+      // var pdb = keys[0];
+      // var atom = keys[1];
+      // var distance = Math.sqrt(
+      //   Math.pow(spherePos.x - pdbs[pdb].atomMeshes[atom].position.x, 2) +
+      //     Math.pow(spherePos.y - pdbs[pdb].atomMeshes[atom].position.y, 2) +
+      //     Math.pow(spherePos.z - pdbs[pdb].atomMeshes[atom].position.z, 2)
+      // );
+      // if (distance > 2 || distance < 0) {
+      //   world.removeConstraint(sphere.constraint.cannonConstraint);
+      //   sphere.constraint.mesh.dispose();
+      //   scene.remove(sphere.constraint.mesh);
+      //   var keyIndex = constraintKeys.findIndex(function (key) {
+      //     return key === sphere.constraint.key;
+      //   });
+      //   constraintKeys.splice(keyIndex, 1);
+      //   sphere.constraint = null;
+      // } else {
         for (let index = 1; index < 10; index++) {
           var p0 = new THREE.Vector3();
           var p1 = new THREE.Vector3();
           var pf = new THREE.Vector3();
-
           p0.setFromMatrixPosition(sphere.constraint.meshA.matrixWorld);
           p1.setFromMatrixPosition(sphere.constraint.meshB.matrixWorld);
           pf.lerpVectors(p0, p1, index / 10);
-
           dummy.position.copy(pf);
           dummy.updateMatrix();
           sphere.constraint.mesh.setMatrixAt(index, dummy.matrix);
         }
         sphere.constraint.mesh.instanceMatrix.needsUpdate = true;
-      }
+      // }
     } else {
       pdbs.forEach(function (pdb, pdbIndex) {
         pdb.atomMeshes.forEach(function (atom, atomIndex) {
-          var constraintKey = `${pdbIndex}-${atomIndex}`
+          var constraintKey = `${pdbIndex}-${atomIndex}`;
           var keyExists = constraintKeys.includes(constraintKey);
 
           if (keyExists) {
             return;
           }
-          
+
           var distance = Math.sqrt(
             Math.pow(spherePos.x - atom.position.x, 2) +
               Math.pow(spherePos.y - atom.position.y, 2) +
@@ -626,21 +623,36 @@ function updateCubeControls() {
             );
             mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage); // will be updated every frame
 
-            var constraint = new CANNON.DistanceConstraint(
+            // var constraint = new CANNON.DistanceConstraint(
+            //   pdb.atomBodies[atomIndex],
+            //   sphere.body,
+            //   undefined,
+            //   10000
+            // );
+
+            var spring = new CANNON.Spring(
               pdb.atomBodies[atomIndex],
               sphere.body,
-              undefined,
-              10000
+              {
+                restLength: 0,
+                stiffness: 50,
+                damping: 1,
+              }
             );
 
+            world.addEventListener('postStep', (event) => {
+              console.log("steppp")
+              spring.applyForce()
+            })
+
             scene.add(mesh);
-            world.addConstraint(constraint);
+            // world.addConstraint(constraint);
             constraintKeys.push(constraintKey);
             sphere.constraint = {
               meshA: sphere.mesh,
               meshB: atom,
               mesh,
-              cannonConstraint: constraint,
+              cannonConstraint: spring,
               key: constraintKey,
             };
           }
