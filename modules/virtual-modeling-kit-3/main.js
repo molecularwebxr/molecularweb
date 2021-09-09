@@ -1,7 +1,6 @@
 import * as CANNON from "/lib/cannon-es.js";
 import {
   setupPdb,
-  clearGroup,
   createSpheres,
   createSticks,
   radiusfactor1,
@@ -15,7 +14,6 @@ var patternArray, markerRootArray, markerGroupArray;
 var patternArray2, markerRootArray2, markerGroupArray2;
 var sceneGroup;
 var sceneGroup2;
-var pdb, pdb2;
 var controls;
 
 var pdbs = [];
@@ -57,31 +55,7 @@ var distanceConstraint = 0.2;
 var constraintForce = 20;
 var bridges = [];
 var connectors = [];
-
-var atomMeshes = [];
-var clashMeshes = [];
-var atomBodies = [];
-var atomShapes = [];
-var bonds = [];
-var sticks = [];
 var constraints = [];
-var interactiveAtoms1;
-var interactions1 = [];
-var atoms = 0;
-
-var atomMeshes2 = [];
-var clashMeshes2 = [];
-var atomBodies2 = [];
-var atomShapes2 = [];
-var bonds2 = [];
-var sticks2 = [];
-var constraints2 = [];
-var interactiveAtoms2;
-var interactions2 = [];
-var atoms2 = 0;
-
-var isCube1Visible = false;
-var isCube2Visible = false;
 
 var isClashingActive = false;
 var isInteractionActive = false;
@@ -91,14 +65,9 @@ var cannonDebugRenderer;
 
 var sphereGeometry = new THREE.SphereBufferGeometry(0.05, 32, 16);
 var sphereMaterial = new THREE.MeshLambertMaterial({ color: "yellow" });
-var sphereMaterial2 = new THREE.MeshLambertMaterial({ color: "green" });
 var dummy = new THREE.Object3D();
 
-var spheres = [];
-var constraintKeys = [];
-
 addMolecule.addEventListener("click", handleClick);
-flipVideo.addEventListener("flipCamera", handleFlip);
 scaleUp.addEventListener("scaleGraphics", handleScale);
 scaleDown.addEventListener("scaleGraphics", handleScale);
 reset.addEventListener("resetActivity", handleReset);
@@ -113,59 +82,8 @@ jmeBtnClose.addEventListener("click", closeJme);
 jmeSearch.addEventListener("click", searchMol);
 jmeCancel.addEventListener("click", closeJme);
 jmeContinue.addEventListener("click", selectMol);
-window.addEventListener("camera-change", () => {
-  handleFlip();
-});
 tempControls.forEach(function (item) {
   item.addEventListener("updateTemp", handleTempControls);
-});
-window.addEventListener("markerFound", function (e) {
-  if (e.detail.id < 6) {
-    isCube1Visible = true;
-  }
-  if (e.detail.id > 5) {
-    isCube2Visible = true;
-  }
-});
-window.addEventListener("markerLost", function (e) {
-  console.log(constraintKeys);
-  console.log("ID: ", e.detail.id);
-  if (e.detail.id < 6) {
-    isCube1Visible = false;
-    // spheres.forEach(function (sphere, index) {
-    //   if (index <= 1) {
-    //     if (sphere.constraint !== null) {
-    //       world.removeConstraint(sphere.constraint.cannonConstraint);
-    //       sphere.constraint.mesh.dispose();
-    //       scene.remove(sphere.constraint.mesh);
-    //       var keyIndex = constraintKeys.findIndex(function (key) {
-    //         return key === sphere.constraint.key;
-    //       });
-    //       console.log(keyIndex)
-    //       constraintKeys.splice(keyIndex, 1);
-    //       sphere.constraint = null;
-    //     }
-    //   }
-    // });
-  }
-  if (e.detail.id > 5) {
-    isCube2Visible = false;
-    spheres.forEach(function (sphere, index) {
-      // if (index > 1) {
-      //   if (sphere.constraint !== null) {
-      //     world.removeConstraint(sphere.constraint.cannonConstraint);
-      //     sphere.constraint.mesh.dispose();
-      //     scene.remove(sphere.constraint.mesh);
-      //     var keyIndex = constraintKeys.findIndex(function (key) {
-      //       return key === sphere.constraint.key;
-      //     });
-      //     constraintKeys.splice(keyIndex, 1);
-      //     sphere.constraint = null;
-      //   }
-      // }
-    });
-  }
-  console.log(constraintKeys);
 });
 
 var world = new CANNON.World({
@@ -280,74 +198,6 @@ function initialize() {
   sceneGroup.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
   sceneGroup2 = new THREE.Group();
   sceneGroup2.scale.set(1.25 / 2, 1.25 / 2, 1.25 / 2);
-
-  var sphereGeometry = new THREE.SphereBufferGeometry(0.5, 32, 16);
-  var sphereNormalMaterial = new THREE.MeshNormalMaterial();
-  var sphereShape = new CANNON.Sphere(0.25);
-
-  var sphere1 = new THREE.Mesh(sphereGeometry, sphereNormalMaterial);
-  sphere1.position.set(-0.7, 0, 0);
-  var sphereBody1 = new CANNON.Body({
-    mass: 0,
-    shape: sphereShape,
-  });
-
-  sceneGroup.add(sphere1);
-  sphereBody1.position.copy(sphere1.position);
-  world.addBody(sphereBody1);
-  spheres.push({
-    mesh: sphere1,
-    body: sphereBody1,
-    constraint: null,
-  });
-
-  var sphere2 = new THREE.Mesh(sphereGeometry, sphereNormalMaterial);
-  sphere2.position.set(0.7, 0, 0);
-  var sphereBody2 = new CANNON.Body({
-    mass: 0,
-    shape: sphereShape,
-  });
-
-  sceneGroup.add(sphere2);
-  sphereBody2.position.copy(sphere2.position);
-  world.addBody(sphereBody2);
-  spheres.push({
-    mesh: sphere2,
-    body: sphereBody2,
-    constraint: null,
-  });
-
-  var sphere3 = new THREE.Mesh(sphereGeometry, sphereNormalMaterial);
-  sphere3.position.set(-0.7, 0, 0);
-  var sphereBody3 = new CANNON.Body({
-    mass: 0,
-    shape: sphereShape,
-  });
-
-  sceneGroup2.add(sphere3);
-  sphereBody3.position.copy(sphere3.position);
-  world.addBody(sphereBody3);
-  spheres.push({
-    mesh: sphere3,
-    body: sphereBody3,
-    constraint: null,
-  });
-
-  var sphere4 = new THREE.Mesh(sphereGeometry, sphereNormalMaterial);
-  sphere4.position.set(0.7, 0, 0);
-  var sphereBody4 = new CANNON.Body({
-    mass: 0,
-    shape: sphereShape,
-  });
-
-  sceneGroup2.add(sphere4);
-  sphereBody4.position.copy(sphere4.position);
-  world.addBody(sphereBody4);
-  spheres.push({
-    mesh: sphere4,
-    body: sphereBody4,
-    constraint: null,
-  });
 
   // Lights
 
@@ -547,119 +397,6 @@ function updateInteractions() {
   updateConnectors();
 
   updateClashes();
-
-  updateCubeControls();
-}
-
-function updateCubeControls() {
-  var spherePos = new THREE.Vector3();
-
-  if (!isCube1Visible && !isCube2Visible) {
-    return;
-  }
-
-  spheres.forEach(function (sphere, sphereIndex) {
-    if (!isCube1Visible && sphereIndex <= 1) return;
-    if (!isCube2Visible && sphereIndex > 1) return;
-
-    sphere.mesh.getWorldPosition(spherePos);
-    sphere.body.position.copy(spherePos);
-
-    var constraintExists = sphere.constraint !== null;
-
-    if (constraintExists) {
-      // var keys = sphere.constraint.key.split("-");
-      // var pdb = keys[0];
-      // var atom = keys[1];
-      // var distance = Math.sqrt(
-      //   Math.pow(spherePos.x - pdbs[pdb].atomMeshes[atom].position.x, 2) +
-      //     Math.pow(spherePos.y - pdbs[pdb].atomMeshes[atom].position.y, 2) +
-      //     Math.pow(spherePos.z - pdbs[pdb].atomMeshes[atom].position.z, 2)
-      // );
-      // if (distance > 2 || distance < 0) {
-      //   world.removeConstraint(sphere.constraint.cannonConstraint);
-      //   sphere.constraint.mesh.dispose();
-      //   scene.remove(sphere.constraint.mesh);
-      //   var keyIndex = constraintKeys.findIndex(function (key) {
-      //     return key === sphere.constraint.key;
-      //   });
-      //   constraintKeys.splice(keyIndex, 1);
-      //   sphere.constraint = null;
-      // } else {
-        for (let index = 1; index < 10; index++) {
-          var p0 = new THREE.Vector3();
-          var p1 = new THREE.Vector3();
-          var pf = new THREE.Vector3();
-          p0.setFromMatrixPosition(sphere.constraint.meshA.matrixWorld);
-          p1.setFromMatrixPosition(sphere.constraint.meshB.matrixWorld);
-          pf.lerpVectors(p0, p1, index / 10);
-          dummy.position.copy(pf);
-          dummy.updateMatrix();
-          sphere.constraint.mesh.setMatrixAt(index, dummy.matrix);
-        }
-        sphere.constraint.mesh.instanceMatrix.needsUpdate = true;
-      // }
-    } else {
-      pdbs.forEach(function (pdb, pdbIndex) {
-        pdb.atomMeshes.forEach(function (atom, atomIndex) {
-          var constraintKey = `${pdbIndex}-${atomIndex}`;
-          var keyExists = constraintKeys.includes(constraintKey);
-
-          if (keyExists) {
-            return;
-          }
-
-          var distance = Math.sqrt(
-            Math.pow(spherePos.x - atom.position.x, 2) +
-              Math.pow(spherePos.y - atom.position.y, 2) +
-              Math.pow(spherePos.z - atom.position.z, 2)
-          );
-
-          if (distance < 1.5 && distance > 0 && sphere.constraint == null) {
-            var mesh = new THREE.InstancedMesh(
-              sphereGeometry,
-              sphereMaterial2,
-              9
-            );
-            mesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage); // will be updated every frame
-
-            // var constraint = new CANNON.DistanceConstraint(
-            //   pdb.atomBodies[atomIndex],
-            //   sphere.body,
-            //   undefined,
-            //   10000
-            // );
-
-            var spring = new CANNON.Spring(
-              pdb.atomBodies[atomIndex],
-              sphere.body,
-              {
-                restLength: 0,
-                stiffness: 50,
-                damping: 1,
-              }
-            );
-
-            world.addEventListener('postStep', (event) => {
-              console.log("steppp")
-              spring.applyForce()
-            })
-
-            scene.add(mesh);
-            // world.addConstraint(constraint);
-            constraintKeys.push(constraintKey);
-            sphere.constraint = {
-              meshA: sphere.mesh,
-              meshB: atom,
-              mesh,
-              cannonConstraint: spring,
-              key: constraintKey,
-            };
-          }
-        });
-      });
-    }
-  });
 }
 
 function updatePhysics() {
@@ -807,15 +544,10 @@ function loadPdb(rawPdb) {
   switchSpheres1.disabled = false;
 }
 
-function clearPhysics(bodies, constraints) {
-  // var bodies = world.bodies;
-  // var cs = world.constraints;
+function clearPhysics() {
+  var cs = world.constraints;
 
-  for (var i = bodies.length - 1; i >= 0; i--) {
-    world.removeBody(bodies[i]);
-  }
-
-  for (var i = constraints.length - 1; i >= 0; i--) {
+  for (var i = cs.length - 1; i >= 0; i--) {
     world.removeConstraint(constraints[i]);
   }
 }
@@ -825,37 +557,9 @@ function handleClick(e) {
 
   if (pdbInserted.length > 0) {
     loadPdb(pdbInserted);
-    if (atoms > 0 && atoms2 > 0) {
-      handleMenu(e);
-      handleTempMenu(e);
-    }
   } else {
     console.log("No pdb!");
   }
-}
-
-function handleFlip(e) {
-  if (e.target.id === "switch-flip-1") {
-    atomBodies.forEach(function (body) {
-      body.position.x = -body.position.x;
-    });
-    return;
-  }
-
-  if (e.target.id === "switch-flip-2") {
-    atomBodies2.forEach(function (body) {
-      body.position.x = -body.position.x;
-    });
-    return;
-  }
-
-  atomBodies.forEach(function (body) {
-    body.position.x = -body.position.x;
-  });
-
-  atomBodies2.forEach(function (body) {
-    body.position.x = -body.position.x;
-  });
 }
 
 function handleScale(e) {
@@ -867,18 +571,42 @@ function handleScale(e) {
 }
 
 function handleReset(e) {
-  resetMarker1();
-  resetMarker2();
 
-  resetGeneral();
+  clearPhysics();
 
-  var cs = world.constraints;
+  connectors.forEach(function (connector) {
+    connector.mesh.dispose();
+    scene.remove(connector.mesh);
+  });
 
-  for (var i = cs.length - 1; i >= 0; i--) {
-    world.removeConstraint(cs[i]);
-  }
 
-  selectedMarker = 1;
+  pdbs.forEach(function (pdb, index) {
+    pdb.atomMeshes.forEach(function (mesh, atomIndex) {
+      mesh.geometry.dispose();
+      mesh.material.dispose();
+      scene.remove(mesh);
+      world.removeBody(pdb.atomBodies[atomIndex]);
+    });
+
+    pdb.sticks.forEach(function (bond) {
+      bond.geometry.dispose();
+      bond.material.dispose();
+      scene.remove(bond);
+    });
+
+    pdb.clashMeshes.forEach(function (mesh) {
+      mesh.geometry.dispose();
+      mesh.material.dispose();
+      scene.remove(mesh);
+    });
+  });
+
+  connectors = [];
+  bridges = [];
+  temperature = 0;
+  pdbs = [];
+
+  switchSpheres1.disabled = true;
 
   handleMenu();
 }
@@ -1144,85 +872,6 @@ function handleInteractionsChange(e) {
 
 function handleBridgeChange(e) {
   isBridgeActive = switchBridge.checked;
-}
-
-function resetMarker1() {
-  clearPhysics(atomBodies, constraints);
-
-  atomMeshes.forEach(function (mesh) {
-    scene.remove(mesh);
-    if (mesh.geometry) mesh.geometry.dispose();
-    if (mesh.material) mesh.material.dispose();
-    if (mesh.texture) mesh.texture.dispose();
-  });
-
-  clashMeshes.forEach(function (mesh) {
-    scene.remove(mesh);
-    if (mesh.geometry) mesh.geometry.dispose();
-    if (mesh.material) mesh.material.dispose();
-    if (mesh.texture) mesh.texture.dispose();
-  });
-
-  sticks.forEach(function (mesh) {
-    scene.remove(mesh);
-    if (mesh.geometry) mesh.geometry.dispose();
-    if (mesh.material) mesh.material.dispose();
-    if (mesh.texture) mesh.texture.dispose();
-  });
-
-  atomMeshes = [];
-  atomBodies = [];
-  atomShapes = [];
-  bonds = [];
-  constraints = [];
-  interactiveAtoms1 = {};
-  interactions1 = [];
-  atoms = 0;
-}
-
-function resetMarker2() {
-  clearPhysics(atomBodies2, constraints2);
-
-  atomMeshes2.forEach(function (mesh) {
-    scene.remove(mesh);
-    if (mesh.geometry) mesh.geometry.dispose();
-    if (mesh.material) mesh.material.dispose();
-    if (mesh.texture) mesh.texture.dispose();
-  });
-
-  clashMeshes2.forEach(function (mesh) {
-    scene.remove(mesh);
-    if (mesh.geometry) mesh.geometry.dispose();
-    if (mesh.material) mesh.material.dispose();
-    if (mesh.texture) mesh.texture.dispose();
-  });
-
-  sticks2.forEach(function (mesh) {
-    scene.remove(mesh);
-    if (mesh.geometry) mesh.geometry.dispose();
-    if (mesh.material) mesh.material.dispose();
-    if (mesh.texture) mesh.texture.dispose();
-  });
-
-  atomMeshes2 = [];
-  atomBodies2 = [];
-  atomShapes2 = [];
-  bonds2 = [];
-  constraints2 = [];
-  interactiveAtoms2 = {};
-  interactions2 = [];
-  atoms2 = 0;
-}
-
-function resetGeneral() {
-  connectors.forEach(function (connector) {
-    connector.mesh.dispose();
-    scene.remove(connector.mesh);
-  });
-  connectors = [];
-  bridges = [];
-
-  temperature = 0;
 }
 
 function openJme(e) {
