@@ -568,6 +568,10 @@ button.pdb-btn {
   padding: 0.75rem 0.5rem;
 }
 
+.temperature-container.single-menu {
+  transform: translateY(-26.5%);
+}
+
 .triangle-temp {
   position: absolute;
   top: 50%;
@@ -589,6 +593,10 @@ button.pdb-btn {
   padding: 0.75rem 0.5rem;
   justify-content: center;
   align-items: center;
+}
+
+.interaction-controls.single-menu {
+  transform: translateY(-102%);
 }
 
 .interaction-control {

@@ -23,9 +23,9 @@ function getRandomNumber(min, max) {
 
 // This function returns a random Vector 3
 function getRandomVec3() {
-  var randomX = getRandomNumber(-0.3, 0.3);
-  var randomY = getRandomNumber(0.3, 0.75);
-  var randomZ = getRandomNumber(-12, -14);
+  var randomX = getRandomNumber(-0.5, 0.5);
+  var randomY = getRandomNumber(0, 1);
+  var randomZ = getRandomNumber(-10, -15);
 
   return new THREE.Vector3(randomX, randomY, randomZ);
 }

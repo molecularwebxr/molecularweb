@@ -411,31 +411,34 @@ function updatePhysics() {
     var mediaz = 0;
     var velsum_expected = Math.sqrt(temperature) * pdb.atoms;
 
-    // for (var i = 0; i < pdb.atoms; i++) {
-    //   pdb.atomBodies[i].velocity.x =
-    //     pdb.atomBodies[i].velocity.x + 10 * Math.random(1) - 5;
-    //   pdb.atomBodies[i].velocity.y =
-    //     pdb.atomBodies[i].velocity.y + 10 * Math.random(1) - 5;
-    //   pdb.atomBodies[i].velocity.z =
-    //     pdb.atomBodies[i].velocity.z + 10 * Math.random(1) - 5;
+    if(!switchGravity.isChecked) {
+      for (var i = 0; i < pdb.atoms; i++) {
+        pdb.atomBodies[i].velocity.x =
+          pdb.atomBodies[i].velocity.x + 10 * Math.random(1) - 5;
+        pdb.atomBodies[i].velocity.y =
+          pdb.atomBodies[i].velocity.y + 10 * Math.random(1) - 5;
+        pdb.atomBodies[i].velocity.z =
+          pdb.atomBodies[i].velocity.z + 10 * Math.random(1) - 5;
+  
+        velsum =
+          velsum +
+          Math.sqrt(
+            Math.pow(pdb.atomBodies[i].velocity.x, 2) +
+              Math.pow(pdb.atomBodies[i].velocity.y, 2) +
+              Math.pow(pdb.atomBodies[i].velocity.z, 2)
+          );
+      }
+  
+      for (var i = 0; i < pdb.atoms; i++) {
+        pdb.atomBodies[i].velocity.x =
+          (pdb.atomBodies[i].velocity.x / velsum) * velsum_expected;
+        pdb.atomBodies[i].velocity.y =
+          (pdb.atomBodies[i].velocity.y / velsum) * velsum_expected;
+        pdb.atomBodies[i].velocity.z =
+          (pdb.atomBodies[i].velocity.z / velsum) * velsum_expected;
+      }
+    }
 
-    //   velsum =
-    //     velsum +
-    //     Math.sqrt(
-    //       Math.pow(pdb.atomBodies[i].velocity.x, 2) +
-    //         Math.pow(pdb.atomBodies[i].velocity.y, 2) +
-    //         Math.pow(pdb.atomBodies[i].velocity.z, 2)
-    //     );
-    // }
-
-    // for (var i = 0; i < pdb.atoms; i++) {
-    //   pdb.atomBodies[i].velocity.x =
-    //     (pdb.atomBodies[i].velocity.x / velsum) * velsum_expected;
-    //   pdb.atomBodies[i].velocity.y =
-    //     (pdb.atomBodies[i].velocity.y / velsum) * velsum_expected;
-    //   pdb.atomBodies[i].velocity.z =
-    //     (pdb.atomBodies[i].velocity.z / velsum) * velsum_expected;
-    // }
 
     for (var i = 0; i < pdb.atoms; i++) {
       pdb.atomMeshes[i].position.x = pdb.atomBodies[i].position.x;
@@ -919,7 +922,6 @@ function selectMol(e) {
 
 function handleGravityChange(e) {
   var isChecked = switchGravity.checked;
-  console.log(isChecked)
 
   if(isChecked) {
     gravity = MAX_GRAVITY;
