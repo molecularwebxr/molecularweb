@@ -30,6 +30,7 @@ var switchInteractions = document.getElementById("switch-interactions");
 var switchBridge = document.getElementById("switch-bridge");
 var switchClashes = document.getElementById("switch-clashes");
 var switchSpheres1 = document.getElementById("switch-spheres-1");
+var switchGravity = document.getElementById("switch-gravity");
 var jmeBtn = document.getElementById("jme-btn");
 var jmeBtnClose = document.getElementById("jsme-btn-close");
 var jmeModal = document.getElementById("jsme-container");
@@ -53,6 +54,8 @@ var minDistance = 2;
 var bridgeDist = 1.2;
 var distanceConstraint = 0.2;
 var constraintForce = 20;
+var gravity = 0;
+var MAX_GRAVITY = -200;
 var bridges = [];
 var connectors = [];
 var constraints = [];
@@ -77,6 +80,7 @@ switchClashes.addEventListener("change", handleClashesChange);
 switchInteractions.addEventListener("change", handleInteractionsChange);
 switchBridge.addEventListener("change", handleBridgeChange);
 switchSpheres1.addEventListener("change", handleRenderType);
+switchGravity.addEventListener("change", handleGravityChange);
 jmeBtn.addEventListener("click", openJme);
 jmeBtnClose.addEventListener("click", closeJme);
 jmeSearch.addEventListener("click", searchMol);
@@ -87,7 +91,7 @@ tempControls.forEach(function (item) {
 });
 
 var world = new CANNON.World({
-  gravity: new CANNON.Vec3(0, 0, 0)
+  gravity: new CANNON.Vec3(0, gravity, 0)
 });
 
 
@@ -407,31 +411,31 @@ function updatePhysics() {
     var mediaz = 0;
     var velsum_expected = Math.sqrt(temperature) * pdb.atoms;
 
-    for (var i = 0; i < pdb.atoms; i++) {
-      pdb.atomBodies[i].velocity.x =
-        pdb.atomBodies[i].velocity.x + 10 * Math.random(1) - 5;
-      pdb.atomBodies[i].velocity.y =
-        pdb.atomBodies[i].velocity.y + 10 * Math.random(1) - 5;
-      pdb.atomBodies[i].velocity.z =
-        pdb.atomBodies[i].velocity.z + 10 * Math.random(1) - 5;
+    // for (var i = 0; i < pdb.atoms; i++) {
+    //   pdb.atomBodies[i].velocity.x =
+    //     pdb.atomBodies[i].velocity.x + 10 * Math.random(1) - 5;
+    //   pdb.atomBodies[i].velocity.y =
+    //     pdb.atomBodies[i].velocity.y + 10 * Math.random(1) - 5;
+    //   pdb.atomBodies[i].velocity.z =
+    //     pdb.atomBodies[i].velocity.z + 10 * Math.random(1) - 5;
 
-      velsum =
-        velsum +
-        Math.sqrt(
-          Math.pow(pdb.atomBodies[i].velocity.x, 2) +
-            Math.pow(pdb.atomBodies[i].velocity.y, 2) +
-            Math.pow(pdb.atomBodies[i].velocity.z, 2)
-        );
-    }
+    //   velsum =
+    //     velsum +
+    //     Math.sqrt(
+    //       Math.pow(pdb.atomBodies[i].velocity.x, 2) +
+    //         Math.pow(pdb.atomBodies[i].velocity.y, 2) +
+    //         Math.pow(pdb.atomBodies[i].velocity.z, 2)
+    //     );
+    // }
 
-    for (var i = 0; i < pdb.atoms; i++) {
-      pdb.atomBodies[i].velocity.x =
-        (pdb.atomBodies[i].velocity.x / velsum) * velsum_expected;
-      pdb.atomBodies[i].velocity.y =
-        (pdb.atomBodies[i].velocity.y / velsum) * velsum_expected;
-      pdb.atomBodies[i].velocity.z =
-        (pdb.atomBodies[i].velocity.z / velsum) * velsum_expected;
-    }
+    // for (var i = 0; i < pdb.atoms; i++) {
+    //   pdb.atomBodies[i].velocity.x =
+    //     (pdb.atomBodies[i].velocity.x / velsum) * velsum_expected;
+    //   pdb.atomBodies[i].velocity.y =
+    //     (pdb.atomBodies[i].velocity.y / velsum) * velsum_expected;
+    //   pdb.atomBodies[i].velocity.z =
+    //     (pdb.atomBodies[i].velocity.z / velsum) * velsum_expected;
+    // }
 
     for (var i = 0; i < pdb.atoms; i++) {
       pdb.atomMeshes[i].position.x = pdb.atomBodies[i].position.x;
@@ -911,4 +915,21 @@ function selectMol(e) {
       pdbText.value = data;
       closeJme();
     });
+}
+
+function handleGravityChange(e) {
+  var isChecked = switchGravity.checked;
+  console.log(isChecked)
+
+  if(isChecked) {
+    gravity = MAX_GRAVITY;
+  } else {
+    gravity = 0;
+  }
+
+  updateGravity();
+}
+
+function updateGravity() {
+  world.gravity = new CANNON.Vec3(0, gravity, 0)
 }

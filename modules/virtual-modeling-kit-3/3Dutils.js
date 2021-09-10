@@ -8,6 +8,8 @@ var CONSTRAINT_1 = 1000;
 var CONSTRAINT_2 = 10;
 var CONSTRAINT_3 = 100;
 
+var massFactor = 10;
+
 var radiusfactor1 = 0.35;
 var radiusfactor2 = 1.1;
 
@@ -626,7 +628,7 @@ function createSpheres(pdb) {
 
     var sphereShape = new CANNON.Sphere(0.8 * elementradii[pdb.elements[i]]);
     var sphereBody = new CANNON.Body({
-      mass: elementmasses[pdb.elements[i]],
+      mass: massFactor * elementmasses[pdb.elements[i]],
       shape: sphereShape,
     });
     sphereBody.position.set(
