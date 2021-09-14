@@ -50,8 +50,8 @@ var medium = 50;
 var low = 10;
 var defaultTemp = 200;
 var prevTemp = 0;
-var minDistance = 2;
-var bridgeDist = 1.2;
+var minDistance = 3;
+var bridgeDist = 2;
 var distanceConstraint = 0.2;
 var constraintForce = 20;
 var gravity = 0;
@@ -246,7 +246,7 @@ function initialize() {
     markerRoot2.add(markerGroup2);
   }
 
-  cannonDebugRenderer = new THREE.CannonDebugRenderer(scene, world);
+  // cannonDebugRenderer = new THREE.CannonDebugRenderer(scene, world);
 
   // Plane -x
   var planeShapeXmin = new CANNON.Plane();
@@ -326,7 +326,7 @@ function animate() {
   controls.update();
   requestAnimationFrame(animate);
   world.step(1 / 600);
-  cannonDebugRenderer.update();
+  // cannonDebugRenderer.update();
 
   updateInteractions();
 
@@ -350,39 +350,30 @@ function updateInteractions() {
         otherPdb.interactiveAtoms.nitrogen.forEach(function (nitrogenArr) {
           handleInteraction(nitrogenArr, hydrogensArr, index2, index1);
         });
+
+        otherPdb.interactiveAtoms.fluor.forEach(function (fluorArr) {
+          handleInteraction(fluorArr, hydrogensArr, index2, index1);
+        });
+
+        otherPdb.interactiveAtoms.sulfur.forEach(function (sulfurArr) {
+          handleInteraction(sulfurArr, hydrogensArr, index2, index1);
+        });
+
+        otherPdb.interactiveAtoms.chlorine.forEach(function (chlorineArr) {
+          handleInteraction(chlorineArr, hydrogensArr, index2, index1);
+        });
+
+        otherPdb.interactiveAtoms.bromine.forEach(function (bromineArr) {
+          handleInteraction(bromineArr, hydrogensArr, index2, index1);
+        });
+
+        otherPdb.interactiveAtoms.iodine.forEach(function (iodineArr) {
+          handleInteraction(iodineArr, hydrogensArr, index2, index1);
+        });
       });
     });
   });
 
-  // interactiveAtoms1.hydrogen.forEach(function (hydrogensArr) {
-  //   interactiveAtoms2.oxygen.forEach(function (oxygenArr) {
-  //     handleInteraction(oxygenArr, 2, hydrogensArr);
-  //   });
-
-  //   interactiveAtoms2.nitrogen.forEach(function (nitrogenArr) {
-  //     handleInteraction(nitrogenArr, 2, hydrogensArr);
-  //   });
-
-  //   interactiveAtoms2.fluor.forEach(function (fluorArr) {
-  //     handleInteraction(fluorArr, 2, hydrogensArr);
-  //   });
-
-  //   interactiveAtoms2.sulfur.forEach(function (sulfurArr) {
-  //     handleInteraction(sulfurArr, 2, hydrogensArr);
-  //   });
-
-  //   interactiveAtoms2.chlorine.forEach(function (chlorineArr) {
-  //     handleInteraction(chlorineArr, 2, hydrogensArr);
-  //   });
-
-  //   interactiveAtoms2.bromine.forEach(function (bromineArr) {
-  //     handleInteraction(bromineArr, 2, hydrogensArr);
-  //   });
-
-  //   interactiveAtoms2.iodine.forEach(function (iodineArr) {
-  //     handleInteraction(iodineArr, 2, hydrogensArr);
-  //   });
-  // });
 
   if (!isInteractionActive) {
     pdbs.forEach(function (pdb) {
@@ -400,7 +391,7 @@ function updateInteractions() {
 
   updateConnectors();
 
-  updateClashes();
+  // updateClashes();
 }
 
 function updatePhysics() {
@@ -411,7 +402,7 @@ function updatePhysics() {
     var mediaz = 0;
     var velsum_expected = Math.sqrt(temperature) * pdb.atoms;
 
-    if(!switchGravity.isChecked) {
+    // if(!switchGravity.checked) {
       for (var i = 0; i < pdb.atoms; i++) {
         pdb.atomBodies[i].velocity.x =
           pdb.atomBodies[i].velocity.x + 10 * Math.random(1) - 5;
@@ -437,7 +428,7 @@ function updatePhysics() {
         pdb.atomBodies[i].velocity.z =
           (pdb.atomBodies[i].velocity.z / velsum) * velsum_expected;
       }
-    }
+    // }
 
 
     for (var i = 0; i < pdb.atoms; i++) {
@@ -819,7 +810,7 @@ function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
   // var interactions = cubeNumber === 1 ? interactions2 : interactions1;
   // var otherCube = cubeNumber === 1 ? 2 : 1;
 
-  var interactionKey = `${hydrogen}-${element}`;
+  var interactionKey = `${hIndex}-${hydrogen}-${elementIndex}-${element}`;
 
   // // If the element exists returns index of the interaction
   // // If not, returns -1
@@ -828,11 +819,12 @@ function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
   });
   var interactionExists = interactionIndex !== -1;
 
-  var bridgeKey = [...hydrogensArr, ...elementArr].sort().join("");
+  var bridgeKey = [...hydrogensArr, ...elementArr, hIndex, elementIndex].sort().join("-"); //tengo que agregar los keys de las moleculas!!
   var isThereABridge = bridges.includes(bridgeKey);
   var connectorExists = connectors.some(function (connector) {
     return connector.key === bridgeKey;
   });
+
 
   var distance = Math.sqrt(
     Math.pow(hydrogenPosition.x - elementPosition.x, 2) +
@@ -840,10 +832,16 @@ function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
       Math.pow(hydrogenPosition.z - elementPosition.z, 2)
   );
 
+  // if(distance <= 2) {
+  //   console.log("Distance < 2 " + interactionKey);
+  // }
+
   // Should we add/remove the interaction?
   if (distance < minDistance) {
+    // console.log("Distance < 2 " + interactionKey);
     // Atoms are close but there's no constraint
     if (!interactionExists && !isThereABridge) {
+      console.log("Create interaction " + interactionKey)
       createInteraction(
         hIndex,
         interactionKey,
@@ -853,6 +851,7 @@ function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
       );
     }
   } else if (interactionExists) {
+    console.log("Remove interaction " + interactionKey)
     removeInteraction(hIndex, interactionIndex, bridgeKey);
   }
 
@@ -871,6 +870,7 @@ function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
 
 function handleClashesChange(e) {
   isClashingActive = switchClashes.checked;
+  console.log(world)
 }
 
 function handleInteractionsChange(e) {
