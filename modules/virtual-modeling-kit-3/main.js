@@ -5,6 +5,7 @@ import {
   createSticks,
   radiusfactor1,
   radiusfactor2,
+  getAngle,
 } from "./3Dutils.js";
 import { OrbitControls } from "/lib/utils/OrbitControls.js";
 
@@ -50,12 +51,13 @@ var medium = 50;
 var low = 10;
 var defaultTemp = 200;
 var prevTemp = 0;
-var minDistance = 3;
-var bridgeDist = 2;
+var minDistance = 2;
+var bridgeDist = 1.2;
 var distanceConstraint = 0.2;
 var constraintForce = 20;
 var gravity = 0;
 var MAX_GRAVITY = -200;
+var angleLimit = 75;
 var bridges = [];
 var connectors = [];
 var constraints = [];
@@ -538,7 +540,6 @@ function loadPdb(rawPdb) {
   }
 
   pdbs.push(newPdb);
-
   switchSpheres1.disabled = false;
 }
 
@@ -804,6 +805,9 @@ function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
 
   var hydrogen = hydrogensArr[0];
   var hydrogenPosition = otherMoleculeMeshes[hydrogen].position;
+  // This is the element bonded to H 
+  var bondedElement = hydrogensArr[1];
+  var bondedElementPosition = otherMoleculeMeshes[bondedElement].position;
 
   var interactions = pdbs[hIndex].interactions;
 
@@ -832,16 +836,13 @@ function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
       Math.pow(hydrogenPosition.z - elementPosition.z, 2)
   );
 
-  // if(distance <= 2) {
-  //   console.log("Distance < 2 " + interactionKey);
-  // }
+  var angle = getAngle(elementPosition, hydrogenPosition, bondedElementPosition);
 
   // Should we add/remove the interaction?
-  if (distance < minDistance) {
-    // console.log("Distance < 2 " + interactionKey);
+  if (distance < minDistance && angle < angleLimit) {
     // Atoms are close but there's no constraint
     if (!interactionExists && !isThereABridge) {
-      console.log("Create interaction " + interactionKey)
+      console.log("Create interaction " + interactionKey + " Angle: " + angle);
       createInteraction(
         hIndex,
         interactionKey,
@@ -851,12 +852,13 @@ function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
       );
     }
   } else if (interactionExists) {
-    console.log("Remove interaction " + interactionKey)
+    console.log("Remove interaction " + interactionKey + " Angle: " + angle)
     removeInteraction(hIndex, interactionIndex, bridgeKey);
   }
 
   // Should we add/remove the connector
-  if (distance < bridgeDist && !connectorExists && interactionExists) {
+  if (distance < bridgeDist && !connectorExists && interactionExists && angle < angleLimit) {
+    console.log("H bond at " + angle)
     addConnector(
       otherMoleculeMeshes[hydrogen],
       thisMoleculeMeshes[element],

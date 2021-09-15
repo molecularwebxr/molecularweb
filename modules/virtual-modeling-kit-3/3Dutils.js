@@ -17,6 +17,29 @@ var sphereGeometry = new THREE.SphereBufferGeometry(1, 32, 16);
 
 /******************  3D utils *************************/
 
+function getAngle(A, B, C) {
+  var AB = Math.sqrt(
+    Math.pow(B.x - A.x, 2) +
+      Math.pow(B.y - A.y, 2) +
+      Math.pow(B.z - A.z, 2)
+  );
+  var BC = Math.sqrt(
+    Math.pow(C.x - B.x, 2) +
+      Math.pow(C.y - B.y, 2) +
+      Math.pow(C.z - B.z, 2)
+  );
+  var AC = Math.sqrt(
+    Math.pow(C.x - A.x, 2) +
+      Math.pow(C.y - A.y, 2) +
+      Math.pow(C.z - A.z, 2)
+  );
+  var angle =
+    (180 / Math.PI) *
+    Math.acos((BC * BC + AB * AB - AC * AC) / (2 * BC * AB));
+
+  return angle;
+}
+
 function getRandomNumber(min, max) {
   return Math.random() * (max - min) + min;
 }
@@ -895,4 +918,5 @@ export {
   checkNCO,
   radiusfactor1,
   radiusfactor2,
+  getAngle,
 };
