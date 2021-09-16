@@ -16,6 +16,7 @@ var patternArray2, markerRootArray2, markerGroupArray2;
 var sceneGroup;
 var sceneGroup2;
 var controls;
+var planeMesh; 
 
 var pdbs = [];
 
@@ -57,6 +58,7 @@ var distanceConstraint = 0.2;
 var constraintForce = 20;
 var gravity = 0;
 var MAX_GRAVITY = -200;
+var STEP  = 1 / 60;
 var angleLimit = 140;
 var bridges = [];
 var connectors = [];
@@ -66,7 +68,7 @@ var isClashingActive = false;
 var isInteractionActive = false;
 var isBridgeActive = false;
 
-var cannonDebugRenderer;
+// var cannonDebugRenderer;
 
 var sphereGeometry = new THREE.SphereBufferGeometry(0.05, 32, 16);
 var sphereMaterial = new THREE.MeshLambertMaterial({ color: "yellow" });
@@ -290,6 +292,16 @@ function initialize() {
   planeYmin.position.set(0, -20, -9);
   world.addBody(planeYmin);
 
+  var planeGeometry = new THREE.BoxGeometry(20, 0.5, 24, 5, 1, 5);
+  var planeMaterial = new THREE.MeshBasicMaterial({
+    color: 0x0000ff,
+    wireframe: true,
+  });
+  planeMesh = new THREE.Mesh(planeGeometry, planeMaterial);
+  planeMesh.position.set(0, -20, -10);
+  planeMesh.visible = false;
+  scene.add(planeMesh);
+
   // Plane +y
   var planeShapeYmax = new CANNON.Plane();
   var planeYmax = new CANNON.Body({ mass: 0 });
@@ -327,7 +339,7 @@ function render() {
 function animate() {
   controls.update();
   requestAnimationFrame(animate);
-  world.step(1 / 600);
+  world.step(STEP);
   // cannonDebugRenderer.update();
 
   updateInteractions();
@@ -923,11 +935,13 @@ function selectMol(e) {
 
 function handleGravityChange(e) {
   var isChecked = switchGravity.checked;
-
   if(isChecked) {
     gravity = MAX_GRAVITY;
+    console.log(planeMesh)
+    planeMesh.visible = true;
   } else {
     gravity = 0;
+    planeMesh.visible = false;
   }
 
   updateGravity();
