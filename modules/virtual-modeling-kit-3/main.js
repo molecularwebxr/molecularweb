@@ -65,8 +65,8 @@ var connectors = [];
 var constraints = [];
 
 var isClashingActive = false;
-var isInteractionActive = false;
-var isBridgeActive = false;
+var isInteractionActive = true;
+var isBridgeActive = true;
 
 // var cannonDebugRenderer;
 
@@ -405,7 +405,7 @@ function updateInteractions() {
 
   updateConnectors();
 
-  // updateClashes();
+  updateClashes();
 }
 
 function updatePhysics() {
@@ -883,7 +883,6 @@ function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
 
 function handleClashesChange(e) {
   isClashingActive = switchClashes.checked;
-  console.log(world)
 }
 
 function handleInteractionsChange(e) {
