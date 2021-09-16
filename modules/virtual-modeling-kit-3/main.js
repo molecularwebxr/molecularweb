@@ -936,7 +936,6 @@ function handleGravityChange(e) {
   var isChecked = switchGravity.checked;
   if(isChecked) {
     gravity = MAX_GRAVITY;
-    console.log(planeMesh)
     planeMesh.visible = true;
   } else {
     gravity = 0;
