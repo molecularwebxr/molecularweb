@@ -57,7 +57,7 @@ var distanceConstraint = 0.2;
 var constraintForce = 20;
 var gravity = 0;
 var MAX_GRAVITY = -200;
-var angleLimit = 75;
+var angleLimit = 140;
 var bridges = [];
 var connectors = [];
 var constraints = [];
@@ -341,9 +341,9 @@ function updateInteractions() {
   pdbs.forEach(function (pdb, index1, pdbsArray) {
     pdb.interactiveAtoms.hydrogen.forEach(function (hydrogensArr) {
       pdbsArray.forEach(function (otherPdb, index2) {
-        if (index1 === index2) {
-          return;
-        }
+        // if (index1 === index2) {
+        //   return;
+        // }
 
         otherPdb.interactiveAtoms.oxygen.forEach(function (oxygenArr) {
           handleInteraction(oxygenArr, hydrogensArr, index2, index1);
@@ -839,7 +839,7 @@ function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
   var angle = getAngle(elementPosition, hydrogenPosition, bondedElementPosition);
 
   // Should we add/remove the interaction?
-  if (distance < minDistance && angle < angleLimit) {
+  if (distance < minDistance && angle > angleLimit) {
     // Atoms are close but there's no constraint
     if (!interactionExists && !isThereABridge) {
       console.log("Create interaction " + interactionKey + " Angle: " + angle);
@@ -851,21 +851,20 @@ function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
         thisMoleculeBodies[element]
       );
     }
-  } else if (interactionExists) {
+  } else if (interactionExists && angle < (angleLimit - 10)) {
     console.log("Remove interaction " + interactionKey + " Angle: " + angle)
     removeInteraction(hIndex, interactionIndex, bridgeKey);
   }
 
   // Should we add/remove the connector
-  if (distance < bridgeDist && !connectorExists && interactionExists && angle < angleLimit) {
+  if (distance < bridgeDist && !connectorExists && interactionExists && angle > angleLimit) {
     console.log("H bond at " + angle)
     addConnector(
       otherMoleculeMeshes[hydrogen],
       thisMoleculeMeshes[element],
       bridgeKey
     );
-  }
-  if (distance > bridgeDist && connectorExists && interactionExists) {
+  } else if ((distance > bridgeDist || angle < (angleLimit - 10)) && connectorExists && interactionExists) {
     removeConnector(bridgeKey);
   }
 }
