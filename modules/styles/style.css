@@ -300,9 +300,14 @@ figure {
 
 .close-menu {
   position: relative;
-  top: -5px;
+  top: -13px;
   right: -97%;
   cursor: pointer;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bar-1 {
