@@ -569,9 +569,7 @@ function handleClick(e) {
 
   if (pdbInserted.length > 0) {
     loadPdb(pdbInserted);
-  } else {
-    console.log("No pdb!");
-  }
+  } 
 }
 
 function handleScale(e) {
@@ -855,7 +853,7 @@ function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
   if (distance < minDistance && angle > angleLimit) {
     // Atoms are close but there's no constraint
     if (!interactionExists && !isThereABridge) {
-      console.log("Create interaction " + interactionKey + " Angle: " + angle);
+      // console.log("Create interaction " + interactionKey + " Angle: " + angle);
       createInteraction(
         hIndex,
         interactionKey,
@@ -865,13 +863,13 @@ function handleInteraction(elementArr, hydrogensArr, elementIndex, hIndex) {
       );
     }
   } else if (interactionExists && angle < (angleLimit - 10)) {
-    console.log("Remove interaction " + interactionKey + " Angle: " + angle)
+    // console.log("Remove interaction " + interactionKey + " Angle: " + angle)
     removeInteraction(hIndex, interactionIndex, bridgeKey);
   }
 
   // Should we add/remove the connector
   if (distance < bridgeDist && !connectorExists && interactionExists && angle > angleLimit) {
-    console.log("H bond at " + angle)
+    // console.log("H bond at " + angle)
     addConnector(
       otherMoleculeMeshes[hydrogen],
       thisMoleculeMeshes[element],
