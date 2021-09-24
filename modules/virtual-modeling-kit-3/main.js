@@ -553,6 +553,7 @@ function loadPdb(rawPdb) {
 
   pdbs.push(newPdb);
   switchSpheres1.disabled = false;
+  handleRenderType();
 }
 
 function clearPhysics() {
@@ -657,7 +658,7 @@ function handlePlayTemp(e) {
 }
 
 function handleRenderType(e) {
-  var isChecked = e.target.checked;
+  var isChecked = switchSpheres1.checked;
 
   if (isChecked) {
     pdbs.forEach(function (pdb) {
