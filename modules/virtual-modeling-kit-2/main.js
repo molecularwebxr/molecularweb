@@ -47,9 +47,9 @@ var pdbUrl = "/file?format=pdb&get3d=true";
 var jmeUrl = "/file?format=jme";
 
 var temperature = 0;
-var high = 100;
-var medium = 50;
-var low = 10;
+var high = 50;
+var medium = 10;
+var low = 5;
 var defaultTemp = 200;
 var prevTemp = 0;
 var minDistance = 2;
@@ -391,7 +391,7 @@ function animate() {
   requestAnimationFrame(animate);
   deltaTime = clock.getDelta();
   totalTime += deltaTime;
-  world.step(1 / 600);
+  world.step(1 / 60);
   // cannonDebugRenderer.update();
 
   if (atoms > 0 && atoms2 > 0) {

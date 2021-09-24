@@ -6,9 +6,9 @@ var TRIPLE = 0.25;
 
 var CONSTRAINT_1 = 1000;
 var CONSTRAINT_2 = 10;
-var CONSTRAINT_3 = 100;
+var CONSTRAINT_3 = 1000000000000;
 
-var massFactor = 10;
+var massFactor = 1;
 
 var radiusfactor1 = 0.35;
 var radiusfactor2 = 1.1;

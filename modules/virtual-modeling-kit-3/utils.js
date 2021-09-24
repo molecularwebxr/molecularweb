@@ -117,6 +117,10 @@ var elementNames = [
   "UUH",
   "UUS",
   "UUO",
+  "HX",
+  "CX",
+  "NX",
+  "OX"
 ];
 
 var elementradii = [
@@ -238,6 +242,10 @@ var elementradii = [
   2,
   2,
   2,
+  0.58,
+  0.73,
+  0.75,
+  0.73
 ];
 
 var elementColors = [
@@ -359,6 +367,10 @@ var elementColors = [
   new THREE.Color("white"),
   new THREE.Color("white"),
   new THREE.Color("white"),
+  new THREE.Color("black"),
+  new THREE.Color(0x946E83),
+  new THREE.Color("skyblue"),
+  new THREE.Color("pink"),
 ];
 
 var elementmasses = [
@@ -480,4 +492,8 @@ var elementmasses = [
   292,
   295,
   294,
+  1,
+  12,
+  14,
+  16
 ];
