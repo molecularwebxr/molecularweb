@@ -911,12 +911,25 @@ function searchMol(e) {
 
   if (string.length > 3) {
     jmeSearch.disabled = true;
+    jmeSearch.textContent = "Loading...";
 
     fetch(baseUrl + string + jmeUrl)
-      .then((response) => response.text())
+      .then((response) => {
+        if (response.status === 500) {
+          throw new Error("error");
+        } else {
+          return response.text();
+        }
+      })
       .then((data) => {
         jsmeApplet.readMolecule(data);
         jmeSearch.disabled = false;
+        jmeSearch.textContent = "Search database";
+      })
+      .catch(function (error) {
+        swal("Something went wrong", "We could not find your molecule, please try again.", "error");
+        jmeSearch.disabled = false;
+        jmeSearch.textContent = "Search database";
       });
   }
 }
