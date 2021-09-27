@@ -491,7 +491,7 @@ button.pdb-btn {
 }
 
 .btn-primary.search{
-  width: 153.033px;
+  min-width: 153.033px;
 }
 
 .swal-button,
@@ -600,7 +600,7 @@ button.pdb-btn {
 }
 
 .temperature-container.single-menu {
-  transform: translateY(-26.5%);
+  transform: translateY(-30%);
 }
 
 .triangle-temp {
@@ -627,7 +627,7 @@ button.pdb-btn {
 }
 
 .interaction-controls.single-menu {
-  transform: translateY(-102%);
+  transform: translateY(-88%);
 }
 
 .interaction-control {
