@@ -139,9 +139,8 @@
     </div>
 
     <!-- Interaction controls -->
-    <div id="interaction-container" class="interaction-controls hide column">
+    <div id="interaction-container" class="interaction-controls single-menu hide column">
       <div class="triangle-temp"></div>
-
       <p class="interaction-control-title" data-i18n="orbitals.modelingKit.mechanics"></p>
       <div class="interaction-control row">
         <p data-i18n="orbitals.modelingKit.electrostatics"></p>
@@ -149,6 +148,7 @@
           <input
             id="switch-interactions"
             type="checkbox"
+            checked
             class="switch-input"
           />
           <label for="switch-interactions" class="switch-label">Switch</label>
@@ -157,21 +157,17 @@
       <div class="interaction-control row">
         <p data-i18n="orbitals.modelingKit.hBonds"></p>
         <div class="switch">
-          <input id="switch-bridge" type="checkbox" class="switch-input" />
+          <input id="switch-bridge" checked type="checkbox" class="switch-input" />
           <label for="switch-bridge" class="switch-label">Switch</label>
         </div>
       </div>
-      <div class="interaction-control row no-margin">
+      <div class="interaction-control row">
         <p data-i18n="orbitals.modelingKit.clashes"></p>
         <div class="switch">
           <input id="switch-clashes" type="checkbox" class="switch-input" />
           <label for="switch-clashes" class="switch-label">Switch</label>
         </div>
       </div>
-
-      <div class="line horizontal long"></div>
-
-      <p class="interaction-control-title" data-i18n="[prepend]orbitals.modelingKit.marker"><span>1</span></p>
       <div class="interaction-control row">
         <p data-i18n="orbitals.modelingKit.showSpheres"></p>
         <div class="switch">
@@ -184,93 +180,63 @@
           <label for="switch-spheres-1" class="switch-label">Switch</label>
         </div>
       </div>
-      <div class="interaction-control row no-margin">
-        <p data-i18n="app.flipMolecule"></p>
-        <div class="switch">
-          <input
-            id="switch-flip-1"
-            type="checkbox"
-            disabled
-            class="switch-input"
-          />
-          <label for="switch-flip-1" class="switch-label">Switch</label>
-        </div>
-      </div>
 
-      <div class="line horizontal long"></div>
-
-      <p class="interaction-control-title" data-i18n="[prepend]orbitals.modelingKit.marker"><span>2</span></p>
-      <div class="interaction-control row">
-        <p data-i18n="orbitals.modelingKit.showSpheres"></p>
-        <div class="switch">
-          <input
-            id="switch-spheres-2"
-            type="checkbox"
-            disabled
-            class="switch-input"
-          />
-          <label for="switch-spheres-2" class="switch-label">Switch</label>
-        </div>
-      </div>
       <div class="interaction-control row no-margin">
-        <p data-i18n="app.flipMolecule"></p>
+        <p>Gravity</p>
         <div class="switch">
           <input
-            id="switch-flip-2"
+            id="switch-gravity"
             type="checkbox"
-            disabled
             class="switch-input"
           />
-          <label for="switch-flip-2" class="switch-label">Switch</label>
+          <label for="switch-gravity" class="switch-label">Switch</label>
         </div>
       </div>
 
        <!-- Temperature controls -->
-    <div id="temp-container" class="temperature-container hide column">
-      <temp-control
-        class="small-icon-margin small-icon-margin-bottom"
-        size="big"
-        type="increase"
-      ></temp-control>
-      <temp-control
-        class="small-icon-margin small-icon-margin-bottom"
-        size="medium"
-        type="increase"
-      ></temp-control>
-      <temp-control
-        size="small"
-        type="increase"
-        class="small-icon-margin"
-      ></temp-control>
+      <div id="temp-container" class="temperature-container single-menu hide column">
+        <temp-control
+          class="small-icon-margin small-icon-margin-bottom"
+          size="big"
+          type="increase"
+        ></temp-control>
+        <temp-control
+          class="small-icon-margin small-icon-margin-bottom"
+          size="medium"
+          type="increase"
+        ></temp-control>
+        <temp-control
+          size="small"
+          type="increase"
+          class="small-icon-margin"
+        ></temp-control>
 
-      <div class="line horizontal"></div>
+        <div class="line horizontal"></div>
 
-      <temp-control
-        class="small-icon-margin small-icon-margin-bottom"
-        size="small"
-        type="decrease"
-      ></temp-control>
-      <temp-control
-        class="small-icon-margin small-icon-margin-bottom"
-        size="medium"
-        type="decrease"
-      ></temp-control>
-      <temp-control
-        size="big"
-        type="decrease"
-        class="small-icon-margin"
-      ></temp-control>
+        <temp-control
+          class="small-icon-margin small-icon-margin-bottom"
+          size="small"
+          type="decrease"
+        ></temp-control>
+        <temp-control
+          class="small-icon-margin small-icon-margin-bottom"
+          size="medium"
+          type="decrease"
+        ></temp-control>
+        <temp-control
+          size="big"
+          type="decrease"
+          class="small-icon-margin"
+        ></temp-control>
 
-      <div class="line horizontal"></div>
+        <div class="line horizontal"></div>
 
-      <div class="temp-controls row">
-        <stop-temp class="right-margin"></stop-temp>
-        <play-temp></play-temp>
+        <div class="temp-controls row">
+          <stop-temp class="right-margin"></stop-temp>
+          <play-temp></play-temp>
+        </div>
       </div>
     </div>
-    </div>
-
-   
 
     <!-- Menu for loading PDBs -->
     <div class="modeling-container" id="mk-menu">
@@ -289,35 +255,8 @@
           ></p>
         </div>
 
-        <div class="marker-options-container colum">
-          <p class="pdb-subtitle">1. Select a marker</p>
-
-          <div class="row">
-            <div class="modeling-marker-options column">
-              <p id="marker-1" class="selected" data-i18n="[prepend]orbitals.modelingKit.marker"><span>1</span></p>
-              <a
-                href="/assets/markers/cube.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-i18n="orbitals.modelingKit.getMarker"
-              ></a>
-            </div>
-  
-            <div class="modeling-marker-options column">
-              <p id="marker-2" data-i18n="[prepend]orbitals.modelingKit.marker"><span>2</span></p>
-              <a
-                href="/assets/markers/cube2.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-i18n="orbitals.modelingKit.getMarker"
-              ></a>
-            </div>
-          </div>
-          
-        </div>
-
         <div class="modeling-options column">
-          <p class="pdb-subtitle">2. Prepare your molecule</p>
+          <p class="pdb-subtitle">Prepare your molecules</p>
           <div class="row modeling-options-btns">
             <div class="pdb-load">
               <p
@@ -365,15 +304,10 @@
         ></textarea>
 
         <button
-          id="start-ar"
+          id="add-molecule"
           class="btn-primary"
-          data-i18n="orbitals.modelingKit.startAR"
-        ></button>
+        >Add</button>
       </div>
-    </div>
-
-    <div class="chart-container">
-      <canvas class="chart flip" id="chart1"></canvas>
     </div>
 
     <!-- Overlays -->

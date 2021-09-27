@@ -1,6 +1,7 @@
 body {
   margin: 0px;
   overflow: hidden;
+  font-family: "Roboto", sans-serif;
 }
 
 .row {
@@ -299,9 +300,14 @@ figure {
 
 .close-menu {
   position: relative;
-  top: -5px;
+  top: -13px;
   right: -97%;
   cursor: pointer;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bar-1 {
@@ -441,13 +447,24 @@ button.pdb-btn {
   font-size: 0.6rem;
 }
 
+.pdb-text {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0.25rem;
+  box-sizing: border-box;
+  resize: none;
+  font-family: "Roboto";
+  font-size: 12px;
+}
+
 .btn-primary {
   margin: 1.5rem auto 0 auto;
   display: block;
   padding: 5px 24px;
-  background: #9bf99f;
+  background: var(--secondary);
   border-radius: 6px;
-  color: #5c45eb;
+  color: var(--primary);
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -467,6 +484,20 @@ button.pdb-btn {
 .btn-primary.big {
   font-size: 16px;
   padding: 8px 24px;
+}
+
+.btn-primary:disabled {
+  transform: scale(1);
+}
+
+.btn-primary.search{
+  min-width: 153.033px;
+}
+
+.swal-button,
+.swal-button:not([disabled]):hover {
+  background-color: var(--secondary);
+  color: var(--primary);
 }
 
 .temp-box {
@@ -568,6 +599,10 @@ button.pdb-btn {
   padding: 0.75rem 0.5rem;
 }
 
+.temperature-container.single-menu {
+  transform: translateY(-30%);
+}
+
 .triangle-temp {
   position: absolute;
   top: 50%;
@@ -589,6 +624,10 @@ button.pdb-btn {
   padding: 0.75rem 0.5rem;
   justify-content: center;
   align-items: center;
+}
+
+.interaction-controls.single-menu {
+  transform: translateY(-88%);
 }
 
 .interaction-control {

@@ -8,12 +8,50 @@ var CONSTRAINT_1 = 1000;
 var CONSTRAINT_2 = 10;
 var CONSTRAINT_3 = 1000000000000;
 
+var massFactor = 1;
+
 var radiusfactor1 = 0.35;
 var radiusfactor2 = 1.1;
 
 var sphereGeometry = new THREE.SphereBufferGeometry(1, 32, 16);
 
 /******************  3D utils *************************/
+
+function getAngle(A, B, C) {
+  var AB = Math.sqrt(
+    Math.pow(B.x - A.x, 2) +
+      Math.pow(B.y - A.y, 2) +
+      Math.pow(B.z - A.z, 2)
+  );
+  var BC = Math.sqrt(
+    Math.pow(C.x - B.x, 2) +
+      Math.pow(C.y - B.y, 2) +
+      Math.pow(C.z - B.z, 2)
+  );
+  var AC = Math.sqrt(
+    Math.pow(C.x - A.x, 2) +
+      Math.pow(C.y - A.y, 2) +
+      Math.pow(C.z - A.z, 2)
+  );
+  var angle =
+    (180 / Math.PI) *
+    Math.acos((BC * BC + AB * AB - AC * AC) / (2 * BC * AB));
+
+  return angle;
+}
+
+function getRandomNumber(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+// This function returns a random Vector 3
+function getRandomVec3() {
+  var randomX = getRandomNumber(-0.5, 0.5);
+  var randomY = getRandomNumber(0, 1);
+  var randomZ = getRandomNumber(-10, -15);
+
+  return new THREE.Vector3(randomX, randomY, randomZ);
+}
 
 // This function checks if one two elements are N, C or O
 function checkNCO(elementA, elementB) {
@@ -53,6 +91,7 @@ function setupPdb(rawPdb) {
     zCoords: [],
     resnos: [],
     elements: [],
+    interactions: [],
     bonds: {},
     allBonds: {},
     atoms: 0,
@@ -576,6 +615,8 @@ function createSpheres(pdb) {
   var meshes = [];
   var meshes2 = [];
   var bodies = [];
+  
+  var translation = getRandomVec3();
 
   var radiusFactor = radiusfactor1;
 
@@ -591,6 +632,7 @@ function createSpheres(pdb) {
     sphereMesh.position.x = pdb.xCoords[i] - pdb.xAvg;
     sphereMesh.position.y = pdb.yCoords[i] - pdb.yAvg;
     sphereMesh.position.z = pdb.zCoords[i] - pdb.zAvg;
+    sphereMesh.position.add(translation);
     meshes.push(sphereMesh);
 
     var clashMesh = new THREE.Mesh(
@@ -609,7 +651,7 @@ function createSpheres(pdb) {
 
     var sphereShape = new CANNON.Sphere(0.8 * elementradii[pdb.elements[i]]);
     var sphereBody = new CANNON.Body({
-      mass: elementmasses[pdb.elements[i]],
+      mass: massFactor * elementmasses[pdb.elements[i]],
       shape: sphereShape,
     });
     sphereBody.position.set(
@@ -876,4 +918,5 @@ export {
   checkNCO,
   radiusfactor1,
   radiusfactor2,
+  getAngle,
 };

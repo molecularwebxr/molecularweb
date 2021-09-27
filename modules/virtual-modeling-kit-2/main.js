@@ -47,9 +47,9 @@ var pdbUrl = "/file?format=pdb&get3d=true";
 var jmeUrl = "/file?format=jme";
 
 var temperature = 0;
-var high = 100;
-var medium = 50;
-var low = 10;
+var high = 50;
+var medium = 10;
+var low = 5;
 var defaultTemp = 200;
 var prevTemp = 0;
 var minDistance = 2;
@@ -391,7 +391,7 @@ function animate() {
   requestAnimationFrame(animate);
   deltaTime = clock.getDelta();
   totalTime += deltaTime;
-  world.step(1 / 600);
+  world.step(1 / 60);
   // cannonDebugRenderer.update();
 
   if (atoms > 0 && atoms2 > 0) {
@@ -1435,13 +1435,25 @@ function searchMol(e) {
   var string = jmeInput.value;
 
   if (string.length > 3) {
-    jmeSearch.disabled = true;
+    jmeSearch.textContent = "Loading...";
 
     fetch(baseUrl + string + jmeUrl)
-      .then((response) => response.text())
+      .then((response) => {
+        if (response.status === 500) {
+          throw new Error("error");
+        } else {
+          return response.text();
+        }
+      })
       .then((data) => {
         jsmeApplet.readMolecule(data);
         jmeSearch.disabled = false;
+        jmeSearch.textContent = "Search database";
+      })
+      .catch(function (error) {
+        swal("Something went wrong", "We could not find your molecule, please try again.", "error");
+        jmeSearch.disabled = false;
+        jmeSearch.textContent = "Search database";
       });
   }
 }
