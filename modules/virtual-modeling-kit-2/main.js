@@ -100,6 +100,17 @@ var sphereGeometry = new THREE.SphereBufferGeometry(0.05, 32, 16);
 var sphereMaterial = new THREE.MeshLambertMaterial({ color: "yellow" });
 var dummy = new THREE.Object3D();
 
+var P = [];
+var Q = [];
+
+var Qx = 0;
+var Qy = 0;
+var Qz = 0;
+
+var Px = 0;
+var Py = 0;
+var Pz = 0;
+
 startAR.addEventListener("click", handleClick);
 flipVideo.addEventListener("flipCamera", handleFlip);
 scaleUp.addEventListener("scaleGraphics", handleScale);
@@ -536,16 +547,52 @@ function updatePhysics() {
   var cubeQuaternion = new THREE.Quaternion();
   sceneGroup.getWorldQuaternion(cubeQuaternion);
 
-  if (isCube1Visible) {
-    for (var i = 0; i < atoms; i++) {
-      mediax = mediax + atomBodies[i].position.x;
-      mediay = mediay + atomBodies[i].position.y;
-      mediaz = mediaz + atomBodies[i].position.z;
+  if (atomBodies.length > 0) {
+    P = [];
+
+    atomBodies.forEach(function (body) {
+      P.push([body.position.x, body.position.y, body.position.z]);
+    });
+
+    Px = 0;
+    Py = 0;
+    Pz = 0;
+
+    for (var i = 0; i < atomBodies.length; i++) {
+      Px = Px + atomBodies[i].position.x;
+      Py = Py + atomBodies[i].position.y;
+      Pz = Pz + atomBodies[i].position.z;
     }
 
-    mediax = mediax / atoms;
-    mediay = mediay / atoms;
-    mediaz = mediaz / atoms;
+    P.forEach(function (point) {
+      point[0] = point[0] - Px / atomBodies.length;
+      point[1] = point[1] - Py / atomBodies.length;
+      point[2] = point[2] - Pz / atomBodies.length;
+    });
+
+    var H = multiply(transpose(Q), P);
+
+    var svdH = SVDJS.SVD(H);
+
+    console.log(svdH.u);
+
+    var arrTmp = [
+      [1, 0, 0],
+      [0, 1, 0],
+      [0, 0, 1],
+    ];
+
+    var Vt = svdH.v;
+
+    var R = multiply(Vt, multiply(arrTmp, transpose(svdH.u)));
+
+    var newRArr = multiply(P, R);
+
+    atomBodies.forEach(function (body, bodyIndex) {
+      body.position.x = newRArr[bodyIndex][0];
+      body.position.y = newRArr[bodyIndex][1];
+      body.position.z = newRArr[bodyIndex][2];
+    });
 
     for (var i = 0; i < atoms; i++) {
       atomBodies[i].position.x =
@@ -818,6 +865,28 @@ function loadPdb(rawPdb) {
 
     switchFlip1.disabled = false;
     switchSpheres1.disabled = false;
+
+    Q = [];
+
+    atomBodies.forEach(function (body) {
+      Q.push([body.position.x, body.position.y, body.position.z]);
+    });
+
+    for (var i = 0; i < atomBodies.length; i++) {
+      Qx = Qx + atomBodies[i].position.x;
+      Qy = Qy + atomBodies[i].position.y;
+      Qz = Qz + atomBodies[i].position.z;
+    }
+
+    Qx = Qx / atomBodies.length;
+    Qy = Qy / atomBodies.length;
+    Qz = Qz / atomBodies.length;
+
+    Q.forEach(function (point) {
+      point[0] = point[0] - Qx;
+      point[1] = point[1] - Qy;
+      point[2] = point[2] - Qz;
+    });
   } else {
     resetMarker2();
     resetGeneral();
@@ -1368,7 +1437,11 @@ function updateEnergies() {
     var species2 = [];
 
     var coordinates1 = atomBodies.map(function (atom) {
-      return [Math.round(atom.position.x*100)/100, Math.round(atom.position.y*100)/100, Math.round(atom.position.z*100)/100];
+      return [
+        Math.round(atom.position.x * 100) / 100,
+        Math.round(atom.position.y * 100) / 100,
+        Math.round(atom.position.z * 100) / 100,
+      ];
     });
 
     var species1 = pdb.elements.map(function (element) {
@@ -1377,7 +1450,11 @@ function updateEnergies() {
 
     if (atoms2 > 0) {
       var coordinates2 = atomBodies2.map(function (atom) {
-        return [Math.round(atom.position.x*100)/100, Math.round(atom.position.y*100)/100, Math.round(atom.position.z*100)/100];
+        return [
+          Math.round(atom.position.x * 100) / 100,
+          Math.round(atom.position.y * 100) / 100,
+          Math.round(atom.position.z * 100) / 100,
+        ];
       });
 
       var species2 = pdb2.elements.map(function (element) {
@@ -1451,7 +1528,11 @@ function searchMol(e) {
         jmeSearch.textContent = "Search database";
       })
       .catch(function (error) {
-        swal("Something went wrong", "We could not find your molecule, please try again.", "error");
+        swal(
+          "Something went wrong",
+          "We could not find your molecule, please try again.",
+          "error"
+        );
         jmeSearch.disabled = false;
         jmeSearch.textContent = "Search database";
       });
@@ -1468,4 +1549,28 @@ function selectMol(e) {
       pdbText.value = data;
       closeJme();
     });
+}
+
+//  MATRIX OPERATIONS
+
+function multiply(a, b) {
+  var aNumRows = a.length,
+    aNumCols = a[0].length,
+    bNumRows = b.length,
+    bNumCols = b[0].length,
+    m = new Array(aNumRows); // initialize array of rows
+  for (var r = 0; r < aNumRows; ++r) {
+    m[r] = new Array(bNumCols); // initialize the current row
+    for (var c = 0; c < bNumCols; ++c) {
+      m[r][c] = 0; // initialize the current cell
+      for (var i = 0; i < aNumCols; ++i) {
+        m[r][c] += a[r][i] * b[i][c];
+      }
+    }
+  }
+  return m;
+}
+
+function transpose(matrix) {
+  return matrix[0].map((col, i) => matrix.map((row) => row[i]));
 }
