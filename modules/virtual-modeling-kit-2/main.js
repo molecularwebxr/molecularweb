@@ -46,6 +46,7 @@ var baseUrl = "https://cactus.nci.nih.gov/chemical/structure/";
 var pdbUrl = "/file?format=pdb&get3d=true";
 var jmeUrl = "/file?format=jme";
 
+var plottime = 0;
 var temperature = 0;
 var high = 50;
 var medium = 10;
@@ -420,9 +421,9 @@ function animate() {
     updateInteractions();
   }
 
-  // if (atoms > 0) {
-  //   updateEnergies();
-  // }
+  if (atoms > 0) {
+    updateEnergies();
+  }
 
   updatePhysics();
   update();
@@ -1544,17 +1545,41 @@ function updateEnergies() {
     })
       .then((response) => response.json())
       .then((ani) => {
-        console.log(ani.energy);
-        var length = data.labels.length;
-        if (length >= 30) {
-          data.datasets[0].data.shift();
-          data.labels.shift();
+        var fuerzas = ani.forces;
+        var maxforce = 0;
+        for (var i = 0; i < fuerzas.length; i++) {
+          if (Math.abs(fuerzas[i][0] > maxforce)) {
+            maxforce = Math.abs(fuerzas[i][0]);
+          }
+          if (Math.abs(fuerzas[i][1] > maxforce)) {
+            maxforce = Math.abs(fuerzas[i][1]);
+          }
+          if (Math.abs(fuerzas[i][2] > maxforce)) {
+            maxforce = Math.abs(fuerzas[i][2]);
+          }
         }
+        //console.log(maxforce)
+        if (maxforce < 0.05) {
+          var length = data.labels.length;
+          if (length >= 30) {
+            data.datasets[0].data.shift();
+            data.labels.shift();
+          }
 
-        data.labels.push(temperature);
-        data.datasets[0].data.push(Math.round(ani.energy * 627.509 * 10) / 10);
+          plottime++;
+          if (plottime > 30) {
+            plottime = 0;
+          }
+          data.labels.push(plottime);
+          data.datasets[0].data.push(
+            Math.round(ani.energy * 627.509 * 10) / 10
+          );
 
-        chart1.update();
+          chart1.update();
+        } else {
+          temperature = temperature / 2;
+          if(temperature < 5) temperature = 5;
+        }
       });
 
     counter = 0;
