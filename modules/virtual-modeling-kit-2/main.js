@@ -100,16 +100,27 @@ var sphereGeometry = new THREE.SphereBufferGeometry(0.05, 32, 16);
 var sphereMaterial = new THREE.MeshLambertMaterial({ color: "yellow" });
 var dummy = new THREE.Object3D();
 
-var P = [];
-var Q = [];
+var P1 = [];
+var Q1 = [];
 
-var Qx = 0;
-var Qy = 0;
-var Qz = 0;
+var Qx1 = 0;
+var Qy1 = 0;
+var Qz1 = 0;
 
-var Px = 0;
-var Py = 0;
-var Pz = 0;
+var Px1 = 0;
+var Py1 = 0;
+var Pz1 = 0;
+
+var P2 = [];
+var Q2 = [];
+
+var Qx2 = 0;
+var Qy2 = 0;
+var Qz2 = 0;
+
+var Px2 = 0;
+var Py2 = 0;
+var Pz2 = 0;
 
 startAR.addEventListener("click", handleClick);
 flipVideo.addEventListener("flipCamera", handleFlip);
@@ -548,33 +559,31 @@ function updatePhysics() {
   sceneGroup.getWorldQuaternion(cubeQuaternion);
 
   if (atomBodies.length > 0) {
-    P = [];
+    P1 = [];
 
     atomBodies.forEach(function (body) {
-      P.push([body.position.x, body.position.y, body.position.z]);
+      P1.push([body.position.x, body.position.y, body.position.z]);
     });
 
-    Px = 0;
-    Py = 0;
-    Pz = 0;
+    Px1 = 0;
+    Py1 = 0;
+    Pz1 = 0;
 
     for (var i = 0; i < atomBodies.length; i++) {
-      Px = Px + atomBodies[i].position.x;
-      Py = Py + atomBodies[i].position.y;
-      Pz = Pz + atomBodies[i].position.z;
+      Px1 = Px1 + atomBodies[i].position.x;
+      Py1 = Py1 + atomBodies[i].position.y;
+      Pz1 = Pz1 + atomBodies[i].position.z;
     }
 
-    P.forEach(function (point) {
-      point[0] = point[0] - Px / atomBodies.length;
-      point[1] = point[1] - Py / atomBodies.length;
-      point[2] = point[2] - Pz / atomBodies.length;
+    P1.forEach(function (point) {
+      point[0] = point[0] - Px1 / atomBodies.length;
+      point[1] = point[1] - Py1 / atomBodies.length;
+      point[2] = point[2] - Pz1 / atomBodies.length;
     });
 
-    var H = multiply(transpose(Q), P);
+    var H = multiply(transpose(Q1), P1);
 
     var svdH = SVDJS.SVD(H);
-
-    console.log(svdH.u);
 
     var arrTmp = [
       [1, 0, 0],
@@ -584,9 +593,9 @@ function updatePhysics() {
 
     var Vt = svdH.v;
 
-    var R = multiply(Vt, multiply(arrTmp, transpose(svdH.u)));
+    var R1 = multiply(Vt, multiply(arrTmp, transpose(svdH.u)));
 
-    var newRArr = multiply(P, R);
+    var newRArr = multiply(P1, R1);
 
     atomBodies.forEach(function (body, bodyIndex) {
       body.position.x = newRArr[bodyIndex][0];
@@ -718,24 +727,58 @@ function updatePhysics() {
   var cubeQuaternion2 = new THREE.Quaternion();
   sceneGroup2.getWorldQuaternion(cubeQuaternion2);
 
-  if (isCube2Visible) {
-    for (var i = 0; i < atoms2; i++) {
-      mediax2 = mediax2 + atomBodies2[i].position.x;
-      mediay2 = mediay2 + atomBodies2[i].position.y;
-      mediaz2 = mediaz2 + atomBodies2[i].position.z;
+  if (atomBodies2.length > 0) {
+    P2 = [];
+
+    atomBodies2.forEach(function (body) {
+      P2.push([body.position.x, body.position.y, body.position.z]);
+    });
+
+    Px2 = 0;
+    Py2 = 0;
+    Pz2 = 0;
+
+    for (var i = 0; i < atomBodies2.length; i++) {
+      Px2 = Px2 + atomBodies2[i].position.x;
+      Py2 = Py2 + atomBodies2[i].position.y;
+      Pz2 = Pz2 + atomBodies2[i].position.z;
     }
 
-    mediax2 = mediax2 / atoms2;
-    mediay2 = mediay2 / atoms2;
-    mediaz2 = mediaz2 / atoms2;
+    P2.forEach(function (point) {
+      point[0] = point[0] - Px2 / atomBodies2.length;
+      point[1] = point[1] - Py2 / atomBodies2.length;
+      point[2] = point[2] - Pz2 / atomBodies2.length;
+    });
 
-    for (var i = 0; i < atoms2; i++) {
+    var H = multiply(transpose(Q2), P2);
+
+    var svdH = SVDJS.SVD(H);
+
+    var arrTmp = [
+      [1, 0, 0],
+      [0, 1, 0],
+      [0, 0, 1],
+    ];
+
+    var Vt = svdH.v;
+
+    var R2 = multiply(Vt, multiply(arrTmp, transpose(svdH.u)));
+
+    var newRArr = multiply(P2, R2);
+
+    atomBodies2.forEach(function (body, bodyIndex) {
+      body.position.x = newRArr[bodyIndex][0];
+      body.position.y = newRArr[bodyIndex][1];
+      body.position.z = newRArr[bodyIndex][2];
+    });
+
+    for (var i = 0; i < atoms; i++) {
       atomBodies2[i].position.x =
-        atomBodies2[i].position.x + cubePosition2.x - mediax2;
+        atomBodies2[i].position.x + cubePosition2.x - mediax;
       atomBodies2[i].position.y =
-        atomBodies2[i].position.y + cubePosition2.y - mediay2;
+        atomBodies2[i].position.y + cubePosition2.y - mediay;
       atomBodies2[i].position.z =
-        atomBodies2[i].position.z + cubePosition2.z - mediaz2;
+        atomBodies2[i].position.z + cubePosition2.z - mediaz;
     }
   }
 
@@ -866,26 +909,26 @@ function loadPdb(rawPdb) {
     switchFlip1.disabled = false;
     switchSpheres1.disabled = false;
 
-    Q = [];
+    Q1 = [];
 
     atomBodies.forEach(function (body) {
-      Q.push([body.position.x, body.position.y, body.position.z]);
+      Q1.push([body.position.x, body.position.y, body.position.z]);
     });
 
     for (var i = 0; i < atomBodies.length; i++) {
-      Qx = Qx + atomBodies[i].position.x;
-      Qy = Qy + atomBodies[i].position.y;
-      Qz = Qz + atomBodies[i].position.z;
+      Qx1 = Qx1 + atomBodies[i].position.x;
+      Qy1 = Qy1 + atomBodies[i].position.y;
+      Qz1 = Qz1 + atomBodies[i].position.z;
     }
 
-    Qx = Qx / atomBodies.length;
-    Qy = Qy / atomBodies.length;
-    Qz = Qz / atomBodies.length;
+    Qx1 = Qx1 / atomBodies.length;
+    Qy1 = Qy1 / atomBodies.length;
+    Qz1 = Qz1 / atomBodies.length;
 
-    Q.forEach(function (point) {
-      point[0] = point[0] - Qx;
-      point[1] = point[1] - Qy;
-      point[2] = point[2] - Qz;
+    Q1.forEach(function (point) {
+      point[0] = point[0] - Qx1;
+      point[1] = point[1] - Qy1;
+      point[2] = point[2] - Qz1;
     });
   } else {
     resetMarker2();
@@ -931,6 +974,28 @@ function loadPdb(rawPdb) {
 
     switchFlip2.disabled = false;
     switchSpheres2.disabled = false;
+
+    Q2 = [];
+
+    atomBodies2.forEach(function (body) {
+      Q2.push([body.position.x, body.position.y, body.position.z]);
+    });
+
+    for (var i = 0; i < atomBodies2.length; i++) {
+      Qx2 = Qx2 + atomBodies2[i].position.x;
+      Qy2 = Qy2 + atomBodies2[i].position.y;
+      Qz2 = Qz2 + atomBodies2[i].position.z;
+    }
+
+    Qx2 = Qx2 / atomBodies2.length;
+    Qy2 = Qy2 / atomBodies2.length;
+    Qz2 = Qz2 / atomBodies2.length;
+
+    Q2.forEach(function (point) {
+      point[0] = point[0] - Qx2;
+      point[1] = point[1] - Qy2;
+      point[2] = point[2] - Qz2;
+    });
   }
 }
 
