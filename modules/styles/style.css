@@ -710,7 +710,6 @@ button.pdb-btn {
 }
 
 .chart-container {
-  /* display: none; */
   position: fixed;
   bottom: 0;
   right: 0;
@@ -891,6 +890,18 @@ button.pdb-btn {
 
   .pdb-load {
     margin-right: 20px;
+  }
+
+  .chart-container {
+    display: none;
+  }
+
+  .interaction-control.ani {
+    display: none;
+  }
+
+  .interaction-control.clashes {
+    margin-bottom: 0;
   }
 
 }

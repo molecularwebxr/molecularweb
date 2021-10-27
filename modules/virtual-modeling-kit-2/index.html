@@ -164,11 +164,18 @@
           <label for="switch-bridge" class="switch-label">Switch</label>
         </div>
       </div>
-      <div class="interaction-control row no-margin">
+      <div class="interaction-control clashes row">
         <p data-i18n="orbitals.modelingKit.clashes"></p>
         <div class="switch">
           <input id="switch-clashes" type="checkbox" class="switch-input" />
           <label for="switch-clashes" class="switch-label">Switch</label>
+        </div>
+      </div>
+      <div class="interaction-control ani row no-margin">
+        <p>ANI Energy</p>
+        <div class="switch">
+          <input id="switch-ani" type="checkbox" class="switch-input" />
+          <label for="switch-ani" class="switch-label">Switch</label>
         </div>
       </div>
 
@@ -375,7 +382,7 @@
       </div>
     </div>
 
-    <div class="chart-container">
+    <div id="ani-chart" class="chart-container hide">
       <canvas class="chart flip" id="chart1"></canvas>
     </div>
 

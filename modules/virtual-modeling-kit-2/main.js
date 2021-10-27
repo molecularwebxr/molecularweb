@@ -41,6 +41,8 @@ var jmeInput = document.getElementById("jme-input");
 var jmeSearch = document.getElementById("jme-search");
 var jmeCancel = document.getElementById("jme-cancel");
 var jmeContinue = document.getElementById("jme-continue");
+var chartContainer = document.getElementById("ani-chart");
+var switchAni = document.getElementById("switch-ani");
 
 var baseUrl = "https://cactus.nci.nih.gov/chemical/structure/";
 var pdbUrl = "/file?format=pdb&get3d=true";
@@ -90,6 +92,7 @@ var isCube2Visible = false;
 var isClashingActive = false;
 var isInteractionActive = false;
 var isBridgeActive = false;
+var isAniActive = false;
 
 var cannonDebugRenderer;
 
@@ -139,6 +142,7 @@ switchSpheres1.addEventListener("change", handleRenderType);
 switchSpheres2.addEventListener("change", handleRenderType);
 switchFlip1.addEventListener("change", handleFlip);
 switchFlip2.addEventListener("change", handleFlip);
+switchAni.addEventListener("change", handleAniChage);
 jmeBtn.addEventListener("click", openJme);
 jmeBtnClose.addEventListener("click", closeJme);
 jmeSearch.addEventListener("click", searchMol);
@@ -421,7 +425,7 @@ function animate() {
     updateInteractions();
   }
 
-  if (atoms > 0) {
+  if (atoms > 0 && isAniActive) {
     updateEnergies();
   }
 
@@ -1398,6 +1402,16 @@ function handleClashesChange(e) {
 
 function handleInteractionsChange(e) {
   isInteractionActive = switchInteractions.checked;
+}
+
+function handleAniChage(e) {
+  isAniActive = switchAni.checked;
+
+  if (!isAniActive) {
+    chartContainer.classList.add("hide");
+  } else {
+    chartContainer.classList.remove("hide");
+  }
 }
 
 function handleBridgeChange(e) {
