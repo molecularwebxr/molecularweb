@@ -1525,7 +1525,17 @@ function updateEnergies() {
     });
 
     var species1 = pdb.elements.map(function (element) {
-      return element + 1;
+      if (element === 118) {
+        return 1;
+      } else if(element === 119) {
+        return 6;
+      } else if(element === 120) {
+        return 7;
+      } else if(element === 121) {
+        return 8;
+      } else {
+        return element + 1;
+      }
     });
 
     if (atoms2 > 0) {
@@ -1538,7 +1548,17 @@ function updateEnergies() {
       });
 
       var species2 = pdb2.elements.map(function (element) {
-        return element + 1;
+        if (element === 118) {
+          return 1;
+        } else if(element === 119) {
+          return 6;
+        } else if(element === 120) {
+          return 7;
+        } else if(element === 121) {
+          return 8;
+        } else {
+          return element + 1;
+        }
       });
     }
 
