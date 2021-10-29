@@ -41,11 +41,14 @@ var jmeInput = document.getElementById("jme-input");
 var jmeSearch = document.getElementById("jme-search");
 var jmeCancel = document.getElementById("jme-cancel");
 var jmeContinue = document.getElementById("jme-continue");
+var chartContainer = document.getElementById("ani-chart");
+var switchAni = document.getElementById("switch-ani");
 
 var baseUrl = "https://cactus.nci.nih.gov/chemical/structure/";
 var pdbUrl = "/file?format=pdb&get3d=true";
 var jmeUrl = "/file?format=jme";
 
+var plottime = 0;
 var temperature = 0;
 var high = 50;
 var medium = 10;
@@ -89,6 +92,7 @@ var isCube2Visible = false;
 var isClashingActive = false;
 var isInteractionActive = false;
 var isBridgeActive = false;
+var isAniActive = false;
 
 var cannonDebugRenderer;
 
@@ -99,6 +103,28 @@ var lastCubeQuaternion2 = new THREE.Quaternion(0, 0, 0, 1);
 var sphereGeometry = new THREE.SphereBufferGeometry(0.05, 32, 16);
 var sphereMaterial = new THREE.MeshLambertMaterial({ color: "yellow" });
 var dummy = new THREE.Object3D();
+
+var P1 = [];
+var Q1 = [];
+
+var Qx1 = 0;
+var Qy1 = 0;
+var Qz1 = 0;
+
+var Px1 = 0;
+var Py1 = 0;
+var Pz1 = 0;
+
+var P2 = [];
+var Q2 = [];
+
+var Qx2 = 0;
+var Qy2 = 0;
+var Qz2 = 0;
+
+var Px2 = 0;
+var Py2 = 0;
+var Pz2 = 0;
 
 startAR.addEventListener("click", handleClick);
 flipVideo.addEventListener("flipCamera", handleFlip);
@@ -116,6 +142,7 @@ switchSpheres1.addEventListener("change", handleRenderType);
 switchSpheres2.addEventListener("change", handleRenderType);
 switchFlip1.addEventListener("change", handleFlip);
 switchFlip2.addEventListener("change", handleFlip);
+switchAni.addEventListener("change", handleAniChage);
 jmeBtn.addEventListener("click", openJme);
 jmeBtnClose.addEventListener("click", closeJme);
 jmeSearch.addEventListener("click", searchMol);
@@ -198,6 +225,7 @@ function initialize() {
   renderer.domElement.style.position = "absolute";
   renderer.domElement.style.top = "0px";
   renderer.domElement.style.left = "0px";
+  renderer.domElement.id = "renderer-canvas";
   document.body.appendChild(renderer.domElement);
 
   clock = new THREE.Clock();
@@ -398,9 +426,9 @@ function animate() {
     updateInteractions();
   }
 
-  // if (atoms > 0) {
-  //   updateEnergies();
-  // }
+  if (atoms > 0 && isAniActive) {
+    updateEnergies();
+  }
 
   updatePhysics();
   update();
@@ -536,36 +564,64 @@ function updatePhysics() {
   var cubeQuaternion = new THREE.Quaternion();
   sceneGroup.getWorldQuaternion(cubeQuaternion);
 
-  if (isCube1Visible) {
-    for (var i = 0; i < atoms; i++) {
-      mediax = mediax + atomBodies[i].position.x;
-      mediay = mediay + atomBodies[i].position.y;
-      mediaz = mediaz + atomBodies[i].position.z;
+  if (atomBodies.length > 0) {
+    P1 = [];
+
+    atomBodies.forEach(function (body) {
+      P1.push([body.position.x, body.position.y, body.position.z]);
+    });
+
+    Px1 = 0;
+    Py1 = 0;
+    Pz1 = 0;
+
+    for (var i = 0; i < atomBodies.length; i++) {
+      Px1 = Px1 + atomBodies[i].position.x;
+      Py1 = Py1 + atomBodies[i].position.y;
+      Pz1 = Pz1 + atomBodies[i].position.z;
     }
 
-    mediax = mediax / atoms;
-    mediay = mediay / atoms;
-    mediaz = mediaz / atoms;
+    P1.forEach(function (point) {
+      point[0] = point[0] - Px1 / atomBodies.length;
+      point[1] = point[1] - Py1 / atomBodies.length;
+      point[2] = point[2] - Pz1 / atomBodies.length;
+    });
+
+    var H = multiply(transpose(Q1), P1);
+
+    var svdH = SVDJS.SVD(H);
+
+    var arrTmp = [
+      [1, 0, 0],
+      [0, 1, 0],
+      [0, 0, 1],
+    ];
+
+    var Vt = svdH.v;
+
+    var R1 = multiply(Vt, multiply(arrTmp, transpose(svdH.u)));
+
+    var newRArr = multiply(P1, R1);
+
+    atomBodies.forEach(function (body, bodyIndex) {
+      body.position.x = newRArr[bodyIndex][0];
+      body.position.y = newRArr[bodyIndex][1];
+      body.position.z = newRArr[bodyIndex][2];
+    });
 
     for (var i = 0; i < atoms; i++) {
       atomBodies[i].position.x =
-        atomBodies[i].position.x + cubePosition.x - mediax;
+        atomBodies[i].position.x + cubePosition.x;
       atomBodies[i].position.y =
-        atomBodies[i].position.y + cubePosition.y - mediay;
+        atomBodies[i].position.y + cubePosition.y;
       atomBodies[i].position.z =
-        atomBodies[i].position.z + cubePosition.z - mediaz;
+        atomBodies[i].position.z + cubePosition.z;
     }
   }
 
-  var q = new THREE.Quaternion();
-  var inverse1 = new THREE.Quaternion();
-  inverse1.copy(lastCubeQuaternion).invert();
-
-  q.multiplyQuaternions(cubeQuaternion, inverse1);
-
   rotateBodies(
     atomBodies,
-    q,
+    cubeQuaternion,
     new CANNON.Vec3(cubePosition.x, cubePosition.y, cubePosition.z)
   );
 
@@ -671,36 +727,66 @@ function updatePhysics() {
   var cubeQuaternion2 = new THREE.Quaternion();
   sceneGroup2.getWorldQuaternion(cubeQuaternion2);
 
-  if (isCube2Visible) {
-    for (var i = 0; i < atoms2; i++) {
-      mediax2 = mediax2 + atomBodies2[i].position.x;
-      mediay2 = mediay2 + atomBodies2[i].position.y;
-      mediaz2 = mediaz2 + atomBodies2[i].position.z;
+  if (atomBodies2.length > 0) {
+    P2 = [];
+
+    atomBodies2.forEach(function (body) {
+      P2.push([body.position.x, body.position.y, body.position.z]);
+    });
+
+    Px2 = 0;
+    Py2 = 0;
+    Pz2 = 0;
+
+    for (var i = 0; i < atomBodies2.length; i++) {
+      Px2 = Px2 + atomBodies2[i].position.x;
+      Py2 = Py2 + atomBodies2[i].position.y;
+      Pz2 = Pz2 + atomBodies2[i].position.z;
     }
 
-    mediax2 = mediax2 / atoms2;
-    mediay2 = mediay2 / atoms2;
-    mediaz2 = mediaz2 / atoms2;
+    P2.forEach(function (point) {
+      point[0] = point[0] - Px2 / atomBodies2.length;
+      point[1] = point[1] - Py2 / atomBodies2.length;
+      point[2] = point[2] - Pz2 / atomBodies2.length;
+    });
 
-    for (var i = 0; i < atoms2; i++) {
+    var H = multiply(transpose(Q2), P2);
+
+    var svdH = SVDJS.SVD(H);
+
+    var arrTmp = [
+      [1, 0, 0],
+      [0, 1, 0],
+      [0, 0, 1],
+    ];
+
+    var Vt = svdH.v;
+
+    var R2 = multiply(Vt, multiply(arrTmp, transpose(svdH.u)));
+
+    var newRArr = multiply(P2, R2);
+
+    atomBodies2.forEach(function (body, bodyIndex) {
+      body.position.x = newRArr[bodyIndex][0];
+      body.position.y = newRArr[bodyIndex][1];
+      body.position.z = newRArr[bodyIndex][2];
+    });
+
+    for (var i = 0; i < atoms; i++) {
       atomBodies2[i].position.x =
-        atomBodies2[i].position.x + cubePosition2.x - mediax2;
+        atomBodies2[i].position.x + cubePosition2.x;
       atomBodies2[i].position.y =
-        atomBodies2[i].position.y + cubePosition2.y - mediay2;
+        atomBodies2[i].position.y + cubePosition2.y;
       atomBodies2[i].position.z =
-        atomBodies2[i].position.z + cubePosition2.z - mediaz2;
+        atomBodies2[i].position.z + cubePosition2.z;
     }
   }
 
   var q2 = new THREE.Quaternion();
-  var inverse2 = new THREE.Quaternion();
-  inverse2.copy(lastCubeQuaternion2).invert();
-
-  q2.multiplyQuaternions(cubeQuaternion2, inverse2);
 
   rotateBodies(
     atomBodies2,
-    q2,
+    cubeQuaternion2,
     new CANNON.Vec3(cubePosition2.x, cubePosition2.y, cubePosition2.z)
   );
 
@@ -818,6 +904,28 @@ function loadPdb(rawPdb) {
 
     switchFlip1.disabled = false;
     switchSpheres1.disabled = false;
+
+    Q1 = [];
+
+    atomBodies.forEach(function (body) {
+      Q1.push([body.position.x, body.position.y, body.position.z]);
+    });
+
+    for (var i = 0; i < atomBodies.length; i++) {
+      Qx1 = Qx1 + atomBodies[i].position.x;
+      Qy1 = Qy1 + atomBodies[i].position.y;
+      Qz1 = Qz1 + atomBodies[i].position.z;
+    }
+
+    Qx1 = Qx1 / atomBodies.length;
+    Qy1 = Qy1 / atomBodies.length;
+    Qz1 = Qz1 / atomBodies.length;
+
+    Q1.forEach(function (point) {
+      point[0] = point[0] - Qx1;
+      point[1] = point[1] - Qy1;
+      point[2] = point[2] - Qz1;
+    });
   } else {
     resetMarker2();
     resetGeneral();
@@ -862,6 +970,28 @@ function loadPdb(rawPdb) {
 
     switchFlip2.disabled = false;
     switchSpheres2.disabled = false;
+
+    Q2 = [];
+
+    atomBodies2.forEach(function (body) {
+      Q2.push([body.position.x, body.position.y, body.position.z]);
+    });
+
+    for (var i = 0; i < atomBodies2.length; i++) {
+      Qx2 = Qx2 + atomBodies2[i].position.x;
+      Qy2 = Qy2 + atomBodies2[i].position.y;
+      Qz2 = Qz2 + atomBodies2[i].position.z;
+    }
+
+    Qx2 = Qx2 / atomBodies2.length;
+    Qy2 = Qy2 / atomBodies2.length;
+    Qz2 = Qz2 / atomBodies2.length;
+
+    Q2.forEach(function (point) {
+      point[0] = point[0] - Qx2;
+      point[1] = point[1] - Qy2;
+      point[2] = point[2] - Qz2;
+    });
   }
 }
 
@@ -1265,6 +1395,16 @@ function handleInteractionsChange(e) {
   isInteractionActive = switchInteractions.checked;
 }
 
+function handleAniChage(e) {
+  isAniActive = switchAni.checked;
+
+  if (!isAniActive) {
+    chartContainer.classList.add("hide");
+  } else {
+    chartContainer.classList.remove("hide");
+  }
+}
+
 function handleBridgeChange(e) {
   isBridgeActive = switchBridge.checked;
 }
@@ -1368,20 +1508,48 @@ function updateEnergies() {
     var species2 = [];
 
     var coordinates1 = atomBodies.map(function (atom) {
-      return [Math.round(atom.position.x*100)/100, Math.round(atom.position.y*100)/100, Math.round(atom.position.z*100)/100];
+      return [
+        Math.round(atom.position.x * 100) / 100,
+        Math.round(atom.position.y * 100) / 100,
+        Math.round(atom.position.z * 100) / 100,
+      ];
     });
 
     var species1 = pdb.elements.map(function (element) {
-      return element + 1;
+      if (element === 118) {
+        return 1;
+      } else if (element === 119) {
+        return 6;
+      } else if (element === 120) {
+        return 7;
+      } else if (element === 121) {
+        return 8;
+      } else {
+        return element + 1;
+      }
     });
 
     if (atoms2 > 0) {
       var coordinates2 = atomBodies2.map(function (atom) {
-        return [Math.round(atom.position.x*100)/100, Math.round(atom.position.y*100)/100, Math.round(atom.position.z*100)/100];
+        return [
+          Math.round(atom.position.x * 100) / 100,
+          Math.round(atom.position.y * 100) / 100,
+          Math.round(atom.position.z * 100) / 100,
+        ];
       });
 
       var species2 = pdb2.elements.map(function (element) {
-        return element + 1;
+        if (element === 118) {
+          return 1;
+        } else if (element === 119) {
+          return 6;
+        } else if (element === 120) {
+          return 7;
+        } else if (element === 121) {
+          return 8;
+        } else {
+          return element + 1;
+        }
       });
     }
 
@@ -1402,17 +1570,41 @@ function updateEnergies() {
     })
       .then((response) => response.json())
       .then((ani) => {
-        console.log(ani.energy);
-        var length = data.labels.length;
-        if (length >= 30) {
-          data.datasets[0].data.shift();
-          data.labels.shift();
+        var fuerzas = ani.forces;
+        var maxforce = 0;
+        for (var i = 0; i < fuerzas.length; i++) {
+          if (Math.abs(fuerzas[i][0] > maxforce)) {
+            maxforce = Math.abs(fuerzas[i][0]);
+          }
+          if (Math.abs(fuerzas[i][1] > maxforce)) {
+            maxforce = Math.abs(fuerzas[i][1]);
+          }
+          if (Math.abs(fuerzas[i][2] > maxforce)) {
+            maxforce = Math.abs(fuerzas[i][2]);
+          }
         }
+        //console.log(maxforce)
+        if (maxforce < 0.05) {
+          var length = data.labels.length;
+          if (length >= 30) {
+            data.datasets[0].data.shift();
+            data.labels.shift();
+          }
 
-        data.labels.push(temperature);
-        data.datasets[0].data.push(Math.round(ani.energy * 627.509 * 10) / 10);
+          plottime++;
+          if (plottime > 30) {
+            plottime = 0;
+          }
+          data.labels.push(plottime);
+          data.datasets[0].data.push(
+            Math.round(ani.energy * 627.509 * 10) / 10
+          );
 
-        chart1.update();
+          chart1.update();
+        } else {
+          temperature = temperature / 2;
+          if (temperature < 5) temperature = 5;
+        }
       });
 
     counter = 0;
@@ -1451,7 +1643,11 @@ function searchMol(e) {
         jmeSearch.textContent = "Search database";
       })
       .catch(function (error) {
-        swal("Something went wrong", "We could not find your molecule, please try again.", "error");
+        swal(
+          "Something went wrong",
+          "We could not find your molecule, please try again.",
+          "error"
+        );
         jmeSearch.disabled = false;
         jmeSearch.textContent = "Search database";
       });
@@ -1468,4 +1664,28 @@ function selectMol(e) {
       pdbText.value = data;
       closeJme();
     });
+}
+
+//  MATRIX OPERATIONS
+
+function multiply(a, b) {
+  var aNumRows = a.length,
+    aNumCols = a[0].length,
+    bNumRows = b.length,
+    bNumCols = b[0].length,
+    m = new Array(aNumRows); // initialize array of rows
+  for (var r = 0; r < aNumRows; ++r) {
+    m[r] = new Array(bNumCols); // initialize the current row
+    for (var c = 0; c < bNumCols; ++c) {
+      m[r][c] = 0; // initialize the current cell
+      for (var i = 0; i < aNumCols; ++i) {
+        m[r][c] += a[r][i] * b[i][c];
+      }
+    }
+  }
+  return m;
+}
+
+function transpose(matrix) {
+  return matrix[0].map((col, i) => matrix.map((row) => row[i]));
 }

@@ -41,11 +41,14 @@ var jmeInput = document.getElementById("jme-input");
 var jmeSearch = document.getElementById("jme-search");
 var jmeCancel = document.getElementById("jme-cancel");
 var jmeContinue = document.getElementById("jme-continue");
+var chartContainer = document.getElementById("ani-chart");
+var switchAni = document.getElementById("switch-ani");
 
 var baseUrl = "https://cactus.nci.nih.gov/chemical/structure/";
 var pdbUrl = "/file?format=pdb&get3d=true";
 var jmeUrl = "/file?format=jme";
 
+var plottime = 0;
 var temperature = 0;
 var high = 50;
 var medium = 10;
@@ -63,10 +66,12 @@ var angleLimit = 140;
 var bridges = [];
 var connectors = [];
 var constraints = [];
+var counter  = 0;
 
 var isClashingActive = false;
 var isInteractionActive = true;
 var isBridgeActive = true;
+var isAniActive = false;
 
 // var cannonDebugRenderer;
 
@@ -90,6 +95,7 @@ jmeBtnClose.addEventListener("click", closeJme);
 jmeSearch.addEventListener("click", searchMol);
 jmeCancel.addEventListener("click", closeJme);
 jmeContinue.addEventListener("click", selectMol);
+switchAni.addEventListener("change", handleAniChage);
 tempControls.forEach(function (item) {
   item.addEventListener("updateTemp", handleTempControls);
 });
@@ -98,6 +104,31 @@ var world = new CANNON.World({
   gravity: new CANNON.Vec3(0, gravity, 0)
 });
 
+var ctx = document.getElementById("chart1").getContext("2d");
+var data = {
+  labels: [],
+  datasets: [
+    {
+      data: [],
+      label: "Energy",
+      // backgroundColor: '#F44436',
+      borderColor: "#F44436",
+      pointBackgroundColor: "#F44436",
+    },
+  ],
+};
+var optionsAnimations = {
+  animation: false,
+  legend: {
+    display: false,
+  },
+  responsive: true,
+};
+var chart1 = new Chart(ctx, {
+  type: "line",
+  data: data,
+  options: optionsAnimations,
+});
 
 initialize();
 animate();
@@ -345,6 +376,11 @@ function animate() {
   updateInteractions();
 
   updatePhysics();
+
+  if(pdbs.length > 0 && isAniActive) {
+    updateEnergies();
+  }
+
   update();
   render();
 }
@@ -959,4 +995,103 @@ function handleGravityChange(e) {
 
 function updateGravity() {
   world.gravity = new CANNON.Vec3(0, gravity, 0)
+}
+
+function handleAniChage(e) {
+  isAniActive = switchAni.checked;
+
+  if (!isAniActive) {
+    chartContainer.classList.add("hide");
+  } else {
+    chartContainer.classList.remove("hide");
+  }
+}
+
+function updateEnergies() {
+  counter += 1;
+
+  if (counter === 30) {
+    var coordinates = [];
+    var species = [];
+
+    pdbs.forEach(function (pdb) {
+      var coordinates1 = pdb.atomBodies.map(function (atom) {
+        return [
+          Math.round(atom.position.x * 100) / 100,
+          Math.round(atom.position.y * 100) / 100,
+          Math.round(atom.position.z * 100) / 100,
+        ];
+      });
+      coordinates = [...coordinates, ...coordinates1];
+
+      var species1 = pdb.elements.map(function (element) {
+        if (element === 118) {
+          return 1;
+        } else if(element === 119) {
+          return 6;
+        } else if(element === 120) {
+          return 7;
+        } else if(element === 121) {
+          return 8;
+        } else {
+          return element + 1;
+        }
+      });
+
+      species = [...species, ...species1];
+    });
+
+    var data1 = {
+      coordinates: [coordinates],
+      species: [species],
+    };
+
+    fetch(" https://molecularweb.epfl.ch/backend2", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data1),
+    })
+      .then((response) => response.json())
+      .then((ani) => {
+        var fuerzas = ani.forces;
+        var maxforce = 0;
+        for (var i = 0; i < fuerzas.length; i++) {
+          if (Math.abs(fuerzas[i][0] > maxforce)) {
+            maxforce = Math.abs(fuerzas[i][0]);
+          }
+          if (Math.abs(fuerzas[i][1] > maxforce)) {
+            maxforce = Math.abs(fuerzas[i][1]);
+          }
+          if (Math.abs(fuerzas[i][2] > maxforce)) {
+            maxforce = Math.abs(fuerzas[i][2]);
+          }
+        }
+        //console.log(maxforce)
+        if (maxforce < 0.05) {
+          var length = data.labels.length;
+          if (length >= 30) {
+            data.datasets[0].data.shift();
+            data.labels.shift();
+          }
+
+          plottime++;
+          if (plottime > 30) {
+            plottime = 0;
+          }
+          data.labels.push(plottime);
+          data.datasets[0].data.push(
+            Math.round(ani.energy * 627.509 * 10) / 10
+          );
+
+          chart1.update();
+        } else {
+          temperature = temperature / 2;
+          if(temperature < 5 && temperature > 0) temperature = 5;
+        }
+      });
+
+    counter = 0;
+  }
 }

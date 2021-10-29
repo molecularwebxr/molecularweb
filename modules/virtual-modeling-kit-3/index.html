@@ -34,6 +34,9 @@
     <script src="/lib/jsme/jsme.nocache.js"></script>
     <script src="./jme.js"></script>
 
+    <!-- SVD -->
+    <script src="/lib/svd-js.min.js"></script>
+
     <!-- Translation Libraries -->
     <script src="/lib/i18n/i18next.min.js"></script>
     <script src="/lib/i18n/i18next-wc.js"></script>
@@ -181,7 +184,7 @@
         </div>
       </div>
 
-      <div class="interaction-control row no-margin">
+      <div class="interaction-control clashes row">
         <p>Gravity</p>
         <div class="switch">
           <input
@@ -190,6 +193,14 @@
             class="switch-input"
           />
           <label for="switch-gravity" class="switch-label">Switch</label>
+        </div>
+      </div>
+
+      <div class="interaction-control ani row no-margin">
+        <p>ANI Energy</p>
+        <div class="switch">
+          <input id="switch-ani" type="checkbox" class="switch-input" />
+          <label for="switch-ani" class="switch-label">Switch</label>
         </div>
       </div>
 
@@ -308,6 +319,10 @@
           class="btn-primary"
         >Add</button>
       </div>
+    </div>
+
+    <div id="ani-chart" class="chart-container hide">
+      <canvas class="chart flip" id="chart1"></canvas>
     </div>
 
     <!-- Overlays -->
