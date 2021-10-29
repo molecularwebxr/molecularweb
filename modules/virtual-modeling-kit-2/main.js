@@ -611,23 +611,17 @@ function updatePhysics() {
 
     for (var i = 0; i < atoms; i++) {
       atomBodies[i].position.x =
-        atomBodies[i].position.x + cubePosition.x - mediax;
+        atomBodies[i].position.x + cubePosition.x;
       atomBodies[i].position.y =
-        atomBodies[i].position.y + cubePosition.y - mediay;
+        atomBodies[i].position.y + cubePosition.y;
       atomBodies[i].position.z =
-        atomBodies[i].position.z + cubePosition.z - mediaz;
+        atomBodies[i].position.z + cubePosition.z;
     }
   }
 
-  var q = new THREE.Quaternion();
-  var inverse1 = new THREE.Quaternion();
-  inverse1.copy(lastCubeQuaternion).invert();
-
-  q.multiplyQuaternions(cubeQuaternion, inverse1);
-
   rotateBodies(
     atomBodies,
-    q,
+    cubeQuaternion,
     new CANNON.Vec3(cubePosition.x, cubePosition.y, cubePosition.z)
   );
 
@@ -780,23 +774,19 @@ function updatePhysics() {
 
     for (var i = 0; i < atoms; i++) {
       atomBodies2[i].position.x =
-        atomBodies2[i].position.x + cubePosition2.x - mediax;
+        atomBodies2[i].position.x + cubePosition2.x;
       atomBodies2[i].position.y =
-        atomBodies2[i].position.y + cubePosition2.y - mediay;
+        atomBodies2[i].position.y + cubePosition2.y;
       atomBodies2[i].position.z =
-        atomBodies2[i].position.z + cubePosition2.z - mediaz;
+        atomBodies2[i].position.z + cubePosition2.z;
     }
   }
 
   var q2 = new THREE.Quaternion();
-  var inverse2 = new THREE.Quaternion();
-  inverse2.copy(lastCubeQuaternion2).invert();
-
-  q2.multiplyQuaternions(cubeQuaternion2, inverse2);
 
   rotateBodies(
     atomBodies2,
-    q2,
+    cubeQuaternion2,
     new CANNON.Vec3(cubePosition2.x, cubePosition2.y, cubePosition2.z)
   );
 

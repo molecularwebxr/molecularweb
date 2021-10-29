@@ -48,6 +48,7 @@ var baseUrl = "https://cactus.nci.nih.gov/chemical/structure/";
 var pdbUrl = "/file?format=pdb&get3d=true";
 var jmeUrl = "/file?format=jme";
 
+var plottime = 0;
 var temperature = 0;
 var high = 50;
 var medium = 10;
@@ -376,7 +377,7 @@ function animate() {
 
   updatePhysics();
 
-  if(pdbs.length > 0) {
+  if(pdbs.length > 0 && isAniActive) {
     updateEnergies();
   }
 
@@ -1013,83 +1014,83 @@ function updateEnergies() {
     var coordinates = [];
     var species = [];
 
+    pdbs.forEach(function (pdb) {
+      var coordinates1 = pdb.atomBodies.map(function (atom) {
+        return [
+          Math.round(atom.position.x * 100) / 100,
+          Math.round(atom.position.y * 100) / 100,
+          Math.round(atom.position.z * 100) / 100,
+        ];
+      });
+      coordinates = [...coordinates, ...coordinates1];
 
-    var coordinates1 = atomBodies.map(function (atom) {
-      return [
-        Math.round(atom.position.x * 100) / 100,
-        Math.round(atom.position.y * 100) / 100,
-        Math.round(atom.position.z * 100) / 100,
-      ];
+      var species1 = pdb.elements.map(function (element) {
+        if (element === 118) {
+          return 1;
+        } else if(element === 119) {
+          return 6;
+        } else if(element === 120) {
+          return 7;
+        } else if(element === 121) {
+          return 8;
+        } else {
+          return element + 1;
+        }
+      });
+
+      species = [...species, ...species1];
     });
-
-    var species1 = pdb.elements.map(function (element) {
-      if (element === 118) {
-        return 1;
-      } else if(element === 119) {
-        return 6;
-      } else if(element === 120) {
-        return 7;
-      } else if(element === 121) {
-        return 8;
-      } else {
-        return element + 1;
-      }
-    });
-
-
-    var coordinates = [...coordinates1, ...coordinates2];
-    var species = [...species1, ...species2];
 
     var data1 = {
       coordinates: [coordinates],
       species: [species],
     };
 
-    // fetch(" https://molecularweb.epfl.ch/backend2", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data1),
-    // })
-    //   .then((response) => response.json())
-    //   .then((ani) => {
-    //     var fuerzas = ani.forces;
-    //     var maxforce = 0;
-    //     for (var i = 0; i < fuerzas.length; i++) {
-    //       if (Math.abs(fuerzas[i][0] > maxforce)) {
-    //         maxforce = Math.abs(fuerzas[i][0]);
-    //       }
-    //       if (Math.abs(fuerzas[i][1] > maxforce)) {
-    //         maxforce = Math.abs(fuerzas[i][1]);
-    //       }
-    //       if (Math.abs(fuerzas[i][2] > maxforce)) {
-    //         maxforce = Math.abs(fuerzas[i][2]);
-    //       }
-    //     }
-    //     //console.log(maxforce)
-    //     if (maxforce < 0.05) {
-    //       var length = data.labels.length;
-    //       if (length >= 30) {
-    //         data.datasets[0].data.shift();
-    //         data.labels.shift();
-    //       }
+    fetch(" https://molecularweb.epfl.ch/backend2", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data1),
+    })
+      .then((response) => response.json())
+      .then((ani) => {
+        var fuerzas = ani.forces;
+        var maxforce = 0;
+        for (var i = 0; i < fuerzas.length; i++) {
+          if (Math.abs(fuerzas[i][0] > maxforce)) {
+            maxforce = Math.abs(fuerzas[i][0]);
+          }
+          if (Math.abs(fuerzas[i][1] > maxforce)) {
+            maxforce = Math.abs(fuerzas[i][1]);
+          }
+          if (Math.abs(fuerzas[i][2] > maxforce)) {
+            maxforce = Math.abs(fuerzas[i][2]);
+          }
+        }
+        //console.log(maxforce)
+        if (maxforce < 0.05) {
+          var length = data.labels.length;
+          if (length >= 30) {
+            data.datasets[0].data.shift();
+            data.labels.shift();
+          }
 
-    //       plottime++;
-    //       if (plottime > 30) {
-    //         plottime = 0;
-    //       }
-    //       data.labels.push(plottime);
-    //       data.datasets[0].data.push(
-    //         Math.round(ani.energy * 627.509 * 10) / 10
-    //       );
+          plottime++;
+          if (plottime > 30) {
+            plottime = 0;
+          }
+          data.labels.push(plottime);
+          data.datasets[0].data.push(
+            Math.round(ani.energy * 627.509 * 10) / 10
+          );
 
-    //       chart1.update();
-    //     } else {
-    //       temperature = temperature / 2;
-    //       if(temperature < 5) temperature = 5;
-    //     }
-    //   });
+          chart1.update();
+        } else {
+          temperature = temperature / 2;
+          if(temperature < 5) temperature = 5;
+        }
+      });
 
     counter = 0;
   }
