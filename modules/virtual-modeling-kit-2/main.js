@@ -225,6 +225,7 @@ function initialize() {
   renderer.domElement.style.position = "absolute";
   renderer.domElement.style.top = "0px";
   renderer.domElement.style.left = "0px";
+  renderer.domElement.id = "renderer-canvas";
   document.body.appendChild(renderer.domElement);
 
   clock = new THREE.Clock();
@@ -1527,11 +1528,11 @@ function updateEnergies() {
     var species1 = pdb.elements.map(function (element) {
       if (element === 118) {
         return 1;
-      } else if(element === 119) {
+      } else if (element === 119) {
         return 6;
-      } else if(element === 120) {
+      } else if (element === 120) {
         return 7;
-      } else if(element === 121) {
+      } else if (element === 121) {
         return 8;
       } else {
         return element + 1;
@@ -1550,11 +1551,11 @@ function updateEnergies() {
       var species2 = pdb2.elements.map(function (element) {
         if (element === 118) {
           return 1;
-        } else if(element === 119) {
+        } else if (element === 119) {
           return 6;
-        } else if(element === 120) {
+        } else if (element === 120) {
           return 7;
-        } else if(element === 121) {
+        } else if (element === 121) {
           return 8;
         } else {
           return element + 1;
@@ -1612,7 +1613,7 @@ function updateEnergies() {
           chart1.update();
         } else {
           temperature = temperature / 2;
-          if(temperature < 5) temperature = 5;
+          if (temperature < 5) temperature = 5;
         }
       });
 

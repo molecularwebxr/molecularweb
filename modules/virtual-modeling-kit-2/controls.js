@@ -160,7 +160,7 @@ function handleZoomMenu(e) {
 
 function handleCameraFlip() {
   var video = document.getElementsByTagName("video")[0];
-  var canvas = document.querySelector("canvas");
+  var canvas = document.getElementById("renderer-canvas");
   video.classList.toggle("flip");
   canvas.classList.toggle("flip");
 }
