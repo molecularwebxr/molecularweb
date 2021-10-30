@@ -1603,7 +1603,7 @@ function updateEnergies() {
           chart1.update();
         } else {
           temperature = temperature / 2;
-          if (temperature < 5) temperature = 5;
+          if(temperature < 5 && temperature > 0) temperature = 5;
         }
       });
 

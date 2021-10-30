@@ -91,7 +91,7 @@ function switchCam(e) {
 
       // Flipping video and dispatching change event
       var video = document.getElementsByTagName("video")[0];
-      var canvasEl = document.querySelector("canvas");
+      var canvasEl = document.getElementById("renderer-canvas");
       video.classList.toggle("flip");
       canvasEl.classList.toggle("flip");
       var changeEvent = new CustomEvent("camera-change");
