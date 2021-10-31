@@ -772,7 +772,7 @@ function updatePhysics() {
       body.position.z = newRArr[bodyIndex][2];
     });
 
-    for (var i = 0; i < atoms; i++) {
+    for (var i = 0; i < atoms2; i++) {
       atomBodies2[i].position.x =
         atomBodies2[i].position.x + cubePosition2.x;
       atomBodies2[i].position.y =
