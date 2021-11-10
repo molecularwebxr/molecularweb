@@ -1002,6 +1002,9 @@ function handleFlip(e) {
   atomBodies2.forEach(function (body) {
     body.position.x = -body.position.x;
   });
+
+  resetQ1();
+  resetQ2();
 }
 
 function handleScale(e) {
