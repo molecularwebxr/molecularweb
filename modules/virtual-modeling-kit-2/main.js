@@ -524,14 +524,6 @@ function updatePhysics() {
 
   var velsum = 0;
 
-  var mediax = 0;
-  var mediay = 0;
-  var mediaz = 0;
-
-  var mediax2 = 0;
-  var mediay2 = 0;
-  var mediaz2 = 0;
-
   for (var i = 0; i < atoms; i++) {
     atomBodies[i].velocity.x =
       atomBodies[i].velocity.x + 10 * Math.random(1) - 5;
@@ -905,27 +897,7 @@ function loadPdb(rawPdb) {
     switchFlip1.disabled = false;
     switchSpheres1.disabled = false;
 
-    Q1 = [];
-
-    atomBodies.forEach(function (body) {
-      Q1.push([body.position.x, body.position.y, body.position.z]);
-    });
-
-    for (var i = 0; i < atomBodies.length; i++) {
-      Qx1 = Qx1 + atomBodies[i].position.x;
-      Qy1 = Qy1 + atomBodies[i].position.y;
-      Qz1 = Qz1 + atomBodies[i].position.z;
-    }
-
-    Qx1 = Qx1 / atomBodies.length;
-    Qy1 = Qy1 / atomBodies.length;
-    Qz1 = Qz1 / atomBodies.length;
-
-    Q1.forEach(function (point) {
-      point[0] = point[0] - Qx1;
-      point[1] = point[1] - Qy1;
-      point[2] = point[2] - Qz1;
-    });
+    resetQ1();
   } else {
     resetMarker2();
     resetGeneral();
@@ -971,27 +943,7 @@ function loadPdb(rawPdb) {
     switchFlip2.disabled = false;
     switchSpheres2.disabled = false;
 
-    Q2 = [];
-
-    atomBodies2.forEach(function (body) {
-      Q2.push([body.position.x, body.position.y, body.position.z]);
-    });
-
-    for (var i = 0; i < atomBodies2.length; i++) {
-      Qx2 = Qx2 + atomBodies2[i].position.x;
-      Qy2 = Qy2 + atomBodies2[i].position.y;
-      Qz2 = Qz2 + atomBodies2[i].position.z;
-    }
-
-    Qx2 = Qx2 / atomBodies2.length;
-    Qy2 = Qy2 / atomBodies2.length;
-    Qz2 = Qz2 / atomBodies2.length;
-
-    Q2.forEach(function (point) {
-      point[0] = point[0] - Qx2;
-      point[1] = point[1] - Qy2;
-      point[2] = point[2] - Qz2;
-    });
+    resetQ2();
   }
 }
 
@@ -1027,6 +979,9 @@ function handleFlip(e) {
     atomBodies.forEach(function (body) {
       body.position.x = -body.position.x;
     });
+
+    resetQ1();
+
     return;
   }
 
@@ -1034,6 +989,9 @@ function handleFlip(e) {
     atomBodies2.forEach(function (body) {
       body.position.x = -body.position.x;
     });
+
+    resetQ2();
+
     return;
   }
 
@@ -1688,4 +1646,52 @@ function multiply(a, b) {
 
 function transpose(matrix) {
   return matrix[0].map((col, i) => matrix.map((row) => row[i]));
+}
+
+function resetQ1() {
+  Q1 = [];
+
+  atomBodies.forEach(function (body) {
+    Q1.push([body.position.x, body.position.y, body.position.z]);
+  });
+
+  for (var i = 0; i < atomBodies.length; i++) {
+    Qx1 = Qx1 + atomBodies[i].position.x;
+    Qy1 = Qy1 + atomBodies[i].position.y;
+    Qz1 = Qz1 + atomBodies[i].position.z;
+  }
+
+  Qx1 = Qx1 / atomBodies.length;
+  Qy1 = Qy1 / atomBodies.length;
+  Qz1 = Qz1 / atomBodies.length;
+
+  Q1.forEach(function (point) {
+    point[0] = point[0] - Qx1;
+    point[1] = point[1] - Qy1;
+    point[2] = point[2] - Qz1;
+  });
+}
+
+function resetQ2() {
+  Q2 = [];
+
+  atomBodies2.forEach(function (body) {
+    Q2.push([body.position.x, body.position.y, body.position.z]);
+  });
+
+  for (var i = 0; i < atomBodies2.length; i++) {
+    Qx2 = Qx2 + atomBodies2[i].position.x;
+    Qy2 = Qy2 + atomBodies2[i].position.y;
+    Qz2 = Qz2 + atomBodies2[i].position.z;
+  }
+
+  Qx2 = Qx2 / atomBodies2.length;
+  Qy2 = Qy2 / atomBodies2.length;
+  Qz2 = Qz2 / atomBodies2.length;
+
+  Q2.forEach(function (point) {
+    point[0] = point[0] - Qx2;
+    point[1] = point[1] - Qy2;
+    point[2] = point[2] - Qz2;
+  });
 }
