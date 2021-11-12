@@ -126,6 +126,8 @@ var Px2 = 0;
 var Py2 = 0;
 var Pz2 = 0;
 
+var debug = true;
+
 startAR.addEventListener("click", handleClick);
 flipVideo.addEventListener("flipCamera", handleFlip);
 scaleUp.addEventListener("scaleGraphics", handleScale);
@@ -563,6 +565,12 @@ function updatePhysics() {
       P1.push([body.position.x, body.position.y, body.position.z]);
     });
 
+    if (atomBodies.length < 4) {
+      P1.push([1.0, 1.0, 1.0]);
+      P1.push([1.0, 1.0, 1.0]);
+      P1.push([1.0, 1.0, 1.0]);
+    }
+
     Px1 = 0;
     Py1 = 0;
     Pz1 = 0;
@@ -601,14 +609,20 @@ function updatePhysics() {
       body.position.z = newRArr[bodyIndex][2];
     });
 
-    for (var i = 0; i < atoms; i++) {
-      atomBodies[i].position.x =
-        atomBodies[i].position.x + cubePosition.x;
-      atomBodies[i].position.y =
-        atomBodies[i].position.y + cubePosition.y;
-      atomBodies[i].position.z =
-        atomBodies[i].position.z + cubePosition.z;
+    if (!atomBodies[0].position.x) {
+      for (var i = 0; i < atoms; i++) {
+        atomBodies[i].position.x = atomMeshes[i].position.x;
+        atomBodies[i].position.y = atomMeshes[i].position.y;
+        atomBodies[i].position.z = atomMeshes[i].position.z;
+      }
     }
+
+    for (var i = 0; i < atoms; i++) {
+      atomBodies[i].position.x = atomBodies[i].position.x + cubePosition.x;
+      atomBodies[i].position.y = atomBodies[i].position.y + cubePosition.y;
+      atomBodies[i].position.z = atomBodies[i].position.z + cubePosition.z;
+    }
+
   }
 
   rotateBodies(
@@ -726,6 +740,12 @@ function updatePhysics() {
       P2.push([body.position.x, body.position.y, body.position.z]);
     });
 
+    if (atomBodies2.length < 4) {
+      P2.push([1.0, 1.0, 1.0]);
+      P2.push([1.0, 1.0, 1.0]);
+      P2.push([1.0, 1.0, 1.0]);
+    }
+
     Px2 = 0;
     Py2 = 0;
     Pz2 = 0;
@@ -764,13 +784,19 @@ function updatePhysics() {
       body.position.z = newRArr[bodyIndex][2];
     });
 
+
+    if (!atomBodies2[0].position.x) {
+      for (var i = 0; i < atoms2; i++) {
+        atomBodies2[i].position.x = atomMeshes2[i].position.x;
+        atomBodies2[i].position.y = atomMeshes2[i].position.y;
+        atomBodies2[i].position.z = atomMeshes2[i].position.z;
+      }
+    }
+
     for (var i = 0; i < atoms2; i++) {
-      atomBodies2[i].position.x =
-        atomBodies2[i].position.x + cubePosition2.x;
-      atomBodies2[i].position.y =
-        atomBodies2[i].position.y + cubePosition2.y;
-      atomBodies2[i].position.z =
-        atomBodies2[i].position.z + cubePosition2.z;
+      atomBodies2[i].position.x = atomBodies2[i].position.x + cubePosition2.x;
+      atomBodies2[i].position.y = atomBodies2[i].position.y + cubePosition2.y;
+      atomBodies2[i].position.z = atomBodies2[i].position.z + cubePosition2.z;
     }
   }
 
@@ -1138,6 +1164,7 @@ function rotateBodies(bodies, angle, pivotPosition) {
     rotation.vmult(body.position.vsub(pivot), rotVector);
     rotVector.vadd(pivot, body.position);
   });
+  // if(!atomBodies[0].position.x) console.log("Rotate NAN")
 }
 
 function createInteraction(cubeIndex, interactionKey, bridgeKey, bodyA, bodyB) {
@@ -1564,7 +1591,7 @@ function updateEnergies() {
           chart1.update();
         } else {
           temperature = temperature / 2;
-          if(temperature < 5 && temperature > 0) temperature = 5;
+          if (temperature < 5 && temperature > 0) temperature = 5;
         }
       });
 
@@ -1658,6 +1685,12 @@ function resetQ1() {
     Q1.push([body.position.x, body.position.y, body.position.z]);
   });
 
+  if (atomBodies.length < 4) {
+    Q1.push([1.0, 1.0, 1.0]);
+    Q1.push([1.0, 1.0, 1.0]);
+    Q1.push([1.0, 1.0, 1.0]);
+  }
+
   for (var i = 0; i < atomBodies.length; i++) {
     Qx1 = Qx1 + atomBodies[i].position.x;
     Qy1 = Qy1 + atomBodies[i].position.y;
@@ -1681,6 +1714,12 @@ function resetQ2() {
   atomBodies2.forEach(function (body) {
     Q2.push([body.position.x, body.position.y, body.position.z]);
   });
+
+  if (atomBodies2.length < 4) {
+    Q2.push([1.0, 1.0, 1.0]);
+    Q2.push([1.0, 1.0, 1.0]);
+    Q2.push([1.0, 1.0, 1.0]);
+  }
 
   for (var i = 0; i < atomBodies2.length; i++) {
     Qx2 = Qx2 + atomBodies2[i].position.x;
