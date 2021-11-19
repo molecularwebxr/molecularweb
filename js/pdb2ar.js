@@ -578,11 +578,11 @@ function checkFiles(input) {
     return false;
   }
 
-  // Files size < 350mb
+  // Files size < 700mb
   var size1 = file1.size;
   var size2 = file2.size;
 
-  if (size1 + size2 >= 350000000) {
+  if (size1 + size2 >= 700000000) {
     return false;
   }
 
