@@ -565,12 +565,6 @@ function updatePhysics() {
       P1.push([body.position.x, body.position.y, body.position.z]);
     });
 
-    if (atomBodies.length < 4) {
-      P1.push([1.0, 1.0, 1.0]);
-      P1.push([1.0, 1.0, 1.0]);
-      P1.push([1.0, 1.0, 1.0]);
-    }
-
     Px1 = 0;
     Py1 = 0;
     Pz1 = 0;
@@ -587,42 +581,38 @@ function updatePhysics() {
       point[2] = point[2] - Pz1 / atomBodies.length;
     });
 
-    var H = multiply(transpose(Q1), P1);
+    var pMatrix1 = array2mat(P1);
+    var qMatrix1 = array2mat(Q1);
+    var qMatrixT1 = transposeMatrix(qMatrix1);
 
-    var svdH = SVDJS.SVD(H);
+    var H1 = mul(qMatrixT1, pMatrix1);
+    var svdH1 = svd(H1, "full");
 
-    var arrTmp = [
+    var d1 = det(mul(svdH1.V, transposeMatrix(svdH1.U)));
+
+    var arrTmp1 = [
       [1, 0, 0],
       [0, 1, 0],
-      [0, 0, 1],
+      [0, 0, Math.sign(d1)],
     ];
+    var matTemp = array2mat(arrTmp1);
 
-    var Vt = svdH.v;
+    var R1 = mul(svdH1.V, mul(matTemp, transposeMatrix(svdH1.U)));
+    var newR1 = mul(pMatrix1, R1);
 
-    var R1 = multiply(Vt, multiply(arrTmp, transpose(svdH.u)));
-
-    var newRArr = multiply(P1, R1);
+    var newRArr1 = newR1.toArray();
 
     atomBodies.forEach(function (body, bodyIndex) {
-      body.position.x = newRArr[bodyIndex][0];
-      body.position.y = newRArr[bodyIndex][1];
-      body.position.z = newRArr[bodyIndex][2];
+      body.position.x = newRArr1[bodyIndex][0];
+      body.position.y = newRArr1[bodyIndex][1];
+      body.position.z = newRArr1[bodyIndex][2];
     });
-
-    if (!atomBodies[0].position.x) {
-      for (var i = 0; i < atoms; i++) {
-        atomBodies[i].position.x = atomMeshes[i].position.x;
-        atomBodies[i].position.y = atomMeshes[i].position.y;
-        atomBodies[i].position.z = atomMeshes[i].position.z;
-      }
-    }
 
     for (var i = 0; i < atoms; i++) {
       atomBodies[i].position.x = atomBodies[i].position.x + cubePosition.x;
       atomBodies[i].position.y = atomBodies[i].position.y + cubePosition.y;
       atomBodies[i].position.z = atomBodies[i].position.z + cubePosition.z;
     }
-
   }
 
   rotateBodies(
@@ -740,12 +730,6 @@ function updatePhysics() {
       P2.push([body.position.x, body.position.y, body.position.z]);
     });
 
-    if (atomBodies2.length < 4) {
-      P2.push([1.0, 1.0, 1.0]);
-      P2.push([1.0, 1.0, 1.0]);
-      P2.push([1.0, 1.0, 1.0]);
-    }
-
     Px2 = 0;
     Py2 = 0;
     Pz2 = 0;
@@ -762,36 +746,32 @@ function updatePhysics() {
       point[2] = point[2] - Pz2 / atomBodies2.length;
     });
 
-    var H = multiply(transpose(Q2), P2);
+    var pMatrix2 = array2mat(P2);
+    var qMatrix2 = array2mat(Q2);
+    var qMatrixT2 = transposeMatrix(qMatrix2);
 
-    var svdH = SVDJS.SVD(H);
+    var H2 = mul(qMatrixT2, pMatrix2);
+    var svdH2 = svd(H2, "full");
 
-    var arrTmp = [
+    var d2 = det(mul(svdH2.V, transposeMatrix(svdH2.U)));
+
+    var arrTmp2 = [
       [1, 0, 0],
       [0, 1, 0],
-      [0, 0, 1],
+      [0, 0, Math.sign(d2)],
     ];
+    var matTemp = array2mat(arrTmp2);
 
-    var Vt = svdH.v;
+    var R2 = mul(svdH2.V, mul(matTemp, transposeMatrix(svdH2.U)));
+    var newR2 = mul(pMatrix2, R2);
 
-    var R2 = multiply(Vt, multiply(arrTmp, transpose(svdH.u)));
-
-    var newRArr = multiply(P2, R2);
+    var newRArr2 = newR2.toArray();
 
     atomBodies2.forEach(function (body, bodyIndex) {
-      body.position.x = newRArr[bodyIndex][0];
-      body.position.y = newRArr[bodyIndex][1];
-      body.position.z = newRArr[bodyIndex][2];
+      body.position.x = newRArr2[bodyIndex][0];
+      body.position.y = newRArr2[bodyIndex][1];
+      body.position.z = newRArr2[bodyIndex][2];
     });
-
-
-    if (!atomBodies2[0].position.x) {
-      for (var i = 0; i < atoms2; i++) {
-        atomBodies2[i].position.x = atomMeshes2[i].position.x;
-        atomBodies2[i].position.y = atomMeshes2[i].position.y;
-        atomBodies2[i].position.z = atomMeshes2[i].position.z;
-      }
-    }
 
     for (var i = 0; i < atoms2; i++) {
       atomBodies2[i].position.x = atomBodies2[i].position.x + cubePosition2.x;
@@ -799,8 +779,6 @@ function updatePhysics() {
       atomBodies2[i].position.z = atomBodies2[i].position.z + cubePosition2.z;
     }
   }
-
-  var q2 = new THREE.Quaternion();
 
   rotateBodies(
     atomBodies2,
@@ -1685,12 +1663,6 @@ function resetQ1() {
     Q1.push([body.position.x, body.position.y, body.position.z]);
   });
 
-  if (atomBodies.length < 4) {
-    Q1.push([1.0, 1.0, 1.0]);
-    Q1.push([1.0, 1.0, 1.0]);
-    Q1.push([1.0, 1.0, 1.0]);
-  }
-
   for (var i = 0; i < atomBodies.length; i++) {
     Qx1 = Qx1 + atomBodies[i].position.x;
     Qy1 = Qy1 + atomBodies[i].position.y;
@@ -1714,12 +1686,6 @@ function resetQ2() {
   atomBodies2.forEach(function (body) {
     Q2.push([body.position.x, body.position.y, body.position.z]);
   });
-
-  if (atomBodies2.length < 4) {
-    Q2.push([1.0, 1.0, 1.0]);
-    Q2.push([1.0, 1.0, 1.0]);
-    Q2.push([1.0, 1.0, 1.0]);
-  }
 
   for (var i = 0; i < atomBodies2.length; i++) {
     Qx2 = Qx2 + atomBodies2[i].position.x;
