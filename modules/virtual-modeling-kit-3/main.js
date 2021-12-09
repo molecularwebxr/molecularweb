@@ -69,8 +69,8 @@ var constraints = [];
 var counter  = 0;
 
 var isClashingActive = false;
-var isInteractionActive = true;
-var isBridgeActive = true;
+var isInteractionActive = false;
+var isBridgeActive = false;
 var isAniActive = false;
 
 // var cannonDebugRenderer;
