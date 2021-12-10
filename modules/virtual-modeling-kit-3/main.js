@@ -21,6 +21,7 @@ var planeMesh;
 var pdbs = [];
 
 var addMolecule = document.getElementById("add-molecule");
+var copyCoords = document.getElementById("copy-coords");
 var flipVideo = document.querySelector("flip-video");
 var scaleUp = document.getElementById("scale-up");
 var scaleDown = document.getElementById("scale-down");
@@ -80,6 +81,7 @@ var sphereMaterial = new THREE.MeshLambertMaterial({ color: "yellow" });
 var dummy = new THREE.Object3D();
 
 addMolecule.addEventListener("click", handleClick);
+copyCoords.addEventListener("click", handleCopyCoords);
 scaleUp.addEventListener("scaleGraphics", handleScale);
 scaleDown.addEventListener("scaleGraphics", handleScale);
 reset.addEventListener("resetActivity", handleReset);
@@ -1094,4 +1096,26 @@ function updateEnergies() {
 
     counter = 0;
   }
+}
+
+function handleCopyCoords() {
+  var dummy = document.createElement("textarea");
+  document.body.appendChild(dummy);
+  var txt = ""; 
+  var num = 0;
+  pdbs.forEach(function (pdb, index) {
+    var myIndex = index + 1;
+    for (var i = 0; i < pdb.atoms; i++) {
+      num++
+      var tmpx = pdb.atomBodies[i].position.x;
+      var tmpy = pdb.atomBodies[i].position.y;
+      var tmpz = pdb.atomBodies[i].position.z;
+      var myElement = pdb.elements[i]
+      txt = txt + "ATOM " + " ".repeat(6-num.toString().length) + num + "  " + " ".repeat(2-elementNames[myElement].length) + elementNames[myElement] +"  RES" + " ".repeat(6-myIndex.toString().length)+ myIndex + "    " + " ".repeat(8-tmpx.toFixed(3).toString().length) + tmpx.toFixed(3).toString() + " ".repeat(8-tmpy.toFixed(3).toString().length) + tmpy.toFixed(3).toString() + " ".repeat(8-tmpz.toFixed(3).toString().length) + tmpz.toFixed(3).toString() + "  1.00  0.00          " + " ".repeat(2-elementNames[myElement].length) + elementNames[myElement] + "\n"
+    }
+  })
+  dummy.value = txt;
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
 }
