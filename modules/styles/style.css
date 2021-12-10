@@ -883,15 +883,18 @@ button.pdb-btn {
   visibility: hidden;
   min-width: 250px;
   margin-left: -125px;
-  background-color: #333;
-  color: #fff;
   text-align: center;
-  border-radius: 2px;
   padding: 16px;
   position: fixed;
   z-index: 1;
   left: 50%;
   bottom: 30px;
+  font-weight: 700;
+  padding: 5px 24px;
+  background: var(--secondary);
+  border-radius: 6px;
+  color: var(--primary);
+  font-family: "Roboto", sans-serif;
 }
 
 .snackbar.show {
@@ -940,6 +943,7 @@ button.pdb-btn {
     display: none;
   }
 
+  #copy-coords,
   .interaction-control.ani {
     display: none;
   }

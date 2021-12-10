@@ -22,6 +22,7 @@ var pdbs = [];
 
 var addMolecule = document.getElementById("add-molecule");
 var copyCoords = document.getElementById("copy-coords");
+var snackbar = document.getElementById("snackbar");
 var flipVideo = document.querySelector("flip-video");
 var scaleUp = document.getElementById("scale-up");
 var scaleDown = document.getElementById("scale-down");
@@ -1118,4 +1119,9 @@ function handleCopyCoords() {
   dummy.select();
   document.execCommand("copy");
   document.body.removeChild(dummy);
+  snackbar.classList.add("show")
+  // After 3 seconds, remove the show class
+  setTimeout(function(){
+    snackbar.classList.remove("show")
+  }, 3000);
 }
