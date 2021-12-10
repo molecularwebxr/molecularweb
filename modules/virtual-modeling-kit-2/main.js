@@ -17,6 +17,8 @@ var sceneGroup2;
 var pdb, pdb2;
 
 var startAR = document.getElementById("start-ar");
+var copyCoords = document.getElementById("copy-coords");
+var snackbar = document.getElementById("snackbar");
 var flipVideo = document.querySelector("flip-video");
 var scaleUp = document.getElementById("scale-up");
 var scaleDown = document.getElementById("scale-down");
@@ -129,6 +131,7 @@ var Pz2 = 0;
 var debug = true;
 
 startAR.addEventListener("click", handleClick);
+copyCoords.addEventListener("click", handleCopyCoords);
 flipVideo.addEventListener("flipCamera", handleFlip);
 scaleUp.addEventListener("scaleGraphics", handleScale);
 scaleDown.addEventListener("scaleGraphics", handleScale);
@@ -1702,4 +1705,41 @@ function resetQ2() {
     point[1] = point[1] - Qy2;
     point[2] = point[2] - Qz2;
   });
+}
+
+function handleCopyCoords() {
+  var dummy = document.createElement("textarea");
+  document.body.appendChild(dummy);
+  var txt = ""; 
+  var num = 0;
+
+  atomBodies.forEach(function (body, index) {
+    num++;
+    var myIndex = 1;
+    var tmpx = body.position.x;
+    var tmpy = body.position.y;
+    var tmpz = body.position.z;
+    var myElement = pdb.elements[index]
+    txt = txt + "ATOM " + " ".repeat(6-num.toString().length) + num + "  " + " ".repeat(2-elementNames[myElement].length) + elementNames[myElement] +"  RES" + " ".repeat(6-myIndex.toString().length)+ myIndex + "    " + " ".repeat(8-tmpx.toFixed(3).toString().length) + tmpx.toFixed(3).toString() + " ".repeat(8-tmpy.toFixed(3).toString().length) + tmpy.toFixed(3).toString() + " ".repeat(8-tmpz.toFixed(3).toString().length) + tmpz.toFixed(3).toString() + "  1.00  0.00          " + " ".repeat(2-elementNames[myElement].length) + elementNames[myElement] + "\n"
+  })
+
+  atomBodies2.forEach(function (body, index) {
+    num++;
+    var myIndex = 2;
+    var tmpx = body.position.x;
+    var tmpy = body.position.y;
+    var tmpz = body.position.z;
+    var myElement = pdb2.elements[index]
+    txt = txt + "ATOM " + " ".repeat(6-num.toString().length) + num + "  " + " ".repeat(2-elementNames[myElement].length) + elementNames[myElement] +"  RES" + " ".repeat(6-myIndex.toString().length)+ myIndex + "    " + " ".repeat(8-tmpx.toFixed(3).toString().length) + tmpx.toFixed(3).toString() + " ".repeat(8-tmpy.toFixed(3).toString().length) + tmpy.toFixed(3).toString() + " ".repeat(8-tmpz.toFixed(3).toString().length) + tmpz.toFixed(3).toString() + "  1.00  0.00          " + " ".repeat(2-elementNames[myElement].length) + elementNames[myElement] + "\n"
+  })
+ 
+  dummy.value = txt;
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
+  snackbar.classList.add("show")
+  // After 3 seconds, remove the show class
+  setTimeout(function(){
+    snackbar.classList.remove("show")
+  }, 3000);
 }

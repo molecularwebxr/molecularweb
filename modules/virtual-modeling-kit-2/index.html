@@ -374,11 +374,16 @@
           data-i18n="[placeholder]orbitals.modelingKit.placeholder"
         ></textarea>
 
-        <button
-          id="start-ar"
-          class="btn-primary"
-          data-i18n="orbitals.modelingKit.startAR"
-        ></button>
+        <div class="row">
+          <button
+            id="start-ar"
+            class="btn-primary"
+          >Add</button>
+          <button
+            id="copy-coords"
+            class="btn-primary"
+          >Copy current coordinates</button>
+        </div>
       </div>
     </div>
 
@@ -443,6 +448,8 @@
         </div>
       </div>
     </div>
+
+    <div class="snackbar" id="snackbar">Coordinates copied to clipboard</div>
 
     <script src="utils.js"></script>
     <script type="module" src="3Dutils.js"></script>
