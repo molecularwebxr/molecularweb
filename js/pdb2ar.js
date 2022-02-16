@@ -14,6 +14,7 @@ var emailInput = document.getElementById("pdb-email");
 var instructionsText = document.getElementById("instructions");
 var searchInput = document.getElementById("pdb-search");
 var searchBtn = document.getElementById("search-btn");
+var uploadBtn = document.getElementById("upload-btn");
 var buildFromPdb = document.getElementById("build-pdb");
 var buildFromObj = document.getElementById("build-obj");
 var pdbOptions = document.getElementById("pdb-options");
@@ -22,7 +23,7 @@ var objInstructions = document.getElementById("obj-instructions");
 var detectSection = document.getElementById("detect-section");
 var searchSection = document.getElementById("search-section");
 var welcomeSection = document.getElementById("welcome");
-var uploadBtn = document.getElementById("upload-btn");
+var uploadPDB = document.getElementById("upload-pdb-btn");
 var backBtn = document.getElementById("back-btn");
 var pdbInput = document.getElementById("pdb-input");
 var fileDetails = document.getElementById("file-details");
@@ -474,6 +475,14 @@ function handleSubmit(e) {
   }
 }
 
+function handleUploadPDB(e) {
+  var reader = new FileReader();
+  reader.onload = () => {
+    pdbText.value = reader.result;
+  };
+  reader.readAsText(e.target.files[0]);
+};
+
 function handleSearch(e) {
   var value = searchInput.value;
 
@@ -662,6 +671,7 @@ switchWater.addEventListener("change", handleWaterCheck);
 vdmBtn.addEventListener("click", buildVmd);
 submitBtn.addEventListener("click", handleSubmit);
 searchBtn.addEventListener("click", handleSearch);
+uploadPDB.addEventListener("change", handleUploadPDB);
 buildFromObj.addEventListener("click", handleObjSelection);
 buildFromPdb.addEventListener("click", handlePdbSelection);
 pdbInput.addEventListener("change", handleUpload);
