@@ -546,6 +546,7 @@ function handleBack(e) {
   instructionsText.classList.add("hidden");
   fileDetails.classList.add("hidden");
   errorMsg.classList.add("hidden");
+  disclaimers.classList.add("hidden");
   pdbInput.value = "";
 
   var label1 = document.getElementById("file-1");
@@ -656,6 +657,7 @@ function handleUpload(e) {
       submitSection.classList.remove("hidden");
       submitBtn.classList.remove("hidden");
       instructionsText.classList.remove("hidden");
+      disclaimers.classList.remove("hidden");
     } else {
       errorMsg.classList.remove("hidden");
     }
