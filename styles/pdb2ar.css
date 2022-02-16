@@ -105,6 +105,7 @@
 
 .pdb-btn:disabled {
   transform: scale(1);
+  opacity: 0.7;
 }
 
 .pdb-btn.big{

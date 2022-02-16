@@ -273,7 +273,8 @@ function buildVmd(e) {
       return;
     }
 
-    tclString += "mol modselect " + nout + " 0 chain " + chain + " and not water" + "\n";
+    tclString +=
+      "mol modselect " + nout + " 0 chain " + chain + " and not water" + "\n";
 
     if (value === "NewCartoon (cartoons)") {
       tclString +=
@@ -374,7 +375,30 @@ function handleSubmit(e) {
 
   const isEmailFine = isEmailValid(email);
 
-  if (title.length <= 0 || !isEmailFine) {
+  if (title.length <= 0 && !isEmailFine) {
+    swal(
+      "Something went wrong",
+      "Please add a title to your project and a valid email for us to send you the result",
+      "error"
+    );
+    return;
+  }
+
+  if (title.length <= 0) {
+    swal(
+      "Something went wrong",
+      "Please, add a title to your project",
+      "error"
+    );
+    return;
+  }
+
+  if (!isEmailFine) {
+    swal(
+      "Something went wrong",
+      "Please add a valid email for us to send you the result",
+      "error"
+    );
     return;
   }
 
@@ -553,7 +577,6 @@ function handleBack(e) {
   proteinGrid.classList.add("hidden");
   vdmBtn.classList.add("hidden");
   tclText.classList.add("hidden");
-
 }
 
 function checkFiles(input) {
@@ -596,15 +619,15 @@ function checkFiles(input) {
 function handleUpload(e) {
   var input = e.target;
   var areFilesValid = checkFiles(input);
-  
+
   var reader = new FileReader();
 
-  if(areFilesValid) {
+  if (areFilesValid) {
     reader.readAsText(input.files[0]);
   } else {
     errorMsg.classList.remove("hidden");
   }
-  
+
   // Is this file from VMD?
   reader.onload = function () {
     var rawFile = reader.result;
@@ -631,7 +654,7 @@ function handleUpload(e) {
 }
 
 function handlePolicyChange(e) {
-  submitBtn.disabled = !e.target.checked
+  submitBtn.disabled = !e.target.checked;
 }
 
 detectBtn.addEventListener("click", readPdb);
@@ -643,4 +666,4 @@ buildFromObj.addEventListener("click", handleObjSelection);
 buildFromPdb.addEventListener("click", handlePdbSelection);
 pdbInput.addEventListener("change", handleUpload);
 backBtn.addEventListener("click", handleBack);
-policy1.addEventListener("change", handlePolicyChange)
+policy1.addEventListener("change", handlePolicyChange);
