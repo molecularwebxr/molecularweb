@@ -141,7 +141,10 @@
           </span>
         </div>
 
-        <div id="search-section" class="search-section row margin-bottom hidden">
+        <div
+          id="search-section"
+          class="search-section row margin-bottom hidden"
+        >
           <input
             name="search"
             id="pdb-search"
@@ -160,7 +163,10 @@
           rows="10"
           placeholder="Copy-Paste molecule here"
         ></textarea>
-        <div id="detect-section" class="detect-section margin-bottom row hidden">
+        <div
+          id="detect-section"
+          class="detect-section margin-bottom row hidden"
+        >
           <button id="detect-btn" class="pdb-btn margin-right">
             Detect molecules
           </button>
@@ -270,7 +276,47 @@
           </div>
         </div>
 
-        <button id="submit-btn" class="pdb-btn hidden">Submit</button>
+        <div id="disclaimers" class="column margin-bottom hidden">
+          <div class="row">
+            <div class="switch">
+              <input
+                id="switch-policy-1"
+                type="checkbox"
+                class="switch-input"
+              />
+              <label for="switch-policy-1" class="switch-label"> Switch </label>
+            </div>
+
+            <p class="policy-text">
+              I understand that the provided files need to be uploaded and
+              processed in our servers, and that they must be retained there for
+              the AR and VR tools to work. I also understand that the files
+              might be erased after some time (note you can download everything
+              on the email you will receive).
+            </p>
+          </div>
+
+          <div class="row disclaimer">
+            <div class="switch">
+              <input
+                id="switch-policy-2"
+                type="checkbox"
+                class="switch-input"
+                checked
+              />
+              <label for="switch-policy-2" class="switch-label"> Switch </label>
+            </div>
+
+            <p class="policy-text margin-top">
+              I consent that the AR and VR scenes produced by the server can be
+              used by its developers for education and promotion of the tool.
+              Not accepting this still enables you to use the tool, but we'll
+              know you don't want us to use your scenes.
+            </p>
+          </div>
+        </div>
+
+        <button id="submit-btn" disabled class="pdb-btn hidden">Submit</button>
 
         <button id="back-btn" class="pdb-btn hidden margin-top margin-bottom">
           ← Back to main menu

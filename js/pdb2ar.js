@@ -27,6 +27,9 @@ var backBtn = document.getElementById("back-btn");
 var pdbInput = document.getElementById("pdb-input");
 var fileDetails = document.getElementById("file-details");
 var errorMsg = document.getElementById("error");
+var disclaimers = document.getElementById("disclaimers");
+var policy1 = document.getElementById("switch-policy-1");
+var policy2 = document.getElementById("switch-policy-2");
 
 var chains = [];
 var chainstrings = [];
@@ -360,6 +363,7 @@ function buildVmd(e) {
   submitSection.classList.remove("hidden");
   submitBtn.classList.remove("hidden");
   instructionsText.classList.remove("hidden");
+  disclaimers.classList.remove("hidden");
 
   tclText.value = tclString;
 }
@@ -626,6 +630,10 @@ function handleUpload(e) {
   };
 }
 
+function handlePolicyChange(e) {
+  submitBtn.disabled = !e.target.checked
+}
+
 detectBtn.addEventListener("click", readPdb);
 switchWater.addEventListener("change", handleWaterCheck);
 vdmBtn.addEventListener("click", buildVmd);
@@ -635,3 +643,4 @@ buildFromObj.addEventListener("click", handleObjSelection);
 buildFromPdb.addEventListener("click", handlePdbSelection);
 pdbInput.addEventListener("change", handleUpload);
 backBtn.addEventListener("click", handleBack);
+policy1.addEventListener("change", handlePolicyChange)
