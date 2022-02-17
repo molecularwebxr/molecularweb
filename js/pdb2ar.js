@@ -373,6 +373,7 @@ function buildVmd(e) {
 function handleSubmit(e) {
   var title = titleInput.value;
   var email = emailInput.value;
+  var isPublic = policy2.checked
 
   const isEmailFine = isEmailValid(email);
 
@@ -410,6 +411,7 @@ function handleSubmit(e) {
     var data = {
       pdb: pdbText.value,
       tcl: tclText.value,
+      isPublic,
       title,
       email,
     };
@@ -447,6 +449,7 @@ function handleSubmit(e) {
     data.append("models", pdbInput.files[1]);
     data.append("title", title);
     data.append("email", email);
+    data.append("isPublic", isPublic);
 
     fetch("https://molecularweb.epfl.ch/backend/api/pdb2ar/obj", {
       method: "POST",
