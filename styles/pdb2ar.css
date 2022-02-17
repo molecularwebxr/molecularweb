@@ -93,6 +93,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 
 .pdb-btn {
@@ -346,6 +347,19 @@
 
   #obj-instructions {
     margin-bottom: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .search-section {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #upload-pdb-btn.pdb-btn {
+    margin:  1.5rem 0 0 0;
+    height: 39px;
+    /* padding: 6px 22px !important; */
   }
 }
 
