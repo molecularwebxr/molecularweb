@@ -481,19 +481,20 @@ function handleUploadPDB(e) {
     pdbText.value = reader.result;
   };
   reader.readAsText(e.target.files[0]);
-};
+}
 
 function handleSearch(e) {
   var value = searchInput.value;
 
-  if (value.length !== 4) {
-    return;
-  }
+  var url =
+    value.length === 4
+      ? `https://files.rcsb.org/view/${value}.pdb`
+      : `https://alphafold.ebi.ac.uk/files/AF-${value}-F1-model_v1.pdb`;
 
   searchBtn.disabled = true;
   searchBtn.textContent = "Searching...";
 
-  fetch(`https://files.rcsb.org/view/${value}.pdb`)
+  fetch(url)
     .then((response) => {
       if (response.status === 404) {
         throw new Error("error");
