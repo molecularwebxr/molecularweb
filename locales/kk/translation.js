@@ -1,7 +1,7 @@
 {
     "menu": {
-      "about": "About",
-      "getInTouch": "Contact",
+      "about": "Біз туралы",
+      "getInTouch": "Байланыс",
       "feedback": "Feedback",
       "language": "Language",
       "instructions": "Instructions",
