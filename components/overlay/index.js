@@ -213,6 +213,7 @@ overlayTemplate.innerHTML = /* html */ `
         <button id="es">Español</button>
         <button id="pt">Português</button>
         <button id="th">ไทย</button>
+        <button id="kk">Kazakh</button>
       </div>
     </div>
 
@@ -276,6 +277,7 @@ class ActivityOverlay extends HTMLElement {
     this.portuguese = this.shadowRoot.querySelector("#pt");
     this.german = this.shadowRoot.querySelector("#de");
     this.thai = this.shadowRoot.querySelector("#th");
+    this.kazakh = this.shadowRoot.querySelector("#kk");
 
     this.english.addEventListener("click", this.handleLanguageChange);
     this.spanish.addEventListener("click", this.handleLanguageChange);
@@ -284,6 +286,7 @@ class ActivityOverlay extends HTMLElement {
     this.portuguese.addEventListener("click", this.handleLanguageChange);
     this.german.addEventListener("click", this.handleLanguageChange);
     this.thai.addEventListener("click", this.handleLanguageChange);
+    this.kazakh.addEventListener("click", this.handleLanguageChange);
   }
 
   connectedCallback() {
