@@ -2,8 +2,8 @@
     "menu": {
       "about": "Біз туралы",
       "getInTouch": "Байланыс",
-      "feedback": "Feedback",
-      "language": "Language",
-      "instructions": "Instructions",
-      "markers": "Markers"
+      "feedback": "Кері байланыс",
+      "language": "Тіл",
+      "instructions": "Нұсқау",
+      "markers": "Маркер"
     },
