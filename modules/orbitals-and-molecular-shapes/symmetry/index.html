@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/js/support.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-91563073-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-91563073-2");
+    </script>
+    <title id="title" data-i18n="orbitals.molecularOrbitals.title"></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="/styles/base.css" />
+    <link rel="stylesheet" href="/modules/styles/style.css" />
+
+    <!-- 3D Libraries -->
+    <script src="/lib/aframe.min.js"></script>
+    <script src="/lib/aframe-ar.js"></script>
+
+    <!-- Translation Libraries -->
+    <script src="/lib/i18n/i18next.min.js"></script>
+    <script src="/lib/i18n/i18next-wc.js"></script>
+    <script src="/lib/i18n/loc-i18next.min.js"></script>
+    <script src="/lib/i18n/i18nextBrowserLanguageDetector.js"></script>
+    <script src="/lib/i18n/i18nextHttpBackend.min.js"></script>
+
+    <!-- Web Components -->
+    <script src="/components/icons/atom/index.js"></script>
+    <script src="/components/icons/molecule/index.js"></script>
+    <script src="/components/back-anchor/index.js"></script>
+    <script src="/components/loader/index.js"></script>
+    <script src="/components/flip-video/index.js"></script>
+    <script src="/components/flip-graphics/index.js"></script>
+    <script src="/components/overlay/index.js"></script>
+    <script src="/components/toggle-instructions/index.js"></script>
+    <script src="/components/toggle-description/index.js"></script>
+    <script src="/components/toggle-menu/index.js"></script>
+    <script src="/components/reset-activity/index.js"></script>
+    <script src="/components/scale-graphics/index.js"></script>
+    <script src="/components/enable-gestures/index.js"></script>
+    <script src="/components/rotation-controls/index.js"></script>
+    <script src="/components/feedback-prompt/index.js"></script>
+    <script src="/components/zoom-icon/index.js"></script>
+    <script src="/components/swap-camera/index.js"></script>
+    <script src="/components/camera-icon/index.js"></script>
+
+    <!-- Utils & A-Frame Components -->
+    <script src="/modules/utils/aframe/gltf-material.js"></script>
+    <script src="/modules/utils/aframe/flip.js"></script>
+    <script src="/modules/utils/aframe/scale.js"></script>
+    <script src="/modules/utils/aframe/gesture-detector.js"></script>
+    <script src="/modules/utils/aframe/gesture-handler.js"></script>
+    <script src="/modules/utils/aframe/loader.js"></script>
+    <script src="/modules/utils/aframe/rotation.js"></script>
+    <script src="/modules/utils/handleTranslation.js"></script>
+    <script src="/modules/utils/aframe/selectCamera.js"></script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header id="header">
+      <div class="row">
+        <figure>
+          <atom-icon></atom-icon>
+        </figure>
+        <h1
+          class="activity-title"
+          data-i18n="orbitals.molecularOrbitals.title"
+        ></h1>
+      </div>
+    </header>
+
+    <p style="display: none">
+      <a href="https://clustrmaps.com/site/1ar2f" title="Visit tracker"
+        ><img
+          src="//www.clustrmaps.com/map_v2.png?d=b_oWfSB8TUOlxHdLX1ftmUWKcboQmBFu1xmiYd_PbS4&cl=ffffff"
+          alt=""
+          width="1%"
+          height="1%"
+      /></a>
+    </p>
+
+    <!-- UI Components -->
+    <back-anchor></back-anchor>
+    <loader-component></loader-component>
+
+    <!-- Feedback Modal -->
+    <feedback-prompt></feedback-prompt>
+
+    <!-- camera controls -->
+    <div id="cam-container" class="camera-container small-menu hide column">
+      <div class="triangle-temp"></div>
+      <flip-video class="icon-margin"></flip-video>
+      <swap-camera class="hide icon-margin"></swap-camera>
+      <flip-graphics class="icon-margin"></flip-graphics>
+    </div>
+
+    <!-- Zoom controls -->
+    <div id="zoom-container" class="zoom-container small-menu hide column">
+      <div class="triangle-temp"></div>
+      <scale-graphics
+        class="small-icon-margin"
+        id="scale-up"
+        type="up"
+      ></scale-graphics>
+      <div class="line horizontal"></div>
+      <scale-graphics
+        class="small-icon-margin"
+        id="scale-down"
+        type="down"
+      ></scale-graphics>
+    </div>
+
+    <!-- Side buttons -->
+    <div class="side-menu column">
+      <camera-icon class="icon-margin"></camera-icon>
+      <reset-activity class="icon-margin"></reset-activity>
+      <zoom-icon class="icon-margin"></zoom-icon>
+      <toggle-menu class="icon-margin"></toggle-menu>
+    </div>
+
+    <!-- Rotation controls -->
+    <div class="rotation-controls multiple-select">
+      <rotation-controls id="rotation-marker-1" marker="1"></rotation-controls>
+      <rotation-controls id="rotation-marker-2" marker="2"></rotation-controls>
+    </div>
+
+    <!-- Selection Menu -->
+    <div class="selection-menu">
+      <div class="marker">
+        <img
+          class="marker-sample"
+          src="/assets/img/0.png"
+          alt="sample marker"
+          id="marker-image-1"
+        />
+        <div class="options" id="marker-options-1">
+          <div class="triangle"></div>
+          <div id="select-container-1" class="select-container">
+            <select
+              id="select-molecule-1"
+              class="orbital-selector bottom-margin"
+            >
+              <optgroup label="Molecule">
+                <option>Water</option>
+              </optgroup>
+            </select>
+
+            <select id="select-orbital-1" class="orbital-selector">
+              <optgroup label="Orbtital">
+                <option>C2</option>
+                <option>Plano 1</option>
+                <option>Plano 2</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <enable-gestures
+            class="gesture-icon left-margin"
+            id="marker1"
+          ></enable-gestures>
+        </div>
+      </div>
+      <span class="line"></span>
+      <div class="marker">
+        <img
+          class="marker-sample left-margin"
+          src="/assets/img/2.png"
+          alt="sample marker"
+          id="marker-image-2"
+        />
+        <div class="options" id="marker-options-2">
+          <div class="triangle"></div>
+          <div id="select-container-2" class="select-container">
+            <select
+              id="select-molecule-2"
+              class="orbital-selector bottom-margin"
+            >
+              <optgroup label="Molecule">
+                <option>Water</option>
+              </optgroup>
+            </select>
+
+            <select id="select-orbital-2" class="orbital-selector">
+              <optgroup label="Orbital">
+                <option>C2</option>
+                <option>Plane 1</option>
+                <option>Plane 2</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <enable-gestures
+            class="gesture-icon left-margin"
+            id="marker2"
+          ></enable-gestures>
+        </div>
+      </div>
+      <div class="extra-info">
+        <toggle-instructions class="extra-info-icon"></toggle-instructions>
+        <toggle-description class="extra-info-icon"></toggle-description>
+      </div>
+    </div>
+
+    <!-- Overlays -->
+    <activity-overlay id="instructions" default="open" type="instructions">
+      <span slot="title" data-i18n="orbitals.molecularOrbitals.title"></span>
+      <span
+        slot="instructions"
+        data-i18n="orbitals.molecularOrbitals.instructions"
+      ></span>
+    </activity-overlay>
+
+    <activity-overlay id="description" default="hidden" type="description">
+      <span slot="title" data-i18n="orbitals.molecularOrbitals.title"></span>
+      <span
+        slot="description"
+        data-i18n="orbitals.molecularOrbitals.description"
+      ></span>
+    </activity-overlay>
+
+    <activity-overlay id="menu" default="hidden" type="menu">
+      <span slot="title">MoleculARweb</span>
+    </activity-overlay>
+
+    <a-scene
+      embedded
+      arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3_HAMMING63;"
+      id="scene"
+      renderer="logarithmicDepthBuffer: true;"
+      loading-screen="enabled: false"
+      gltf-model="dracoDecoderPath: https://www.gstatic.com/draco/v1/decoders/;"
+      gesture-detector
+      loader
+      rotate-molecules
+      vr-mode-ui="enabled: false"
+      loading-screen="enabled: false"
+      switch-camera
+    >
+      <a-assets>
+        <!-- Struct assets -->
+        <a-asset-item id="mol1" src="./models/H2O/h2o.gltf"></a-asset-item>
+        <a-asset-item id="mo1_1" src="./models/H2O/h2o_c2.gltf"></a-asset-item>
+        <a-asset-item id="mo1_2" src="./models/H2O/h2o_plano1.gltf"></a-asset-item>
+        <a-asset-item id="mo1_3" src="./models/H2O/h2o_plano2.gltf"></a-asset-item>
+      </a-assets>
+
+      <a-marker type="barcode" value="0">
+        <a-entity
+          rotation="0 0 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker1A"
+          gesture-handler="linkedMarker: #marker1B"
+        >
+          <a-entity
+            id="mrk1Amol"
+            gltf-model="#mol1"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+          <a-entity
+            id="mrk1Aoma"
+            gltf-model="#mo1_1"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="1">
+        <a-entity
+          rotation="180 180 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker1B"
+          gesture-handler="linkedMarker: #marker1A"
+        >
+          <a-entity
+            id="mrk1Bmol"
+            gltf-model="#mol1"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+          <a-entity
+            id="mrk1Boma"
+            gltf-model="#mo1_1"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="2">
+        <a-entity
+          rotation="0 0 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker2A"
+          gesture-handler="linkedMarker: #marker2B"
+        >
+          <a-entity
+            id="mrk2Amol"
+            gltf-model="#mol1"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+          <a-entity
+            id="mrk2Aoma"
+            gltf-model="#mo1_1"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="3">
+        <a-entity
+          rotation="180 180 0"
+          listen-to-flip
+          listen-to-scale
+          id="marker2B"
+          gesture-handler="linkedMarker: #marker2A"
+        >
+          <a-entity
+            id="mrk2Bmol"
+            gltf-model="#mol1"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+          <a-entity
+            id="mrk2Boma"
+            gltf-model="#mo1_1"
+            scale="2 2 2"
+            rotation="90 0 0"
+            position="0 0 0"
+            visible="true"
+          ></a-entity>
+        </a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+    <script src="index.js"></script>
+    <script src="/modules/utils/handleFlips.js"></script>
+    <script src="/modules/utils/handleOverlays.js"></script>
+    <script src="/modules/utils/handleGestures.js"></script>
+    <script src="/js/handleSession.js"></script>
+  </body>
+</html>

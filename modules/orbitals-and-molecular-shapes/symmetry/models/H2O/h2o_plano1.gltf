@@ -1,0 +1,167 @@
+{
+  "accessors": [
+    {
+      "name": "Plano.001_Plano.002-Mesh_0_positions",
+      "componentType": 5126,
+      "count": 4,
+      "min": [
+        0,
+        -1.2394369840621948,
+        -1
+      ],
+      "max": [
+        0,
+        0.7605630159378052,
+        1
+      ],
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 0
+    },
+    {
+      "name": "Plano.001_Plano.002-Mesh_0_normals",
+      "componentType": 5126,
+      "count": 4,
+      "min": [
+        1,
+        0,
+        0
+      ],
+      "max": [
+        1,
+        0,
+        0
+      ],
+      "type": "VEC3",
+      "bufferView": 1,
+      "byteOffset": 0
+    },
+    {
+      "name": "Plano.001_Plano.002-Mesh_0_texcoords",
+      "componentType": 5126,
+      "count": 4,
+      "min": [
+        0,
+        0
+      ],
+      "max": [
+        1,
+        1
+      ],
+      "type": "VEC2",
+      "bufferView": 2,
+      "byteOffset": 0
+    },
+    {
+      "name": "Plano.001_Plano.002-Mesh_0_indices",
+      "componentType": 5123,
+      "count": 6,
+      "min": [
+        0
+      ],
+      "max": [
+        3
+      ],
+      "type": "SCALAR",
+      "bufferView": 3,
+      "byteOffset": 0
+    }
+  ],
+  "asset": {
+    "generator": "obj2gltf",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "name": "h2o_plano1",
+      "byteLength": 140,
+      "uri": "data:application/octet-stream;base64,AAAAAEK0Qj8AAIA/AAAAAN+lnr8AAIA/AAAAAN+lnr8AAIC/AAAAAEK0Qj8AAIC/AACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAIA/AACAPwAAgD8AAAAAAAAAAAAAAAACAAMAAAAAAAEAAgA="
+    }
+  ],
+  "bufferViews": [
+    {
+      "name": "bufferView_0",
+      "buffer": 0,
+      "byteLength": 48,
+      "byteOffset": 0,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "name": "bufferView_1",
+      "buffer": 0,
+      "byteLength": 48,
+      "byteOffset": 48,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "name": "bufferView_2",
+      "buffer": 0,
+      "byteLength": 32,
+      "byteOffset": 96,
+      "byteStride": 8,
+      "target": 34962
+    },
+    {
+      "name": "bufferView_3",
+      "buffer": 0,
+      "byteLength": 12,
+      "byteOffset": 128,
+      "target": 34963
+    }
+  ],
+  "materials": [
+    {
+      "name": "vmd_mat_cindex_9.003",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.65,
+          0.39,
+          0.39,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.959999993
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Plano.001_Plano.002-Mesh",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Plano.001_Plano.002",
+      "mesh": 0
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
