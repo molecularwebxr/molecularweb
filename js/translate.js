@@ -9,7 +9,7 @@ var italian = appHeader.shadowRoot.querySelector("#it");
 var portuguese = appHeader.shadowRoot.querySelector("#pt");
 var german = appHeader.shadowRoot.querySelector("#de");
 var thai = appHeader.shadowRoot.querySelector("#th");
-var kazakh = appHeader.shadowRoot.querySelector("#kk");
+// var kazakh = appHeader.shadowRoot.querySelector("#kk");
 var russian = appHeader.shadowRoot.querySelector("#ru");
 
 var english2 = appHeader.shadowRoot.querySelector("#en_");
@@ -19,7 +19,7 @@ var italian2 = appHeader.shadowRoot.querySelector("#it_");
 var portuguese2 = appHeader.shadowRoot.querySelector("#pt_");
 var german2 = appHeader.shadowRoot.querySelector("#de_");
 var thai2 = appHeader.shadowRoot.querySelector("#th_");
-var kazakh2 = appHeader.shadowRoot.querySelector("#kk_");
+// var kazakh2 = appHeader.shadowRoot.querySelector("#kk_");
 var russian2 = appHeader.shadowRoot.querySelector("#ru_");
 
 i18next
@@ -79,7 +79,7 @@ italian.addEventListener("click", handleLanguageChange);
 portuguese.addEventListener("click", handleLanguageChange);
 german.addEventListener("click", handleLanguageChange);
 thai.addEventListener("click", handleLanguageChange);
-kazakh.addEventListener("click", handleLanguageChange);
+// kazakh.addEventListener("click", handleLanguageChange);
 russian.addEventListener("click", handleLanguageChange);
 
 english2.addEventListener("click", handleLanguageChange);
@@ -89,5 +89,5 @@ italian2.addEventListener("click", handleLanguageChange);
 portuguese2.addEventListener("click", handleLanguageChange);
 german2.addEventListener("click", handleLanguageChange);
 thai2.addEventListener("click", handleLanguageChange);
-kazakh2.addEventListener("click", handleLanguageChange);
+// kazakh2.addEventListener("click", handleLanguageChange);
 russian2.addEventListener("click", handleLanguageChange);

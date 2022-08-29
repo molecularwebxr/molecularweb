@@ -337,7 +337,7 @@ headerTemplate.innerHTML = /* html */ `
           <li id="es">Español</li>
           <li id="pt">Português</li>
           <li id="th">ไทย</li>
-          <li id="kk">Kazakh</li>
+          <!-- <li id="kk">Kazakh</li> -->
           <li id="ru">Russian</li>
         </ul>
       </div>
@@ -440,9 +440,9 @@ headerTemplate.innerHTML = /* html */ `
           ไทย
         </a>
         
-        <a class="mobile-menu-link" id="kk_">
+        <!-- <a class="mobile-menu-link" id="kk_">
           Kazakh
-        </a>
+        </a> -->
         
          <a class="mobile-menu-link" id="ru_">
           Russian
