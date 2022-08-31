@@ -6,11 +6,79 @@ var orbital1Select = document.getElementById("select-orbital-1");
 var orbital2Select = document.getElementById("select-orbital-2");
 
 var orbitalNames = [
+  ["Axis", "Plane 0", "Plane 1"],
   [
-    "C2",
-    "Plano 1",
-    "Plano 2",
-  ]
+    "Axis 0 A",
+    "Axis 0 B",
+    "Axis 0 C",
+    "Axis 1 A",
+    "Axis 1 B",
+    "Axis 1 C",
+    "Axis 1 D",
+    "Axis 2 A",
+    "Axis 2 B",
+    "Axis 2 C",
+    "Axis 2 D",
+    "Axis 2 E",
+    "Axis 2 F",
+    "Plane 0 A",
+    "Plane 0 B",
+    "Plane 0 C",
+    "Plane 1 A",
+    "Plane 1 B",
+    "Plane 1 C",
+    "Plane 1 D",
+    "Plane 1 E",
+    "Plane 1 F",
+  ],
+  ["Axis", "Plane"],
+  ["Axis 0", "Axis 1", "Plane 0", "Plane 1"],
+  ["Axis", "Plane 0", "Plane 1"],
+  ["Axis", "Plane 0 A", "Plane 0 B", "Plane 0 C"],
+  ["Axis 0", "Axis 1", "Plane 0", "Plane 1"],
+  ["Axis 0", "Axis 1", "Plane 0", "Plane 1"],
+  ["Axis 0", "Axis 1", "Plane 0", "Plane 1"],
+  [
+    "Axis 0 A",
+    "Axis 0 B",
+    "Axis 0 C",
+    "Axis 0 D",
+    "Axis 1 A",
+    "Axis 1 B",
+    "Axis 1 C",
+    "Plane 0 A",
+    "Plane 0 B",
+    "Plane 0 C",
+    "Plane 0 D",
+    "Plane 0 E",
+    "Plane 0 F",
+  ],
+  [
+    "Axis 0 ",
+    "Axis 1 A",
+    "Axis 1 B",
+    "Axis 1 C",
+    "Axis 2 A",
+    "Axis 2 B",
+    "Axis 2 C",
+    "Plane 0",
+    "Plane 1 A",
+    "Plane 1 B",
+    "Plane 1 C",
+    "Plane 2 A",
+    "Plane 2 B",
+    "Plane 2 C",
+  ],
+  [
+    "Axis 0 ",
+    "Axis 1 A",
+    "Axis 1 B",
+    "Axis 1 C",
+    "Plane 0",
+    "Plane 1 A",
+    "Plane 1 B",
+    "Plane 1 C",
+  ],
 ];
 
 // Get 3D elements from each marker
@@ -65,8 +133,6 @@ function handleReset(e) {
     item.removeAttribute("gltf-model");
     item.setAttribute("gltf-model", "#mo1_1");
   });
-
-
 }
 
 function handleMoleculeSelection(e) {
@@ -136,7 +202,6 @@ function handleOrbitalSelection(e) {
   blueOrbitalSelected.forEach(function (item) {
     item.setAttribute("gltf-model", "#mo" + molIndex + "_" + selectedIndex);
   });
-
 }
 
 molecule1Select.addEventListener("change", handleMoleculeSelection);

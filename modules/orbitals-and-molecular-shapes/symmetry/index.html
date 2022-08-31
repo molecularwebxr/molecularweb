@@ -151,15 +151,26 @@
               class="orbital-selector bottom-margin"
             >
               <optgroup label="Molecule">
-                <option>Water</option>
+                <option>H2O</option>
+                <option>SF6</option>
+                <option>SCN</option>
+                <option>O2</option>
+                <option>NO2</option>
+                <option>NH3</option>
+                <option>N3</option>
+                <option>N2</option>
+                <option>CO2</option>
+                <option>CH4</option>
+                <option>C6H6</option>
+                <option>BH3</option>
               </optgroup>
             </select>
 
             <select id="select-orbital-1" class="orbital-selector">
               <optgroup label="Orbtital">
-                <option>C2</option>
-                <option>Plano 1</option>
-                <option>Plano 2</option>
+                <option>Axis</option>
+                <option>Plane 0</option>
+                <option>Plane 1</option>
               </optgroup>
             </select>
           </div>
@@ -186,15 +197,26 @@
               class="orbital-selector bottom-margin"
             >
               <optgroup label="Molecule">
-                <option>Water</option>
+                <option>H2O</option>
+                <option>SF6</option>
+                <option>SCN</option>
+                <option>O2</option>
+                <option>NO2</option>
+                <option>NH3</option>
+                <option>N3</option>
+                <option>N2</option>
+                <option>CO2</option>
+                <option>CH4</option>
+                <option>C6H6</option>
+                <option>BH3</option>
               </optgroup>
             </select>
 
             <select id="select-orbital-2" class="orbital-selector">
               <optgroup label="Orbital">
-                <option>C2</option>
+                <option>Axis</option>
+                <option>Plane 0</option>
                 <option>Plane 1</option>
-                <option>Plane 2</option>
               </optgroup>
             </select>
           </div>
@@ -248,10 +270,114 @@
     >
       <a-assets>
         <!-- Struct assets -->
-        <a-asset-item id="mol1" src="./models/H2O/h2o.gltf"></a-asset-item>
-        <a-asset-item id="mo1_1" src="./models/H2O/h2o_c2.gltf"></a-asset-item>
-        <a-asset-item id="mo1_2" src="./models/H2O/h2o_plano1.gltf"></a-asset-item>
-        <a-asset-item id="mo1_3" src="./models/H2O/h2o_plano2.gltf"></a-asset-item>
+        <a-asset-item id="mol1" src="./models/H2O/H2O.gltf"></a-asset-item>
+        <a-asset-item id="mo1_1" src="./models/H2O/eje_H2O.gltf"></a-asset-item>
+        <a-asset-item id="mo1_2" src="./models/H2O/plano0_H2O.gltf"></a-asset-item>
+        <a-asset-item id="mo1_3" src="./models/H2O/plano1_H2O.gltf"></a-asset-item>
+
+        <a-asset-item id="mol2" src="./models/SF6/SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_1" src="./models/SF6/eje0a_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_2" src="./models/SF6/eje0b_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_3" src="./models/SF6/eje0c_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_4" src="./models/SF6/eje1a_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_5" src="./models/SF6/eje1b_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_6" src="./models/SF6/eje1c_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_7" src="./models/SF6/eje1d_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_8" src="./models/SF6/eje2a_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_9" src="./models/SF6/eje2b_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_10" src="./models/SF6/eje2c_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_11" src="./models/SF6/eje2d_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_12" src="./models/SF6/eje2e_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_13" src="./models/SF6/eje2f_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_14" src="./models/SF6/plano0a_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_15" src="./models/SF6/plano0b_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_16" src="./models/SF6/plano0c_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_17" src="./models/SF6/plano1a_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_18" src="./models/SF6/plano1b_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_19" src="./models/SF6/plano1c_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_20" src="./models/SF6/plano1d_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_21" src="./models/SF6/plano1f_SF6.gltf"></a-asset-item>
+        <a-asset-item id="mo2_22" src="./models/SF6/plano1e_SF6.gltf"></a-asset-item>
+        
+        <a-asset-item id="mol3" src="./models/SCN/SCN.gltf"></a-asset-item>
+        <a-asset-item id="mo3_1" src="./models/SCN/eje_SCN.gltf"></a-asset-item>
+        <a-asset-item id="mo3_2" src="./models/SCN/plano_SCN.gltf"></a-asset-item>
+
+        <a-asset-item id="mol4" src="./models/O2/O2.gltf"></a-asset-item>
+        <a-asset-item id="mo4_1" src="./models/O2/eje0_O2.gltf"></a-asset-item>
+        <a-asset-item id="mo4_2" src="./models/O2/eje1_O2.gltf"></a-asset-item>
+        <a-asset-item id="mo4_3" src="./models/O2/plano0_O2.gltf"></a-asset-item>
+        <a-asset-item id="mo4_4" src="./models/O2/plano1_O2.gltf"></a-asset-item>
+
+        <a-asset-item id="mol5" src="./models/NO2/NO2.gltf"></a-asset-item>
+        <a-asset-item id="mo5_1" src="./models/NO2/eje_NO2.gltf"></a-asset-item>
+        <a-asset-item id="mo5_2" src="./models/NO2/plano0_NO2.gltf"></a-asset-item>
+        <a-asset-item id="mo5_3" src="./models/NO2/plano1_NO2.gltf"></a-asset-item>
+
+        <a-asset-item id="mol6" src="./models/NH3/NH3.gltf"></a-asset-item>
+        <a-asset-item id="mo6_1" src="./models/NH3/eje_NH3.gltf"></a-asset-item>
+        <a-asset-item id="mo6_2" src="./models/NH3/plano0a_NH3.gltf"></a-asset-item>
+        <a-asset-item id="mo6_3" src="./models/NH3/plano0b_NH3.gltf"></a-asset-item>
+        <a-asset-item id="mo6_4" src="./models/NH3/plano0c_NH3.gltf"></a-asset-item>
+
+        <a-asset-item id="mol7" src="./models/N3/N3.gltf"></a-asset-item>
+        <a-asset-item id="mo7_1" src="./models/N3/eje0_N3.gltf"></a-asset-item>
+        <a-asset-item id="mo7_2" src="./models/N3/eje1_N3.gltf"></a-asset-item>
+        <a-asset-item id="mo7_3" src="./models/N3/plano0_N3.gltf"></a-asset-item>
+        <a-asset-item id="mo7_4" src="./models/N3/plano1_N3.gltf"></a-asset-item>
+
+        <a-asset-item id="mol8" src="./models/N2/N2.gltf"></a-asset-item>
+        <a-asset-item id="mo8_1" src="./models/N2/eje0_N2.gltf"></a-asset-item>
+        <a-asset-item id="mo8_2" src="./models/N2/eje1_N2.gltf"></a-asset-item>
+        <a-asset-item id="mo8_3" src="./models/N2/plano0_N2.gltf"></a-asset-item>
+        <a-asset-item id="mo8_4" src="./models/N2/plano1_N2.gltf"></a-asset-item>
+
+        <a-asset-item id="mol9" src="./models/CO2/CO2.gltf"></a-asset-item>
+        <a-asset-item id="mo9_1" src="./models/CO2/eje0_CO2.gltf"></a-asset-item>
+        <a-asset-item id="mo9_2" src="./models/CO2/eje1_CO2.gltf"></a-asset-item>
+        <a-asset-item id="mo9_3" src="./models/CO2/plano0_CO2.gltf"></a-asset-item>
+        <a-asset-item id="mo9_4" src="./models/CO2/plano1_CO2.gltf"></a-asset-item>
+
+        <a-asset-item id="mol10" src="./models/CH4/CH4.gltf"></a-asset-item>
+        <a-asset-item id="mo10_1" src="./models/CH4/eje0a_CH4.gltf"></a-asset-item>
+        <a-asset-item id="mo10_2" src="./models/CH4/eje0b_CH4.gltf"></a-asset-item>
+        <a-asset-item id="mo10_3" src="./models/CH4/eje0c_CH4.gltf"></a-asset-item>
+        <a-asset-item id="mo10_4" src="./models/CH4/eje0d_CH4.gltf"></a-asset-item>
+        <a-asset-item id="mo10_5" src="./models/CH4/eje1a_CH4.gltf"></a-asset-item>
+        <a-asset-item id="mo10_6" src="./models/CH4/eje1b_CH4.gltf"></a-asset-item>
+        <a-asset-item id="mo10_7" src="./models/CH4/eje1c_CH4.gltf"></a-asset-item>
+        <a-asset-item id="mo10_8" src="./models/CH4/plano0a_CH4.gltf"></a-asset-item>
+        <a-asset-item id="mo10_9" src="./models/CH4/plano0b_CH4.gltf"></a-asset-item>
+        <a-asset-item id="mo10_10" src="./models/CH4/plano0c_CH4.gltf"></a-asset-item>
+        <a-asset-item id="mo10_11" src="./models/CH4/plano0d_CH4.gltf"></a-asset-item>
+        <a-asset-item id="mo10_12" src="./models/CH4/plano0e_CH4.gltf"></a-asset-item>
+        <a-asset-item id="mo10_13" src="./models/CH4/plano0f_CH4.gltf"></a-asset-item>
+
+        <a-asset-item id="mol11" src="./models/C6H6/C6H6.gltf"></a-asset-item>
+        <a-asset-item id="mo11_1" src="./models/C6H6/eje0_C6H6.gltf"></a-asset-item>
+        <a-asset-item id="mo11_2" src="./models/C6H6/eje1a_C6H6.gltf"></a-asset-item>
+        <a-asset-item id="mo11_3" src="./models/C6H6/eje1b_C6H6.gltf"></a-asset-item>
+        <a-asset-item id="mo11_4" src="./models/C6H6/eje1c_C6H6.gltf"></a-asset-item>
+        <a-asset-item id="mo11_5" src="./models/C6H6/eje2a_C6H6.gltf"></a-asset-item>
+        <a-asset-item id="mo11_6" src="./models/C6H6/eje2b_C6H6.gltf"></a-asset-item>
+        <a-asset-item id="mo11_7" src="./models/C6H6/eje2c_C6H6.gltf"></a-asset-item>
+        <a-asset-item id="mo11_8" src="./models/C6H6/plano0_C6H6.gltf"></a-asset-item>
+        <a-asset-item id="mo11_9" src="./models/C6H6/plano1a_C6H6.gltf"></a-asset-item>
+        <a-asset-item id="mo11_10" src="./models/C6H6/plano1b_C6H6.gltf"></a-asset-item>
+        <a-asset-item id="mo11_11" src="./models/C6H6/plano1c_C6H6.gltf"></a-asset-item>
+        <a-asset-item id="mo11_12" src="./models/C6H6/plano2a_C6H6.gltf"></a-asset-item>
+        <a-asset-item id="mo11_13" src="./models/C6H6/plano2b_C6H6.gltf"></a-asset-item>
+        <a-asset-item id="mo11_14" src="./models/C6H6/plano2c_C6H6.gltf"></a-asset-item>
+
+        <a-asset-item id="mol12" src="./models/BH3/BH3.gltf"></a-asset-item>
+        <a-asset-item id="mo12_1" src="./models/BH3/eje0_BH3.gltf"></a-asset-item>
+        <a-asset-item id="mo12_2" src="./models/BH3/eje1a_BH3.gltf"></a-asset-item>
+        <a-asset-item id="mo12_3" src="./models/BH3/eje1b_BH3.gltf"></a-asset-item>
+        <a-asset-item id="mo12_4" src="./models/BH3/eje1c_BH3.gltf"></a-asset-item>
+        <a-asset-item id="mo12_5" src="./models/BH3/plano0_BH3.gltf"></a-asset-item>
+        <a-asset-item id="mo12_6" src="./models/BH3/plano1a_BH3.gltf"></a-asset-item>
+        <a-asset-item id="mo12_7" src="./models/BH3/plano1b_BH3.gltf"></a-asset-item>
+        <a-asset-item id="mo12_8" src="./models/BH3/plano1c_BH3.gltf"></a-asset-item>
       </a-assets>
 
       <a-marker type="barcode" value="0">

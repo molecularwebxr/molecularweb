@@ -1,0 +1,149 @@
+{
+  "accessors": [
+    {
+      "name": "Plano2_Cubo.001_Plano2_Cubo.014-Mesh_0_indices",
+      "componentType": 5123,
+      "count": 36,
+      "min": [
+        0
+      ],
+      "max": [
+        23
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "name": "Plano2_Cubo.001_Plano2_Cubo.014-Mesh_0_positions",
+      "componentType": 5126,
+      "count": 24,
+      "min": [
+        -1.6272527086018467,
+        -1.6123386728047275,
+        -0.02350273117710598
+      ],
+      "max": [
+        1.5112637387989905,
+        1.5261777745961096,
+        0.023980924200847145
+      ],
+      "type": "VEC3"
+    },
+    {
+      "name": "Plano2_Cubo.001_Plano2_Cubo.014-Mesh_0_normals",
+      "componentType": 5126,
+      "count": 24,
+      "min": [
+        -1.007843137254902,
+        -1.007843137254902,
+        -1.007843137254902
+      ],
+      "max": [
+        1.007843137254902,
+        1.007843137254902,
+        1.007843137254902
+      ],
+      "type": "VEC3"
+    },
+    {
+      "name": "Plano2_Cubo.001_Plano2_Cubo.014-Mesh_0_texcoords",
+      "componentType": 5126,
+      "count": 24,
+      "min": [
+        0.12402248289345064,
+        -0.0009775171065493646
+      ],
+      "max": [
+        0.875733137829912,
+        1.0009775171065494
+      ],
+      "type": "VEC2"
+    }
+  ],
+  "asset": {
+    "generator": "obj2gltf",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "name": "plano0_CO2.gltf",
+      "byteLength": 216,
+      "uri": "data:application/octet-stream;base64,RFJBQ08CAgEBAAAACAwCCwAAA19LFQEBEFUE11P2RpwEFPnXWQP/AAAAAQABAQABAAkDAAACAQEJAwABAwEDCQIAAgIBAQEBAzsBKAEIAQjbAQgHAFLVaQyDiQAAAAD/BwAAoBfQv+wuzr+H/LO8Q6tIQAsGAwEBAQEBQAEA/wAAAH8AAAD/AqFBCAUBAQALA0kSGyUplQQE56iDf/////8/9wHcRwAAPwL8AH4A+BEAuI/gPgwAAAABAsBAAAAAAP8DAAAAAAA+AAAAAAAAgD8KAAAAAAAA"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 210
+    }
+  ],
+  "materials": [
+    {
+      "name": "Plano.007",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.42869,
+          0.056128,
+          0.730461,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.75
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Plano2_Cubo.001_Plano2_Cubo.014-Mesh",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 0,
+          "material": 0,
+          "mode": 4,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Plano2_Cubo.001_Plano2_Cubo.014",
+      "mesh": 0
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ]
+}
