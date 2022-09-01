@@ -61,6 +61,11 @@
       "description": "Visualize e compare as geometrias moleculares básicas de la teoría da repulsão dos pares eletrônicos (TRPEV).",
       "instructions": "Escolha uma molécula a ser exibida em cada marcador de RA. Você também pode usar um dedo para girar e dois dedos para ampliar os objetos."
     },
+    "symmetry": {
+      "title": "Elementos de simetria das moleculas e grupos pontuais",
+      "description": "Inspecione os elementos de simetria das moléculas que exemplificam os principais grupos pontuais.",
+      "instructions": "Inspecione os elementos de simetria das moléculas que exemplificam os principais grupos pontuais."
+    },
     "webRemake": {
       "title": "Exemplos de Martinez-Hung et al 2017",
       "description": "Exemplos de estruturas cristalinas, formas de TRPEV e complexos de água de uma publicação anterior de Martinez-Hung et al Revista Cubana de Quimica 2017, redirecionada para o webAR.",

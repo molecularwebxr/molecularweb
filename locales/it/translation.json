@@ -61,6 +61,11 @@
       "description": "Visualizza e confronta alcune delle geometrie molecolari più elementari secondo la teoria della repulsione degli elettroni di valenza (VSEPR)",
       "instructions": "Scegli una molecola da visualizzare su ciascun marcatore AR. Puoi anche usare un dito per ruotare e due dita per ingrandire gli oggetti."
     },
+    "symmetry": {
+      "title": "Elementi di simmetria molecolari e gruppi puntuali",
+      "description": "Guarda gli elementi di simmetria molecolari per molecolle degli principali gruppi puntuali di simmetria.",
+      "instructions": "Guarda gli elementi di simmetria molecolari per molecolle degli principali gruppi puntuali di simmetria."
+    },
     "webRemake": {
       "title": "Esempi del articolo Martinez-Hung et al 2017",
       "description": "Esempi di strutture cristalline, forme TRPEV e complessi d'acqua di una precedente pubblicazione di Martinez-Hung e al Revista Cubana de Quimica 2017, riproposti per webAR.",

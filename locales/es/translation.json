@@ -61,6 +61,11 @@
       "description": "Visualiza y compara las formas de moléculas sencillas según la teoría de repulsión de los pares electrónicos de valencia (TRPEV).",
       "instructions": "Elige moléculas para mostrarlos en cada marcador. En pantalla táctil también puedes usar un dedo para rotar y dos para zoomear los objetos."
     },
+    "symmetry": {
+      "title": "Elementos de simetría de los principales grupos puntuales",
+      "description": "Inspecciona los elementos de simetría en moléculas que ejemplifican los principales grupos puntuales de simetría.",
+      "instructions": "Inspecciona los elementos de simetría en moléculas que ejemplifican los principales grupos puntuales de simetría."
+    },
     "webRemake": {
       "title": "Ejemplos de Martinez-Hung et al 2017",
       "description": "Ejemplos de estructuras cristalinas, formas TRPEV y complejos acuosos de la publicación Martinez-Hung et al en Revista Cubana de Quimica 2017, re-escritos para realidad aumentada web.",
