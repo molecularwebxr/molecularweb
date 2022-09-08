@@ -61,6 +61,11 @@
       "description": "Visualisieren und vergleichen Sie die grundlegenden VSEPR-Geometrien.",
       "instructions": "Wählen Sie eine Molekül aus, das auf jedem AR-Marker angezeigt werden soll. Sie können auch einen Finger zum Drehen und zwei Finger zum Zoomen der Objekte verwenden."
     },
+    "symmetry": {
+      "title": "Molekülsymmetrie und Symmetriegruppe",
+      "description": "Untersuche Symmetrieelemente von Beispielmolekülen anhand der Symmetriegruppen.",
+      "instructions": "Untersuche Symmetrieelemente von Beispielmolekülen anhand der Symmetriegruppen."
+    },
     "webRemake": {
       "title": "Beispiele von Martinez-Hung et al 2017",
       "description": "Beispiele für kristalline Strukturen, TRPEV-Formen und Wasserkomplexe aus einer früheren Veröffentlichung von Martinez-Hung et al., Revista Cubana de Quimica 2017, die für webAR umfunktioniert wurde.",

@@ -61,6 +61,11 @@
       "description": "Visualisez et comparez les géométries moléculaires les plus élémentaires selon la théorie de la répulsion des paires d'électrons de valence (TRPEV)",
       "instructions": "Choisissez les molécules à afficher sur chaque marqueur. Sur l'écran tactile, vous pouvez également utiliser un doigt pour faire pivoter et deux pour zoomer sur les objets"
     },
+    "symmetry": {
+      "title": "Éléments de symétrie moléculaire et groupes ponctuels",
+      "description": "Découvrez les éléments de symétrie dans molécules des principaux groupes ponctuels.",
+      "instructions": "Découvrez les éléments de symétrie dans molécules des principaux groupes ponctuels."
+    },
     "webRemake": {
       "title": "Exemples de Martinez-Hung et al 2017",
       "description": "Exemples de structures cristallines, de formes TRPEV et de complexes aqueux d'une publication précédente de Martinez-Hung et al Revista Cubana de Quimica 2017, réutilisée pour webAR.",
