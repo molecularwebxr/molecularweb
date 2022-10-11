@@ -412,3 +412,9 @@
     margin-bottom: 1.5rem;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .pdb-btn.big {
+    margin: 1.5rem 1rem 0 0;
+  }
+}
