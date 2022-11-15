@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- Include Handsfree.js -->
+    <link rel="stylesheet" href="./src/handsfree/handsfree.css"/>
+    <script src="./src/handsfree/handsfree.js"></script>
+    <!--AFRAME-->
+    <script src="./src/aframe/aframe.min.js"></script>
+    <script src="./src/aframe/aframe-ar.js"></script>
+    <script src="./src/aframe/aframe-extras.min.js"></script>
+    <link rel="stylesheet" href="./src/styles.css"/>
+    <script>
+        if(!("maxNumHands" in localStorage))
+            localStorage.setItem("maxNumHands", "2");
+        if(!("rotationSpeed" in localStorage))
+            localStorage.setItem("rotationSpeed", "1");
+    </script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+    <a-scene vr-mode-ui="enabled: false" renderer="logarithmicDepthBuffer: true;" embedded arjs id="scene" gltf-model="dracoDecoderPath: ./src/draco/; meshoptDecoderPath: https://unpkg.com/meshoptimizer@0.16.0/meshopt_decoder.js;">
+        <a-assets>
+            <img id="bin_image" src="./src/assets/bin_image.png">
+        </a-assets>
+            <a-image src="#bin_image" id="bin" position="0 -3 -15"></a-image>
+        
+        <a-entity camera id="camera"></a-entity>
+    </a-scene>
+
+    <div id="menu">
+        <div id="container">
+            <div id="bar1"></div>
+            <div id="bar2"></div>
+            <div id="bar3"></div>
+        </div>
+        <button class="button molecularShapes" c="molecularShapes">Molecular shapes</button>
+        <button class="button atomicOrbitals" c="atomicOrbitals">Atomic orbitals</button>
+        <button class="button molecularOrbitals" c="molecularOrbitals">Molecular orbitals</button>
+        <button class="button symmetryElements" c="symmetryElements">Symmetry elements</button>
+        <button class="button atomicStructures_of_biomolecules" c="atomicStructures_of_biomolecules">Atomic structures of biomolecules</button>
+        <button class="button macromolecularAssemblies" c="macromolecularAssemblies">Macromolecular assemblies</button>
+        <button class="button config" c="config">Settings</button>
+    
+        <div class="config">
+            <select id="choose1_config">
+                    <option id="choose1_config_option_1" value="1">Rotation speed: x1</option>
+                    <option id="choose1_config_option_1.5" value="1.5">Rotation speed: x1.5</option>
+                    <option id="choose1_config_option_2" value="2">Rotation speed: x2</option>
+            </select>
+
+            <select id="choose2_config">
+                    <option id="choose2_config_option_1" value="1">Max Number Hands: 1</option>
+                    <option id="choose2_config_option_2" value="2">Max Number Hands: 2</option>
+            </select>
+            <button class="add" id="apply">Apply</button>
+            <button class="back" c="config">← Back to main menu</button>
+        </div>
+
+        <div class="molecularShapes">
+            <select class="choose2 choose2_molecularShapes" id="select2_molecularShapes">
+                <optgroup label="Molecular Shapes">
+                    <option>BH3</option>
+                    <option>BrF5</option>
+                    <option>CH4</option>
+                    <option>ClF3</option>
+                    <option>CO</option>
+                    <option>H2O</option>
+                    <option>NH3</option>
+                    <option>PCl5</option>
+                    <option>SF4</option>
+                    <option>SF6</option>
+                    <option>XeF2</option>
+                    <option>XeF4</option>
+                </optgroup>
+            </select>
+            <button class="add" id="add_molecularShapes">Add</button>
+            <button class="back" c="molecularShapes">← Back to main menu</button>
+        </div>
+
+        <div class="atomicOrbitals">
+            <select class="choose2 choose2_atomicOrbitals" id="select2_atomicOrbitals">
+                <optgroup label="Atomic Orbitals">
+                    <option>2sp</option>
+                    <option>3sp2</option>
+                    <option>4sp3</option>
+                    <option>5sp3d</option>
+                    <option>6sp3d2</option>
+                </optgroup>
+            </select>
+            <button class="add" id="add_atomicOrbitals">Add</button>
+            <button class="back" c="atomicOrbitals">← Back to main menu</button>
+        </div>
+
+        <div class="molecularOrbitals">
+            <select class="choose1" id="select1_molecularOrbitals">
+                <optgroup label="Molecule">
+                    <option>Water</option>
+                    <option>O2</option>
+                    <option>BH3</option>
+                    <option>CH4</option>
+                    <option>CO</option>
+                    <option>CO2</option>
+                    <option>N2</option>
+                    <option>N3-</option>
+                    <option>NH3</option>
+                    <option>NO2</option>
+                    <option>BF3</option>
+                    <option>SCN-</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_molecularOrbitals" id="select2_molecularOrbitals_H2O">
+                <optgroup label="Orbital">
+                    <option>Orbital 1</option>
+                    <option>Orbital 2</option>
+                    <option>Orbital 3</option>
+                    <option>Orbital 4</option>
+                    <option>Orbital 5</option>
+                    <option>Orbital 6</option>
+                    <option>Orbital 7</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_molecularOrbitals hidden" id="select2_molecularOrbitals_O2">
+                <optgroup label="Orbital">
+                    <option>Orbital 1</option>
+                    <option>Orbital 2</option>
+                    <option>Orbital 3</option>
+                    <option>Orbital 4</option>
+                    <option>Orbital 5</option>
+                    <option>Orbital 6</option>
+                    <option>Orbital 7</option>
+                    <option>Orbital 8</option>
+                    <option>Orbital 9</option>
+                    <option>Orbital 10</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_molecularOrbitals hidden" id="select2_molecularOrbitals_BH3">
+                <optgroup label="Orbital">
+                    <option>Orbital 1</option>
+                    <option>Orbital 2</option>
+                    <option>Orbital 3</option>
+                    <option>Orbital 4</option>
+                    <option>Orbital 5</option>
+                    <option>Orbital 6</option>
+                    <option>Orbital 7</option>
+                    <option>Orbital 8</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_molecularOrbitals hidden" id="select2_molecularOrbitals_CH4">
+                <optgroup label="Orbital">
+                    <option>Orbital 1</option>
+                    <option>Orbital 2</option>
+                    <option>Orbital 3</option>
+                    <option>Orbital 4</option>
+                    <option>Orbital 5</option>
+                    <option>Orbital 6</option>
+                    <option>Orbital 7</option>
+                    <option>Orbital 8</option>
+                    <option>Orbital 9</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_molecularOrbitals hidden" id="select2_molecularOrbitals_CO">
+                <optgroup label="Orbital">
+                    <option>Orbital 1</option>
+                    <option>Orbital 2</option>
+                    <option>Orbital 3</option>
+                    <option>Orbital 4</option>
+                    <option>Orbital 5</option>
+                    <option>Orbital 6</option>
+                    <option>Orbital 7</option>
+                    <option>Orbital 8</option>
+                    <option>Orbital 9</option>
+                    <option>Orbital 10</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_molecularOrbitals hidden" id="select2_molecularOrbitals_CO2">
+                <optgroup label="Orbital">
+                    <option>Orbital 1</option>
+                    <option>Orbital 2</option>
+                    <option>Orbital 3</option>
+                    <option>Orbital 4</option>
+                    <option>Orbital 5</option>
+                    <option>Orbital 6</option>
+                    <option>Orbital 7</option>
+                    <option>Orbital 8</option>
+                    <option>Orbital 9</option>
+                    <option>Orbital 10</option>
+                    <option>Orbital 11</option>
+                    <option>Orbital 12</option>
+                    <option>Orbital 13</option>
+                    <option>Orbital 14</option>
+                    <option>Orbital 15</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_molecularOrbitals hidden" id="select2_molecularOrbitals_N2">
+                <optgroup label="Orbital">
+                    <option>Orbital 1</option>
+                    <option>Orbital 2</option>
+                    <option>Orbital 3</option>
+                    <option>Orbital 4</option>
+                    <option>Orbital 5</option>
+                    <option>Orbital 6</option>
+                    <option>Orbital 7</option>
+                    <option>Orbital 8</option>
+                    <option>Orbital 9</option>
+                    <option>Orbital 10</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_molecularOrbitals hidden" id="select2_molecularOrbitals_N3-">
+                <optgroup label="Orbital">
+                    <option>Orbital 1</option>
+                    <option>Orbital 2</option>
+                    <option>Orbital 3</option>
+                    <option>Orbital 4</option>
+                    <option>Orbital 5</option>
+                    <option>Orbital 6</option>
+                    <option>Orbital 7</option>
+                    <option>Orbital 8</option>
+                    <option>Orbital 9</option>
+                    <option>Orbital 10</option>
+                    <option>Orbital 11</option>
+                    <option>Orbital 12</option>
+                    <option>Orbital 13</option>
+                    <option>Orbital 14</option>
+                    <option>Orbital 15</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_molecularOrbitals hidden" id="select2_molecularOrbitals_NH3">
+                <optgroup label="Orbital">
+                    <option>Orbital 1</option>
+                    <option>Orbital 2</option>
+                    <option>Orbital 3</option>
+                    <option>Orbital 4</option>
+                    <option>Orbital 5</option>
+                    <option>Orbital 6</option>
+                    <option>Orbital 7</option>
+                    <option>Orbital 8</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_molecularOrbitals hidden" id="select2_molecularOrbitals_NO2">
+                <optgroup label="Orbital">
+                    <option>Orbital 1</option>
+                    <option>Orbital 2</option>
+                    <option>Orbital 3</option>
+                    <option>Orbital 4</option>
+                    <option>Orbital 5</option>
+                    <option>Orbital 6</option>
+                    <option>Orbital 7</option>
+                    <option>Orbital 8</option>
+                    <option>Orbital 9</option>
+                    <option>Orbital 10</option>
+                    <option>Orbital 11</option>
+                    <option>Orbital 12</option>
+                    <option>Orbital 13</option>
+                    <option>Orbital 14</option>
+                    <option>Orbital 15</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_molecularOrbitals hidden" id="select2_molecularOrbitals_BF3">
+                <optgroup label="Orbital">
+                    <option>HOMO</option>
+                    <option>LUMO</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_molecularOrbitals hidden" id="select2_molecularOrbitals_SCN-">
+                <optgroup label="Orbital">
+                    <option>Orbital 1</option>
+                    <option>Orbital 2</option>
+                    <option>Orbital 3</option>
+                    <option>Orbital 4</option>
+                    <option>Orbital 5</option>
+                    <option>Orbital 6</option>
+                    <option>Orbital 7</option>
+                    <option>Orbital 8</option>
+                    <option>Orbital 9</option>
+                    <option>Orbital 10</option>
+                    <option>Orbital 11</option>
+                    <option>Orbital 12</option>
+                    <option>Orbital 13</option>
+                    <option>Orbital 14</option>
+                    <option>Orbital 15</option>
+                    <option>Orbital 16</option>
+                    <option>Orbital 17</option>
+                    <option>Orbital 18</option>
+                    <option>Orbital 19</option>
+                </optgroup>
+            </select>
+
+            <button class="add" id="add_molecularOrbitals">Add</button>
+            <button class="back" c="molecularOrbitals">← Back to main menu</button>
+        </div>
+
+        <div class="symmetryElements">
+            
+            <select class="choose1" id="select1_symmetryElements">
+                <optgroup label="Molecule">
+                    <option>H2O</option>
+                    <option>SF6</option>
+                    <option>SCN</option>
+                    <option>O2</option>
+                    <option>NO2</option>
+                    <option>NH3</option>
+                    <option>N3</option>
+                    <option>N2</option>
+                    <option>CO2</option>
+                    <option>CH4</option>
+                    <option>C6H6</option>
+                    <option>BH3</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_symmetryElements" id="select2_symmetryElements_H2O">
+                <optgroup label="Orbital">
+                    <option class="H2O_symmetryElements">Axis</option>
+                    <option class="H2O_symmetryElements">Plane 0</option>
+                    <option class="H2O_symmetryElements">Plane 1</option>
+                </optgroup>
+            </select>
+            
+            <select class="choose2 choose2_symmetryElements hidden" id="select2_symmetryElements_SF6">
+                <optgroup label="Orbital">
+                    <option class="SF6_symmetryElements">Axis 0 A</option>
+                    <option class="SF6_symmetryElements">Axis 0 B</option>
+                    <option class="SF6_symmetryElements">Axis 0 C</option>
+                    <option class="SF6_symmetryElements">Axis 1 A</option>
+                    <option class="SF6_symmetryElements">Axis 1 B</option>
+                    <option class="SF6_symmetryElements">Axis 1 C</option>
+                    <option class="SF6_symmetryElements">Axis 1 D</option>
+                    <option class="SF6_symmetryElements">Axis 2 A</option>
+                    <option class="SF6_symmetryElements">Axis 2 B</option>
+                    <option class="SF6_symmetryElements">Axis 2 C</option>
+                    <option class="SF6_symmetryElements">Axis 2 D</option>
+                    <option class="SF6_symmetryElements">Axis 2 E</option>
+                    <option class="SF6_symmetryElements">Axis 2 F</option>
+                    <option class="SF6_symmetryElements">Plane 0 A</option>
+                    <option class="SF6_symmetryElements">Plane 0 B</option>
+                    <option class="SF6_symmetryElements">Plane 0 C</option>
+                    <option class="SF6_symmetryElements">Plane 1 A</option>
+                    <option class="SF6_symmetryElements">Plane 1 B</option>
+                    <option class="SF6_symmetryElements">Plane 1 C</option>
+                    <option class="SF6_symmetryElements">Plane 1 D</option>
+                    <option class="SF6_symmetryElements">Plane 1 E</option>
+                    <option class="SF6_symmetryElements">Plane 1 F</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_symmetryElements hidden" id="select2_symmetryElements_SCN">
+                <optgroup label="Orbital">
+                    <option class="SCN_symmetryElements">Axis</option>
+                    <option class="SCN_symmetryElements">Plane</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_symmetryElements hidden" id="select2_symmetryElements_O2">
+                <optgroup label="Orbital">
+                    <option class="O2_symmetryElements">Axis 0</option>
+                    <option class="O2_symmetryElements">Axis 1</option>
+                    <option class="O2_symmetryElements">Plane 0</option>
+                    <option class="O2_symmetryElements">Plane 1</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_symmetryElements hidden" id="select2_symmetryElements_NO2">
+                <optgroup label="Orbital">
+                    <option class="NO2_symmetryElements">Axis</option>
+                    <option class="NO2_symmetryElements">Plane 0</option>
+                    <option class="NO2_symmetryElements">Plane 1</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_symmetryElements hidden" id="select2_symmetryElements_NH3">
+                <optgroup label="Orbital">
+                    <option class="NH3_symmetryElements">Axis</option>
+                    <option class="NH3_symmetryElements">Plane 0 A</option>
+                    <option class="NH3_symmetryElements">Plane 0 B</option>
+                    <option class="NH3_symmetryElements">Plane 0 C</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_symmetryElements hidden" id="select2_symmetryElements_N3">
+                <optgroup label="Orbital">
+                    <option class="N3_symmetryElements">Axis 0</option>
+                    <option class="N3_symmetryElements">Axis 1</option>
+                    <option class="N3_symmetryElements">Plane 0</option>
+                    <option class="N3_symmetryElements">Plane 1</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_symmetryElements hidden" id="select2_symmetryElements_N2">
+                <optgroup label="Orbital">
+                    <option class="N2_symmetryElements">Axis 0</option>
+                    <option class="N2_symmetryElements">Axis 1</option>
+                    <option class="N2_symmetryElements">Plane 0</option>
+                    <option class="N2_symmetryElements">Plane 1</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_symmetryElements hidden" id="select2_symmetryElements_CO2">
+                <optgroup label="Orbital">
+                    <option class="CO2_symmetryElements">Axis 0</option>
+                    <option class="CO2_symmetryElements">Axis 1</option>
+                    <option class="CO2_symmetryElements">Plane 0</option>
+                    <option class="CO2_symmetryElements">Plane 1</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_symmetryElements hidden" id="select2_symmetryElements_CH4">
+                <optgroup label="Orbital">
+                    <option class="CH4_symmetryElements">Axis 0 A</option>
+                    <option class="CH4_symmetryElements">Axis 0 B</option>
+                    <option class="CH4_symmetryElements">Axis 0 C</option>
+                    <option class="CH4_symmetryElements">Axis 0 D</option>
+                    <option class="CH4_symmetryElements">Axis 1 A</option>
+                    <option class="CH4_symmetryElements">Axis 1 B</option>
+                    <option class="CH4_symmetryElements">Axis 1 C</option>
+                    <option class="CH4_symmetryElements">Plane 0 A</option>
+                    <option class="CH4_symmetryElements">Plane 0 B</option>
+                    <option class="CH4_symmetryElements">Plane 0 C</option>
+                    <option class="CH4_symmetryElements">Plane 0 D</option>
+                    <option class="CH4_symmetryElements">Plane 0 E</option>
+                    <option class="CH4_symmetryElements">Plane 0 F</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_symmetryElements hidden" id="select2_symmetryElements_C6H6">
+                <optgroup label="Orbital">
+                    <option class="C6H6_symmetryElements">Axis 0</option>
+                    <option class="C6H6_symmetryElements">Axis 1 A</option>
+                    <option class="C6H6_symmetryElements">Axis 1 B</option>
+                    <option class="C6H6_symmetryElements">Axis 1 C</option>
+                    <option class="C6H6_symmetryElements">Axis 2 A</option>
+                    <option class="C6H6_symmetryElements">Axis 2 B</option>
+                    <option class="C6H6_symmetryElements">Axis 2 C</option>
+                    <option class="C6H6_symmetryElements">Plane 0</option>
+                    <option class="C6H6_symmetryElements">Plane 1 A</option>
+                    <option class="C6H6_symmetryElements">Plane 1 B</option>
+                    <option class="C6H6_symmetryElements">Plane 1 C</option>
+                    <option class="C6H6_symmetryElements">Plane 2 A</option>
+                    <option class="C6H6_symmetryElements">Plane 2 B</option>
+                    <option class="C6H6_symmetryElements">Plane 2 C</option>
+                </optgroup>
+            </select>
+
+            <select class="choose2 choose2_symmetryElements hidden" id="select2_symmetryElements_BH3">
+                <optgroup label="Orbital">
+                    <option class="BH3_symmetryElements">Axis 0</option>
+                    <option class="BH3_symmetryElements">Axis 1 A</option>
+                    <option class="BH3_symmetryElements">Axis 1 B</option>
+                    <option class="BH3_symmetryElements">Axis 1 C</option>
+                    <option class="BH3_symmetryElements">Plane 0</option>
+                    <option class="BH3_symmetryElements">Plane 1 A</option>
+                    <option class="BH3_symmetryElements">Plane 1 B</option>
+                    <option class="BH3_symmetryElements">Plane 1 C</option>
+                </optgroup>
+            </select>
+
+            <button class="add" id="add_symmetryElements">Add</button>
+            <button class="back" c="symmetryElements">← Back to main menu</button>
+        </div>
+
+        <div class="atomicStructures_of_biomolecules">
+            <select class="choose2 choose2_atomicStructures_of_biomolecules" id="select2_atomicStructures_of_biomolecules">
+                <option>A-DNA</option>
+                <option>B-DNA</option>
+                <option>Z-DNA</option>
+                <option>Protein-DNA complex</option>
+                <option>Alpha-helix</option>
+                <option>Beta-sheets</option>
+            </select>
+            <button class="add" id="add_atomicStructures_of_biomolecules">Add</button>
+            <button class="back" c="atomicStructures_of_biomolecules">← Back to main menu</button>
+        </div>
+
+        <div class="macromolecularAssemblies">
+            <select class="choose2 choose2_macromolecularAssemblies" id="select2_macromolecularAssemblies">
+                <option>Nuclear pore complex</option>
+                <option>Ribosome loaded with mRNA and tRNAs</option>
+                <option>Bacteriophage on bacterial wall</option>
+                <option>SARS-Cov-2 spike -- human ACE2 complex</option>
+                <option>Bacterial pilus base</option>
+                <option>Nucleosome</option>
+                <option>SARS-CoV-2 particle</option>
+                <option>GPCR with inhibitor</option>
+            </select>
+            <button class="add" id="add_macromolecularAssemblies">Add</button>
+            <button class="back" c="macromolecularAssemblies">← Back to main menu</button>
+        </div>
+    </div>
+
+    <!--Loading screen-->
+    <div id="loader-wrapper">
+        <p id="t">Loading libraries...
+            <span id="loader">
+                <span id="loader-inner">
+                </span>
+            </span>
+        </p>
+    </div>
+    <!------------------>
+</body>
+<script type="module" src="./src/UI.js"></script>
+
+</html>

@@ -1,0 +1,149 @@
+{
+  "accessors": [
+    {
+      "name": "Eje_C3c_Eje_Cono.004-Mesh_0_indices",
+      "componentType": 5123,
+      "count": 558,
+      "min": [
+        0
+      ],
+      "max": [
+        319
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "name": "Eje_C3c_Eje_Cono.004-Mesh_0_positions",
+      "componentType": 5126,
+      "count": 320,
+      "min": [
+        -1.1687457588281525,
+        -0.8187108066644562,
+        -0.1563767817582977
+      ],
+      "max": [
+        1.197404744919766,
+        0.8695820369077532,
+        0.1565694293279326
+      ],
+      "type": "VEC3"
+    },
+    {
+      "name": "Eje_C3c_Eje_Cono.004-Mesh_0_normals",
+      "componentType": 5126,
+      "count": 320,
+      "min": [
+        -0.8269622031380148,
+        -0.9638326469589682,
+        -1.002998680226943
+      ],
+      "max": [
+        0.827790483306436,
+        0.823612471889047,
+        1.002998680226943
+      ],
+      "type": "VEC3"
+    },
+    {
+      "name": "Eje_C3c_Eje_Cono.004-Mesh_0_texcoords",
+      "componentType": 5126,
+      "count": 320,
+      "min": [
+        -0.0009775171065493646,
+        -0.0009775171065493646
+      ],
+      "max": [
+        1.0009775171065494,
+        0.9912023460410557
+      ],
+      "type": "VEC2"
+    }
+  ],
+  "asset": {
+    "generator": "obj2gltf",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "name": "eje0c_CH4.gltf",
+      "byteLength": 1232,
+      "uri": "data:application/octet-stream;base64,RFJBQ08CAgEBAAAAYboBArgBFgAv//t+i1rrfStqrbe2pdiWQnRb6lsUKKBAST0U0BZQhT9/8udP8udP8iddAQAAQAEBASBtJYUZg/3la9gWmYhoCd+t05qsvvFRXH5S96wr6Ol1DnJ642vVbICnI9mpYSEyI/Rwqt1ScOX+oa6eUJ4HHcdZJ9QuIYhgW/WLiP6AA/8AAAABAAEBAAEACQMAAAIBAQkDAAEDAQMJAgACAgEBAQAMA/EFSQVNAwOoQQdBB6EEpQLZDzkLJ5zHnxz+fpWRIJbiLeCz+BNhX5rPqpuwHwgCrtHkI42xoWbRqKLIiJ5NU+3QlimQ2GxEJ1PgrXKH1kBiMQeA2XUFD5OoZAwEgSNYIkcLHiaGd+oeEInECoB5azFjmRNMBGUMmOrDLFPgrTHynCpQ3AC47gHC0UVEjgGyCiSVAt5Z+4jFGxByIpk4AebdyY5lFOzQBCM85GUIIEQS/pmA1Bc0JOYARBQqkFQOLGrMITOnQKFMhOUXQCbFCCZo3h4ErBhArWukqSc2yQ6IQM7y36EUWFZfmbY7J8o+8jAawxcY0IRPUwH845MMBsWEBEQgcYESPnfUNA4gRDUTiFS5ABKWKXewVQkbeR3CBWJ3yNBYHRk0dkcAi+2JAWGBwqDXoke8hWkWU+laB1HP+lGTuH8AAAAAAP8HAACfc5W/WktRv4TyHr4sSRdACwYDAQEF/wEZEYEM6QRNBZkBtBiYaBNoaAMYA5gYC5j///9XNA9oaGgHTDRMgQGBBWkJhAKqAW/gJ1+ahKqZ2vGeM0lA83udNeNwK7J3n0q49tw2Fhaxl/k0FCmtJKHmm39eQDK9vgAFA/DyxEhHrzHz/WOzUOMdwd1NpEjLpSBXmV6fGkPOl6N4yvumr4mxkFOYimj/cS5h4ymKept0VDpBND6g8dOspSrOZNOTMF1ZU6by6La1faH3Cft9NStaINi0MgwEqa3RpXu9vUZ/S1hEtj20WeLlpVxAF7qaqy0uNH+clqSvy6G9PH33EEbQwh0RSPKtG17DvtU91/BQL/8p2afdwqXgWa28qkv73EOUsvVZHrMj2WyVEGqhitnqNXL+sW8WKkdxw49i72QkmvmVe/ElO+Oyqf8AAAB/AAAA/wI7aQgFAQEACwPlBo0HiQj5AVTtGvUCSQOhAvUCQ1pQd3VH8oSks1ULSTKZbGmGnYmyDkV3NZIIKLHfUqd5oTIKN/1MuZatQdUkxiBEcH43ZkMssoJhQm5GAR3bLPrMrYDBAD/8zwM8wAM8wAM6wANCAQDx/w3kQA7cwg3kQA7kQA7kQg4A+T8A/+fADdxADtyADgDzPxDgCcADvMADvMADOIADPMADvMADusADPKADusADOqADPKADOsADOqADuqADPHADN5ADN3ALblqe3BG4ZoUiQ6FAo0IeqBoqVuRzLIiyz/CUDSuFmVY5qQaSTKyTCSKCCmlgbFtiJxu13EWBGAeOIvLDTStEKsZxA/IXCu02VCK6YSNTmM92LYox/QMARrwwIET4li7Krkp7ugRIEBaEE+Cnp3KM5l4v/cZ/9FP+vWc5b/nTD7/yW7tYsy99+humAAAABgbcYtxnf4AAAAAA/wMAAAAAAAAAAAAAAACAPwoAAAA="
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 1229
+    }
+  ],
+  "materials": [
+    {
+      "name": "EjePrincipal.001",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.730461,
+          0.056128,
+          0.187821,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.75
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Eje_C3c_Eje_Cono.004-Mesh",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 0,
+          "material": 0,
+          "mode": 4,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1,
+                "TEXCOORD_0": 2
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Eje_C3c_Eje_Cono.004",
+      "mesh": 0
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ]
+}

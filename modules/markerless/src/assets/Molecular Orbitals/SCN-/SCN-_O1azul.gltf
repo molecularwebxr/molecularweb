@@ -1,0 +1,133 @@
+{
+  "accessors": [
+    {
+      "name": "vmd_mol0_rep1_1_0_indices",
+      "componentType": 5123,
+      "count": 228,
+      "min": [
+        0
+      ],
+      "max": [
+        39
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "name": "vmd_mol0_rep1_1_0_positions",
+      "componentType": 5126,
+      "count": 40,
+      "min": [
+        -0.4399769902229309,
+        -0.5319790244102478,
+        0.49700498580932617
+      ],
+      "max": [
+        -0.15314500033855438,
+        -0.24909600615501404,
+        0.7806140184402466
+      ],
+      "type": "VEC3"
+    },
+    {
+      "name": "vmd_mol0_rep1_1_0_normals",
+      "componentType": 5126,
+      "count": 40,
+      "min": [
+        -0.926361083984375,
+        -0.8678001761436462,
+        -0.9556707739830017
+      ],
+      "max": [
+        0.9290241003036499,
+        0.8760052919387817,
+        0.9300857782363892
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "asset": {
+    "generator": "obj2gltf",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "name": "SCN_O1azul.gltf",
+      "byteLength": 448,
+      "uri": "data:application/octet-stream;base64,RFJBQ08CAgEBAAAAKEwBSwIAE9+7J21VixZdq1SVVrWgVbRKKQoBARD/AkdJAv8AAAAAAAEACQMAAAIBAQkDAAEDAQEBAA8rmQEBCNEkmREK7j8wGd4k8AEMgtaOjpx3ObBip/4SSI4Lx1KGl5pMl1v5gjy5BELZOiWTvLqLsAYtAewBBksy24IBgGL386Pk8jV2iBnOIEI1rERDUHgcDqZKEVQj1uvbVCuYshwMiq8NZxvwCBlf6K+CdvNHEZ0pWHICqa2QZiqsju02KGHlNBWHB+TNSI0WbqXzK8J5v4W4XxKw3WIRyzBsAAD3nnZ6DLMY1U1q1T7KICxBqtGWBABZgLpoIOMNOcGGC9XobiU2MIJbYB3hQoVz9T9EVCcGAAAAAP8/AACqROG+xy8Iv3B3/j6k25I+DgYDAQALA5kBD5kBA5kJAzkzB3wmZlOFeIkH4O6L9u6Ynr/m1lt/tBPNxw0E/8A/YDfwoDex9u0Nn6E7jkXb/gegtfc8pKbfEbjryA/B9hv4xxKe8UttP+aq78Bz/cAdwY4ENGrjLnzChxxPwDPkUzvZ0Dn4gWYX/wMAAP8BAAD/AsxCCgAAAA=="
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 445
+    }
+  ],
+  "materials": [
+    {
+      "name": "vmd_mat_cindex_0",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.5,
+          0.5,
+          0.5,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "vmd_mol0_rep1_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2
+          },
+          "indices": 0,
+          "material": 0,
+          "mode": 4,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "vmd_mol0_rep1",
+      "mesh": 0
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ]
+}
