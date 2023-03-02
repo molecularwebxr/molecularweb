@@ -2,6 +2,9 @@ var tempMenu = document.querySelector("enable-temp-controls");
 var zoomMenu = document.querySelector("zoom-icon");
 var camMenu = document.querySelector("camera-icon");
 var swapCam = document.querySelector("swap-camera");
+var bgMenu = document.querySelector("bg-icon");
+var bgMenuContainer = document.getElementById("bg-container");
+var interactionsContainer = document.getElementById("interaction-container");
 var tempMenuContainer = document.getElementById("temp-container");
 var zoomMenuContainer = document.getElementById("zoom-container");
 var camMenuContainer = document.getElementById("cam-container");
@@ -105,6 +108,7 @@ function switchCam(e) {
 
 function handleTempMenu(e) {
   tempMenuContainer.classList.toggle("hide");
+  interactionsContainer.classList.toggle("hide");
   tempMenu.isActive = !tempMenu.isActive;
   if (mkMenu.isActive) {
     mkMenu.isActive = false;
@@ -118,6 +122,10 @@ function handleTempMenu(e) {
     camMenu.isActive = false;
     camMenuContainer.classList.add("hide");
   }
+  if (bgMenu.isActive) {
+    bgMenu.isActive = false;
+    bgMenuContainer.classList.add("hide");
+  }
 }
 
 function handleCamMenu(e) {
@@ -130,10 +138,15 @@ function handleCamMenu(e) {
   if (tempMenu.isActive) {
     tempMenu.isActive = false;
     tempMenuContainer.classList.add("hide");
+    interactionsContainer.classList.add("hide");
   }
   if (zoomMenu.isActive) {
     zoomMenu.isActive = false;
     zoomMenuContainer.classList.add("hide");
+  }
+  if (bgMenu.isActive) {
+    bgMenu.isActive = false;
+    bgMenuContainer.classList.add("hide");
   }
 }
 
@@ -147,10 +160,15 @@ function handleZoomMenu(e) {
   if (tempMenu.isActive) {
     tempMenu.isActive = false;
     tempMenuContainer.classList.add("hide");
+    interactionsContainer.classList.add("hide");
   }
   if (camMenu.isActive) {
     camMenu.isActive = false;
     camMenuContainer.classList.add("hide");
+  }
+  if (bgMenu.isActive) {
+    bgMenu.isActive = false;
+    bgMenuContainer.classList.add("hide");
   }
 }
 
@@ -161,6 +179,26 @@ function handleCameraFlip() {
   canvas.classList.toggle("flip");
 }
 
+function handlebgMenu(e) {
+  bgMenuContainer.classList.toggle("hide");
+  bgMenu.isActive = !bgMenu.isActive;
+
+  if (mkMenu.isActive) {
+    mkMenu.isActive = false;
+    menuContainer.classList.add("hide");
+  }
+  if (tempMenu.isActive) {
+    tempMenu.isActive = false;
+    tempMenuContainer.classList.add("hide");
+    interactionsContainer.classList.add("hide");
+  }
+  if (camMenu.isActive) {
+    camMenu.isActive = false;
+    camMenuContainer.classList.add("hide");
+  }
+}
+
+bgMenu.addEventListener("click",handlebgMenu);
 tempMenu.addEventListener("click", handleTempMenu);
 zoomMenu.addEventListener("click", handleZoomMenu);
 camMenu.addEventListener("click", handleCamMenu);

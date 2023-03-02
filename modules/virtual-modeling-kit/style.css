@@ -267,7 +267,7 @@ figure {
 
 .modeling-container {
   position: fixed;
-  top: 50%;
+  top: 47%;
   right: 76px;
   transform: translateY(-62%);
   z-index: 1;
@@ -473,7 +473,7 @@ figure {
 
 .camera-container {
   position: fixed;
-  top: 50%;
+  top: 47.5%;
   right: 76px;
   transform: translateY(-188%);
   z-index: 1;
@@ -500,7 +500,7 @@ figure {
 
 .zoom-container {
   position: fixed;
-  top: 50%;
+  top: 47%;
   right: 76px;
   transform: translateY(-5%);
   z-index: 1;
@@ -519,7 +519,7 @@ figure {
 
 .temperature-container {
   position: fixed;
-  top: 50%;
+  top: 47%;
   right: 76px;
   transform: translateY(-86%);
   z-index: 1;
@@ -536,6 +536,21 @@ figure {
   border-bottom: 10px solid transparent;
   border-left: 10px solid var(--primarylight);
   transform: translateY(-50%);
+}
+
+.bg-container {
+  position: fixed;
+  top: 71%;
+  right: 76px;
+  transform: translateY(-27%);
+  z-index: 1;
+  background-color: var(--primarylight);
+  border-radius: 10px;
+  padding: 0.75rem 0.5rem;
+}
+
+.bg-container.small-menu {
+  transform: translateY(-27%);
 }
 
 @media screen and (max-width: 768px) {

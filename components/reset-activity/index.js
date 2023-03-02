@@ -119,6 +119,7 @@ class ResetActivity extends HTMLElement {
   }
 
   handleClick() {
+    resetBackground();
     this.dispatchEvent(new CustomEvent("resetActivity"));
   }
 }

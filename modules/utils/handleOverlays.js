@@ -13,6 +13,9 @@ var zoomMenuContainer = document.getElementById("zoom-container");
 var camMenu = document.querySelector("camera-icon");
 var camMenuContainer = document.getElementById("cam-container");
 
+var bgMenu = document.querySelector("bg-icon");
+var bgMenuContainer = document.getElementById("bg-container");
+
 function hideInstructionsOverlay() {
   instructionsOverlay.toggle();
 }
@@ -33,6 +36,23 @@ function handleZoomMenu(e) {
     camMenu.isActive = false;
     camMenuContainer.classList.add("hide");
   }
+  if (bgMenu.isActive) {
+    bgMenu.isActive = false;
+    bgMenuContainer.classList.add("hide");
+  }
+}
+function handlebgMenu(e) {
+  bgMenuContainer.classList.toggle("hide");
+  bgMenu.isActive = !bgMenu.isActive;
+
+  if (camMenu.isActive) {
+    camMenu.isActive = false;
+    camMenuContainer.classList.add("hide");
+  }
+  if (zoomMenu.isActive) {
+    zoomMenu.isActive = false;
+    zoomMenuContainer.classList.add("hide");
+  }
 }
 
 function handleCamMenu(e) {
@@ -43,6 +63,10 @@ function handleCamMenu(e) {
     zoomMenu.isActive = false;
     zoomMenuContainer.classList.add("hide");
   }
+  if (bgMenu.isActive) {
+    bgMenu.isActive = false;
+    bgMenuContainer.classList.add("hide");
+  }
 }
 
 instructionsButton.addEventListener("toggleInstructions", hideInstructionsOverlay);
@@ -52,4 +76,5 @@ menuButton.addEventListener("toggleMenu", hideMenuOverlay);
 if(window.location.pathname !== "/modules/virtual-modeling-kit/" && window.location.pathname !== "/modules/virtual-modeling-kit-2/" && window.location.pathname !== "/modules/virtual-modeling-kit-3/") {
   zoomMenu.addEventListener("click", handleZoomMenu);
   camMenu.addEventListener("click", handleCamMenu);
+  bgMenu.addEventListener("click",handlebgMenu);
 }
