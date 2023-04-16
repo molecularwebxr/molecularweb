@@ -189,6 +189,10 @@ function handlebgMenu(e) {
     camMenu.isActive = false;
     camMenuContainer.classList.add("hide");
   }
+  if (bgMenu.isActive) {
+    bgMenu.isActive = false;
+    bgMenuContainer.classList.add("hide");
+  }
 }
 
 function handleCameraFlip() {

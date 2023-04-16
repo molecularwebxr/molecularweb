@@ -196,6 +196,10 @@ function handlebgMenu(e) {
     camMenu.isActive = false;
     camMenuContainer.classList.add("hide");
   }
+  if (zoomMenu.isActive) {
+    zoomMenu.isActive = false;
+    zoomMenuContainer.classList.add("hide");
+  }
 }
 
 bgMenu.addEventListener("click",handlebgMenu);

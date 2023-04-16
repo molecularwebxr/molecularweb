@@ -90,10 +90,6 @@ const BgIconContent = /* html */ `
         height: 29px;
       }
     }
-    .a{fill:none;}
-    .b{clip-path:url(#a);}
-    .c{fill:#fff;stroke:#231f20;stroke-linecap:round;stroke-miterlimit:10;}
-    .d{font-size:19px;fill:#231f20;font-family:CloudSoft-Bold, Cloud Soft;font-weight:700;}
   </style>
   <div class="container">
   <a id="anchor">  
@@ -112,7 +108,7 @@ const BgIconContent = /* html */ `
 </svg>
 
     <div id="tooltip" class="tooltip">
-      <p><intl-message key="cut background"></p>
+      <p><intl-message key="app.cutbackground"></p>
       <div class="triangle"></div>
     </div>
   </a>

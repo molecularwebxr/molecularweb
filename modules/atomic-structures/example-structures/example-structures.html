@@ -239,8 +239,7 @@
       loading-screen="enabled: false"
       switch-camera
     >
-    <a-box id = "black-screen" color="black" position="0 -1 -20" rotation="0 0 0" scale="25 25 0.5" opacity="0"></a-box>
-    <a-box id = "white-screen" color="white" position="0 -1 -20" rotation="0 0 0" scale="25 25 0.5" opacity="0"></a-box>
+ 
       <a-assets>
         <!-- Struct assets -->
         <a-asset-item id="mol1" src="./models/prot.gltf"></a-asset-item>
@@ -252,7 +251,8 @@
         <a-asset-item id="mol7" src="./models/b-dna.gltf"></a-asset-item>
         <a-asset-item id="mol8" src="./models/z-dna.gltf"></a-asset-item>
       </a-assets>
-
+      <a-box id = "black-screen" color="black" position="0 -1 -20" rotation="0 0 0" scale="25 25 0.5" opacity="0"></a-box>
+      <a-box id = "white-screen" color="white" position="0 -1 -20" rotation="0 0 0" scale="25 25 0.5" opacity="0"></a-box>
       <a-marker type="barcode" value="0">
         <a-entity
           rotation="0 0 0"
