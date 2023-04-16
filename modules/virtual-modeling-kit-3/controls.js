@@ -16,6 +16,7 @@ var selectedCamera = "env";
 tempMenu.isActive = false;
 zoomMenu.isActive = false;
 camMenu.isActive = false;
+bgMenu.isActive = false;
 
 function handleError(error) {
   console.log("Something went wrong: ", error.message, error.name);
@@ -189,9 +190,9 @@ function handlebgMenu(e) {
     camMenu.isActive = false;
     camMenuContainer.classList.add("hide");
   }
-  if (bgMenu.isActive) {
-    bgMenu.isActive = false;
-    bgMenuContainer.classList.add("hide");
+  if (zoomMenu.isActive) {
+    zoomMenu.isActive = false;
+    zoomMenuContainer.classList.add("hide");
   }
 }
 

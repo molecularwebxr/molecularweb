@@ -508,8 +508,18 @@ figure {
   border-radius: 10px;
   padding: 0.75rem 0.5rem;
 }
+.bg-container {
+  position: fixed;
+  top: 47%;
+  right: 76px;
+  transform: translateY(-70%);
+  z-index: 1;
+  background-color: var(--primarylight);
+  border-radius: 10px;
+  padding: 0.75rem 0.5rem;
+}
 
-.zoom-container.small-menu {
+.bg-container.small-menu {
   transform: translateY(-27%);
 }
 
@@ -669,6 +679,7 @@ figure {
     padding: 0.75rem 0.5rem;
   }
   .zoom-container,
+  .bg-container,
   .camera-container,
   .temperature-container,
   .modeling-container {
@@ -689,6 +700,10 @@ figure {
   }
   .zoom-container {
     transform: translateY(-3%);
+    padding: 0.5rem 0.5rem;
+  }
+  .bg-container {
+    transform: translateY(-10%);
     padding: 0.5rem 0.5rem;
   }
   .camera-container {
@@ -879,6 +894,7 @@ figure {
 
   .zoom-container,
   .temperature-container,
+  .bg-container,
   .camera-container,
   .modeling-container {
     right: 58px;
@@ -918,8 +934,15 @@ figure {
     transform: translateY(48%);
     padding: 0.5rem 0.5rem;
   }
-
+  .bg-container {
+    transform: translateY(48%);
+    padding: 0.5rem 0.5rem;
+  }
+  
   .zoom-container.mk {
+    transform: translateY(0%);
+  }
+  .bg-container.mk {
     transform: translateY(0%);
   }
 

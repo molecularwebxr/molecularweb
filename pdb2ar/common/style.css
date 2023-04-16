@@ -354,7 +354,9 @@ figure {
   .zoom-container.mk {
     transform: translateY(0%);
   }
-
+  .bg-container.mk {
+    transform: translateY(0%);
+  }
   canvas {
     -moz-transform: scale(1, 1);
     -webkit-transform: scale(1, 1);
