@@ -1624,7 +1624,7 @@ function searchMol(e) {
 }
 
 function selectMol(e) {
-  var data = document.JME.smiles();
+  var data = document.JME.smiles().replace("#","%23");
   jmeContinue.disabled = true;
   fetch(baseUrl + data + pdbUrl)
     .then((response) => response.text())
