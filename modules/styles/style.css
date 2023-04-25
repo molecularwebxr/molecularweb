@@ -280,7 +280,7 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-55%);
+  transform: translateY(-61%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -566,7 +566,7 @@ button.pdb-btn {
 }
 
 .camera-container.mk.multiple-cams {
-  transform: translateY(-164%);
+  transform: translateY(-169%);
 }
 
 .zoom-container {
@@ -596,7 +596,7 @@ button.pdb-btn {
 }
 
 .bg-container.small-menu {
-  transform: translateY(-27%);
+  transform: translateY(-73%);
 }
 
 /* .zoom-container.small-menu.multiple-cams-single {
@@ -632,7 +632,7 @@ button.pdb-btn {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-77%);
+  transform: translateY(-83%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -642,7 +642,7 @@ button.pdb-btn {
 }
 
 .interaction-controls.single-menu {
-  transform: translateY(-88%);
+  transform: translateY(-110%);
 }
 
 .interaction-control {

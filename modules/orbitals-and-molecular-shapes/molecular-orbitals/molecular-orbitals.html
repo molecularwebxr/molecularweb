@@ -126,8 +126,8 @@
     <!-- bg cut -->
    <div id="bg-container" class="bg-container small-menu hide column">
     <div class="triangle-temp"></div>
-    <black-screen class="small-icon-margin"></black-screen>
-    <white-screen class="small-icon-margin"></white-screen>
+    <black-screen class="icon-margin"></black-screen>
+    <white-screen class="icon-margin"></white-screen>
   </div>
 
     <!-- Side buttons -->
@@ -135,8 +135,8 @@
       <camera-icon class="icon-margin"></camera-icon>
       <reset-activity class="icon-margin"></reset-activity>
       <zoom-icon class="icon-margin"></zoom-icon>
-      <toggle-menu class="icon-margin"></toggle-menu>
       <bg-icon class="icon-margin"></bg-icon>
+      <toggle-menu class="icon-margin"></toggle-menu>
     </div>
 
     <!-- Rotation controls -->
@@ -287,8 +287,6 @@
       loading-screen="enabled: false"
       switch-camera
     >
-    <a-box id ="black-screen" color="black" position="0 -1 -20" rotation="0 0 0" scale="25 25 0.5" opacity="0"></a-box>
-    <a-box id ="white-screen" color="white" position="0 -1 -20" rotation="0 0 0" scale="25 25 0.5" opacity="0"></a-box>
       <a-assets>
         <!-- Struct assets -->
         <a-asset-item id="mol1" src="./models/H2O/H2O.gltf"></a-asset-item>
@@ -1279,7 +1277,8 @@
           src="./models/SCN-/SCN_O19rojo.gltf"
         ></a-asset-item>
       </a-assets>
-
+      <a-box id ="black-screen" color="black" position="0 -1 -20" rotation="0 0 0" scale="25 25 0.5" opacity="0"></a-box>
+      <a-box id ="white-screen" color="white" position="0 -1 -20" rotation="0 0 0" scale="25 25 0.5" opacity="0"></a-box>
       <a-marker type="barcode" value="0">
         <a-entity
           rotation="0 0 0"

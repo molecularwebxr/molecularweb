@@ -269,7 +269,7 @@ figure {
   position: fixed;
   top: 47%;
   right: 76px;
-  transform: translateY(-62%);
+  transform: translateY(-63%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -552,7 +552,7 @@ figure {
   position: fixed;
   top: 71%;
   right: 76px;
-  transform: translateY(-27%);
+  transform: translateY(-82%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
