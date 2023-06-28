@@ -20,6 +20,12 @@ var planeMesh;
 
 var pdbs = [];
 
+var background, material, background_mesh;
+
+var blackScreen = 0, whiteScreen = 0;
+var blackScreenButton = document.querySelector("black-screen");
+var whiteScreenButton = document.querySelector("white-screen");
+
 var addMolecule = document.getElementById("add-molecule");
 var copyCoords = document.getElementById("copy-coords");
 var snackbar = document.getElementById("snackbar");
@@ -141,6 +147,15 @@ function initialize() {
 
   camera = new THREE.PerspectiveCamera();
   scene.add(camera);
+
+  background = new THREE.PlaneGeometry(50, 30);
+  material = new THREE.MeshStandardMaterial({
+    color: "#000000",
+  });
+  background_mesh = new THREE.Mesh(background, material);
+  background_mesh.position.z = -30;
+  background_mesh.visible = false;
+  scene.add(background_mesh);
 
   renderer = new THREE.WebGLRenderer({
     antialias: true,
@@ -614,12 +629,19 @@ function handleClick(e) {
 function handleScale(e) {
   if (e.detail === "up") {
     camera.position.z -= 0.8;
+    background_mesh.position.z -= 0.8;
   } else {
     camera.position.z += 0.8;
+    background_mesh.position.z += 0.8;
   }
 }
 
+function resetBackground(e) {
+  background_mesh.visible = false;
+}
+
 function handleReset(e) {
+  resetBackground();
 
   clearPhysics();
 
@@ -972,7 +994,7 @@ function searchMol(e) {
 }
 
 function selectMol(e) {
-  var data = document.JME.smiles();
+  var data = document.JME.smiles().replace("#","%23");
   jmeContinue.disabled = true;
   fetch(baseUrl + data + pdbUrl)
     .then((response) => response.text())
@@ -1125,3 +1147,35 @@ function handleCopyCoords() {
     snackbar.classList.remove("show")
   }, 3000);
 }
+
+function toggleBackgroundblack(e) {
+  blackScreen = !blackScreen;
+  background_mesh.material.color.setHex(0x000000);
+  if (whiteScreen) {
+    whiteScreen = 0;
+  }
+  if (blackScreen) {
+    background_mesh.visible = true;
+  }
+  else {
+    background_mesh.visible = false;
+  }
+}
+
+function toggleBackgroundwhite(e)
+{
+background_mesh.material.color.setHex(0xffffff);
+whiteScreen = !whiteScreen;
+if (blackScreen) {
+  blackScreen = 0;
+}
+if (whiteScreen) {
+  background_mesh.visible = true;
+}
+else {
+  background_mesh.visible = false;
+}
+}
+
+blackScreenButton.addEventListener("black-screen", toggleBackgroundblack);
+whiteScreenButton.addEventListener("white-screen", toggleBackgroundwhite);

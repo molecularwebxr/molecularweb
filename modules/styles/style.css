@@ -280,7 +280,7 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-61%);
+  transform: translateY(-55%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -544,7 +544,7 @@ button.pdb-btn {
 
 .camera-container {
   position: fixed;
-  top: 47.5%;
+  top: 50%;
   right: 76px;
   transform: translateY(-188%);
   z-index: 1;
@@ -566,12 +566,12 @@ button.pdb-btn {
 }
 
 .camera-container.mk.multiple-cams {
-  transform: translateY(-169%);
+  transform: translateY(-164%);
 }
 
 .zoom-container {
   position: fixed;
-  top: 47%;
+  top: 50%;
   right: 76px;
   transform: translateY(-27%);
   z-index: 1;
@@ -583,6 +583,10 @@ button.pdb-btn {
 .zoom-container.small-menu {
   transform: translateY(-27%);
 }
+
+/* .zoom-container.small-menu.multiple-cams-single {
+  transform: translateY(21%);
+} */
 
 .bg-container {
   position: fixed;
@@ -599,13 +603,9 @@ button.pdb-btn {
   transform: translateY(-73%);
 }
 
-/* .zoom-container.small-menu.multiple-cams-single {
-  transform: translateY(21%);
-} */
-
 .temperature-container {
   position: absolute;
-  top: 47%;
+  top: 50%;
   right: calc(100% + 6px);
   transform: translateY(-50%);
   z-index: 1;
@@ -632,7 +632,7 @@ button.pdb-btn {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-83%);
+  transform: translateY(-77%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -642,7 +642,7 @@ button.pdb-btn {
 }
 
 .interaction-controls.single-menu {
-  transform: translateY(-110%);
+  transform: translateY(-88%);
 }
 
 .interaction-control {
@@ -1194,11 +1194,13 @@ button.pdb-btn {
     transform: translateY(-27%);
     padding: 0.5rem 0.5rem;
   }
+
   .bg-container {
     transform: translateY(-27%);
     padding: 0.5rem 0.5rem;
   }
-  
+
+
   .camera-container {
     transform: translateY(-198%);
     padding: 0.5rem 0.5rem;
@@ -1452,9 +1454,9 @@ button.pdb-btn {
   }
 
   .zoom-container,
+  .bg-container,
   .camera-container,
   .interaction-controls,
-  .bg-container,
   .modeling-container {
     right: 56px;
   }
@@ -1520,6 +1522,7 @@ button.pdb-btn {
   .zoom-container.mk {
     transform: translateY(-25%);
   }
+
   .bg-container {
     transform: translateY(48%);
     padding: 0.5rem 0.5rem;
@@ -1527,6 +1530,7 @@ button.pdb-btn {
   .bg-container.mk {
     transform: translateY(-25%);
   }
+
   .temperature-container .triangle-temp {
     transform: translateY(-300%);
   }

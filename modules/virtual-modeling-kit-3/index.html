@@ -26,7 +26,6 @@
     <link rel="stylesheet" href="/modules/styles/style.css" />
 
     <!-- 3D Libraries -->
-    <script src="/lib/aframe.min.js"></script>
     <script src="/lib/three.js"></script>
     <script type="module" src="/lib/cannon-es.js"></script>
     <script src="/lib/ar.js"></script>
@@ -147,7 +146,7 @@
     </div>
 
     <!-- bg cut -->
-    <div id="bg-container" class="bg-container mk hide column">
+    <div id="bg-container" class="bg-container small-menu hide column">
       <div class="triangle-temp"></div>
       <black-screen class="icon-margin"></black-screen>
       <white-screen class="icon-margin"></white-screen>
@@ -402,12 +401,6 @@
 
     <div class="snackbar" id="snackbar">Coordinates copied to clipboard</div> 
 
-    <a-scene>
-      <a-box id ="black-screen" color="black" position="0 -1 -5" rotation="0 0 0" scale="25 25 0.5" opacity="0"></a-box>
-      <a-box id ="white-screen" color="white" position="0 -1 -5" rotation="0 0 0" scale="25 25 0.5" opacity="0"></a-box>
-      <a-entity camera></a-entity>
-    </a-scene>
-
     <script src="utils.js"></script>
     <script type="module" src="3Dutils.js"></script>
     <script src="handlePdbs.js"></script>
@@ -415,7 +408,7 @@
     <script type="module" src="main.js"></script>
     <script src="controls.js"></script>
     <script src="/modules/utils/handleOverlays.js"></script>
-    <script src="/modules/utils/handleBackground.js"></script>
+    <script src="/modules/utils/handleVMKBackground.js"></script>
     <script src="/js/handleSession.js"></script>
   </body>
 </html>

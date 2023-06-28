@@ -3,38 +3,30 @@ const BgIconContent = /* html */ `
     .container {
       position: relative;
     }
-
     a {
       cursor: pointer;
     }
-
     svg {
       width: 40px;
       height: 40px;
     }
-
     #circle {
       fill: #FFFFFF;
       transition: 0.2s;
     }
-
     .path {
       fill: var(--primarydark);
     }
-
     a:hover #circle{
       fill: var(--secondary);
     }
-
     #circle.active {
       fill: var(--secondary);
     }
-
     a:hover .tooltip {
       visibility: visible;
       opacity: 1;
     }
-
     .tooltip {
       right: calc(100% + 22px);
       top: 50%;
@@ -48,7 +40,6 @@ const BgIconContent = /* html */ `
       transition: 0.2s;
       white-space: nowrap;
     }
-
     .tooltip p {
       font-family: "Roboto";
       color: #ffffff;
@@ -56,7 +47,6 @@ const BgIconContent = /* html */ `
       text-align: left;
       margin: 0;
     }
-
     .triangle {
       position: absolute;
       top: 50%;
@@ -66,24 +56,20 @@ const BgIconContent = /* html */ `
       border-left: 10px solid var(--primarylight);
       transform: translateY(-50%);
     }
-
     .hide {
       display: none;
     }
-
     @media screen and (max-width: 900px) {
       a:hover .tooltip {
         display: none;
       }
     }
-
     @media (max-width: 440px) {
       svg {
         width: 30px;
         height: 30px;
       }
     }
-
     @media screen and (max-height: 450px) and (orientation: landscape) {
       svg {
         width: 28px;
@@ -98,7 +84,6 @@ const BgIconContent = /* html */ `
         <circle cx="113" cy="132" r="143" id="circle" />
       </g>
       <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-
 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
     <g id="hand" class="path">
     <g transform="matrix(20,0,0,20,0,0)">
@@ -106,7 +91,6 @@ const BgIconContent = /* html */ `
     </g>
   </g>
 </svg>
-
     <div id="tooltip" class="tooltip">
       <p><intl-message key="app.cutbackground"></p>
       <div class="triangle"></div>

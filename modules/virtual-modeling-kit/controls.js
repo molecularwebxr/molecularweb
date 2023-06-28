@@ -2,13 +2,12 @@ var tempMenu = document.querySelector("enable-temp-controls");
 var zoomMenu = document.querySelector("zoom-icon");
 var camMenu = document.querySelector("camera-icon");
 var swapCam = document.querySelector("swap-camera");
-var bgMenu = document.querySelector("bg-icon");
-var bgMenuContainer = document.getElementById("bg-container");
-var interactionsContainer = document.getElementById("interaction-container");
 var tempMenuContainer = document.getElementById("temp-container");
 var zoomMenuContainer = document.getElementById("zoom-container");
 var camMenuContainer = document.getElementById("cam-container");
 var flipVideoButton = document.querySelector("flip-video");
+var bgMenu = document.querySelector("bg-icon");
+var bgMenuContainer = document.getElementById("bg-container");
 
 var devices = [];
 var selectedCamera = "env";
@@ -16,7 +15,7 @@ var selectedCamera = "env";
 tempMenu.isActive = false;
 zoomMenu.isActive = false;
 camMenu.isActive = false;
-bgMenu.isActive = false;
+
 function handleError(error) {
   console.log("Something went wrong: ", error.message, error.name);
 }
@@ -108,7 +107,6 @@ function switchCam(e) {
 
 function handleTempMenu(e) {
   tempMenuContainer.classList.toggle("hide");
-  interactionsContainer.classList.toggle("hide");
   tempMenu.isActive = !tempMenu.isActive;
   if (mkMenu.isActive) {
     mkMenu.isActive = false;
@@ -138,7 +136,6 @@ function handleCamMenu(e) {
   if (tempMenu.isActive) {
     tempMenu.isActive = false;
     tempMenuContainer.classList.add("hide");
-    interactionsContainer.classList.add("hide");
   }
   if (zoomMenu.isActive) {
     zoomMenu.isActive = false;
@@ -160,7 +157,6 @@ function handleZoomMenu(e) {
   if (tempMenu.isActive) {
     tempMenu.isActive = false;
     tempMenuContainer.classList.add("hide");
-    interactionsContainer.classList.add("hide");
   }
   if (camMenu.isActive) {
     camMenu.isActive = false;
@@ -170,13 +166,6 @@ function handleZoomMenu(e) {
     bgMenu.isActive = false;
     bgMenuContainer.classList.add("hide");
   }
-}
-
-function handleCameraFlip() {
-  var video = document.getElementsByTagName("video")[0];
-  var canvas = document.querySelector("canvas");
-  video.classList.toggle("flip");
-  canvas.classList.toggle("flip");
 }
 
 function handlebgMenu(e) {
@@ -200,6 +189,13 @@ function handlebgMenu(e) {
     zoomMenu.isActive = false;
     zoomMenuContainer.classList.add("hide");
   }
+}
+
+function handleCameraFlip() {
+  var video = document.getElementsByTagName("video")[0];
+  var canvas = document.querySelector("canvas");
+  video.classList.toggle("flip");
+  canvas.classList.toggle("flip");
 }
 
 bgMenu.addEventListener("click",handlebgMenu);

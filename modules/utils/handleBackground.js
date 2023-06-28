@@ -9,7 +9,6 @@ function resetBackground(e) {
     whiteScreen = blackScreen = 0;
     blackScreenModel.setAttribute("opacity", 0);
     whiteScreenModel.setAttribute("opacity", 0);
-
 }
 
 function toggleBackgroundblack(e) {

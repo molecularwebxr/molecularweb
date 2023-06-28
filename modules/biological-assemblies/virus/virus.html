@@ -127,11 +127,11 @@
     </div>
 
     <!-- bg cut -->
-   <div id="bg-container" class="bg-container small-menu hide column">
-    <div class="triangle-temp"></div>
-    <black-screen class="icon-margin"></black-screen>
-    <white-screen class="icon-margin"></white-screen>
-  </div>
+    <div id="bg-container" class="bg-container small-menu hide column">
+      <div class="triangle-temp"></div>
+      <black-screen class="icon-margin"></black-screen>
+      <white-screen class="icon-margin"></white-screen>
+    </div>
 
     <!-- Side buttons -->
     <div class="side-menu column">
@@ -225,8 +225,10 @@
           src="./models/viruscoloreado.glb"
         ></a-asset-item>
       </a-assets>
-      <a-box id = "black-screen" color="black" position="0 -1 -20" rotation="0 0 0" scale="25 25 0.5" opacity="0"></a-box>
-      <a-box id = "white-screen" color="white" position="0 -1 -20" rotation="0 0 0" scale="25 25 0.5" opacity="0"></a-box>
+
+      <a-box id ="black-screen" color="black" position="0 -1 -20" rotation="0 0 0" scale="25 25 0.5" opacity="0"></a-box>
+      <a-box id ="white-screen" color="white" position="0 -1 -20" rotation="0 0 0" scale="25 25 0.5" opacity="0"></a-box>
+
       <a-marker type="barcode" value="0" id="watA">
         <a-entity
           rotation="0 0 0"

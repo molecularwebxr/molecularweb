@@ -267,9 +267,9 @@ figure {
 
 .modeling-container {
   position: fixed;
-  top: 47%;
+  top: 50%;
   right: 76px;
-  transform: translateY(-63%);
+  transform: translateY(-62%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -473,7 +473,7 @@ figure {
 
 .camera-container {
   position: fixed;
-  top: 47.5%;
+  top: 50%;
   right: 76px;
   transform: translateY(-188%);
   z-index: 1;
@@ -500,7 +500,7 @@ figure {
 
 .zoom-container {
   position: fixed;
-  top: 47%;
+  top: 50%;
   right: 76px;
   transform: translateY(-5%);
   z-index: 1;
@@ -508,6 +508,7 @@ figure {
   border-radius: 10px;
   padding: 0.75rem 0.5rem;
 }
+
 .bg-container {
   position: fixed;
   top: 47%;
@@ -523,13 +524,17 @@ figure {
   transform: translateY(-27%);
 }
 
+.zoom-container.small-menu {
+  transform: translateY(-27%);
+}
+
 /* .zoom-container.small-menu.multiple-cams-single {
   transform: translateY(21%);
 } */
 
 .temperature-container {
   position: fixed;
-  top: 47%;
+  top: 50%;
   right: 76px;
   transform: translateY(-86%);
   z-index: 1;
@@ -893,8 +898,8 @@ figure {
   }
 
   .zoom-container,
-  .temperature-container,
   .bg-container,
+  .temperature-container,
   .camera-container,
   .modeling-container {
     right: 58px;
@@ -934,14 +939,16 @@ figure {
     transform: translateY(48%);
     padding: 0.5rem 0.5rem;
   }
+
   .bg-container {
     transform: translateY(48%);
     padding: 0.5rem 0.5rem;
   }
-  
+
   .zoom-container.mk {
     transform: translateY(0%);
   }
+
   .bg-container.mk {
     transform: translateY(0%);
   }

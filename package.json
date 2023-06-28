@@ -7,8 +7,5 @@
     "url": "git+https://github.com/fcor/molecular-mirror-app.git"
   },
   "author": "Fabio Cortés",
-  "license": "MIT",
-  "dependencies": {
-    "live-server": "^1.2.2"
-  }
+  "license": "MIT"
 }
