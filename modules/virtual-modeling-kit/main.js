@@ -491,9 +491,9 @@ function handleRenderType(e) {
 }
 
 function toggleBackgroundblack(e) {
+  background_mesh.material.color.setHex(0x000000);
     blackScreen = !blackScreen;
     if (whiteScreen) {
-      background_mesh.material.color.setHex(0x000000);
       whiteScreen = 0;
     }
     if (blackScreen) {
@@ -506,9 +506,9 @@ function toggleBackgroundblack(e) {
 
 function toggleBackgroundwhite(e)
 {
+  background_mesh.material.color.setHex(0xffffff);
   whiteScreen = !whiteScreen;
   if (blackScreen) {
-    background_mesh.material.color.setHex(0xffffff);
     blackScreen = 0;
   }
   if (whiteScreen) {
