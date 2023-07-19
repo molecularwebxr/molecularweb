@@ -149,7 +149,7 @@ function initialize() {
   scene.add(camera);
 
   background = new THREE.PlaneGeometry(50, 30);
-  material = new THREE.MeshStandardMaterial({
+  material = new THREE.MeshBasicMaterial({
     color: "#000000",
   });
   background_mesh = new THREE.Mesh(background, material);

@@ -280,7 +280,7 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-55%);
+  transform: translateY(-59.65%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -546,7 +546,7 @@ button.pdb-btn {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-188%);
+  transform: translateY(-264.8%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -558,7 +558,7 @@ button.pdb-btn {
 } */
 
 .camera-container.small-menu {
-  transform: translateY(-121%);
+  transform: translateY(-141.3%);
 }
 
 .camera-container.small-menu.multiple-cams-single {
@@ -573,7 +573,7 @@ button.pdb-btn {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-27%);
+  transform: translateY(-48.2%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -581,7 +581,7 @@ button.pdb-btn {
 }
 
 .zoom-container.small-menu {
-  transform: translateY(-27%);
+  transform: translateY(-47.8%);
 }
 
 /* .zoom-container.small-menu.multiple-cams-single {
@@ -590,9 +590,9 @@ button.pdb-btn {
 
 .bg-container {
   position: fixed;
-  top: 60%;
+  top: 50%;
   right: 76px;
-  transform: translateY(-27%);
+  transform: translateY(45.5%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -600,7 +600,7 @@ button.pdb-btn {
 }
 
 .bg-container.small-menu {
-  transform: translateY(-73%);
+  transform: translateY(-1.2%);
 }
 
 .temperature-container {
@@ -632,7 +632,7 @@ button.pdb-btn {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-77%);
+  transform: translateY(-83.75%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;

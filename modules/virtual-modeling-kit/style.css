@@ -269,7 +269,7 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-62%);
+  transform: translateY(-67.75%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -475,7 +475,7 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-188%);
+  transform: translateY(-211.7%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -502,26 +502,11 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-5%);
+  transform: translateY(-25.4%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
   padding: 0.75rem 0.5rem;
-}
-
-.bg-container {
-  position: fixed;
-  top: 47%;
-  right: 76px;
-  transform: translateY(-70%);
-  z-index: 1;
-  background-color: var(--primarylight);
-  border-radius: 10px;
-  padding: 0.75rem 0.5rem;
-}
-
-.bg-container.small-menu {
-  transform: translateY(-27%);
 }
 
 .zoom-container.small-menu {
@@ -536,11 +521,26 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-86%);
+  transform: translateY(-94.9%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
   padding: 0.75rem 0.5rem;
+}
+
+.bg-container {
+  position: fixed;
+  top: 50%;
+  right: 76px;
+  transform: translateY(69%);
+  z-index: 1;
+  background-color: var(--primarylight);
+  border-radius: 10px;
+  padding: 0.75rem 0.5rem;
+}
+
+.bg-container.small-menu {
+  transform: translateY(-27%);
 }
 
 .triangle-temp {
@@ -551,21 +551,6 @@ figure {
   border-bottom: 10px solid transparent;
   border-left: 10px solid var(--primarylight);
   transform: translateY(-50%);
-}
-
-.bg-container {
-  position: fixed;
-  top: 71%;
-  right: 76px;
-  transform: translateY(-82%);
-  z-index: 1;
-  background-color: var(--primarylight);
-  border-radius: 10px;
-  padding: 0.75rem 0.5rem;
-}
-
-.bg-container.small-menu {
-  transform: translateY(-27%);
 }
 
 @media screen and (max-width: 768px) {
