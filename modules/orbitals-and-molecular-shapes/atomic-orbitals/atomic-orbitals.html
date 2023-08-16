@@ -52,6 +52,9 @@
     <script src="/components/zoom-icon/index.js"></script>
     <script src="/components/swap-camera/index.js"></script>
     <script src="/components/camera-icon/index.js"></script>
+    <script src="/components/bg-icon/index.js"></script>
+    <script src="/components/black-screen/index.js"></script>
+    <script src="/components/white-screen/index.js"></script>
 
     <!-- Utils & A-Frame Components -->
     <script src="/modules/utils/aframe/modelOpacity.js"></script>
@@ -121,11 +124,19 @@
       ></scale-graphics>
     </div>
 
+    <!-- bg cut -->
+    <div id="bg-container" class="bg-container small-menu hide column">
+      <div class="triangle-temp"></div>
+      <black-screen class="icon-margin"></black-screen>
+      <white-screen class="icon-margin"></white-screen>
+    </div>
+
     <!-- Side buttons -->
     <div class="side-menu column">
       <camera-icon class="icon-margin"></camera-icon>
       <reset-activity class="icon-margin"></reset-activity>
       <zoom-icon class="icon-margin"></zoom-icon>
+      <bg-icon class="icon-margin"></bg-icon>
       <toggle-menu class="icon-margin"></toggle-menu>
     </div>
 
@@ -465,6 +476,9 @@
         ></a-asset-item>
       </a-assets>
 
+      <a-box id ="black-screen" color="black" position="0 -1 -20" rotation="0 0 0" scale="25 25 0.5" opacity="0"></a-box>
+      <a-box id ="white-screen" color="white" position="0 -1 -20" rotation="0 0 0" scale="25 25 0.5" opacity="0"></a-box>
+
       <a-marker type="barcode" value="0">
         <a-entity
           rotation="0 0 0"
@@ -615,6 +629,7 @@
     <script src="/modules/utils/handleFlips.js"></script>
     <script src="/modules/utils/handleOverlays.js"></script>
     <script src="/modules/utils/handleGestures.js"></script>
+    <script src="/modules/utils/handleBackground.js"></script>
     <script src="/js/handleSession.js"></script>
   </body>
 </html>

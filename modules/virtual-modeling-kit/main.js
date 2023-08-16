@@ -14,6 +14,11 @@ var patternArray, markerRootArray, markerGroupArray;
 var sceneGroup, stickGroup, spheresGroup;
 var sceneGroup2;
 var pdb;
+var background, material, background_mesh;
+
+var blackScreen = 0, whiteScreen = 0;
+var blackScreenButton = document.querySelector("black-screen");
+var whiteScreenButton = document.querySelector("white-screen");
 
 var startAR = document.getElementById("start-ar");
 var flipGraphics = document.querySelector("flip-graphics");
@@ -70,6 +75,15 @@ function initialize() {
 
   let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
   scene.add(ambientLight);
+  
+  background = new THREE.PlaneGeometry(75, 50);
+  material = new THREE.MeshBasicMaterial({
+    color: "#000000",
+  });
+  background_mesh = new THREE.Mesh(background, material);
+  background_mesh.position.z = -70;
+  background_mesh.visible = false;
+  scene.add(background_mesh);
 
   camera = new THREE.PerspectiveCamera();
   scene.add(camera);
@@ -400,7 +414,12 @@ function handleScale(e) {
   }
 }
 
+function resetBackground(e) {
+  background_mesh.visible = false;
+}
+
 function handleReset(e) {
+  resetBackground();
   atomMeshes = [];
   atomBodies = [];
   constraints = [];
@@ -470,3 +489,35 @@ function handleRenderType(e) {
     });
   }
 }
+
+function toggleBackgroundblack(e) {
+  background_mesh.material.color.setHex(0x000000);
+    blackScreen = !blackScreen;
+    if (whiteScreen) {
+      whiteScreen = 0;
+    }
+    if (blackScreen) {
+      background_mesh.visible = true;
+    }
+    else {
+      background_mesh.visible = false;
+    }
+}
+
+function toggleBackgroundwhite(e)
+{
+  background_mesh.material.color.setHex(0xffffff);
+  whiteScreen = !whiteScreen;
+  if (blackScreen) {
+    blackScreen = 0;
+  }
+  if (whiteScreen) {
+    background_mesh.visible = true;
+  }
+  else {
+    background_mesh.visible = false;
+  }
+}
+
+blackScreenButton.addEventListener("black-screen", toggleBackgroundblack);
+whiteScreenButton.addEventListener("white-screen", toggleBackgroundwhite);

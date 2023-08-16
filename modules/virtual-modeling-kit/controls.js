@@ -6,6 +6,8 @@ var tempMenuContainer = document.getElementById("temp-container");
 var zoomMenuContainer = document.getElementById("zoom-container");
 var camMenuContainer = document.getElementById("cam-container");
 var flipVideoButton = document.querySelector("flip-video");
+var bgMenu = document.querySelector("bg-icon");
+var bgMenuContainer = document.getElementById("bg-container");
 
 var devices = [];
 var selectedCamera = "env";
@@ -118,6 +120,10 @@ function handleTempMenu(e) {
     camMenu.isActive = false;
     camMenuContainer.classList.add("hide");
   }
+  if (bgMenu.isActive) {
+    bgMenu.isActive = false;
+    bgMenuContainer.classList.add("hide");
+  }
 }
 
 function handleCamMenu(e) {
@@ -134,6 +140,10 @@ function handleCamMenu(e) {
   if (zoomMenu.isActive) {
     zoomMenu.isActive = false;
     zoomMenuContainer.classList.add("hide");
+  }
+  if (bgMenu.isActive) {
+    bgMenu.isActive = false;
+    bgMenuContainer.classList.add("hide");
   }
 }
 
@@ -152,6 +162,33 @@ function handleZoomMenu(e) {
     camMenu.isActive = false;
     camMenuContainer.classList.add("hide");
   }
+  if (bgMenu.isActive) {
+    bgMenu.isActive = false;
+    bgMenuContainer.classList.add("hide");
+  }
+}
+
+function handlebgMenu(e) {
+  bgMenuContainer.classList.toggle("hide");
+  bgMenu.isActive = !bgMenu.isActive;
+
+  if (mkMenu.isActive) {
+    mkMenu.isActive = false;
+    menuContainer.classList.add("hide");
+  }
+  if (tempMenu.isActive) {
+    tempMenu.isActive = false;
+    tempMenuContainer.classList.add("hide");
+    interactionsContainer.classList.add("hide");
+  }
+  if (camMenu.isActive) {
+    camMenu.isActive = false;
+    camMenuContainer.classList.add("hide");
+  }
+  if (zoomMenu.isActive) {
+    zoomMenu.isActive = false;
+    zoomMenuContainer.classList.add("hide");
+  }
 }
 
 function handleCameraFlip() {
@@ -161,6 +198,7 @@ function handleCameraFlip() {
   canvas.classList.toggle("flip");
 }
 
+bgMenu.addEventListener("click",handlebgMenu);
 tempMenu.addEventListener("click", handleTempMenu);
 zoomMenu.addEventListener("click", handleZoomMenu);
 camMenu.addEventListener("click", handleCamMenu);

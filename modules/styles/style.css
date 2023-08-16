@@ -280,7 +280,7 @@ figure {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-55%);
+  transform: translateY(-59.65%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -546,7 +546,7 @@ button.pdb-btn {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-188%);
+  transform: translateY(-264.8%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -558,7 +558,7 @@ button.pdb-btn {
 } */
 
 .camera-container.small-menu {
-  transform: translateY(-121%);
+  transform: translateY(-141.3%);
 }
 
 .camera-container.small-menu.multiple-cams-single {
@@ -573,7 +573,7 @@ button.pdb-btn {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-27%);
+  transform: translateY(-48.2%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -581,12 +581,27 @@ button.pdb-btn {
 }
 
 .zoom-container.small-menu {
-  transform: translateY(-27%);
+  transform: translateY(-47.8%);
 }
 
 /* .zoom-container.small-menu.multiple-cams-single {
   transform: translateY(21%);
 } */
+
+.bg-container {
+  position: fixed;
+  top: 50%;
+  right: 76px;
+  transform: translateY(45.5%);
+  z-index: 1;
+  background-color: var(--primarylight);
+  border-radius: 10px;
+  padding: 0.75rem 0.5rem;
+}
+
+.bg-container.small-menu {
+  transform: translateY(-1.2%);
+}
 
 .temperature-container {
   position: absolute;
@@ -617,7 +632,7 @@ button.pdb-btn {
   position: fixed;
   top: 50%;
   right: 76px;
-  transform: translateY(-77%);
+  transform: translateY(-83.75%);
   z-index: 1;
   background-color: var(--primarylight);
   border-radius: 10px;
@@ -1153,6 +1168,7 @@ button.pdb-btn {
   }
 
   .zoom-container,
+  .bg-container,
   .camera-container,
   .modeling-container,
   .interaction-controls {
@@ -1165,7 +1181,7 @@ button.pdb-btn {
   }
 
   .modeling-container {
-    transform: translateY(-54%);
+    transform: translateY(-61%);
   }
   /* .temperature-container.multiple-cams {
     transform: translateY(-58%);
@@ -1175,12 +1191,18 @@ button.pdb-btn {
   }
 
   .zoom-container {
-    transform: translateY(-27%);
+    transform: translateY(-47%);
     padding: 0.5rem 0.5rem;
   }
 
+  .bg-container {
+    transform: translateY(50%);
+    padding: 0.5rem 0.5rem;
+  }
+
+
   .camera-container {
-    transform: translateY(-198%);
+    transform: translateY(-276%);
     padding: 0.5rem 0.5rem;
   }
 
@@ -1221,7 +1243,7 @@ button.pdb-btn {
   }
 
   .interaction-controls {
-    transform: translateY(-73%);
+    transform: translateY(-79%);
     padding: 0.5rem 0.5rem;
   }
 
@@ -1432,6 +1454,7 @@ button.pdb-btn {
   }
 
   .zoom-container,
+  .bg-container,
   .camera-container,
   .interaction-controls,
   .modeling-container {
@@ -1444,7 +1467,7 @@ button.pdb-btn {
   }
 
   .interaction-controls .triangle-temp {
-    transform: translateY(-310%);
+    transform: translateY(-413%);
   }
 
   .interaction-control {
@@ -1472,11 +1495,11 @@ button.pdb-btn {
   }
 
   .camera-container.mk {
-    transform: translateY(-174%);
+    transform: translateY(-270%);
   }
 
   .camera-container.mk .triangle-temp {
-    transform: translateY(-114%);
+    transform: translateY(-50%);
   }
 
   .camera-container.mk.multiple-cams {
@@ -1497,7 +1520,15 @@ button.pdb-btn {
   }
 
   .zoom-container.mk {
-    transform: translateY(-25%);
+    transform: translateY(-50%);
+  }
+
+  .bg-container {
+    transform: translateY(48%);
+    padding: 0.5rem 0.5rem;
+  }
+  .bg-container.mk {
+    transform: translateY(45%);
   }
 
   .temperature-container .triangle-temp {
@@ -1539,7 +1570,7 @@ button.pdb-btn {
     flex-direction: column;
     padding: 0.5rem 0.75rem;
     width: 440px;
-    transform: translateY(-48%);
+    transform: translateY(-57%);
   }
 
   .pdb-subtitle {

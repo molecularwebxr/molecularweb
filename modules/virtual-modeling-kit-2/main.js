@@ -15,6 +15,11 @@ var patternArray2, markerRootArray2, markerGroupArray2;
 var sceneGroup;
 var sceneGroup2;
 var pdb, pdb2;
+var background, material, background_mesh;
+
+var blackScreen = 0, whiteScreen = 0;
+var blackScreenButton = document.querySelector("black-screen");
+var whiteScreenButton = document.querySelector("white-screen");
 
 var startAR = document.getElementById("start-ar");
 var copyCoords = document.getElementById("copy-coords");
@@ -215,6 +220,15 @@ function initialize() {
 
   let ambientLight = new THREE.AmbientLight(0xcccccc, 0.5);
   scene.add(ambientLight);
+
+  background = new THREE.PlaneGeometry(75, 50);
+  material = new THREE.MeshBasicMaterial({
+    color: "#000000",
+  });
+  background_mesh = new THREE.Mesh(background, material);
+  background_mesh.position.z = -70;
+  background_mesh.visible = false;
+  scene.add(background_mesh);
 
   camera = new THREE.PerspectiveCamera();
   scene.add(camera);
@@ -1017,12 +1031,20 @@ function handleFlip(e) {
 function handleScale(e) {
   if (e.detail === "up") {
     camera.position.z -= 0.8;
+    background_mesh.position.z -= 0.8;
   } else {
     camera.position.z += 0.8;
+    background_mesh.position.z += 0.8;
   }
 }
 
+function resetBackground(e) {
+  background_mesh.visible = false;
+}
+
 function handleReset(e) {
+  resetBackground();
+
   resetMarker1();
   resetMarker2();
 
@@ -1743,3 +1765,35 @@ function handleCopyCoords() {
     snackbar.classList.remove("show")
   }, 3000);
 }
+
+function toggleBackgroundblack(e) {
+  blackScreen = !blackScreen;
+  background_mesh.material.color.setHex(0x000000);
+  if (whiteScreen) {
+    whiteScreen = 0;
+  }
+  if (blackScreen) {
+    background_mesh.visible = true;
+  }
+  else {
+    background_mesh.visible = false;
+  }
+}
+
+function toggleBackgroundwhite(e)
+{
+background_mesh.material.color.setHex(0xffffff);
+whiteScreen = !whiteScreen;
+if (blackScreen) {
+  blackScreen = 0;
+}
+if (whiteScreen) {
+  background_mesh.visible = true;
+}
+else {
+  background_mesh.visible = false;
+}
+}
+
+blackScreenButton.addEventListener("black-screen", toggleBackgroundblack);
+whiteScreenButton.addEventListener("white-screen", toggleBackgroundwhite);
