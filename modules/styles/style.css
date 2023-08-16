@@ -1181,7 +1181,7 @@ button.pdb-btn {
   }
 
   .modeling-container {
-    transform: translateY(-54%);
+    transform: translateY(-61%);
   }
   /* .temperature-container.multiple-cams {
     transform: translateY(-58%);
@@ -1191,18 +1191,18 @@ button.pdb-btn {
   }
 
   .zoom-container {
-    transform: translateY(-27%);
+    transform: translateY(-47%);
     padding: 0.5rem 0.5rem;
   }
 
   .bg-container {
-    transform: translateY(-27%);
+    transform: translateY(50%);
     padding: 0.5rem 0.5rem;
   }
 
 
   .camera-container {
-    transform: translateY(-198%);
+    transform: translateY(-276%);
     padding: 0.5rem 0.5rem;
   }
 
@@ -1243,7 +1243,7 @@ button.pdb-btn {
   }
 
   .interaction-controls {
-    transform: translateY(-73%);
+    transform: translateY(-79%);
     padding: 0.5rem 0.5rem;
   }
 
@@ -1467,7 +1467,7 @@ button.pdb-btn {
   }
 
   .interaction-controls .triangle-temp {
-    transform: translateY(-310%);
+    transform: translateY(-413%);
   }
 
   .interaction-control {
@@ -1495,11 +1495,11 @@ button.pdb-btn {
   }
 
   .camera-container.mk {
-    transform: translateY(-174%);
+    transform: translateY(-270%);
   }
 
   .camera-container.mk .triangle-temp {
-    transform: translateY(-114%);
+    transform: translateY(-50%);
   }
 
   .camera-container.mk.multiple-cams {
@@ -1520,7 +1520,7 @@ button.pdb-btn {
   }
 
   .zoom-container.mk {
-    transform: translateY(-25%);
+    transform: translateY(-50%);
   }
 
   .bg-container {
@@ -1528,7 +1528,7 @@ button.pdb-btn {
     padding: 0.5rem 0.5rem;
   }
   .bg-container.mk {
-    transform: translateY(-25%);
+    transform: translateY(45%);
   }
 
   .temperature-container .triangle-temp {
@@ -1570,7 +1570,7 @@ button.pdb-btn {
     flex-direction: column;
     padding: 0.5rem 0.75rem;
     width: 440px;
-    transform: translateY(-48%);
+    transform: translateY(-57%);
   }
 
   .pdb-subtitle {

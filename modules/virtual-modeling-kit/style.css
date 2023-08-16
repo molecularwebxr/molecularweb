@@ -677,10 +677,10 @@ figure {
   }
   .temperature-container {
     padding: 0.5rem 0.5rem;
-    transform: translateY(-81%);
+    transform: translateY(-88.7%);
   }
   .modeling-container {
-    transform: translateY(-60%);
+    transform: translateY(-69.5%);
   }
   /* .temperature-container.multiple-cams {
     transform: translateY(-58%);
@@ -689,15 +689,15 @@ figure {
     margin: 0;
   }
   .zoom-container {
-    transform: translateY(-3%);
+    transform: translateY(-27%);
     padding: 0.5rem 0.5rem;
   }
   .bg-container {
-    transform: translateY(-10%);
+    transform: translateY(77.3%);
     padding: 0.5rem 0.5rem;
   }
   .camera-container {
-    transform: translateY(-198%);
+    transform: translateY(-225%);
     padding: 0.5rem 0.5rem;
   }
   /* .zoom-container.multiple-cams {
@@ -892,7 +892,7 @@ figure {
 
   .temperature-container {
     padding: 0.5rem 0.5rem;
-    transform: translateY(-59%);
+    transform: translateY(-68.3%);
   }
 
   .camera-container {
@@ -901,11 +901,11 @@ figure {
   }
 
   .camera-container.mk {
-    transform: translateY(-174%);
+    transform: translateY(-215%);
   }
 
   .camera-container.mk .triangle-temp{
-    transform: translateY(-114%);
+    transform: translateY(-50%);
   }
 
   .camera-container.mk.multiple-cams {
@@ -931,11 +931,11 @@ figure {
   }
 
   .zoom-container.mk {
-    transform: translateY(0%);
+    transform: translateY(-25.1%);
   }
 
   .bg-container.mk {
-    transform: translateY(0%);
+    transform: translateY(69.8%);
   }
 
   /* .zoom-container.multiple-cams {
@@ -984,7 +984,7 @@ figure {
     flex-direction: row;
     padding: 1rem;
     width: 440px;
-    transform: translateY(-55%);
+    transform: translateY(-69%);
   }
 
   .triangle-mk{
