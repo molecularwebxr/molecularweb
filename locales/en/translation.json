@@ -9,7 +9,7 @@
   },
   "app": {
     "title": "MoleculARweb.org",
-    "description": "The platform for immersive work and education in chemistry and structural biology.<br>starting with MoleculARweb, a website for chemistry and biology education through augmented reality, available out of the box in commodity devices",
+    "description": "The platform for immersive work and education in chemistry and structural biology.",
     "policy": "Copyright © 2025 Laboratory for biomolecular modeling, EPFL. All rights reserved.",
     "policyMsg": "We use cookies to improve your experience on our site. By using MoleculARweb you agree to our privacy policy.",
     "learnMore": "Learn more",
