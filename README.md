@@ -6,7 +6,7 @@
 
 MoleculARweb is a website for chemistry and structural biology education through commodity, web-based augmented reality that you can use in your webcam-enabled computer, smartphone or tablet, just on your web browser.
 
-This project is manintained by [Fabio Cortés](https://www.fjcr.pro/) and [Luciano Abriata](http://labriataphd.altervista.org/) from the [Laboratory of Biomolecular Modeling](https://www.epfl.ch/labs/lbm/) at [École Polytechnique Fédérale de Lausanne (EPFL)](https://www.epfl.ch/) in Switzerland. It was done with help from several collaborators from the group as well as researchers and educators from other institutions. The project is funded by Spark grant CRSK-1_190376 from the [Swiss National Science Foundation](https://www.snf.ch/).
+This project is maintained by [Fabio Cortés](https://www.fjcr.pro/) and [Luciano Abriata](http://labriataphd.altervista.org/) from the [Laboratory of Biomolecular Modeling](https://www.epfl.ch/labs/lbm/) at [École Polytechnique Fédérale de Lausanne (EPFL)](https://www.epfl.ch/) in Switzerland. It was done with help from several collaborators from the group as well as researchers and educators from other institutions. The project is funded by Spark grant CRSK-1_190376 from the [Swiss National Science Foundation](https://www.snf.ch/).
 
 ## Try now!
 

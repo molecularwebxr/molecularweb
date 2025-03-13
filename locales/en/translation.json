@@ -8,8 +8,8 @@
     "markers": "Markers"
   },
   "app": {
-    "title": "MoleculARweb",
-    "description": "A website for chemistry and biology education through augmented reality, available out of the box in commodity devices",
+    "title": "MoleculARweb.org",
+    "description": "The platform for immersive work and education in chemistry and structural website, starting with MoleculARweb, a website for chemistry and biology education through augmented reality, available out of the box in commodity devices",
     "policy": "Copyright © 2025 Laboratory for biomolecular modeling, EPFL. All rights reserved.",
     "policyMsg": "We use cookies to improve your experience on our site. By using MoleculARweb you agree to our privacy policy.",
     "learnMore": "Learn more",
@@ -30,7 +30,7 @@
     "markers": "Click here to find the AR markers with print and assemble instructions",
     "preferredLang": "Select your preferred language",
     "welcome": "Welcome to MoleculARweb!",
-    "welcomeMsg": "THE website for immersive work and education in chemistry and structural biology",
+    "welcomeMsg": "THE website for immersive chemistry and structural biology.",
     "prepare": "Prepare your ",
     "markersWithLink": "markers",
     "reset": "Reset",
@@ -269,13 +269,13 @@
     }
   },
   "about": {
-    "firstPart": "MoleculARweb is a website for chemistry and structural biology education through commodity, web-based augmented reality that you can use in your webcam-enabled computer, smartphone or tablet, just on your web browser. It was designed and programmed mainly by Fabio Cortés Rodríguez and Luciano A. Abriata from the  ",
+    "firstPart": "<b>MoleculARweb.org</b><br>MoleculARweb.org is our portal of websites for immersive work and education in chemistry and structural biology, relying on web-based augmented and virtual reality that runs out of the box in commodity devices as well as in high-end headsets.<p><b>MoleculARweb</b><br>You are right now at MoleculARweb, a website for chemistry and structural biology education through commodity, web-based augmented reality that you can use in your webcam-enabled computer, smartphone or tablet, just on your web browser. It was designed and programmed mainly by Fabio Cortés Rodríguez and Luciano A. Abriata from the  ",
     "lbm_html": "<u>Laboratory of Biomolecular Modeling</u>",
     "epfl_html": "at <u>École Polytechnique Fédérale de Lausanne</u>",
-    "secondPart": " (EPFL) in Switzerland, with help from several collaborators from the group as well as researchers and educators from other institutions. The project is funded by Spark grant CRSK-1_190376 from the ",
+    "secondPart": " (EPFL) in Switzerland, with help from several collaborators from the group as well as researchers and educators from other institutions. The project started with funds from Spark grant CRSK-1_190376 from the ",
     "snf_html": "<u>Swiss National Science Foundation</u> ",
     "toLAB": "to Luciano A. Abriata.",
-    "snfDB_html": " This project is described <u>here at the SNF project database</u>.",
+    "snfDB_html": " The original MoleculARweb project is described <u>here at the SNF project database</u>.",
     "thirdPart": "The website is based on client-side web programming (see",
     "this_html": "<u>this</u>",
     "and": " and ",
