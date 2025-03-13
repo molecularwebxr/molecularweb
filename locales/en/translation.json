@@ -269,7 +269,7 @@
     }
   },
   "about": {
-    "firstPart": "<b>MoleculARweb.org</b><br>MoleculARweb.org is our portal of websites for immersive work and education in chemistry and structural biology, relying on web-based augmented and virtual reality that runs out of the box in commodity devices as well as in high-end headsets.<b>MoleculARweb</b><br>You are right now at MoleculARweb, a website for chemistry and structural biology education through commodity, web-based augmented reality that you can use in your webcam-enabled computer, smartphone or tablet, just on your web browser. It was designed and programmed mainly by Fabio Cortés Rodríguez and Luciano A. Abriata from the  ",
+    "firstPart": "<b>MoleculARweb.org</b><br>MoleculARweb.org is our portal of websites for immersive work and education in chemistry and structural biology, relying on web-based augmented and virtual reality that runs out of the box in commodity devices as well as in high-end headsets.<br>-<br><b>MoleculARweb</b><br>You are right now at MoleculARweb, a website for chemistry and structural biology education through commodity, web-based augmented reality that you can use in your webcam-enabled computer, smartphone or tablet, just on your web browser. It was designed and programmed mainly by Fabio Cortés Rodríguez and Luciano A. Abriata from the  ",
     "lbm_html": "<u>Laboratory of Biomolecular Modeling</u>",
     "epfl_html": "at <u>École Polytechnique Fédérale de Lausanne</u>",
     "secondPart": " (EPFL) in Switzerland, with help from several collaborators from the group as well as researchers and educators from other institutions. The project started with funds from Spark grant CRSK-1_190376 from the ",
