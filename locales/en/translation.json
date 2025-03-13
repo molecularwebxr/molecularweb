@@ -9,7 +9,7 @@
   },
   "app": {
     "title": "MoleculARweb.org",
-    "description": "The platform for immersive work and education in chemistry and structural website, starting with MoleculARweb, a website for chemistry and biology education through augmented reality, available out of the box in commodity devices",
+    "description": "The platform for immersive work and education in chemistry and structural biology.<br>starting with MoleculARweb, a website for chemistry and biology education through augmented reality, available out of the box in commodity devices",
     "policy": "Copyright © 2025 Laboratory for biomolecular modeling, EPFL. All rights reserved.",
     "policyMsg": "We use cookies to improve your experience on our site. By using MoleculARweb you agree to our privacy policy.",
     "learnMore": "Learn more",
@@ -269,7 +269,7 @@
     }
   },
   "about": {
-    "firstPart": "<b>MoleculARweb.org</b><br>MoleculARweb.org is our portal of websites for immersive work and education in chemistry and structural biology, relying on web-based augmented and virtual reality that runs out of the box in commodity devices as well as in high-end headsets.<br>-<br><b>MoleculARweb</b><br>You are right now at MoleculARweb, a website for chemistry and structural biology education through commodity, web-based augmented reality that you can use in your webcam-enabled computer, smartphone or tablet, just on your web browser. It was designed and programmed mainly by Fabio Cortés Rodríguez and Luciano A. Abriata from the  ",
+    "firstPart": "<b>MoleculARweb.org</b><br>MoleculARweb.org is our portal of websites for immersive work and education in chemistry and structural biology, relying on web-based augmented and virtual reality that runs out of the box in commodity devices as well as in high-end headsets.<br> <br><b>MoleculARweb</b><br>You are right now at MoleculARweb, a website for chemistry and structural biology education through commodity, web-based augmented reality that you can use in your webcam-enabled computer, smartphone or tablet, just on your web browser. It was designed and programmed mainly by Fabio Cortés Rodríguez and Luciano A. Abriata from the  ",
     "lbm_html": "<u>Laboratory of Biomolecular Modeling</u>",
     "epfl_html": "at <u>École Polytechnique Fédérale de Lausanne</u>",
     "secondPart": " (EPFL) in Switzerland, with help from several collaborators from the group as well as researchers and educators from other institutions. The project started with funds from Spark grant CRSK-1_190376 from the ",
@@ -284,7 +284,7 @@
     "fifthPart": "while the exact activities provided in moleculARweb are described in ",
     "preprint_html": "<u>this preprint at ChemRxiv</u>, ",
     "sixthPart": "which also lists all contributing authors and other acknowledgements.",
-    "seventhPart": "MoleculARweb is powered by ",
+    "seventhPart": "<b>Technical and legal details about MoleculARweb</b><br>MoleculARweb is powered by ",
     "eighthPart": "The icons used in the website were downloaded from ",
     "madeBy": "made by Pixel Perfect, Smashicons, Freebies, Diacanvas Studio and Dario Ferrando. The website’s logo was composed from free, open icons taken from the same authors at ",
     "openSource": "This is an open source project on an AGPL-3 license. Check the repositories at GitHub: ",
